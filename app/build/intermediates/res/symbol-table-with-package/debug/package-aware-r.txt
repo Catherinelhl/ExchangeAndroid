@@ -628,8 +628,10 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable bg_qr_grey
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable img_scan_code
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -642,6 +644,8 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable scan_line
+drawable shadow
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -679,6 +683,10 @@ id beginning
 id blocking
 id bottom
 id buttonPanel
+id capture_container
+id capture_crop_view
+id capture_preview
+id capture_scan_line
 id center
 id center_horizontal
 id center_vertical
@@ -692,6 +700,9 @@ id content
 id contentPanel
 id custom
 id customPanel
+id decode
+id decode_failed
+id decode_succeeded
 id decor_content_parent
 id default_activity_button
 id dimensions
@@ -737,7 +748,10 @@ id parentPanel
 id percent
 id progress_circular
 id progress_horizontal
+id quit
 id radio
+id restart_preview
+id return_scan_result
 id right
 id right_icon
 id right_side
@@ -825,6 +839,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout aty_capture
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big
@@ -837,6 +852,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
+raw beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -877,6 +893,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
+string scan_qr_code
 string search_menu_title
 string status_bar_notification_info_overflow
 style AlertDialog_AppCompat
@@ -1274,3 +1291,4 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml file_paths

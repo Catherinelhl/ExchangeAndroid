@@ -1,11 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
+MERGED from [com.android.support:multidex:1.0.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/b4db7fffacdaefaf13b212ebab82583c/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/76a7bb23ac3a5bfc07785d46d5160e9d/AndroidManifest.xml:2:1-11:12
+MERGED from [com.jakewharton:butterknife:8.8.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/c9d6506e663774cafe3d56264615debe/AndroidManifest.xml:2:1-7:12
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-22:12
+MERGED from [com.jakewharton.rxbinding2:rxbinding:2.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/rxbinding-2.1.1.aar/d95b7fe4ae5468dbcea93b5e4e9afe40/AndroidManifest.xml:2:1-8:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/rxandroid-2.1.0.aar/67e5d88700590fc1ebce86e4c3650a40/AndroidManifest.xml:15:1-20:12
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/b99ceb94328a0337ce7660c38992f773/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/9a145acb76f1424551299cc25c6741f7/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/09b23cd1c36a2e7482aff5e3feaaf1f1/AndroidManifest.xml:17:1-22:12
@@ -22,36 +27,64 @@ MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/catherine.br
 MERGED from [com.android.support:support-compat:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/64ca17fa81f6a7aaa07278df8e6ba57f/AndroidManifest.xml:17:1-25:12
 MERGED from [com.android.support:cursoradapter:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/23bafb756ff3b7184674c8d11a58d098/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/673b580fdab05fdf25e37a5092ce4937/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:documentfile:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/81e24f2d5683cf5909e7d6d80e107b1d/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/f39ae7e0fa3a019408037b609179022a/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:print:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/6cfe70183f0f880103eceec76232d0aa/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/2eca4f91b114b58f4b2aa9b43340e288/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d1f3a5f1d13c386a77c99d376e6ebe56/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/332d67ede682ac4fbe93606c77230eed/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/8ec5dde8f6762988d93a964733b627d7/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1cecf5bacbac41ccc823678a988825dd/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d1f3a5f1d13c386a77c99d376e6ebe56/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/673b580fdab05fdf25e37a5092ce4937/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
+INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:3:11-38
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-21:12
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:1-41:12
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:5:5-78
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:6:5-76
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.INTERNET
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:8:22-78
+uses-permission#android.permission.CAMERA
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:9:5-65
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-65
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-65
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:9:22-62
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:10:22-77
 application
-ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:5:5-19:19
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:11:5-39:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/76a7bb23ac3a5bfc07785d46d5160e9d/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/76a7bb23ac3a5bfc07785d46d5160e9d/AndroidManifest.xml:9:5-20
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:14:5-20:19
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:14:5-20:19
 MERGED from [com.android.support:support-compat:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:support-compat:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/AndroidManifest.xml:22:5-94
 MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/64ca17fa81f6a7aaa07278df8e6ba57f/AndroidManifest.xml:22:5-23:19
@@ -59,39 +92,71 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/catherine.br
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:10:13-39
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:19:13-39
 	android:label
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:8:13-45
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:16:13-45
+	android:hardwareAccelerated
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:15:13-48
 	android:roundIcon
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:9:13-58
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:18:13-58
+	android:largeHeap
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:17:13-37
 	android:icon
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:7:13-47
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:14:13-47
 	android:allowBackup
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:6:13-39
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:13:13-39
 	android:theme
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:11:13-44
-activity#io.bcaas.exchange.MainActivity
-ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:12:9-18:20
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:20:13-44
 	android:name
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:12:19-47
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:12:13-49
+activity#io.bcaas.exchange.activity.MainActivity
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:21:9-27:20
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:21:19-56
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:13:13-17:29
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:14:17-68
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:23:17-68
 	android:name
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:14:25-66
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:16:17-76
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:25:17-76
 	android:name
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:16:27-74
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:25:27-74
+provider#android.support.v4.content.FileProvider
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:30:9-38:20
+	android:grantUriPermissions
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:34:17-51
+	android:authorities
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:32:17-69
+	android:exported
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:33:17-41
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:31:17-71
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:35:13-37:58
+	android:resource
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:37:21-55
+	android:name
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:36:21-71
 uses-sdk
 INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:multidex:1.0.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/b4db7fffacdaefaf13b212ebab82583c/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/b4db7fffacdaefaf13b212ebab82583c/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/76a7bb23ac3a5bfc07785d46d5160e9d/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/76a7bb23ac3a5bfc07785d46d5160e9d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.jakewharton:butterknife:8.8.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/c9d6506e663774cafe3d56264615debe/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/c9d6506e663774cafe3d56264615debe/AndroidManifest.xml:5:5-43
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [com.jakewharton.rxbinding2:rxbinding:2.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/rxbinding-2.1.1.aar/d95b7fe4ae5468dbcea93b5e4e9afe40/AndroidManifest.xml:6:5-44
+MERGED from [com.jakewharton.rxbinding2:rxbinding:2.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/rxbinding-2.1.1.aar/d95b7fe4ae5468dbcea93b5e4e9afe40/AndroidManifest.xml:6:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/rxandroid-2.1.0.aar/67e5d88700590fc1ebce86e4c3650a40/AndroidManifest.xml:18:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/rxandroid-2.1.0.aar/67e5d88700590fc1ebce86e4c3650a40/AndroidManifest.xml:18:5-43
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/b99ceb94328a0337ce7660c38992f773/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/b99ceb94328a0337ce7660c38992f773/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/9a145acb76f1424551299cc25c6741f7/AndroidManifest.xml:20:5-44
@@ -124,8 +189,6 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/catherine.br
 MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/64ca17fa81f6a7aaa07278df8e6ba57f/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cursoradapter:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/23bafb756ff3b7184674c8d11a58d098/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cursoradapter:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/23bafb756ff3b7184674c8d11a58d098/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/673b580fdab05fdf25e37a5092ce4937/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/673b580fdab05fdf25e37a5092ce4937/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:documentfile:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/81e24f2d5683cf5909e7d6d80e107b1d/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:documentfile:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/81e24f2d5683cf5909e7d6d80e107b1d/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/f39ae7e0fa3a019408037b609179022a/AndroidManifest.xml:20:5-44
@@ -134,14 +197,16 @@ MERGED from [com.android.support:print:28.0.0] /Users/catherine.brainwilliam/.gr
 MERGED from [com.android.support:print:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/6cfe70183f0f880103eceec76232d0aa/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/2eca4f91b114b58f4b2aa9b43340e288/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/2eca4f91b114b58f4b2aa9b43340e288/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d1f3a5f1d13c386a77c99d376e6ebe56/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d1f3a5f1d13c386a77c99d376e6ebe56/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/332d67ede682ac4fbe93606c77230eed/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/332d67ede682ac4fbe93606c77230eed/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/8ec5dde8f6762988d93a964733b627d7/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/8ec5dde8f6762988d93a964733b627d7/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1cecf5bacbac41ccc823678a988825dd/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1cecf5bacbac41ccc823678a988825dd/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d1f3a5f1d13c386a77c99d376e6ebe56/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d1f3a5f1d13c386a77c99d376e6ebe56/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/673b580fdab05fdf25e37a5092ce4937/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/673b580fdab05fdf25e37a5092ce4937/AndroidManifest.xml:20:5-44
 INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
@@ -152,3 +217,13 @@ INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/ap
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.VIBRATE
+ADDED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:12:5-66
+	android:name
+		ADDED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:12:22-63
+activity#com.obt.qrcode.activity.CaptureActivity
+ADDED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:17:9-19:52
+	android:screenOrientation
+		ADDED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:19:13-49
+	android:name
+		ADDED from [:qrcode] /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:18:13-67

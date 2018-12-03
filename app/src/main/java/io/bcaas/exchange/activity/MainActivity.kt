@@ -1,7 +1,8 @@
-package io.bcaas.exchange
+package io.bcaas.exchange.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import io.bcaas.exchange.R
 
 class MainActivity : AppCompatActivity() {
 
