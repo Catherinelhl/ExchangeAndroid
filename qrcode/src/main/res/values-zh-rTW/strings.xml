@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">掃描</string>
+    <string name="app_name">Exchange</string>
+    <string name="qrcode_name">掃描</string>
     <string name="scan_qr_code">請掃描二維碼</string>
 </resources>

@@ -6,6 +6,7 @@
     <item name="quit" type="id"/>
     <item name="restart_preview" type="id"/>
     <item name="return_scan_result" type="id"/>
-    <string name="app_name">Scan</string>
+    <string name="app_name">Exchange</string>
+    <string name="qrcode_name">Scan</string>
     <string name="scan_qr_code">Please scan qr code</string>
 </resources>

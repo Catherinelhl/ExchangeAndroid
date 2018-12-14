@@ -30,6 +30,8 @@ public class Constants {
         public static final int sleepTime30000 = 30000;
         public static final int sleepTime50000 = 50000;
         public static final int sleepTime500000 = 500000;
+        public static final int TOAST_SHORT = 0;
+
 
         public static final int TIME_OUT_TIME_LONG = 30;//设置超时时间
 

@@ -6,7 +6,9 @@ import android.net.ConnectivityManager;
 import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
+import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.event.NetStateChangeEvent;
 import io.bcaas.exchange.receiver.NetStateReceiver;
 import io.bcaas.exchange.tools.DeviceTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -142,5 +144,25 @@ public class BaseApplication extends MultiDexApplication {
         }
         preferenceTool.saveBoolean(key, value);
     }
+
+
+    /*检测当前网络是否是真的*/
+    public static boolean isRealNet() {
+        return realNet;
+    }
+
+    @Subscribe
+    public void netChanged(NetStateChangeEvent stateChangeEvent) {
+        if (stateChangeEvent.isConnect()) {
+            setRealNet(true);
+        } else {
+            setRealNet(false);
+        }
+    }
+
+    public static void setRealNet(boolean realNet) {
+        BaseApplication.realNet = realNet;
+    }
+
 
 }

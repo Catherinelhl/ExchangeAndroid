@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Exchange</string>
+    <string name="cancel">cancel</string>
+    <string name="confirm">confirm</string>
+    <string name="warning">Warning</string>
+    <string name="network_not_reachable">Network connection error, please check your network settings</string>
+
+</resources>

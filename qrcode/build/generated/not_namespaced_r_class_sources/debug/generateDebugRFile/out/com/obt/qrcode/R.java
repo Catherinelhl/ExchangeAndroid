@@ -45,6 +45,7 @@ public final class R {
         private string() {}
 
         public static int app_name = 0x7f150001;
-        public static int scan_qr_code = 0x7f150002;
+        public static int qrcode_name = 0x7f150002;
+        public static int scan_qr_code = 0x7f150003;
     }
 }
