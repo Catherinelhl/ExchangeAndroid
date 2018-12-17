@@ -4,5 +4,12 @@
     <string name="confirm">confirm</string>
     <string name="warning">Warning</string>
     <string name="network_not_reachable">Network connection error, please check your network settings</string>
+    <string name="password_rule" formatted="false">
+        <![CDATA[0123456789abcdefghigklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM!@#¥%^&*-_]]></string>
+    <string name="enter_password">Please enter password</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget password</string>
+    <string name="register_now">Register now</string>
+    <string name="send">send</string>
 
 </resources>

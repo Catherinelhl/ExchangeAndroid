@@ -58,6 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         OttoTool.getInstance().register(this);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         initView();
+        initData();
         initListener();
         checkNetState();
     }
@@ -67,6 +68,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract void getArgs(Bundle bundle);
 
     public abstract void initView();
+
+    public abstract void initData();
 
     public abstract void initListener();
 

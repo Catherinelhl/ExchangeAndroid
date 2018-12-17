@@ -35,6 +35,9 @@ public class Constants {
 
         public static final int TIME_OUT_TIME_LONG = 30;//设置超时时间
 
+        public static final int PASSWORD_MIN_LENGTH = 8;// 输入密码的最小长度
+
+
     }
 
     public static String SPLICE_CONVERTER(String ip, int port) {

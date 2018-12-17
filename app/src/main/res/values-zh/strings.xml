@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Exchange</string>
-    <string name="cancel">cancel</string>
-    <string name="confirm">confirm</string>
-    <string name="warning">Warning</string>
-    <string name="network_not_reachable">Network connection error, please check your network settings</string>
-
+<string name="app_name">Exchange</string>
+<string name="cancel">cancel</string>
+<string name="confirm">confirm</string>
+<string name="warning">Warning</string>
+<string name="network_not_reachable">Network connection error, please check your network settings</string>
+<string name="password_rule" formatted="false">
+    <![CDATA[0123456789abcdefghigklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM!@#¥%^&*-_]]></string>
+<string name="enter_password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="send">发送</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="register_now">立即注册</string>
 </resources>

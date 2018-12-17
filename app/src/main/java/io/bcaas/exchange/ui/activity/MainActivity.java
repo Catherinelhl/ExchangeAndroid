@@ -57,8 +57,36 @@ public class MainActivity extends BaseActivity {
         fragments.add(orderFragment);
         AccountFragment accountFragment = new AccountFragment();
         fragments.add(accountFragment);
+    }
 
-        initBottomTab();
+    @Override
+    public void initData() {
+        //通过 ColorStateList设置颜色
+//        ColorStateList colorStateList = ColorStateList.valueOf(getResources().getColor(R.color.colorAccent));
+//        bottomTabLayout.setTabTextColors(colorStateList);
+        //直接设置默认和选中颜色
+//        bottomTabLayout.setTabTextColors(getResources().getColor(R.color.grey), getResources().getColor(R.color.orange));
+        for (int i = 0; i < fragments.size(); i++) {
+            TabLayout.Tab tab = bottomTabLayout.newTab();
+// method 自定义布局-----
+            tab.setCustomView(R.layout.tab_item);
+            TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
+            textView.setTextColor(getResources().getColor(R.color.theme_grey));
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, i, false), null, null);
+            textView.setText(dataGenerationRegister.getTabTitle(i));
+            //自定义布局-----
+
+            bottomTabLayout.addTab(tab);
+            if (i == 0) {
+                onTabItemSelected(i);
+                tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
+                textView.setTextColor(getResources().getColor(R.color.theme_FF6400));
+                //method 2
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, 0, true), null, null);
+
+
+            }
+        }
     }
 
     @Override
@@ -98,37 +126,6 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-    }
-
-
-    private void initBottomTab() {
-
-        //通过 ColorStateList设置颜色
-//        ColorStateList colorStateList = ColorStateList.valueOf(getResources().getColor(R.color.colorAccent));
-//        bottomTabLayout.setTabTextColors(colorStateList);
-        //直接设置默认和选中颜色
-//        bottomTabLayout.setTabTextColors(getResources().getColor(R.color.grey), getResources().getColor(R.color.orange));
-        for (int i = 0; i < fragments.size(); i++) {
-            TabLayout.Tab tab = bottomTabLayout.newTab();
-// method 自定义布局-----
-            tab.setCustomView(R.layout.tab_item);
-            TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-            textView.setTextColor(getResources().getColor(R.color.theme_grey));
-            textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, i, false), null, null);
-            textView.setText(dataGenerationRegister.getTabTitle(i));
-            //自定义布局-----
-
-            bottomTabLayout.addTab(tab);
-            if (i == 0) {
-                onTabItemSelected(i);
-                tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
-                textView.setTextColor(getResources().getColor(R.color.theme_FF6400));
-                //method 2
-                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, 0, true), null, null);
-
-
-            }
-        }
     }
 
     private void onTabItemSelected(int position) {

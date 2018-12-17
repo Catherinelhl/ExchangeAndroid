@@ -267,7 +267,9 @@ attr helperTextTextAppearance
 attr hideMotionSpec
 attr hideOnContentScroll
 attr hideOnScroll
+attr hint
 attr hintAnimationEnabled
+attr hintColor
 attr hintEnabled
 attr hintTextAppearance
 attr homeAsUpIndicator
@@ -287,6 +289,7 @@ attr indeterminateProgressStyle
 attr initialActivityCount
 attr insetForeground
 attr isLightTheme
+attr isPassword
 attr itemBackground
 attr itemHorizontalPadding
 attr itemHorizontalTranslationEnabled
@@ -431,8 +434,11 @@ attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
 attr showAsAction
+attr showCheck
 attr showDividers
+attr showLine
 attr showMotionSpec
+attr showRightAction
 attr showText
 attr showTitle
 attr singleChoiceItemLayout
@@ -515,10 +521,12 @@ attr textAppearanceSearchResultTitle
 attr textAppearanceSmallPopupMenu
 attr textAppearanceSubtitle1
 attr textAppearanceSubtitle2
+attr textColor
 attr textColorAlertDialogListItem
 attr textColorSearchUrl
 attr textEndPadding
 attr textInputStyle
+attr textSize
 attr textStartPadding
 attr theme
 attr thickness
@@ -607,6 +615,7 @@ color black10_1d2124
 color black15
 color black20
 color black20_1d2124
+color black20_AEAEAE
 color black25
 color black30
 color black30_1d2124
@@ -627,6 +636,7 @@ color black90
 color black90_1d2124
 color black95
 color black_1d2124
+color black_333333
 color blue
 color blue_0576FE
 color bright_foreground_disabled_material_dark
@@ -635,7 +645,7 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
-color button_left_color
+color button_color
 color button_material_dark
 color button_material_light
 color button_right_color
@@ -742,8 +752,6 @@ color theme_grey_line
 color tooltip_background_dark
 color tooltip_background_light
 color transparent
-color tv_black_100D43
-color tv_black_101010
 color white
 color white20_f1f1f1
 color white30
@@ -1393,6 +1401,8 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable bcaas_bg_button
+drawable bg_edit_text
 drawable bg_login
 drawable bg_qr_grey
 drawable design_bottom_navigation_item_background
@@ -1401,11 +1411,14 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit_text_cursor_drawable
+drawable ic_launcher
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable icon_bcaas
 drawable icon_home
 drawable icon_home_f
 drawable img_scan_code
@@ -1425,6 +1438,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable scan_line
+drawable selector_cb_password
 drawable selector_radio_button_home
 drawable selector_tv_home
 drawable shadow
@@ -1469,11 +1483,13 @@ id bottom_tab_layout
 id btn_left
 id btn_right
 id btn_sure
+id btn_unlock_wallet
 id buttonPanel
 id capture_container
 id capture_crop_view
 id capture_preview
 id capture_scan_line
+id cb_check
 id center
 id center_horizontal
 id center_vertical
@@ -1506,6 +1522,9 @@ id edit_query
 id end
 id enterAlways
 id enterAlwaysCollapsed
+id et_content
+id etwa_ammount
+id etwa_password
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1539,6 +1558,8 @@ id line1
 id line3
 id listMode
 id list_item
+id ll_login
+id ll_password_key
 id ll_tab_item
 id masked
 id message
@@ -1643,14 +1664,19 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_action
 id tv_content
+id tv_forget_password
+id tv_register_now
 id tv_tab_title
 id tv_text
 id tv_title
+id tv_version
 id uniform
 id unlabeled
 id up
 id useLogo
+id v_password_line
 id view_offset_helper
 id visible
 id withText
@@ -1726,6 +1752,7 @@ layout fragment_order_layout
 layout fragment_sell_layout
 layout layout_bcaas_dialog
 layout layout_bcaas_single_dialog
+layout layout_edittext_with_action
 layout layout_loading_dailog
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
@@ -1743,6 +1770,8 @@ layout support_simple_spinner_dropdown_item
 layout tab_item
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap icon_cb_pwd
+mipmap icon_cb_pwd_d
 raw beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1790,19 +1819,25 @@ string cancel
 string character_counter_content_description
 string character_counter_pattern
 string confirm
+string enter_password
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string forget_password
 string hide_bottom_view_on_scroll_behavior
+string login
 string mtrl_chip_close_icon_content_description
 string network_not_reachable
+string password_rule
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string qrcode_name
+string register_now
 string scan_qr_code
 string search_menu_title
+string send
 string status_bar_notification_info_overflow
 string warning
 style AlertDialog_AppCompat
@@ -2302,9 +2337,14 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox
 style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
+style black30_10_text_style
+style black_14_edit_text_style
 style black_14_text_style
+style black_16_text_style
 style black_18_text_style
+style button_style
 style dialog_loading
+style ff6f61_14_text_style
 style line_style
 style marquee_style
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
@@ -2385,4 +2425,5 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+styleable editViewWithAction hint hintColor isPassword showCheck showLine showRightAction singleLine textColor textSize
 xml file_paths
