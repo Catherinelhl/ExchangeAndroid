@@ -7,13 +7,11 @@ import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import com.squareup.otto.Subscribe;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.NetStateChangeEvent;
 import io.bcaas.exchange.receiver.NetStateReceiver;
-import io.bcaas.exchange.tools.DeviceTool;
-import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.PreferenceTool;
-import io.bcaas.exchange.tools.ServerTool;
+import io.bcaas.exchange.tools.*;
 
 /**
  * @author catherine.brainwilliam
@@ -164,5 +162,13 @@ public class BaseApplication extends MultiDexApplication {
         BaseApplication.realNet = realNet;
     }
 
-
+    /**
+     * 返回当前的token是否为空
+     *
+     * @return
+     */
+    public static boolean tokenIsNull() {
+        String accessToken = getStringFromSP(Constants.Preference.ACCESS_TOKEN);
+        return StringTool.isEmpty(accessToken);
+    }
 }

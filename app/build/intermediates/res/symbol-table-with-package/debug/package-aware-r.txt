@@ -672,6 +672,7 @@ color dim_foreground_material_dark
 color dim_foreground_material_light
 color error_color_material_dark
 color error_color_material_light
+color ffd8d8d8
 color foreground_material_dark
 color foreground_material_light
 color green70_18ac22
@@ -1403,7 +1404,6 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable bcaas_bg_button
 drawable bg_edit_text
-drawable bg_login
 drawable bg_qr_grey
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
@@ -1481,6 +1481,7 @@ id blocking
 id bottom
 id bottom_tab_layout
 id btn_left
+id btn_login
 id btn_right
 id btn_sure
 id btn_unlock_wallet
@@ -1523,8 +1524,10 @@ id end
 id enterAlways
 id enterAlwaysCollapsed
 id et_content
-id etwa_ammount
+id etwa_amount
+id etwa_email_code
 id etwa_password
+id etwa_password_confirm
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1541,6 +1544,8 @@ id groups
 id home
 id homeAsUp
 id home_container
+id ib_back
+id ib_right
 id icon
 id icon_group
 id ifRoom
@@ -1549,6 +1554,7 @@ id info
 id invisible
 id italic
 id item_touch_helper_previous_elevation
+id iv_logo
 id iv_tab_drawable
 id labeled
 id largeLabel
@@ -1558,6 +1564,7 @@ id line1
 id line3
 id listMode
 id list_item
+id ll_action
 id ll_login
 id ll_password_key
 id ll_tab_item
@@ -1593,6 +1600,7 @@ id return_scan_result
 id right
 id right_icon
 id right_side
+id rl_header
 id rt_text
 id rv_list
 id save_image_matrix
@@ -1667,6 +1675,7 @@ id transition_transform
 id tv_action
 id tv_content
 id tv_forget_password
+id tv_login_now
 id tv_register_now
 id tv_tab_title
 id tv_text
@@ -1729,8 +1738,11 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_brand
 layout activity_login
 layout activity_main
+layout activity_register
+layout activity_reset_password
 layout aty_capture
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1750,6 +1762,7 @@ layout fragment_account_layout
 layout fragment_buy_layout
 layout fragment_order_layout
 layout fragment_sell_layout
+layout include_header
 layout layout_bcaas_dialog
 layout layout_bcaas_single_dialog
 layout layout_edittext_with_action
@@ -1770,6 +1783,7 @@ layout support_simple_spinner_dropdown_item
 layout tab_item
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap icon_back_red
 mipmap icon_cb_pwd
 mipmap icon_cb_pwd_d
 raw beep
@@ -1812,6 +1826,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string amount
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
@@ -1827,6 +1842,7 @@ string hide_bottom_view_on_scroll_behavior
 string login
 string mtrl_chip_close_icon_content_description
 string network_not_reachable
+string password
 string password_rule
 string password_toggle_content_description
 string path_password_eye
@@ -1835,10 +1851,13 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string qrcode_name
 string register_now
+string register_title
+string reset_password_title
 string scan_qr_code
 string search_menu_title
 string send
 string status_bar_notification_info_overflow
+string sure
 string warning
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -2342,6 +2361,7 @@ style black_14_edit_text_style
 style black_14_text_style
 style black_16_text_style
 style black_18_text_style
+style black_bold_18_text_style
 style button_style
 style dialog_loading
 style ff6f61_14_text_style

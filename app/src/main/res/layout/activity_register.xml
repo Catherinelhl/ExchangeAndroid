@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:bcaas="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/include_header"/>
+
+    <io.bcaas.exchange.view.editview.EditTextWithAction
+            android:id="@+id/etwa_amount"
+            android:layout_width="match_parent"
+            bcaas:hint="请用您的常用邮箱号作为账号"
+            android:layout_height="wrap_content"
+    />
+    <io.bcaas.exchange.view.editview.EditTextWithAction
+            android:id="@+id/etwa_password"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/d16"
+            bcaas:hint="设置登录密码"
+            bcaas:isPassword="true"
+            android:layout_height="wrap_content"
+    />
+    <io.bcaas.exchange.view.editview.EditTextWithAction
+            android:id="@+id/etwa_password_confirm"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/d16"
+            bcaas:hint="请再次输入密码"
+            bcaas:isPassword="true"
+            android:layout_height="wrap_content"
+    />
+    <io.bcaas.exchange.view.editview.EditTextWithAction
+            android:id="@+id/etwa_email_code"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/d16"
+            bcaas:hint="邮箱验证码"
+            bcaas:showRightAction="true"
+            android:layout_height="wrap_content"
+    />
+
+    <Button
+            android:id="@+id/btn_unlock_wallet"
+            style="@style/button_style"
+            android:layout_marginTop="@dimen/d20"
+            android:text="@string/sure"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/d16"
+            android:layout_marginLeft="@dimen/d20"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:padding="@dimen/d2"
+            android:layout_height="wrap_content">
+        <TextView
+                style="@style/black_14_text_style"
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:text="已有账号？"/>
+        <TextView
+                android:id="@+id/tv_login_now"
+                style="@style/ff6f61_14_text_style"
+                android:gravity="center_vertical"
+                android:text="立即登录"/>
+
+    </LinearLayout>
+
+</LinearLayout>

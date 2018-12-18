@@ -11,6 +11,10 @@ public class Constants {
 
     public static final String LOCAL_DEFAULT_IP = "";
 
+    public enum TimerType {
+        BrandTimer
+    }
+
     public class ValueMaps {
 
         public static final int sleepTime100 = 100;
@@ -34,10 +38,21 @@ public class Constants {
 
 
         public static final int TIME_OUT_TIME_LONG = 30;//设置超时时间
-
+        //TCP  C-S 发送心跳信息间隔
+        public static final long HEART_BEAT_TIME = 30;
         public static final int PASSWORD_MIN_LENGTH = 8;// 输入密码的最小长度
+        public static final String FROM_BRAND = "brand";
+        //打印当前设备的内存
+        public static final long LOG_TIME = 1;
+        public static final int STAY_BRAND_ACTIVITY_TIME = 2;//如果当前不用编辑页面，停留在页面的时间2s
 
 
+    }
+
+    /*请求code*/
+    public static class RequestCode {
+        public static final int REGISTER_CODE = 0x1;//跳转注册页面的code码
+        public static final int RESET_PASSWORD_CODE = 0x2;//跳转重置密码页面的code码
     }
 
     public static String SPLICE_CONVERTER(String ip, int port) {
@@ -47,6 +62,8 @@ public class Constants {
     public class KeyMaps {
         public static final String HTTP_PREFIX = "http://";
         public static final String HTTP_COLON = ":";
+        public static final String From = "from";//来自
+
 
     }
 
@@ -71,5 +88,7 @@ public class Constants {
 
     public class Preference {
         public static final String SP_BCAAS_EXCHANGE = "BCAAS_EXCHANGE";
+        public static final String ACCESS_TOKEN = "accessToken";//token 信息
+
     }
 }

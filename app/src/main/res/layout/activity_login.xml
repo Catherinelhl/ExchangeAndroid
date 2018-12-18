@@ -21,10 +21,10 @@
     </LinearLayout>
 
     <io.bcaas.exchange.view.editview.EditTextWithAction
-            android:id="@+id/etwa_ammount"
+            android:id="@+id/etwa_amount"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d76"
-            bcaas:hint="账号"
+            bcaas:hint="@string/amount"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
@@ -32,13 +32,13 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d20"
             android:layout_height="wrap_content"
-            bcaas:hint="密码"
+            bcaas:hint="@string/password"
             bcaas:isPassword="true"
             bcaas:showCheck="true"
 
     />
     <Button
-            android:id="@+id/btn_unlock_wallet"
+            android:id="@+id/btn_login"
             style="@style/button_style"
             android:layout_marginTop="@dimen/d23"
             android:text="@string/login"/>

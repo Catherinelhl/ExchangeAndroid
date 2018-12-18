@@ -24,7 +24,6 @@ import java.util.List;
  * 首頁主Activity
  */
 public class MainActivity extends BaseActivity {
-    private String TAG = MainActivity.class.getSimpleName();
     @BindView(R.id.home_container)
     FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)

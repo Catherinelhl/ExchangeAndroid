@@ -42,6 +42,8 @@ public class EditTextWithAction extends LinearLayout {
     View vPasswordLine;
     @BindView(R.id.ll_password_key)
     LinearLayout llPasswordKey;
+    @BindView(R.id.ll_action)
+    LinearLayout llAction;
 
 
     /*監聽當前密碼的輸入*/
@@ -75,7 +77,7 @@ public class EditTextWithAction extends LinearLayout {
             etContent.setTextSize(textSize);
             etContent.setHintTextColor(hintColor);
             cbCheck.setVisibility(showCheck ? VISIBLE : GONE);
-            tvAction.setVisibility(showRightAction ? VISIBLE : GONE);
+            llAction.setVisibility(showRightAction ? VISIBLE : GONE);
             etContent.setInputType(isPassword ?
                     InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD
                     : InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);

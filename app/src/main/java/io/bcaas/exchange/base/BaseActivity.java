@@ -27,7 +27,6 @@ import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
  * 所有Phone's Activity 的基類
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private String TAG = BaseActivity.class.getSimpleName();
     private Unbinder unbinder;
     protected Context context;
     protected Activity activity;
@@ -42,6 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private long lastClickBackTime = 0L;
     /*软键盘管理*/
     protected SoftKeyBroadManager softKeyBroadManager;
+    protected String TAG;
 
     //读写权限
     private static String[] PERMISSIONS_STORAGE = {
@@ -53,6 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
         activity = this;
+        TAG = activity.getClass().getSimpleName();
         context = getApplicationContext();
         unbinder = ButterKnife.bind(this);
         OttoTool.getInstance().register(this);

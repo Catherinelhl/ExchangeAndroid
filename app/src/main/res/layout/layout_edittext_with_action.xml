@@ -38,14 +38,28 @@
                 android:button="@drawable/selector_cb_password"
                 android:checked="false"
                 android:gravity="center"/>
-        <TextView
-                android:id="@+id/tv_action"
+        <LinearLayout
+                android:id="@+id/ll_action"
                 android:layout_width="wrap_content"
-                android:text="@string/send"
-                android:layout_alignParentRight="true"
-                android:visibility="gone"
+                android:visibility="visible"
+                android:orientation="horizontal"
                 android:layout_centerVertical="true"
-                android:layout_height="match_parent"/>
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:layout_height="@dimen/d48">
+            <View android:layout_width="@dimen/d1"
+                  style="@style/line_style"
+                  android:layout_height="@dimen/d28"/>
+            <TextView
+                    android:id="@+id/tv_action"
+                    android:layout_width="wrap_content"
+                    android:text="@string/send"
+                    android:layout_marginLeft="@dimen/d20"
+                    android:gravity="center_vertical"
+                    android:layout_height="@dimen/d48"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
     <View
