@@ -28,6 +28,8 @@ public abstract class BaseFragment extends Fragment {
     protected Activity activity;
     private Unbinder unbinder;
     protected SoftKeyBroadManager softKeyBroadManager;
+    /*监管当前fragment的状态：是否准备好；是否第一次可见；是否第一次不可见*/
+    protected boolean isPrepared, isFirstVisible, isFirstInvisible;
 
     @Nullable
     @Override
@@ -35,14 +37,14 @@ public abstract class BaseFragment extends Fragment {
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutRes(), container, false);
         }
-        unbinder = ButterKnife.bind(this, rootView);
-        OttoTool.getInstance().register(this);
         return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        OttoTool.getInstance().register(this);
         context = getContext();
         activity = getActivity();
         if (activity != null) {
@@ -52,6 +54,50 @@ public abstract class BaseFragment extends Fragment {
         initListener();
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initPrepare();
+    }
+
+    private synchronized void initPrepare() {
+        LogTool.i(TAG, "setUserVisibleHint:initPrepare" + isPrepared);
+        if (isPrepared) {
+            onFirstUserVisible();
+        } else {
+            isPrepared = true;
+        }
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogTool.d(TAG, "setUserVisibleHint:" + isVisibleToUser);
+        if (isVisibleToUser) {
+            if (isFirstVisible) {
+                isFirstVisible = false;
+                initPrepare();
+            } else {
+                onUserVisible();
+            }
+        } else {
+            if (isFirstInvisible) {
+                isFirstInvisible = false;
+                onFirstUserInvisible();
+            } else {
+                onUserInvisible();
+            }
+        }
+    }
+
+    protected abstract void onFirstUserVisible();
+
+    protected abstract void onUserVisible();
+
+    protected abstract void onFirstUserInvisible();
+
+    protected abstract void onUserInvisible();
+
     public abstract int getLayoutRes();//得到当前的layoutRes
 
     public abstract void initViews(View view);
@@ -59,6 +105,8 @@ public abstract class BaseFragment extends Fragment {
     public abstract void getArgs(Bundle bundle);
 
     public abstract void initListener();
+
+//    protected abstract void DestroyViewAndThing();
 
 
     public void showToast(String info) {
@@ -74,6 +122,7 @@ public abstract class BaseFragment extends Fragment {
         OttoTool.getInstance().unregister(this);
     }
 
+
     public void intentToActivity(Class classTo) {//跳转到另外一个界面
         intentToActivity(null, classTo, false);
     }
@@ -86,15 +135,12 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-
     /*隐藏当前键盘*/
     public void hideSoftKeyboard() {
         if (activity != null) {
             ((BaseActivity) activity).hideSoftKeyboard();
         }
     }
-
-
 
 
     protected SoftKeyBroadManager.SoftKeyboardStateListener softKeyboardStateListener = new SoftKeyBroadManager.SoftKeyboardStateListener() {
@@ -111,6 +157,7 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+//        DestroyViewAndThing();
         if (softKeyBroadManager != null && softKeyboardStateListener != null) {
             softKeyBroadManager.removeSoftKeyboardStateListener(softKeyboardStateListener);
         }

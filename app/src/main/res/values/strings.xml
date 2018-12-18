@@ -16,6 +16,10 @@
     <string name="reset_password_title">Reset password</string>
     <string name="password">Password</string>
     <string name="amount">Amount</string>
+    <string name="amount_title">Amount</string>
+    <string name="order_title">Order</string>
+    <string name="sell_title">Sell</string>
+    <string name="buy_title">Buy</string>
 
 
 </resources>

@@ -7,21 +7,25 @@
         android:layout_height="match_parent"
         tools:context=".ui.activity.MainActivity">
 
+    <include layout="@layout/include_header"
+             app:layout_constraintTop_toTopOf="parent"/>
+
     <FrameLayout
             android:id="@+id/home_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/theme_grey"
+            android:layout_marginTop="@dimen/d48"
             app:layout_constraintBottom_toBottomOf="@+id/bottom_tab_layout"
             tools:layout_editor_absoluteX="@dimen/d0"
-            android:layout_marginBottom="@dimen/d48">
-    </FrameLayout>
+            android:layout_marginBottom="@dimen/d48"
+            tools:ignore="MissingConstraints"/>
 
     <android.support.design.widget.TabLayout
             android:id="@+id/bottom_tab_layout"
             android:layout_width="match_parent"
             app:tabIndicatorHeight="@dimen/d0"
-            android:background="@color/ffd8d8d8"
+            android:background="@color/white"
             app:tabGravity="fill"
             app:tabMode="fixed"
             app:layout_constraintBottom_toBottomOf="parent"

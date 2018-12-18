@@ -1,14 +1,10 @@
 package io.bcaas.exchange.ui.fragment;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.view.View;
-import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
-import io.bcaas.exchange.view.textview.RichText;
+import io.bcaas.exchange.tools.LogTool;
 
 /**
  * @author catherine.brainwilliam
@@ -17,6 +13,29 @@ import io.bcaas.exchange.view.textview.RichText;
  *  訂單
  */
 public class OrderFragment extends BaseFragment {
+    private String TAG = OrderFragment.class.getSimpleName();
+
+    @Override
+    protected void onFirstUserVisible() {
+        LogTool.i(TAG,"onFirstUserVisible");
+        isFirstVisible=true;
+    }
+    @Override
+    protected void onFirstUserInvisible() {
+        LogTool.d(TAG, "onFirstUserInvisible");
+        isFirstInvisible = true;
+    }
+    @Override
+    protected void onUserVisible() {
+        LogTool.i(TAG,"onUserVisible");
+
+    }
+
+    @Override
+    protected void onUserInvisible() {
+        LogTool.i(TAG,"onUserInvisible");
+
+    }
 
     @Override
     public int getLayoutRes() {
@@ -25,6 +44,7 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
+        isPrepared = true;
 
     }
 

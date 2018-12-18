@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
+import io.bcaas.exchange.tools.LogTool;
 
 /**
  * @author catherine.brainwilliam
@@ -18,9 +19,40 @@ import io.bcaas.exchange.base.BaseFragment;
  * 帳戶
  */
 public class AccountFragment extends BaseFragment {
+    private String TAG = AccountFragment.class.getSimpleName();
 
     @BindView(R.id.tv_text)
     TextView tvText;
+
+    @Override
+    protected void onFirstUserVisible() {
+        LogTool.d(TAG, "onFirstUserVisible");
+        isFirstVisible = true;
+    }
+
+    @Override
+    protected void onFirstUserInvisible() {
+        LogTool.d(TAG, "onFirstUserInvisible");
+        isFirstInvisible = true;
+    }
+
+    @Override
+    protected void onUserVisible() {
+        LogTool.i(TAG, "onUserVisible");
+
+    }
+
+    @Override
+    protected void onUserInvisible() {
+        LogTool.i(TAG, "onUserInvisible");
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogTool.d(TAG, "setUserVisibleHint:" + isVisibleToUser);
+    }
 
     @Override
     public int getLayoutRes() {
@@ -29,7 +61,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
-
+        isPrepared = true;
     }
 
     @Override

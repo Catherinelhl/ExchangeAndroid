@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- RichText -->
-    <declare-styleable name="RichText">
+    <declare-styleable name="RichTextView">
         <attr name="drawable_src" format="reference" />
         <attr name="drawable_height" format="dimension" />
         <attr name="drawable_width" format="dimension" />

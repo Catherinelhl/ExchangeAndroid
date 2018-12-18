@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
 
-public class RichText extends TextView {
+public class RichTextView extends TextView {
 
     public static final int LEFT = 1, TOP = 2, RIGHT = 3, BOTTOM = 4;
 
@@ -20,22 +20,22 @@ public class RichText extends TextView {
 
     private int mLocation;
 
-    public RichText(Context context) {
+    public RichTextView(Context context) {
         this(context, null);
     }
 
-    public RichText(Context context, AttributeSet attrs) {
+    public RichTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.RichText);
+                R.styleable.RichTextView);
 
         mWidth = a
-                .getDimensionPixelSize(R.styleable.RichText_drawable_width, 0);
-        mHeight = a.getDimensionPixelSize(R.styleable.RichText_drawable_height,
+                .getDimensionPixelSize(R.styleable.RichTextView_drawable_width, 0);
+        mHeight = a.getDimensionPixelSize(R.styleable.RichTextView_drawable_height,
                 0);
-        mDrawable = a.getDrawable(R.styleable.RichText_drawable_src);
-        mLocation = a.getInt(R.styleable.RichText_drawable_location, LEFT);
+        mDrawable = a.getDrawable(R.styleable.RichTextView_drawable_src);
+        mLocation = a.getInt(R.styleable.RichTextView_drawable_location, LEFT);
 
         a.recycle();
         //绘制Drawable宽高,位置

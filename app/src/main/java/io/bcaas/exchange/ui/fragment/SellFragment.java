@@ -2,16 +2,13 @@ package io.bcaas.exchange.ui.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
-import io.bcaas.exchange.view.textview.RichText;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.view.textview.RichTextView;
 
 /**
  * @author catherine.brainwilliam
@@ -20,12 +17,38 @@ import io.bcaas.exchange.view.textview.RichText;
  * 賣出
  */
 public class SellFragment extends BaseFragment {
+    private String TAG = SellFragment.class.getSimpleName();
+
     @BindView(R.id.top_tab_layout)
     TabLayout topTabLayout;
     @BindView(R.id.tv_text)
     TextView tvText;
     @BindView(R.id.rt_text)
-    RichText rtText;
+    RichTextView rtText;
+
+    @Override
+    protected void onFirstUserVisible() {
+        LogTool.i(TAG, "onFirstUserVisible");
+        isFirstVisible = true;
+    }
+
+    @Override
+    protected void onFirstUserInvisible() {
+        LogTool.d(TAG, "onFirstUserInvisible");
+        isFirstInvisible = true;
+    }
+
+    @Override
+    protected void onUserVisible() {
+        LogTool.i(TAG, "onUserVisible");
+
+    }
+
+    @Override
+    protected void onUserInvisible() {
+        LogTool.i(TAG, "onUserInvisible");
+
+    }
 
     @Override
     public int getLayoutRes() {
@@ -34,6 +57,7 @@ public class SellFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
+        isPrepared = true;
 
     }
 
