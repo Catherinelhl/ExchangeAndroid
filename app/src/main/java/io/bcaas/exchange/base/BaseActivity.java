@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.OttoTool;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
@@ -42,6 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     /*软键盘管理*/
     protected SoftKeyBroadManager softKeyBroadManager;
     protected String TAG;
+    protected DataGenerationRegister dataGenerationRegister;
+
 
     //读写权限
     private static String[] PERMISSIONS_STORAGE = {
@@ -58,6 +61,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         unbinder = ButterKnife.bind(this);
         OttoTool.getInstance().register(this);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        dataGenerationRegister = new DataGenerationRegister();
+
         initView();
         initData();
         initListener();

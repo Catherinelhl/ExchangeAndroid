@@ -7,6 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
+import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.view.textview.RichTextView;
 
@@ -19,12 +20,10 @@ import io.bcaas.exchange.view.textview.RichTextView;
 public class SellFragment extends BaseFragment {
     private String TAG = SellFragment.class.getSimpleName();
 
-    @BindView(R.id.top_tab_layout)
-    TabLayout topTabLayout;
     @BindView(R.id.tv_text)
     TextView tvText;
-    @BindView(R.id.rt_text)
-    RichTextView rtText;
+//    @BindView(R.id.rt_text)
+//    RichTextView rtText;
 
     @Override
     protected void onFirstUserVisible() {
@@ -58,7 +57,6 @@ public class SellFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
-
     }
 
     @Override
@@ -70,5 +68,7 @@ public class SellFragment extends BaseFragment {
     public void initListener() {
 
     }
+
+
 
 }

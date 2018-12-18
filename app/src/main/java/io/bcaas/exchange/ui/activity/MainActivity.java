@@ -3,7 +3,6 @@ package io.bcaas.exchange.ui.activity;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
-import android.os.strictmode.Violation;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -15,7 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
@@ -44,10 +42,10 @@ public class MainActivity extends BaseActivity {
     ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
+    @BindView(R.id.top_nav_layout)
+    TabLayout topNavLayout;
     //声明当前需要和底部栏搭配的所有fragment
     private List<Fragment> fragments;
-
-    private DataGenerationRegister dataGenerationRegister;
 
 
     @Override
@@ -64,7 +62,6 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         fragments = new ArrayList<>();
         tvTitle.setVisibility(View.VISIBLE);
-        dataGenerationRegister = new DataGenerationRegister();
         BuyFragment fragment = new BuyFragment();
         fragments.add(fragment);
         SellFragment sellFragment = new SellFragment();
@@ -73,6 +70,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(orderFragment);
         AccountFragment accountFragment = new AccountFragment();
         fragments.add(accountFragment);
+        initTopNavTab();
     }
 
     @Override
@@ -146,6 +144,22 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+        topNavLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     /**
@@ -161,15 +175,22 @@ public class MainActivity extends BaseActivity {
             }
             switch (position) {
                 case 0:
+                    topNavLayout.setVisibility(View.VISIBLE);
+                    topNavLayout.getTabAt(0).select();
                     setTitle(getString(R.string.buy_title));
                     break;
                 case 1:
+                    topNavLayout.getTabAt(0).select();
+                    topNavLayout.setVisibility(View.VISIBLE);
                     setTitle(getString(R.string.sell_title));
                     break;
                 case 2:
+                    topNavLayout.getTabAt(0).select();
+                    topNavLayout.setVisibility(View.VISIBLE);
                     setTitle(getString(R.string.order_title));
                     break;
                 case 3:
+                    topNavLayout.setVisibility(View.GONE);
                     setTitle(getString(R.string.amount_title));
                     break;
             }
@@ -189,5 +210,20 @@ public class MainActivity extends BaseActivity {
                 getResources().getColor(isCheck ? R.color.theme_FDD400 : R.color.grey_c5c5c5),
                 getResources().getColor(isCheck ? R.color.theme_FF6400 : R.color.grey_c5c5c5),
                 Shader.TileMode.CLAMP);
+    }
+
+    /**
+     * 初始化顶部导航栏
+     */
+    private void initTopNavTab() {
+        if (topNavLayout == null) {
+            return;
+        }
+        topNavLayout.removeAllTabs();
+        for (int i = 0; i < 3; i++) {
+            TabLayout.Tab tab = topNavLayout.newTab();
+            tab.setText(dataGenerationRegister.getTabTopTitle(i));
+            topNavLayout.addTab(tab);
+        }
     }
 }
