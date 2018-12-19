@@ -728,6 +728,10 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_ic_star_black_48dp.png"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_buy_detail.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/animator_mtrl_btn_unelevated_state_list_anim.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/animator/mtrl_btn_unelevated_state_list_anim.xml"
     },

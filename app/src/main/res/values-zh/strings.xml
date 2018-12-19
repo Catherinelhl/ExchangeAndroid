@@ -27,4 +27,10 @@
     <string name="number">数量</string>
     <string name="total_account">总额</string>
     <string name="fee">手续费</string>
+    <string name="price">价格</string>
+    <string name="fund_password">资金密码</string>
+    <string name="random_verify_code">Google 随机验证码</string>
+    <string name="start_immediate">立即启用</string>
+    <string name="buy_detail">购买详情</string>
+
 </resources>

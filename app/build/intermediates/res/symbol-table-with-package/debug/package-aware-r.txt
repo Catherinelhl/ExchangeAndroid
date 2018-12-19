@@ -1530,8 +1530,10 @@ id enterAlwaysCollapsed
 id et_content
 id etwa_amount
 id etwa_email_code
+id etwa_fund_password
 id etwa_password
 id etwa_password_confirm
+id etwa_random_verify_code
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1686,7 +1688,9 @@ id tv_number
 id tv_pay_method
 id tv_person_name
 id tv_price
+id tv_purple_title
 id tv_register_now
+id tv_start_immediate
 id tv_tab_title
 id tv_text
 id tv_title
@@ -1750,6 +1754,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_brand
+layout activity_buy_detail
 layout activity_login
 layout activity_main
 layout activity_register
@@ -1844,6 +1849,7 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string buy
+string buy_detail
 string buy_title
 string cancel
 string character_counter_content_description
@@ -1854,6 +1860,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fee
 string forget_password
+string fund_password
 string hide_bottom_view_on_scroll_behavior
 string login
 string mtrl_chip_close_icon_content_description
@@ -1867,7 +1874,9 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string price
 string qrcode_name
+string random_verify_code
 string register_now
 string register_title
 string reset_password_title
@@ -1875,6 +1884,7 @@ string scan_qr_code
 string search_menu_title
 string sell_title
 string send
+string start_immediate
 string status_bar_notification_info_overflow
 string sure
 string total_account
