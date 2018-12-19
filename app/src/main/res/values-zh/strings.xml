@@ -23,5 +23,8 @@
     <string name="order_title">订单</string>
     <string name="sell_title">出售</string>
     <string name="buy_title">购买</string>
-
+    <string name="buy">购买</string>
+    <string name="number">数量</string>
+    <string name="total_account">总额</string>
+    <string name="fee">手续费</string>
 </resources>

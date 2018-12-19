@@ -1,13 +1,9 @@
 package io.bcaas.exchange.ui.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.tools.LogTool;
@@ -23,18 +19,6 @@ public class AccountFragment extends BaseFragment {
 
     @BindView(R.id.tv_text)
     TextView tvText;
-
-    @Override
-    protected void onFirstUserVisible() {
-        LogTool.d(TAG, "onFirstUserVisible");
-        isFirstVisible = true;
-    }
-
-    @Override
-    protected void onFirstUserInvisible() {
-        LogTool.d(TAG, "onFirstUserInvisible");
-        isFirstInvisible = true;
-    }
 
     @Override
     protected void onUserVisible() {
@@ -56,7 +40,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_account_layout;
+        return R.layout.fragment_account;
     }
 
     @Override

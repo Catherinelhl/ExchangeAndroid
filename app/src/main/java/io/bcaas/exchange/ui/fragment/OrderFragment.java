@@ -16,16 +16,6 @@ public class OrderFragment extends BaseFragment {
     private String TAG = OrderFragment.class.getSimpleName();
 
     @Override
-    protected void onFirstUserVisible() {
-        LogTool.i(TAG,"onFirstUserVisible");
-        isFirstVisible=true;
-    }
-    @Override
-    protected void onFirstUserInvisible() {
-        LogTool.d(TAG, "onFirstUserInvisible");
-        isFirstInvisible = true;
-    }
-    @Override
     protected void onUserVisible() {
         LogTool.i(TAG,"onUserVisible");
 
@@ -39,7 +29,7 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_order_layout;
+        return R.layout.fragment_order;
     }
 
     @Override

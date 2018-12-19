@@ -19,6 +19,7 @@
 
     <color name="blue">#4F80A1</color>
     <color name="blue_0576FE">#0576FE</color>
+    <color name="blue_5B88FF">#5B88FF</color>
 
 
     <color name="theme_grey">#F7F9FF</color>
@@ -72,6 +73,7 @@
 
     <color name="grey_c5c5c5">#C5C5C5</color>
     <color name="ffd8d8d8">#ffd8d8d8</color>
+    <color name="d8d8d8">#d8d8d8</color>
     <color name="theme_FDD400">#FDD400</color>
     <color name="theme_FF6400">#FF6400</color>
 

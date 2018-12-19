@@ -1,25 +1,25 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.content.res.Resources;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +71,17 @@ public class MainActivity extends BaseActivity {
         AccountFragment accountFragment = new AccountFragment();
         fragments.add(accountFragment);
         initTopNavTab();
+        needTopTabScroll();
+    }
+
+    /**
+     * 判断是否需要顶部标签滑动
+     * 暂时定为如果便签的数量超过了五个，那么就需要移动
+     */
+    private void needTopTabScroll() {
+        if (dataGenerationRegister != null) {
+            topNavLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
+        }
     }
 
     @Override
@@ -78,7 +89,7 @@ public class MainActivity extends BaseActivity {
         for (int i = 0; i < fragments.size(); i++) {
             TabLayout.Tab tab = bottomTabLayout.newTab();
             // method 自定义布局-----
-            tab.setCustomView(R.layout.tab_item);
+            tab.setCustomView(R.layout.item_bottom_tab);
             TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
             textView.getPaint().setShader(getShader(textView, false));
             textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, i, false), null, null);
@@ -224,6 +235,49 @@ public class MainActivity extends BaseActivity {
             TabLayout.Tab tab = topNavLayout.newTab();
             tab.setText(dataGenerationRegister.getTabTopTitle(i));
             topNavLayout.addTab(tab);
+        }
+//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
+    }
+
+    /**
+     * 设置tab Indicator 的宽度
+     *
+     * @param tabs
+     * @param leftDip
+     * @param rightDip
+     */
+    private void setTabIndicatorWidth(TabLayout tabs, int leftDip, int rightDip) {
+        Class<?> tabLayout = tabs.getClass();
+        Field tabStrip = null;
+        try {
+            tabStrip = tabLayout.getDeclaredField("tabStrip");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
+        }
+
+        if (tabStrip != null) {
+            tabStrip.setAccessible(true);
+        }
+        LinearLayout llTab = null;
+        try {
+            llTab = (LinearLayout) tabStrip.get(tabs);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
+        }
+
+        int left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, leftDip, Resources.getSystem().getDisplayMetrics());
+        int right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, rightDip, Resources.getSystem().getDisplayMetrics());
+
+        for (int i = 0; i < llTab.getChildCount(); i++) {
+            View child = llTab.getChildAt(i);
+            child.setPadding(0, 0, 0, 0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+            params.leftMargin = left;
+            params.rightMargin = right;
+            child.setLayoutParams(params);
+            child.invalidate();
         }
     }
 }

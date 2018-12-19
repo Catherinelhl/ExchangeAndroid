@@ -20,6 +20,11 @@
     <string name="order_title">Order</string>
     <string name="sell_title">Sell</string>
     <string name="buy_title">Buy</string>
+    <string name="buy">Buy</string>
+    <string name="number">Number</string>
+    <string name="total_account">TotalAccount</string>
+    <string name="fee">Fee</string>
+
 
 
 </resources>

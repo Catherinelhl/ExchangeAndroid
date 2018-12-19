@@ -19,7 +19,10 @@ public class DataGenerationRegister {
     private List<String> tabTopTitles = new ArrayList<>();
     private List<Integer> tabDrawables = new ArrayList<>();
     private List<Integer> tabFocusDrawables = new ArrayList<>();
-    private int tabTitleCount;
+    //底部tab的数量
+    private int tabBottomTitleCount;
+    //顶部tab的数量
+    private int tabTopTitleCount;
 
     public DataGenerationRegister() {
         super();
@@ -32,13 +35,13 @@ public class DataGenerationRegister {
         tabTitles.add("卖出");
         tabTitles.add("订单");
         tabTitles.add("账户");
-        tabTitleCount = tabTitles.size();
+        tabBottomTitleCount = tabTitles.size();
 
         //初始化顶部栏数据
         tabTopTitles.add("ETH");
         tabTopTitles.add("BTC");
         tabTopTitles.add("ZBB");
-
+        tabTopTitleCount = tabTopTitles.size();
         //初始化底部栏图标数据
         tabDrawables.add(R.drawable.icon_home);
         tabDrawables.add(R.drawable.icon_home);
@@ -58,7 +61,7 @@ public class DataGenerationRegister {
      */
     public String getTabTitle(int position) {
 
-        if (position >= tabTitleCount) {
+        if (position >= tabBottomTitleCount) {
             return "";
         }
         return tabTitles.get(position);
@@ -84,7 +87,7 @@ public class DataGenerationRegister {
      * @return
      */
     public int getTabDrawable(int position, boolean isSelect) {
-        if (position >= tabTitleCount) {
+        if (position >= tabBottomTitleCount) {
             return 0;
         }
         return isSelect ? tabFocusDrawables.get(position) : tabDrawables.get(position);
@@ -101,5 +104,9 @@ public class DataGenerationRegister {
         Drawable top = context.getResources().getDrawable(getTabDrawable(i, isSelect));
         return top;
 
+    }
+
+    public int getTabTopTitleCount() {
+        return tabTopTitleCount;
     }
 }

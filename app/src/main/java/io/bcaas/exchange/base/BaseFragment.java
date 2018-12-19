@@ -65,9 +65,7 @@ public abstract class BaseFragment extends Fragment {
 
     private synchronized void initPrepare() {
         LogTool.i(TAG, "setUserVisibleHint:initPrepare" + isPrepared);
-        if (isPrepared) {
-            onFirstUserVisible();
-        } else {
+        if (!isPrepared) {
             isPrepared = true;
         }
     }
@@ -86,18 +84,14 @@ public abstract class BaseFragment extends Fragment {
         } else {
             if (isFirstInvisible) {
                 isFirstInvisible = false;
-                onFirstUserInvisible();
             } else {
                 onUserInvisible();
             }
         }
     }
 
-    protected abstract void onFirstUserVisible();
-
     protected abstract void onUserVisible();
 
-    protected abstract void onFirstUserInvisible();
 
     protected abstract void onUserInvisible();
 
