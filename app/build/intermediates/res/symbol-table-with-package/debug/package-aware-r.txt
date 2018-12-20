@@ -1440,6 +1440,8 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable scan_line
+drawable seekbar
+drawable seekbar_thumb
 drawable selector_cb_password
 drawable selector_radio_button_home
 drawable selector_tv_home
@@ -1612,6 +1614,7 @@ id rv_list
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
+id sb_progress
 id screen
 id scroll
 id scrollIndicatorDown
@@ -1680,16 +1683,21 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tv_action
+id tv_balance
 id tv_content
 id tv_fee
+id tv_fee_introduction
 id tv_forget_password
 id tv_login_now
 id tv_number
 id tv_pay_method
 id tv_person_name
 id tv_price
+id tv_progress_speed
 id tv_purple_title
 id tv_register_now
+id tv_salable_balance
+id tv_sell_volume
 id tv_start_immediate
 id tv_tab_title
 id tv_text
@@ -1880,6 +1888,7 @@ string random_verify_code
 string register_now
 string register_title
 string reset_password_title
+string salable_balance
 string scan_qr_code
 string search_menu_title
 string sell_title

@@ -29,6 +29,7 @@
     <string name="random_verify_code">Google random verify code</string>
     <string name="start_immediate">Start immediate</string>
     <string name="buy_detail">Buy detail</string>
+    <string name="salable_balance">Salable balance：</string>
 
 
 </resources>
