@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--订单页面的交易item-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tool="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="@dimen/d16"
+                  android:layout_marginBottom="@dimen/d16"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_gravity="center"
+                  android:gravity="center_vertical"
+                  android:layout_marginRight="@dimen/d20"
+                  android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_transaction_type"
+                  style="@style/black_16_text_style"
+                  tool:text="出售 BTC"
+                  android:textStyle="bold"
+                  android:gravity="center_vertical"
+                  android:layout_gravity="center"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="@dimen/d0"
+                  android:id="@+id/tv_transaction_time"
+                  android:layout_weight="1"
+                  android:textSize="@dimen/text_size_14"
+                  tool:text="2018/12/19"
+                  android:textColor="@color/black_333333"
+                  android:gravity="center"
+                  android:layout_gravity="center"
+                  android:layout_height="wrap_content"/>
+        <TextView
+                android:gravity="center"
+                android:id="@+id/tv_transaction_status"
+                style="@style/ff6f61_14_text_style"
+                tool:text="待出售"/>
+    </LinearLayout>
+
+    <View style="@style/line_style"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="@dimen/d12"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_gravity="center"
+                  android:gravity="center_vertical"
+                  android:layout_marginRight="@dimen/d20"
+                  android:layout_height="wrap_content">
+        <TextView
+                style="@style/black_16_text_style"
+                android:text="支出"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                tool:ignore="InefficientWeight"/>
+        <TextView
+                android:gravity="right"
+                android:id="@+id/tv_pay_account"
+                android:layout_weight="1"
+                android:layout_width="@dimen/d0"
+                style="@style/black_14_text_style"
+                tool:text="23.234523 BTC"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="@dimen/d12"
+                  android:layout_marginBottom="@dimen/d12"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_gravity="center"
+                  android:gravity="center_vertical"
+                  android:layout_marginRight="@dimen/d20"
+                  android:layout_height="wrap_content">
+        <TextView
+                style="@style/black_16_text_style"
+                android:text="收入"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                tool:ignore="InefficientWeight"/>
+        <TextView
+                android:gravity="right"
+                android:layout_width="@dimen/d0"
+                android:layout_weight="1"
+                android:id="@+id/tv_total_account"
+                style="@style/black_14_text_style"
+                tool:text="12.2334623465 ETH"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_marginBottom="@dimen/d12"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_gravity="center"
+                  android:gravity="center_vertical"
+                  android:layout_marginRight="@dimen/d20"
+                  android:layout_height="wrap_content">
+        <TextView
+                style="@style/black_16_text_style"
+                android:text="@string/fee"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+                tool:ignore="InefficientWeight"/>
+        <TextView
+                android:gravity="right"
+                android:layout_width="@dimen/d0"
+                android:layout_weight="1"
+                android:id="@+id/tv_fee"
+                style="@style/black_14_text_style"
+                tool:text="0.001 ETH"/>
+    </LinearLayout>
+    <Button
+            android:id="@+id/btn_cancel"
+            android:textSize="@dimen/text_size_14"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d30"
+            android:layout_marginTop="@dimen/d14"
+            android:minWidth="@dimen/d68"
+            android:background="@drawable/stroke_border_grey"
+            android:layout_marginBottom="@dimen/d13"
+            android:layout_marginRight="@dimen/d20"
+            android:layout_marginLeft="@dimen/d20"
+            android:text="撤销"
+            android:layout_gravity="right"
+            android:textColor="@color/black_333333"
+            android:gravity="center"
+            tool:ignore="InefficientWeight"/>
+    <View android:layout_width="match_parent"
+          android:layout_height="@dimen/d10"
+          android:background="@color/theme_grey"/>
+</LinearLayout>

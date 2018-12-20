@@ -70,7 +70,6 @@ public class MainActivity extends BaseActivity {
         fragments.add(orderFragment);
         AccountFragment accountFragment = new AccountFragment();
         fragments.add(accountFragment);
-        initTopNavTab();
         needTopTabScroll();
     }
 
@@ -186,16 +185,19 @@ public class MainActivity extends BaseActivity {
             }
             switch (position) {
                 case 0:
+                    initTopNavTab(0);
                     topNavLayout.setVisibility(View.VISIBLE);
                     topNavLayout.getTabAt(0).select();
                     setTitle(getString(R.string.buy_title));
                     break;
                 case 1:
+                    initTopNavTab(1);
                     topNavLayout.getTabAt(0).select();
                     topNavLayout.setVisibility(View.VISIBLE);
                     setTitle(getString(R.string.sell_title));
                     break;
                 case 2:
+                    initTopNavTab(2);
                     topNavLayout.getTabAt(0).select();
                     topNavLayout.setVisibility(View.VISIBLE);
                     setTitle(getString(R.string.order_title));
@@ -226,14 +228,15 @@ public class MainActivity extends BaseActivity {
     /**
      * 初始化顶部导航栏
      */
-    private void initTopNavTab() {
+    private void initTopNavTab(int position) {
         if (topNavLayout == null) {
             return;
         }
         topNavLayout.removeAllTabs();
-        for (int i = 0; i < 3; i++) {
+        int size = position == 2 ? dataGenerationRegister.getTabOrderTopTitleCount() : dataGenerationRegister.getTabTopTitleCount();
+        for (int i = 0; i < size; i++) {
             TabLayout.Tab tab = topNavLayout.newTab();
-            tab.setText(dataGenerationRegister.getTabTopTitle(i));
+            tab.setText(position == 2 ? dataGenerationRegister.getOrderTopTitles(i) : dataGenerationRegister.getTabTopTitle(i));
             topNavLayout.addTab(tab);
         }
 //        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));

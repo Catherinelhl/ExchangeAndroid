@@ -15,14 +15,22 @@ import java.util.List;
  */
 public class DataGenerationRegister {
 
+    //底部tab的标题集合
     private List<String> tabTitles = new ArrayList<>();
-    private List<String> tabTopTitles = new ArrayList<>();
+    //底部tab的图标集合
     private List<Integer> tabDrawables = new ArrayList<>();
+    //底部tab的选中图标集合
     private List<Integer> tabFocusDrawables = new ArrayList<>();
+    //顶部币种标题集合
+    private List<String> tabTopTitles = new ArrayList<>();
+    //顶部订单标题集合
+    private List<String> tabOrderTopTitles = new ArrayList<>();
     //底部tab的数量
     private int tabBottomTitleCount;
     //顶部tab的数量
     private int tabTopTitleCount;
+    //顶部tab 订单页面的标题数量
+    private int tabOrderTopTitleCount;
 
     public DataGenerationRegister() {
         super();
@@ -42,6 +50,13 @@ public class DataGenerationRegister {
         tabTopTitles.add("BTC");
         tabTopTitles.add("ZBB");
         tabTopTitleCount = tabTopTitles.size();
+
+        //初始化Order界面top标题集合
+        tabOrderTopTitles.add("交易");
+        tabOrderTopTitles.add("充值");
+        tabOrderTopTitles.add("提现");
+        tabOrderTopTitleCount=tabOrderTopTitles.size();
+
         //初始化底部栏图标数据
         tabDrawables.add(R.drawable.icon_home);
         tabDrawables.add(R.drawable.icon_home);
@@ -105,8 +120,24 @@ public class DataGenerationRegister {
         return top;
 
     }
+    /**
+     * 返回当前订单页面的顶部标题
+     *
+     * @param position
+     * @return
+     */
+    public String getOrderTopTitles(int position) {
+        if (position >= tabOrderTopTitleCount) {
+            return "";
+        }
+        return tabOrderTopTitles.get(position);
+    }
 
     public int getTabTopTitleCount() {
         return tabTopTitleCount;
+    }
+
+    public int getTabOrderTopTitleCount() {
+        return tabOrderTopTitleCount;
     }
 }
