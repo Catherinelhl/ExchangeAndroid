@@ -1489,6 +1489,7 @@ id btn_buy
 id btn_left
 id btn_login
 id btn_right
+id btn_sell
 id btn_sure
 id btn_unlock_wallet
 id buttonPanel
@@ -1703,6 +1704,7 @@ id tv_tab_title
 id tv_text
 id tv_title
 id tv_total_account
+id tv_transaction_amount
 id tv_version
 id uniform
 id unlabeled
@@ -1767,6 +1769,7 @@ layout activity_login
 layout activity_main
 layout activity_register
 layout activity_reset_password
+layout activity_sell_detail
 layout aty_capture
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1891,6 +1894,8 @@ string reset_password_title
 string salable_balance
 string scan_qr_code
 string search_menu_title
+string sell_number
+string sell_price
 string sell_title
 string send
 string start_immediate

@@ -39,6 +39,9 @@
         <activity android:name=".ui.activity.BuyDetailActivity"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.SellDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity android:name=".ui.activity.MainActivity"/>
 
         <!-- 解决Android 7.0文件共享的问题-->

@@ -1,5 +1,7 @@
 package io.bcaas.exchange.ui.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +12,17 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.ui.activity.BuyDetailActivity;
+import io.bcaas.exchange.ui.activity.SellDetailActivity;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -35,8 +45,8 @@ public class SellFragment extends BaseFragment {
     TextView tvFeeIntroduction;
     @BindView(R.id.tv_balance)
     TextView tvBalance;
-    @BindView(R.id.btn_login)
-    Button btnLogin;
+    @BindView(R.id.btn_sell)
+    Button btnSell;
     @BindView(R.id.sb_progress)
     SeekBar sbProgress;
 
@@ -92,7 +102,40 @@ public class SellFragment extends BaseFragment {
 
             }
         });
+        RxView.clicks(btnSell).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        Intent intent = new Intent();
+//                        Bundle bundle=new Bundle();
+//                        bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL,buyDataBean);
+//                        intent.putExtras(bundle);
+                        intent.setClass(activity, SellDetailActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+        }
+    }
 
 }

@@ -146,7 +146,7 @@
                     android:textColor="@color/black_333333"
                     android:text="扣除手续费后的交易额：12.834257 ETH"/>
             <Button
-                    android:id="@+id/btn_login"
+                    android:id="@+id/btn_sell"
                     style="@style/button_style"
                     android:layout_marginTop="@dimen/d38"
                     android:text="出售"/>

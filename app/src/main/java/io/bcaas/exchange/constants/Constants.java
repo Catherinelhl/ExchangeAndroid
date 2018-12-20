@@ -54,6 +54,7 @@ public class Constants {
         public static final int REGISTER_CODE = 0x1;//跳转注册页面的code码
         public static final int RESET_PASSWORD_CODE = 0x2;//跳转重置密码页面的code码
         public static final int BUY_DETAIL_CODE = 0x3;//跳转购买详情页面的code码
+        public static final int SELL_DETAIL_CODE = 0x4;//跳转售出详情页面的code码
     }
 
     public static String SPLICE_CONVERTER(String ip, int port) {
