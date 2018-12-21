@@ -35,6 +35,8 @@ public class RequestJson {
 	private MemberOrderVO memberOrderVO;
 	private List<MemberOrderVO> memberOrderVOList;
 
+	private ExchangeBean exchangeBean;
+
 	public RequestJson() {
 		super();
 	}
@@ -229,6 +231,14 @@ public class RequestJson {
 		this.memberOrderVOList = memberOrderVOList;
 	}
 
+	public ExchangeBean getExchangeBean() {
+		return exchangeBean;
+	}
+
+	public void setExchangeBean(ExchangeBean exchangeBean) {
+		this.exchangeBean = exchangeBean;
+	}
+
 	@Override
 	public String toString() {
 		return "RequestJson{" +
@@ -246,6 +256,7 @@ public class RequestJson {
 				", memberKeyVOList=" + memberKeyVOList +
 				", memberOrderVO=" + memberOrderVO +
 				", memberOrderVOList=" + memberOrderVOList +
+				", exchangeBean=" + exchangeBean +
 				'}';
 	}
 }

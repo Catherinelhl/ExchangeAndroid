@@ -16,6 +16,33 @@ public class APIURLConstants {
     public static final String API_LOGIN = "member/login";
     /*登出*/
     public static final String API_LOGOUT = "member/logout";
+
+
+    /*BTC 取得餘額*/
+    public static final String API_BTC_GETBALANCE = "btc/getBalance";
+    /*BTC 取得交易的hash*/
+    public static final String API_BTC_GET_TX_HASH= "btc/getTxHash";
+    /*BTC 發送交易*/
+    public static final String API_BTC_PUSH_TX = "btc/pushTx";
+    /*BTC 取得交易狀態*/
+    public static final String API_BTC_GET_TX_STATUS = "btc/getTxStatus";
+
+
+
+    /*ETH 取得餘額*/
+    public static final String API_ETH_GETBALANCE = "eth/getBalance";
+    /*ETH 發送交易*/
+    public static final String API_ETH_PUSH_TX = "btc/pushTx";
+    /*ETH 取得交易狀態*/
+    public static final String API_ETH_GET_TX_STATUS = "btc/getTxStatus";
+
+
+
+    /*取得虛擬貨幣美元現值*/
+    public static final String API_CURRENCY_GET_USD_PRICE = "currency/getUSDPrice";
+
+
+
     /*2FA 雙因素驗證*/
     public static final String API_AUTHENTICATOR_URL = "verification/getAuthenticatorUrl";
     /*發送Email驗證*/

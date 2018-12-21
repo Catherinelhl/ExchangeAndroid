@@ -39,6 +39,21 @@ public class ResponseJson extends ServerResponseJson {
 	private MemberOrderVO memberOrderVO;
 	private List<MemberOrderVO> memberOrderVOList;
 
+
+	private ExchangeBean exchangeBean;
+
+	public ExchangeBean getExchangeBean() {
+		return exchangeBean;
+	}
+
+	public void setExchangeBean(ExchangeBean exchangeBean) {
+		this.exchangeBean = exchangeBean;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public ResponseJson() {
 		super();
 	}
@@ -262,6 +277,7 @@ public class ResponseJson extends ServerResponseJson {
 				", memberKeyVOList=" + memberKeyVOList +
 				", memberOrderVO=" + memberOrderVO +
 				", memberOrderVOList=" + memberOrderVOList +
+				", exchangeBean=" + exchangeBean +
 				'}';
 	}
 }

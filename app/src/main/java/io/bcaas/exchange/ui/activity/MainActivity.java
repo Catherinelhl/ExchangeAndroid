@@ -17,11 +17,15 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.constracts.LogoutConstract;
+import io.bcaas.exchange.ui.constracts.MainConstract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
+import io.bcaas.exchange.ui.interactor.MainInteractor;
 import io.bcaas.exchange.ui.presenter.LogoutPresenterImp;
+import io.bcaas.exchange.ui.presenter.MainPresenterImp;
+import io.bcaas.exchange.vo.ExchangeBean;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -36,7 +40,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 首頁主Activity
  */
-public class MainActivity extends BaseActivity implements LogoutConstract.View {
+public class MainActivity extends BaseActivity
+        implements LogoutConstract.View, MainConstract.View {
     @BindView(R.id.home_container)
     FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)
@@ -57,6 +62,7 @@ public class MainActivity extends BaseActivity implements LogoutConstract.View {
     private Fragment currentFragment;
 
     private LogoutConstract.Presenter presenter;
+    private MainConstract.Presenter mainPresenter;
 
     @Override
     public int getContentView() {
@@ -96,6 +102,11 @@ public class MainActivity extends BaseActivity implements LogoutConstract.View {
     @Override
     public void initData() {
         presenter = new LogoutPresenterImp(this);
+        mainPresenter = new MainPresenterImp(this);
+        ExchangeBean exchangeBean = new ExchangeBean();
+        exchangeBean.setCurrency("BTC");
+        exchangeBean.setBalance("8");
+        mainPresenter.getCurrencyUSDPrice(Constants.User.MEMBER_ID, exchangeBean);
         for (int i = 0; i < fragments.size(); i++) {
             TabLayout.Tab tab = bottomTabLayout.newTab();
             // method 自定义布局-----
@@ -326,6 +337,16 @@ public class MainActivity extends BaseActivity implements LogoutConstract.View {
 
     @Override
     public void logoutFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void getCurrencyUSDPriceSuccess(String info) {
+        LogTool.d(TAG, info);
+    }
+
+    @Override
+    public void getCurrencyUSDPriceFailure(String info) {
         showToast(info);
     }
 }

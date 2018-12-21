@@ -37,6 +37,12 @@ public interface HttpApi {
     Observable<ResponseJson> logout(@Body RequestBody requestBody);
 
     /**
+     * 取得虛擬貨幣美元現值
+     */
+    @POST(APIURLConstants.API_CURRENCY_GET_USD_PRICE)
+    Observable<ResponseJson> getCurrencyUSDPrice(@Body RequestBody requestBody);
+
+    /**
      * Email验证
      */
     @POST(APIURLConstants.API_EMAIL_VERIFY)
