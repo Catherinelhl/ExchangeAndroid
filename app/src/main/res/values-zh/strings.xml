@@ -35,4 +35,9 @@
     <string name="salable_balance">可售余额：</string>
     <string name="sell_price">卖出价</string>
     <string name="sell_number">卖出量</string>
+
+    <string name="my_all_fund">我的资产</string>
+    <string name="recharge">充值</string>
+    <string name="with_draw">提现</string>
+    <string name="safety_center">安全中心</string>
 </resources>

@@ -1,12 +1,22 @@
 package io.bcaas.exchange.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.adapter.SettingsAdapter;
 import io.bcaas.exchange.base.BaseFragment;
+import io.bcaas.exchange.bean.SettingsBean;
+import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author catherine.brainwilliam
@@ -15,10 +25,14 @@ import io.bcaas.exchange.tools.LogTool;
  * 帳戶
  */
 public class AccountFragment extends BaseFragment {
+    @BindView(R.id.iv_account)
+    ImageView ivAccount;
+    @BindView(R.id.tv_account_name)
+    TextView tvAccountName;
+    @BindView(R.id.rv_setting)
+    RecyclerView rvSetting;
     private String TAG = AccountFragment.class.getSimpleName();
-
-    @BindView(R.id.tv_text)
-    TextView tvText;
+    private SettingsAdapter settingTypesAdapter;
 
     @Override
     protected void onUserVisible() {
@@ -46,6 +60,33 @@ public class AccountFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
+        initAdapter();
+    }
+
+    private void initAdapter() {
+        List<SettingsBean> settingTypes = initSettingTypes();//得到设置页面需要显示的所有设置选项
+        settingTypesAdapter = new SettingsAdapter(context, settingTypes);
+        rvSetting.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        rvSetting.setAdapter(settingTypesAdapter);
+    }
+
+    /**
+     * 添加页面数据，实则应该写在presenter里面，但是写在里面在切换语言的时候却不会更新数据
+     *
+     * @return
+     */
+    private List<SettingsBean> initSettingTypes() {
+        List<SettingsBean> settingTypes = new ArrayList<>();
+        SettingsBean settingTypeBean = new SettingsBean(getString(R.string.my_all_fund), Constants.SettingType.MY_ALL_FUND);
+        SettingsBean settingTypeBean3 = new SettingsBean(getString(R.string.recharge), Constants.SettingType.RECHARGE);
+        SettingsBean settingTypeBean4 = new SettingsBean(getString(R.string.with_draw), Constants.SettingType.WITH_DRAW);
+        SettingsBean settingTypeBean5 = new SettingsBean(getString(R.string.safety_center), Constants.SettingType.SAFETY_CENTER);
+        settingTypes.add(settingTypeBean);
+        settingTypes.add(settingTypeBean3);
+        settingTypes.add(settingTypeBean4);
+        settingTypes.add(settingTypeBean5);
+        return settingTypes;
+
     }
 
     @Override
@@ -55,6 +96,33 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public void initListener() {
+        settingTypesAdapter.setSettingItemSelectListener(new OnItemSelectListener() {
+            @Override
+            public <T> void onItemSelect(T type, String from) {
+                if (type == null) {
+                    return;
+                }
+                if (type instanceof SettingsBean) {
+                    SettingsBean settingTypeBean = (SettingsBean) type;
+                    switch (settingTypeBean.getTag()) {
+                        case MY_ALL_FUND:
+//                            intentToActivity(null, CheckWalletInfoActivity.class, false);
+                            break;
+                        case RECHARGE:
+//                            intentToActivity(null, ModifyAuthorizedRepresentativesActivity.class, false);
+                            break;
+                        case WITH_DRAW:
+//                            intentToActivity(null, AddressManagerActivity.class, false);
+                            break;
+                        case SAFETY_CENTER:
+//                            intentToActivity(null, LanguageSwitchingActivity.class, false);
+                            break;
 
+                    }
+                }
+            }
+        });
     }
+
+
 }

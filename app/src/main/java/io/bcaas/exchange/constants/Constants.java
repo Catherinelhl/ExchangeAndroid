@@ -101,4 +101,12 @@ public class Constants {
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
     }
 
+
+    public enum SettingType {//定义一下设置的类型
+        MY_ALL_FUND,//我的资产
+        RECHARGE,//充值
+        WITH_DRAW,//提现
+        SAFETY_CENTER//安全中心
+    }
+
 }

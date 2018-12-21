@@ -1556,6 +1556,7 @@ id home
 id homeAsUp
 id home_container
 id ib_back
+id ib_detail
 id ib_right
 id icon
 id icon_group
@@ -1565,6 +1566,8 @@ id info
 id invisible
 id italic
 id item_touch_helper_previous_elevation
+id iv_account
+id iv_icon
 id iv_logo
 id iv_tab_drawable
 id labeled
@@ -1612,9 +1615,11 @@ id right
 id right_icon
 id right_side
 id rl_header
+id rl_setting_types
 id rv_buy_data
 id rv_list
 id rv_order_data
+id rv_setting
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1687,6 +1692,7 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_account_name
 id tv_action
 id tv_balance
 id tv_content
@@ -1708,9 +1714,9 @@ id tv_recharge_type
 id tv_register_now
 id tv_salable_balance
 id tv_sell_volume
+id tv_setting_type
 id tv_start_immediate
 id tv_tab_title
-id tv_text
 id tv_title
 id tv_total_account
 id tv_transaction_amount
@@ -1726,6 +1732,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id v_line
 id v_password_line
 id view_offset_helper
 id visible
@@ -1811,6 +1818,7 @@ layout item_buy_recycler
 layout item_order_recharge_recycler
 layout item_order_transaction_recycler
 layout item_order_withdraw_cash_recycler
+layout item_setting
 layout layout_bcaas_dialog
 layout layout_bcaas_single_dialog
 layout layout_edittext_with_action
@@ -1833,6 +1841,8 @@ mipmap ic_launcher_round
 mipmap icon_back_red
 mipmap icon_cb_pwd
 mipmap icon_cb_pwd_d
+mipmap icon_check_wallet_info
+mipmap icon_detail
 raw beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1894,6 +1904,7 @@ string fund_password
 string hide_bottom_view_on_scroll_behavior
 string login
 string mtrl_chip_close_icon_content_description
+string my_all_fund
 string network_not_reachable
 string number
 string order_title
@@ -1907,9 +1918,11 @@ string path_password_strike_through
 string price
 string qrcode_name
 string random_verify_code
+string recharge
 string register_now
 string register_title
 string reset_password_title
+string safety_center
 string salable_balance
 string scan_qr_code
 string search_menu_title
@@ -1922,6 +1935,7 @@ string status_bar_notification_info_overflow
 string sure
 string total_account
 string warning
+string with_draw
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
