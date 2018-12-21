@@ -46,7 +46,8 @@ public class MainActivity extends BaseActivity {
     TabLayout topNavLayout;
     //声明当前需要和底部栏搭配的所有fragment
     private List<Fragment> fragments;
-
+    //得到当前显示的Fragment
+    private Fragment currentFragment;
 
     @Override
     public int getContentView() {
@@ -157,7 +158,9 @@ public class MainActivity extends BaseActivity {
         topNavLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
+                if (currentFragment instanceof OrderFragment) {
+                    ((OrderFragment) currentFragment).switchTab(tab.getPosition());
+                }
             }
 
             @Override
@@ -179,9 +182,9 @@ public class MainActivity extends BaseActivity {
      */
     private void onTabItemSelected(int position) {
         if (ListTool.noEmpty(fragments) && position < fragments.size()) {
-            Fragment fragment = fragments.get(position);
-            if (fragment != null) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.home_container, fragment).commit();
+            currentFragment = fragments.get(position);
+            if (currentFragment != null) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.home_container, currentFragment).commit();
             }
             switch (position) {
                 case 0:

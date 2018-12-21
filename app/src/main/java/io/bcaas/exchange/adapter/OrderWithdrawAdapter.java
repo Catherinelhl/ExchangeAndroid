@@ -6,11 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.BuyDataBean;
+import io.bcaas.exchange.bean.OrderWithDrawBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -28,13 +27,13 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
 
     private Context context;
-    private List<BuyDataBean> buyDataBeans;
+    private List<OrderWithDrawBean> orderWithDrawBeans;
     private OnItemSelectListener onItemSelectListener;
 
-    public OrderWithdrawAdapter(Context context, List<BuyDataBean> buyDataBeans) {
+    public OrderWithdrawAdapter(Context context, List<OrderWithDrawBean> orderWithDrawBeans) {
         super();
         this.context = context;
-        this.buyDataBeans = buyDataBeans;
+        this.orderWithDrawBeans = orderWithDrawBeans;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -50,24 +49,24 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= buyDataBeans.size()) {
+        if (i >= orderWithDrawBeans.size()) {
             return;
         }
-        BuyDataBean buyDataBean = buyDataBeans.get(i);
-        if (buyDataBean == null) {
+        OrderWithDrawBean orderWithDrawBean = orderWithDrawBeans.get(i);
+        if (orderWithDrawBean == null) {
             return;
         }
-        viewHolder.tvWithdrawType.setText("提现 BTC");
-        viewHolder.tvWithdrawTime.setText("2018/12/12");
-        viewHolder.tvWithdrawStatus.setText("待验证");
-        viewHolder.tvPayAccount.setText(buyDataBean.getNumber());
-        viewHolder.tvWithdrawAddress.setText(buyDataBean.getTotalAccount());
-        viewHolder.tvFee.setText(buyDataBean.getFee());
+        viewHolder.tvWithdrawType.setText(orderWithDrawBean.getOrderType());
+        viewHolder.tvWithdrawTime.setText(orderWithDrawBean.getOrderTime());
+        viewHolder.tvWithdrawStatus.setText(orderWithDrawBean.getOrderStatus());
+        viewHolder.tvPayAccount.setText(orderWithDrawBean.getNumber());
+        viewHolder.tvWithdrawAddress.setText(orderWithDrawBean.getAddress());
+        viewHolder.tvFee.setText(orderWithDrawBean.getFee());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(buyDataBean, MessageConstants.EMPTY);
+                    onItemSelectListener.onItemSelect(orderWithDrawBean, Constants.From.ORDER_WITHDRAW);
                 }
             }
         });
@@ -75,7 +74,7 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(buyDataBeans) ? 0 : buyDataBeans.size();
+        return ListTool.isEmpty(orderWithDrawBeans) ? 0 : orderWithDrawBeans.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

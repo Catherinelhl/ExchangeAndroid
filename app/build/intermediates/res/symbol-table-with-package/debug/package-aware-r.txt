@@ -1447,6 +1447,7 @@ drawable selector_radio_button_home
 drawable selector_tv_home
 drawable shadow
 drawable stroke_border_blue
+drawable stroke_border_grey
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -1486,6 +1487,7 @@ id blocking
 id bottom
 id bottom_tab_layout
 id btn_buy
+id btn_cancel
 id btn_left
 id btn_login
 id btn_right
@@ -1612,6 +1614,7 @@ id right_side
 id rl_header
 id rv_buy_data
 id rv_list
+id rv_order_data
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1651,6 +1654,7 @@ id src_atop
 id src_in
 id src_over
 id srl_buy_data
+id srl_order_data
 id standard
 id start
 id stretch
@@ -1691,11 +1695,16 @@ id tv_fee_introduction
 id tv_forget_password
 id tv_login_now
 id tv_number
+id tv_pay_account
 id tv_pay_method
 id tv_person_name
 id tv_price
 id tv_progress_speed
 id tv_purple_title
+id tv_recharge_address
+id tv_recharge_status
+id tv_recharge_time
+id tv_recharge_type
 id tv_register_now
 id tv_salable_balance
 id tv_sell_volume
@@ -1705,7 +1714,14 @@ id tv_text
 id tv_title
 id tv_total_account
 id tv_transaction_amount
+id tv_transaction_status
+id tv_transaction_time
+id tv_transaction_type
 id tv_version
+id tv_withdraw_address
+id tv_withdraw_status
+id tv_withdraw_time
+id tv_withdraw_type
 id uniform
 id unlabeled
 id up
@@ -1792,6 +1808,9 @@ layout fragment_sell
 layout include_header
 layout item_bottom_tab
 layout item_buy_recycler
+layout item_order_recharge_recycler
+layout item_order_transaction_recycler
+layout item_order_withdraw_cash_recycler
 layout layout_bcaas_dialog
 layout layout_bcaas_single_dialog
 layout layout_edittext_with_action

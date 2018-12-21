@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.BuyDataBean;
+import io.bcaas.exchange.bean.OrderTransactionBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -28,13 +28,13 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
 
 
     private Context context;
-    private List<BuyDataBean> buyDataBeans;
+    private List<OrderTransactionBean> orderTransactionBeans;
     private OnItemSelectListener onItemSelectListener;
 
-    public OrderTransactionAdapter(Context context, List<BuyDataBean> buyDataBeans) {
+    public OrderTransactionAdapter(Context context, List<OrderTransactionBean> orderTransactionBeans) {
         super();
         this.context = context;
-        this.buyDataBeans = buyDataBeans;
+        this.orderTransactionBeans = orderTransactionBeans;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -50,19 +50,19 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= buyDataBeans.size()) {
+        if (i >= orderTransactionBeans.size()) {
             return;
         }
-        BuyDataBean buyDataBean = buyDataBeans.get(i);
-        if (buyDataBean == null) {
+        OrderTransactionBean orderTransactionBean = orderTransactionBeans.get(i);
+        if (orderTransactionBean == null) {
             return;
         }
-        viewHolder.tvTransactionType.setText("出售 BTC");
-        viewHolder.tvTransactionTime.setText("2018/11/26");
-        viewHolder.tvTransactionStatus.setText("待出售");
-        viewHolder.tvPayAccount.setText(buyDataBean.getPrice());
-        viewHolder.tvTotalAccount.setText(buyDataBean.getNumber());
-        viewHolder.tvFee.setText(buyDataBean.getFee());
+        viewHolder.tvTransactionType.setText(orderTransactionBean.getOrderType());
+        viewHolder.tvTransactionTime.setText(orderTransactionBean.getOrderTime());
+        viewHolder.tvTransactionStatus.setText(orderTransactionBean.getOrderStatus());
+        viewHolder.tvPayAccount.setText(orderTransactionBean.getOutCome());
+        viewHolder.tvTotalAccount.setText(orderTransactionBean.getInCome());
+        viewHolder.tvFee.setText(orderTransactionBean.getFee());
 //        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -75,7 +75,7 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(buyDataBean, MessageConstants.EMPTY);
+                    onItemSelectListener.onItemSelect(orderTransactionBean, Constants.From.ORDER_TRANSACTION);
                 }
             }
         });
@@ -83,7 +83,7 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(buyDataBeans) ? 0 : buyDataBeans.size();
+        return ListTool.isEmpty(orderTransactionBeans) ? 0 : orderTransactionBeans.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

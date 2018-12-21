@@ -94,4 +94,11 @@ public class Constants {
         public static final String ACCESS_TOKEN = "accessToken";//token 信息
 
     }
+
+    public class From {
+        public static final String ORDER_TRANSACTION = "orderTransaction";//订单中的交易模块
+        public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
+        public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
+    }
+
 }

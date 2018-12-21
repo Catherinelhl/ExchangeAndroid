@@ -11,6 +11,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.BuyDataBean;
+import io.bcaas.exchange.bean.OrderRechargeBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -28,13 +30,13 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
 
     private Context context;
-    private List<BuyDataBean> buyDataBeans;
+    private List<OrderRechargeBean> orderRechargeBeans;
     private OnItemSelectListener onItemSelectListener;
 
-    public OrderRechargeAdapter(Context context, List<BuyDataBean> buyDataBeans) {
+    public OrderRechargeAdapter(Context context, List<OrderRechargeBean> orderRechargeBeans) {
         super();
         this.context = context;
-        this.buyDataBeans = buyDataBeans;
+        this.orderRechargeBeans = orderRechargeBeans;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -50,11 +52,11 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= buyDataBeans.size()) {
+        if (i >= orderRechargeBeans.size()) {
             return;
         }
-        BuyDataBean buyDataBean = buyDataBeans.get(i);
-        if (buyDataBean == null) {
+        OrderRechargeBean orderRechargeBean = orderRechargeBeans.get(i);
+        if (orderRechargeBean == null) {
             return;
         }
         viewHolder.tvRechargeType.setText("充值 BTC");
@@ -66,7 +68,7 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(buyDataBean, MessageConstants.EMPTY);
+                    onItemSelectListener.onItemSelect(orderRechargeBean,  Constants.From.ORDER_RECHARGE);
                 }
             }
         });
@@ -74,7 +76,7 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(buyDataBeans) ? 0 : buyDataBeans.size();
+        return ListTool.isEmpty(orderRechargeBeans) ? 0 : orderRechargeBeans.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
