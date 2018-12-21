@@ -74,8 +74,6 @@ public class Constants {
         public static final String INTERNATIONAL_SIT = "internationalSIT";
         public static final String INTERNATIONAL_UAT = "internationalUAT";
         public static final String INTERNATIONAL_PRD = "internationalPRD";
-        public static final String CHINA = "china";
-        public static final String CHINA_SIT = "chinaSIT";
 
     }
 
@@ -109,4 +107,9 @@ public class Constants {
         SAFETY_CENTER//安全中心
     }
 
+    public class User {
+        public static final String MEMBER_ID = "Catherineliu@Bcaas.io";
+        public static final String MEMBER_PASSWORD = "aaaaaaa1";
+        public static final String MEMBER_REALIP = "192.168.1.1";
+    }
 }

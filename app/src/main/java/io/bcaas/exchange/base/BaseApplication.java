@@ -32,6 +32,8 @@ public class BaseApplication extends MultiDexApplication {
     private static boolean realNet = true;
     /*当前的语言环境,默认是英文*/
     private static boolean isZH;
+    /*存储当前的Token*/
+    private static String token;
 
 
     public static Context context() {
@@ -49,6 +51,13 @@ public class BaseApplication extends MultiDexApplication {
         BaseApplication.isPhone = isPhone;
     }
 
+    public static void setAccessToken(String accessToken) {
+        token = accessToken;
+    }
+
+    public static String getToken() {
+        return token;
+    }
 
     @Override
     public void onCreate() {

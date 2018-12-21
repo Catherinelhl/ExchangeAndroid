@@ -1490,6 +1490,7 @@ id btn_buy
 id btn_cancel
 id btn_left
 id btn_login
+id btn_register
 id btn_right
 id btn_sell
 id btn_sure

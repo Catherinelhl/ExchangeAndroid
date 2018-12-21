@@ -15,6 +15,8 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.constracts.LoginConstract;
+import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -26,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/14
  * 登录页面
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginConstract.View {
     @BindView(R.id.etwa_amount)
     EditTextWithAction amount;
     @BindView(R.id.etwa_password)
@@ -41,6 +43,8 @@ public class LoginActivity extends BaseActivity {
     TextView tvVersion;
     @BindView(R.id.ll_login)
     LinearLayout llLogin;
+
+    private LoginConstract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -59,7 +63,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        presenter = new LoginPresenterImp(this);
     }
 
     @Override
@@ -143,7 +147,10 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Object o) {
-                        intentToActivity(MainActivity.class, true);
+                        String memberID =Constants.User.MEMBER_ID;
+                        String password = Constants.User.MEMBER_PASSWORD;
+                        String realIp = Constants.User.MEMBER_REALIP;
+                        presenter.login(memberID, password, realIp);
                     }
 
                     @Override
@@ -173,5 +180,16 @@ public class LoginActivity extends BaseActivity {
                 LogTool.d(TAG, "reset password");
                 break;
         }
+    }
+
+    @Override
+    public void loginSuccess(String info) {
+        intentToActivity(MainActivity.class, true);
+
+    }
+
+    @Override
+    public void loginFailure(String info) {
+        showToast(info);
     }
 }

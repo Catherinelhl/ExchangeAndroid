@@ -10,18 +10,25 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
+import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.ui.constracts.LogoutConstract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
+import io.bcaas.exchange.ui.presenter.LogoutPresenterImp;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -29,7 +36,7 @@ import java.util.List;
  * <p>
  * 首頁主Activity
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements LogoutConstract.View {
     @BindView(R.id.home_container)
     FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)
@@ -48,6 +55,8 @@ public class MainActivity extends BaseActivity {
     private List<Fragment> fragments;
     //得到当前显示的Fragment
     private Fragment currentFragment;
+
+    private LogoutConstract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -86,6 +95,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        presenter = new LogoutPresenterImp(this);
         for (int i = 0; i < fragments.size(); i++) {
             TabLayout.Tab tab = bottomTabLayout.newTab();
             // method 自定义布局-----
@@ -120,6 +130,28 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+        RxView.clicks(tvTitle).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        presenter.logout(Constants.User.MEMBER_ID);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
         bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -285,5 +317,15 @@ public class MainActivity extends BaseActivity {
             child.setLayoutParams(params);
             child.invalidate();
         }
+    }
+
+    @Override
+    public void logoutSuccess(String info) {
+        intentToActivity(LoginActivity.class, true);
+    }
+
+    @Override
+    public void logoutFailure(String info) {
+        showToast(info);
     }
 }

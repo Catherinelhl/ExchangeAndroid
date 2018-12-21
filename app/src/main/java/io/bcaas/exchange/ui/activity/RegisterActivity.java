@@ -12,6 +12,8 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.ui.constracts.RegisterConstract;
+import io.bcaas.exchange.ui.presenter.RegisterPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -23,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/17
  * 注册页面
  */
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity implements RegisterConstract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -40,10 +42,12 @@ public class RegisterActivity extends BaseActivity {
     EditTextWithAction passwordConfirm;
     @BindView(R.id.etwa_email_code)
     EditTextWithAction emailCode;
-    @BindView(R.id.btn_unlock_wallet)
-    Button btnUnlockWallet;
+    @BindView(R.id.btn_register)
+    Button btnRegister;
     @BindView(R.id.tv_login_now)
     TextView tvLoginNow;
+
+    private RegisterConstract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -64,7 +68,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        presenter = new RegisterPresenterImp(this);
     }
 
     @Override
@@ -113,6 +117,31 @@ public class RegisterActivity extends BaseActivity {
 
                     }
                 });
+        RxView.clicks(btnRegister).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        String memberID = Constants.User.MEMBER_ID;
+                        String password = Constants.User.MEMBER_PASSWORD;
+                        String realIp = Constants.User.MEMBER_REALIP;
+                        presenter.register(memberID, password, realIp);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     private void setResult(boolean isBack) {
@@ -127,5 +156,15 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void registerSuccess(String info) {
+        finish();
+    }
+
+    @Override
+    public void registerFailure(String info) {
+        showToast(info);
     }
 }

@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
@@ -139,18 +140,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     public void showToast(String toastInfo) {
-        showToast(toastInfo, Constants.ValueMaps.TOAST_SHORT);
-    }
-
-    /**
-     * @param toastInfo    提示信息
-     * @param durationMode 提示展示时间长短的模式
-     */
-    public void showToast(String toastInfo, int durationMode) {
-        Message message = new Message();
-        message.obj = toastInfo;
-        message.what = durationMode;//0：short；1：Long
-
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(context, toastInfo, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /*隱藏當前軟鍵盤*/

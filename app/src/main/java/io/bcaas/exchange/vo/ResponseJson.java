@@ -245,4 +245,23 @@ public class ResponseJson extends ServerResponseJson {
 		this.memberOrderVOList = memberOrderVOList;
 	}
 
+	@Override
+	public String toString() {
+		return "ResponseJson{" +
+				"versionVO=" + versionVO +
+				", versionList=" + versionList +
+				", memberVO=" + memberVO +
+				", memberVOList=" + memberVOList +
+				", loginInfoVO=" + loginInfoVO +
+				", loginInfoVOList=" + loginInfoVOList +
+				", currencyListVO=" + currencyListVO +
+				", currencyListVOList=" + currencyListVOList +
+				", currencyServiceChargeVO=" + currencyServiceChargeVO +
+				", currencyServiceChargeVOList=" + currencyServiceChargeVOList +
+				", memberKeyVO=" + memberKeyVO +
+				", memberKeyVOList=" + memberKeyVOList +
+				", memberOrderVO=" + memberOrderVO +
+				", memberOrderVOList=" + memberOrderVOList +
+				'}';
+	}
 }
