@@ -1,12 +1,11 @@
 package io.bcaas.exchange.ui.presenter;
 
-import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
-import io.bcaas.exchange.ui.constracts.LoginConstract;
+import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
@@ -23,12 +22,12 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2018/12/21
  */
-public class LoginPresenterImp implements LoginConstract.Presenter {
+public class LoginPresenterImp implements LoginContract.Presenter {
     private String TAG = LoginPresenterImp.class.getSimpleName();
-    private LoginConstract.View view;
+    private LoginContract.View view;
     private LoginInteractor loginInteractor;
 
-    public LoginPresenterImp(LoginConstract.View view) {
+    public LoginPresenterImp(LoginContract.View view) {
         super();
         this.view = view;
         loginInteractor = new LoginInteractor();

@@ -7,6 +7,7 @@ import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -28,7 +29,7 @@ public interface HttpApi {
      * 登入  @FormUrlEncoded
      */
     @POST(APIURLConstants.API_LOGIN)
-    Observable<ResponseJson> login(@Body RequestBody requestBody);
+    Observable<ResponseJson> login(@Header("sessionId") String sessionId, @Body RequestBody requestBody);
 
     /**
      * 登出

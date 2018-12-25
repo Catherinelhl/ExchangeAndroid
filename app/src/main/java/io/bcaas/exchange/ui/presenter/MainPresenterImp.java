@@ -4,10 +4,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.ecc.Sha256Tool;
-import io.bcaas.exchange.ui.constracts.MainConstract;
-import io.bcaas.exchange.ui.constracts.RegisterConstract;
-import io.bcaas.exchange.ui.interactor.LoginInteractor;
+import io.bcaas.exchange.ui.contracts.MainContract;
 import io.bcaas.exchange.ui.interactor.MainInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
@@ -15,19 +12,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import java.security.NoSuchAlgorithmException;
-
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
  * 注册
  */
-public class MainPresenterImp implements MainConstract.Presenter {
+public class MainPresenterImp implements MainContract.Presenter {
     private String TAG = MainPresenterImp.class.getSimpleName();
-    private MainConstract.View view;
+    private MainContract.View view;
     private MainInteractor mainInteractor;
 
-    public MainPresenterImp(MainConstract.View view) {
+    public MainPresenterImp(MainContract.View view) {
         super();
         this.view = view;
         mainInteractor = new MainInteractor();

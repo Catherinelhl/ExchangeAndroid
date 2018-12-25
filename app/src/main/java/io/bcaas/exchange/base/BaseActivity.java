@@ -19,9 +19,12 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.OttoTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
+
+import java.util.Locale;
 
 /**
  * @author catherine.brainwilliam
@@ -153,6 +156,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (getCurrentFocus() != null) {
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+
+    /*獲取當前語言環境*/
+    protected String getCurrentLanguage() {
+        // 1：檢查應用是否已經有用戶自己存儲的語言種類
+        String currentString = BaseApplication.getStringFromSP(Constants.Preference.LANGUAGE_TYPE);
+        if (StringTool.isEmpty(currentString)) {
+            //2:當前的選中為空，那麼就默認讀取當前系統的語言環境
+            Locale locale = getResources().getConfiguration().locale;
+            //locale.getLanguage();//zh  是中國
+            currentString = locale.getCountry();//CN-簡體中文，TW、HK-繁體中文
+        }
+        //3:匹配當前的語言獲取，返回APP裡面識別的TAG
+        if (StringTool.equals(currentString, Constants.ValueMaps.SC)) {
+            return currentString;
+        } else {
+            return Constants.ValueMaps.EN;
+
         }
     }
 

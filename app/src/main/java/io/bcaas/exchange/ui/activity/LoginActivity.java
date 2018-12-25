@@ -15,7 +15,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.constracts.LoginConstract;
+import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/14
  * 登录页面
  */
-public class LoginActivity extends BaseActivity implements LoginConstract.View {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_amount)
     EditTextWithAction amount;
     @BindView(R.id.etwa_password)
@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View {
     @BindView(R.id.ll_login)
     LinearLayout llLogin;
 
-    private LoginConstract.Presenter presenter;
+    private LoginContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -78,7 +78,12 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View {
                     }
                 }
             }
-        });
+
+            @Override
+            public void onSendAction(String from) {
+
+            }
+        }, Constants.EditTextFrom.LOGIN_AMOUNT);
         password.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -89,7 +94,12 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View {
                     }
                 }
             }
-        });
+
+            @Override
+            public void onSendAction(String from) {
+
+            }
+        }, Constants.EditTextFrom.LOGIN_PASSWORD);
         RxView.clicks(tvRegisterNow).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -147,7 +157,7 @@ public class LoginActivity extends BaseActivity implements LoginConstract.View {
 
                     @Override
                     public void onNext(Object o) {
-                        String memberID =Constants.User.MEMBER_ID;
+                        String memberID = Constants.User.MEMBER_ID;
                         String password = Constants.User.MEMBER_PASSWORD;
                         String realIp = Constants.User.MEMBER_REALIP;
                         presenter.login(memberID, password, realIp);

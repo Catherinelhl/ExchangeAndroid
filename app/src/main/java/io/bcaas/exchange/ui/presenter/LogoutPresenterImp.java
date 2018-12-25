@@ -4,8 +4,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.ecc.Sha256Tool;
-import io.bcaas.exchange.ui.constracts.LogoutConstract;
+import io.bcaas.exchange.ui.contracts.LogoutContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
@@ -16,19 +15,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import java.security.NoSuchAlgorithmException;
-
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
  * 登出
  */
-public class LogoutPresenterImp implements LogoutConstract.Presenter {
+public class LogoutPresenterImp implements LogoutContract.Presenter {
     private String TAG = LogoutPresenterImp.class.getSimpleName();
-    private LogoutConstract.View view;
+    private LogoutContract.View view;
     private LoginInteractor loginInteractor;
 
-    public LogoutPresenterImp(LogoutConstract.View view) {
+    public LogoutPresenterImp(LogoutContract.View view) {
         super();
         this.view = view;
         loginInteractor = new LoginInteractor();

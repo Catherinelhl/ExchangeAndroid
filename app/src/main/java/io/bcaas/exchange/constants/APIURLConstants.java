@@ -56,7 +56,7 @@ public class APIURLConstants {
     public static final String API_SECURITY_TX_PASSWORD = "member/securityTxPassword";
 
     /*E-Mail驗證*/
-    public static final String API_EMAIL_VERIFY = "member/securityEmail";
+    public static final String API_EMAIL_VERIFY = "verification/sendMailVerifyCode";
     /*手機驗證*/
     public static final String API_PHONE_VERIFY = "member/securityPhone";
     /*Google驗證*/

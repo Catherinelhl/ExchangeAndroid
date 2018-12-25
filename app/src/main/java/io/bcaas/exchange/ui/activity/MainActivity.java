@@ -16,13 +16,12 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.constracts.LogoutConstract;
-import io.bcaas.exchange.ui.constracts.MainConstract;
+import io.bcaas.exchange.ui.contracts.LogoutContract;
+import io.bcaas.exchange.ui.contracts.MainContract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
-import io.bcaas.exchange.ui.interactor.MainInteractor;
 import io.bcaas.exchange.ui.presenter.LogoutPresenterImp;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
 import io.bcaas.exchange.vo.ExchangeBean;
@@ -41,7 +40,7 @@ import java.util.concurrent.TimeUnit;
  * 首頁主Activity
  */
 public class MainActivity extends BaseActivity
-        implements LogoutConstract.View, MainConstract.View {
+        implements LogoutContract.View, MainContract.View {
     @BindView(R.id.home_container)
     FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)
@@ -61,8 +60,8 @@ public class MainActivity extends BaseActivity
     //得到当前显示的Fragment
     private Fragment currentFragment;
 
-    private LogoutConstract.Presenter presenter;
-    private MainConstract.Presenter mainPresenter;
+    private LogoutContract.Presenter presenter;
+    private MainContract.Presenter mainPresenter;
 
     @Override
     public int getContentView() {

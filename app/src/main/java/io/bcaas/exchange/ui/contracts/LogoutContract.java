@@ -1,0 +1,17 @@
+package io.bcaas.exchange.ui.contracts;
+
+/**
+ * @author catherine.brainwilliam
+ * @since 2018/12/21
+ */
+public interface LogoutContract {
+    interface View {
+        void logoutSuccess(String info);
+
+        void logoutFailure(String info);
+    }
+
+    interface Presenter {
+        void logout(String memberId);
+    }
+}

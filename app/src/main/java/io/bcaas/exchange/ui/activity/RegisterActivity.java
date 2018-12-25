@@ -12,7 +12,10 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.ui.constracts.RegisterConstract;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.presenter.RegisterPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
@@ -25,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/17
  * 注册页面
  */
-public class RegisterActivity extends BaseActivity implements RegisterConstract.View {
+public class RegisterActivity extends BaseActivity implements RegisterContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -47,7 +50,7 @@ public class RegisterActivity extends BaseActivity implements RegisterConstract.
     @BindView(R.id.tv_login_now)
     TextView tvLoginNow;
 
-    private RegisterConstract.Presenter presenter;
+    private RegisterContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -128,8 +131,12 @@ public class RegisterActivity extends BaseActivity implements RegisterConstract.
                     public void onNext(Object o) {
                         String memberID = Constants.User.MEMBER_ID;
                         String password = Constants.User.MEMBER_PASSWORD;
-                        String realIp = Constants.User.MEMBER_REALIP;
-                        presenter.register(memberID, password, realIp);
+                        String verifyCode = emailCode.getContent();
+                        if (StringTool.isEmpty(verifyCode)) {
+                            showToast("请先输入验证码");
+                            return;
+                        }
+                        presenter.register(memberID, password, verifyCode);
                     }
 
                     @Override
@@ -142,6 +149,20 @@ public class RegisterActivity extends BaseActivity implements RegisterConstract.
 
                     }
                 });
+        emailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onSendAction(String from) {
+                if (StringTool.equals(from, Constants.EditTextFrom.REGISTER_EMAIL_CODE)) {
+                    //开始请求验证码数据  //getCurrentLanguage()
+                    presenter.emailVerify(Constants.User.MEMBER_ID, "0", Constants.User.MEMBER_ID);
+                }
+            }
+        }, Constants.EditTextFrom.REGISTER_EMAIL_CODE);
     }
 
     private void setResult(boolean isBack) {
@@ -165,6 +186,16 @@ public class RegisterActivity extends BaseActivity implements RegisterConstract.
 
     @Override
     public void registerFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void getEmailVerifySuccess(String info) {
+        LogTool.d(TAG, info);
+    }
+
+    @Override
+    public void getEmailVerifyFailure(String info) {
         showToast(info);
     }
 }

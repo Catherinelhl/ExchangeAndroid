@@ -30,7 +30,7 @@ public class LoginInteractor {
      */
     public Observable<ResponseJson> login(RequestBody body) {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.login(body);
+        return httpApi.login("", body);
     }
 
     /**
@@ -41,5 +41,13 @@ public class LoginInteractor {
     public Observable<ResponseJson> logout(RequestBody body) {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.logout(body);
+    }
+
+    /**
+     * 邮箱验证
+     */
+    public Observable<ResponseJson> emailVerify(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.emailVerify(body);
     }
 }

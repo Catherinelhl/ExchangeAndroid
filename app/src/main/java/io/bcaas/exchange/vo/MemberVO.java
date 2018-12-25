@@ -158,4 +158,20 @@ public class MemberVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberVO{" +
+				"memberId='" + memberId + '\'' +
+				", password='" + password + '\'' +
+				", txPassword='" + txPassword + '\'' +
+				", realIP='" + realIP + '\'' +
+				", phone='" + phone + '\'' +
+				", emailVerify=" + emailVerify +
+				", phoneVerify=" + phoneVerify +
+				", twoFactorAuthVerify=" + twoFactorAuthVerify +
+				", isActivation=" + isActivation +
+				", updateTime=" + updateTime +
+				", createTime=" + createTime +
+				'}';
+	}
 }

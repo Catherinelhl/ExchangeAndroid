@@ -46,6 +46,10 @@ public class Constants {
         public static final long LOG_TIME = 1;
         public static final int STAY_BRAND_ACTIVITY_TIME = 2;//如果当前不用编辑页面，停留在页面的时间2s
 
+        public static final String SC = "SC";//中文（简体）
+        public static final String TC = "TC";//中文（繁體）
+        public static final String EN = "EN";//英文
+
 
     }
 
@@ -90,6 +94,8 @@ public class Constants {
     public class Preference {
         public static final String SP_BCAAS_EXCHANGE = "BCAAS_EXCHANGE";
         public static final String ACCESS_TOKEN = "accessToken";//token 信息
+        public static final String LANGUAGE_TYPE = "languageType";//當前的語言環境
+
 
     }
 
@@ -97,6 +103,15 @@ public class Constants {
         public static final String ORDER_TRANSACTION = "orderTransaction";//订单中的交易模块
         public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
+    }
+
+    /**
+     * 标识用于Edit的from
+     */
+    public class EditTextFrom {
+        public static final String LOGIN_AMOUNT = "loginAmount";//登录页面的账户输入框
+        public static final String LOGIN_PASSWORD = "loginPassword";//登录页面的密码框
+        public static final String REGISTER_EMAIL_CODE = "registerEmailCode";//注册页面的邮箱验证码
     }
 
 

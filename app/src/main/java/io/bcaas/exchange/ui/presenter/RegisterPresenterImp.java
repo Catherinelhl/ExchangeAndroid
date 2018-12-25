@@ -3,12 +3,14 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
-import io.bcaas.exchange.ui.constracts.RegisterConstract;
+import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
+import io.bcaas.exchange.vo.VerificationBean;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -21,12 +23,12 @@ import java.security.NoSuchAlgorithmException;
  * @since 2018/12/21
  * 注册
  */
-public class RegisterPresenterImp implements RegisterConstract.Presenter {
+public class RegisterPresenterImp implements RegisterContract.Presenter {
     private String TAG = RegisterPresenterImp.class.getSimpleName();
-    private RegisterConstract.View view;
+    private RegisterContract.View view;
     private LoginInteractor loginInteractor;
 
-    public RegisterPresenterImp(RegisterConstract.View view) {
+    public RegisterPresenterImp(RegisterContract.View view) {
         super();
         this.view = view;
         loginInteractor = new LoginInteractor();
@@ -34,7 +36,7 @@ public class RegisterPresenterImp implements RegisterConstract.Presenter {
 
 
     @Override
-    public void register(String memberId, String password, String realIp) {
+    public void register(String memberId, String password, String verifyCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(memberId);
@@ -44,8 +46,13 @@ public class RegisterPresenterImp implements RegisterConstract.Presenter {
             e.printStackTrace();
             LogTool.e(TAG, e.getMessage());
         }
-        memberVO.setRealIP(realIp);
         requestJson.setMemberVO(memberVO);
+        if (StringTool.isEmpty(verifyCode)) {
+            return;
+        }
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        requestJson.setVerificationBean(verificationBean);
         LogTool.d(TAG, requestJson);
 
         loginInteractor.register(GsonTool.beanToRequestBody(requestJson))
@@ -84,6 +91,66 @@ public class RegisterPresenterImp implements RegisterConstract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.registerFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    /**
+     * Email 验证
+     *
+     * @param memberId
+     * @param languageCode
+     * @param mail
+     */
+    @Override
+    public void emailVerify(String memberId, String languageCode, String mail) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(memberId);
+        requestJson.setMemberVO(memberVO);
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setLanguageCode(languageCode);
+        verificationBean.setMail(mail);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
+
+        loginInteractor.emailVerify(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.getEmailVerifyFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            view.getEmailVerifySuccess(responseJson.getMessage());
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2028) {
+                                //LanguageCode format invalid.
+                            }
+                            view.getEmailVerifyFailure(responseJson.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.getEmailVerifyFailure(e.getMessage());
                     }
 
                     @Override

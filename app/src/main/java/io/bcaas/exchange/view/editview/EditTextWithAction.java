@@ -45,9 +45,10 @@ public class EditTextWithAction extends LinearLayout {
     @BindView(R.id.ll_action)
     LinearLayout llAction;
 
-
     /*監聽當前密碼的輸入*/
     private EditTextWatcherListener editTextWatcherListener;
+    /*标识当前EditText来自于什么功能*/
+    private String from;
 
     public EditTextWithAction(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -117,7 +118,9 @@ public class EditTextWithAction extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
-                        LogTool.d(TAG, "action dot....");
+                        if (editTextWatcherListener != null) {
+                            editTextWatcherListener.onSendAction(from);
+                        }
                     }
 
                     @Override
@@ -190,7 +193,8 @@ public class EditTextWithAction extends LinearLayout {
         return etContent.getText().toString();
     }
 
-    public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener) {
+    public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener, String from) {
         this.editTextWatcherListener = editTextWatcherListener;
+        this.from = from;
     }
 }

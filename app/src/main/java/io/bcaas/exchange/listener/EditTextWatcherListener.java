@@ -7,4 +7,6 @@ package io.bcaas.exchange.listener;
  */
 public interface EditTextWatcherListener {
     void onComplete(String content);
+    //点击发送的动作
+    void onSendAction(String from);
 }

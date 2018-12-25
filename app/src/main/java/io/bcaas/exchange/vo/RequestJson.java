@@ -4,259 +4,301 @@ import java.util.List;
 
 /**
  * Client 請求使用
- * 
- * @since 2018/06/10
- * 
+ *
  * @author Costa Peng
- * 
  * @version 1.0.0
- * 
+ * @since 2018/06/10
  */
 public class RequestJson {
 
-	private VersionVO versionVO;
-	private List<VersionVO> versionList;
+    private VersionVO versionVO;
+    private List<VersionVO> versionList;
 
-	private MemberVO memberVO;
-	private List<MemberVO> memberVOList;
+    private MemberVO memberVO;
+    private List<MemberVO> memberVOList;
 
-	private LoginInfoVO loginInfoVO;
-	private List<LoginInfoVO> loginInfoVOList;
+    private LoginInfoVO loginInfoVO;
+    private List<LoginInfoVO> loginInfoVOList;
 
-	private CurrencyListVO currencyListVO;
-	private List<CurrencyListVO> currencyListVOList;
+    private CurrencyListVO currencyListVO;
+    private List<CurrencyListVO> currencyListVOList;
 
-	private CurrencyServiceChargeVO currencyServiceChargeVO;
-	private List<CurrencyServiceChargeVO> currencyServiceChargeVOList;
+    private CurrencyServiceChargeVO currencyServiceChargeVO;
+    private List<CurrencyServiceChargeVO> currencyServiceChargeVOList;
 
-	private MemberKeyVO memberKeyVO;
-	private List<MemberKeyVO> memberKeyVOList;
+    private MemberKeyVO memberKeyVO;
+    private List<MemberKeyVO> memberKeyVOList;
 
-	private MemberOrderVO memberOrderVO;
-	private List<MemberOrderVO> memberOrderVOList;
+    private MemberOrderVO memberOrderVO;
+    private List<MemberOrderVO> memberOrderVOList;
 
-	private ExchangeBean exchangeBean;
+    private ExchangeBean exchangeBean;
+    private VerificationBean verificationBean;
 
-	public RequestJson() {
-		super();
-	}
+    public VerificationBean getVerificationBean() {
+        return verificationBean;
+    }
 
-	public RequestJson(VersionVO versionVO) {
-		super();
-		this.versionVO = versionVO;
-	}
+    public void setVerificationBean(VerificationBean verificationBean) {
+        this.verificationBean = verificationBean;
+    }
 
-	public RequestJson(VersionVO versionVO, List<VersionVO> versionList) {
-		super();
-		this.versionVO = versionVO;
-		this.versionList = versionList;
-	}
+    public RequestJson() {
+        super();
+    }
 
-	public RequestJson(MemberVO memberVO) {
-		super();
-		this.memberVO = memberVO;
-	}
+    public RequestJson(VersionVO versionVO) {
+        super();
+        this.versionVO = versionVO;
+    }
 
-	public RequestJson(MemberVO memberVO, List<MemberVO> memberVOList) {
-		super();
-		this.memberVO = memberVO;
-		this.memberVOList = memberVOList;
-	}
+    public RequestJson(VersionVO versionVO, List<VersionVO> versionList) {
+        super();
+        this.versionVO = versionVO;
+        this.versionList = versionList;
+    }
 
-	public RequestJson(LoginInfoVO loginInfoVO) {
-		super();
-		this.loginInfoVO = loginInfoVO;
-	}
+    public RequestJson(MemberVO memberVO) {
+        super();
+        this.memberVO = memberVO;
+    }
 
-	public RequestJson(LoginInfoVO loginInfoVO, List<LoginInfoVO> loginInfoVOList) {
-		super();
-		this.loginInfoVO = loginInfoVO;
-		this.loginInfoVOList = loginInfoVOList;
-	}
+    public RequestJson(MemberVO memberVO, List<MemberVO> memberVOList) {
+        super();
+        this.memberVO = memberVO;
+        this.memberVOList = memberVOList;
+    }
 
-	public RequestJson(CurrencyListVO currencyListVO) {
-		super();
-		this.currencyListVO = currencyListVO;
-	}
+    public RequestJson(LoginInfoVO loginInfoVO) {
+        super();
+        this.loginInfoVO = loginInfoVO;
+    }
 
-	public RequestJson(CurrencyListVO currencyListVO, List<CurrencyListVO> currencyListVOList) {
-		super();
-		this.currencyListVO = currencyListVO;
-		this.currencyListVOList = currencyListVOList;
-	}
+    public RequestJson(LoginInfoVO loginInfoVO, List<LoginInfoVO> loginInfoVOList) {
+        super();
+        this.loginInfoVO = loginInfoVO;
+        this.loginInfoVOList = loginInfoVOList;
+    }
 
-	public RequestJson(CurrencyServiceChargeVO currencyServiceChargeVO) {
-		super();
-		this.currencyServiceChargeVO = currencyServiceChargeVO;
-	}
+    public RequestJson(CurrencyListVO currencyListVO) {
+        super();
+        this.currencyListVO = currencyListVO;
+    }
 
-	public RequestJson(CurrencyServiceChargeVO currencyServiceChargeVO,
-			List<CurrencyServiceChargeVO> currencyServiceChargeVOList) {
-		super();
-		this.currencyServiceChargeVO = currencyServiceChargeVO;
-		this.currencyServiceChargeVOList = currencyServiceChargeVOList;
-	}
+    public RequestJson(CurrencyListVO currencyListVO, List<CurrencyListVO> currencyListVOList) {
+        super();
+        this.currencyListVO = currencyListVO;
+        this.currencyListVOList = currencyListVOList;
+    }
 
-	public RequestJson(MemberKeyVO memberKeyVO) {
-		super();
-		this.memberKeyVO = memberKeyVO;
-	}
+    public RequestJson(CurrencyServiceChargeVO currencyServiceChargeVO) {
+        super();
+        this.currencyServiceChargeVO = currencyServiceChargeVO;
+    }
 
-	public RequestJson(MemberKeyVO memberKeyVO, List<MemberKeyVO> memberKeyVOList) {
-		super();
-		this.memberKeyVO = memberKeyVO;
-		this.memberKeyVOList = memberKeyVOList;
-	}
+    public RequestJson(CurrencyServiceChargeVO currencyServiceChargeVO,
+                       List<CurrencyServiceChargeVO> currencyServiceChargeVOList) {
+        super();
+        this.currencyServiceChargeVO = currencyServiceChargeVO;
+        this.currencyServiceChargeVOList = currencyServiceChargeVOList;
+    }
 
-	public RequestJson(MemberOrderVO memberOrderVO) {
-		super();
-		this.memberOrderVO = memberOrderVO;
-	}
+    public RequestJson(MemberKeyVO memberKeyVO) {
+        super();
+        this.memberKeyVO = memberKeyVO;
+    }
 
-	public RequestJson(MemberOrderVO memberOrderVO, List<MemberOrderVO> memberOrderVOList) {
-		super();
-		this.memberOrderVO = memberOrderVO;
-		this.memberOrderVOList = memberOrderVOList;
-	}
+    public RequestJson(MemberKeyVO memberKeyVO, List<MemberKeyVO> memberKeyVOList) {
+        super();
+        this.memberKeyVO = memberKeyVO;
+        this.memberKeyVOList = memberKeyVOList;
+    }
 
-	public VersionVO getVersionVO() {
-		return versionVO;
-	}
+    public RequestJson(MemberOrderVO memberOrderVO) {
+        super();
+        this.memberOrderVO = memberOrderVO;
+    }
 
-	public void setVersionVO(VersionVO versionVO) {
-		this.versionVO = versionVO;
-	}
+    public RequestJson(MemberOrderVO memberOrderVO, List<MemberOrderVO> memberOrderVOList) {
+        super();
+        this.memberOrderVO = memberOrderVO;
+        this.memberOrderVOList = memberOrderVOList;
+    }
 
-	public List<VersionVO> getVersionList() {
-		return versionList;
-	}
+    public VersionVO getVersionVO() {
+        return versionVO;
+    }
 
-	public void setVersionList(List<VersionVO> versionList) {
-		this.versionList = versionList;
-	}
+    public void setVersionVO(VersionVO versionVO) {
+        this.versionVO = versionVO;
+    }
 
-	public MemberVO getMemberVO() {
-		return memberVO;
-	}
+    public List<VersionVO> getVersionList() {
+        return versionList;
+    }
 
-	public void setMemberVO(MemberVO memberVO) {
-		this.memberVO = memberVO;
-	}
+    public void setVersionList(List<VersionVO> versionList) {
+        this.versionList = versionList;
+    }
 
-	public List<MemberVO> getMemberVOList() {
-		return memberVOList;
-	}
+    public MemberVO getMemberVO() {
+        return memberVO;
+    }
 
-	public void setMemberVOList(List<MemberVO> memberVOList) {
-		this.memberVOList = memberVOList;
-	}
+    public void setMemberVO(MemberVO memberVO) {
+        this.memberVO = memberVO;
+    }
 
-	public LoginInfoVO getLoginInfoVO() {
-		return loginInfoVO;
-	}
+    public List<MemberVO> getMemberVOList() {
+        return memberVOList;
+    }
 
-	public void setLoginInfoVO(LoginInfoVO loginInfoVO) {
-		this.loginInfoVO = loginInfoVO;
-	}
+    public void setMemberVOList(List<MemberVO> memberVOList) {
+        this.memberVOList = memberVOList;
+    }
 
-	public List<LoginInfoVO> getLoginInfoVOList() {
-		return loginInfoVOList;
-	}
+    public LoginInfoVO getLoginInfoVO() {
+        return loginInfoVO;
+    }
 
-	public void setLoginInfoVOList(List<LoginInfoVO> loginInfoVOList) {
-		this.loginInfoVOList = loginInfoVOList;
-	}
+    public void setLoginInfoVO(LoginInfoVO loginInfoVO) {
+        this.loginInfoVO = loginInfoVO;
+    }
 
-	public CurrencyListVO getCurrencyListVO() {
-		return currencyListVO;
-	}
+    public List<LoginInfoVO> getLoginInfoVOList() {
+        return loginInfoVOList;
+    }
 
-	public void setCurrencyListVO(CurrencyListVO currencyListVO) {
-		this.currencyListVO = currencyListVO;
-	}
+    public void setLoginInfoVOList(List<LoginInfoVO> loginInfoVOList) {
+        this.loginInfoVOList = loginInfoVOList;
+    }
 
-	public List<CurrencyListVO> getCurrencyListVOList() {
-		return currencyListVOList;
-	}
+    public CurrencyListVO getCurrencyListVO() {
+        return currencyListVO;
+    }
 
-	public void setCurrencyListVOList(List<CurrencyListVO> currencyListVOList) {
-		this.currencyListVOList = currencyListVOList;
-	}
+    public void setCurrencyListVO(CurrencyListVO currencyListVO) {
+        this.currencyListVO = currencyListVO;
+    }
 
-	public CurrencyServiceChargeVO getCurrencyServiceChargeVO() {
-		return currencyServiceChargeVO;
-	}
+    public List<CurrencyListVO> getCurrencyListVOList() {
+        return currencyListVOList;
+    }
 
-	public void setCurrencyServiceChargeVO(CurrencyServiceChargeVO currencyServiceChargeVO) {
-		this.currencyServiceChargeVO = currencyServiceChargeVO;
-	}
+    public void setCurrencyListVOList(List<CurrencyListVO> currencyListVOList) {
+        this.currencyListVOList = currencyListVOList;
+    }
 
-	public List<CurrencyServiceChargeVO> getCurrencyServiceChargeVOList() {
-		return currencyServiceChargeVOList;
-	}
+    public CurrencyServiceChargeVO getCurrencyServiceChargeVO() {
+        return currencyServiceChargeVO;
+    }
 
-	public void setCurrencyServiceChargeVOList(List<CurrencyServiceChargeVO> currencyServiceChargeVOList) {
-		this.currencyServiceChargeVOList = currencyServiceChargeVOList;
-	}
+    public void setCurrencyServiceChargeVO(CurrencyServiceChargeVO currencyServiceChargeVO) {
+        this.currencyServiceChargeVO = currencyServiceChargeVO;
+    }
 
-	public MemberKeyVO getMemberKeyVO() {
-		return memberKeyVO;
-	}
+    public List<CurrencyServiceChargeVO> getCurrencyServiceChargeVOList() {
+        return currencyServiceChargeVOList;
+    }
 
-	public void setMemberKeyVO(MemberKeyVO memberKeyVO) {
-		this.memberKeyVO = memberKeyVO;
-	}
+    public void setCurrencyServiceChargeVOList(List<CurrencyServiceChargeVO> currencyServiceChargeVOList) {
+        this.currencyServiceChargeVOList = currencyServiceChargeVOList;
+    }
 
-	public List<MemberKeyVO> getMemberKeyVOList() {
-		return memberKeyVOList;
-	}
+    public MemberKeyVO getMemberKeyVO() {
+        return memberKeyVO;
+    }
 
-	public void setMemberKeyVOList(List<MemberKeyVO> memberKeyVOList) {
-		this.memberKeyVOList = memberKeyVOList;
-	}
+    public void setMemberKeyVO(MemberKeyVO memberKeyVO) {
+        this.memberKeyVO = memberKeyVO;
+    }
 
-	public MemberOrderVO getMemberOrderVO() {
-		return memberOrderVO;
-	}
+    public List<MemberKeyVO> getMemberKeyVOList() {
+        return memberKeyVOList;
+    }
 
-	public void setMemberOrderVO(MemberOrderVO memberOrderVO) {
-		this.memberOrderVO = memberOrderVO;
-	}
+    public void setMemberKeyVOList(List<MemberKeyVO> memberKeyVOList) {
+        this.memberKeyVOList = memberKeyVOList;
+    }
 
-	public List<MemberOrderVO> getMemberOrderVOList() {
-		return memberOrderVOList;
-	}
+    public MemberOrderVO getMemberOrderVO() {
+        return memberOrderVO;
+    }
 
-	public void setMemberOrderVOList(List<MemberOrderVO> memberOrderVOList) {
-		this.memberOrderVOList = memberOrderVOList;
-	}
+    public void setMemberOrderVO(MemberOrderVO memberOrderVO) {
+        this.memberOrderVO = memberOrderVO;
+    }
 
-	public ExchangeBean getExchangeBean() {
-		return exchangeBean;
-	}
+    public List<MemberOrderVO> getMemberOrderVOList() {
+        return memberOrderVOList;
+    }
 
-	public void setExchangeBean(ExchangeBean exchangeBean) {
-		this.exchangeBean = exchangeBean;
-	}
+    public void setMemberOrderVOList(List<MemberOrderVO> memberOrderVOList) {
+        this.memberOrderVOList = memberOrderVOList;
+    }
 
-	@Override
-	public String toString() {
-		return "RequestJson{" +
-				"versionVO=" + versionVO +
-				", versionList=" + versionList +
-				", memberVO=" + memberVO +
-				", memberVOList=" + memberVOList +
-				", loginInfoVO=" + loginInfoVO +
-				", loginInfoVOList=" + loginInfoVOList +
-				", currencyListVO=" + currencyListVO +
-				", currencyListVOList=" + currencyListVOList +
-				", currencyServiceChargeVO=" + currencyServiceChargeVO +
-				", currencyServiceChargeVOList=" + currencyServiceChargeVOList +
-				", memberKeyVO=" + memberKeyVO +
-				", memberKeyVOList=" + memberKeyVOList +
-				", memberOrderVO=" + memberOrderVO +
-				", memberOrderVOList=" + memberOrderVOList +
-				", exchangeBean=" + exchangeBean +
-				'}';
-	}
+    public ExchangeBean getExchangeBean() {
+        return exchangeBean;
+    }
+
+    public void setExchangeBean(ExchangeBean exchangeBean) {
+        this.exchangeBean = exchangeBean;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer("RequestJson{");
+        if (versionVO != null) {
+            stringBuffer.append("versionVO=" + versionVO);
+        }
+        if (versionList != null) {
+            stringBuffer.append(", versionList=" + versionList);
+        }
+        if (memberVO != null) {
+            stringBuffer.append(", memberVO=" + memberVO);
+        }
+        if (memberVOList != null) {
+            stringBuffer.append(", memberVOList=" + memberVOList);
+        }
+        if (loginInfoVO != null) {
+            stringBuffer.append(", loginInfoVO=" + loginInfoVO);
+        }
+        if (loginInfoVOList != null) {
+            stringBuffer.append(", loginInfoVOList=" + loginInfoVOList);
+        }
+        if (currencyListVO != null) {
+            stringBuffer.append(", currencyListVO=" + currencyListVO);
+        }
+        if (currencyListVOList != null) {
+            stringBuffer.append(", currencyListVOList=" + currencyListVOList);
+        }
+        if (currencyServiceChargeVO != null) {
+            stringBuffer.append(", currencyServiceChargeVO=" + currencyServiceChargeVO);
+        }
+        if (currencyServiceChargeVOList != null) {
+            stringBuffer.append(", currencyServiceChargeVOList=" + currencyServiceChargeVOList);
+        }
+        if (memberKeyVO != null) {
+            stringBuffer.append(", memberKeyVO=" + memberKeyVO);
+        }
+        if (memberKeyVOList != null) {
+            stringBuffer.append(",  memberKeyVOList=" + memberKeyVOList);
+        }
+        if (memberOrderVO != null) {
+            stringBuffer.append(", memberOrderVO=" + memberOrderVO);
+        }
+        if (memberOrderVOList != null) {
+            stringBuffer.append(",  memberOrderVOList=" + memberOrderVOList);
+        }
+        if (exchangeBean != null) {
+            stringBuffer.append(",  exchangeBean=" + exchangeBean);
+        }
+        if (verificationBean != null) {
+            stringBuffer.append(",  verificationBean=" + verificationBean);
+        }
+
+        stringBuffer.append('}');
+        return stringBuffer.toString();
+
+    }
 }

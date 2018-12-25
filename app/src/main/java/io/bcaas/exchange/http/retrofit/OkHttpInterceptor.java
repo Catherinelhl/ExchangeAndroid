@@ -1,21 +1,28 @@
 package io.bcaas.exchange.http.retrofit;
 
 
-import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.NetWorkTool;
+import io.bcaas.exchange.tools.PreferenceTool;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import okhttp3.*;
 import okio.Buffer;
 import okio.BufferedSource;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.List;
+import java.util.prefs.Preferences;
 
 /**
  * @author catherine.brainwilliam
  * @since 2018-08-20
- *
+ * <p>
  * Http： 设置网络请求拦截器，用於獲取查看發送之前以及獲取到Response的原始信息
  */
 public class OkHttpInterceptor implements Interceptor {
@@ -28,7 +35,6 @@ public class OkHttpInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
 
         Request request = chain.request();
-
         RequestBody requestBody = request.body();
 
         String body = null;
@@ -67,6 +73,38 @@ public class OkHttpInterceptor implements Interceptor {
             }
             throw e;
         }
+        //-------------获取Response响应的数据然后获取cookies-------------
+        if (!response.headers("set-cookie").isEmpty()) {
+            final StringBuffer cookieBuffer = new StringBuffer();
+            Observable.fromArray(response.headers("set-cookie"))
+                    .subscribe(new Observer<List<String>>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(List<String> strings) {
+                            for (String cookie : strings) {
+                                cookieBuffer.append(cookie).append(";");
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+
+            PreferenceTool.getInstance(BaseApplication.context()).saveString("cookie", cookieBuffer.toString());
+            LogTool.d(TAG, "获取到的cookies是：" + cookieBuffer.toString());
+        }
+        //-------------获取Response响应的数据然后获取cookies-------------
         ResponseBody responseBody = response.body();
         long contentLength = 0;
         if (responseBody != null) {
@@ -90,5 +128,39 @@ public class OkHttpInterceptor implements Interceptor {
     private boolean bodyEncoded(Headers headers) {
         String contentEncoding = headers.get(MessageConstants.HTTP_CONTENT_ENCODING);
         return contentEncoding != null && !contentEncoding.equalsIgnoreCase(MessageConstants.ENCODE_INGORE_CASE);
+    }
+
+    private void addCookies(Chain chain){
+        Request.Builder builder = chain.request().newBuilder();
+        Observable.just(PreferenceTool.getInstance(BaseApplication.context()).getString("cookie", ""))
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(String cookie) {
+                        if (cookie.contains("lang=ch")) {
+                            cookie = cookie.replace("lang=ch", "lang=" );
+                        }
+                        if (cookie.contains("lang=en")) {
+                            cookie = cookie.replace("lang=en", "lang=" );
+                        }
+                        //添加cookie
+//                        Log.d("http", "AddCookiesInterceptor"+cookie);
+                        builder.addHeader("cookie", cookie);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

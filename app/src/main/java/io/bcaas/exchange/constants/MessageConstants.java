@@ -10,6 +10,8 @@ public class MessageConstants {
     public static final int CODE_400 = 400; // Failure
     public static final int CODE_404 = 404; // Failure
     public static final int CODE_2006 = 2006; // Failure
+    public static final int CODE_2028 = 2028; // Failure
+    public static final String CODE_2028_MSG = "LanguageCode format invalid."; // Failure
     public static final String CODE_2006_MSG = "Email already register."; // Failure
 
 

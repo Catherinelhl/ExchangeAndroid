@@ -30,20 +30,10 @@ public class RetrofitFactory {
                     .readTimeout(Constants.ValueMaps.TIME_OUT_TIME_LONG, TimeUnit.SECONDS)
                     .writeTimeout(Constants.ValueMaps.TIME_OUT_TIME_LONG, TimeUnit.SECONDS)
                     .addInterceptor(new OkHttpInterceptor())
+                    .addInterceptor(new OkHttpInterceptor())
                     .build();
         }
     }
-
-//    public static Retrofit getInstance() {
-//        ServerBean serverBean = ServerTool.getDefaultServerBean();
-//        if (serverBean == null) {
-//            serverBean = ServerTool.getDefaultServerBean();
-//            if (serverBean == null) {
-//                return null;
-//            }
-//        }
-//        return getSFNInstance(serverBean.getSfnServer());
-//    }
 
 
     /**
@@ -54,7 +44,7 @@ public class RetrofitFactory {
     public static Retrofit getAPIInstance() {
         initClient();
 //        ServerBean serverBean = ServerTool.getDefaultServerBean();
-        String apiServer = "http://192.168.0.163:8080/ExchangeApi/";
+        String apiServer = "http://192.168.0.163:8080/ExchangeApplication/";
 //        if (serverBean != null) {
 //            apiServer = serverBean.getApiServer();
 //        }
