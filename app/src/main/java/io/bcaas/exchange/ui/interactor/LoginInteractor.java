@@ -30,7 +30,7 @@ public class LoginInteractor {
      */
     public Observable<ResponseJson> login(RequestBody body) {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.login("", body);
+        return httpApi.login(body);
     }
 
     /**

@@ -1,10 +1,12 @@
 package io.bcaas.exchange.view.editview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -19,8 +21,13 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.timer.IntervalTimerTool;
+import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 import java.util.concurrent.TimeUnit;
 
@@ -44,16 +51,21 @@ public class EditTextWithAction extends LinearLayout {
     LinearLayout llPasswordKey;
     @BindView(R.id.ll_action)
     LinearLayout llAction;
+    private Context context;
 
     /*監聽當前密碼的輸入*/
     private EditTextWatcherListener editTextWatcherListener;
     /*标识当前EditText来自于什么功能*/
     private String from;
 
+    //用于倒计时的订阅
+    private Disposable disposableCountDownTimer;
+
     public EditTextWithAction(Context context, AttributeSet attrs) {
         super(context, attrs);
         View view = LayoutInflater.from(context).inflate(R.layout.layout_edittext_with_action, this, true);
         ButterKnife.bind(view);
+        this.context = context;
         //获取自定义属性的值
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.editViewWithAction);
         if (typedArray != null) {
@@ -118,9 +130,48 @@ public class EditTextWithAction extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
-                        if (editTextWatcherListener != null) {
-                            editTextWatcherListener.onSendAction(from);
+                        //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
+                        String tvActionString = tvAction.getText().toString();
+                        if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
+                            if (editTextWatcherListener != null) {
+                                editTextWatcherListener.onSendAction(from);
+                            }
+                            IntervalTimerTool.countDownTimer(60)
+                                    .subscribeOn(Schedulers.newThread())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .doOnSubscribe(new Consumer<Disposable>() {
+                                        @Override
+                                        public void accept(Disposable disposable) throws Exception {
+//                                            LogTool.d(TAG, "计时开始");
+                                        }
+                                    }).subscribe(new Observer<Integer>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+                                    disposableCountDownTimer = d;
+
+                                }
+
+                                @Override
+                                public void onNext(Integer integer) {
+                                    tvAction.setText(integer + " s");
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+//                                    LogTool.e(TAG, e.getMessage());
+                                    tvAction.setText(getResources().getString(R.string.send));
+                                    disposeRequest(disposableCountDownTimer);
+                                }
+
+                                @Override
+                                public void onComplete() {
+                                    LogTool.d(TAG, "计时完成");
+                                    tvAction.setText(getResources().getString(R.string.send));
+                                    disposeRequest(disposableCountDownTimer);
+                                }
+                            });
                         }
+
                     }
 
                     @Override
@@ -196,5 +247,18 @@ public class EditTextWithAction extends LinearLayout {
     public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener, String from) {
         this.editTextWatcherListener = editTextWatcherListener;
         this.from = from;
+    }
+
+    private void disposeRequest(Disposable disposable) {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        LogTool.d(TAG, "onDetachedFromWindow");
+        disposeRequest(disposableCountDownTimer);
     }
 }

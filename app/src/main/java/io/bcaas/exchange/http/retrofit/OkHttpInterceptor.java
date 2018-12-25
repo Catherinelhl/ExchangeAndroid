@@ -3,12 +3,14 @@ package io.bcaas.exchange.http.retrofit;
 
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.NetWorkTool;
 import io.bcaas.exchange.tools.PreferenceTool;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import okhttp3.*;
 import okio.Buffer;
 import okio.BufferedSource;
@@ -34,7 +36,9 @@ public class OkHttpInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
-        Request request = chain.request();
+        Request request = chain.request().newBuilder()
+                .addHeader("cookie", BaseApplication.getStringFromSP("cookie"))
+                .build();
         RequestBody requestBody = request.body();
 
         String body = null;
@@ -74,34 +78,18 @@ public class OkHttpInterceptor implements Interceptor {
             throw e;
         }
         //-------------获取Response响应的数据然后获取cookies-------------
-        if (!response.headers("set-cookie").isEmpty()) {
+        List<String> setCookie = response.headers("set-cookie");
+        if (ListTool.noEmpty(setCookie)) {
             final StringBuffer cookieBuffer = new StringBuffer();
-            Observable.fromArray(response.headers("set-cookie"))
-                    .subscribe(new Observer<List<String>>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(List<String> strings) {
-                            for (String cookie : strings) {
-                                cookieBuffer.append(cookie).append(";");
-                            }
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onComplete() {
-
+            Disposable subscribe = Observable.fromArray(setCookie)
+                    .subscribe(strings -> {
+                        for (String cookie : strings) {
+                            LogTool.d(TAG, cookie);
+                            cookieBuffer.append(cookie).append(";");
                         }
                     });
 
-            PreferenceTool.getInstance(BaseApplication.context()).saveString("cookie", cookieBuffer.toString());
+            BaseApplication.setStringToSP("cookie", cookieBuffer.toString());
             LogTool.d(TAG, "获取到的cookies是：" + cookieBuffer.toString());
         }
         //-------------获取Response响应的数据然后获取cookies-------------
@@ -128,39 +116,5 @@ public class OkHttpInterceptor implements Interceptor {
     private boolean bodyEncoded(Headers headers) {
         String contentEncoding = headers.get(MessageConstants.HTTP_CONTENT_ENCODING);
         return contentEncoding != null && !contentEncoding.equalsIgnoreCase(MessageConstants.ENCODE_INGORE_CASE);
-    }
-
-    private void addCookies(Chain chain){
-        Request.Builder builder = chain.request().newBuilder();
-        Observable.just(PreferenceTool.getInstance(BaseApplication.context()).getString("cookie", ""))
-                .subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(String cookie) {
-                        if (cookie.contains("lang=ch")) {
-                            cookie = cookie.replace("lang=ch", "lang=" );
-                        }
-                        if (cookie.contains("lang=en")) {
-                            cookie = cookie.replace("lang=en", "lang=" );
-                        }
-                        //添加cookie
-//                        Log.d("http", "AddCookiesInterceptor"+cookie);
-                        builder.addHeader("cookie", cookie);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 }

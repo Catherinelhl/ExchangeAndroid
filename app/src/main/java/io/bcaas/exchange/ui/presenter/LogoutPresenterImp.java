@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -61,7 +62,14 @@ public class LogoutPresenterImp implements LogoutContract.Presenter {
                         if (isSuccess) {
                             view.logoutSuccess(responseJson.getMessage());
                         } else {
-                            view.logoutFailure(MessageConstants.EMPTY);
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.logoutSuccess(responseJson.getMessage());
+                            } else {
+                                view.logoutFailure(MessageConstants.EMPTY);
+
+                            }
 
                         }
 

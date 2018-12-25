@@ -30,7 +30,6 @@ public class RetrofitFactory {
                     .readTimeout(Constants.ValueMaps.TIME_OUT_TIME_LONG, TimeUnit.SECONDS)
                     .writeTimeout(Constants.ValueMaps.TIME_OUT_TIME_LONG, TimeUnit.SECONDS)
                     .addInterceptor(new OkHttpInterceptor())
-                    .addInterceptor(new OkHttpInterceptor())
                     .build();
         }
     }
@@ -44,7 +43,8 @@ public class RetrofitFactory {
     public static Retrofit getAPIInstance() {
         initClient();
 //        ServerBean serverBean = ServerTool.getDefaultServerBean();
-        String apiServer = "http://192.168.0.163:8080/ExchangeApplication/";
+//        String apiServer = "http://192.168.0.163:8080/ExchangeApplication/";
+        String apiServer = "https://sitexchangeapp.bcaas.io";
 //        if (serverBean != null) {
 //            apiServer = serverBean.getApiServer();
 //        }

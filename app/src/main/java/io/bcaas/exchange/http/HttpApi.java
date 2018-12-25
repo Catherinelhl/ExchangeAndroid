@@ -29,7 +29,7 @@ public interface HttpApi {
      * 登入  @FormUrlEncoded
      */
     @POST(APIURLConstants.API_LOGIN)
-    Observable<ResponseJson> login(@Header("sessionId") String sessionId, @Body RequestBody requestBody);
+    Observable<ResponseJson> login(@Body RequestBody requestBody);
 
     /**
      * 登出
