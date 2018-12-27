@@ -16,6 +16,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/d56"
                 android:background="@color/transparent"
                 android:src="@mipmap/ic_launcher"/>
     </LinearLayout>
@@ -23,8 +24,8 @@
     <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_amount"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/d76"
             bcaas:hint="@string/amount"
+            bcaas:behaviour="normal"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
@@ -33,8 +34,16 @@
             android:layout_marginTop="@dimen/d20"
             android:layout_height="wrap_content"
             bcaas:hint="@string/password"
-            bcaas:isPassword="true"
-            bcaas:showCheck="true"
+            bcaas:behaviour="checkBox"
+
+    />
+    <io.bcaas.exchange.view.editview.EditTextWithAction
+            android:id="@+id/etwa_image_code"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/d20"
+            android:layout_height="wrap_content"
+            bcaas:hint="@string/graphic_verify_code"
+            bcaas:behaviour="imageCode"
 
     />
     <Button
@@ -49,7 +58,7 @@
             android:layout_marginLeft="@dimen/d20"
             android:layout_marginTop="@dimen/d16"
             android:layout_marginRight="@dimen/d20"
-            android:layout_weight="1.3">
+            android:layout_weight="1">
 
         <TextView
                 android:id="@+id/tv_forget_password"

@@ -123,16 +123,16 @@
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
                         bcaas:hint="@string/fund_password"
-                        bcaas:isPassword="true"
-                        bcaas:showCheck="true"/>
+                        bcaas:behaviour="checkBox"
+                />
                 <io.bcaas.exchange.view.editview.EditTextWithAction
                         android:id="@+id/etwa_random_verify_code"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
                         bcaas:hint="@string/random_verify_code"
-                        bcaas:isPassword="true"
-                        bcaas:showCheck="true"/>
+                        bcaas:behaviour="checkBox"
+                />
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="horizontal"
                               android:layout_marginTop="@dimen/d12"

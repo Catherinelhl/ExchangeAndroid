@@ -5,9 +5,7 @@ import io.bcaas.exchange.constants.APIURLConstants;
 import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
-import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -48,5 +46,11 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_EMAIL_VERIFY)
     Observable<ResponseJson> emailVerify(@Body RequestBody requestBody);
+
+    /**
+     * 產生圖形驗證圖
+     */
+    @POST(APIURLConstants.API_IMAGE_VERIFY_CREATE_URL)
+    Observable<ResponseJson> imageVerifyCreate(@Body RequestBody requestBody);
 
 }

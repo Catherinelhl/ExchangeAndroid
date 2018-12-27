@@ -9,10 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -51,6 +48,8 @@ public class EditTextWithAction extends LinearLayout {
     LinearLayout llPasswordKey;
     @BindView(R.id.ll_action)
     LinearLayout llAction;
+    @BindView(R.id.img)
+    ImageView imageView;
     private Context context;
 
     /*監聽當前密碼的輸入*/
@@ -74,9 +73,7 @@ public class EditTextWithAction extends LinearLayout {
             /*声明内容的字体大小*/
             float textSize = typedArray.getFloat(R.styleable.editViewWithAction_textSize, 16);
             boolean showLine = typedArray.getBoolean(R.styleable.editViewWithAction_showLine, true);
-            boolean showCheck = typedArray.getBoolean(R.styleable.editViewWithAction_showCheck, false);
-            boolean isPassword = typedArray.getBoolean(R.styleable.editViewWithAction_isPassword, false);
-            boolean showRightAction = typedArray.getBoolean(R.styleable.editViewWithAction_showRightAction, false);
+            int behaviour = typedArray.getInt(R.styleable.editViewWithAction_behaviour, 0);
             int textColor = typedArray.getInteger(R.styleable.editViewWithAction_textColor, context.getResources().getColor(R.color.black_1d2124));
             int hintColor = typedArray.getInteger(R.styleable.editViewWithAction_hintColor, context.getResources().getColor(R.color.black30_1d2124));
 
@@ -89,11 +86,32 @@ public class EditTextWithAction extends LinearLayout {
             etContent.setTextColor(textColor);
             etContent.setTextSize(textSize);
             etContent.setHintTextColor(hintColor);
-            cbCheck.setVisibility(showCheck ? VISIBLE : GONE);
-            llAction.setVisibility(showRightAction ? VISIBLE : GONE);
-            etContent.setInputType(isPassword ?
-                    InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD
-                    : InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            etContent.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            switch (behaviour) {
+                case 0://默认样式，什么也不显示
+                    cbCheck.setVisibility(GONE);
+                    llAction.setVisibility(GONE);
+                    imageView.setVisibility(GONE);
+                    break;
+                case 1://密码输入框，需要显示小眼睛
+                    cbCheck.setVisibility(VISIBLE);
+                    llAction.setVisibility(GONE);
+                    imageView.setVisibility(GONE);
+                    etContent.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    break;
+                case 2://文字验证码，需要显示发送
+                    cbCheck.setVisibility(GONE);
+                    llAction.setVisibility(VISIBLE);
+                    imageView.setVisibility(GONE);
+
+                    break;
+                case 3://图片验证码，需要显示图片信息
+                    cbCheck.setVisibility(GONE);
+                    llAction.setVisibility(GONE);
+                    imageView.setVisibility(VISIBLE);
+                    break;
+            }
+
             setEditHintTextSize(hint);
 
         }
@@ -101,7 +119,9 @@ public class EditTextWithAction extends LinearLayout {
     }
 
 
-    /*设置输入框的hint的大小而不影响text size*/
+    /**
+     * 设置输入框的hint的大小而不影响text size
+     */
     private void setEditHintTextSize(String hint) {
         SpannableString spannableString = new SpannableString(hint);//定义hint的值
         AbsoluteSizeSpan absoluteSizeSpan = new AbsoluteSizeSpan(14, true);//设置字体大小 true表示单位是sp
@@ -264,6 +284,7 @@ public class EditTextWithAction extends LinearLayout {
 
     /**
      * 设置输入框的输入类型
+     *
      * @param type
      */
     public void setInputType(int type) {

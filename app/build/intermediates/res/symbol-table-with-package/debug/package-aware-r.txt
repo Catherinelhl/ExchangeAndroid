@@ -89,6 +89,7 @@ attr behavior_hideable
 attr behavior_overlapTop
 attr behavior_peekHeight
 attr behavior_skipCollapsed
+attr behaviour
 attr borderWidth
 attr borderlessButtonStyle
 attr bottomAppBarStyle
@@ -289,7 +290,6 @@ attr indeterminateProgressStyle
 attr initialActivityCount
 attr insetForeground
 attr isLightTheme
-attr isPassword
 attr itemBackground
 attr itemHorizontalPadding
 attr itemHorizontalTranslationEnabled
@@ -434,11 +434,9 @@ attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
 attr showAsAction
-attr showCheck
 attr showDividers
 attr showLine
 attr showMotionSpec
-attr showRightAction
 attr showText
 attr showTitle
 attr singleChoiceItemLayout
@@ -1505,6 +1503,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id checkBox
 id checkbox
 id chronometer
 id clip_horizontal
@@ -1537,6 +1536,7 @@ id et_content
 id etwa_amount
 id etwa_email_code
 id etwa_fund_password
+id etwa_image_code
 id etwa_password
 id etwa_password_confirm
 id etwa_random_verify_code
@@ -1563,6 +1563,8 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageCode
+id img
 id info
 id invisible
 id italic
@@ -1672,6 +1674,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id text
 id text2
+id textCode
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -1902,6 +1905,7 @@ string fab_transformation_sheet_behavior
 string fee
 string forget_password
 string fund_password
+string graphic_verify_code
 string hide_bottom_view_on_scroll_behavior
 string login
 string mtrl_chip_close_icon_content_description
@@ -2524,5 +2528,5 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
-styleable editViewWithAction hint hintColor isPassword showCheck showLine showRightAction singleLine textColor textSize
+styleable editViewWithAction behaviour hint hintColor showLine singleLine textColor textSize
 xml file_paths

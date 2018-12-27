@@ -10,6 +10,7 @@
             android:id="@+id/etwa_amount"
             android:layout_width="match_parent"
             bcaas:hint="请用您的常用邮箱号作为账号"
+            android:layout_marginTop="@dimen/d16"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
             bcaas:hint="设置登录密码"
-            bcaas:isPassword="true"
+            bcaas:behaviour="checkBox"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
@@ -25,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
             bcaas:hint="请再次输入密码"
-            bcaas:isPassword="true"
+            bcaas:behaviour="checkBox"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
@@ -33,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
             bcaas:hint="邮箱验证码"
-            bcaas:showRightAction="true"
+            bcaas:behaviour="textCode"
             android:layout_height="wrap_content"
     />
 

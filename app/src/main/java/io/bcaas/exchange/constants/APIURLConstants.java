@@ -43,6 +43,8 @@ public class APIURLConstants {
 
 
 
+    /*產生圖形驗證圖*/
+    public static final String API_IMAGE_VERIFY_CREATE_URL = "verification/imageVerifyCreate";
     /*2FA 雙因素驗證*/
     public static final String API_AUTHENTICATOR_URL = "verification/getAuthenticatorUrl";
     /*發送Email驗證*/

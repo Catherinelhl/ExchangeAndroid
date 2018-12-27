@@ -36,8 +36,7 @@
     <string name="recharge">Recharge</string>
     <string name="with_draw">Withdraw</string>
     <string name="safety_center">Safety center</string>
-
-
+    <string name="graphic_verify_code">Graphic Verification Code</string>
 
 
 </resources>
