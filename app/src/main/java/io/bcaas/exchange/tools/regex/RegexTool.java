@@ -42,6 +42,15 @@ public class RegexTool {
         return matcher.matches();
     }
 
+    public static boolean isRightEmail(String info) {
+
+        Pattern pattern = getPattern(EMAIL);
+
+        Matcher matcher = pattern.matcher(info);
+
+        return matcher.matches();
+    }
+
     public static boolean isRightMoney(String version) {
 
         Pattern pattern = getPattern(MONEY);

@@ -261,4 +261,14 @@ public class EditTextWithAction extends LinearLayout {
         LogTool.d(TAG, "onDetachedFromWindow");
         disposeRequest(disposableCountDownTimer);
     }
+
+    /**
+     * 设置输入框的输入类型
+     * @param type
+     */
+    public void setInputType(int type) {
+        if (etContent != null) {
+            etContent.setInputType(type);
+        }
+    }
 }

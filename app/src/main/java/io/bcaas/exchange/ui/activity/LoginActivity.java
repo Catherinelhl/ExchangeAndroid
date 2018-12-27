@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -58,6 +59,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void initView() {
+        //设置账号只能输入邮箱类型
+        amount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
     }
 
