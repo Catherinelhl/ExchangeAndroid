@@ -5,12 +5,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
@@ -23,7 +19,6 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,7 +144,7 @@ public class OrderFragment extends BaseFragment {
         int size = dataGenerationRegister.getTabOrderTopTitleCount();
         for (int i = 0; i < size; i++) {
             TabLayout.Tab tab = tabLayout.newTab();
-            tab.setText( dataGenerationRegister.getOrderTopTitles(i));
+            tab.setText(dataGenerationRegister.getOrderTopTitles(i));
             tabLayout.addTab(tab);
         }
 //        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));

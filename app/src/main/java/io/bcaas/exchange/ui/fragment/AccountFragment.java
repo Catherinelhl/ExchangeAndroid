@@ -1,5 +1,7 @@
 package io.bcaas.exchange.ui.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +14,10 @@ import io.bcaas.exchange.adapter.SettingsAdapter;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.SettingsBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.ui.activity.MyFundActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +110,9 @@ public class AccountFragment extends BaseFragment {
                     SettingsBean settingTypeBean = (SettingsBean) type;
                     switch (settingTypeBean.getTag()) {
                         case MY_ALL_FUND:
-//                            intentToActivity(null, CheckWalletInfoActivity.class, false);
+                            Intent intent = new Intent();
+                            intent.setClass(getContext(), MyFundActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.ALL_FUND_CODE);
                             break;
                         case RECHARGE:
 //                            intentToActivity(null, ModifyAuthorizedRepresentativesActivity.class, false);
@@ -125,4 +131,13 @@ public class AccountFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == Constants.RequestCode.ALL_FUND_CODE) {
+                //我的资产页面返回
+            }
+        }
+    }
 }

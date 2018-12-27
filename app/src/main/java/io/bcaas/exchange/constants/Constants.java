@@ -44,7 +44,7 @@ public class Constants {
         public static final String FROM_BRAND = "brand";
         //打印当前设备的内存
         public static final long LOG_TIME = 1;
-        public static final int STAY_BRAND_ACTIVITY_TIME = 2;//如果当前不用编辑页面，停留在页面的时间2s
+        public static final int STAY_BRAND_ACTIVITY_TIME = 1;//如果当前不用编辑页面，停留在页面的时间1s
 
         public static final String SC = "SC";//中文（简体）
         public static final String TC = "TC";//中文（繁體）
@@ -59,6 +59,7 @@ public class Constants {
         public static final int RESET_PASSWORD_CODE = 0x2;//跳转重置密码页面的code码
         public static final int BUY_DETAIL_CODE = 0x3;//跳转购买详情页面的code码
         public static final int SELL_DETAIL_CODE = 0x4;//跳转售出详情页面的code码
+        public static final int ALL_FUND_CODE = 0x5;//跳转到我的资产页面的code码
     }
 
     public static String SPLICE_CONVERTER(String ip, int port) {

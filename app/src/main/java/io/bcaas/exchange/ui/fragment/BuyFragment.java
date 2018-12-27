@@ -18,6 +18,7 @@ import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.BuyDataAdapter;
 import io.bcaas.exchange.adapter.TabViewAdapter;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
@@ -49,6 +50,7 @@ public class BuyFragment extends BaseFragment {
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
+    private BuyView buyViewOne, buyViewTwo, buyViewThree;
 
     @Override
     protected void onUserVisible() {
@@ -71,48 +73,18 @@ public class BuyFragment extends BaseFragment {
     public void initViews(View view) {
         isPrepared = true;
         buyDataBeans = new ArrayList<>();
-        initBuyData();
-        initTopNavTab();
-    }
-
-    /**
-     * 初始化顶部导航栏
-     */
-    private void initTopNavTab() {
+        views = new ArrayList<>();
         if (tabLayout == null) {
             return;
         }
-        /**
-         * 判断是否需要顶部标签滑动
-         * 暂时定为如果便签的数量超过了五个，那么就需要移动
-         */
-        if (dataGenerationRegister != null) {
-            tabLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
-        }
-        tabLayout.removeAllTabs();
-        int size = dataGenerationRegister.getTabTopTitleCount();
-        for (int i = 0; i < size; i++) {
-            TabLayout.Tab tab = tabLayout.newTab();
-            tab.setText(dataGenerationRegister.getTabTopTitle(i));
-            tabLayout.addTab(tab);
-        }
-//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
+//        /**
+//         * 判断是否需要顶部标签滑动
+//         * 暂时定为如果便签的数量超过了五个，那么就需要移动
+//         */
+//        if (dataGenerationRegister != null) {
+//            tabLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
+//        }
 
-        views = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            BuyView view = new BuyView(getActivity());
-            view.refreshData(buyDataBeans);
-            view.setOnItemSelectListener(onItemSelectListener);
-            views.add(view);
-        }
-        tabViewAdapter = new TabViewAdapter(views);
-        viewPager.setAdapter(tabViewAdapter);
-        viewPager.setCurrentItem(0);
-        viewPager.setOffscreenPageLimit(3);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
-    private void initBuyData() {
         for (int i = 0; i < 4; i++) {
             BuyDataBean buyDataBean = new BuyDataBean();
             buyDataBean.setPersonName("Alice");
@@ -123,8 +95,47 @@ public class BuyFragment extends BaseFragment {
             buyDataBean.setFee("0.00001 ETH");
             buyDataBeans.add(buyDataBean);
         }
-    }
 
+//        int size = dataGenerationRegister.getTabTopTitleCount();
+//        for (int i = 0; i < size; i++) {
+//            TabLayout.Tab tab = tabLayout.newTab();
+//            tab.setText(dataGenerationRegister.getTabTopTitle(i));
+//            tabLayout.addTab(tab);
+//        }
+//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
+        buyViewOne = new BuyView(getContext());
+        buyViewOne.refreshData(buyDataBeans);
+        buyViewOne.setOnItemSelectListener(onItemSelectListener);
+        views.add(buyViewOne);
+
+        buyViewTwo = new BuyView(getContext());
+        buyViewTwo.refreshData(buyDataBeans);
+        buyViewTwo.setOnItemSelectListener(onItemSelectListener);
+        views.add(buyViewTwo);
+
+
+        buyViewThree = new BuyView(getContext());
+        buyViewThree.refreshData(buyDataBeans);
+        buyViewThree.setOnItemSelectListener(onItemSelectListener);
+        views.add(buyViewThree);
+        LogTool.d(TAG,views.size());
+        tabViewAdapter = new TabViewAdapter(views);
+        viewPager.setAdapter(tabViewAdapter);
+        viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(3);
+        tabLayout.setupWithViewPager(viewPager);
+
+//        views = new ArrayList<>();
+//        for (int i = 0; i < 3; i++) {
+//             View buyView = LayoutInflater.from(getContext()).inflate(R.layout.view_buy, null, false);
+//            views.add(buyView);
+//        }
+//        tabViewAdapter = new TabViewAdapter(views);
+//        viewPager.setAdapter(tabViewAdapter);
+//        viewPager.setCurrentItem(0);
+//        viewPager.setOffscreenPageLimit(3);
+//        tabLayout.setupWithViewPager(viewPager);
+    }
 
     @Override
     public void getArgs(Bundle bundle) {
@@ -137,7 +148,22 @@ public class BuyFragment extends BaseFragment {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                BuyView view = (BuyView) views.get(tab.getPosition());
+                view.refreshData(buyDataBeans);
+                int position = tab.getPosition();
+                switch (position) {
+                    case 0:
+                        buyViewOne.refreshData(buyDataBeans);
+                        break;
+                    case 1:
+                        buyViewTwo.refreshData(buyDataBeans);
 
+                        break;
+                    case 2:
+                        buyViewThree.refreshData(buyDataBeans);
+
+                        break;
+                }
             }
 
             @Override
@@ -158,6 +184,7 @@ public class BuyFragment extends BaseFragment {
         if (resultCode == Activity.RESULT_OK) {
         }
     }
+
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {

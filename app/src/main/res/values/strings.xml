@@ -40,7 +40,7 @@
     <string name="input_account">Please input account</string>
     <string name="input_password">Please input password</string>
     <string name="input_graphic_verify_code">Please input graphic verify code.</string>
-
+    <string name="my_fund">我的资产</string>
 
 
 </resources>

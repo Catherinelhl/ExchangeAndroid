@@ -16,6 +16,7 @@ import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
 
 import java.util.List;
 
@@ -58,8 +59,8 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
             return;
         }
         viewHolder.tvPersonName.setText(buyDataBean.getPersonName());
-        viewHolder. tvPayMethod.setText(buyDataBean.getBuyMethod());
-        viewHolder. tvPrice.setText(buyDataBean.getPrice());
+        viewHolder.tvPayMethod.setText(buyDataBean.getBuyMethod());
+        viewHolder.tvPrice.setText(buyDataBean.getPrice());
         viewHolder.tvNumber.setText(buyDataBean.getNumber());
         viewHolder.tvTotalAccount.setText(buyDataBean.getTotalAccount());
         viewHolder.tvFee.setText(buyDataBean.getFee());
@@ -86,6 +87,11 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
         return ListTool.isEmpty(buyDataBeans) ? 0 : buyDataBeans.size();
     }
 
+    public void refreshData(List<BuyDataBean> buyDataBeans) {
+        this.buyDataBeans = buyDataBeans;
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvPersonName;
         TextView tvPayMethod;
@@ -94,15 +100,16 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
         TextView tvTotalAccount;
         TextView tvFee;
         Button btnBuy;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvPersonName=itemView.findViewById(R.id.tv_person_name);
-            tvPayMethod=itemView.findViewById(R.id.tv_pay_method);
-            tvPrice=itemView.findViewById(R.id.tv_price);
-            tvNumber=itemView.findViewById(R.id.tv_number);
-            tvTotalAccount=itemView.findViewById(R.id.tv_total_account);
-            tvFee=itemView.findViewById(R.id.tv_fee);
-            btnBuy=itemView.findViewById(R.id.btn_buy);
+            tvPersonName = itemView.findViewById(R.id.tv_person_name);
+            tvPayMethod = itemView.findViewById(R.id.tv_pay_method);
+            tvPrice = itemView.findViewById(R.id.tv_price);
+            tvNumber = itemView.findViewById(R.id.tv_number);
+            tvTotalAccount = itemView.findViewById(R.id.tv_total_account);
+            tvFee = itemView.findViewById(R.id.tv_fee);
+            btnBuy = itemView.findViewById(R.id.btn_buy);
         }
     }
 }

@@ -1,13 +1,11 @@
 package io.bcaas.exchange.ui.activity;
 
-import android.os.Build;
 import android.os.Bundle;
 import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.ObservableTimerListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ObservableTimerTool;
 
 /**
@@ -37,12 +35,12 @@ public class BrandActivity extends BaseActivity {
     private ObservableTimerListener observableTimerListener = new ObservableTimerListener() {
         @Override
         public void timeUp(Constants.TimerType timerType) {
-//            if (BuildConfig.DEBUG) {
-//                intentToActivity(MainActivity.class, true);
-//            } else {
-            intentToActivity(LoginActivity.class, true);
+            if (BuildConfig.DEBUG) {
+                intentToActivity(MainActivity.class, true);
+            } else {
+                intentToActivity(LoginActivity.class, true);
 
-//            }
+            }
         }
     };
 
