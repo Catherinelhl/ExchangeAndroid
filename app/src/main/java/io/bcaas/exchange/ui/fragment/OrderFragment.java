@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,8 @@ public class OrderFragment extends BaseFragment {
     RecyclerView rvOrderData;
     @BindView(R.id.srl_order_data)
     SwipeRefreshLayout srlOrderData;
+    @BindView(R.id.tab_layout_order)
+    TabLayout tabLayout;
     private String TAG = OrderFragment.class.getSimpleName();
 
     //订单页面「交易」数据显示的适配器
@@ -76,6 +79,7 @@ public class OrderFragment extends BaseFragment {
         initData();
         initRefreshLayout();
         initOrderAdapter();
+        initTopNavTab(2);
     }
 
     private void initRefreshLayout() {
@@ -128,6 +132,30 @@ public class OrderFragment extends BaseFragment {
     }
 
     /**
+     * 初始化顶部导航栏
+     */
+    private void initTopNavTab(int position) {
+        if (tabLayout == null) {
+            return;
+        }
+        /**
+         * 判断是否需要顶部标签滑动
+         * 暂时定为如果便签的数量超过了五个，那么就需要移动
+         */
+        if (dataGenerationRegister != null) {
+            tabLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
+        }
+        tabLayout.removeAllTabs();
+        int size = dataGenerationRegister.getTabOrderTopTitleCount();
+        for (int i = 0; i < size; i++) {
+            TabLayout.Tab tab = tabLayout.newTab();
+            tab.setText( dataGenerationRegister.getOrderTopTitles(i));
+            tabLayout.addTab(tab);
+        }
+//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
+    }
+
+    /**
      * 初始化所有订单的数据，然后默认将交易填充进去
      */
     private void initOrderAdapter() {
@@ -173,6 +201,22 @@ public class OrderFragment extends BaseFragment {
 //                return;
 //            }
 //            onRefreshTransactionRecord("swipeRefreshLayout");
+        });
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switchTab(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
         });
     }
 

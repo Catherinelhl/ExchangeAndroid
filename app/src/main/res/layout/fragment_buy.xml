@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@color/theme_grey"
         android:orientation="vertical">
-    <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/srl_buy_data"
+    <android.support.design.widget.TabLayout
+            app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"
+            android:id="@+id/tab_layout_buy"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/d10"
-            android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_buy_data"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:scrollbars="none"
-                tools:listitem="@layout/item_buy_recycler"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_gravity="center"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/button_color"
+            app:tabSelectedTextColor="@color/button_color"
+            app:tabTextColor="@color/black_AEAEAE"
+            android:layout_height="@dimen/d48"/>
+    <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
 
 
 </LinearLayout>

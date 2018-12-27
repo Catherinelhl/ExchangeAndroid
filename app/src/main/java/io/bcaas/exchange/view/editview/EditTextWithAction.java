@@ -3,6 +3,7 @@ package io.bcaas.exchange.view.editview;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
@@ -19,6 +20,10 @@ import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.timer.IntervalTimerTool;
+import io.bcaas.exchange.ui.contracts.LoginContract;
+import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
+import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
+import io.bcaas.exchange.ui.presenter.VerifyCodePresenterImp;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -33,7 +38,8 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/17
  * 自定义一个带有动作的EditView，可能是「Check」，可能是「Send」 and so on
  */
-public class EditTextWithAction extends LinearLayout {
+public class EditTextWithAction extends LinearLayout
+        implements VerifyCodeContract.View {
     private String TAG = EditTextWithAction.class.getSimpleName();
 
     @BindView(R.id.et_content)
@@ -50,7 +56,10 @@ public class EditTextWithAction extends LinearLayout {
     LinearLayout llAction;
     @BindView(R.id.img)
     ImageView imageView;
+
+
     private Context context;
+    private VerifyCodeContract.Presenter presenter;
 
     /*監聽當前密碼的輸入*/
     private EditTextWatcherListener editTextWatcherListener;
@@ -65,6 +74,8 @@ public class EditTextWithAction extends LinearLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_edittext_with_action, this, true);
         ButterKnife.bind(view);
         this.context = context;
+        presenter = new VerifyCodePresenterImp(this);
+
         //获取自定义属性的值
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.editViewWithAction);
         if (typedArray != null) {
@@ -115,6 +126,7 @@ public class EditTextWithAction extends LinearLayout {
             setEditHintTextSize(hint);
 
         }
+        presenter.getImageVerifyCode();
         initView();
     }
 
@@ -153,9 +165,13 @@ public class EditTextWithAction extends LinearLayout {
                         //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
                         String tvActionString = tvAction.getText().toString();
                         if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
-                            if (editTextWatcherListener != null) {
-                                editTextWatcherListener.onSendAction(from);
+                            //开始请求验证码数据  //getCurrentLanguage()
+                            if (presenter != null) {
+                                presenter.emailVerify(Constants.User.MEMBER_ID, "0", Constants.User.MEMBER_ID);
                             }
+//                            if (editTextWatcherListener != null) {
+//                                editTextWatcherListener.onSendAction(from);
+//                            }
                             IntervalTimerTool.countDownTimer(60)
                                     .subscribeOn(Schedulers.newThread())
                                     .observeOn(AndroidSchedulers.mainThread())
@@ -233,6 +249,29 @@ public class EditTextWithAction extends LinearLayout {
 
             }
         });
+
+        RxView.clicks(imageView).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        presenter.getImageVerifyCode();
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**
@@ -291,5 +330,36 @@ public class EditTextWithAction extends LinearLayout {
         if (etContent != null) {
             etContent.setInputType(type);
         }
+    }
+
+    public void setImageBitmap(Bitmap bitmap) {
+        if (imageView != null) {
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+
+    @Override
+    public void getImageVerifyCodeSuccess(Bitmap bitmap) {
+        if (imageView != null) {
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+
+    @Override
+    public void getImageVerifyCodeFailure(String info) {
+        LogTool.e(TAG, info);
+
+    }
+
+    @Override
+    public void getEmailVerifySuccess(String info) {
+        LogTool.d(TAG, info);
+
+    }
+
+    @Override
+    public void getEmailVerifyFailure(String info) {
+        LogTool.e(TAG, info);
+
     }
 }

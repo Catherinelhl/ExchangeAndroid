@@ -2,9 +2,19 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:background="@color/theme_grey">
+    <android.support.design.widget.TabLayout
+            app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"
+            android:id="@+id/tab_layout_sell"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/button_color"
+            app:tabSelectedTextColor="@color/button_color"
+            app:tabTextColor="@color/black_AEAEAE"
+            android:layout_height="@dimen/d48"/>
     <TextView
             android:id="@+id/tv_salable_balance"
             android:background="@color/button_color"

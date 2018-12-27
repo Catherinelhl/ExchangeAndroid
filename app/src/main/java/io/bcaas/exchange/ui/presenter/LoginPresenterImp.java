@@ -1,16 +1,14 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
-import io.bcaas.exchange.vo.LoginInfoVO;
-import io.bcaas.exchange.vo.MemberVO;
-import io.bcaas.exchange.vo.RequestJson;
-import io.bcaas.exchange.vo.ResponseJson;
+import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -27,6 +25,8 @@ public class LoginPresenterImp implements LoginContract.Presenter {
     private LoginContract.View view;
     private LoginInteractor loginInteractor;
 
+    private Disposable disposableLogin, disposableImageVerifyCode;
+
     public LoginPresenterImp(LoginContract.View view) {
         super();
         this.view = view;
@@ -34,7 +34,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String memberId, String password, String realIp) {
+    public void login(String memberId, String password, String verifyCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(memberId);
@@ -44,16 +44,18 @@ public class LoginPresenterImp implements LoginContract.Presenter {
             e.printStackTrace();
             LogTool.e(TAG, e.getMessage());
         }
-        memberVO.setRealIP(realIp);
         requestJson.setMemberVO(memberVO);
-        LogTool.d(TAG,requestJson);
+        VerificationBean verificationBean=new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
         loginInteractor.login(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableLogin = d;
                     }
 
                     @Override
@@ -89,4 +91,5 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                     }
                 });
     }
+
 }

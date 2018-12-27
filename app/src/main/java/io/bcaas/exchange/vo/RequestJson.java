@@ -1,5 +1,8 @@
 package io.bcaas.exchange.vo;
 
+import io.bcaas.exchange.bean.ExchangeBean;
+import io.bcaas.exchange.bean.VerificationBean;
+
 import java.util.List;
 
 /**

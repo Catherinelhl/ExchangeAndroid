@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,8 @@ public class SellFragment extends BaseFragment {
     Button btnSell;
     @BindView(R.id.sb_progress)
     SeekBar sbProgress;
+    @BindView(R.id.tab_layout_sell)
+    TabLayout tabLayout;
 
     @Override
     protected void onUserVisible() {
@@ -70,6 +73,31 @@ public class SellFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
+        initTopNavTab(1);
+    }
+
+    /**
+     * 初始化顶部导航栏
+     */
+    private void initTopNavTab(int position) {
+        if (tabLayout == null) {
+            return;
+        }
+        /**
+         * 判断是否需要顶部标签滑动
+         * 暂时定为如果便签的数量超过了五个，那么就需要移动
+         */
+        if (dataGenerationRegister != null) {
+            tabLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
+        }
+        tabLayout.removeAllTabs();
+        int size = dataGenerationRegister.getTabTopTitleCount();
+        for (int i = 0; i < size; i++) {
+            TabLayout.Tab tab = tabLayout.newTab();
+            tab.setText(dataGenerationRegister.getTabTopTitle(i));
+            tabLayout.addTab(tab);
+        }
+//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
     }
 
     @Override
@@ -129,6 +157,21 @@ public class SellFragment extends BaseFragment {
 
                     }
                 });
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override

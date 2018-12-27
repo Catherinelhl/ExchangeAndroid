@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;

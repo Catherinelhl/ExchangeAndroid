@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
@@ -34,6 +35,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     EditTextWithAction amount;
     @BindView(R.id.etwa_password)
     EditTextWithAction password;
+    @BindView(R.id.etwa_image_code)
+    EditTextWithAction etwaImageCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
     @BindView(R.id.tv_forget_password)
@@ -66,7 +69,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void initData() {
+
         presenter = new LoginPresenterImp(this);
+//        presenter.getImageVerifyCode();
+
     }
 
     @Override
@@ -162,8 +168,23 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                     public void onNext(Object o) {
                         String memberID = Constants.User.MEMBER_ID;
                         String password = Constants.User.MEMBER_PASSWORD;
-                        String realIp = Constants.User.MEMBER_REALIP;
-                        presenter.login(memberID, password, realIp);
+                        String verifyCode =etwaImageCode.getContent();
+                        //1：判断账号非空
+                        if (StringTool.isEmpty(memberID)){
+                            showToast(getString(R.string.input_account));
+                            return;
+                        }
+                        //2：判断密码非空
+                        if (StringTool.isEmpty(password)){
+                            showToast(getString(R.string.input_password));
+                            return;
+                        }
+                        //3：判断验证码非空
+                        if (StringTool.isEmpty(verifyCode)){
+                            showToast(getString(R.string.input_graphic_verify_code));
+                            return;
+                        }
+                        presenter.login(memberID, password, verifyCode);
                     }
 
                     @Override
@@ -205,4 +226,5 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void loginFailure(String info) {
         showToast(info);
     }
+
 }

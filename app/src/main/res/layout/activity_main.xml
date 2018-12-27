@@ -9,16 +9,6 @@
 
     <include layout="@layout/include_header"/>
 
-    <android.support.design.widget.TabLayout
-            app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"
-            android:id="@+id/top_nav_layout"
-            android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            app:tabIndicatorColor="@color/button_color"
-            app:tabSelectedTextColor="@color/button_color"
-            app:tabTextColor="@color/black_AEAEAE"
-            android:layout_height="@dimen/d48"/>
     <FrameLayout
             android:id="@+id/home_container"
             android:layout_width="match_parent"

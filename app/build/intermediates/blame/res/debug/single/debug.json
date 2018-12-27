@@ -1684,6 +1684,10 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/layout-v21/notification_action_tombstone.xml"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_view_buy.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_buy.xml"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher_background.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/generated/res/pngs/debug/drawable-hdpi/ic_launcher_background.png"
     },

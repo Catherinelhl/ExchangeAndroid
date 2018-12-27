@@ -199,8 +199,9 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
             @Override
             public void onSendAction(String from) {
                 if (StringTool.equals(from, Constants.EditTextFrom.REGISTER_EMAIL_CODE)) {
+                    // TODO: 2018/12/27
                     //开始请求验证码数据  //getCurrentLanguage()
-                    presenter.emailVerify(Constants.User.MEMBER_ID, "0", Constants.User.MEMBER_ID);
+//                    presenter.emailVerify(Constants.User.MEMBER_ID, "0", Constants.User.MEMBER_ID);
                 }
             }
         }, Constants.EditTextFrom.REGISTER_EMAIL_CODE);
@@ -230,13 +231,4 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         showToast(info);
     }
 
-    @Override
-    public void getEmailVerifySuccess(String info) {
-        LogTool.d(TAG, info);
-    }
-
-    @Override
-    public void getEmailVerifyFailure(String info) {
-        showToast(info);
-    }
 }

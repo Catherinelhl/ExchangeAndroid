@@ -1,5 +1,6 @@
 package io.bcaas.exchange.vo;
 
+import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.gson.ServerResponseJson;
 
 import java.util.List;

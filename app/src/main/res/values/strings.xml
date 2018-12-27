@@ -37,6 +37,10 @@
     <string name="with_draw">Withdraw</string>
     <string name="safety_center">Safety center</string>
     <string name="graphic_verify_code">Graphic Verification Code</string>
+    <string name="input_account">Please input account</string>
+    <string name="input_password">Please input password</string>
+    <string name="input_graphic_verify_code">Please input graphic verify code.</string>
+
 
 
 </resources>

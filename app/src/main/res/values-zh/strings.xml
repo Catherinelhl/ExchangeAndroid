@@ -42,4 +42,7 @@
     <string name="safety_center">安全中心</string>
     <string name="graphic_verify_code">图形验证码</string>
 
+    <string name="input_account">请输入账号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="input_graphic_verify_code">请输入验证码</string>
 </resources>

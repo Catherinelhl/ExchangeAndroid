@@ -1,6 +1,6 @@
 package io.bcaas.exchange.ui.contracts;
 
-import io.bcaas.exchange.vo.ExchangeBean;
+import io.bcaas.exchange.bean.ExchangeBean;
 
 /**
  * @author catherine.brainwilliam

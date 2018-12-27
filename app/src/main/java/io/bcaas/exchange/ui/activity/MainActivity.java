@@ -24,7 +24,7 @@ import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
 import io.bcaas.exchange.ui.presenter.LogoutPresenterImp;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
-import io.bcaas.exchange.vo.ExchangeBean;
+import io.bcaas.exchange.bean.ExchangeBean;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -53,8 +53,6 @@ public class MainActivity extends BaseActivity
     ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
-    @BindView(R.id.top_nav_layout)
-    TabLayout topNavLayout;
     //声明当前需要和底部栏搭配的所有fragment
     private List<Fragment> fragments;
     //得到当前显示的Fragment
@@ -85,17 +83,6 @@ public class MainActivity extends BaseActivity
         fragments.add(orderFragment);
         AccountFragment accountFragment = new AccountFragment();
         fragments.add(accountFragment);
-        needTopTabScroll();
-    }
-
-    /**
-     * 判断是否需要顶部标签滑动
-     * 暂时定为如果便签的数量超过了五个，那么就需要移动
-     */
-    private void needTopTabScroll() {
-        if (dataGenerationRegister != null) {
-            topNavLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
-        }
     }
 
     @Override
@@ -197,24 +184,7 @@ public class MainActivity extends BaseActivity
 
             }
         });
-        topNavLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (currentFragment instanceof OrderFragment) {
-                    ((OrderFragment) currentFragment).switchTab(tab.getPosition());
-                }
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 
     /**
@@ -230,25 +200,15 @@ public class MainActivity extends BaseActivity
             }
             switch (position) {
                 case 0:
-                    initTopNavTab(0);
-                    topNavLayout.setVisibility(View.VISIBLE);
-                    topNavLayout.getTabAt(0).select();
                     setTitle(getString(R.string.buy_title));
                     break;
                 case 1:
-                    initTopNavTab(1);
-                    topNavLayout.getTabAt(0).select();
-                    topNavLayout.setVisibility(View.VISIBLE);
                     setTitle(getString(R.string.sell_title));
                     break;
                 case 2:
-                    initTopNavTab(2);
-                    topNavLayout.getTabAt(0).select();
-                    topNavLayout.setVisibility(View.VISIBLE);
                     setTitle(getString(R.string.order_title));
                     break;
                 case 3:
-                    topNavLayout.setVisibility(View.GONE);
                     setTitle(getString(R.string.amount_title));
                     break;
             }
@@ -270,22 +230,6 @@ public class MainActivity extends BaseActivity
                 Shader.TileMode.CLAMP);
     }
 
-    /**
-     * 初始化顶部导航栏
-     */
-    private void initTopNavTab(int position) {
-        if (topNavLayout == null) {
-            return;
-        }
-        topNavLayout.removeAllTabs();
-        int size = position == 2 ? dataGenerationRegister.getTabOrderTopTitleCount() : dataGenerationRegister.getTabTopTitleCount();
-        for (int i = 0; i < size; i++) {
-            TabLayout.Tab tab = topNavLayout.newTab();
-            tab.setText(position == 2 ? dataGenerationRegister.getOrderTopTitles(i) : dataGenerationRegister.getTabTopTitle(i));
-            topNavLayout.addTab(tab);
-        }
-//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
-    }
 
     /**
      * 设置tab Indicator 的宽度

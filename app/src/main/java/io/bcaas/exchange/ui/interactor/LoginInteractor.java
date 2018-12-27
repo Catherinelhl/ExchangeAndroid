@@ -5,6 +5,7 @@ import io.bcaas.exchange.http.retrofit.RetrofitFactory;
 import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 
 /**
  * @author catherine.brainwilliam
@@ -41,13 +42,5 @@ public class LoginInteractor {
     public Observable<ResponseJson> logout(RequestBody body) {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.logout(body);
-    }
-
-    /**
-     * 邮箱验证
-     */
-    public Observable<ResponseJson> emailVerify(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.emailVerify(body);
     }
 }

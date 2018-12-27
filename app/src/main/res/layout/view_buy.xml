@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl_buy_data"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/d10"
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_buy_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scrollbars="none"
+                tools:listitem="@layout/item_buy_recycler"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

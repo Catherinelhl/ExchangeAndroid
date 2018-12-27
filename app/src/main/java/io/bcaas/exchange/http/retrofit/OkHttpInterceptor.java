@@ -98,9 +98,7 @@ public class OkHttpInterceptor implements Interceptor {
         if (responseBody != null) {
             contentLength = responseBody.contentLength();
         }
-        if (bodyEncoded(response.headers())) {
-
-        } else {
+        if (!bodyEncoded(response.headers())) {
             BufferedSource source = responseBody.source();
             source.request(Long.MAX_VALUE); // Buffer the entire body.
             Buffer buffer = source.buffer();

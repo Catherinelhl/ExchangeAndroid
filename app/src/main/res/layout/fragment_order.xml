@@ -3,10 +3,20 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:gravity="center"
         android:background="@color/theme_grey"
         android:orientation="vertical">
+    <android.support.design.widget.TabLayout
+            app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"
+            android:id="@+id/tab_layout_order"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/button_color"
+            app:tabSelectedTextColor="@color/button_color"
+            app:tabTextColor="@color/black_AEAEAE"
+            android:layout_height="@dimen/d48"/>
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/srl_order_data"
             android:layout_width="match_parent"
