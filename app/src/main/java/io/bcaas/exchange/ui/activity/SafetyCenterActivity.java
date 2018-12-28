@@ -156,18 +156,23 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
         } else if (StringTool.equals(from, getString(R.string.fund_password))) {
             //资金密码
+            intent.setClass(SafetyCenterActivity.this, SetFundPasswordActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
 
         } else if (StringTool.equals(from, getString(R.string.email_verify))) {
             //邮箱验证
-
+            intent.setClass(SafetyCenterActivity.this, VerifyMethodCloseOrOpenActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.EMAIL_VERIFY);
 
         } else if (StringTool.equals(from, getString(R.string.phone_verify))) {
             //手机验证
-
+            intent.setClass(SafetyCenterActivity.this, BindPhoneActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
             //Google验证
-
+            intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
 
         }
     }

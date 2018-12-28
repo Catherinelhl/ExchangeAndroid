@@ -52,6 +52,18 @@
     <string name="new_password_rule">新密码(8~20位数字和字符组合,不能与资金密码相同)</string>
     <string name="confirm_new_password">确认新密码</string>
     <string name="modify_login_password">修改登录密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="fund_password_rule">资金密码(8~20位数字和字符组合,不能与登录密码相同)</string>
+    <string name="set_fund_password">设置资金密码</string>
+    <string name="bind_phone">绑定手机</string>
+    <string name="please_set_google_verify">设置Google身份验证</string>
+    <string name="email">邮箱</string>
+    <string name="phone">手机</string>
+    <string name="message">短信验证码</string>
+    <string name="phone_number">手机号</string>
+    <string name="email_verify_code">邮箱验证码</string>
+    <string name="message_verify_code">短信验证码</string>
+    <string name="six_google_verify_code">6位验证码</string>
 
 
 </resources>

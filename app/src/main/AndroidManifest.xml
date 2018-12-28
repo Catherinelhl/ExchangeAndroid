@@ -78,6 +78,24 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
+        <activity android:name=".ui.activity.SetFundPasswordActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.VerifyMethodCloseOrOpenActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.BindPhoneActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.GoogleVerifyActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.MainActivity"/>
 
         <!-- 解决Android 7.0文件共享的问题-->
