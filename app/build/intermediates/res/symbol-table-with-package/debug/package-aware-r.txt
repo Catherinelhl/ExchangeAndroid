@@ -494,6 +494,7 @@ attr tabPaddingTop
 attr tabRippleColor
 attr tabSelectedTextColor
 attr tabStyle
+attr tabText
 attr tabTextAppearance
 attr tabTextColor
 attr tabUnboundedRipple
@@ -677,11 +678,12 @@ color foreground_material_dark
 color foreground_material_light
 color green70_18ac22
 color grey_0A082D
+color grey_666666
+color grey_999999
 color grey_c5c5c5
 color grey_cccccc
 color highlighted_text_material_dark
 color highlighted_text_material_light
-color light_grey
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1489,23 +1491,24 @@ id beginning
 id blocking
 id bottom
 id bottom_tab_layout
+id btnLogout
 id btn_buy
 id btn_cancel
 id btn_left
 id btn_login
-id btn_recharge
 id btn_register
 id btn_right
 id btn_sell
 id btn_sure
 id btn_unlock_wallet
-id btn_withdraw
 id buttonPanel
 id capture_container
 id capture_crop_view
 id capture_preview
 id capture_scan_line
 id cb_check
+id cb_recharge
+id cb_withdraw
 id center
 id center_horizontal
 id center_vertical
@@ -1579,6 +1582,7 @@ id item_touch_helper_previous_elevation
 id iv_account
 id iv_icon
 id iv_logo
+id iv_qr_code
 id iv_tab_drawable
 id labeled
 id largeLabel
@@ -1635,6 +1639,11 @@ id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
 id sb_progress
+id sciv_email_verify
+id sciv_fund_password
+id sciv_google_verify
+id sciv_login_password
+id sciv_phone_verify
 id screen
 id scroll
 id scrollIndicatorDown
@@ -1712,12 +1721,16 @@ id tv_action
 id tv_available
 id tv_balance
 id tv_content
+id tv_copy_address
 id tv_fee
 id tv_fee_introduction
 id tv_forget_password
 id tv_freeze
 id tv_fund_type
 id tv_login_now
+id tv_middle_info
+id tv_my_address
+id tv_name
 id tv_number
 id tv_pay_account
 id tv_pay_method
@@ -1730,6 +1743,7 @@ id tv_recharge_status
 id tv_recharge_time
 id tv_recharge_type
 id tv_register_now
+id tv_safety_center_action
 id tv_salable_balance
 id tv_sell_volume
 id tv_setting_type
@@ -1810,9 +1824,12 @@ layout activity_buy_detail
 layout activity_login
 layout activity_main
 layout activity_my_fund
+layout activity_recharge
 layout activity_register
 layout activity_reset_password
+layout activity_sefety_center
 layout activity_sell_detail
+layout activity_withdraw
 layout aty_capture
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1839,6 +1856,7 @@ layout item_my_fund_recycler
 layout item_order_recharge_recycler
 layout item_order_transaction_recycler
 layout item_order_withdraw_cash_recycler
+layout item_safety_center
 layout item_setting
 layout layout_bcaas_dialog
 layout layout_bcaas_single_dialog
@@ -1858,6 +1876,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout view_buy
+layout view_withdraw
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap icon_back_red
@@ -1917,18 +1936,23 @@ string cancel
 string character_counter_content_description
 string character_counter_pattern
 string confirm
+string copy_address
+string email_verify
 string enter_password
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fee
 string forget_password
 string fund_password
+string google_verify
 string graphic_verify_code
 string hide_bottom_view_on_scroll_behavior
 string input_account
 string input_graphic_verify_code
 string input_password
 string login
+string login_password
+string logout
 string mtrl_chip_close_icon_content_description
 string my_all_fund
 string my_fund
@@ -1942,6 +1966,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string phone_verify
 string price
 string qrcode_name
 string random_verify_code
@@ -1963,6 +1988,7 @@ string sure
 string total_account
 string warning
 string with_draw
+string withdraw_tips
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -2551,4 +2577,5 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable editViewWithAction behaviour hint hintColor showLine singleLine textColor textSize
+styleable safetyCenterItem tabText
 xml file_paths

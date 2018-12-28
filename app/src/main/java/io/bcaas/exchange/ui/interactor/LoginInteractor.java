@@ -34,13 +34,4 @@ public class LoginInteractor {
         return httpApi.login(body);
     }
 
-    /**
-     * 登出
-     *
-     * @param body
-     */
-    public Observable<ResponseJson> logout(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.logout(body);
-    }
 }

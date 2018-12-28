@@ -207,15 +207,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         }, Constants.EditTextFrom.REGISTER_EMAIL_CODE);
     }
 
-    private void setResult(boolean isBack) {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(Constants.KeyMaps.From, isBack);
-        intent.putExtras(bundle);
-        this.setResult(RESULT_OK, intent);
-        this.finish();
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

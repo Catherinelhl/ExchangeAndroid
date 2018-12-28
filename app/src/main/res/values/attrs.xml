@@ -13,6 +13,7 @@
         </attr>
     </declare-styleable>
 
+    <!--密码框/验证码输入-->
     <declare-styleable name="editViewWithAction">
         <attr name="hint" format="string"/>
         <attr name="showLine" format="boolean"/>
@@ -27,5 +28,10 @@
         <attr name="textColor" format="integer"/>
         <attr name="textSize" format="float"/>
 
+    </declare-styleable>
+
+
+    <declare-styleable name="safetyCenterItem">
+        <attr name="tabText" format="string"/>
     </declare-styleable>
 </resources>

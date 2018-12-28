@@ -29,22 +29,49 @@
         </activity>
         <activity android:name=".ui.activity.LoginActivity"
                   android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.ResetPasswordActivity"
+                  android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.RegisterActivity"
+                  android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.BuyDetailActivity"
+                  android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.SellDetailActivity"
+                  android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.MyFundActivity"
+                  android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.WithDrawActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.RechargeActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.SafetyCenterActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
         <activity android:name=".ui.activity.MainActivity"/>
 
         <!-- 解决Android 7.0文件共享的问题-->

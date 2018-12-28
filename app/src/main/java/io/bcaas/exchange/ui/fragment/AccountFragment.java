@@ -18,6 +18,9 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.MyFundActivity;
+import io.bcaas.exchange.ui.activity.RechargeActivity;
+import io.bcaas.exchange.ui.activity.SafetyCenterActivity;
+import io.bcaas.exchange.ui.activity.WithDrawActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,22 +109,25 @@ public class AccountFragment extends BaseFragment {
                 if (type == null) {
                     return;
                 }
+                Intent intent = new Intent();
                 if (type instanceof SettingsBean) {
                     SettingsBean settingTypeBean = (SettingsBean) type;
                     switch (settingTypeBean.getTag()) {
                         case MY_ALL_FUND:
-                            Intent intent = new Intent();
                             intent.setClass(getContext(), MyFundActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.ALL_FUND_CODE);
                             break;
                         case RECHARGE:
-//                            intentToActivity(null, ModifyAuthorizedRepresentativesActivity.class, false);
+                            intent.setClass(getContext(), RechargeActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.RECHARGE);
                             break;
                         case WITH_DRAW:
-//                            intentToActivity(null, AddressManagerActivity.class, false);
+                            intent.setClass(getContext(), WithDrawActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
                             break;
                         case SAFETY_CENTER:
-//                            intentToActivity(null, LanguageSwitchingActivity.class, false);
+                            intent.setClass(getContext(), SafetyCenterActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.SAFETY_CENTER);
                             break;
 
                     }

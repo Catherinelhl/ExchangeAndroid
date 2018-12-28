@@ -41,6 +41,13 @@
     <string name="input_password">Please input password</string>
     <string name="input_graphic_verify_code">Please input graphic verify code.</string>
     <string name="my_fund">我的资产</string>
+    <string name="withdraw_tips">请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。</string>
+    <string name="copy_address">复制地址</string>
+    <string name="logout">退出登录</string>
+    <string name="google_verify">google验证</string>
+    <string name="phone_verify">手机验证</string>
+    <string name="email_verify">邮箱验证</string>
+    <string name="login_password">登录密码</string>
 
 
 </resources>

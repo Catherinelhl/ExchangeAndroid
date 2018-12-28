@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
@@ -60,29 +62,30 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         viewHolder.tvFundType.setText(myFundBean.getFundType());
         viewHolder.tvFreeze.setText(myFundBean.getFreeze());
         viewHolder.tvAvailable.setText(myFundBean.getAvailable());
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogTool.d(TAG,"dooooooooo");
             }
         });
-        viewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
+        viewHolder.cbRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                viewHolder.cbWithdraw.setChecked(false);
+                viewHolder.cbRecharge.setChecked(true);
                 if (onItemSelectListener != null) {
                     onItemSelectListener.onItemSelect(myFundBean, MessageConstants.RECHARGE);
                 }
-                LogTool.d(TAG,"dot...");
             }
         });
-        viewHolder.btnWithdraw.setOnClickListener(new View.OnClickListener() {
+        viewHolder.cbWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                viewHolder.cbRecharge.setChecked(false);
+                viewHolder.cbWithdraw.setChecked(true);
                 if (onItemSelectListener != null) {
                     onItemSelectListener.onItemSelect(myFundBean, MessageConstants.WITHDRAW);
                 }
-                LogTool.d(TAG,"dot...");
-
             }
         });
     }
@@ -99,16 +102,16 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvFundType;
-        Button btnWithdraw;
-        Button btnRecharge;
+        CheckBox cbWithdraw;
+        CheckBox cbRecharge;
         TextView tvAvailable;
         TextView tvFreeze;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFundType = itemView.findViewById(R.id.tv_fund_type);
-            btnWithdraw = itemView.findViewById(R.id.btn_withdraw);
-            btnRecharge = itemView.findViewById(R.id.btn_recharge);
+            cbWithdraw = itemView.findViewById(R.id.cb_withdraw);
+            cbRecharge = itemView.findViewById(R.id.cb_recharge);
             tvAvailable = itemView.findViewById(R.id.tv_available);
             tvFreeze = itemView.findViewById(R.id.tv_freeze);
         }

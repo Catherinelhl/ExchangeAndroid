@@ -141,13 +141,4 @@ public class BuyDetailActivity extends BaseActivity {
                 });
     }
 
-    private void setResult(boolean isBack) {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(Constants.KeyMaps.From, isBack);
-        intent.putExtras(bundle);
-        this.setResult(RESULT_OK, intent);
-        this.finish();
-    }
-
 }

@@ -132,11 +132,16 @@ public class MyFundActivity extends BaseActivity {
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
+            Intent intent = new Intent();
             switch (from) {
                 case MessageConstants.RECHARGE:
+                    intent.setClass(MyFundActivity.this, RechargeActivity.class);
+                    startActivityForResult(intent, Constants.RequestCode.RECHARGE);
                     // 充值
                     break;
                 case MessageConstants.WITHDRAW:
+                    intent.setClass(MyFundActivity.this, WithDrawActivity.class);
+                    startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
                     //提现
                     break;
             }
@@ -147,20 +152,6 @@ public class MyFundActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         setResult(false);
-    }
-
-    /**
-     * 关闭当前页面，返回上一个页面
-     *
-     * @param isBack
-     */
-    private void setResult(boolean isBack) {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(Constants.KeyMaps.From, isBack);
-        intent.putExtras(bundle);
-        this.setResult(RESULT_OK, intent);
-        this.finish();
     }
 
 }

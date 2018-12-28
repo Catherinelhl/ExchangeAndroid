@@ -25,7 +25,8 @@
     <color name="theme_grey">#F7F9FF</color>
     <color name="theme_grey_line">#fffefefe</color>
     <color name="grey_cccccc">#cccccc</color>
-    <color name="light_grey">#999999</color>
+    <color name="grey_999999">#999999</color>
+    <color name="grey_666666">#666666</color>
     <color name="green70_18ac22">#b318AC22</color>
     <color name="orange_yellow">#F5A623</color>
     <color name="orange_FC9003">#FC9003</color>

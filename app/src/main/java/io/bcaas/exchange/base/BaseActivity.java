@@ -179,4 +179,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 关闭当前页面，返回上一个页面
+     *
+     * @param isBack
+     */
+    protected void setResult(boolean isBack) {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(Constants.KeyMaps.From, isBack);
+        intent.putExtras(bundle);
+        this.setResult(RESULT_OK, intent);
+        this.finish();
+    }
+
 }

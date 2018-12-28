@@ -60,6 +60,9 @@ public class Constants {
         public static final int BUY_DETAIL_CODE = 0x3;//跳转购买详情页面的code码
         public static final int SELL_DETAIL_CODE = 0x4;//跳转售出详情页面的code码
         public static final int ALL_FUND_CODE = 0x5;//跳转到我的资产页面的code码
+        public static final int WITH_DRAW = 0x6;//跳转到我的提现页面的code码
+        public static final int RECHARGE = 0x7;//跳转到我的充值页面的code码
+        public static final int SAFETY_CENTER = 0x8;//跳转到安全中心页面的code码
     }
 
     public static String SPLICE_CONVERTER(String ip, int port) {

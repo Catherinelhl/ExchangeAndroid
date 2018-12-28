@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
@@ -18,13 +17,13 @@ import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.contracts.LogoutContract;
+import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.contracts.MainContract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
-import io.bcaas.exchange.ui.presenter.LogoutPresenterImp;
+import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -41,7 +40,7 @@ import java.util.concurrent.TimeUnit;
  * 首頁主Activity
  */
 public class MainActivity extends BaseActivity
-        implements LogoutContract.View, MainContract.View {
+        implements MainContract.View {
     @BindView(R.id.home_container)
     FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)
@@ -59,7 +58,6 @@ public class MainActivity extends BaseActivity
     //得到当前显示的Fragment
     private Fragment currentFragment;
 
-    private LogoutContract.Presenter presenter;
     private MainContract.Presenter mainPresenter;
 
     @Override
@@ -88,7 +86,6 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void initData() {
-        presenter = new LogoutPresenterImp(this);
         mainPresenter = new MainPresenterImp(this);
         ExchangeBean exchangeBean = new ExchangeBean();
         exchangeBean.setCurrency("BTC");
@@ -137,7 +134,6 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.logout(Constants.User.MEMBER_ID);
                     }
 
                     @Override
@@ -272,16 +268,6 @@ public class MainActivity extends BaseActivity
             child.setLayoutParams(params);
             child.invalidate();
         }
-    }
-
-    @Override
-    public void logoutSuccess(String info) {
-        intentToActivity(LoginActivity.class, true);
-    }
-
-    @Override
-    public void logoutFailure(String info) {
-        showToast(info);
     }
 
     @Override

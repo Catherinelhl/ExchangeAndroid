@@ -3,6 +3,7 @@ package io.bcaas.exchange.maker;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.bean.SafetyCenterBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,17 @@ public class DataGenerationRegister {
     //顶部tab 订单页面的标题数量
     private int tabOrderTopTitleCount;
 
+    //安全中心列表项
+    private List<SafetyCenterBean> safetyCenterBeans = new ArrayList<>();
+
+    /**
+     * 初始化安全中心数据
+     */
+    private void initSafetyCenterData(){
+        SafetyCenterBean safetyCenterBean=new SafetyCenterBean();
+        safetyCenterBean.setTabType("登录密码");
+    }
+
     public DataGenerationRegister() {
         super();
         initData();
@@ -55,7 +67,7 @@ public class DataGenerationRegister {
         tabOrderTopTitles.add("交易");
         tabOrderTopTitles.add("充值");
         tabOrderTopTitles.add("提现");
-        tabOrderTopTitleCount=tabOrderTopTitles.size();
+        tabOrderTopTitleCount = tabOrderTopTitles.size();
 
         //初始化底部栏图标数据
         tabDrawables.add(R.drawable.icon_home);
@@ -120,6 +132,7 @@ public class DataGenerationRegister {
         return top;
 
     }
+
     /**
      * 返回当前订单页面的顶部标题
      *
