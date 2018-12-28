@@ -1,6 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,6 +17,7 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
 import io.bcaas.exchange.view.viewGroup.SafetyCenterItemView;
@@ -143,10 +147,47 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
     @Override
     public <T> void onItemSelect(T type, String from) {
-        LogTool.d(TAG, from);
-        switch (from) {
-            default:
-                break;
+
+        Intent intent = new Intent();
+        if (StringTool.equals(from, getString(R.string.login_password))) {
+            // 登录密码
+            intent.setClass(SafetyCenterActivity.this, ModifyLoginPasswordActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.MODIFY_LOGIN_PASSOWRD);
+
+        } else if (StringTool.equals(from, getString(R.string.fund_password))) {
+            //资金密码
+
+        } else if (StringTool.equals(from, getString(R.string.email_verify))) {
+            //邮箱验证
+
+
+        } else if (StringTool.equals(from, getString(R.string.phone_verify))) {
+            //手机验证
+
+
+        } else if (StringTool.equals(from, getString(R.string.google_verify))) {
+            //Google验证
+
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.MODIFY_LOGIN_PASSOWRD:
+                    break;
+                case Constants.RequestCode.FUND_PASSWORD:
+                    break;
+                case Constants.RequestCode.EMAIL_VERIFY:
+                    break;
+                case Constants.RequestCode.PHONE_VERIFY:
+                    break;
+                case Constants.RequestCode.GOOGLE_VERIFY:
+                    break;
+            }
         }
     }
 }

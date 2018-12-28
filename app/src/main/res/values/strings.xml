@@ -48,6 +48,10 @@
     <string name="phone_verify">手机验证</string>
     <string name="email_verify">邮箱验证</string>
     <string name="login_password">登录密码</string>
+    <string name="original_password">原登录密码</string>
+    <string name="new_password_rule">新密码(8~20位数字和字符组合,不能与资金密码相同)</string>
+    <string name="confirm_new_password">确认新密码</string>
+    <string name="modify_login_password">修改登录密码</string>
 
 
 </resources>

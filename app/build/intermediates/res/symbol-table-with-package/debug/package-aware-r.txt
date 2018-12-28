@@ -1544,9 +1544,12 @@ id enterAlways
 id enterAlwaysCollapsed
 id et_content
 id etwa_amount
+id etwa_confirm_new_password
 id etwa_email_code
 id etwa_fund_password
 id etwa_image_code
+id etwa_new_password
+id etwa_original_password
 id etwa_password
 id etwa_password_confirm
 id etwa_random_verify_code
@@ -1823,6 +1826,7 @@ layout activity_brand
 layout activity_buy_detail
 layout activity_login
 layout activity_main
+layout activity_modify_login_password
 layout activity_my_fund
 layout activity_recharge
 layout activity_register
@@ -1936,6 +1940,7 @@ string cancel
 string character_counter_content_description
 string character_counter_pattern
 string confirm
+string confirm_new_password
 string copy_address
 string email_verify
 string enter_password
@@ -1953,12 +1958,15 @@ string input_password
 string login
 string login_password
 string logout
+string modify_login_password
 string mtrl_chip_close_icon_content_description
 string my_all_fund
 string my_fund
 string network_not_reachable
+string new_password_rule
 string number
 string order_title
+string original_password
 string password
 string password_rule
 string password_toggle_content_description
