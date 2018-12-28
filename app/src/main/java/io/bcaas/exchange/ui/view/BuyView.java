@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Optional;
@@ -31,7 +32,7 @@ import static android.support.constraint.Constraints.TAG;
  * @author catherine.brainwilliam
  * @since 2018/12/27
  */
-public class BuyView extends View {
+public class BuyView extends LinearLayout {
     private String TAG = "BuyView";
     RecyclerView rvBuyData;
     SwipeRefreshLayout srlBuyData;
@@ -52,7 +53,7 @@ public class BuyView extends View {
     }
 
     private void initView() {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_buy, null, true);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_buy, this, true);
         rvBuyData = view.findViewById(R.id.rv_buy_data);
         srlBuyData = view.findViewById(R.id.srl_buy_data);
         // 设置加载按钮的形态

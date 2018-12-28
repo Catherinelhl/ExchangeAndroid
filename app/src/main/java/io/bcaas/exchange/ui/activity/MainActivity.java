@@ -198,6 +198,9 @@ public class MainActivity extends BaseActivity
             switch (position) {
                 case 0:
                     setTitle(getString(R.string.buy_title));
+                    if (currentFragment instanceof BuyFragment) {
+                        ((BuyFragment) currentFragment).resetView();
+                    }
                     break;
                 case 1:
                     setTitle(getString(R.string.sell_title));

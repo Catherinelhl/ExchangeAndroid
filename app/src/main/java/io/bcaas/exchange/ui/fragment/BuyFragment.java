@@ -5,26 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.BuyDataAdapter;
 import io.bcaas.exchange.adapter.TabViewAdapter;
-import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.view.BuyView;
 
@@ -45,7 +34,9 @@ public class BuyFragment extends BaseFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-    private List<BuyDataBean> buyDataBeans;
+    private List<BuyDataBean> buyDataBeansETH;
+    private List<BuyDataBean> buyDataBeansBTC;
+    private List<BuyDataBean> buyDataBeansZBB;
 
 
     private TabViewAdapter tabViewAdapter;
@@ -54,13 +45,11 @@ public class BuyFragment extends BaseFragment {
 
     @Override
     protected void onUserVisible() {
-        LogTool.i(TAG, "onUserVisible");
 
     }
 
     @Override
     protected void onUserInvisible() {
-        LogTool.i(TAG, "onUserInvisible");
 
     }
 
@@ -72,7 +61,9 @@ public class BuyFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
-        buyDataBeans = new ArrayList<>();
+        buyDataBeansETH = new ArrayList<>();
+        buyDataBeansBTC = new ArrayList<>();
+        buyDataBeansZBB = new ArrayList<>();
         views = new ArrayList<>();
         if (tabLayout == null) {
             return;
@@ -93,7 +84,27 @@ public class BuyFragment extends BaseFragment {
             buyDataBean.setNumber("1.00000000 BTC");
             buyDataBean.setTotalAccount("2345.02387000 ETH");
             buyDataBean.setFee("0.00001 ETH");
-            buyDataBeans.add(buyDataBean);
+            buyDataBeansETH.add(buyDataBean);
+
+
+            BuyDataBean buyDataBeanBTC = new BuyDataBean();
+            buyDataBeanBTC.setPersonName("Catherine");
+            buyDataBeanBTC.setBuyMethod("支付方式BTC");
+            buyDataBeanBTC.setPrice("345.02387000 BTC");
+            buyDataBeanBTC.setNumber("1.00000000 ETH");
+            buyDataBeanBTC.setTotalAccount("345.02387000 BTC");
+            buyDataBeanBTC.setFee("0.00001 BTC");
+            buyDataBeansBTC.add(buyDataBeanBTC);
+
+
+            BuyDataBean buyDataBeanZBB = new BuyDataBean();
+            buyDataBeanZBB.setPersonName("Lucifer");
+            buyDataBeanZBB.setBuyMethod("支付方式ZBB");
+            buyDataBeanZBB.setPrice("45.02387000 ZBB");
+            buyDataBeanZBB.setNumber("1.00000000 BTC");
+            buyDataBeanZBB.setTotalAccount("45.02387000 ZBB");
+            buyDataBeanZBB.setFee("0.00001 ZBB");
+            buyDataBeansZBB.add(buyDataBeanZBB);
         }
 
 //        int size = dataGenerationRegister.getTabTopTitleCount();
@@ -104,21 +115,13 @@ public class BuyFragment extends BaseFragment {
 //        }
 //        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
         buyViewOne = new BuyView(getContext());
-        buyViewOne.refreshData(buyDataBeans);
-        buyViewOne.setOnItemSelectListener(onItemSelectListener);
-        views.add(buyViewOne);
-
         buyViewTwo = new BuyView(getContext());
-        buyViewTwo.refreshData(buyDataBeans);
-        buyViewTwo.setOnItemSelectListener(onItemSelectListener);
-        views.add(buyViewTwo);
-
-
         buyViewThree = new BuyView(getContext());
-        buyViewThree.refreshData(buyDataBeans);
-        buyViewThree.setOnItemSelectListener(onItemSelectListener);
-        views.add(buyViewThree);
-        LogTool.d(TAG,views.size());
+
+        initBuyViewData(buyViewOne);
+        initBuyViewData(buyViewTwo);
+        initBuyViewData(buyViewThree);
+
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
@@ -137,6 +140,13 @@ public class BuyFragment extends BaseFragment {
 //        tabLayout.setupWithViewPager(viewPager);
     }
 
+    private void initBuyViewData(BuyView buyView) {
+        buyView.refreshData(buyDataBeansETH);
+        buyView.setOnItemSelectListener(onItemSelectListener);
+        views.add(buyView);
+
+    }
+
     @Override
     public void getArgs(Bundle bundle) {
 
@@ -148,19 +158,17 @@ public class BuyFragment extends BaseFragment {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                BuyView view = (BuyView) views.get(tab.getPosition());
-                view.refreshData(buyDataBeans);
                 int position = tab.getPosition();
                 switch (position) {
                     case 0:
-                        buyViewOne.refreshData(buyDataBeans);
+                        buyViewOne.refreshData(buyDataBeansETH);
                         break;
                     case 1:
-                        buyViewTwo.refreshData(buyDataBeans);
+                        buyViewTwo.refreshData(buyDataBeansBTC);
 
                         break;
                     case 2:
-                        buyViewThree.refreshData(buyDataBeans);
+                        buyViewThree.refreshData(buyDataBeansZBB);
 
                         break;
                 }
@@ -198,7 +206,21 @@ public class BuyFragment extends BaseFragment {
             bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL, buyDataBean);
             intent.putExtras(bundle);
             intent.setClass(context, BuyDetailActivity.class);
-//            context.startActivityForResult(intent, Constants.RequestCode.BUY_DETAIL_CODE);
+            startActivityForResult(intent, Constants.RequestCode.BUY_DETAIL_CODE);
         }
     };
+
+    /**
+     * 重置当前界面
+     */
+    public void resetView() {
+        if (viewPager != null) {
+            viewPager.setCurrentItem(0);
+        }
+        if (tabLayout != null) {
+            tabLayout.getTabAt(0).select();
+            tabLayout.invalidate();
+        }
+    }
+
 }
