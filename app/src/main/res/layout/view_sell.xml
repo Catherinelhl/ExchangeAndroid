@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/theme_grey">
+    <TextView
+            android:id="@+id/tv_salable_balance"
+            android:background="@color/button_color"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="@dimen/d40"
+            android:paddingLeft="@dimen/d20"
+            android:paddingRight="@dimen/d20"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/white"
+            android:text="@string/salable_balance"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_marginTop="@dimen/d16"
+                          android:orientation="vertical"
+                          android:background="@color/white"
+                          android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/d20"
+                        android:layout_marginTop="@dimen/d16"
+                        android:paddingRight="@dimen/d20"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/black_333333"
+                        android:text="卖出价"/>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:layout_margin="@dimen/d16"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="@dimen/d0"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/d12"
+                            android:textSize="@dimen/text_size_18"
+                            android:textColor="@color/black_333333"
+                            android:text="1238.2314241"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/d12"
+                            android:textSize="@dimen/text_size_14"
+                            android:textColor="@color/black_333333"
+                            android:text="ETH"/>
+
+                </LinearLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/d20"
+                        android:paddingRight="@dimen/d20"
+                        android:textSize="@dimen/text_size_14"
+                        android:textColor="@color/black_333333"
+                        android:text="卖出量"/>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:layout_marginLeft="@dimen/d16"
+                              android:layout_marginRight="@dimen/d16"
+                              android:layout_marginTop="@dimen/d16"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_sell_volume"
+                            android:layout_width="@dimen/d0"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/d12"
+                            android:textSize="@dimen/text_size_18"
+                            android:textColor="@color/black_333333"
+                            android:text="1238.2314241"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/d12"
+                            android:textSize="@dimen/text_size_14"
+                            android:textColor="@color/black_333333"
+                            android:text="BTC"/>
+
+                </LinearLayout>
+                <SeekBar
+                        android:id="@+id/sb_progress"
+                        android:layout_width="match_parent"
+                        android:max="100"
+                        android:maxHeight="@dimen/d2"
+                        android:minHeight="@dimen/d2"
+                        android:padding="@dimen/d10"
+                        android:layout_marginLeft="@dimen/d10"
+                        android:layout_marginRight="@dimen/d10"
+                        android:progressDrawable="@drawable/seekbar"
+                        android:layout_height="wrap_content"/>
+
+
+                <TextView
+                        android:id="@+id/tv_progress_speed"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/d20"
+                        android:layout_marginBottom="@dimen/d16"
+                        android:layout_marginRight="@dimen/d20"
+                        android:textSize="@dimen/text_size_12"
+                        android:textColor="@color/black_333333"
+                        android:text="0"/>
+            </LinearLayout>
+            <TextView
+                    android:id="@+id/tv_fee_introduction"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/d20"
+                    android:layout_marginTop="@dimen/d24"
+                    android:paddingRight="@dimen/d20"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="@color/black_333333"
+                    android:text="出售需支付手续费，手续费为0.0001 BTC"/>
+            <TextView
+                    android:id="@+id/tv_balance"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/d20"
+                    android:layout_marginTop="@dimen/d16"
+                    android:paddingRight="@dimen/d20"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="@color/black_333333"
+                    android:text="扣除手续费后的交易额：12.834257 ETH"/>
+            <Button
+                    android:id="@+id/btn_sell"
+                    style="@style/button_style"
+                    android:layout_marginTop="@dimen/d38"
+                    android:text="出售"/>
+            <View android:layout_width="match_parent"
+                  android:layout_height="@dimen/d20"
+                  android:background="@color/transparent"/>
+
+
+            <!--<io.bcaas.exchange.view.textview.RichTextView-->
+            <!--xmlns:view="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/rt_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="@dimen/d48"-->
+            <!--android:gravity="center"-->
+            <!--android:text="554"-->
+            <!--android:textColor="#FFFFFF"-->
+            <!--view:drawable_location="top"-->
+            <!--view:drawable_height="@dimen/d30"-->
+            <!--view:drawable_src="@drawable/icon_home"-->
+            <!--view:drawable_width="@dimen/d30"/>-->
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

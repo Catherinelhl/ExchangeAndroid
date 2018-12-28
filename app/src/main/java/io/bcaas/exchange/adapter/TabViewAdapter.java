@@ -5,14 +5,17 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import io.bcaas.exchange.maker.DataGenerationRegister;
+import io.bcaas.exchange.tools.StringTool;
 
 import java.util.List;
 
 public class TabViewAdapter extends PagerAdapter {
-    List<View> views;
+    private List<View> views;
+    private String type;
 
-    public TabViewAdapter(List<View> views) {
+    public TabViewAdapter(List<View> views, String type) {
         this.views = views;
+        this.type = type;
     }
 
     @Override
@@ -45,7 +48,11 @@ public class TabViewAdapter extends PagerAdapter {
     //设置tablayout标题
     @Override
     public CharSequence getPageTitle(int position) {
-        return new DataGenerationRegister().getTabTopTitle(position);
+        if (StringTool.equals(type, "2")) {
+            return new DataGenerationRegister().getOrderTopTitles(position);
+
+        } else
+            return new DataGenerationRegister().getTabTopTitle(position);
 
     }
 }

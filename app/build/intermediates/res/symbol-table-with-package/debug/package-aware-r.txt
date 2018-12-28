@@ -1696,9 +1696,8 @@ id stretch
 id submenuarrow
 id submit_area
 id tabMode
-id tab_layout_buy
 id tab_layout_order
-id tab_layout_sell
+id tab_layout_top
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
@@ -1865,9 +1864,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout fragment_account
-layout fragment_buy
-layout fragment_order
-layout fragment_sell
+layout fragment_content
 layout include_header
 layout item_bottom_tab
 layout item_buy_recycler
@@ -1895,6 +1892,8 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout view_buy
+layout view_order
+layout view_sell
 layout view_withdraw
 mipmap ic_launcher
 mipmap ic_launcher_round

@@ -31,6 +31,7 @@ import static android.support.constraint.Constraints.TAG;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/27
+ * 「购买」页面视图
  */
 public class BuyView extends LinearLayout {
     private String TAG = "BuyView";
