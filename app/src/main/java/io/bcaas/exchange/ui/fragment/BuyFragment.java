@@ -65,6 +65,13 @@ public class BuyFragment extends BaseFragment {
         buyDataBeansBTC = new ArrayList<>();
         buyDataBeansZBB = new ArrayList<>();
         views = new ArrayList<>();
+        initTopTabData();
+    }
+
+    /**
+     * 初始化顶部tab的数据以及相对应的界面信息
+     */
+    private void initTopTabData() {
         if (tabLayout == null) {
             return;
         }
@@ -114,7 +121,7 @@ public class BuyFragment extends BaseFragment {
         buyViewThree.setOnItemSelectListener(onItemSelectListener);
         views.add(buyViewThree);
 
-        tabViewAdapter = new TabViewAdapter(views,"0");
+        tabViewAdapter = new TabViewAdapter(views, "0");
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);

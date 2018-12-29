@@ -73,13 +73,13 @@ public class OrderFragment extends BaseFragment {
         orderTransactionBeans = new ArrayList<>();
         orderRechargeBeans = new ArrayList<>();
         orderWithDrawBeans = new ArrayList<>();
-        initData();
+        initTopTabData();
     }
 
     /**
-     * 初始化数据
+     * 初始化顶部tab的数据以及相对应的界面信息
      */
-    private void initData() {
+    private void initTopTabData() {
         for (int i = 0; i < 4; i++) {
             //初始化订单「交易」页面数据
             OrderTransactionBean orderTransactionBean = new OrderTransactionBean();
@@ -136,7 +136,6 @@ public class OrderFragment extends BaseFragment {
         viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
     }
-
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override

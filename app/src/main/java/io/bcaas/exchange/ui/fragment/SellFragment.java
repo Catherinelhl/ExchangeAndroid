@@ -5,32 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseFragment;
+import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.activity.BuyDetailActivity;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.bcaas.exchange.ui.view.BuyView;
+import io.bcaas.exchange.ui.view.SellView;
 
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * 賣出
+ * 「售出」
+ * 拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
 public class SellFragment extends BaseFragment {
     private String TAG = SellFragment.class.getSimpleName();
@@ -39,16 +34,20 @@ public class SellFragment extends BaseFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+
+    private TabViewAdapter tabViewAdapter;
+    private List<View> views;
+
+    private SellView sellViewOne, sellViewTwo, sellViewThree;
+
+    private SellDataBean sellDataBeanETH,sellDataBeanBTC,sellDataBeanZBB;
+
     @Override
     protected void onUserVisible() {
-        LogTool.i(TAG, "onUserVisible");
-
     }
 
     @Override
     protected void onUserInvisible() {
-        LogTool.i(TAG, "onUserInvisible");
-
     }
 
     @Override
@@ -59,31 +58,39 @@ public class SellFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
-        initTopNavTab(1);
+        views = new ArrayList<>();
+        initTopTabData();
     }
 
     /**
-     * 初始化顶部导航栏
+     * 初始化顶部tab的数据以及相对应的界面信息
      */
-    private void initTopNavTab(int position) {
-        if (tabLayout == null) {
-            return;
-        }
-        /**
-         * 判断是否需要顶部标签滑动
-         * 暂时定为如果便签的数量超过了五个，那么就需要移动
-         */
-        if (dataGenerationRegister != null) {
-            tabLayout.setTabMode(dataGenerationRegister.getTabTopTitleCount() > 5 ? TabLayout.MODE_SCROLLABLE : TabLayout.MODE_FIXED);
-        }
-        tabLayout.removeAllTabs();
-        int size = dataGenerationRegister.getTabTopTitleCount();
-        for (int i = 0; i < size; i++) {
-            TabLayout.Tab tab = tabLayout.newTab();
-            tab.setText(dataGenerationRegister.getTabTopTitle(i));
-            tabLayout.addTab(tab);
-        }
-//        topNavLayout.post(() -> setTabIndicatorWidth(topNavLayout, 30, 30));
+    private void initTopTabData() {
+        sellDataBeanETH=new SellDataBean("ETH","BTC","9.234314","4235.234234");
+        sellDataBeanBTC=new SellDataBean("BTC","ETH","8.234314","3235.234234");
+        sellDataBeanZBB=new SellDataBean("ZBB","BTC","7.234314","5.234234");
+
+        sellViewOne = new SellView(getContext());
+        sellViewOne.refreshData(sellDataBeanETH);
+        sellViewOne.setOnItemSelectListener(onItemSelectListener);
+        views.add(sellViewOne);
+
+        sellViewTwo = new SellView(getContext());
+        sellViewTwo.refreshData(sellDataBeanBTC);
+        sellViewTwo.setOnItemSelectListener(onItemSelectListener);
+        views.add(sellViewTwo);
+
+
+        sellViewThree = new SellView(getContext());
+        sellViewThree.refreshData(sellDataBeanZBB);
+        sellViewThree.setOnItemSelectListener(onItemSelectListener);
+        views.add(sellViewThree);
+
+        tabViewAdapter = new TabViewAdapter(views, "1");
+        viewPager.setAdapter(tabViewAdapter);
+        viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(3);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -117,5 +124,18 @@ public class SellFragment extends BaseFragment {
         if (resultCode == Activity.RESULT_OK) {
         }
     }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+
+            Intent intent = new Intent();
+//                        Bundle bundle=new Bundle();
+//                        bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL,buyDataBean);
+//                        intent.putExtras(bundle);
+            intent.setClass(context, SellDetailActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
+        }
+    };
 
 }

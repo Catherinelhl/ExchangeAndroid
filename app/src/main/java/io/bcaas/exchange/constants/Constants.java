@@ -104,14 +104,13 @@ public class Constants {
         public static final String SP_BCAAS_EXCHANGE = "BCAAS_EXCHANGE";
         public static final String ACCESS_TOKEN = "accessToken";//token 信息
         public static final String LANGUAGE_TYPE = "languageType";//當前的語言環境
-
-
     }
 
     public class From {
         public static final String ORDER_TRANSACTION = "orderTransaction";//订单中的交易模块
         public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
+        public static final String SELL_VIEW = "sellView";//售出也迷啊
     }
 
     /**

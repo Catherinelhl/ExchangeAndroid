@@ -43,7 +43,7 @@
                               android:layout_margin="@dimen/d16"
                               android:layout_height="wrap_content">
                     <TextView
-                            android:id="@+id/tv_price"
+                            android:id="@+id/tv_exchange_rate"
                             android:layout_width="@dimen/d0"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
@@ -53,6 +53,7 @@
                             android:textColor="@color/black_333333"
                             android:text="1238.2314241"/>
                     <TextView
+                            android:id="@+id/tv_exchange_currency"
                             android:layout_width="wrap_content"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content"
@@ -86,8 +87,9 @@
                             android:paddingLeft="@dimen/d12"
                             android:textSize="@dimen/text_size_18"
                             android:textColor="@color/black_333333"
-                            android:text="1238.2314241"/>
+                            android:text="0.0"/>
                     <TextView
+                            android:id="@+id/tv_current_currency"
                             android:layout_width="wrap_content"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content"
@@ -103,6 +105,7 @@
                         android:max="100"
                         android:maxHeight="@dimen/d2"
                         android:minHeight="@dimen/d2"
+                        android:layout_marginTop="@dimen/d10"
                         android:padding="@dimen/d10"
                         android:layout_marginLeft="@dimen/d10"
                         android:layout_marginRight="@dimen/d10"
@@ -134,7 +137,7 @@
                     android:textColor="@color/black_333333"
                     android:text="出售需支付手续费，手续费为0.0001 BTC"/>
             <TextView
-                    android:id="@+id/tv_balance"
+                    android:id="@+id/tv_final_tx_amount"
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
                     android:layout_height="wrap_content"
@@ -152,21 +155,6 @@
             <View android:layout_width="match_parent"
                   android:layout_height="@dimen/d20"
                   android:background="@color/transparent"/>
-
-
-            <!--<io.bcaas.exchange.view.textview.RichTextView-->
-            <!--xmlns:view="http://schemas.android.com/apk/res-auto"-->
-            <!--android:id="@+id/rt_text"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="@dimen/d48"-->
-            <!--android:gravity="center"-->
-            <!--android:text="554"-->
-            <!--android:textColor="#FFFFFF"-->
-            <!--view:drawable_location="top"-->
-            <!--view:drawable_height="@dimen/d30"-->
-            <!--view:drawable_src="@drawable/icon_home"-->
-            <!--view:drawable_width="@dimen/d30"/>-->
-
 
         </LinearLayout>
     </ScrollView>

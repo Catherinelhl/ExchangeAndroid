@@ -1727,13 +1727,16 @@ id transition_transform
 id tv_account_name
 id tv_action
 id tv_available
-id tv_balance
 id tv_content
 id tv_copy_address
+id tv_current_currency
 id tv_email_key
 id tv_email_value
+id tv_exchange_currency
+id tv_exchange_rate
 id tv_fee
 id tv_fee_introduction
+id tv_final_tx_amount
 id tv_forget_password
 id tv_freeze
 id tv_fund_type

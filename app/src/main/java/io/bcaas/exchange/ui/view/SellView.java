@@ -13,9 +13,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.ui.activity.SellDetailActivity;
+import io.bcaas.exchange.tools.LogTool;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -27,26 +28,35 @@ import java.util.concurrent.TimeUnit;
  * 「售出」页面视图
  */
 public class SellView extends LinearLayout {
+
+
     @BindView(R.id.tv_salable_balance)
     TextView tvSalableBalance;
-    @BindView(R.id.tv_price)
-    TextView tvPrice;
+    @BindView(R.id.tv_exchange_rate)
+    TextView tvExchangeRate;
+    @BindView(R.id.tv_exchange_currency)
+    TextView tvExchangeCurrency;
     @BindView(R.id.tv_sell_volume)
     TextView tvSellVolume;
+    @BindView(R.id.tv_current_currency)
+    TextView tvCurrentCurrency;
+    @BindView(R.id.sb_progress)
+    SeekBar sbProgress;
     @BindView(R.id.tv_progress_speed)
     TextView tvProgressSpeed;
     @BindView(R.id.tv_fee_introduction)
     TextView tvFeeIntroduction;
-    @BindView(R.id.tv_balance)
-    TextView tvBalance;
+    @BindView(R.id.tv_final_tx_amount)
+    TextView tvFinalTxAmount;
     @BindView(R.id.btn_sell)
     Button btnSell;
-    @BindView(R.id.sb_progress)
-    SeekBar sbProgress;
-
-
     private Context context;
-    private OnItemSelectListener onItemSelectListenerTemp;
+    private OnItemSelectListener onItemSelectListener;
+
+    private SellDataBean sellDataBean;
+
+    //当前的汇率，做进度条的系数使用
+    private float salableBalance;
 
     public SellView(Context context) {
         super(context);
@@ -75,7 +85,11 @@ public class SellView extends LinearLayout {
                     int margin = getResources().getDimensionPixelSize(R.dimen.text_size_20);
                     float width = (seekBarWidth - margin * 2) / 100 * progress; //seekBar当前位置的宽度
                     tvProgressSpeed.setX(width + margin);
-                    tvProgressSpeed.setText(String.valueOf(progress));
+                    String sellVolume = String.valueOf(salableBalance * progress);
+                    tvProgressSpeed.setText(sellVolume);
+                    if (tvSellVolume != null) {
+                        tvSellVolume.setText(sellVolume);
+                    }
 
                 }
             }
@@ -99,12 +113,10 @@ public class SellView extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
-                        Intent intent = new Intent();
-//                        Bundle bundle=new Bundle();
-//                        bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL,buyDataBean);
-//                        intent.putExtras(bundle);
-                        intent.setClass(context, SellDetailActivity.class);
-//                        startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
+                        if (onItemSelectListener != null) {
+                            onItemSelectListener.onItemSelect(sellDataBean, Constants.From.SELL_VIEW);
+                        }
+
                     }
 
                     @Override
@@ -120,7 +132,32 @@ public class SellView extends LinearLayout {
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
-        this.onItemSelectListenerTemp = onItemSelectListener;
+        this.onItemSelectListener = onItemSelectListener;
+    }
+
+    /**
+     * 根据传入的数据，刷新当前页面
+     *
+     * @param sellDataBean
+     */
+    public void refreshData(SellDataBean sellDataBean) {
+        this.sellDataBean = sellDataBean;
+        if (sellDataBean != null) {
+            if (tvSalableBalance != null) {
+                tvSalableBalance.setText(String.format("%s%s   %s", context.getResources().getString(R.string.salable_balance), sellDataBean.getSalableBalance(), sellDataBean.getCurrency()));
+            }
+            if (tvCurrentCurrency != null) {
+                tvCurrentCurrency.setText(sellDataBean.getCurrency());
+            }
+            if (tvExchangeRate != null) {
+                tvExchangeRate.setText(sellDataBean.getExchangeRate());
+            }
+            if (tvExchangeCurrency != null) {
+                tvExchangeCurrency.setText(sellDataBean.getExchangeCurrency());
+            }
+            salableBalance = Float.valueOf(sellDataBean.getSalableBalance()) * 0.01f;
+        }
+
     }
 
 

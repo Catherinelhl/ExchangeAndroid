@@ -64,7 +64,7 @@ public class MainPresenterImp implements MainContract.Presenter {
                         } else {
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2006) {
-                                view.getCurrencyUSDPriceFailure(MessageConstants.CODE_2006_MSG);
+                                view.getCurrencyUSDPriceFailure(MessageConstants.ERROR_EMAIL_ALREADY_REGISTER);
 
                             } else {
                                 view.getCurrencyUSDPriceFailure(responseJson.getMessage());
