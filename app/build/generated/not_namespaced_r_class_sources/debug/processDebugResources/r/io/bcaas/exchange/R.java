@@ -5615,7 +5615,7 @@ public final class R {
     public static final int view_buy=0x7f0b0057;
     public static final int view_order=0x7f0b0058;
     public static final int view_sell=0x7f0b0059;
-    public static final int view_withdraw=0x7f0b005a;
+    public static final int view_recharge =0x7f0b005a;
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f0c0000;
