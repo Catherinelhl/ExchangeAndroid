@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.view;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,10 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.obt.qrcode.encoding.EncodingUtils;
@@ -21,7 +19,9 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.ui.activity.SetFundPasswordActivity;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -37,8 +37,14 @@ public class RechargeView extends LinearLayout {
     TextView tvMyAddress;
     TextView tvCopyAddress;
     TextView tvInfo;
+    TextView tvSetImmediately;
 
     private Context context;
+    private OnItemSelectListener onItemSelectListener;
+
+    public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
+        this.onItemSelectListener = onItemSelectListener;
+    }
 
     public RechargeView(Context context) {
         super(context);
@@ -58,6 +64,7 @@ public class RechargeView extends LinearLayout {
         tvMyAddress = view.findViewById(R.id.tv_my_address);
         tvCopyAddress = view.findViewById(R.id.tv_copy_address);
         tvInfo = view.findViewById(R.id.tv_info);
+        tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
         initListener();
 
     }
@@ -93,6 +100,30 @@ public class RechargeView extends LinearLayout {
 
                     }
                 });
+        RxView.clicks(tvSetImmediately).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        if (onItemSelectListener != null) {
+                            onItemSelectListener.onItemSelect(MessageConstants.EMPTY, MessageConstants.EMPTY);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**
@@ -101,21 +132,43 @@ public class RechargeView extends LinearLayout {
      * @param userInfoBean
      */
     public void refreshData(UserInfoBean userInfoBean) {
-        if (userInfoBean != null) {
-            String address = userInfoBean.getAddress();
-            if (tvMyAddress != null) {
-                tvMyAddress.setText(address);
-            }
+        //判断当前是否设置资金密码
+        boolean hasFundPassword = BaseApplication.isSetFundPassword();
+        if (tvMyAddress != null) {
+            tvMyAddress.setVisibility(hasFundPassword ? VISIBLE : GONE);
+        }
 
-            if (ivQrCode != null) {
-                Bitmap qrCode = EncodingUtils.createQRCode(address, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-                        context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.ValueMaps.foregroundColorOfQRCode, Constants.ValueMaps.backgroundColorOfQRCode);
-                ivQrCode.setImageBitmap(qrCode);
-            }
+        if (ivQrCode != null) {
+            ivQrCode.setVisibility(hasFundPassword ? VISIBLE : GONE);
+        }
+        if (tvCopyAddress != null) {
+            tvCopyAddress.setVisibility(hasFundPassword ? VISIBLE : GONE);
+        }
+        if (tvSetImmediately != null) {
+            tvSetImmediately.setVisibility(hasFundPassword ? GONE : VISIBLE);
+        }
+        if (hasFundPassword) {
+            if (userInfoBean != null) {
+                String address = userInfoBean.getAddress();
+                if (tvMyAddress != null) {
+                    tvMyAddress.setText(address);
+                }
 
+                if (ivQrCode != null) {
+                    Bitmap qrCode = EncodingUtils.createQRCode(address, context.getResources().getDimensionPixelOffset(R.dimen.d200),
+                            context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.ValueMaps.foregroundColorOfQRCode, Constants.ValueMaps.backgroundColorOfQRCode);
+                    ivQrCode.setImageBitmap(qrCode);
+                }
+
+                if (tvInfo != null) {
+                    tvInfo.setText(userInfoBean.getTips());
+                }
+            }
+        } else {
             if (tvInfo != null) {
-                tvInfo.setText(userInfoBean.getTips());
+                tvInfo.setText("您还没有设置资金密码,该密码将用于交易和提现的验证。为保证账户安全,请先设置资金密码。");
             }
         }
+
     }
 }

@@ -721,9 +721,9 @@ public final class R {
         public static final int title_template = 0x7f080104;
         public static final int top = 0x7f080105;
         public static final int topPanel = 0x7f080106;
-        public static final int uniform = 0x7f080142;
-        public static final int up = 0x7f080144;
-        public static final int wrap_content = 0x7f08014d;
+        public static final int uniform = 0x7f080143;
+        public static final int up = 0x7f080145;
+        public static final int wrap_content = 0x7f08014e;
     }
     public static final class integer {
         private integer() {}
@@ -819,7 +819,7 @@ public final class R {
         public static final int abc_shareactionprovider_share_with_application = 0x7f0e0025;
         public static final int abc_toolbar_collapse_description = 0x7f0e0026;
         public static final int search_menu_title = 0x7f0e006a;
-        public static final int status_bar_notification_info_overflow = 0x7f0e0072;
+        public static final int status_bar_notification_info_overflow = 0x7f0e0073;
     }
     public static final class style {
         private style() {}

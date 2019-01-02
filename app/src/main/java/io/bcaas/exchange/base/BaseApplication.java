@@ -34,6 +34,8 @@ public class BaseApplication extends MultiDexApplication {
     private static boolean isZH;
     /*存储当前的Token*/
     private static String token;
+    /*得到当前是否设置了资金密码*/
+    private static boolean setFundPassword;
 
 
     public static Context context() {
@@ -57,6 +59,14 @@ public class BaseApplication extends MultiDexApplication {
 
     public static String getToken() {
         return token;
+    }
+
+    public static boolean isSetFundPassword() {
+        return setFundPassword;
+    }
+
+    public static void setFundPassword(boolean setFundPassword) {
+        BaseApplication.setFundPassword = setFundPassword;
     }
 
     @Override

@@ -185,6 +185,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param isBack
      */
     protected void setResult(boolean isBack) {
+        hideSoftKeyboard();
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putBoolean(Constants.KeyMaps.From, isBack);

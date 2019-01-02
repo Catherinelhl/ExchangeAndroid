@@ -65,6 +65,7 @@
     <string name="message_verify_code">短信验证码</string>
     <string name="six_google_verify_code">6位验证码</string>
     <string name="successfully_copied">Successfully copied</string>
+    <string name="set_immediately">立即设置</string>
 
 
 </resources>

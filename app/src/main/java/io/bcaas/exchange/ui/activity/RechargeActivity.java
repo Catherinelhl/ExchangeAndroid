@@ -1,6 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -14,6 +17,8 @@ import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.view.RechargeView;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -27,6 +32,8 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/28
  * <p>
  * 「充值」
+ * <p>
+ * 此页面有两种展现形式，如果当前还没有设置资金密码，那么就需要展现设置资金密码的页面，如果当前已经设置了，那么就直接展现用户的账户页面
  */
 public class RechargeActivity extends BaseActivity {
 
@@ -81,15 +88,18 @@ public class RechargeActivity extends BaseActivity {
         }
         rechargeViewOne = new RechargeView(this);
         rechargeViewOne.refreshData(userInfoBeanBTC);
+        rechargeViewOne.setOnItemSelectListener(onItemSelectListener);
         views.add(rechargeViewOne);
 
         rechargeViewTwo = new RechargeView(this);
         rechargeViewTwo.refreshData(userInfoBeanETH);
+        rechargeViewTwo.setOnItemSelectListener(onItemSelectListener);
         views.add(rechargeViewTwo);
 
 
         rechargeViewThree = new RechargeView(this);
         rechargeViewThree.refreshData(userInfoBeanZBB);
+        rechargeViewThree.setOnItemSelectListener(onItemSelectListener);
         views.add(rechargeViewThree);
 
         tabViewAdapter = new TabViewAdapter(views, "0");
@@ -145,5 +155,45 @@ public class RechargeActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         setResult(false);
+    }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            //跳转界面
+            Intent intent = new Intent();
+            intent.setClass(context, SetFundPasswordActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+        }
+    };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        switch (requestCode) {
+            case Constants.RequestCode.FUND_PASSWORD:
+                //如果从「设置资金密码」页面跳转回来，那么需要重新刷新一下当前的界面
+                if (tabLayout != null) {
+                    int position = tabLayout.getSelectedTabPosition();
+                    switch (position) {
+                        case 0:
+                            rechargeViewOne.refreshData(userInfoBeanBTC);
+                            break;
+                        case 1:
+                            rechargeViewTwo.refreshData(userInfoBeanETH);
+
+                            break;
+                        case 2:
+                            rechargeViewThree.refreshData(userInfoBeanZBB);
+
+                            break;
+                    }
+                    break;
+                }
+        }
     }
 }

@@ -13,6 +13,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.FundPasswordContract;
+import io.bcaas.exchange.ui.presenter.FundPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -24,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/28
  * 「设置资金密码」
  */
-public class SetFundPasswordActivity extends BaseActivity {
+public class SetFundPasswordActivity extends BaseActivity implements FundPasswordContract.View {
 
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -40,6 +42,8 @@ public class SetFundPasswordActivity extends BaseActivity {
     EditTextWithAction etwaConfirmFundPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
+
+    private FundPasswordContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -59,7 +63,7 @@ public class SetFundPasswordActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        presenter = new FundPasswordPresenterImp(this);
     }
 
     @Override
@@ -110,6 +114,8 @@ public class SetFundPasswordActivity extends BaseActivity {
                             return;
                         }
 
+                        presenter.setFundPassword(password);
+
                     }
 
                     @Override
@@ -129,5 +135,15 @@ public class SetFundPasswordActivity extends BaseActivity {
     public void onBackPressed() {
         super.onBackPressed();
         setResult(false);
+    }
+
+    @Override
+    public void setFundPasswordSuccess() {
+        setResult(false);
+    }
+
+    @Override
+    public void setFundPasswordFailure() {
+
     }
 }

@@ -12,7 +12,20 @@
               android:id="@+id/tv_info"
               android:textColor="@color/grey_999999"
               android:layout_height="wrap_content"/>
-
+    <TextView
+            android:id="@+id/tv_set_immediately"
+            android:layout_width="wrap_content"
+            android:text="@string/set_immediately"
+            android:textColor="@color/blue_5B88FF"
+            android:textSize="@dimen/text_size_14"
+            android:layout_marginTop="@dimen/d16"
+            android:layout_below="@+id/tv_info"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/d20"
+            android:layout_marginRight="@dimen/d20"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"/>
     <ImageView
             android:id="@+id/iv_qr_code"
             android:layout_width="@dimen/d200"
@@ -39,8 +52,8 @@
             android:text="@string/copy_address"
             android:textColor="@color/blue_5B88FF"
             android:textSize="@dimen/text_size_14"
-            android:layout_marginTop="@dimen/d16"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/d16"
             android:layout_below="@+id/tv_my_address"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
