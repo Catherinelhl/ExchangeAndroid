@@ -9,6 +9,7 @@
               android:layout_marginRight="@dimen/d20"
               android:text="@string/withdraw_tips"
               android:textSize="@dimen/text_size_14"
+              android:id="@+id/tv_info"
               android:textColor="@color/grey_999999"
               android:layout_height="wrap_content"/>
 

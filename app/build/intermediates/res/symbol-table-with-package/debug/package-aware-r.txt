@@ -1696,7 +1696,7 @@ id stretch
 id submenuarrow
 id submit_area
 id tabMode
-id tab_layout_order
+id tab_layout
 id tab_layout_top
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -1741,6 +1741,7 @@ id tv_forget_password
 id tv_freeze
 id tv_fund_type
 id tv_how_to_verify
+id tv_info
 id tv_login_now
 id tv_middle_info
 id tv_my_address
@@ -1896,8 +1897,8 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout view_buy
 layout view_order
+layout view_recharge
 layout view_sell
-layout view_withdraw
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap icon_back_red
@@ -2021,6 +2022,7 @@ string set_fund_password
 string six_google_verify_code
 string start_immediate
 string status_bar_notification_info_overflow
+string successfully_copied
 string sure
 string total_account
 string warning

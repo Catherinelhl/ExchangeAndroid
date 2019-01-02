@@ -36,7 +36,7 @@ public class WithDrawActivity extends BaseActivity {
     ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
-    @BindView(R.id.tab_layout_order)
+    @BindView(R.id.tab_layout)
     TabLayout tabLayoutOrder;
     @BindView(R.id.viewpager)
     ViewPager viewpager;

@@ -64,6 +64,7 @@
     <string name="email_verify_code">邮箱验证码</string>
     <string name="message_verify_code">短信验证码</string>
     <string name="six_google_verify_code">6位验证码</string>
+    <string name="successfully_copied">Successfully copied</string>
 
 
 </resources>

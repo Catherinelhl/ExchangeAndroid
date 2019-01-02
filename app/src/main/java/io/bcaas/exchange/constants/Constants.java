@@ -50,6 +50,11 @@ public class Constants {
         public static final String TC = "TC";//中文（繁體）
         public static final String EN = "EN";//英文
 
+        //二維碼渲染的前景色
+        public static final int foregroundColorOfQRCode = 0xff000000;
+        //二維碼渲染的背景色
+        public static final int backgroundColorOfQRCode = 0x00000000;
+
 
     }
 
@@ -78,6 +83,8 @@ public class Constants {
         public static final String HTTP_PREFIX = "http://";
         public static final String HTTP_COLON = ":";
         public static final String From = "from";//来自
+        public static final String COPY_ADDRESS = "address";
+
 
 
         public static final String BUY_DETAIL = "buyDetail";

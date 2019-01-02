@@ -1,19 +1,31 @@
 package io.bcaas.exchange.ui.view;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import butterknife.BindView;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.BuyDataAdapter;
-import io.bcaas.exchange.bean.BuyDataBean;
+import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.UserInfoBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -21,12 +33,12 @@ import java.util.List;
  * 「充值」页面视图
  */
 public class RechargeView extends LinearLayout {
-    private String TAG = "RechargeView";
-    RecyclerView rvBuyData;
-    SwipeRefreshLayout srlBuyData;
+    ImageView ivQrCode;
+    TextView tvMyAddress;
+    TextView tvCopyAddress;
+    TextView tvInfo;
+
     private Context context;
-    private BuyDataAdapter buyDataAdapter;
-    private OnItemSelectListener onItemSelectListenerTemp;
 
     public RechargeView(Context context) {
         super(context);
@@ -42,45 +54,68 @@ public class RechargeView extends LinearLayout {
 
     private void initView() {
         View view = LayoutInflater.from(context).inflate(R.layout.view_recharge, this, true);
-        rvBuyData = view.findViewById(R.id.rv_buy_data);
-        srlBuyData = view.findViewById(R.id.srl_buy_data);
-        // 设置加载按钮的形态
-        srlBuyData.setColorSchemeResources(
-                R.color.button_color,
-                R.color.button_color
-
-        );
-        srlBuyData.setSize(SwipeRefreshLayout.DEFAULT);
-        srlBuyData.setOnRefreshListener(() -> {
-            srlBuyData.setRefreshing(false);
-            //判断如果当前没有币种，那么就暂时不能刷新数据
-//            if (StringTool.isEmpty(Bas.getBlockService())) {
-//                return;
-//            }
-//            onRefreshTransactionRecord("swipeRefreshLayout");
-        });
+        ivQrCode = view.findViewById(R.id.iv_qr_code);
+        tvMyAddress = view.findViewById(R.id.tv_my_address);
+        tvCopyAddress = view.findViewById(R.id.tv_copy_address);
+        tvInfo = view.findViewById(R.id.tv_info);
+        initListener();
 
     }
 
-    public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
-        this.onItemSelectListenerTemp = onItemSelectListener;
+    private void initListener() {
+        RxView.clicks(tvCopyAddress).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //获取剪贴板管理器：
+                        ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                        // 创建普通字符型ClipData
+                        ClipData mClipData = ClipData.newPlainText(Constants.KeyMaps.COPY_ADDRESS, tvMyAddress.getText());
+                        // 将ClipData内容放到系统剪贴板里。
+                        if (cm != null) {
+                            cm.setPrimaryClip(mClipData);
+                            Toast.makeText(context, context.getResources().getString(R.string.successfully_copied), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
-    public void refreshData(List<BuyDataBean> buyDataBeans) {
-        buyDataAdapter = new BuyDataAdapter(this.context, buyDataBeans);
-        buyDataAdapter.setOnItemSelectListener(onItemSelectListener);
-        rvBuyData.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-        rvBuyData.setLayoutManager(linearLayoutManager);
-        rvBuyData.setAdapter(buyDataAdapter);
-        buyDataAdapter.refreshData(buyDataBeans);
-    }
+    /**
+     * 更新当前界面信息
+     *
+     * @param userInfoBean
+     */
+    public void refreshData(UserInfoBean userInfoBean) {
+        if (userInfoBean != null) {
+            String address = userInfoBean.getAddress();
+            if (tvMyAddress != null) {
+                tvMyAddress.setText(address);
+            }
 
-    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
-        @Override
-        public <T> void onItemSelect(T type, String from) {
-            onItemSelectListenerTemp.onItemSelect(type, from);
+            if (ivQrCode != null) {
+                Bitmap qrCode = EncodingUtils.createQRCode(address, context.getResources().getDimensionPixelOffset(R.dimen.d200),
+                        context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.ValueMaps.foregroundColorOfQRCode, Constants.ValueMaps.backgroundColorOfQRCode);
+                ivQrCode.setImageBitmap(qrCode);
+            }
+
+            if (tvInfo != null) {
+                tvInfo.setText(userInfoBean.getTips());
+            }
         }
-    };
-
+    }
 }
