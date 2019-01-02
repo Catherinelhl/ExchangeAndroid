@@ -7,7 +7,7 @@
               android:layout_marginTop="@dimen/d24"
               android:layout_marginLeft="@dimen/d20"
               android:layout_marginRight="@dimen/d20"
-              android:text="@string/withdraw_tips"
+              android:text="@string/recharge_tips"
               android:textSize="@dimen/text_size_14"
               android:id="@+id/tv_info"
               android:textColor="@color/grey_999999"

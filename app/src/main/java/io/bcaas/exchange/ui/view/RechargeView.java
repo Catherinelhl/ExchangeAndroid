@@ -166,7 +166,7 @@ public class RechargeView extends LinearLayout {
             }
         } else {
             if (tvInfo != null) {
-                tvInfo.setText("您还没有设置资金密码,该密码将用于交易和提现的验证。为保证账户安全,请先设置资金密码。");
+                tvInfo.setText(context.getResources().getString(R.string.no_fund_password_tips));
             }
         }
 

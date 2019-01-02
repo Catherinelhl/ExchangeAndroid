@@ -17,7 +17,7 @@
             android:id="@+id/etwa_message_code"
             android:layout_width="match_parent"
             exchange:hint="@string/message"
-            exchange:behaviour="textCode"
+            exchange:behaviour="text"
             android:layout_marginTop="@dimen/d24"
             android:background="@color/white"
             android:layout_height="@dimen/d48"/>

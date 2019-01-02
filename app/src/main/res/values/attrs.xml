@@ -21,8 +21,9 @@
         <attr name="behaviour">
             <enum name="normal" value="0"/>
             <enum name="checkBox" value="1"/>
-            <enum name="textCode" value="2"/>
-            <enum name="imageCode" value="3"/>
+            <enum name="text" value="2"/>
+            <enum name="image" value="3"/>
+            <enum name="scan" value="4"/>
         </attr>
         <attr name="hintColor" format="integer"/>
         <attr name="textColor" format="integer"/>

@@ -151,7 +151,7 @@
                     android:id="@+id/btn_sell"
                     style="@style/button_style"
                     android:layout_marginTop="@dimen/d38"
-                    android:text="出售"/>
+                    android:text="@string/sell"/>
             <View android:layout_width="match_parent"
                   android:layout_height="@dimen/d20"
                   android:background="@color/transparent"/>

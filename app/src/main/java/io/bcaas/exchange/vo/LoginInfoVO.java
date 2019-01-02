@@ -2,15 +2,16 @@ package io.bcaas.exchange.vo;
 
 import java.io.Serializable;
 
+
 /**
  * 登入資訊
- * 
+ *
  * @since 2018/12/11
- * 
+ *
  * @author Costa
- * 
+ *
  * @version 1.0.0
- * 
+ *
  */
 public class LoginInfoVO implements Serializable {
 
@@ -35,7 +36,7 @@ public class LoginInfoVO implements Serializable {
 	/**
 	 * 登入狀態(0:登出, 1:登入)
 	 */
-	private int status;
+	private Integer status;
 
 	public LoginInfoVO() {
 		super();

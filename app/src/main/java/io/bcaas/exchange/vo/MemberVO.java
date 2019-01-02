@@ -1,17 +1,16 @@
 package io.bcaas.exchange.vo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * 交易所會員
- * 
+ *
  * @since 2018/12/11
- * 
+ *
  * @author Costa
- * 
+ *
  * @version 1.0.0
- * 
+ *
  */
 public class MemberVO implements Serializable {
 
@@ -40,27 +39,31 @@ public class MemberVO implements Serializable {
 	/**
 	 * 郵箱驗證 (0:close, 1:open)
 	 */
-	private int emailVerify;
+	private Integer emailVerify;
 	/**
 	 * 電話驗證 (0:close, 1:open)
 	 */
-	private int phoneVerify;
+	private Integer phoneVerify;
 	/**
 	 * 雙因素驗證(Google) (0:close, 1:open)
 	 */
-	private int twoFactorAuthVerify;
+	private Integer twoFactorAuthVerify;
 	/**
 	 * 使用者狀態(0:停權, 1:激活)
 	 */
-	private int isActivation;
+	private Integer isActivation;
 	/**
 	 * 更新時間
 	 */
-	private Timestamp updateTime;
+	private String updateTime;
 	/**
 	 * 建立時間
 	 */
-	private Timestamp createTime;
+	private String createTime;
+	/**
+	 * 新密碼 (Double-sha256)
+	 */
+	private String newPassword;
 
 	public MemberVO() {
 		super();
@@ -106,72 +109,80 @@ public class MemberVO implements Serializable {
 		this.phone = phone;
 	}
 
-	public int getEmailVerify() {
+	public Integer getEmailVerify() {
 		return emailVerify;
+	}
+
+	public void setEmailVerify(Integer emailVerify) {
+		this.emailVerify = emailVerify;
+	}
+
+	public Integer getPhoneVerify() {
+		return phoneVerify;
+	}
+
+	public void setPhoneVerify(Integer phoneVerify) {
+		this.phoneVerify = phoneVerify;
+	}
+
+	public Integer getTwoFactorAuthVerify() {
+		return twoFactorAuthVerify;
+	}
+
+	public void setTwoFactorAuthVerify(Integer twoFactorAuthVerify) {
+		this.twoFactorAuthVerify = twoFactorAuthVerify;
+	}
+
+	public Integer getIsActivation() {
+		return isActivation;
+	}
+
+	public void setIsActivation(Integer isActivation) {
+		this.isActivation = isActivation;
 	}
 
 	public void setEmailVerify(int emailVerify) {
 		this.emailVerify = emailVerify;
 	}
 
-	public int getPhoneVerify() {
-		return phoneVerify;
-	}
-
 	public void setPhoneVerify(int phoneVerify) {
 		this.phoneVerify = phoneVerify;
-	}
-
-	public int getTwoFactorAuthVerify() {
-		return twoFactorAuthVerify;
 	}
 
 	public void setTwoFactorAuthVerify(int twoFactorAuthVerify) {
 		this.twoFactorAuthVerify = twoFactorAuthVerify;
 	}
 
-	public int getIsActivation() {
-		return isActivation;
-	}
-
 	public void setIsActivation(int isActivation) {
 		this.isActivation = isActivation;
 	}
 
-	public Timestamp getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
-	public Timestamp getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberVO{" +
-				"memberId='" + memberId + '\'' +
-				", password='" + password + '\'' +
-				", txPassword='" + txPassword + '\'' +
-				", realIP='" + realIP + '\'' +
-				", phone='" + phone + '\'' +
-				", emailVerify=" + emailVerify +
-				", phoneVerify=" + phoneVerify +
-				", twoFactorAuthVerify=" + twoFactorAuthVerify +
-				", isActivation=" + isActivation +
-				", updateTime=" + updateTime +
-				", createTime=" + createTime +
-				'}';
-	}
 }

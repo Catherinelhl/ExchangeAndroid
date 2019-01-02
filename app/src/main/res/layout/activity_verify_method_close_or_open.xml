@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
             android:background="@color/white"
-            exchange:behaviour="textCode"
+            exchange:behaviour="text"
             exchange:hint="@string/email_verify_code"
             android:layout_height="@dimen/d48"/>
 
@@ -62,7 +62,7 @@
             android:id="@+id/etwa_message_verify_code"
             android:layout_width="match_parent"
             exchange:hint="@string/message_verify_code"
-            exchange:behaviour="textCode"
+            exchange:behaviour="text"
             android:layout_marginTop="@dimen/d16"
             android:background="@color/white"
             android:layout_height="@dimen/d48"/>

@@ -1499,6 +1499,7 @@ id btn_login
 id btn_register
 id btn_right
 id btn_sell
+id btn_send
 id btn_sure
 id btn_unlock_wallet
 id buttonPanel
@@ -1558,7 +1559,10 @@ id etwa_password
 id etwa_password_confirm
 id etwa_phone_number
 id etwa_random_verify_code
+id etwa_receive_address
+id etwa_remarks
 id etwa_verify_code
+id etwa_withdraw_amount
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1582,7 +1586,6 @@ id icon
 id icon_group
 id ifRoom
 id image
-id imageCode
 id img
 id info
 id invisible
@@ -1603,8 +1606,10 @@ id listMode
 id list_item
 id ll_action
 id ll_login
+id ll_no_fund_password
 id ll_password_key
 id ll_tab_item
+id ll_with_draw_content
 id masked
 id message
 id middle
@@ -1648,6 +1653,7 @@ id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
 id sb_progress
+id scan
 id sciv_email_verify
 id sciv_fund_password
 id sciv_google_verify
@@ -1703,7 +1709,6 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id text
 id text2
-id textCode
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -1727,6 +1732,7 @@ id transition_transform
 id tv_account_name
 id tv_action
 id tv_available
+id tv_cashable_balance
 id tv_content
 id tv_copy_address
 id tv_current_currency
@@ -1736,6 +1742,7 @@ id tv_exchange_currency
 id tv_exchange_rate
 id tv_fee
 id tv_fee_introduction
+id tv_fee_tips
 id tv_final_tx_amount
 id tv_forget_password
 id tv_freeze
@@ -1746,6 +1753,7 @@ id tv_login_now
 id tv_middle_info
 id tv_my_address
 id tv_name
+id tv_no_fund_password_tips
 id tv_number
 id tv_pay_account
 id tv_pay_method
@@ -1900,6 +1908,7 @@ layout view_buy
 layout view_order
 layout view_recharge
 layout view_sell
+layout view_with_draw
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap icon_back_red
@@ -1907,6 +1916,7 @@ mipmap icon_cb_pwd
 mipmap icon_cb_pwd_d
 mipmap icon_check_wallet_info
 mipmap icon_detail
+mipmap icon_scan
 raw beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1947,6 +1957,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string all_in
 string amount
 string amount_title
 string app_name
@@ -1957,6 +1968,7 @@ string buy
 string buy_detail
 string buy_title
 string cancel
+string cash_able_balance
 string character_counter_content_description
 string character_counter_pattern
 string confirm
@@ -1990,6 +2002,7 @@ string my_all_fund
 string my_fund
 string network_not_reachable
 string new_password_rule
+string no_fund_password_tips
 string number
 string order_title
 string original_password
@@ -2008,13 +2021,16 @@ string price
 string qrcode_name
 string random_verify_code
 string recharge
+string recharge_tips
 string register_now
 string register_title
+string remarks
 string reset_password_title
 string safety_center
 string salable_balance
 string scan_qr_code
 string search_menu_title
+string sell
 string sell_number
 string sell_price
 string sell_title

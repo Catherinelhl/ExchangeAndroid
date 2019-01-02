@@ -120,13 +120,19 @@ public class EditTextWithAction extends LinearLayout
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
                     imageView.setVisibility(VISIBLE);
+                    presenter.getImageVerifyCode();
+                    break;
+                case 4://显示扫描
+                    cbCheck.setVisibility(GONE);
+                    llAction.setVisibility(GONE);
+                    imageView.setVisibility(VISIBLE);
+                    imageView.setImageResource(R.mipmap.icon_scan);
                     break;
             }
 
             setEditHintTextSize(hint);
 
         }
-        presenter.getImageVerifyCode();
         initView();
     }
 
@@ -360,6 +366,13 @@ public class EditTextWithAction extends LinearLayout
     @Override
     public void getEmailVerifyFailure(String info) {
         LogTool.e(TAG, info);
+
+    }
+
+    public void setRightText(String info) {
+        if (tvAction != null) {
+            tvAction.setText(info);
+        }
 
     }
 }

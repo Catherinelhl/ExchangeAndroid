@@ -43,7 +43,7 @@
             android:layout_marginTop="@dimen/d20"
             android:layout_height="wrap_content"
             bcaas:hint="@string/graphic_verify_code"
-            bcaas:behaviour="imageCode"
+            bcaas:behaviour="image"
 
     />
     <Button

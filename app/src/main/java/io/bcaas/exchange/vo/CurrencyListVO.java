@@ -1,19 +1,18 @@
 package io.bcaas.exchange.vo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 /**
  * 幣種清單
- * 
+ *
  * @since 2018/12/11
- * 
+ *
  * @author Costa
- * 
+ *
  * @version 1.0.0
- * 
+ *
  */
+
 public class CurrencyListVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +20,7 @@ public class CurrencyListVO implements Serializable {
 	/**
 	 * 幣種清單Uid
 	 */
-	private int currencyUid;
+	private String currencyUid;
 	/**
 	 * 幣種名稱(英文)
 	 */
@@ -31,35 +30,43 @@ public class CurrencyListVO implements Serializable {
 	 */
 	private String cnName;
 	/**
-	 * 手續費
+	 * 提領 手續費
 	 */
-	private BigDecimal serviceCharge;
+	private String withdrawCharge;
+	/**
+	 * 購買 手續費
+	 */
+	private String buyCharge;
+	/**
+	 * 銷售 手續費
+	 */
+	private String sellCharge;
 	/**
 	 * 礦工費
 	 */
-	private BigDecimal gasFeeCharge;
+	private String gasFeeCharge;
 	/**
 	 * 手續費利率
 	 */
-	private BigDecimal rate;
+	private String rate;
 	/**
 	 * 更新時間
 	 */
-	private Timestamp updateTime;
+	private String updateTime;
 	/**
 	 * 建立時間
 	 */
-	private Timestamp createTime;
+	private String createTime;
 
 	public CurrencyListVO() {
 		super();
 	}
 
-	public int getCurrencyUid() {
+	public String getCurrencyUid() {
 		return currencyUid;
 	}
 
-	public void setCurrencyUid(int currencyUid) {
+	public void setCurrencyUid(String currencyUid) {
 		this.currencyUid = currencyUid;
 	}
 
@@ -79,43 +86,59 @@ public class CurrencyListVO implements Serializable {
 		this.cnName = cnName;
 	}
 
-	public BigDecimal getServiceCharge() {
-		return serviceCharge;
+	public String getWithdrawCharge() {
+		return withdrawCharge;
 	}
 
-	public void setServiceCharge(BigDecimal serviceCharge) {
-		this.serviceCharge = serviceCharge;
+	public void setWithdrawCharge(String withdrawCharge) {
+		this.withdrawCharge = withdrawCharge;
 	}
 
-	public BigDecimal getGasFeeCharge() {
+	public String getBuyCharge() {
+		return buyCharge;
+	}
+
+	public void setBuyCharge(String buyCharge) {
+		this.buyCharge = buyCharge;
+	}
+
+	public String getSellCharge() {
+		return sellCharge;
+	}
+
+	public void setSellCharge(String sellCharge) {
+		this.sellCharge = sellCharge;
+	}
+
+	public String getGasFeeCharge() {
 		return gasFeeCharge;
 	}
 
-	public void setGasFeeCharge(BigDecimal gasFeeCharge) {
+	public void setGasFeeCharge(String gasFeeCharge) {
 		this.gasFeeCharge = gasFeeCharge;
 	}
 
-	public BigDecimal getRate() {
+	public String getRate() {
 		return rate;
 	}
 
-	public void setRate(BigDecimal rate) {
+	public void setRate(String rate) {
 		this.rate = rate;
 	}
 
-	public Timestamp getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
-	public Timestamp getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 

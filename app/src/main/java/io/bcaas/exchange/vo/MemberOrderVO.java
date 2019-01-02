@@ -1,18 +1,16 @@
 package io.bcaas.exchange.vo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 /**
  * 會員訂單 type : (0:充值, 1:提現, 2:買, 3:賣)
- * 
+ *
  * @since 2018/12/11
- * 
+ *
  * @author Costa
- * 
+ *
  * @version 1.0.0
- * 
+ *
  */
 public class MemberOrderVO implements Serializable {
 
@@ -21,20 +19,16 @@ public class MemberOrderVO implements Serializable {
 	/**
 	 * 訂單Uid
 	 */
-	private int memberOrderUid;
+	private Long memberOrderUid;
 	/**
 	 * 會員帳號 (Email format)
 	 */
 	private MemberVO memberVO;
 	/**
-	 * 幣種清單Uid
-	 */
-	private CurrencyListVO currencyListVO;
-	/**
 	 * 訂單種類<br>
 	 * (0:充值, 1:提現, 2:買, 3:賣)
 	 */
-	private int type;
+	private Integer type;
 	/**
 	 * 訂單種類對應的狀態<br>
 	 * 0:充值 ---> (0:失敗, 1:已完成)<br>
@@ -42,19 +36,31 @@ public class MemberOrderVO implements Serializable {
 	 * 2:買 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
 	 * 3:賣 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
 	 */
-	private int status;
+	private Integer status;
+	/**
+	 * 幣種清單Uid
+	 */
+	private CurrencyListVO currencyListVO;
 	/**
 	 * 數量
 	 */
-	private BigDecimal amount;
+	private String amount;
 	/**
-	 * 支出
+	 * 單價
 	 */
-	private BigDecimal expenditure;
+	private String unitPrice;
 	/**
-	 * 收入
+	 * 手續費
 	 */
-	private BigDecimal income;
+	private String handlingFee;
+	/**
+	 * 總價
+	 */
+	private String price;
+	/**
+	 * 支付的幣種
+	 */
+	private CurrencyListVO paymentCurrencyUid;
 	/**
 	 * 備註(提現)
 	 */
@@ -62,103 +68,147 @@ public class MemberOrderVO implements Serializable {
 	/**
 	 * 更新時間
 	 */
-	private Timestamp updateTime;
+	private String updateTime;
 	/**
 	 * 建立時間
 	 */
-	private Timestamp createTime;
+	private String createTime;
+
 
 	public MemberOrderVO() {
 		super();
 	}
 
-	public int getMemberOrderUid() {
+
+	public Long getMemberOrderUid() {
 		return memberOrderUid;
 	}
 
-	public void setMemberOrderUid(int memberOrderUid) {
+
+	public void setMemberOrderUid(Long memberOrderUid) {
 		this.memberOrderUid = memberOrderUid;
 	}
+
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
 
 	public MemberVO getMemberVO() {
 		return memberVO;
 	}
 
+
 	public void setMemberVO(MemberVO memberVO) {
 		this.memberVO = memberVO;
 	}
+
+
+	public Integer getType() {
+		return type;
+	}
+
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+
+	public Integer getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 
 	public CurrencyListVO getCurrencyListVO() {
 		return currencyListVO;
 	}
 
+
 	public void setCurrencyListVO(CurrencyListVO currencyListVO) {
 		this.currencyListVO = currencyListVO;
 	}
 
-	public int getType() {
-		return type;
-	}
 
-	public void setType(int type) {
-		this.type = type;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public BigDecimal getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 
-	public BigDecimal getExpenditure() {
-		return expenditure;
+
+	public String getUnitPrice() {
+		return unitPrice;
 	}
 
-	public void setExpenditure(BigDecimal expenditure) {
-		this.expenditure = expenditure;
+
+	public void setUnitPrice(String unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
-	public BigDecimal getIncome() {
-		return income;
+
+	public String getHandlingFee() {
+		return handlingFee;
 	}
 
-	public void setIncome(BigDecimal income) {
-		this.income = income;
+
+	public void setHandlingFee(String handlingFee) {
+		this.handlingFee = handlingFee;
 	}
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+
+	public CurrencyListVO getPaymentCurrencyUid() {
+		return paymentCurrencyUid;
+	}
+
+
+	public void setPaymentCurrencyUid(CurrencyListVO paymentCurrencyUid) {
+		this.paymentCurrencyUid = paymentCurrencyUid;
+	}
+
 
 	public String getMark() {
 		return mark;
 	}
 
+
 	public void setMark(String mark) {
 		this.mark = mark;
 	}
 
-	public Timestamp getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Timestamp updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public Timestamp getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
