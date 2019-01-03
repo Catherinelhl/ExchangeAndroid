@@ -2041,10 +2041,11 @@ int string start_immediate 0x7f0e0078
 int string status_bar_notification_info_overflow 0x7f0e0079
 int string successfully_copied 0x7f0e007a
 int string sure 0x7f0e007b
-int string total_account 0x7f0e007c
-int string warning 0x7f0e007d
-int string with_draw 0x7f0e007e
-int string withdraw_tips 0x7f0e007f
+int string to_setting_grant_permission 0x7f0e007c
+int string total_account 0x7f0e007d
+int string warning 0x7f0e007e
+int string with_draw 0x7f0e007f
+int string withdraw_tips 0x7f0e0080
 int style AlertDialog_AppCompat 0x7f0f0000
 int style AlertDialog_AppCompat_Light 0x7f0f0001
 int style Animation_AppCompat_Dialog 0x7f0f0002

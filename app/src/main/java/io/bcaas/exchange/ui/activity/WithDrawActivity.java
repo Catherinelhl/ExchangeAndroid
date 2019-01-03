@@ -1,6 +1,11 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -9,12 +14,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.view.RechargeView;
 import io.bcaas.exchange.ui.view.WithDrawView;
 import io.reactivex.disposables.Disposable;
@@ -62,7 +69,7 @@ public class WithDrawActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        views=new ArrayList<>();
+        views = new ArrayList<>();
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.with_draw);
     }
@@ -123,6 +130,75 @@ public class WithDrawActivity extends BaseActivity {
         @Override
         public <T> void onItemSelect(T type, String from) {
 
+            switch (from) {
+                case Constants.EditTextFrom.WITHDRAW_SCAN:
+                    //跳转扫描，同时也应该记录下当前返回此动作是第几个页面，方便刷新界面
+                    requestCameraPermission();
+                    break;
+                default:
+                    //跳转界面
+                    Intent intent = new Intent();
+                    intent.setClass(context, SetFundPasswordActivity.class);
+                    startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+                    break;
+            }
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (data == null) {
+                return;
+            }
+            switch (requestCode) {
+                case Constants.RequestCode.REQUEST_CODE_CAMERA_SCAN:
+                    // 如果当前是照相机扫描回来
+                    Bundle bundle = data.getExtras();
+                    if (bundle != null) {
+                        String scanInfo = bundle.getString(Constants.KeyMaps.RESULT);
+                        LogTool.d(TAG, "scanInfo:" + scanInfo);
+                        //刷新当前界面
+                        int position = tabLayout.getSelectedTabPosition();
+                        tabLayout.getTabAt(position);
+                        switch (position) {
+                            case 0:
+                                withDrawViewOne.setScanInfo(scanInfo);
+                                break;
+                            case 1:
+                                withDrawViewTwo.setScanInfo(scanInfo);
+
+                                break;
+                            case 2:
+                                withDrawViewThree.setScanInfo(scanInfo);
+
+                                break;
+                        }
+                    }
+                    break;
+                case Constants.RequestCode.FUND_PASSWORD:
+                    //如果从「设置资金密码」页面跳转回来，那么需要重新刷新一下当前的界面
+                    if (tabLayout != null) {
+                        int position = tabLayout.getSelectedTabPosition();
+                        switch (position) {
+                            case 0:
+                                withDrawViewOne.refreshData(userInfoBeanBTC);
+                                break;
+                            case 1:
+                                withDrawViewTwo.refreshData(userInfoBeanETH);
+
+                                break;
+                            case 2:
+                                withDrawViewThree.refreshData(userInfoBeanZBB);
+
+                                break;
+                        }
+                        break;
+                    }
+            }
+        }
+
+    }
+
 }

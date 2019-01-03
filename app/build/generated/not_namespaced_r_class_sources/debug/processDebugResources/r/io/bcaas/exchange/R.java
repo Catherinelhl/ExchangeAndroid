@@ -5767,10 +5767,11 @@ public final class R {
     public static final int status_bar_notification_info_overflow=0x7f0e0079;
     public static final int successfully_copied=0x7f0e007a;
     public static final int sure=0x7f0e007b;
-    public static final int total_account=0x7f0e007c;
-    public static final int warning=0x7f0e007d;
-    public static final int with_draw=0x7f0e007e;
-    public static final int withdraw_tips=0x7f0e007f;
+    public static final int to_setting_grant_permission=0x7f0e007c;
+    public static final int total_account=0x7f0e007d;
+    public static final int warning=0x7f0e007e;
+    public static final int with_draw=0x7f0e007f;
+    public static final int withdraw_tips=0x7f0e0080;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0f0000;

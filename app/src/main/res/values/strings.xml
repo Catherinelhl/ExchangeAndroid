@@ -73,5 +73,6 @@
     <string name="no_fund_password_tips">您还没有设置资金密码,该密码将用于交易和提现的验证。为保证账户安全,请先设置资金密码。</string>
     <string name="all_in">全部发送</string>
 
+    <string name="to_setting_grant_permission">Click "Confirm" to jump to system settings to open permissions</string>
 
 </resources>

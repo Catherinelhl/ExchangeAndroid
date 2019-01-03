@@ -1,13 +1,11 @@
 package io.bcaas.exchange.view.editview;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -15,16 +13,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.timer.IntervalTimerTool;
-import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
-import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
 import io.bcaas.exchange.ui.presenter.VerifyCodePresenterImp;
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -65,6 +61,8 @@ public class EditTextWithAction extends LinearLayout
     private EditTextWatcherListener editTextWatcherListener;
     /*标识当前EditText来自于什么功能*/
     private String from;
+    /* 标记当前输入框的行为性质*/
+    private int behaviour;
 
     //用于倒计时的订阅
     private Disposable disposableCountDownTimer;
@@ -84,7 +82,7 @@ public class EditTextWithAction extends LinearLayout
             /*声明内容的字体大小*/
             float textSize = typedArray.getFloat(R.styleable.editViewWithAction_textSize, 16);
             boolean showLine = typedArray.getBoolean(R.styleable.editViewWithAction_showLine, true);
-            int behaviour = typedArray.getInt(R.styleable.editViewWithAction_behaviour, 0);
+            behaviour = typedArray.getInt(R.styleable.editViewWithAction_behaviour, 0);
             int textColor = typedArray.getInteger(R.styleable.editViewWithAction_textColor, context.getResources().getColor(R.color.black_1d2124));
             int hintColor = typedArray.getInteger(R.styleable.editViewWithAction_hintColor, context.getResources().getColor(R.color.black30_1d2124));
 
@@ -171,13 +169,10 @@ public class EditTextWithAction extends LinearLayout
                         //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
                         String tvActionString = tvAction.getText().toString();
                         if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
-                            //开始请求验证码数据  //getCurrentLanguage()
+                            //开始请求验证码数据  //
                             if (presenter != null) {
-                                presenter.emailVerify(Constants.User.MEMBER_ID, "0", Constants.User.MEMBER_ID);
+                                presenter.emailVerify(Constants.User.MEMBER_ID, BaseApplication.getCurrentLanguage(), Constants.User.MEMBER_ID);
                             }
-//                            if (editTextWatcherListener != null) {
-//                                editTextWatcherListener.onSendAction(from);
-//                            }
                             IntervalTimerTool.countDownTimer(60)
                                     .subscribeOn(Schedulers.newThread())
                                     .observeOn(AndroidSchedulers.mainThread())
@@ -264,7 +259,20 @@ public class EditTextWithAction extends LinearLayout
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.getImageVerifyCode();
+                        //判断当前的图片类型：扫描、验证码
+                        switch (behaviour) {
+                            case 3:
+                                //当前是验证码，点击重新请求验证码
+                                presenter.getImageVerifyCode();
+                                break;
+                            case 4:
+                                //如果当前是扫描，那么点击跳转扫描
+                                if (editTextWatcherListener != null) {
+                                    editTextWatcherListener.onAction(from);
+                                }
+                                break;
+                        }
+
 
                     }
 
@@ -307,6 +315,13 @@ public class EditTextWithAction extends LinearLayout
             return null;
         }
         return etContent.getText().toString();
+    }
+
+    public void setContent(String content) {
+        if (etContent == null) {
+            return;
+        }
+        etContent.setText(content);
     }
 
     public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener, String from) {
@@ -374,5 +389,11 @@ public class EditTextWithAction extends LinearLayout
             tvAction.setText(info);
         }
 
+    }
+
+    public void setRightTextColor(int color) {
+        if (tvAction != null) {
+            tvAction.setTextColor(color);
+        }
     }
 }

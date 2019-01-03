@@ -4,22 +4,29 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.activity.WithDrawActivity;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
@@ -159,7 +166,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-
+    //''en-us" : 英文
+    //"zh-tw" : 繁中
+    //"zh-cn" : 簡中
     /*獲取當前語言環境*/
     protected String getCurrentLanguage() {
         // 1：檢查應用是否已經有用戶自己存儲的語言種類
@@ -173,11 +182,53 @@ public abstract class BaseActivity extends AppCompatActivity {
         //3:匹配當前的語言獲取，返回APP裡面識別的TAG
         if (StringTool.equals(currentString, Constants.ValueMaps.SC)) {
             return currentString;
+        } else if (StringTool.equals(currentString, Constants.ValueMaps.TC)) {
+            return currentString;
         } else {
             return Constants.ValueMaps.EN;
 
         }
     }
+
+    /**
+     * 獲得照相機權限
+     */
+    protected void requestCameraPermission() {
+        if (Build.VERSION.SDK_INT > 22) {//这个说明系统版本在6.0之下，不需要动态获取权限
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                //先判断有没有权限 ，没有就在这里进行权限的申请
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.CAMERA}, Constants.RequestCode.REQUEST_CODE_CAMERA_OK);
+
+            } else {
+                //说明已经获取到摄像头权限了 想干嘛干嘛
+                intentToCaptureActivity();
+
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.RequestCode.REQUEST_CODE_CAMERA_OK:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //这里已经获取到了摄像头的权限，想干嘛干嘛了可以
+                    intentToCaptureActivity();
+                } else {
+                    //这里是拒绝给APP摄像头权限，给个提示什么的说明一下都可以。
+                    showToast(getString(R.string.to_setting_grant_permission));
+                }
+                break;
+        }
+    }
+
+    private void intentToCaptureActivity() {
+        startActivityForResult(new Intent(this, CaptureActivity.class), Constants.RequestCode.REQUEST_CODE_CAMERA_SCAN);
+
+    }
+
 
     /**
      * 关闭当前页面，返回上一个页面

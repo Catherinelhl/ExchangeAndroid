@@ -2042,6 +2042,7 @@ string start_immediate
 string status_bar_notification_info_overflow
 string successfully_copied
 string sure
+string to_setting_grant_permission
 string total_account
 string warning
 string with_draw

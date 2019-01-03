@@ -4,6 +4,7 @@ import android.os.Bundle;
 import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.ObservableTimerListener;
 import io.bcaas.exchange.tools.ObservableTimerTool;
@@ -28,7 +29,7 @@ public class BrandActivity extends BaseActivity {
     @Override
     public void initView() {
         ObservableTimerTool.countDownTimerBySetTime(Constants.ValueMaps.STAY_BRAND_ACTIVITY_TIME, observableTimerListener);
-
+        BaseApplication.setCurrentLanguage(getCurrentLanguage());
     }
 
 

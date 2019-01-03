@@ -46,5 +46,6 @@
     <string name="input_password">请输入密码</string>
     <string name="input_graphic_verify_code">请输入验证码</string>
     <string name="successfully_copied">复制成功</string>
+    <string name="to_setting_grant_permission">点击"确定"跳转至系统设置开启权限</string>
 
 </resources>

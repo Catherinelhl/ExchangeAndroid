@@ -46,6 +46,7 @@ public class Constants {
         public static final long LOG_TIME = 1;
         public static final int STAY_BRAND_ACTIVITY_TIME = 1;//如果当前不用编辑页面，停留在页面的时间1s
 
+
         public static final String SC = "SC";//中文（简体）
         public static final String TC = "TC";//中文（繁體）
         public static final String EN = "EN";//英文
@@ -68,11 +69,14 @@ public class Constants {
         public static final int WITH_DRAW = 0x6;//跳转到我的提现页面的code码
         public static final int RECHARGE = 0x7;//跳转到我的充值页面的code码
         public static final int SAFETY_CENTER = 0x8;//跳转到安全中心页面的code码
-        public static final int MODIFY_LOGIN_PASSOWRD = 0x9;//跳转到「修改登录密码」页面的code码
+        public static final int MODIFY_LOGIN_PASSWORD = 0x9;//跳转到「修改登录密码」页面的code码
         public static final int FUND_PASSWORD = 0x10;//跳转到资金密码页面的code码
         public static final int EMAIL_VERIFY = 0x11;//跳转到「邮箱验证」页面的code码
         public static final int PHONE_VERIFY = 0x13;//跳转到「手机验证」页面的code码
         public static final int GOOGLE_VERIFY = 0x14;//跳转到「google验证」页面的code码
+        public static final int REQUEST_CODE_CAMERA_SCAN = 0x15;//跳转到「调用扫描」的界面
+        public static final int REQUEST_CODE_CAMERA_OK = 0x16;//跳转到「调用扫描」的界面
+
     }
 
     public static String SPLICE_CONVERTER(String ip, int port) {
@@ -84,6 +88,8 @@ public class Constants {
         public static final String HTTP_COLON = ":";
         public static final String From = "from";//来自
         public static final String COPY_ADDRESS = "address";
+        public static final String RESULT = "result";//扫描二维码返回的结果
+
 
 
 
@@ -127,6 +133,7 @@ public class Constants {
         public static final String LOGIN_AMOUNT = "loginAmount";//登录页面的账户输入框
         public static final String LOGIN_PASSWORD = "loginPassword";//登录页面的密码框
         public static final String REGISTER_EMAIL_CODE = "registerEmailCode";//注册页面的邮箱验证码
+        public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
     }
 
 

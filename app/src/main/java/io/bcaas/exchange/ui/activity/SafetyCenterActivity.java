@@ -10,13 +10,11 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
@@ -152,7 +150,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.equals(from, getString(R.string.login_password))) {
             // 登录密码
             intent.setClass(SafetyCenterActivity.this, ModifyLoginPasswordActivity.class);
-            startActivityForResult(intent, Constants.RequestCode.MODIFY_LOGIN_PASSOWRD);
+            startActivityForResult(intent, Constants.RequestCode.MODIFY_LOGIN_PASSWORD);
 
         } else if (StringTool.equals(from, getString(R.string.fund_password))) {
             //资金密码
@@ -182,7 +180,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                case Constants.RequestCode.MODIFY_LOGIN_PASSOWRD:
+                case Constants.RequestCode.MODIFY_LOGIN_PASSWORD:
                     break;
                 case Constants.RequestCode.FUND_PASSWORD:
                     break;

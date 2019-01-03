@@ -89,7 +89,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             }
 
             @Override
-            public void onSendAction(String from) {
+            public void onAction(String from) {
 
             }
         }, Constants.EditTextFrom.LOGIN_AMOUNT);
@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             }
 
             @Override
-            public void onSendAction(String from) {
+            public void onAction(String from) {
 
             }
         }, Constants.EditTextFrom.LOGIN_PASSWORD);
@@ -168,19 +168,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                     public void onNext(Object o) {
                         String memberID = Constants.User.MEMBER_ID;
                         String password = Constants.User.MEMBER_PASSWORD;
-                        String verifyCode =etwaImageCode.getContent();
+                        String verifyCode = etwaImageCode.getContent();
                         //1：判断账号非空
-                        if (StringTool.isEmpty(memberID)){
+                        if (StringTool.isEmpty(memberID)) {
                             showToast(getString(R.string.input_account));
                             return;
                         }
                         //2：判断密码非空
-                        if (StringTool.isEmpty(password)){
+                        if (StringTool.isEmpty(password)) {
                             showToast(getString(R.string.input_password));
                             return;
                         }
                         //3：判断验证码非空
-                        if (StringTool.isEmpty(verifyCode)){
+                        if (StringTool.isEmpty(verifyCode)) {
                             showToast(getString(R.string.input_graphic_verify_code));
                             return;
                         }

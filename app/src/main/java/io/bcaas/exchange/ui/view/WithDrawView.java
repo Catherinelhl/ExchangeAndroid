@@ -13,6 +13,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
@@ -70,6 +71,20 @@ public class WithDrawView extends LinearLayout {
         tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
         tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
         llWithDrawContent = view.findViewById(R.id.ll_with_draw_content);
+        etwaReceiveAddress.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+                //跳转扫描二维码
+                if (onItemSelectListener != null) {
+                    onItemSelectListener.onItemSelect(null, from);
+                }
+            }
+        }, Constants.EditTextFrom.WITHDRAW_SCAN);
         initListener();
 
     }
@@ -131,22 +146,32 @@ public class WithDrawView extends LinearLayout {
         //判断当前是否设置资金密码
         boolean hasFundPassword = BaseApplication.isSetFundPassword();
         if (llNoFundPassword != null) {
-            llNoFundPassword.setVisibility(hasFundPassword ? VISIBLE : GONE);
+            llNoFundPassword.setVisibility(hasFundPassword ? GONE : VISIBLE);
         }
 
         if (llWithDrawContent != null) {
-            llWithDrawContent.setVisibility(hasFundPassword ? GONE : VISIBLE);
+            llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
         }
         if (hasFundPassword) {
-            if (userInfoBean != null) {
-                if (tvCashableBalance != null) {
-                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance));
-                }
-                if (etwaWithdrawAmount != null) {
-                    etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));
-                }
+            if (tvCashableBalance != null) {
+                tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + "231.213415  BTC");
+            }
+            if (etwaWithdrawAmount != null) {
+                etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));
+                etwaWithdrawAmount.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
             }
         }
 
+    }
+
+    /**
+     * 将当前扫描的值返回
+     *
+     * @param scanInfo
+     */
+    public void setScanInfo(String scanInfo) {
+        if (etwaReceiveAddress != null) {
+            etwaReceiveAddress.setContent(scanInfo);
+        }
     }
 }
