@@ -3,6 +3,7 @@ package io.bcaas.exchange.maker;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.SafetyCenterBean;
 
 import java.util.ArrayList;
@@ -39,8 +40,8 @@ public class DataGenerationRegister {
     /**
      * 初始化安全中心数据
      */
-    private void initSafetyCenterData(){
-        SafetyCenterBean safetyCenterBean=new SafetyCenterBean();
+    private void initSafetyCenterData() {
+        SafetyCenterBean safetyCenterBean = new SafetyCenterBean();
         safetyCenterBean.setTabType("登录密码");
     }
 
@@ -51,10 +52,10 @@ public class DataGenerationRegister {
 
     private void initData() {
         //初始化底部栏文本数据
-        tabTitles.add("买进");
-        tabTitles.add("卖出");
-        tabTitles.add("订单");
-        tabTitles.add("账户");
+        tabTitles.add(BaseApplication.context().getResources().getString(R.string.buy_in));
+        tabTitles.add(BaseApplication.context().getString(R.string.sell_out));
+        tabTitles.add(BaseApplication.context().getString(R.string.order));
+        tabTitles.add(BaseApplication.context().getString(R.string.account));
         tabBottomTitleCount = tabTitles.size();
 
         //初始化顶部栏数据
@@ -70,14 +71,14 @@ public class DataGenerationRegister {
         tabOrderTopTitleCount = tabOrderTopTitles.size();
 
         //初始化底部栏图标数据
-        tabDrawables.add(R.drawable.icon_home);
-        tabDrawables.add(R.drawable.icon_home);
-        tabDrawables.add(R.drawable.icon_home);
-        tabDrawables.add(R.drawable.icon_home);
-        tabFocusDrawables.add(R.drawable.icon_home_f);
-        tabFocusDrawables.add(R.drawable.icon_home_f);
-        tabFocusDrawables.add(R.drawable.icon_home_f);
-        tabFocusDrawables.add(R.drawable.icon_home_f);
+        tabDrawables.add(R.mipmap.icon_buy_in);
+        tabDrawables.add(R.mipmap.icon_sell_out);
+        tabDrawables.add(R.mipmap.icon_order);
+        tabDrawables.add(R.mipmap.icon_account);
+        tabFocusDrawables.add(R.mipmap.icon_buy_in_f);
+        tabFocusDrawables.add(R.mipmap.icon_sell_out_f);
+        tabFocusDrawables.add(R.mipmap.icon_order_f);
+        tabFocusDrawables.add(R.mipmap.icon_account_f);
     }
 
     /**

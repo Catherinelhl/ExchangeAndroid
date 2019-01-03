@@ -101,7 +101,8 @@ public class MainActivity extends BaseActivity
             // method 自定义布局-----
             tab.setCustomView(R.layout.item_bottom_tab);
             TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-            textView.getPaint().setShader(getShader(textView, false));
+//            textView.getPaint().setShader(getShader(textView, false));
+            textView.setTextColor(context.getResources().getColor(R.color.grey_999999));
             textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, i, false), null, null);
             textView.setText(dataGenerationRegister.getTabTitle(i));
             //自定义布局-----
@@ -110,7 +111,7 @@ public class MainActivity extends BaseActivity
             if (i == 0) {
                 onTabItemSelected(i);
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
-                textView.getPaint().setShader(getShader(textView, true));
+                textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, 0, true), null, null);
 
@@ -159,7 +160,7 @@ public class MainActivity extends BaseActivity
                 //自定义:如果是自定义的tabItem，那么就需要调用这句来设置选中状态，虽然没有界面上的变化
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-                textView.getPaint().setShader(getShader(textView, true));
+                textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2：如果是直接就用一个TextView控件来表示了，那么就可以直接用下面这一句来表示
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
@@ -170,7 +171,7 @@ public class MainActivity extends BaseActivity
                 //自定义
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(false);
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-                textView.getPaint().setShader(getShader(textView, false));
+                textView.setTextColor(context.getResources().getColor(R.color.grey_999999));
                 //method 2
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(MainActivity.this, tab.getPosition(), false), null, null);
 
@@ -180,7 +181,7 @@ public class MainActivity extends BaseActivity
             public void onTabReselected(TabLayout.Tab tab) {
                 //自定义
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-                textView.getPaint().setShader(getShader(textView, true));
+                textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
@@ -221,19 +222,19 @@ public class MainActivity extends BaseActivity
 
     }
 
-    /**
-     * 设置底部选项卡渐变色
-     *
-     * @param textView
-     * @param isCheck
-     * @return
-     */
-    private LinearGradient getShader(TextView textView, boolean isCheck) {
-        return new LinearGradient(0, 0, 0, textView.getPaint().getTextSize(),
-                getResources().getColor(isCheck ? R.color.theme_FDD400 : R.color.grey_c5c5c5),
-                getResources().getColor(isCheck ? R.color.theme_FF6400 : R.color.grey_c5c5c5),
-                Shader.TileMode.CLAMP);
-    }
+//    /**
+//     * 设置底部选项卡渐变色
+//     *
+//     * @param textView
+//     * @param isCheck
+//     * @return
+//     */
+//    private LinearGradient getShader(TextView textView, boolean isCheck) {
+//        return new LinearGradient(0, 0, 0, textView.getPaint().getTextSize(),
+//                getResources().getColor(isCheck ? R.color.theme_FDD400 : R.color.grey_c5c5c5),
+//                getResources().getColor(isCheck ? R.color.theme_FF6400 : R.color.grey_c5c5c5),
+//                Shader.TileMode.CLAMP);
+//    }
 
 
     /**

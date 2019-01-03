@@ -36,12 +36,12 @@ public class BrandActivity extends BaseActivity {
     private ObservableTimerListener observableTimerListener = new ObservableTimerListener() {
         @Override
         public void timeUp(Constants.TimerType timerType) {
-//            if (BuildConfig.DEBUG) {
-//                intentToActivity(MainActivity.class, true);
-//            } else {
-            intentToActivity(LoginActivity.class, true);
-//
-//            }
+            if (BuildConfig.DEBUG) {
+                intentToActivity(MainActivity.class, true);
+            } else {
+                intentToActivity(LoginActivity.class, true);
+
+            }
         }
     };
 

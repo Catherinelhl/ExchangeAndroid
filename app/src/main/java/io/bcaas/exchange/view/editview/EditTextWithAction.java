@@ -348,7 +348,6 @@ public class EditTextWithAction extends LinearLayout
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        LogTool.d(TAG, "onDetachedFromWindow");
         disposeRequest(disposableCountDownTimer);
     }
 

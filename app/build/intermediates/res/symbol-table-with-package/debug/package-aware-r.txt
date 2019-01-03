@@ -1422,8 +1422,6 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable icon_bcaas
-drawable icon_home
-drawable icon_home_f
 drawable img_scan_code
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
@@ -1447,7 +1445,6 @@ drawable selector_btn_yellow
 drawable selector_cb_password
 drawable selector_radio_button_home
 drawable selector_text_yellow
-drawable selector_tv_home
 drawable shadow
 drawable solid_border_yellow
 drawable stroke_border_blue
@@ -1911,12 +1908,20 @@ layout view_sell
 layout view_with_draw
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap icon_account
+mipmap icon_account_f
 mipmap icon_back_red
+mipmap icon_buy_in
+mipmap icon_buy_in_f
 mipmap icon_cb_pwd
 mipmap icon_cb_pwd_d
 mipmap icon_check_wallet_info
 mipmap icon_detail
+mipmap icon_order
+mipmap icon_order_f
 mipmap icon_scan
+mipmap icon_sell_out
+mipmap icon_sell_out_f
 raw beep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -1957,6 +1962,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string account
 string all_in
 string amount
 string amount_title
@@ -1966,6 +1972,7 @@ string bind_phone
 string bottom_sheet_behavior
 string buy
 string buy_detail
+string buy_in
 string buy_title
 string cancel
 string cash_able_balance
@@ -2004,6 +2011,7 @@ string network_not_reachable
 string new_password_rule
 string no_fund_password_tips
 string number
+string order
 string order_title
 string original_password
 string password
@@ -2032,6 +2040,7 @@ string scan_qr_code
 string search_menu_title
 string sell
 string sell_number
+string sell_out
 string sell_price
 string sell_title
 string send

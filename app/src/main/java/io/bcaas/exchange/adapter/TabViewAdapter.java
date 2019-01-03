@@ -4,6 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.tools.StringTool;
 

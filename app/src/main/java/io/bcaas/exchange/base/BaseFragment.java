@@ -64,7 +64,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private synchronized void initPrepare() {
-        LogTool.i(TAG, "setUserVisibleHint:initPrepare" + isPrepared);
         if (!isPrepared) {
             isPrepared = true;
         }
