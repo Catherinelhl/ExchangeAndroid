@@ -183,12 +183,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         //3:匹配當前的語言獲取，返回APP裡面識別的TAG
         if (StringTool.equals(currentString, Constants.ValueMaps.SC)
                 || StringTool.equals(currentString, Constants.ValueMaps.CN)) {
-            return "zh-cn";
+            return Constants.ValueMaps.ZH_CN;
         } else if (StringTool.equals(currentString, Constants.ValueMaps.TC)
                 || StringTool.equals(currentString, Constants.ValueMaps.TW)) {
-            return "zh-tw";
+            return Constants.ValueMaps.ZH_TW;
         } else {
-            return "en-us";
+            return Constants.ValueMaps.EN_US;
 
         }
     }

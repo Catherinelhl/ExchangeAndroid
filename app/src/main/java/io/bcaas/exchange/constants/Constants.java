@@ -52,6 +52,9 @@ public class Constants {
         public static final String TC = "TC";//中文（繁體）
         public static final String TW = "TW";//中文（繁體）
         public static final String EN = "EN";//英文
+        public static final String ZH_CN = "zh-cn";//中文（简体）
+        public static final String ZH_TW = "zh-tw";//繁中
+        public static final String EN_US = "en-us";//英文
 
         //二維碼渲染的前景色
         public static final int foregroundColorOfQRCode = 0xff000000;
