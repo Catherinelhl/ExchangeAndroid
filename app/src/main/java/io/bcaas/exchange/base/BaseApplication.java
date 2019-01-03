@@ -91,17 +91,15 @@ public class BaseApplication extends MultiDexApplication {
 
     public static String getCurrentLanguage() {
         //3:匹配當前的語言獲取，返回APP裡面識別的TAG
-        if (StringTool.equals(currentLanguage, Constants.ValueMaps.SC)) {
-//            return currentString;
-            return "zh-cn";
-        } else if (StringTool.equals(currentLanguage, Constants.ValueMaps.TC)) {
-//            return currentString;
-            return "zh-tw";
-        } else {
-//            return Constants.ValueMaps.EN;
-            return "en-us";
-
-        }
+        return currentLanguage;
+//        if (StringTool.equals(currentLanguage, Constants.ValueMaps.SC)) {
+//            return "zh-cn";
+//        } else if (StringTool.equals(currentLanguage, Constants.ValueMaps.TC)) {
+//            return "zh-tw";
+//        } else {
+//            return "en-us";
+//
+//        }
     }
 
     public static void setCurrentLanguage(String currentLanguage) {

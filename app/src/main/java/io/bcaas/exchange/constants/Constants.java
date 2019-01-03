@@ -48,7 +48,9 @@ public class Constants {
 
 
         public static final String SC = "SC";//中文（简体）
+        public static final String CN = "CN";//中文
         public static final String TC = "TC";//中文（繁體）
+        public static final String TW = "TW";//中文（繁體）
         public static final String EN = "EN";//英文
 
         //二維碼渲染的前景色
@@ -89,8 +91,6 @@ public class Constants {
         public static final String From = "from";//来自
         public static final String COPY_ADDRESS = "address";
         public static final String RESULT = "result";//扫描二维码返回的结果
-
-
 
 
         public static final String BUY_DETAIL = "buyDetail";

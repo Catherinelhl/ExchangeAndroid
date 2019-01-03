@@ -28,8 +28,8 @@ public class BrandActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        ObservableTimerTool.countDownTimerBySetTime(Constants.ValueMaps.STAY_BRAND_ACTIVITY_TIME, observableTimerListener);
         BaseApplication.setCurrentLanguage(getCurrentLanguage());
+        ObservableTimerTool.countDownTimerBySetTime(Constants.ValueMaps.STAY_BRAND_ACTIVITY_TIME, observableTimerListener);
     }
 
 

@@ -24,6 +24,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.WithDrawActivity;
@@ -180,12 +181,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             currentString = locale.getCountry();//CN-簡體中文，TW、HK-繁體中文
         }
         //3:匹配當前的語言獲取，返回APP裡面識別的TAG
-        if (StringTool.equals(currentString, Constants.ValueMaps.SC)) {
-            return currentString;
-        } else if (StringTool.equals(currentString, Constants.ValueMaps.TC)) {
-            return currentString;
+        if (StringTool.equals(currentString, Constants.ValueMaps.SC)
+                || StringTool.equals(currentString, Constants.ValueMaps.CN)) {
+            return "zh-cn";
+        } else if (StringTool.equals(currentString, Constants.ValueMaps.TC)
+                || StringTool.equals(currentString, Constants.ValueMaps.TW)) {
+            return "zh-tw";
         } else {
-            return Constants.ValueMaps.EN;
+            return "en-us";
 
         }
     }
