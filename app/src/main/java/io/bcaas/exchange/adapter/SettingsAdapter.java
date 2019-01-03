@@ -63,13 +63,16 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.viewHo
         viewHolder.vLine.setVisibility(View.VISIBLE);
         switch (tag) {
             case MY_ALL_FUND:
-                viewHolder.ivIcon.setImageResource(R.mipmap.icon_check_wallet_info);
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_my_fund);
                 break;
             case RECHARGE:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_recharge);
                 break;
             case WITH_DRAW:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_withdraw);
                 break;
             case SAFETY_CENTER:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_safety_center);
                 viewHolder.vLine.setVisibility(View.INVISIBLE);
                 break;
         }

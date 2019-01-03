@@ -5631,18 +5631,24 @@ public final class R {
     public static final int ic_launcher_round=0x7f0c0001;
     public static final int icon_account=0x7f0c0002;
     public static final int icon_account_f=0x7f0c0003;
-    public static final int icon_back_red=0x7f0c0004;
-    public static final int icon_buy_in=0x7f0c0005;
-    public static final int icon_buy_in_f=0x7f0c0006;
-    public static final int icon_cb_pwd=0x7f0c0007;
-    public static final int icon_cb_pwd_d=0x7f0c0008;
-    public static final int icon_check_wallet_info=0x7f0c0009;
+    public static final int icon_back=0x7f0c0004;
+    public static final int icon_back_red=0x7f0c0005;
+    public static final int icon_buy_in=0x7f0c0006;
+    public static final int icon_buy_in_f=0x7f0c0007;
+    public static final int icon_cb_pwd=0x7f0c0008;
+    public static final int icon_cb_pwd_d=0x7f0c0009;
     public static final int icon_detail=0x7f0c000a;
-    public static final int icon_order=0x7f0c000b;
-    public static final int icon_order_f=0x7f0c000c;
-    public static final int icon_scan=0x7f0c000d;
-    public static final int icon_sell_out=0x7f0c000e;
-    public static final int icon_sell_out_f=0x7f0c000f;
+    public static final int icon_drop_down=0x7f0c000b;
+    public static final int icon_filter=0x7f0c000c;
+    public static final int icon_my_fund=0x7f0c000d;
+    public static final int icon_order=0x7f0c000e;
+    public static final int icon_order_f=0x7f0c000f;
+    public static final int icon_recharge=0x7f0c0010;
+    public static final int icon_safety_center=0x7f0c0011;
+    public static final int icon_scan=0x7f0c0012;
+    public static final int icon_sell_out=0x7f0c0013;
+    public static final int icon_sell_out_f=0x7f0c0014;
+    public static final int icon_withdraw=0x7f0c0015;
   }
   public static final class raw {
     public static final int beep=0x7f0d0000;

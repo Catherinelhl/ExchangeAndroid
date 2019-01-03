@@ -32,24 +32,24 @@ import java.util.List;
  * 帳戶
  */
 public class AccountFragment extends BaseFragment {
+    private String TAG = AccountFragment.class.getSimpleName();
+
+
     @BindView(R.id.iv_account)
     ImageView ivAccount;
     @BindView(R.id.tv_account_name)
     TextView tvAccountName;
     @BindView(R.id.rv_setting)
     RecyclerView rvSetting;
-    private String TAG = AccountFragment.class.getSimpleName();
     private SettingsAdapter settingTypesAdapter;
 
     @Override
     protected void onUserVisible() {
-        LogTool.i(TAG, "onUserVisible");
 
     }
 
     @Override
     protected void onUserInvisible() {
-        LogTool.i(TAG, "onUserInvisible");
 
     }
 

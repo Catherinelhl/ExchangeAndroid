@@ -13,7 +13,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/d18"
             android:background="@color/transparent"
-            android:src="@mipmap/icon_check_wallet_info"/>
+            android:src="@mipmap/icon_my_fund"/>
 
     <TextView
             android:id="@+id/tv_setting_type"
