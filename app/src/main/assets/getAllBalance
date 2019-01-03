@@ -1,0 +1,17 @@
+{
+  "memberKeyVOList": [
+    {
+      "memberKeyUid": 3,
+      "address": "1GfJ2eaieZHtkpLa4mv6LcNZnt2FGx4S5B",
+      "balanceAvailable": "0.0000000000",
+      "currencyListVO": {
+        "currencyUid": "1",
+        "enName": "BTC",
+        "cnName": "比特幣"
+      }
+    }
+  ],
+  "success": true,
+  "code": 200,
+  "message": "MemberKey get all balance success."
+}

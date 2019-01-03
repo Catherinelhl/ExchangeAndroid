@@ -209,9 +209,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         switch (requestCode) {
             case Constants.RequestCode.REGISTER_CODE: //注册页面返回
                 LogTool.d(TAG, "register return");
+                // 重新刷新登录界面的验证码
+                etwaImageCode.requestImageVerifyCode();
                 break;
             case Constants.RequestCode.RESET_PASSWORD_CODE://重置密码页面返回
                 LogTool.d(TAG, "reset password");
+                // 重新刷新登录界面的验证码
+                etwaImageCode.requestImageVerifyCode();
                 break;
         }
     }

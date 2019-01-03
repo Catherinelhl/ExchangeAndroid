@@ -12,6 +12,10 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.NetStateChangeEvent;
 import io.bcaas.exchange.receiver.NetStateReceiver;
 import io.bcaas.exchange.tools.*;
+import io.bcaas.exchange.tools.device.DeviceTool;
+import io.bcaas.exchange.vo.MemberKeyVO;
+
+import java.util.List;
 
 /**
  * @author catherine.brainwilliam
@@ -36,16 +40,30 @@ public class BaseApplication extends MultiDexApplication {
     private static String token;
     /*得到当前是否设置了资金密码*/
     private static boolean setFundPassword;
-
+    /*当前的语言环境*/
     private static String currentLanguage;
+    /*是否是手机版*/
+    private static boolean isPhone;
+    /*存储当前所有币种余额信息*/
+    private static List<MemberKeyVO> memberKeyVOList;
 
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        //初始化SP
+        preferenceTool = PreferenceTool.getInstance(context());
+        getScreenMeasure();
+        registerNetStateReceiver();
+        ServerTool.initServerData();
+
+    }
 
     public static Context context() {
         return instance.getApplicationContext();
     }
 
-    /*是否是手机版*/
-    private static boolean isPhone;
 
     public static boolean isIsPhone() {
         return isPhone;
@@ -76,7 +94,7 @@ public class BaseApplication extends MultiDexApplication {
         if (StringTool.equals(currentLanguage, Constants.ValueMaps.SC)) {
 //            return currentString;
             return "zh-cn";
-        } else if(StringTool.equals(currentLanguage, Constants.ValueMaps.TC)){
+        } else if (StringTool.equals(currentLanguage, Constants.ValueMaps.TC)) {
 //            return currentString;
             return "zh-tw";
         } else {
@@ -90,16 +108,17 @@ public class BaseApplication extends MultiDexApplication {
         BaseApplication.currentLanguage = currentLanguage;
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        instance = this;
-        //初始化SP
-        preferenceTool = PreferenceTool.getInstance(context());
-        getScreenMeasure();
-        registerNetStateReceiver();
-        ServerTool.initServerData();
+    public static String getMemberId() {
+        // TODO: 2019/1/3 暂时这样写，到时候应该存储起来
+        return Constants.User.MEMBER_ID;
+    }
 
+    public static List<MemberKeyVO> getMemberKeyVOList() {
+        return memberKeyVOList;
+    }
+
+    public static void setMemberKeyVOList(List<MemberKeyVO> memberKeyVOList) {
+        BaseApplication.memberKeyVOList = memberKeyVOList;
     }
 
     /*注册网络变化的监听*/

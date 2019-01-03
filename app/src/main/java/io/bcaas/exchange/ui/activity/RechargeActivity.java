@@ -178,22 +178,11 @@ public class RechargeActivity extends BaseActivity {
             case Constants.RequestCode.FUND_PASSWORD:
                 //如果从「设置资金密码」页面跳转回来，那么需要重新刷新一下当前的界面
                 if (tabLayout != null) {
-                    int position = tabLayout.getSelectedTabPosition();
-                    switch (position) {
-                        case 0:
-                            rechargeViewOne.refreshData(userInfoBeanBTC);
-                            break;
-                        case 1:
-                            rechargeViewTwo.refreshData(userInfoBeanETH);
-
-                            break;
-                        case 2:
-                            rechargeViewThree.refreshData(userInfoBeanZBB);
-
-                            break;
-                    }
-                    break;
+                    rechargeViewOne.refreshData(userInfoBeanBTC);
+                    rechargeViewTwo.refreshData(userInfoBeanETH);
+                    rechargeViewThree.refreshData(userInfoBeanZBB);
                 }
+                break;
         }
     }
 }

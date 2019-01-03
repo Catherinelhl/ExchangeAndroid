@@ -21,12 +21,11 @@ public class APIURLConstants {
     /*BTC 取得餘額*/
     public static final String API_BTC_GETBALANCE = "btc/getBalance";
     /*BTC 取得交易的hash*/
-    public static final String API_BTC_GET_TX_HASH= "btc/getTxHash";
+    public static final String API_BTC_GET_TX_HASH = "btc/getTxHash";
     /*BTC 發送交易*/
     public static final String API_BTC_PUSH_TX = "btc/pushTx";
     /*BTC 取得交易狀態*/
     public static final String API_BTC_GET_TX_STATUS = "btc/getTxStatus";
-
 
 
     /*ETH 取得餘額*/
@@ -37,10 +36,8 @@ public class APIURLConstants {
     public static final String API_ETH_GET_TX_STATUS = "btc/getTxStatus";
 
 
-
     /*取得虛擬貨幣美元現值*/
     public static final String API_CURRENCY_GET_USD_PRICE = "currency/getUSDPrice";
-
 
 
     /*產生圖形驗證圖*/
@@ -65,5 +62,10 @@ public class APIURLConstants {
     public static final String API_GOOGLE_VERIFY = "member/securityTwoFactorAuthVerify";
     /*取得帳戶資訊*/
     public static final String API_GET_USER_INFO = "member/getMemberSecurity";
+
+
+
+    /*取得帳戶所有幣種餘額*/
+    public static final String API_GET_ALL_BALANCE = "memberKey/getAllBalance";
 
 }

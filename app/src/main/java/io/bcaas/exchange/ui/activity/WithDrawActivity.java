@@ -180,22 +180,11 @@ public class WithDrawActivity extends BaseActivity {
                 case Constants.RequestCode.FUND_PASSWORD:
                     //如果从「设置资金密码」页面跳转回来，那么需要重新刷新一下当前的界面
                     if (tabLayout != null) {
-                        int position = tabLayout.getSelectedTabPosition();
-                        switch (position) {
-                            case 0:
-                                withDrawViewOne.refreshData(userInfoBeanBTC);
-                                break;
-                            case 1:
-                                withDrawViewTwo.refreshData(userInfoBeanETH);
-
-                                break;
-                            case 2:
-                                withDrawViewThree.refreshData(userInfoBeanZBB);
-
-                                break;
-                        }
-                        break;
+                        withDrawViewOne.refreshData(userInfoBeanBTC);
+                        withDrawViewTwo.refreshData(userInfoBeanETH);
+                        withDrawViewThree.refreshData(userInfoBeanZBB);
                     }
+                    break;
             }
         }
 

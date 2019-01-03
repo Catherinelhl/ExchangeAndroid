@@ -25,6 +25,7 @@ import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -90,7 +91,11 @@ public class MainActivity extends BaseActivity
         ExchangeBean exchangeBean = new ExchangeBean();
         exchangeBean.setCurrency("BTC");
         exchangeBean.setBalance("8");
+        /*获取币种汇率*/
         mainPresenter.getCurrencyUSDPrice(Constants.User.MEMBER_ID, exchangeBean);
+        /*获取账户所有币种余额*/
+        mainPresenter.getAllBalance();
+
         for (int i = 0; i < fragments.size(); i++) {
             TabLayout.Tab tab = bottomTabLayout.newTab();
             // method 自定义布局-----
@@ -280,6 +285,16 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void getCurrencyUSDPriceFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
+
+    }
+
+    @Override
+    public void getAllBalanceFailure(String info) {
         showToast(info);
     }
 }

@@ -8,6 +8,7 @@ import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -119,12 +120,21 @@ public class EditTextWithAction extends LinearLayout
                     llAction.setVisibility(GONE);
                     imageView.setVisibility(VISIBLE);
                     presenter.getImageVerifyCode();
+                    //重新设定图片的大小
+                    ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+                    layoutParams.width = context.getResources().getDimensionPixelOffset(R.dimen.d115);
+                    layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.d32);
+                    imageView.setLayoutParams(layoutParams);
                     break;
                 case 4://显示扫描
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
                     imageView.setVisibility(VISIBLE);
                     imageView.setImageResource(R.mipmap.icon_scan);
+                    ViewGroup.LayoutParams layoutParamScan = imageView.getLayoutParams();
+                    layoutParamScan.width = context.getResources().getDimensionPixelOffset(R.dimen.d32);
+                    layoutParamScan.height = context.getResources().getDimensionPixelOffset(R.dimen.d32);
+                    imageView.setLayoutParams(layoutParamScan);
                     break;
             }
 
@@ -394,6 +404,15 @@ public class EditTextWithAction extends LinearLayout
     public void setRightTextColor(int color) {
         if (tvAction != null) {
             tvAction.setTextColor(color);
+        }
+    }
+
+    /**
+     * 拿去图片验证码
+     */
+    public void requestImageVerifyCode() {
+        if (presenter != null) {
+            presenter.getImageVerifyCode();
         }
     }
 }

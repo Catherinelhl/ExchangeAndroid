@@ -22,4 +22,14 @@ public class MainInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.getCurrencyUSDPrice(body);
     }
+
+    /**
+     * 取得帳戶所有幣種餘額
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> getAllBalance(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.getAllBalance(body);
+    }
 }

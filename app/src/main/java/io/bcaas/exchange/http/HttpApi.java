@@ -57,4 +57,10 @@ public interface HttpApi {
     @GET(APIURLConstants.API_IMAGE_VERIFY_CREATE_URL)
     Observable<ResponseBody> imageVerifyCreate();
 
+    /**
+     * 取得帳戶所有幣種餘額
+     */
+    @POST(APIURLConstants.API_GET_ALL_BALANCE)
+    Observable<ResponseJson> getAllBalance(@Body RequestBody requestBody);
+
 }

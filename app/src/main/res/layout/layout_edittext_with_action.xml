@@ -63,7 +63,6 @@
         <ImageView
                 android:id="@+id/img"
                 android:layout_width="wrap_content"
-                android:maxWidth="@dimen/d100"
                 android:scaleType="fitCenter"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
