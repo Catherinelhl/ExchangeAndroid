@@ -91,6 +91,7 @@ public class Constants {
         public static final int GOOGLE_VERIFY = 0x14;//跳转到「google验证」页面的code码
         public static final int REQUEST_CODE_CAMERA_SCAN = 0x15;//跳转到「调用扫描」的界面
         public static final int REQUEST_CODE_CAMERA_OK = 0x16;//跳转到「调用扫描」的界面
+        public static final int WITDH_DRAW_DETAIL = 0x17;//跳转到「提现详情」的界面
 
     }
 
@@ -149,6 +150,7 @@ public class Constants {
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
         public static final String SELL_VIEW = "sellView";//售出
         public static final String SIDE_SLIP = "sideSlip";//侧滑栏
+        public static final String WITHDRAW_SURE = "withDrawSure";//提现点击确定
     }
 
     /**

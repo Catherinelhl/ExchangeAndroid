@@ -123,15 +123,19 @@ public class WithDrawActivity extends BaseActivity {
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
+            Intent intent = new Intent();
 
             switch (from) {
                 case Constants.EditTextFrom.WITHDRAW_SCAN:
                     //跳转扫描，同时也应该记录下当前返回此动作是第几个页面，方便刷新界面
                     requestCameraPermission();
                     break;
+                case Constants.From.WITHDRAW_SURE:
+                    intent.setClass(WithDrawActivity.this, WithDrawDetailActivity.class);
+                    startActivityForResult(intent, Constants.RequestCode.WITDH_DRAW_DETAIL);
+                    break;
                 default:
                     //跳转界面
-                    Intent intent = new Intent();
                     intent.setClass(context, SetFundPasswordActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
                     break;
@@ -178,6 +182,8 @@ public class WithDrawActivity extends BaseActivity {
                         withDrawViewTwo.refreshData(userInfoBeanETH);
                         withDrawViewThree.refreshData(userInfoBeanZBB);
                     }
+                    break;
+                case Constants.RequestCode.WITDH_DRAW_DETAIL:
                     break;
             }
         }

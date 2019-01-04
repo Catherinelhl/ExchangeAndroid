@@ -1551,6 +1551,7 @@ id etwa_confirm_new_password
 id etwa_email_code
 id etwa_email_verify_code
 id etwa_fund_password
+id etwa_google_verify_code
 id etwa_image_code
 id etwa_message_code
 id etwa_message_verify_code
@@ -1751,6 +1752,7 @@ id tv_final_tx_amount
 id tv_forget_password
 id tv_freeze
 id tv_fund_type
+id tv_google_verify_key
 id tv_how_to_verify
 id tv_info
 id tv_login_now
@@ -1867,6 +1869,7 @@ layout activity_sell_detail
 layout activity_set_fund_password
 layout activity_verify_method_close_or_open
 layout activity_withdraw
+layout activity_withdraw_detail
 layout aty_capture
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

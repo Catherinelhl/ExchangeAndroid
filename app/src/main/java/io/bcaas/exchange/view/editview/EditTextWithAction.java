@@ -138,7 +138,9 @@ public class EditTextWithAction extends LinearLayout
                     break;
             }
 
-            setEditHintTextSize(hint);
+            if (StringTool.notEmpty(hint)) {
+                setEditHintTextSize(hint);
+            }
 
         }
         initView();

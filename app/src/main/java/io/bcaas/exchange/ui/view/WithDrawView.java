@@ -99,6 +99,9 @@ public class WithDrawView extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
+                        if (onItemSelectListener!=null){
+                            onItemSelectListener.onItemSelect(MessageConstants.EMPTY,Constants.From.WITHDRAW_SURE);
+                        }
                     }
 
                     @Override
