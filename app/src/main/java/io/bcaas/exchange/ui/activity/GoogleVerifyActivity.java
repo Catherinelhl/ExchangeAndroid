@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -28,8 +27,6 @@ public class GoogleVerifyActivity extends BaseActivity {
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tv_how_to_verify)

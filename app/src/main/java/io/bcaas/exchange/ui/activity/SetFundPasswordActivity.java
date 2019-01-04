@@ -7,7 +7,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -32,8 +31,6 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)

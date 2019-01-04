@@ -78,5 +78,7 @@
     <string name="sell_out">卖出</string>
     <string name="order">订单</string>
     <string name="account">账户</string>
+    <string name="reset">重置</string>
+    <string name="pay_method_str">支付方式</string>
 
 </resources>

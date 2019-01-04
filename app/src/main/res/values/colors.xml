@@ -78,6 +78,7 @@
     <color name="d8d8d8">#d8d8d8</color>
     <color name="theme_FDD400">#FDD400</color>
     <color name="theme_FF6400">#FF6400</color>
+    <color name="grey10_999999">#1a999999</color>
 
 
 </resources>

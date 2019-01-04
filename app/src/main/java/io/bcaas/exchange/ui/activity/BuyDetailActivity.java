@@ -1,6 +1,5 @@
 package io.bcaas.exchange.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,8 +29,6 @@ public class BuyDetailActivity extends BaseActivity {
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tv_purple_title)

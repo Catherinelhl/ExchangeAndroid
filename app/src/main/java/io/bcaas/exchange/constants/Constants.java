@@ -126,7 +126,8 @@ public class Constants {
         public static final String ORDER_TRANSACTION = "orderTransaction";//订单中的交易模块
         public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
-        public static final String SELL_VIEW = "sellView";//售出也迷啊
+        public static final String SELL_VIEW = "sellView";//售出
+        public static final String SIDESLIP = "sideSlip";//侧滑栏
     }
 
     /**

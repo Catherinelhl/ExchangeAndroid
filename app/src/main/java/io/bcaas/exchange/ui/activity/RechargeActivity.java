@@ -18,7 +18,6 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.view.RechargeView;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -41,8 +40,6 @@ public class RechargeActivity extends BaseActivity {
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tab_layout)

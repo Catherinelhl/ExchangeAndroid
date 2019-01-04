@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import butterknife.ButterKnife;
@@ -246,6 +247,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         this.setResult(RESULT_OK, intent);
         this.finish();
+    }
+    public void setBackgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getWindow()
+                .getAttributes();
+        lp.alpha = bgAlpha;
+        getWindow().setAttributes(lp);
     }
 
 }

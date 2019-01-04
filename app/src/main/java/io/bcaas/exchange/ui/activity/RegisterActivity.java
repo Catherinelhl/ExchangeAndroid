@@ -1,6 +1,5 @@
 package io.bcaas.exchange.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -14,7 +13,6 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.RegisterContract;
@@ -35,8 +33,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_amount)

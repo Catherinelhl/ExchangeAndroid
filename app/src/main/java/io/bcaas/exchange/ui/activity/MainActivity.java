@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -15,6 +17,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
@@ -25,6 +28,7 @@ import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
+import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -61,6 +65,9 @@ public class MainActivity extends BaseActivity
 
     private MainContract.Presenter mainPresenter;
 
+    //声明侧滑栏
+    private SideSlipPop sideSlipPop;
+
     @Override
     public int getContentView() {
         return R.layout.activity_main;
@@ -75,6 +82,9 @@ public class MainActivity extends BaseActivity
     public void initView() {
         fragments = new ArrayList<>();
         tvTitle.setVisibility(View.VISIBLE);
+        ibRight.setVisibility(View.VISIBLE);
+        sideSlipPop = new SideSlipPop(this);
+        sideSlipPop.setOnItemSelectListener(onItemSelectListener);
         BuyFragment fragment = new BuyFragment();
         fragments.add(fragment);
         SellFragment sellFragment = new SellFragment();
@@ -187,8 +197,38 @@ public class MainActivity extends BaseActivity
 
             }
         });
+        RxView.clicks(ibRight).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //弹出侧滑栏
+                        sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
+                        setBackgroundAlpha(0.7f);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+        sideSlipPop.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setBackgroundAlpha(1f);
+            }
+        });
     }
+
 
     /**
      * 根据选中的position来切换选项卡
@@ -298,4 +338,21 @@ public class MainActivity extends BaseActivity
     public void getAllBalanceFailure(String info) {
         showToast(info);
     }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            //如果当前是从侧滑栏返回
+            switch (from) {
+                case Constants.From.SIDESLIP:
+                    // TODO: 2019/1/4 根据返回的type，过滤出数据
+                    String currentMethod = (String) type;
+                    LogTool.d(TAG, "当前选择的方式：" + currentMethod);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    };
 }

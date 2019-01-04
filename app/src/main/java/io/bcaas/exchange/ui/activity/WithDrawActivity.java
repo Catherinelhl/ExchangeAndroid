@@ -2,9 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -14,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
-import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
@@ -22,7 +19,6 @@ import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.view.RechargeView;
 import io.bcaas.exchange.ui.view.WithDrawView;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -43,8 +39,6 @@ public class WithDrawActivity extends BaseActivity {
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tab_layout)

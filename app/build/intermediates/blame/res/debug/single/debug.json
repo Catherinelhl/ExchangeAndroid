@@ -172,6 +172,10 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/interpolator/mtrl_linear.xml"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_solid_border_grey.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/drawable/solid_border_grey.xml"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/support_simple_spinner_dropdown_item.xml"
     },
@@ -1200,6 +1204,10 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/color/mtrl_tabs_colored_ripple_color.xml"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_selector_bg_grey_red.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/drawable/selector_bg_grey_red.xml"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_recharge.xml.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_recharge.xml"
     },
@@ -1494,6 +1502,10 @@
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_mtrl_text_btn_text_color_selector.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/color/mtrl_text_btn_text_color_selector.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_popwindow_side_slip.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/popwindow_side_slip.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
@@ -2286,6 +2298,10 @@
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_fragment_account.xml.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/fragment_account.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_solid_border_red.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/drawable/solid_border_red.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_pressed_holo_light.9.png.flat",

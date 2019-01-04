@@ -1,13 +1,23 @@
 {
   "memberKeyVOList": [
     {
-      "memberKeyUid": 3,
-      "address": "1GfJ2eaieZHtkpLa4mv6LcNZnt2FGx4S5B",
+      "memberKeyUid": 1,
+      "address": "1AguYgVHDJGknsh3s4pJ5Sdp4NqBsLDkyF",
       "balanceAvailable": "0.0000000000",
       "currencyListVO": {
         "currencyUid": "1",
         "enName": "BTC",
         "cnName": "比特幣"
+      }
+    },
+    {
+      "memberKeyUid": 2,
+      "address": "0x2fe228216c89f40d845c7324f3fed914ce61e7b6",
+      "balanceAvailable": "0.0000000000",
+      "currencyListVO": {
+        "currencyUid": "2",
+        "enName": "ETH",
+        "cnName": "以太坊"
       }
     }
   ],

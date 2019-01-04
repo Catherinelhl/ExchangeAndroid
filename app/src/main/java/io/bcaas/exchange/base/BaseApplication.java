@@ -159,6 +159,14 @@ public class BaseApplication extends MultiDexApplication {
         }
     }
 
+    public static int getScreenWidth() {
+        return screenWidth;
+    }
+
+    public static int getScreenHeight() {
+        return screenHeight;
+    }
+
     /**
      * 從SP裡面獲取數據
      *
