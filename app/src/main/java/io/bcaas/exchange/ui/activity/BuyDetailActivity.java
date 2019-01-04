@@ -74,6 +74,8 @@ public class BuyDetailActivity extends BaseActivity {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.buy_detail);
+        tvPersonName.setText("ZhangSan");
+        tvPayMethod.setText(R.string.pay_method_str);
         if (buyDataBean != null) {
             tvPersonName.setText(buyDataBean.getPersonName());
             tvPayMethod.setText(buyDataBean.getBuyMethod());
@@ -92,7 +94,7 @@ public class BuyDetailActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -114,7 +116,7 @@ public class BuyDetailActivity extends BaseActivity {
 
                     }
                 });
-        RxView.clicks(btnBuy).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnBuy).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

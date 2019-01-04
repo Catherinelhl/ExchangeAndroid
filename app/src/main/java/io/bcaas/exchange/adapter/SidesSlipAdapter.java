@@ -65,7 +65,7 @@ public class SidesSlipAdapter extends BaseAdapter {
                 currentPosition = position;
                 notifyDataSetChanged();
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(list.get(position), Constants.From.SIDESLIP);
+                    onItemSelectListener.onItemSelect(list.get(position), Constants.From.SIDE_SLIP);
                 }
             }
         });

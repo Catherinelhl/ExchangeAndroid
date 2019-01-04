@@ -65,7 +65,7 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -87,7 +87,7 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

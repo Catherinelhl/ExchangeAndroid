@@ -80,5 +80,27 @@
     <string name="account">账户</string>
     <string name="reset">重置</string>
     <string name="pay_method_str">支付方式</string>
+    <string name="register_account_hint">请用您的常用邮箱号作为账号</string>
+    <string name="register_password_hint">内容设置新登录密码(至少由8～20位数字与字符组成)</string>
+    <string name="register_password_again_hint">请再次输入密码</string>
+    <string name="register_email_code_hint">邮箱验证码</string>
+    <string name="register_have_account_text">已有账号？</string>
+    <string name="register_login_immediately_text">立即登录</string>
+    <string name="reset_email_hint">邮箱</string>
+    <string name="reset_set_login_password_hint">设置登录密码(至少由8～20位数字与字符组成)</string>
+    <string name="reset_password_again_hint">请再次输入密码</string>
+    <string name="reset_email_code_hint">邮箱验证码</string>
+    <string name="buy_pay_method_text">支付方式ETH</string>
+    <string name="sell_out_price">卖出价</string>
+    <string name="sell_out_volume">卖出量</string>
+    <string name="sell_out_fee_text">出售需支付手续费，手续费为0.0001 BTC</string>
+    <string name="sell_out_transaction_amount">扣除手续费后的交易额：12.834257 ETH</string>
+    <string name="no_google_verify_text">还未启用Google身份验证？</string>
+    <string name="wait_to_sell">待出售</string>
+    <string name="outcome">支出</string>
+    <string name="income">收入</string>
+    <string name="revoke">撤销</string>
+    <string name="available">可用</string>
+    <string name="freeze">冻结</string>
 
 </resources>

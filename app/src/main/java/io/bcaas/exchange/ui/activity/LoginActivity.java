@@ -2,7 +2,6 @@ package io.bcaas.exchange.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
@@ -109,7 +108,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
             }
         }, Constants.EditTextFrom.LOGIN_PASSWORD);
-        RxView.clicks(tvRegisterNow).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvRegisterNow).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -133,7 +132,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
                     }
                 });
-        RxView.clicks(tvForgetPassword).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvForgetPassword).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -157,7 +156,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
                     }
                 });
-        RxView.clicks(btnLogin).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnLogin).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

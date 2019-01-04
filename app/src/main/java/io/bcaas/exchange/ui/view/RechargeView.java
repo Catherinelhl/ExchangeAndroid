@@ -3,16 +3,11 @@ package io.bcaas.exchange.ui.view;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
-import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
@@ -21,7 +16,6 @@ import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.ui.activity.SetFundPasswordActivity;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -70,7 +64,7 @@ public class RechargeView extends LinearLayout {
     }
 
     private void initListener() {
-        RxView.clicks(tvCopyAddress).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvCopyAddress).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -100,7 +94,7 @@ public class RechargeView extends LinearLayout {
 
                     }
                 });
-        RxView.clicks(tvSetImmediately).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSetImmediately).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -156,7 +150,7 @@ public class RechargeView extends LinearLayout {
 
                 if (ivQrCode != null) {
                     Bitmap qrCode = EncodingUtils.createQRCode(address, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-                            context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.ValueMaps.foregroundColorOfQRCode, Constants.ValueMaps.backgroundColorOfQRCode);
+                            context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.color.foregroundOfQRCode, Constants.color.backgroundOfQRCode);
                     ivQrCode.setImageBitmap(qrCode);
                 }
 

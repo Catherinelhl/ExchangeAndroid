@@ -26,15 +26,15 @@
                 android:gravity="center"
                 android:id="@+id/tv_pay_method"
                 style="@style/ff6f61_14_text_style"
-                tool:text="支付方式ETH"/>
+                tool:text="@string/buy_pay_method_text"/>
     </LinearLayout>
 
     <View style="@style/line_style"/>
     <TextView
             android:id="@+id/tv_price"
             style="@style/black_14_text_style"
-            android:layout_marginTop="@dimen/d14"
-            android:layout_marginBottom="@dimen/d13"
+            android:layout_marginTop="@dimen/d16"
+            android:layout_marginBottom="@dimen/d16"
             android:layout_marginRight="@dimen/d20"
             android:layout_marginLeft="@dimen/d20"
             tool:text="20.3287461 ETH"
@@ -43,8 +43,6 @@
             tool:ignore="InefficientWeight"/>
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
-                  android:layout_marginTop="@dimen/d16"
-                  android:layout_marginBottom="@dimen/d16"
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_gravity="center"
                   android:gravity="center_vertical"
@@ -66,8 +64,8 @@
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
-                  android:layout_marginTop="@dimen/d16"
-                  android:layout_marginBottom="@dimen/d16"
+                  android:layout_marginTop="@dimen/d12"
+                  android:layout_marginBottom="@dimen/d12"
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_gravity="center"
                   android:gravity="center_vertical"
@@ -89,8 +87,6 @@
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
-                  android:layout_marginTop="@dimen/d16"
-                  android:layout_marginBottom="@dimen/d16"
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_gravity="center"
                   android:gravity="center_vertical"

@@ -132,8 +132,8 @@ public class EditTextWithAction extends LinearLayout
                     imageView.setVisibility(VISIBLE);
                     imageView.setImageResource(R.mipmap.icon_scan);
                     ViewGroup.LayoutParams layoutParamScan = imageView.getLayoutParams();
-                    layoutParamScan.width = context.getResources().getDimensionPixelOffset(R.dimen.d32);
-                    layoutParamScan.height = context.getResources().getDimensionPixelOffset(R.dimen.d32);
+                    layoutParamScan.width = context.getResources().getDimensionPixelOffset(R.dimen.d21);
+                    layoutParamScan.height = context.getResources().getDimensionPixelOffset(R.dimen.d21);
                     imageView.setLayoutParams(layoutParamScan);
                     break;
             }
@@ -167,7 +167,7 @@ public class EditTextWithAction extends LinearLayout
             etContent.setSelection(text.length());
 
         });
-        RxView.clicks(tvAction).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvAction).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -261,7 +261,7 @@ public class EditTextWithAction extends LinearLayout
             }
         });
 
-        RxView.clicks(imageView).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(imageView).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

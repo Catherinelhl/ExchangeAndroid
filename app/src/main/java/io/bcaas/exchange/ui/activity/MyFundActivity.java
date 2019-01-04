@@ -118,7 +118,7 @@ public class MyFundActivity extends BaseActivity {
 //            }
 //            onRefreshTransactionRecord("swipeRefreshLayout");
         });
-        Disposable subscribe = RxView.clicks(ibBack).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        Disposable subscribe = RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {

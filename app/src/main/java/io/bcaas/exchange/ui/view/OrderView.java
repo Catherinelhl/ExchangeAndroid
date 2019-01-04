@@ -11,17 +11,14 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.BuyDataAdapter;
 import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
 import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
-import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.bean.OrderRechargeBean;
 import io.bcaas.exchange.bean.OrderTransactionBean;
 import io.bcaas.exchange.bean.OrderWithDrawBean;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +32,6 @@ public class OrderView extends LinearLayout {
     @BindView(R.id.srl_order_data)
     SwipeRefreshLayout srlOrderData;
     private Context context;
-    private BuyDataAdapter buyDataAdapter;
     private OnItemSelectListener onItemSelectListenerTemp;
 
     //订单页面「交易」数据显示的适配器
@@ -69,11 +65,6 @@ public class OrderView extends LinearLayout {
         srlOrderData.setSize(SwipeRefreshLayout.DEFAULT);
         srlOrderData.setOnRefreshListener(() -> {
             srlOrderData.setRefreshing(false);
-            //判断如果当前没有币种，那么就暂时不能刷新数据
-//            if (StringTool.isEmpty(Bas.getBlockService())) {
-//                return;
-//            }
-//            onRefreshTransactionRecord("swipeRefreshLayout");
         });
     }
 

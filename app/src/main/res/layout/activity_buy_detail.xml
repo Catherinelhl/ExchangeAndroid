@@ -20,8 +20,7 @@
                 <TextView
                         android:id="@+id/tv_purple_title"
                         style="@style/black_16_text_style"
-                        android:layout_marginTop="@dimen/d14"
-                        android:layout_marginBottom="@dimen/d13"
+                        android:layout_marginTop="@dimen/d16"
                         android:layout_marginRight="@dimen/d20"
                         android:layout_marginLeft="@dimen/d20"
                         android:text="购买BTC"
@@ -48,23 +47,25 @@
                             android:gravity="center"
                             android:id="@+id/tv_pay_method"
                             style="@style/black_14_text_style"
-                            tool:text="支付方式ETH"/>
+                            tool:text="@string/pay_method_str"/>
                 </LinearLayout>
 
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="vertical"
                               android:background="@color/theme_grey"
-                              android:layout_marginTop="@dimen/d14"
+                              android:layout_marginTop="@dimen/d8"
                               android:layout_marginBottom="@dimen/d13"
                               android:layout_marginRight="@dimen/d20"
                               android:layout_marginLeft="@dimen/d20"
                               android:layout_height="wrap_content">
                     <LinearLayout android:layout_width="match_parent"
                                   android:orientation="horizontal"
-                                  android:layout_margin="@dimen/d16"
+                                  android:layout_marginLeft="@dimen/d16"
+                                  android:layout_marginTop="@dimen/d12"
+                                  android:layout_marginBottom="@dimen/d12"
+                                  android:layout_marginRight="@dimen/d16"
                                   android:layout_gravity="center"
                                   android:gravity="center_vertical"
-                                  android:layout_marginRight="@dimen/d20"
                                   android:layout_height="wrap_content">
                         <TextView
                                 style="@style/black_16_text_style"
@@ -80,12 +81,15 @@
                                 tool:text="20.3287461 ETH"
                                 android:gravity="right"/>
                     </LinearLayout>
+                    <View style="@style/small_line_style"/>
                     <LinearLayout android:layout_width="match_parent"
                                   android:orientation="horizontal"
                                   android:layout_marginLeft="@dimen/d16"
+                                  android:layout_marginTop="@dimen/d12"
+                                  android:layout_marginBottom="@dimen/d12"
+                                  android:layout_marginRight="@dimen/d16"
                                   android:layout_gravity="center"
                                   android:gravity="center_vertical"
-                                  android:layout_marginRight="@dimen/d16"
                                   android:layout_height="wrap_content">
                         <TextView
                                 style="@style/black_16_text_style"
@@ -101,12 +105,17 @@
                                 style="@style/black_14_text_style"
                                 tool:text="23.234523 BTC"/>
                     </LinearLayout>
+                    <View style="@style/small_line_style"/>
+
                     <LinearLayout android:layout_width="match_parent"
                                   android:orientation="horizontal"
-                                  android:layout_margin="@dimen/d16"
+                                  android:layout_marginLeft="@dimen/d16"
+                                  android:layout_marginTop="@dimen/d12"
+                                  android:layout_marginBottom="@dimen/d12"
+                                  android:layout_marginRight="@dimen/d16"
                                   android:layout_gravity="center"
+
                                   android:gravity="center_vertical"
-                                  android:layout_marginRight="@dimen/d20"
                                   android:layout_height="wrap_content">
                         <TextView
                                 style="@style/black_16_text_style"
@@ -122,9 +131,12 @@
                                 style="@style/black_14_text_style"
                                 tool:text="12.2334623465 ETH"/>
                     </LinearLayout>
+                    <View style="@style/small_line_style"/>
+
                     <LinearLayout android:layout_width="match_parent"
                                   android:orientation="horizontal"
                                   android:layout_marginLeft="@dimen/d16"
+                                  android:layout_marginTop="@dimen/d12"
                                   android:layout_gravity="center"
                                   android:gravity="center_vertical"
                                   android:layout_marginBottom="@dimen/d16"
@@ -197,11 +209,16 @@
             <Button
                     android:id="@+id/btn_buy"
                     style="@style/button_style"
-                    android:layout_margin="@dimen/d20"
+                    android:layout_marginTop="@dimen/d35"
+                    android:layout_marginLeft="@dimen/d20"
+                    android:layout_marginRight="@dimen/d20"
                     android:text="@string/sure"
                     android:gravity="center"
             />
+            <View android:layout_width="match_parent"
+                  android:layout_height="@dimen/d20"/>
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

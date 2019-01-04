@@ -18,7 +18,7 @@ public class PreferenceTool {
 
     private PreferenceTool(Context context) {
         //+ BCAASApplication.getWalletAddress()
-        sp = context.getSharedPreferences(Constants.Preference.SP_BCAAS_EXCHANGE, 0);
+        sp = context.getSharedPreferences(Constants.Preference.SP_EXCHANGE, 0);
         editor = sp.edit();
     }
 

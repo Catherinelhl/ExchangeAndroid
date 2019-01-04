@@ -77,7 +77,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -99,7 +99,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        RxView.clicks(tvLoginNow).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvLoginNow).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -121,7 +121,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        RxView.clicks(btnRegister).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnRegister).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -1,7 +1,7 @@
 package io.bcaas.exchange.constants;
 
-import static io.bcaas.exchange.constants.Constants.KeyMaps.HTTP_COLON;
-import static io.bcaas.exchange.constants.Constants.KeyMaps.HTTP_PREFIX;
+import static io.bcaas.exchange.constants.Constants.Http.HTTP_COLON;
+import static io.bcaas.exchange.constants.Constants.Http.HTTP_PREFIX;
 
 /**
  * @author catherine.brainwilliam
@@ -9,34 +9,47 @@ import static io.bcaas.exchange.constants.Constants.KeyMaps.HTTP_PREFIX;
  */
 public class Constants {
 
-    public static final String LOCAL_DEFAULT_IP = "";
 
+    /**
+     * 定时器类型
+     */
     public enum TimerType {
         BrandTimer
     }
 
+    /**
+     * 时间
+     */
+    public class time {
+        public static final int sleep100 = 100;
+        public static final int sleep200 = 200;
+        public static final int sleep300 = 300;
+        public static final int sleep400 = 400;
+        public static final int sleep500 = 500;
+        public static final int sleep800 = 800;
+        public static final int sleep1000 = 1000;
+        public static final int sleep1500 = 1500;
+        public static final int sleep2000 = 2000;
+        public static final int sleep3000 = 3000;
+        public static final int sleep4000 = 4000;
+        public static final int sleep5000 = 5000;
+        public static final int sleep10000 = 10000;
+        public static final int sleep20000 = 20000;
+        public static final int sleep30000 = 30000;
+        public static final int sleep50000 = 50000;
+        public static final int sleep500000 = 500000;
+    }
+
+    public class color {
+        //二維碼渲染的前景色
+        public static final int foregroundOfQRCode = 0xff000000;
+        //二維碼渲染的背景色
+        public static final int backgroundOfQRCode = 0x00000000;
+    }
+
     public class ValueMaps {
 
-        public static final int sleepTime100 = 100;
-        public static final int sleepTime200 = 200;
-        public static final int sleepTime300 = 300;
-        public static final int sleepTime400 = 400;
-        public static final int sleepTime500 = 500;
-        public static final int sleepTime800 = 800;
-        public static final int sleepTime1000 = 1000;
-        public static final int sleepTime1500 = 1500;
-        public static final int sleepTime2000 = 2000;
-        public static final int sleepTime3000 = 3000;
-        public static final int sleepTime4000 = 4000;
-        public static final int sleepTime5000 = 5000;
-        public static final int sleepTime10000 = 10000;
-        public static final int sleepTime20000 = 20000;
-        public static final int sleepTime30000 = 30000;
-        public static final int sleepTime50000 = 50000;
-        public static final int sleepTime500000 = 500000;
         public static final int TOAST_SHORT = 0;
-
-
         public static final int TIME_OUT_TIME_LONG = 30;//设置超时时间
         //TCP  C-S 发送心跳信息间隔
         public static final long HEART_BEAT_TIME = 30;
@@ -56,10 +69,7 @@ public class Constants {
         public static final String ZH_TW = "zh-tw";//繁中
         public static final String EN_US = "en-us";//英文
 
-        //二維碼渲染的前景色
-        public static final int foregroundColorOfQRCode = 0xff000000;
-        //二維碼渲染的背景色
-        public static final int backgroundColorOfQRCode = 0x00000000;
+        public static final String LOCAL_DEFAULT_IP = "";
 
 
     }
@@ -84,21 +94,31 @@ public class Constants {
 
     }
 
-    public static String SPLICE_CONVERTER(String ip, int port) {
+    public static final String SPLICE_CONVERTER(String ip, int port) {
         return HTTP_PREFIX + ip + HTTP_COLON + port;
     }
 
-    public class KeyMaps {
+    /**
+     * Http 相关参数/字段
+     */
+    public class Http {
         public static final String HTTP_PREFIX = "http://";
         public static final String HTTP_COLON = ":";
+    }
+
+    /**
+     * 程序中需要用的到keymap传值
+     */
+    public class KeyMaps {
         public static final String From = "from";//来自
         public static final String COPY_ADDRESS = "address";
         public static final String RESULT = "result";//扫描二维码返回的结果
-
-
         public static final String BUY_DETAIL = "buyDetail";
     }
 
+    /**
+     * 服务器类型
+     */
     public static class ServerType {
         public static final String INTERNATIONAL_SIT = "internationalSIT";
         public static final String INTERNATIONAL_UAT = "internationalUAT";
@@ -106,18 +126,19 @@ public class Constants {
 
     }
 
+    /**
+     * 切换服务器类型显示名字
+     */
     public static class ServerTypeName {
         public static final String INTERNATIONAL_SIT = "国际 SIT";
         public static final String INTERNATIONAL_UAT = "国际 UAT";
         public static final String INTERNATIONAL_PRD = "国际 PRD";
-        public static final String CHINA = "国内 PRD";
-        public static final String CHINA_SIT = "国内 SIT";
 
     }
 
 
     public class Preference {
-        public static final String SP_BCAAS_EXCHANGE = "BCAAS_EXCHANGE";
+        public static final String SP_EXCHANGE = "EXCHANGE";
         public static final String ACCESS_TOKEN = "accessToken";//token 信息
         public static final String LANGUAGE_TYPE = "languageType";//當前的語言環境
     }
@@ -127,7 +148,7 @@ public class Constants {
         public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
         public static final String SELL_VIEW = "sellView";//售出
-        public static final String SIDESLIP = "sideSlip";//侧滑栏
+        public static final String SIDE_SLIP = "sideSlip";//侧滑栏
     }
 
     /**
@@ -140,14 +161,19 @@ public class Constants {
         public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
     }
 
-
-    public enum SettingType {//定义一下设置的类型
+    /**
+     * 定义一下设置的类型
+     */
+    public enum SettingType {
         MY_ALL_FUND,//我的资产
         RECHARGE,//充值
         WITH_DRAW,//提现
         SAFETY_CENTER//安全中心
     }
 
+    /**
+     * 用户的信息
+     */
     public class User {
         public static final String MEMBER_ID = "Catherineliu@Bcaas.io";
         public static final String MEMBER_PASSWORD = "aaaaaaa1";

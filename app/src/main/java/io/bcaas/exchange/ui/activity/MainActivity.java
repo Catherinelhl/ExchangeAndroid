@@ -1,15 +1,12 @@
 package io.bcaas.exchange.ui.activity;
 
 import android.content.res.Resources;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -20,13 +17,11 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.contracts.MainContract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
-import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
 import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -141,7 +136,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void initListener() {
-        RxView.clicks(tvTitle).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvTitle).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -197,7 +192,7 @@ public class MainActivity extends BaseActivity
 
             }
         });
-        RxView.clicks(ibRight).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibRight).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -344,7 +339,7 @@ public class MainActivity extends BaseActivity
         public <T> void onItemSelect(T type, String from) {
             //如果当前是从侧滑栏返回
             switch (from) {
-                case Constants.From.SIDESLIP:
+                case Constants.From.SIDE_SLIP:
                     // TODO: 2019/1/4 根据返回的type，过滤出数据
                     String currentMethod = (String) type;
                     LogTool.d(TAG, "当前选择的方式：" + currentMethod);

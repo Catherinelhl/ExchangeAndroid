@@ -57,7 +57,7 @@ public class SafetyCenterItemView extends LinearLayout {
     }
 
     private void initListener() {
-        RxView.clicks(tvSafetyCenterAction).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSafetyCenterAction).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

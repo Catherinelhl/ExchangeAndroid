@@ -1921,7 +1921,6 @@ mipmap ic_launcher_round
 mipmap icon_account
 mipmap icon_account_f
 mipmap icon_back
-mipmap icon_back_red
 mipmap icon_buy_in
 mipmap icon_buy_in_f
 mipmap icon_cb_pwd
@@ -1984,11 +1983,13 @@ string amount
 string amount_title
 string app_name
 string appbar_scrolling_view_behavior
+string available
 string bind_phone
 string bottom_sheet_behavior
 string buy
 string buy_detail
 string buy_in
+string buy_pay_method_text
 string buy_title
 string cancel
 string cash_able_balance
@@ -2006,11 +2007,13 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fee
 string forget_password
+string freeze
 string fund_password
 string fund_password_rule
 string google_verify
 string graphic_verify_code
 string hide_bottom_view_on_scroll_behavior
+string income
 string input_account
 string input_graphic_verify_code
 string input_password
@@ -2026,10 +2029,12 @@ string my_fund
 string network_not_reachable
 string new_password_rule
 string no_fund_password_tips
+string no_google_verify_text
 string number
 string order
 string order_title
 string original_password
+string outcome
 string password
 string password_rule
 string password_toggle_content_description
@@ -2047,11 +2052,22 @@ string qrcode_name
 string random_verify_code
 string recharge
 string recharge_tips
+string register_account_hint
+string register_email_code_hint
+string register_have_account_text
+string register_login_immediately_text
 string register_now
+string register_password_again_hint
+string register_password_hint
 string register_title
 string remarks
 string reset
+string reset_email_code_hint
+string reset_email_hint
+string reset_password_again_hint
 string reset_password_title
+string reset_set_login_password_hint
+string revoke
 string safety_center
 string salable_balance
 string scan_qr_code
@@ -2059,6 +2075,10 @@ string search_menu_title
 string sell
 string sell_number
 string sell_out
+string sell_out_fee_text
+string sell_out_price
+string sell_out_transaction_amount
+string sell_out_volume
 string sell_price
 string sell_title
 string send
@@ -2071,6 +2091,7 @@ string successfully_copied
 string sure
 string to_setting_grant_permission
 string total_account
+string wait_to_sell
 string warning
 string with_draw
 string withdraw_tips
@@ -2583,6 +2604,7 @@ style dialog_loading
 style ff6f61_14_text_style
 style line_style
 style marquee_style
+style small_line_style
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

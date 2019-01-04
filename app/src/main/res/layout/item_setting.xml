@@ -43,7 +43,7 @@
 
     <View
             android:id="@+id/v_line"
-            style="@style/line_style"
+            style="@style/small_line_style"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/tv_setting_type"
     />

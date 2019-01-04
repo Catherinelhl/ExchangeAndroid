@@ -59,8 +59,8 @@ public class DataGenerationRegister {
         tabBottomTitleCount = tabTitles.size();
 
         //初始化顶部栏数据
-        tabTopTitles.add("ETH");
         tabTopTitles.add("BTC");
+        tabTopTitles.add("ETH");
         tabTopTitles.add("ZBB");
         tabTopTitleCount = tabTopTitles.size();
 

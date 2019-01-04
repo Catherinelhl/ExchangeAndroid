@@ -90,7 +90,7 @@ public class WithDrawView extends LinearLayout {
     }
 
     private void initListener() {
-        RxView.clicks(btnSend).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSend).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -111,7 +111,7 @@ public class WithDrawView extends LinearLayout {
 
                     }
                 });
-        RxView.clicks(tvSetImmediately).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSetImmediately).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

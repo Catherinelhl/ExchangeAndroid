@@ -1,7 +1,6 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -82,8 +80,8 @@ public class SellView extends LinearLayout {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (tvProgressSpeed != null) {
                     float seekBarWidth = seekBar.getWidth();//seekBar的宽度
-                    int margin = getResources().getDimensionPixelSize(R.dimen.text_size_20);
-                    float width = (seekBarWidth - margin * 2) / 100 * progress; //seekBar当前位置的宽度
+                    int margin = getResources().getDimensionPixelSize(R.dimen.d20);
+                    float width = (seekBarWidth - margin * 3) / 100 * progress; //seekBar当前位置的宽度
                     tvProgressSpeed.setX(width + margin);
                     String sellVolume = String.valueOf(salableBalance * progress);
                     tvProgressSpeed.setText(sellVolume);
@@ -104,7 +102,7 @@ public class SellView extends LinearLayout {
 
             }
         });
-        RxView.clicks(btnSell).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSell).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

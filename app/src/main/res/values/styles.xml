@@ -38,17 +38,6 @@
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
     </style>
 
-    <!--<style name="bg_white_style">-->
-    <!--<item name="android:layout_width">match_parent</item>-->
-    <!--<item name="android:layout_height">@dimen/d0</item>-->
-    <!--<item name="android:layout_marginLeft">@dimen/d10</item>-->
-    <!--<item name="android:layout_marginRight">@dimen/d10</item>-->
-    <!--<item name="android:layout_marginTop">@dimen/d20</item>-->
-    <!--<item name="android:background">@drawable/bg_white_with_shape</item>-->
-    <!--<item name="android:paddingLeft">@dimen/d12</item>-->
-    <!--<item name="android:paddingBottom">@dimen/d18</item>-->
-    <!--<item name="android:paddingRight">@dimen/d12</item>-->
-    <!--Bcaas 二次界面改版-->
     <style name="button_style" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/bcaas_bg_button</item>
         <item name="android:layout_height">@dimen/d48</item>
@@ -80,6 +69,11 @@
     <style name="line_style">
         <item name="android:background">@color/black20_AEAEAE</item>
         <item name="android:layout_height">@dimen/d1</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <style name="small_line_style">
+        <item name="android:background">@color/black20_AEAEAE</item>
+        <item name="android:layout_height">@dimen/d0.5</item>
         <item name="android:layout_width">match_parent</item>
     </style>
     <style name="black_18_text_style" parent="marquee_style">

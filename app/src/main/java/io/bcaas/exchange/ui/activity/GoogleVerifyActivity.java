@@ -1,10 +1,12 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
@@ -54,6 +56,13 @@ public class GoogleVerifyActivity extends BaseActivity {
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.please_set_google_verify);
+        String privateKey = "39LKDBERWWRH343T34VSRG434V43F4G5GT5H";
+        tvMyAddress.setText("密钥:\n" + privateKey);
+        if (ivQrCode != null) {
+            Bitmap qrCode = EncodingUtils.createQRCode(privateKey, context.getResources().getDimensionPixelOffset(R.dimen.d200),
+                    context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.color.foregroundOfQRCode, Constants.color.backgroundOfQRCode);
+            ivQrCode.setImageBitmap(qrCode);
+        }
     }
 
     @Override
@@ -63,7 +72,7 @@ public class GoogleVerifyActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -85,7 +94,7 @@ public class GoogleVerifyActivity extends BaseActivity {
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

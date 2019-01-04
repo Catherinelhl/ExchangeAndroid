@@ -56,7 +56,7 @@ public class DeviceTool {
         } catch (SocketException ex) {
             LogTool.d(TAG, ex.getMessage());
         }
-        return Constants.LOCAL_DEFAULT_IP;
+        return Constants.ValueMaps.LOCAL_DEFAULT_IP;
 
     }
 

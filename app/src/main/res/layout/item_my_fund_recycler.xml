@@ -52,7 +52,7 @@
                 android:text="@string/recharge"/>
     </RelativeLayout>
 
-    <View style="@style/line_style"/>
+    <View style="@style/small_line_style"/>
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
                   android:layout_marginTop="@dimen/d12"
@@ -63,7 +63,7 @@
                   android:layout_height="wrap_content">
         <TextView
                 style="@style/black_16_text_style"
-                android:text="可用"
+                android:text="@string/available"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
                 tool:ignore="InefficientWeight"/>
@@ -86,7 +86,7 @@
                   android:layout_height="wrap_content">
         <TextView
                 style="@style/black_16_text_style"
-                android:text="冻结"
+                android:text="@string/freeze"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
                 tool:ignore="InefficientWeight"/>

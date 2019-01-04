@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.SidesSlipAdapter;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.reactivex.Observer;
@@ -78,7 +76,7 @@ public class SideSlipPop extends PopupWindow {
         payMethod.add("ETH");
         payMethod.add("ZBB");
         setData();
-        RxView.clicks(tvReset).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvReset).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -103,7 +101,7 @@ public class SideSlipPop extends PopupWindow {
 
                     }
                 });
-        RxView.clicks(tvSure).throttleFirst(Constants.ValueMaps.sleepTime800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -113,7 +111,7 @@ public class SideSlipPop extends PopupWindow {
                     @Override
                     public void onNext(Object o) {
                         if (onItemSelectListener != null) {
-                            onItemSelectListener.onItemSelect(currentSelect, Constants.From.SIDESLIP);
+                            onItemSelectListener.onItemSelect(currentSelect, Constants.From.SIDE_SLIP);
                         }
                         dismiss();
                     }
