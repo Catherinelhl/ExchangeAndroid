@@ -69,30 +69,6 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        LogTool.d(TAG, "setUserVisibleHint:" + isVisibleToUser);
-        if (isVisibleToUser) {
-            if (isFirstVisible) {
-                isFirstVisible = false;
-                initPrepare();
-            } else {
-                onUserVisible();
-            }
-        } else {
-            if (isFirstInvisible) {
-                isFirstInvisible = false;
-            } else {
-                onUserInvisible();
-            }
-        }
-    }
-
-    protected abstract void onUserVisible();
-
-
-    protected abstract void onUserInvisible();
 
     public abstract int getLayoutRes();//得到当前的layoutRes
 

@@ -16,6 +16,7 @@ import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.ui.view.SellView;
+import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,8 @@ import java.util.List;
 public class SellFragment extends BaseFragment {
     private String TAG = SellFragment.class.getSimpleName();
 
-    @BindView(R.id.tab_layout_top)
-    TabLayout tabLayout;
+    @BindView(R.id.tab_layout)
+    BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 
@@ -40,15 +41,7 @@ public class SellFragment extends BaseFragment {
 
     private SellView sellViewOne, sellViewTwo, sellViewThree;
 
-    private SellDataBean sellDataBeanETH,sellDataBeanBTC,sellDataBeanZBB;
-
-    @Override
-    protected void onUserVisible() {
-    }
-
-    @Override
-    protected void onUserInvisible() {
-    }
+    private SellDataBean sellDataBeanETH, sellDataBeanBTC, sellDataBeanZBB;
 
     @Override
     public int getLayoutRes() {
@@ -66,9 +59,16 @@ public class SellFragment extends BaseFragment {
      * 初始化顶部tab的数据以及相对应的界面信息
      */
     private void initTopTabData() {
-        sellDataBeanETH=new SellDataBean("ETH","BTC","9.234314","4235.234234");
-        sellDataBeanBTC=new SellDataBean("BTC","ETH","8.234314","3235.234234");
-        sellDataBeanZBB=new SellDataBean("ZBB","BTC","7.234314","5.234234");
+        if (tabLayout == null) {
+            return;
+        }
+        tabLayout.removeTabLayout();
+        tabLayout.addTab(dataGenerationRegister.getTabTopTitle(0),0);
+        tabLayout.addTab(dataGenerationRegister.getTabTopTitle(1),1);
+        tabLayout.addTab(dataGenerationRegister.getTabTopTitle(2),2);
+        sellDataBeanETH = new SellDataBean("ETH", "BTC", "9.234314", "4235.234234");
+        sellDataBeanBTC = new SellDataBean("BTC", "ETH", "8.234314", "3235.234234");
+        sellDataBeanZBB = new SellDataBean("ZBB", "BTC", "7.234314", "5.234234");
 
         sellViewOne = new SellView(getContext());
         sellViewOne.refreshData(sellDataBeanETH);
@@ -90,20 +90,11 @@ public class SellFragment extends BaseFragment {
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
-    @Override
-    public void getArgs(Bundle bundle) {
-
-    }
-
-    @Override
-    public void initListener() {
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
+        tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
             }
 
             @Override
@@ -116,6 +107,16 @@ public class SellFragment extends BaseFragment {
 
             }
         });
+        tabLayout.resetSelectedTab(0);
+    }
+
+    @Override
+    public void getArgs(Bundle bundle) {
+
+    }
+
+    @Override
+    public void initListener() {
     }
 
     @Override
@@ -137,5 +138,12 @@ public class SellFragment extends BaseFragment {
             startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
         }
     };
+
+    /**
+     * 重置当前界面
+     */
+    public void resetView() {
+        initTopTabData();
+    }
 
 }

@@ -181,4 +181,8 @@ public class Constants {
         public static final String MEMBER_PASSWORD = "aaaaaaa1";
         public static final String MEMBER_REALIP = "192.168.1.1";
     }
+
+    public class TabLayout {
+        public static final String SLIDINGTABINDICATOR="slidingTabIndicator";
+    }
 }

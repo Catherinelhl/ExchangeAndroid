@@ -43,15 +43,6 @@ public class AccountFragment extends BaseFragment {
     RecyclerView rvSetting;
     private SettingsAdapter settingTypesAdapter;
 
-    @Override
-    protected void onUserVisible() {
-
-    }
-
-    @Override
-    protected void onUserInvisible() {
-
-    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/tab_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_16"
+            android:text="BTC"
+            android:textColor="@color/black_333333"
+    />
+    <View
+            android:id="@+id/tab_item_indicator"
+            android:layout_width="@dimen/d16"
+            android:layout_height="@dimen/d2"
+            android:layout_marginTop="@dimen/d5"
+            android:background="@color/button_color"
+            android:visibility="invisible"
+    />
+</LinearLayout>

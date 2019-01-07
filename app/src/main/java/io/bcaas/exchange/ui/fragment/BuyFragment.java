@@ -16,7 +16,9 @@ import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.view.BuyView;
+import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +32,8 @@ public class BuyFragment extends BaseFragment {
     private String TAG = BuyFragment.class.getSimpleName();
 
 
-    @BindView(R.id.tab_layout_top)
-    TabLayout tabLayout;
+    @BindView(R.id.tab_layout)
+    BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
     private List<BuyDataBean> buyDataBeansETH;
@@ -43,15 +45,6 @@ public class BuyFragment extends BaseFragment {
     private List<View> views;
     private BuyView buyViewOne, buyViewTwo, buyViewThree;
 
-    @Override
-    protected void onUserVisible() {
-
-    }
-
-    @Override
-    protected void onUserInvisible() {
-
-    }
 
     @Override
     public int getLayoutRes() {
@@ -75,7 +68,8 @@ public class BuyFragment extends BaseFragment {
         if (tabLayout == null) {
             return;
         }
-        for (int i = 0; i < 4; i++) {
+        tabLayout.removeTabLayout();
+        for (int i = 0; i < 3; i++) {
             BuyDataBean buyDataBean = new BuyDataBean();
             buyDataBean.setPersonName("Alice");
             buyDataBean.setBuyMethod("支付方式ETH");
@@ -104,6 +98,7 @@ public class BuyFragment extends BaseFragment {
             buyDataBeanZBB.setTotalAccount("45.02387000 ZBB");
             buyDataBeanZBB.setFee("0.00001 ZBB");
             buyDataBeansZBB.add(buyDataBeanZBB);
+            tabLayout.addTab(dataGenerationRegister.getTabTopTitle(i),i);
         }
         buyViewOne = new BuyView(getContext());
         buyViewOne.refreshData(buyDataBeansETH);
@@ -125,18 +120,8 @@ public class BuyFragment extends BaseFragment {
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
-    @Override
-    public void getArgs(Bundle bundle) {
-
-    }
-
-    @Override
-    public void initListener() {
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
+        tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
@@ -150,7 +135,6 @@ public class BuyFragment extends BaseFragment {
                         break;
                     case 2:
                         buyViewThree.refreshData(buyDataBeansZBB);
-
                         break;
                 }
             }
@@ -165,6 +149,16 @@ public class BuyFragment extends BaseFragment {
 
             }
         });
+        tabLayout.resetSelectedTab(0);
+    }
+
+    @Override
+    public void getArgs(Bundle bundle) {
+
+    }
+
+    @Override
+    public void initListener() {
     }
 
     @Override
@@ -198,13 +192,7 @@ public class BuyFragment extends BaseFragment {
      * 重置当前界面
      */
     public void resetView() {
-        if (viewPager != null) {
-            viewPager.setCurrentItem(0);
-        }
-        if (tabLayout != null) {
-            tabLayout.getTabAt(0).select();
-            tabLayout.invalidate();
-        }
+        initTopTabData();
     }
 
 }

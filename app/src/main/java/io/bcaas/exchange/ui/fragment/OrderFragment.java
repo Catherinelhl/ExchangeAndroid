@@ -3,15 +3,9 @@ package io.bcaas.exchange.ui.fragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.OrderRechargeAdapter;
-import io.bcaas.exchange.adapter.OrderTransactionAdapter;
-import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.OrderRechargeBean;
@@ -20,8 +14,8 @@ import io.bcaas.exchange.bean.OrderWithDrawBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.ui.view.OrderView;
+import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +28,8 @@ import java.util.List;
  */
 public class OrderFragment extends BaseFragment {
 
-    @BindView(R.id.tab_layout_top)
-    TabLayout tabLayout;
+    @BindView(R.id.tab_layout)
+    BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
     private String TAG = OrderFragment.class.getSimpleName();
@@ -48,18 +42,6 @@ public class OrderFragment extends BaseFragment {
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
-
-    @Override
-    protected void onUserVisible() {
-        LogTool.i(TAG, "onUserVisible");
-
-    }
-
-    @Override
-    protected void onUserInvisible() {
-        LogTool.i(TAG, "onUserInvisible");
-
-    }
 
     @Override
     public int getLayoutRes() {
@@ -80,7 +62,11 @@ public class OrderFragment extends BaseFragment {
      * 初始化顶部tab的数据以及相对应的界面信息
      */
     private void initTopTabData() {
-        for (int i = 0; i < 4; i++) {
+        if (tabLayout == null) {
+            return;
+        }
+        tabLayout.removeTabLayout();
+        for (int i = 0; i < 3; i++) {
             //初始化订单「交易」页面数据
             OrderTransactionBean orderTransactionBean = new OrderTransactionBean();
             orderTransactionBean.setOrderType("出售 BTC");
@@ -111,6 +97,8 @@ public class OrderFragment extends BaseFragment {
             orderWithDrawBean.setFee("0.001 BTC");
             orderWithDrawBean.setCurrency("BTC");
             orderWithDrawBeans.add(orderWithDrawBean);
+            tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i),i);
+
         }
 
 
@@ -134,32 +122,8 @@ public class OrderFragment extends BaseFragment {
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
-    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
-        @Override
-        public <T> void onItemSelect(T type, String from) {
-            LogTool.d(TAG, from);
-            switch (from) {
-                case Constants.From.ORDER_TRANSACTION:
-                    break;
-                case Constants.From.ORDER_RECHARGE:
-                    break;
-                case Constants.From.ORDER_WITHDRAW:
-                    break;
-            }
-        }
-    };
-
-    @Override
-    public void getArgs(Bundle bundle) {
-
-    }
-
-    @Override
-    public void initListener() {
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
+        tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
@@ -187,7 +151,38 @@ public class OrderFragment extends BaseFragment {
 
             }
         });
+        tabLayout.resetSelectedTab(0);
     }
 
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            LogTool.d(TAG, from);
+            switch (from) {
+                case Constants.From.ORDER_TRANSACTION:
+                    break;
+                case Constants.From.ORDER_RECHARGE:
+                    break;
+                case Constants.From.ORDER_WITHDRAW:
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public void getArgs(Bundle bundle) {
+
+    }
+
+    @Override
+    public void initListener() {
+    }
+
+    /**
+     * 重置当前界面
+     */
+    public void resetView() {
+        initTopTabData();
+    }
 
 }

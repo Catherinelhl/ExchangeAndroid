@@ -13,6 +13,19 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="BcaasTabLayout">
+        <attr name="tab_Mode" format="enum">
+            <enum name="mode_fixed" value="1"/>
+            <enum name="mode_scrollable" value="2"/>
+        </attr>
+        <attr name="tabIndicatorColor" format="color"/>
+        <attr name="tabSelectTextColor" format="color"/>
+        <attr name="tabTextColor" format="color"/>
+        <attr name="tabIndicatorHeight" format="dimension"/>
+        <attr name="tabIndicatorWidth" format="dimension"/>
+        <attr name="tabTextSize" format="dimension"/>
+    </declare-styleable>
+
     <!--密码框/验证码输入-->
     <declare-styleable name="editViewWithAction">
         <attr name="hint" format="string"/>

@@ -245,9 +245,15 @@ public class MainActivity extends BaseActivity
                     break;
                 case 1:
                     setTitle(getString(R.string.sell_title));
+                    if (currentFragment instanceof SellFragment) {
+                        ((SellFragment) currentFragment).resetView();
+                    }
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
+                    if (currentFragment instanceof OrderFragment) {
+                        ((OrderFragment) currentFragment).resetView();
+                    }
                     break;
                 case 3:
                     setTitle(getString(R.string.amount_title));
@@ -257,62 +263,6 @@ public class MainActivity extends BaseActivity
 
     }
 
-//    /**
-//     * 设置底部选项卡渐变色
-//     *
-//     * @param textView
-//     * @param isCheck
-//     * @return
-//     */
-//    private LinearGradient getShader(TextView textView, boolean isCheck) {
-//        return new LinearGradient(0, 0, 0, textView.getPaint().getTextSize(),
-//                getResources().getColor(isCheck ? R.color.theme_FDD400 : R.color.grey_c5c5c5),
-//                getResources().getColor(isCheck ? R.color.theme_FF6400 : R.color.grey_c5c5c5),
-//                Shader.TileMode.CLAMP);
-//    }
-
-
-    /**
-     * 设置tab Indicator 的宽度
-     *
-     * @param tabs
-     * @param leftDip
-     * @param rightDip
-     */
-    private void setTabIndicatorWidth(TabLayout tabs, int leftDip, int rightDip) {
-        Class<?> tabLayout = tabs.getClass();
-        Field tabStrip = null;
-        try {
-            tabStrip = tabLayout.getDeclaredField("tabStrip");
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-            LogTool.e(TAG, e.getMessage());
-        }
-
-        if (tabStrip != null) {
-            tabStrip.setAccessible(true);
-        }
-        LinearLayout llTab = null;
-        try {
-            llTab = (LinearLayout) tabStrip.get(tabs);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            LogTool.e(TAG, e.getMessage());
-        }
-
-        int left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, leftDip, Resources.getSystem().getDisplayMetrics());
-        int right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, rightDip, Resources.getSystem().getDisplayMetrics());
-
-        for (int i = 0; i < llTab.getChildCount(); i++) {
-            View child = llTab.getChildAt(i);
-            child.setPadding(0, 0, 0, 0);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
-            params.leftMargin = left;
-            params.rightMargin = right;
-            child.setLayoutParams(params);
-            child.invalidate();
-        }
-    }
 
     @Override
     public void getCurrencyUSDPriceSuccess(String info) {
