@@ -18,7 +18,7 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -31,11 +31,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_amount)
-    PassWordEditText amount;
+    EditTextWithAction amount;
     @BindView(R.id.etwa_password)
-    PassWordEditText password;
+    EditTextWithAction password;
     @BindView(R.id.etwa_image_code)
-    PassWordEditText etwaImageCode;
+    EditTextWithAction etwaImageCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
     @BindView(R.id.tv_forget_password)
@@ -108,7 +108,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
             }
         }, Constants.EditTextFrom.LOGIN_PASSWORD);
-        RxView.clicks(tvRegisterNow).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvRegisterNow).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -132,7 +132,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
                     }
                 });
-        RxView.clicks(tvForgetPassword).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvForgetPassword).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -156,7 +156,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
                     }
                 });
-        RxView.clicks(btnLogin).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnLogin).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -15,7 +15,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -28,10 +28,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class WithDrawView extends LinearLayout {
     private TextView tvCashableBalance;
-    private PassWordEditText etwaReceiveAddress;
-    private PassWordEditText etwaWithdrawAmount;
+    private EditTextWithAction etwaReceiveAddress;
+    private EditTextWithAction etwaWithdrawAmount;
     private TextView tvFeeTips;
-    private PassWordEditText etwaRemarks;
+    private EditTextWithAction etwaRemarks;
     private TextView tvInfo;
     private Button btnSend;
     private LinearLayout llWithDrawContent;
@@ -90,7 +90,7 @@ public class WithDrawView extends LinearLayout {
     }
 
     private void initListener() {
-        RxView.clicks(btnSend).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSend).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -114,7 +114,7 @@ public class WithDrawView extends LinearLayout {
 
                     }
                 });
-        RxView.clicks(tvSetImmediately).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSetImmediately).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -83,7 +83,7 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
-        <activity android:name=".ui.activity.VerifyMethodCloseOrOpenActivity"
+        <activity android:name=".ui.activity.CloseVerifyMethodActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>

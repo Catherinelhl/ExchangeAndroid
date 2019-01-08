@@ -37,15 +37,15 @@ public class MemberVO implements Serializable {
 	 */
 	private String phone;
 	/**
-	 * 郵箱驗證 (0:close, 1:open)
+	 * 郵箱驗證 (0:CLOSE, 1:open)
 	 */
 	private Integer emailVerify;
 	/**
-	 * 電話驗證 (0:close, 1:open)
+	 * 電話驗證 (0:CLOSE, 1:open)
 	 */
 	private Integer phoneVerify;
 	/**
-	 * 雙因素驗證(Google) (0:close, 1:open)
+	 * 雙因素驗證(Google) (0:CLOSE, 1:open)
 	 */
 	private Integer twoFactorAuthVerify;
 	/**

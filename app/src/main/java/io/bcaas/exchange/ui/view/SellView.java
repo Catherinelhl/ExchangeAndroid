@@ -102,7 +102,7 @@ public class SellView extends LinearLayout {
 
             }
         });
-        RxView.clicks(btnSell).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSell).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -11,7 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -32,23 +32,23 @@ public class WithDrawDetailActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)
-    PassWordEditText etwaFundPassword;
+    EditTextWithAction etwaFundPassword;
     @BindView(R.id.tv_email_key)
     TextView tvEmailKey;
     @BindView(R.id.tv_email_value)
     TextView tvEmailValue;
     @BindView(R.id.etwa_email_verify_code)
-    PassWordEditText etwaEmailVerifyCode;
+    EditTextWithAction etwaEmailVerifyCode;
     @BindView(R.id.tv_phone_key)
     TextView tvPhoneKey;
     @BindView(R.id.tv_phone_value)
     TextView tvPhoneValue;
     @BindView(R.id.etwa_message_verify_code)
-    PassWordEditText etwaMessageVerifyCode;
+    EditTextWithAction etwaMessageVerifyCode;
     @BindView(R.id.tv_google_verify_key)
     TextView tvGoogleVerifyKey;
     @BindView(R.id.etwa_google_verify_code)
-    PassWordEditText etwaGoogleVerifyCode;
+    EditTextWithAction etwaGoogleVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_sure)
@@ -84,14 +84,14 @@ public class WithDrawDetailActivity extends BaseActivity {
     @Override
     public void initListener() {
 
-        Disposable subscribe = RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        Disposable subscribe = RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
                         setResult(true);
                     }
                 });
-        Disposable subscribeSure = RxView.clicks(btnSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        Disposable subscribeSure = RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {

@@ -12,7 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -31,11 +31,11 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_original_password)
-    PassWordEditText etwaOriginalPassword;
+    EditTextWithAction etwaOriginalPassword;
     @BindView(R.id.etwa_new_password)
-    PassWordEditText etwaNewPassword;
+    EditTextWithAction etwaNewPassword;
     @BindView(R.id.etwa_confirm_new_password)
-    PassWordEditText etwaConfirmNewPassword;
+    EditTextWithAction etwaConfirmNewPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -62,7 +62,7 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -84,7 +84,7 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

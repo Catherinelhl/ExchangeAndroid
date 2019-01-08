@@ -14,7 +14,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.FundPasswordContract;
 import io.bcaas.exchange.ui.presenter.FundPasswordPresenterImp;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -34,9 +34,9 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)
-    PassWordEditText etwaFundPassword;
+    EditTextWithAction etwaFundPassword;
     @BindView(R.id.etwa_confirm_fund_password)
-    PassWordEditText etwaConfirmFundPassword;
+    EditTextWithAction etwaConfirmFundPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -65,7 +65,7 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -87,7 +87,7 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

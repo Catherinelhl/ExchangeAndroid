@@ -23,4 +23,26 @@ public class SafetyCenterInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.logout(body);
     }
+
+    /**
+     * 取得帳戶資訊
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> getAccountSecurity(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.getAccountSecurity(body);
+    }
+
+    /**
+     * 验证验证码\关闭安全验证
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> closeSecurityVerify(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.closeSecurityVerify(body);
+    }
+
+
 }

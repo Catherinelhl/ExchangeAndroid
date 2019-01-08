@@ -108,5 +108,14 @@
     <string name="please_input_confirm_password">请输入确认密码</string>
     <string name="password_does_not_match">两次密码输入不一致</string>
     <string name="please_input_verify_code_first">请先输入验证码</string>
+    <string name="open">开启</string>
+    <string name="close">关闭</string>
+    <string name="setting">设置</string>
+    <string name="bind">绑定</string>
+    <string name="please_input_phone_number">请输入手机号！</string>
+    <string name="please_input_phone_verify_code">请输入验证码！</string>
+    <string name="please_input_email_verify_code">请输入邮箱验证码</string>
+    <string name="please_input_message_code">请输入短信验证码！</string>
+    <string name="close_verify">关闭验证</string>
 
 </resources>

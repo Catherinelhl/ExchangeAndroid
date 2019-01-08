@@ -46,8 +46,8 @@ public class GradientTextView extends TextView {
 //        if (changed) {
 //            getPaint().setShader(new LinearGradient(
 //                    0, 0, 0, getHeight(),
-//                    context.getResources().getColor(R.color.theme_FDD400),
-//                    context.getResources().getColor(R.color.theme_FF6400),
+//                    context.getResources().getColor(R.Color.theme_FDD400),
+//                    context.getResources().getColor(R.Color.theme_FF6400),
 //                    Shader.TileMode.MIRROR));
 //        }
 //    }

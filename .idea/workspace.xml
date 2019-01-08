@@ -28,6 +28,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BindPhoneContract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/CloseVerifyCodeContract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
@@ -55,24 +59,52 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ModifyLoginPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ModifyLoginPasswordActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MyFundActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MyFundActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ResetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ResetPasswordActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SafetyCenterContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SafetyCenterContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/VerifyCodeContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/VerifyCodeContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/VerifyCodeInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/VerifyCodeInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SafetyCenterPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SafetyCenterPresenterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/RechargeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/RechargeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/PassWordEditText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/PassWordEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/pop/SideSlipPop.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/pop/SideSlipPop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTabLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTabLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/textview/GradientTextView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/textview/GradientTextView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/SafetyCenterItemView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/SafetyCenterItemView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/VersionVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/VersionVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bind_phone.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bind_phone.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_buy_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_buy_detail.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_google_verify.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_google_verify.xml" afterDir="false" />
@@ -82,10 +114,10 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_fund_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_set_fund_password.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verify_method_close_or_open.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verify_method_close_or_open.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verify_method_close_or_open.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_close_verify_method.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_edittext_with_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_edittext_with_action.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_with_draw.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_with_draw.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -110,83 +142,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java">
+      <file leaf-file-name="BindPhoneActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+            <state relative-caret-position="692">
+              <caret line="69" column="54" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
               <folding>
-                <element signature="e#3128#3129#0" expanded="true" />
-                <element signature="e#3191#3192#0" expanded="true" />
-                <element signature="e#3764#3765#0" expanded="true" />
-                <element signature="e#3828#3829#0" expanded="true" />
-                <element signature="e#4483#4523#0" expanded="true" />
-                <element signature="e#4694#4738#0" expanded="true" />
-                <element signature="e#5167#5208#0" expanded="true" />
-                <element signature="e#5695#5744#0" expanded="true" />
-                <element signature="e#5927#5970#0" expanded="true" />
-                <element signature="e#6248#6298#0" expanded="true" />
+                <element signature="e#2276#2321#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="54" column="34" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="34" />
-              <folding>
-                <element signature="e#4765#4766#0" expanded="true" />
-                <element signature="e#4857#4858#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_register.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-              <folding>
-                <element signature="e#903#935#0" expanded="true" />
-                <element signature="e#2483#2519#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PassWordEditText.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/PassWordEditText.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="127" column="28" lean-forward="true" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
-              <folding>
-                <element signature="e#5639#5699#0" expanded="true" />
-                <element signature="e#5743#5802#0" expanded="true" />
-                <element signature="e#6277#6336#0" expanded="true" />
-                <element signature="e#6383#6442#0" expanded="true" />
-                <element signature="e#8225#8264#0" expanded="true" />
-                <element signature="e#9841#9880#0" expanded="true" />
-                <element signature="e#10210#10249#0" expanded="true" />
-                <element signature="e#13305#13306#0" expanded="true" />
-                <element signature="e#13383#13384#0" expanded="true" />
-                <element signature="e#14435#14436#0" expanded="true" />
-                <element signature="e#14495#14496#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegexTool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/regex/RegexTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -194,51 +157,66 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+            <state relative-caret-position="573">
+              <caret line="163" column="65" selection-start-line="163" selection-start-column="65" selection-end-line="163" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TextView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/widget/TextView.java">
+      <file leaf-file-name="BindPhoneContract.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BindPhoneContract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="5028" column="16" selection-start-line="5028" selection-start-column="16" selection-end-line="5028" selection-end-column="16" />
+            <state relative-caret-position="272">
+              <caret line="16" column="60" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="16" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout_edittext_with_action.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_edittext_with_action.xml">
+      <file leaf-file-name="BindPhonePresenterImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="34" column="53" lean-forward="true" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+            <state relative-caret-position="120">
+              <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
               <folding>
-                <element signature="e#301#313#0" expanded="true" />
-                <element signature="e#899#923#0" expanded="true" />
-                <element signature="e#990#1002#0" expanded="true" />
-                <element signature="e#1037#1049#0" expanded="true" />
-                <element signature="e#1150#1162#0" expanded="true" />
-                <element signature="e#1364#1387#0" expanded="true" />
-                <element signature="e#1412#1424#0" expanded="true" />
-                <element signature="e#1454#1478#0" expanded="true" />
-                <element signature="e#1520#1532#0" expanded="true" />
-                <element signature="e#1567#1579#0" expanded="true" />
-                <element signature="e#1617#1629#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="EditTextWithAction.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8881#8920#0" expanded="true" />
+                <element signature="e#10677#10716#0" expanded="true" />
+                <element signature="e#11094#11133#0" expanded="true" />
+                <element signature="e#14283#14284#0" expanded="true" />
+                <element signature="e#14361#14362#0" expanded="true" />
+                <element signature="e#11910#11911#0" expanded="true" />
+                <element signature="e#11970#11971#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <file leaf-file-name="VerifyCodeContract.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/VerifyCodeContract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="318">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerifyCodePresenterImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -249,22 +227,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Interface" />
         <option value="layoutResourceFile" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ib_right</find>
-      <find>edit</find>
-      <find>sleepTime</find>
-      <find>Constants.ValueMaps.time.sleep800</find>
-      <find>sleep800</find>
-      <find>Constants.ValueMaps.sleep800</find>
-      <find>seekbar</find>
       <find>ivQrCode</find>
       <find>successfully_copied</find>
       <find>to_setting_grant_permission</find>
@@ -288,6 +259,13 @@
       <find>etwa_amount</find>
       <find>lastClickBackTime</find>
       <find>etContent</find>
+      <find>tvSafetyCenterAction</find>
+      <find>tabType</find>
+      <find>initDa</find>
+      <find>sendMailVerifyCode</find>
+      <find>behaviour</find>
+      <find>setInputType</find>
+      <find>editTextWatcherListener</find>
     </findStrings>
     <replaceStrings>
       <replace>black_333333</replace>
@@ -4165,33 +4143,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_buy_recycler.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/seekbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/seekbar_thumb.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_buy_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_transaction_recycler.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_setting.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_my_fund_recycler.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_recharge.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_with_draw.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_safety_center.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_google_verify.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTablayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" />
@@ -4199,7 +4154,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/tablayout/ViewPagerOnTabSelectedListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ViewPagerOnTabSelectedListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/tablayout_bcaas.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/maker/DataGenerationRegister.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/AccountFragment.java" />
@@ -4212,10 +4166,34 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/regex/RegexTool.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_edittext_with_action.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/PassWordEditText.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SafetyCenterContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/SafetyCenterItemView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BindPhoneContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_with_draw.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/CloseVerifyCodeContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/VerifyCodeInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_close_verify_method.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SafetyCenterPresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_bind_phone.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/VerifyCodeContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" />
       </list>
     </option>
   </component>
@@ -4271,7 +4249,66 @@
               <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="bcaas" type="462c0819:PsiDirectoryNode" />
               <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="activity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="interactor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="presenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="dialog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
@@ -4330,7 +4367,7 @@
     <property name="ExportApk.BuildType" value="release" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="BaseA&#9;PSI&#9;JAVA://io.bcaas.exchange.base.BaseActivity&#10;Regi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.RegisterActivity&#10;ta&#9;FILE&#9;jar:///Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/jars/classes.jar!/android/support/design/widget/TabLayout.class&#10;B&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTabLayout.java&#10;Ma&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Buf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;fun&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_set_fund_password.xml&#10;co&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java&#10;goo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;bind&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.VerifyMethodCloseOrOpenActivity&#10;rec&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.RechargeView&#10;my&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;OrderF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.OrderFragment&#10;SellDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SellDetailActivity&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SellF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.SellFragment&#10;Data&#9;PSI&#9;JAVA://io.bcaas.exchange.maker.DataGenerationRegister&#10;reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;Log&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.LoginActivity&#10;colo&#9;PSI&#9;JAVA://android.support.asynclayoutinflater.R.color&#10;inc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_header.xml&#10;buyF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.BuyFragment&#10;http&#9;PSI&#9;JAVA://io.bcaas.exchange.http.HttpApi&#10;main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;in&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_header.xml&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;activity_ma&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_main.xml&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Bra&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java&#10;Acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;icon_s&#9;PSI&#9;JAVA://io.bcaas.exchange.R.mipmap#icon_scan&#10;Edit&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;BAse&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;Htt&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Withd&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_with_draw.xml&#10;wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java&#10;Edi&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;REc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java&#10;se&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;Mes&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.MessageConstants&#10;MainA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;DAta&#9;PSI&#9;JAVA://io.bcaas.exchange.maker.DataGenerationRegister&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="Phon&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;BaseA&#9;PSI&#9;JAVA://io.bcaas.exchange.base.BaseApplication&#10;With&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawDetailActivity&#10;Requ&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java&#10;Bin&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;Http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Sa&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SafetyCenterActivity&#10;Regi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.RegisterActivity&#10;ta&#9;FILE&#9;jar:///Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/jars/classes.jar!/android/support/design/widget/TabLayout.class&#10;B&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTabLayout.java&#10;Ma&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Buf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;fun&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_set_fund_password.xml&#10;co&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java&#10;goo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;bind&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.VerifyMethodCloseOrOpenActivity&#10;rec&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.RechargeView&#10;my&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;OrderF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.OrderFragment&#10;SellDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SellDetailActivity&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SellF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.SellFragment&#10;Data&#9;PSI&#9;JAVA://io.bcaas.exchange.maker.DataGenerationRegister&#10;reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;Log&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.LoginActivity&#10;colo&#9;PSI&#9;JAVA://android.support.asynclayoutinflater.R.color&#10;inc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_header.xml&#10;buyF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.BuyFragment&#10;http&#9;PSI&#9;JAVA://io.bcaas.exchange.http.HttpApi&#10;main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;in&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_header.xml&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;activity_ma&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_main.xml&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Bra&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java&#10;Acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;icon_s&#9;PSI&#9;JAVA://io.bcaas.exchange.R.mipmap#icon_scan&#10;Edit&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;BAse&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;Htt&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Withd&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java&#10;Edi&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;REc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -4519,7 +4556,7 @@
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
-      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.3159204" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.17910448" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.4477612" />
@@ -4530,7 +4567,7 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info active="true" anchor="right" id="Preview" order="3" visible="true" weight="0.308526" />
+      <window_info anchor="right" id="Preview" order="3" weight="0.308526" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.19527364" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32894737" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.08457711" />
@@ -4591,276 +4628,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_google_verify.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-          <folding>
-            <element signature="e#623#635#0" expanded="true" />
-            <element signature="e#673#685#0" expanded="true" />
-            <element signature="e#1331#1344#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="54" column="33" lean-forward="true" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verify_method_close_or_open.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="73" column="41" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="73" selection-end-column="41" />
-          <folding>
-            <element signature="e#893#914#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_my_fund_recycler.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_fund.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_set_fund_password.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="48" selection-start-line="8" selection-start-column="2" selection-end-line="14" selection-end-column="48" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_recharge.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-393">
-          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
-          <folding>
-            <element signature="e#758#779#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_with_draw.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-597">
-          <caret line="46" column="49" lean-forward="true" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_buy_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="59" selection-start-line="8" selection-start-column="2" selection-end-line="14" selection-end-column="59" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MyFundActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="141" column="84" selection-start-line="140" selection-start-column="18" selection-end-line="141" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="162" selection-start-line="162" selection-end-line="163" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="69" column="44" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1781#1782#0" expanded="true" />
-            <element signature="e#1837#1838#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
-          <folding>
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#1937#1955#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_buy.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon_bcaas.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon_choose.9.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/BuyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/tablayout/ViewPagerOnTabSelectedListener.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/ViewPagerOnTabSelectedListener.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tablayout_bcaas.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_tab_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="e#483#504#0" expanded="true" />
-            <element signature="e#687#699#0" expanded="true" />
-            <element signature="e#728#739#0" expanded="true" />
-            <element signature="e#783#794#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/cf95b61bec2512925ef75cf26a16c4c4/jars/classes.jar!/android/support/v4/view/ViewPager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="402" column="16" selection-start-line="402" selection-start-column="16" selection-end-line="402" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/TabViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -4985,13 +4752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -5013,47 +4773,395 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/PassWordEditText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="127" column="28" lean-forward="true" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
-          <folding>
-            <element signature="e#5639#5699#0" expanded="true" />
-            <element signature="e#5743#5802#0" expanded="true" />
-            <element signature="e#6277#6336#0" expanded="true" />
-            <element signature="e#6383#6442#0" expanded="true" />
-            <element signature="e#8225#8264#0" expanded="true" />
-            <element signature="e#9841#9880#0" expanded="true" />
-            <element signature="e#10210#10249#0" expanded="true" />
-            <element signature="e#13305#13306#0" expanded="true" />
-            <element signature="e#13383#13384#0" expanded="true" />
-            <element signature="e#14435#14436#0" expanded="true" />
-            <element signature="e#14495#14496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_edittext_with_action.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="34" column="53" lean-forward="true" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+        <state relative-caret-position="164">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
           <folding>
             <element signature="e#301#313#0" expanded="true" />
-            <element signature="e#899#923#0" expanded="true" />
-            <element signature="e#990#1002#0" expanded="true" />
-            <element signature="e#1037#1049#0" expanded="true" />
-            <element signature="e#1150#1162#0" expanded="true" />
-            <element signature="e#1364#1387#0" expanded="true" />
-            <element signature="e#1412#1424#0" expanded="true" />
-            <element signature="e#1454#1478#0" expanded="true" />
-            <element signature="e#1520#1532#0" expanded="true" />
-            <element signature="e#1567#1579#0" expanded="true" />
-            <element signature="e#1617#1629#0" expanded="true" />
+            <element signature="e#355#367#0" expanded="true" />
+            <element signature="e#802#814#0" expanded="true" />
+            <element signature="e#844#868#0" expanded="true" />
+            <element signature="e#910#922#0" expanded="true" />
+            <element signature="e#957#969#0" expanded="true" />
+            <element signature="e#1007#1019#0" expanded="true" />
+            <element signature="e#1324#1347#0" expanded="true" />
+            <element signature="e#1518#1530#0" expanded="true" />
+            <element signature="e#1560#1584#0" expanded="true" />
+            <element signature="e#1626#1638#0" expanded="true" />
+            <element signature="e#1673#1685#0" expanded="true" />
+            <element signature="e#1723#1735#0" expanded="true" />
+            <element signature="e#1879#1891#0" expanded="true" />
+            <element signature="e#1930#1942#0" expanded="true" />
+            <element signature="e#1975#1986#0" expanded="true" />
+            <element signature="e#2596#2608#0" expanded="true" />
+            <element signature="e#2752#2764#0" expanded="true" />
+            <element signature="e#2805#2816#0" expanded="true" />
+            <element signature="e#2901#2913#0" expanded="true" />
+            <element signature="e#3075#3089#0" expanded="true" />
+            <element signature="e#3136#3148#0" expanded="true" />
+            <element signature="e#3305#3317#0" expanded="true" />
+            <element signature="e#3647#3659#0" expanded="true" />
+            <element signature="e#3817#3828#0" expanded="true" />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/SafetyCenterItemView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/dialog/BcaasSingleDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/FundPasswordPresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="e#1154#1155#0" expanded="true" />
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#6699#6700#0" expanded="true" />
+            <element signature="e#6742#6743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="110" column="18" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="18" />
+          <folding>
+            <element signature="e#1383#1384#0" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1461#1462#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1597#1598#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="61" column="77" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_with_draw.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding>
+            <element signature="e#1358#1370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="58" column="34" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_withdraw_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="104" selection-start-line="87" selection-start-column="11" selection-end-line="104" />
+          <folding>
+            <element signature="e#5275#5298#0" expanded="true" />
+            <element signature="e#5778#5790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_close_verify_method.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="53" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="53" />
+          <folding>
+            <element signature="e#572#584#0" expanded="true" />
+            <element signature="e#628#640#0" expanded="true" />
+            <element signature="e#844#859#0" expanded="true" />
+            <element signature="e#893#914#0" expanded="true" />
+            <element signature="e#1165#1186#0" expanded="true" />
+            <element signature="e#1273#1284#0" expanded="true" />
+            <element signature="e#1616#1628#0" expanded="true" />
+            <element signature="e#1739#1766#0" expanded="true" />
+            <element signature="e#1801#1813#0" expanded="true" />
+            <element signature="e#1966#1978#0" expanded="true" />
+            <element signature="e#2022#2034#0" expanded="true" />
+            <element signature="e#2238#2253#0" expanded="true" />
+            <element signature="e#2287#2308#0" expanded="true" />
+            <element signature="e#2559#2580#0" expanded="true" />
+            <element signature="e#2667#2678#0" expanded="true" />
+            <element signature="e#2999#3028#0" expanded="true" />
+            <element signature="e#3104#3116#0" expanded="true" />
+            <element signature="e#3197#3209#0" expanded="true" />
+            <element signature="e#3350#3373#0" expanded="true" />
+            <element signature="e#3412#3424#0" expanded="true" />
+            <element signature="e#3462#3474#0" expanded="true" />
+            <element signature="e#3504#3525#0" expanded="true" />
+            <element signature="e#3823#3835#0" expanded="true" />
+            <element signature="e#3946#3969#0" expanded="true" />
+            <element signature="e#4004#4016#0" expanded="true" />
+            <element signature="e#4148#4160#0" expanded="true" />
+            <element signature="e#4186#4200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/CloseVerifyCodeContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="164" column="42" selection-start-line="164" selection-start-column="42" selection-end-line="164" selection-end-column="42" />
+          <folding>
+            <element signature="e#1888#1889#0" expanded="true" />
+            <element signature="e#1943#1944#0" expanded="true" />
+            <element signature="e#1985#1986#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
+            <element signature="e#2069#2070#0" expanded="true" />
+            <element signature="e#2118#2119#0" expanded="true" />
+            <element signature="e#2179#2180#0" expanded="true" />
+            <element signature="e#2214#2215#0" expanded="true" />
+            <element signature="e#2253#2254#0" expanded="true" />
+            <element signature="e#2281#2282#0" expanded="true" />
+            <element signature="e#2330#2331#0" expanded="true" />
+            <element signature="e#2368#2369#0" expanded="true" />
+            <element signature="e#2435#2436#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
+            <element signature="e#2975#2976#0" expanded="true" />
+            <element signature="e#3040#3041#0" expanded="true" />
+            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#3269#3270#0" expanded="true" />
+            <element signature="e#5317#5318#0" expanded="true" />
+            <element signature="e#5374#5375#0" expanded="true" />
+            <element signature="e#5425#5426#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="202" column="9" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
+          <folding>
+            <element signature="e#1948#1949#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
+            <element signature="e#2448#2469#0" expanded="true" />
+            <element signature="e#4266#4316#0" expanded="true" />
+            <element signature="e#5088#5133#0" expanded="true" />
+            <element signature="e#6775#6776#0" expanded="true" />
+            <element signature="e#6802#6803#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SafetyCenterPresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="100" column="70" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SafetyCenterContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1383">
+          <caret line="98" column="5" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="96" column="55" lean-forward="true" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
+          <folding>
+            <element signature="e#5228#5260#0" expanded="true" />
+            <element signature="e#5880#5913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_bind_phone.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/text/InputType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="269" column="48" lean-forward="true" selection-start-line="269" selection-start-column="48" selection-end-line="269" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/VerifyCodeInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/VerifyCodeContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="163" column="65" selection-start-line="163" selection-start-column="65" selection-end-line="163" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="69" column="54" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+          <folding>
+            <element signature="e#2276#2321#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BindPhoneContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="60" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="16" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8881#8920#0" expanded="true" />
+            <element signature="e#10677#10716#0" expanded="true" />
+            <element signature="e#11094#11133#0" expanded="true" />
+            <element signature="e#14283#14284#0" expanded="true" />
+            <element signature="e#14361#14362#0" expanded="true" />
+            <element signature="e#11910#11911#0" expanded="true" />
+            <element signature="e#11970#11971#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

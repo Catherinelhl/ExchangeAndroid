@@ -64,7 +64,7 @@ public class RechargeView extends LinearLayout {
     }
 
     private void initListener() {
-        RxView.clicks(tvCopyAddress).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvCopyAddress).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -94,7 +94,7 @@ public class RechargeView extends LinearLayout {
 
                     }
                 });
-        RxView.clicks(tvSetImmediately).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSetImmediately).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -150,7 +150,7 @@ public class RechargeView extends LinearLayout {
 
                 if (ivQrCode != null) {
                     Bitmap qrCode = EncodingUtils.createQRCode(address, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-                            context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.color.foregroundOfQRCode, Constants.color.backgroundOfQRCode);
+                            context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
                     ivQrCode.setImageBitmap(qrCode);
                 }
 

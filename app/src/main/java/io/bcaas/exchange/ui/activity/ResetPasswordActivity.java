@@ -11,7 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -30,13 +30,13 @@ public class ResetPasswordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_amount)
-    PassWordEditText amount;
+    EditTextWithAction amount;
     @BindView(R.id.etwa_password)
-    PassWordEditText password;
+    EditTextWithAction password;
     @BindView(R.id.etwa_password_confirm)
-    PassWordEditText passwordConfirm;
+    EditTextWithAction passwordConfirm;
     @BindView(R.id.etwa_email_code)
-    PassWordEditText emailCode;
+    EditTextWithAction emailCode;
     @BindView(R.id.btn_unlock_wallet)
     Button btnUnlockWallet;
 
@@ -64,7 +64,7 @@ public class ResetPasswordActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

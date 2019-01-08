@@ -247,7 +247,7 @@ ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/s
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:84:19-73
 	android:name
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:81:19-70
-activity#io.bcaas.exchange.ui.activity.VerifyMethodCloseOrOpenActivity
+activity#io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity
 ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:86:9-89:75
 	android:screenOrientation
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:87:19-55
@@ -256,7 +256,7 @@ ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/s
 	android:windowSoftInputMode
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:89:19-73
 	android:name
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:86:19-78
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:86:19-72
 activity#io.bcaas.exchange.ui.activity.BindPhoneActivity
 ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:90:9-93:75
 	android:screenOrientation

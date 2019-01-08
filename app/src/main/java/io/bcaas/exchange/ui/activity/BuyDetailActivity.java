@@ -13,7 +13,7 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -46,9 +46,9 @@ public class BuyDetailActivity extends BaseActivity {
     @BindView(R.id.tv_fee)
     TextView tvFee;
     @BindView(R.id.etwa_fund_password)
-    PassWordEditText etwaFundPassword;
+    EditTextWithAction etwaFundPassword;
     @BindView(R.id.etwa_random_verify_code)
-    PassWordEditText etwaRandomVerifyCode;
+    EditTextWithAction etwaRandomVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_buy)
@@ -94,7 +94,7 @@ public class BuyDetailActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -116,7 +116,7 @@ public class BuyDetailActivity extends BaseActivity {
 
                     }
                 });
-        RxView.clicks(btnBuy).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnBuy).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

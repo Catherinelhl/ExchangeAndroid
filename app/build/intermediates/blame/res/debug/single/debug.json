@@ -1308,10 +1308,6 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/color-v23/design_tint_password_toggle.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_verify_method_close_or_open.xml.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_verify_method_close_or_open.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable-xhdpi-v4/design_ic_visibility_off.png"
     },
@@ -2258,6 +2254,10 @@
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_design_layout_snackbar.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_close_verify_method.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_close_verify_method.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",

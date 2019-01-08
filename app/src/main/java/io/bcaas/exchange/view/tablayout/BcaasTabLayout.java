@@ -152,7 +152,7 @@ public class BcaasTabLayout extends FrameLayout {
 //                System.out.println("fields:" + fields[i]);
 //            }
             //INVALID_WIDTH
-            tabStrip = tabLayout.getDeclaredField(Constants.TabLayout.SLIDINGTABINDICATOR);
+            tabStrip = tabLayout.getDeclaredField(Constants.TabLayout.SLIDING_TAB_INDICATOR);
             tabStrip.setAccessible(true);
             LinearLayout ll_tab = (LinearLayout) tabStrip.get(mTabLayout);
             for (int i = 0; i < ll_tab.getChildCount(); i++) {

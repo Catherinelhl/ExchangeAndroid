@@ -1,10 +1,8 @@
 package io.bcaas.exchange.ui.activity;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
@@ -28,7 +26,6 @@ import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -136,7 +133,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void initListener() {
-        RxView.clicks(tvTitle).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvTitle).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -192,7 +189,7 @@ public class MainActivity extends BaseActivity
 
             }
         });
-        RxView.clicks(ibRight).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibRight).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

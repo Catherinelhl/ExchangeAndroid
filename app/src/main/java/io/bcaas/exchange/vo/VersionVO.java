@@ -27,9 +27,9 @@ public class VersionVO implements Serializable {
     private String appStoreUrl;
     // Platform type
     private String type;
-    // Version Modify time
+    // Version Modify Time
     private String motifyTime;
-    // Record system time
+    // Record system Time
     private String systemTime;
 
     public VersionVO() {

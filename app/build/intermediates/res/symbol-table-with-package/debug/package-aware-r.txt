@@ -1615,10 +1615,12 @@ id listMode
 id list_item
 id ll_action
 id ll_bottom
+id ll_email
 id ll_login
 id ll_main
 id ll_no_fund_password
 id ll_password_key
+id ll_phone
 id ll_tab_item
 id ll_with_draw_content
 id masked
@@ -1645,6 +1647,7 @@ id parentPanel
 id parent_matrix
 id pb_loading
 id percent
+id phone
 id pin
 id progress_circular
 id progress_horizontal
@@ -1865,6 +1868,7 @@ layout abc_tooltip
 layout activity_bind_phone
 layout activity_brand
 layout activity_buy_detail
+layout activity_close_verify_method
 layout activity_google_verify
 layout activity_login
 layout activity_main
@@ -1876,7 +1880,6 @@ layout activity_reset_password
 layout activity_sefety_center
 layout activity_sell_detail
 layout activity_set_fund_password
-layout activity_verify_method_close_or_open
 layout activity_withdraw
 layout activity_withdraw_detail
 layout aty_capture
@@ -1998,6 +2001,7 @@ string amount_title
 string app_name
 string appbar_scrolling_view_behavior
 string available
+string bind
 string bind_phone
 string bottom_sheet_behavior
 string buy
@@ -2009,6 +2013,8 @@ string cancel
 string cash_able_balance
 string character_counter_content_description
 string character_counter_pattern
+string close
+string close_verify
 string confirm
 string confirm_new_password
 string confirm_password
@@ -2045,6 +2051,7 @@ string new_password_rule
 string no_fund_password_tips
 string no_google_verify_text
 string number
+string open
 string order
 string order_title
 string original_password
@@ -2063,7 +2070,11 @@ string phone_number
 string phone_verify
 string please_input_account
 string please_input_confirm_password
+string please_input_email_verify_code
+string please_input_message_code
 string please_input_password
+string please_input_phone_number
+string please_input_phone_verify_code
 string please_input_right_email
 string please_input_verify_code_first
 string please_set_google_verify
@@ -2104,6 +2115,7 @@ string sell_title
 string send
 string set_fund_password
 string set_immediately
+string setting
 string six_google_verify_code
 string start_immediate
 string status_bar_notification_info_overflow

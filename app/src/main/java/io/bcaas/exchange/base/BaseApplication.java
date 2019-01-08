@@ -14,6 +14,7 @@ import io.bcaas.exchange.receiver.NetStateReceiver;
 import io.bcaas.exchange.tools.*;
 import io.bcaas.exchange.tools.device.DeviceTool;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.MemberVO;
 
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class BaseApplication extends MultiDexApplication {
     private static boolean isPhone;
     /*存储当前所有币种余额信息*/
     private static List<MemberKeyVO> memberKeyVOList;
+    /*存储当前的用户资讯*/
+    private static MemberVO memberVO;
 
 
     @Override
@@ -157,6 +160,14 @@ public class BaseApplication extends MultiDexApplication {
         } else {
             return null;
         }
+    }
+
+    public static MemberVO getMemberVO() {
+        return memberVO;
+    }
+
+    public static void setMemberVO(MemberVO memberVO) {
+        BaseApplication.memberVO = memberVO;
     }
 
     public static int getScreenWidth() {

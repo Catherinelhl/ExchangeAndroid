@@ -45,27 +45,21 @@ public class APIURLConstants {
     /*2FA 雙因素驗證*/
     public static final String API_AUTHENTICATOR_URL = "verification/getAuthenticatorUrl";
     /*發送Email驗證*/
-    public static final String API_SEND_MAIL_CODE = "verification/sendMailCode";
+    public static final String API_SEND_MAIL_VERIFY_CODE = "verification/sendMailVerifyCode";
     /*發送Phone驗證*/
-    public static final String API_SEND_PHONE_CODE = "verification/sendPhoneCode";
+    public static final String API_SEND_PHONE_VERIFY_CODE = "verification/sendPhoneVerifyCode";
     /*驗證雙因素驗證碼*/
-    public static final String API_AUTHENTICATOR_CODE = "verification/verifyAuthenticatorCode";
+    public static final String API_VERIFY_AUTHENTICATOR_CODE = "/verification/verifyAuthenticatorCode";
 
     /*設置資金密碼*/
     public static final String API_SECURITY_TX_PASSWORD = "member/securityTxPassword";
 
-    /*E-Mail驗證*/
-    public static final String API_EMAIL_VERIFY = "verification/sendMailVerifyCode";
-    /*手機驗證*/
-    public static final String API_PHONE_VERIFY = "member/securityPhone";
-    /*Google驗證*/
-    public static final String API_GOOGLE_VERIFY = "member/securityTwoFactorAuthVerify";
-    /*取得帳戶資訊*/
-    public static final String API_GET_USER_INFO = "member/getMemberSecurity";
-
-
-
     /*取得帳戶所有幣種餘額*/
     public static final String API_GET_ALL_BALANCE = "memberKey/getAllBalance";
+
+    /*取得帳戶資訊*/
+    public static final String API_GET_ACCOUNT_SECURITY = "member/getSecurity";
+    /*验证验证码\关闭安全验证*/
+    public static final String API_CLOSE_SECURITY_VERIFY = "verification/verifyCode";
 
 }

@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -25,10 +24,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.activity.WithDrawActivity;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
@@ -271,7 +268,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private int clickTimes = 0;
 
     public boolean multipleClickToDo(int times) {
-        if ((System.currentTimeMillis() - lastClickBackTime) > Constants.time.sleep2000) {
+        if ((System.currentTimeMillis() - lastClickBackTime) > Constants.Time.sleep2000) {
             clickTimes = 1;
             lastClickBackTime = System.currentTimeMillis();
             return false;

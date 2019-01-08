@@ -48,8 +48,28 @@ public interface HttpApi {
     /**
      * Email验证
      */
-    @POST(APIURLConstants.API_EMAIL_VERIFY)
+    @POST(APIURLConstants.API_SEND_MAIL_VERIFY_CODE)
     Observable<ResponseJson> emailVerify(@Body RequestBody requestBody);
+
+    /**
+     * Phone验证
+     */
+    @POST(APIURLConstants.API_SEND_PHONE_VERIFY_CODE)
+    Observable<ResponseJson> phoneVerify(@Body RequestBody requestBody);
+
+
+    /**
+     * 2FA 雙因素驗證
+     */
+    @POST(APIURLConstants.API_AUTHENTICATOR_URL)
+    Observable<ResponseJson> authenticatorVerify(@Body RequestBody requestBody);
+
+
+    /**
+     * 驗證雙因素驗證碼
+     */
+    @POST(APIURLConstants.API_VERIFY_AUTHENTICATOR_CODE)
+    Observable<ResponseJson> verifyAuthenticatorCode(@Body RequestBody requestBody);
 
     /**
      * 產生圖形驗證圖
@@ -62,5 +82,18 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_GET_ALL_BALANCE)
     Observable<ResponseJson> getAllBalance(@Body RequestBody requestBody);
+
+    /**
+     * 取得帳戶資訊
+     */
+    @POST(APIURLConstants.API_GET_ACCOUNT_SECURITY)
+    Observable<ResponseJson> getAccountSecurity(@Body RequestBody requestBody);
+
+    /**
+     * 验证验证码\关闭安全验证
+     */
+    @POST(APIURLConstants.API_CLOSE_SECURITY_VERIFY)
+    Observable<ResponseJson> closeSecurityVerify(@Body RequestBody requestBody);
+
 
 }

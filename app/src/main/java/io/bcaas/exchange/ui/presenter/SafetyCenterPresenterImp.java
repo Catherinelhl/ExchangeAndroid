@@ -87,4 +87,67 @@ public class SafetyCenterPresenterImp implements SafetyCenterContract.Presenter 
                     }
                 });
     }
+
+    @Override
+    public void getAccountSecurity() {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setMemberVO(memberVO);
+        requestJson.setLoginInfoVO(loginInfoVO);
+        LogTool.d(TAG, requestJson);
+        safetyCenterInteractor.getAccountSecurity(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.getAccountSecurityFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            MemberVO memberVOResponse = responseJson.getMemberVO();
+                            if (memberVOResponse != null) {
+                                BaseApplication.setMemberVO(memberVOResponse);
+                                view.getAccountSecuritySuccess(memberVOResponse);
+                            } else {
+                                view.getAccountSecurityFailure(MessageConstants.EMPTY);
+
+                            }
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.getAccountSecurityFailure(responseJson.getMessage());
+                            } else {
+                                view.getAccountSecurityFailure(MessageConstants.EMPTY);
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.getAccountSecurityFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

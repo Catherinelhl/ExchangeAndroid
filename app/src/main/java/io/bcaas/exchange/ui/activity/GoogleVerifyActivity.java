@@ -11,7 +11,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -38,7 +38,7 @@ public class GoogleVerifyActivity extends BaseActivity {
     @BindView(R.id.tv_my_address)
     TextView tvMyAddress;
     @BindView(R.id.etwa_verify_code)
-    PassWordEditText etwaVerifyCode;
+    EditTextWithAction etwaVerifyCode;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -60,7 +60,7 @@ public class GoogleVerifyActivity extends BaseActivity {
         tvMyAddress.setText("密钥:\n" + privateKey);
         if (ivQrCode != null) {
             Bitmap qrCode = EncodingUtils.createQRCode(privateKey, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-                    context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.color.foregroundOfQRCode, Constants.color.backgroundOfQRCode);
+                    context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
             ivQrCode.setImageBitmap(qrCode);
         }
     }
@@ -72,7 +72,7 @@ public class GoogleVerifyActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -94,7 +94,7 @@ public class GoogleVerifyActivity extends BaseActivity {
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -21,14 +21,14 @@
                 android:src="@mipmap/ic_launcher"/>
     </LinearLayout>
 
-    <io.bcaas.exchange.view.editview.PassWordEditText
+    <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_amount"
             android:layout_width="match_parent"
             bcaas:hint="@string/amount"
             bcaas:behaviour="normal"
             android:layout_height="wrap_content"
     />
-    <io.bcaas.exchange.view.editview.PassWordEditText
+    <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_password"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d20"
@@ -37,7 +37,7 @@
             bcaas:behaviour="checkBox"
 
     />
-    <io.bcaas.exchange.view.editview.PassWordEditText
+    <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_image_code"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d20"

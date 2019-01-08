@@ -18,7 +18,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.presenter.RegisterPresenterImp;
-import io.bcaas.exchange.view.editview.PassWordEditText;
+import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -37,13 +37,13 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_account)
-    PassWordEditText etAccount;
+    EditTextWithAction etAccount;
     @BindView(R.id.etwa_password)
-    PassWordEditText etPassword;
+    EditTextWithAction etPassword;
     @BindView(R.id.etwa_password_confirm)
-    PassWordEditText etPasswordConfirm;
+    EditTextWithAction etPasswordConfirm;
     @BindView(R.id.etwa_email_code)
-    PassWordEditText etEmailCode;
+    EditTextWithAction etEmailCode;
     @BindView(R.id.btn_register)
     Button btnRegister;
     @BindView(R.id.tv_login_now)
@@ -90,7 +90,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
                 }
             }
         });
-        RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -112,7 +112,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        RxView.clicks(tvLoginNow).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvLoginNow).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -134,7 +134,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        RxView.clicks(btnRegister).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnRegister).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

@@ -76,7 +76,7 @@ public class SideSlipPop extends PopupWindow {
         payMethod.add("ETH");
         payMethod.add("ZBB");
         setData();
-        RxView.clicks(tvReset).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvReset).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -101,7 +101,7 @@ public class SideSlipPop extends PopupWindow {
 
                     }
                 });
-        RxView.clicks(tvSure).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {

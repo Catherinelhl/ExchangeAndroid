@@ -2,6 +2,7 @@ package io.bcaas.exchange.vo;
 
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.tools.ListTool;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class RequestJson {
 
     private ExchangeBean exchangeBean;
     private VerificationBean verificationBean;
+    private List<VerificationBean> verificationBeanList;
 
     public VerificationBean getVerificationBean() {
         return verificationBean;
@@ -240,6 +242,14 @@ public class RequestJson {
         this.memberOrderVOList = memberOrderVOList;
     }
 
+    public List<VerificationBean> getVerificationBeanList() {
+        return verificationBeanList;
+    }
+
+    public void setVerificationBeanList(List<VerificationBean> verificationBeanList) {
+        this.verificationBeanList = verificationBeanList;
+    }
+
     public ExchangeBean getExchangeBean() {
         return exchangeBean;
     }
@@ -298,6 +308,9 @@ public class RequestJson {
         }
         if (verificationBean != null) {
             stringBuffer.append(",  verificationBean=" + verificationBean);
+        }
+        if (ListTool.noEmpty(verificationBeanList)) {
+            stringBuffer.append(",  verificationBeanList=" + verificationBeanList);
         }
 
         stringBuffer.append('}');

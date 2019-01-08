@@ -6,14 +6,15 @@
               android:layout_height="match_parent">
     <include layout="@layout/include_header"/>
 
-    <io.bcaas.exchange.view.editview.PassWordEditText
+    <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_phone_number"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d24"
             android:background="@color/white"
             exchange:hint="@string/phone_number"
+            exchange:behaviour="phone"
             android:layout_height="@dimen/d48"/>
-    <io.bcaas.exchange.view.editview.PassWordEditText
+    <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_message_code"
             android:layout_width="match_parent"
             exchange:hint="@string/message"

@@ -20,7 +20,7 @@ public class Constants {
     /**
      * 时间
      */
-    public class time {
+    public class Time {
         public static final int sleep100 = 100;
         public static final int sleep200 = 200;
         public static final int sleep300 = 300;
@@ -40,7 +40,7 @@ public class Constants {
         public static final int sleep500000 = 500000;
     }
 
-    public class color {
+    public class Color {
         //二維碼渲染的前景色
         public static final int foregroundOfQRCode = 0xff000000;
         //二維碼渲染的背景色
@@ -161,6 +161,7 @@ public class Constants {
         public static final String LOGIN_PASSWORD = "loginPassword";//登录页面的密码框
         public static final String REGISTER_EMAIL_CODE = "registerEmailCode";//注册页面的邮箱验证码
         public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
+        public static final String PHONE = "phone";//phone verify
     }
 
     /**
@@ -183,6 +184,28 @@ public class Constants {
     }
 
     public class TabLayout {
-        public static final String SLIDINGTABINDICATOR="slidingTabIndicator";
+        public static final String SLIDING_TAB_INDICATOR = "slidingTabIndicator";
+    }
+
+    /**
+     * 表示一些状态信息
+     */
+    public class Status {
+        //txPassword = 0，表示尚未設置資金密碼
+        //txPassword = 1，表示尚已設置資金密碼
+        public static final String NO_TX_PASSWORD = "0";
+        //各种验证就是int 类型：0：CLOSE；1：open
+        public static final int CLOSE = 0;
+    }
+
+    /**
+     * 当前的验证方式
+     */
+    public class VerifyType {
+
+        public static final String EMAIL = "0";//0:email
+        public static final String PHONE = "1";//1:phone
+        public static final String GOOGLE = "2";//2:双因素
+
     }
 }

@@ -57,7 +57,7 @@ public class SafetyCenterItemView extends LinearLayout {
     }
 
     private void initListener() {
-        RxView.clicks(tvSafetyCenterAction).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvSafetyCenterAction).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -95,6 +95,11 @@ public class SafetyCenterItemView extends LinearLayout {
      */
     public void setTabStatusByText(boolean isHave, String text) {
         if (tvSafetyCenterAction != null) {
+            //判断当前的text是否为空。如果为空，那么就不显示点击动作文本
+            if (StringTool.isEmpty(text)) {
+                tvSafetyCenterAction.setVisibility(INVISIBLE);
+                return;
+            }
             tvSafetyCenterAction.setText(text);
         }
     }

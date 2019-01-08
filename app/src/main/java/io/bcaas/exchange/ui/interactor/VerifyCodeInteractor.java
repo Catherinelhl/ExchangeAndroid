@@ -21,8 +21,43 @@ public class VerifyCodeInteractor {
         return httpApi.emailVerify(body);
     }
 
+    /**
+     * 获取图形验证码
+     *
+     * @return
+     */
     public Observable<ResponseBody> getImageVerifyCode() {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.imageVerifyCreate();
+    }
+
+    /**
+     * Phone验证码
+     *
+     * @return
+     */
+    public Observable<ResponseJson> phoneVerify(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.phoneVerify(body);
+    }
+
+    /**
+     * 2FA 雙因素驗證
+     *
+     * @return
+     */
+    public Observable<ResponseJson> getAuthenticatorUrl(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.authenticatorVerify(body);
+    }
+
+    /**
+     * 验证 雙因素驗證码
+     *
+     * @return
+     */
+    public Observable<ResponseJson> verifyAuthenticatorCode(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.verifyAuthenticatorCode(body);
     }
 }

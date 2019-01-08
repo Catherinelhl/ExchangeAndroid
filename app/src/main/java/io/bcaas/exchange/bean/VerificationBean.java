@@ -38,6 +38,14 @@ public class VerificationBean implements Serializable {
 	 *	雙因素驗證連結
 	 */
 	private String authenticatorUrl;
+	/**
+	 *	类型
+	 */
+	private String type;
+	/**
+	 *	关闭类型
+	 */
+	private String closeType;
 	
 	public VerificationBean() {
 		super();
@@ -83,6 +91,22 @@ public class VerificationBean implements Serializable {
 		this.authenticatorUrl = authenticatorUrl;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getCloseType() {
+		return closeType;
+	}
+
+	public void setCloseType(String closeType) {
+		this.closeType = closeType;
+	}
+
 	@Override
 	public String toString() {
 		return "VerificationBean{" +
@@ -91,6 +115,8 @@ public class VerificationBean implements Serializable {
 				", mail='" + mail + '\'' +
 				", verifyCode='" + verifyCode + '\'' +
 				", authenticatorUrl='" + authenticatorUrl + '\'' +
+				", type='" + type + '\'' +
+				", closeType='" + closeType + '\'' +
 				'}';
 	}
 }

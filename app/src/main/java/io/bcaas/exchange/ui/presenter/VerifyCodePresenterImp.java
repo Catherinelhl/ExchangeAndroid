@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.presenter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -35,7 +36,63 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
         this.view = view;
         verifyCodeInteractor = new VerifyCodeInteractor();
     }
+    @Override
+    public void phoneVerify(String phone, String languageCode) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setPhone(phone);
+        verificationBean.setLanguageCode(languageCode);
+        requestJson.setMemberVO(memberVO);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
+        verifyCodeInteractor.phoneVerify(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.bindPhoneFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            view.bindPhoneSuccess(responseJson.getMessage());
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.bindPhoneFailure(responseJson.getMessage());
+                            } else {
+                                view.bindPhoneFailure(MessageConstants.EMPTY);
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.bindPhoneFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
 
     @Override
     public void emailVerify(String memberId, String languageCode, String mail) {

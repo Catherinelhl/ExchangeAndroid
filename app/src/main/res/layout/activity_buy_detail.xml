@@ -166,14 +166,14 @@
                         android:layout_marginLeft="@dimen/d20"
                 />
 
-                <io.bcaas.exchange.view.editview.PassWordEditText
+                <io.bcaas.exchange.view.editview.EditTextWithAction
                         android:id="@+id/etwa_fund_password"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
                         bcaas:hint="@string/fund_password"
                         bcaas:behaviour="checkBox"/>
-                <io.bcaas.exchange.view.editview.PassWordEditText
+                <io.bcaas.exchange.view.editview.EditTextWithAction
                         android:id="@+id/etwa_random_verify_code"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/d20"
