@@ -12,7 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -31,11 +31,11 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_original_password)
-    EditTextWithAction etwaOriginalPassword;
+    PassWordEditText etwaOriginalPassword;
     @BindView(R.id.etwa_new_password)
-    EditTextWithAction etwaNewPassword;
+    PassWordEditText etwaNewPassword;
     @BindView(R.id.etwa_confirm_new_password)
-    EditTextWithAction etwaConfirmNewPassword;
+    PassWordEditText etwaConfirmNewPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 

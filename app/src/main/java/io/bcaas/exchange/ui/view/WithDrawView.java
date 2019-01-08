@@ -15,7 +15,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -28,10 +28,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class WithDrawView extends LinearLayout {
     private TextView tvCashableBalance;
-    private EditTextWithAction etwaReceiveAddress;
-    private EditTextWithAction etwaWithdrawAmount;
+    private PassWordEditText etwaReceiveAddress;
+    private PassWordEditText etwaWithdrawAmount;
     private TextView tvFeeTips;
-    private EditTextWithAction etwaRemarks;
+    private PassWordEditText etwaRemarks;
     private TextView tvInfo;
     private Button btnSend;
     private LinearLayout llWithDrawContent;

@@ -12,7 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -32,9 +32,9 @@ public class BindPhoneActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_message_code)
-    EditTextWithAction etwaMessageCode;
+    PassWordEditText etwaMessageCode;
     @BindView(R.id.etwa_phone_number)
-    EditTextWithAction etwaPhoneNumber;
+    PassWordEditText etwaPhoneNumber;
     @BindView(R.id.btn_sure)
     Button btnSure;
 

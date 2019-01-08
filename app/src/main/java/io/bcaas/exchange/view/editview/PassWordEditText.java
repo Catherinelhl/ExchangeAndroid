@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.text.*;
+import android.text.method.PasswordTransformationMethod;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -16,9 +17,11 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.tools.timer.IntervalTimerTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
 import io.bcaas.exchange.ui.presenter.VerifyCodePresenterImp;
@@ -29,18 +32,22 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/17
  * 自定义一个带有动作的EditView，可能是「Check」，可能是「Send」 and so on
  */
-public class EditTextWithAction extends LinearLayout
+public class PassWordEditText extends LinearLayout
         implements VerifyCodeContract.View {
-    private String TAG = EditTextWithAction.class.getSimpleName();
+    private String TAG = PassWordEditText.class.getSimpleName();
 
     @BindView(R.id.et_content)
     EditText etContent;
+    @BindView(R.id.et_password)
+    EditText etPassword;
     @BindView(R.id.cb_check)
     CheckBox cbCheck;
     @BindView(R.id.tv_action)
@@ -68,7 +75,7 @@ public class EditTextWithAction extends LinearLayout
     //用于倒计时的订阅
     private Disposable disposableCountDownTimer;
 
-    public EditTextWithAction(Context context, AttributeSet attrs) {
+    public PassWordEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         View view = LayoutInflater.from(context).inflate(R.layout.layout_edittext_with_action, this, true);
         ButterKnife.bind(view);
@@ -90,13 +97,18 @@ public class EditTextWithAction extends LinearLayout
 
             typedArray.recycle();
             if (StringTool.notEmpty(hint)) {
-                etContent.setHint(hint);
+                if (etContent.getVisibility() == VISIBLE) {
+                    etContent.setHint(hint);
+
+                }
+                if (etPassword.getVisibility() == VISIBLE) {
+                    etPassword.setHint(hint);
+                }
             }
             vPasswordLine.setVisibility(showLine ? VISIBLE : INVISIBLE);
             etContent.setTextColor(textColor);
             etContent.setTextSize(textSize);
             etContent.setHintTextColor(hintColor);
-            etContent.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             switch (behaviour) {
                 case 0://默认样式，什么也不显示
                     cbCheck.setVisibility(GONE);
@@ -107,13 +119,19 @@ public class EditTextWithAction extends LinearLayout
                     cbCheck.setVisibility(VISIBLE);
                     llAction.setVisibility(GONE);
                     imageView.setVisibility(GONE);
-                    etContent.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    //显示密码框，隐藏文本框
+                    etPassword.setVisibility(VISIBLE);
+                    etContent.setVisibility(GONE);
+                    etPassword.setTextColor(textColor);
+                    etPassword.setTextSize(textSize);
+                    etPassword.setHintTextColor(hintColor);
+                    //最大输入长度
+                    etPassword.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
                     break;
                 case 2://文字验证码，需要显示发送
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(VISIBLE);
                     imageView.setVisibility(GONE);
-
                     break;
                 case 3://图片验证码，需要显示图片信息
                     cbCheck.setVisibility(GONE);
@@ -155,18 +173,19 @@ public class EditTextWithAction extends LinearLayout
         AbsoluteSizeSpan absoluteSizeSpan = new AbsoluteSizeSpan(14, true);//设置字体大小 true表示单位是sp
         spannableString.setSpan(absoluteSizeSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         etContent.setHint(new SpannedString(spannableString));
+        etPassword.setHint(new SpannedString(spannableString));
     }
 
     private void initView() {
         cbCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            String text = etContent.getText().toString();
+            String text = etPassword.getText().toString();
             if (StringTool.isEmpty(text)) {
                 return;
             }
-            etContent.setInputType(isChecked ?
+            etPassword.setInputType(isChecked ?
                     InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD :
                     InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);//设置当前私钥显示不可见
-            etContent.setSelection(text.length());
+            etPassword.setSelection(text.length());
 
         });
         RxView.clicks(tvAction).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
@@ -243,15 +262,9 @@ public class EditTextWithAction extends LinearLayout
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s != null) {
-                    String password = s.toString();
-                    if (StringTool.notEmpty(password)) {
-                        if (password.length() >= Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
-                            if (editTextWatcherListener != null) {
-                                editTextWatcherListener.onComplete(password);
-
-                            }
-                        }
-                        etContent.setSelection(password.length());
+                    String content = s.toString();
+                    if (StringTool.notEmpty(content)) {
+                        etContent.setSelection(content.length());
 
                     }
                 }
@@ -259,7 +272,31 @@ public class EditTextWithAction extends LinearLayout
 
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+        etPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s != null) {
+                    String content = s.toString();
+                    if (StringTool.notEmpty(content)) {
+                        if (content.length() >= Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
+                            if (editTextWatcherListener != null) {
+                                editTextWatcherListener.onComplete(content);
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
             }
         });
 
@@ -326,14 +363,29 @@ public class EditTextWithAction extends LinearLayout
         if (etContent == null) {
             return null;
         }
-        return etContent.getText().toString();
+        if (etContent.getVisibility() == VISIBLE) {
+            return etContent.getText().toString();
+
+        } else if (etPassword.getVisibility() == VISIBLE) {
+            return etPassword.getText().toString();
+
+        }
+        return MessageConstants.EMPTY;
     }
 
     public void setContent(String content) {
         if (etContent == null) {
             return;
         }
-        etContent.setText(content);
+        if (etContent.getVisibility() == VISIBLE) {
+            etContent.setText(content);
+
+        }
+
+        if (etPassword.getVisibility() == VISIBLE) {
+            etPassword.setText(content);
+        }
+
     }
 
     public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener, String from) {

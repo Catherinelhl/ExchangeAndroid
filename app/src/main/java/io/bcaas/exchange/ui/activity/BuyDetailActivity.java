@@ -13,7 +13,7 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -46,9 +46,9 @@ public class BuyDetailActivity extends BaseActivity {
     @BindView(R.id.tv_fee)
     TextView tvFee;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    PassWordEditText etwaFundPassword;
     @BindView(R.id.etwa_random_verify_code)
-    EditTextWithAction etwaRandomVerifyCode;
+    PassWordEditText etwaRandomVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_buy)

@@ -11,7 +11,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -38,7 +38,7 @@ public class GoogleVerifyActivity extends BaseActivity {
     @BindView(R.id.tv_my_address)
     TextView tvMyAddress;
     @BindView(R.id.etwa_verify_code)
-    EditTextWithAction etwaVerifyCode;
+    PassWordEditText etwaVerifyCode;
     @BindView(R.id.btn_sure)
     Button btnSure;
 

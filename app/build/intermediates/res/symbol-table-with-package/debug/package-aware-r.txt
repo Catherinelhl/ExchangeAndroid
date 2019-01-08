@@ -1549,6 +1549,8 @@ id end
 id enterAlways
 id enterAlwaysCollapsed
 id et_content
+id et_password
+id etwa_account
 id etwa_amount
 id etwa_confirm_fund_password
 id etwa_confirm_new_password
@@ -2048,6 +2050,7 @@ string order_title
 string original_password
 string outcome
 string password
+string password_does_not_match
 string password_rule
 string password_toggle_content_description
 string path_password_eye
@@ -2058,6 +2061,11 @@ string pay_method_str
 string phone
 string phone_number
 string phone_verify
+string please_input_account
+string please_input_confirm_password
+string please_input_password
+string please_input_right_email
+string please_input_verify_code_first
 string please_set_google_verify
 string price
 string qrcode_name

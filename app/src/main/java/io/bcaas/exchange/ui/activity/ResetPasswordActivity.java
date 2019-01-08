@@ -11,7 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -30,13 +30,13 @@ public class ResetPasswordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_amount)
-    EditTextWithAction amount;
+    PassWordEditText amount;
     @BindView(R.id.etwa_password)
-    EditTextWithAction password;
+    PassWordEditText password;
     @BindView(R.id.etwa_password_confirm)
-    EditTextWithAction passwordConfirm;
+    PassWordEditText passwordConfirm;
     @BindView(R.id.etwa_email_code)
-    EditTextWithAction emailCode;
+    PassWordEditText emailCode;
     @BindView(R.id.btn_unlock_wallet)
     Button btnUnlockWallet;
 

@@ -14,7 +14,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.FundPasswordContract;
 import io.bcaas.exchange.ui.presenter.FundPasswordPresenterImp;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -34,9 +34,9 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    PassWordEditText etwaFundPassword;
     @BindView(R.id.etwa_confirm_fund_password)
-    EditTextWithAction etwaConfirmFundPassword;
+    PassWordEditText etwaConfirmFundPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 

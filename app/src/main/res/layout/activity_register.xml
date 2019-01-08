@@ -6,14 +6,14 @@
               android:layout_height="match_parent">
     <include layout="@layout/include_header"/>
 
-    <io.bcaas.exchange.view.editview.EditTextWithAction
-            android:id="@+id/etwa_amount"
+    <io.bcaas.exchange.view.editview.PassWordEditText
+            android:id="@+id/etwa_account"
             android:layout_width="match_parent"
             bcaas:hint="@string/register_account_hint"
             android:layout_marginTop="@dimen/d16"
             android:layout_height="wrap_content"
     />
-    <io.bcaas.exchange.view.editview.EditTextWithAction
+    <io.bcaas.exchange.view.editview.PassWordEditText
             android:id="@+id/etwa_password"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
@@ -21,7 +21,7 @@
             bcaas:behaviour="checkBox"
             android:layout_height="wrap_content"
     />
-    <io.bcaas.exchange.view.editview.EditTextWithAction
+    <io.bcaas.exchange.view.editview.PassWordEditText
             android:id="@+id/etwa_password_confirm"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
@@ -29,7 +29,7 @@
             bcaas:behaviour="checkBox"
             android:layout_height="wrap_content"
     />
-    <io.bcaas.exchange.view.editview.EditTextWithAction
+    <io.bcaas.exchange.view.editview.PassWordEditText
             android:id="@+id/etwa_email_code"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"

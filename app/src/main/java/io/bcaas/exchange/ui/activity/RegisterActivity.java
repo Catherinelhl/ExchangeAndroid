@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
+import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
@@ -17,7 +18,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.presenter.RegisterPresenterImp;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -35,14 +36,14 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     TextView tvTitle;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
-    @BindView(R.id.etwa_amount)
-    EditTextWithAction amount;
+    @BindView(R.id.etwa_account)
+    PassWordEditText etAccount;
     @BindView(R.id.etwa_password)
-    EditTextWithAction etwaPassword;
+    PassWordEditText etPassword;
     @BindView(R.id.etwa_password_confirm)
-    EditTextWithAction passwordConfirm;
+    PassWordEditText etPasswordConfirm;
     @BindView(R.id.etwa_email_code)
-    EditTextWithAction emailCode;
+    PassWordEditText etEmailCode;
     @BindView(R.id.btn_register)
     Button btnRegister;
     @BindView(R.id.tv_login_now)
@@ -66,7 +67,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.register_title);
         //设置账号只能输入邮箱类型
-        amount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        etAccount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
     }
 
@@ -77,6 +78,18 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
     @Override
     public void initListener() {
+        tvTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (multipleClickToDo(2) && BuildConfig.DEBUG) {
+                    //TODO 注册的快捷方式
+                    etAccount.setContent(Constants.User.MEMBER_ID);
+                    etPassword.setContent(Constants.User.MEMBER_PASSWORD);
+                    etPasswordConfirm.setContent(Constants.User.MEMBER_PASSWORD);
+
+                }
+            }
+        });
         RxView.clicks(ibBack).throttleFirst(Constants.time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -130,50 +143,42 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     @Override
                     public void onNext(Object o) {
-                        String memberID = Constants.User.MEMBER_ID;
-                        //1：判断当前账号是否输入，是否输入正确
-                        String userAmount = amount.getContent();
-                        if (StringTool.isEmpty(userAmount)) {
-                            userAmount = memberID;
-                        }
-                        if (StringTool.isEmpty(userAmount)) {
-                            showToast("请输入用户名");
+                        //1：判断当前账号是否输入
+                        String userAccount = etAccount.getContent();
+                        if (StringTool.isEmpty(userAccount)) {
+                            showToast(getString(R.string.please_input_account));
                             return;
                         }
-                        if (!RegexTool.isRightEmail(userAmount)) {
-                            showToast("请输入正确的邮箱格式");
+                        //2：是否输入正确的邮箱格式
+                        if (!RegexTool.isRightEmail(userAccount)) {
+                            showToast(getString(R.string.please_input_right_email));
                             return;
                         }
-                        String password = etwaPassword.getContent();
+                        //3：判断当前的登录密码是否输入
+                        String password = etPassword.getContent();
                         if (StringTool.isEmpty(password)) {
-                            password = Constants.User.MEMBER_PASSWORD;
-                        }
-                        //2：判断当前的登录密码是否输入
-                        if (StringTool.isEmpty(password)) {
-                            showToast("请输入密码");
+                            showToast(getString(R.string.please_input_password));
                             return;
                         }
-                        //3：判断当前的确认密码是否输入，且是否和登录密码匹配
-                        String passwordConfirmStr = passwordConfirm.getContent();
+                        //4：判断当前的确认密码是否输入
+                        String passwordConfirmStr = etPasswordConfirm.getContent();
                         if (StringTool.isEmpty(passwordConfirmStr)) {
-                            passwordConfirmStr = Constants.User.MEMBER_PASSWORD;
-                        }
-                        if (StringTool.isEmpty(passwordConfirmStr)) {
-                            showToast("请输入确认密码");
+                            showToast(getString(R.string.please_input_confirm_password));
                             return;
                         }
+                        //5：且是否和登录密码匹配
                         if (!StringTool.equals(password, passwordConfirmStr)) {
-                            showToast("两次密码输入不一致");
+                            showToast(getString(R.string.password_does_not_match));
                             return;
                         }
-                        //4：判断当前的邮箱验证码是否输入
-                        String verifyCode = emailCode.getContent();
+                        //6：判断当前的邮箱验证码是否输入
+                        String verifyCode = etEmailCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
-                            showToast("请先输入验证码");
+                            showToast(getString(R.string.please_input_verify_code_first));
                             return;
                         }
-                        //5：开始请求
-                        presenter.register(memberID, password, verifyCode);
+                        //7：开始请求
+                        presenter.register(userAccount, password, verifyCode);
                     }
 
                     @Override
@@ -186,7 +191,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        emailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+        etEmailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
 

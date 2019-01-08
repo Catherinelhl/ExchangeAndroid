@@ -23,7 +23,7 @@
                 android:textSize="@dimen/text_size_16"
                 android:textColor="@color/white"
                 android:text="@string/cash_able_balance"/>
-        <io.bcaas.exchange.view.editview.EditTextWithAction
+        <io.bcaas.exchange.view.editview.PassWordEditText
                 android:id="@+id/etwa_receive_address"
                 bcaas:hint="接收BTC的地址"
                 bcaas:behaviour="scan"
@@ -36,7 +36,7 @@
                       android:background="@color/white"
                       android:layout_marginTop="@dimen/d24"
                       android:layout_height="@dimen/d96">
-            <io.bcaas.exchange.view.editview.EditTextWithAction
+            <io.bcaas.exchange.view.editview.PassWordEditText
                     android:id="@+id/etwa_withdraw_amount"
                     bcaas:hint="输入提现的金额"
                     bcaas:behaviour="text"
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"/>
         </LinearLayout>
-        <io.bcaas.exchange.view.editview.EditTextWithAction
+        <io.bcaas.exchange.view.editview.PassWordEditText
                 android:id="@+id/etwa_remarks"
                 bcaas:hint="@string/remarks"
                 bcaas:behaviour="normal"

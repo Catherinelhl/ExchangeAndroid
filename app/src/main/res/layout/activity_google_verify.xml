@@ -51,7 +51,7 @@
             android:textSize="@dimen/text_size_14"
             android:textColor="@color/black_333333"
             android:layout_height="wrap_content"/>
-    <io.bcaas.exchange.view.editview.EditTextWithAction
+    <io.bcaas.exchange.view.editview.PassWordEditText
             android:id="@+id/etwa_verify_code"
             android:layout_width="match_parent"
             exchange:hint="@string/six_google_verify_code"

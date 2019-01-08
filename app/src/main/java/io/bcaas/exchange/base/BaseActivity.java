@@ -248,6 +248,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.setResult(RESULT_OK, intent);
         this.finish();
     }
+
+    /**
+     * 为弹出的popWindow设置背景透明度
+     *
+     * @param bgAlpha
+     */
     public void setBackgroundAlpha(float bgAlpha) {
         WindowManager.LayoutParams lp = getWindow()
                 .getAttributes();
@@ -255,4 +261,31 @@ public abstract class BaseActivity extends AppCompatActivity {
         getWindow().setAttributes(lp);
     }
 
+
+    /**
+     * 根据传入的参数来捕捉用户点击的此时
+     *
+     * @param times 次数
+     * @return
+     */
+    private int clickTimes = 0;
+
+    public boolean multipleClickToDo(int times) {
+        if ((System.currentTimeMillis() - lastClickBackTime) > Constants.time.sleep2000) {
+            clickTimes = 1;
+            lastClickBackTime = System.currentTimeMillis();
+            return false;
+        } else {
+            clickTimes++;
+            if (clickTimes == times) {
+                lastClickBackTime = 0;
+                return true;
+            } else if (clickTimes < times) {
+                lastClickBackTime = System.currentTimeMillis();
+                return false;
+            }
+            clickTimes = 0;
+            return false;
+        }
+    }
 }

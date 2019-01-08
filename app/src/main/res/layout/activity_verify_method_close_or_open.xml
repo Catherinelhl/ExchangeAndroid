@@ -28,7 +28,7 @@
     </LinearLayout>
 
 
-    <io.bcaas.exchange.view.editview.EditTextWithAction
+    <io.bcaas.exchange.view.editview.PassWordEditText
             android:id="@+id/etwa_email_verify_code"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
@@ -58,7 +58,7 @@
                   android:textColor="@color/button_color"
                   android:layout_height="wrap_content"/>
     </LinearLayout>
-    <io.bcaas.exchange.view.editview.EditTextWithAction
+    <io.bcaas.exchange.view.editview.PassWordEditText
             android:id="@+id/etwa_message_verify_code"
             android:layout_width="match_parent"
             exchange:hint="@string/message_verify_code"

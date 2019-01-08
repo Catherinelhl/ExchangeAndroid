@@ -13,7 +13,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -44,9 +44,9 @@ public class VerifyMethodCloseOrOpenActivity extends BaseActivity {
     @BindView(R.id.tv_phone_value)
     TextView tvPhoneValue;
     @BindView(R.id.etwa_email_verify_code)
-    EditTextWithAction etwaEmailVerifyCode;
+    PassWordEditText etwaEmailVerifyCode;
     @BindView(R.id.etwa_message_verify_code)
-    EditTextWithAction etwaMessageVerifyCode;
+    PassWordEditText etwaMessageVerifyCode;
 
     private String email, phone;
 

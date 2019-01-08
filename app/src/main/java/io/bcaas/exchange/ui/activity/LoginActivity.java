@@ -18,7 +18,7 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -31,11 +31,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_amount)
-    EditTextWithAction amount;
+    PassWordEditText amount;
     @BindView(R.id.etwa_password)
-    EditTextWithAction password;
+    PassWordEditText password;
     @BindView(R.id.etwa_image_code)
-    EditTextWithAction etwaImageCode;
+    PassWordEditText etwaImageCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
     @BindView(R.id.tv_forget_password)

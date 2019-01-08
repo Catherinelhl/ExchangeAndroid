@@ -11,7 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.editview.PassWordEditText;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -32,23 +32,23 @@ public class WithDrawDetailActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    PassWordEditText etwaFundPassword;
     @BindView(R.id.tv_email_key)
     TextView tvEmailKey;
     @BindView(R.id.tv_email_value)
     TextView tvEmailValue;
     @BindView(R.id.etwa_email_verify_code)
-    EditTextWithAction etwaEmailVerifyCode;
+    PassWordEditText etwaEmailVerifyCode;
     @BindView(R.id.tv_phone_key)
     TextView tvPhoneKey;
     @BindView(R.id.tv_phone_value)
     TextView tvPhoneValue;
     @BindView(R.id.etwa_message_verify_code)
-    EditTextWithAction etwaMessageVerifyCode;
+    PassWordEditText etwaMessageVerifyCode;
     @BindView(R.id.tv_google_verify_key)
     TextView tvGoogleVerifyKey;
     @BindView(R.id.etwa_google_verify_code)
-    EditTextWithAction etwaGoogleVerifyCode;
+    PassWordEditText etwaGoogleVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_sure)

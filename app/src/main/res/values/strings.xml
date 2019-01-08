@@ -102,5 +102,11 @@
     <string name="revoke">撤销</string>
     <string name="available">可用</string>
     <string name="freeze">冻结</string>
+    <string name="please_input_account">请输入账号</string>
+    <string name="please_input_right_email">请输入正确的邮箱格式</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="please_input_confirm_password">请输入确认密码</string>
+    <string name="password_does_not_match">两次密码输入不一致</string>
+    <string name="please_input_verify_code_first">请先输入验证码</string>
 
 </resources>
