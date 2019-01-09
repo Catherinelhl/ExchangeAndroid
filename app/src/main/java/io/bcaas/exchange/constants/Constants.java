@@ -59,6 +59,7 @@ public class Constants {
         public static final long LOG_TIME = 1;
         public static final int STAY_BRAND_ACTIVITY_TIME = 1;//如果当前不用编辑页面，停留在页面的时间1s
 
+        public static final String THREE_STAR = "***";
 
         public static final String SC = "SC";//中文（简体）
         public static final String CN = "CN";//中文
@@ -91,7 +92,8 @@ public class Constants {
         public static final int GOOGLE_VERIFY = 0x14;//跳转到「google验证」页面的code码
         public static final int REQUEST_CODE_CAMERA_SCAN = 0x15;//跳转到「调用扫描」的界面
         public static final int REQUEST_CODE_CAMERA_OK = 0x16;//跳转到「调用扫描」的界面
-        public static final int WITDH_DRAW_DETAIL = 0x17;//跳转到「提现详情」的界面
+        public static final int WIDTH_DRAW_DETAIL = 0x17;//跳转到「提现详情」的界面
+        public static final int COUNTRY_CODE = 0x18;//跳转到「选择城市区号」的界面
 
     }
 
@@ -115,6 +117,7 @@ public class Constants {
         public static final String COPY_ADDRESS = "address";
         public static final String RESULT = "result";//扫描二维码返回的结果
         public static final String BUY_DETAIL = "buyDetail";
+        public static final String SELECT_COUNTRY_CODE = "selectCountryCode";//选择的城市号码
     }
 
     /**
@@ -151,6 +154,7 @@ public class Constants {
         public static final String SELL_VIEW = "sellView";//售出
         public static final String SIDE_SLIP = "sideSlip";//侧滑栏
         public static final String WITHDRAW_SURE = "withDrawSure";//提现点击确定
+        public static final String COUNTRY_CODE = "countryCode";//城市区号
     }
 
     /**

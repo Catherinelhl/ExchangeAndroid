@@ -5,15 +5,43 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <include layout="@layout/include_header"/>
-
-    <io.bcaas.exchange.view.editview.EditTextWithAction
-            android:id="@+id/etwa_phone_number"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/d24"
-            android:background="@color/white"
-            exchange:hint="@string/phone_number"
-            exchange:behaviour="phone"
-            android:layout_height="@dimen/d48"/>
+    <TextView android:layout_width="match_parent"
+              android:text="请选择地区 >>"
+              android:id="@+id/tv_select"
+              android:layout_marginTop="@dimen/d24"
+              android:gravity="center_vertical"
+              android:textSize="@dimen/text_size_16"
+              android:paddingLeft="@dimen/d20"
+              android:background="@color/white"
+              android:textColor="@color/black_333333"
+              android:layout_height="@dimen/d48"/>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:gravity="center_vertical"
+                  android:layout_marginTop="@dimen/d24"
+                  android:background="@color/white"
+                  android:layout_height="@dimen/d48">
+        <TextView android:layout_width="wrap_content"
+                  android:text="+86"
+                  android:id="@+id/tv_code"
+                  android:gravity="center_vertical"
+                  android:textSize="@dimen/text_size_16"
+                  android:paddingLeft="@dimen/d20"
+                  android:textColor="@color/black_333333"
+                  android:layout_height="@dimen/d48"/>
+        <View android:layout_width="@dimen/d1"
+              android:layout_margin="@dimen/d5"
+              android:gravity="center_vertical"
+              android:background="@color/grey_999999"
+              android:layout_height="@dimen/d48"/>
+        <io.bcaas.exchange.view.editview.EditTextWithAction
+                android:id="@+id/etwa_phone_number"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                exchange:hint="@string/phone_number"
+                exchange:behaviour="phone"
+                android:layout_height="@dimen/d48"/>
+    </LinearLayout>
     <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_message_code"
             android:layout_width="match_parent"

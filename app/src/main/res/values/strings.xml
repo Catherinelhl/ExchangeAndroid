@@ -117,5 +117,7 @@
     <string name="please_input_email_verify_code">请输入邮箱验证码</string>
     <string name="please_input_message_code">请输入短信验证码！</string>
     <string name="close_verify">关闭验证</string>
+    <string name="version">Version:</string>
+    <string name="format_ssd" formatted="false">%s%s(%d)</string>
 
 </resources>

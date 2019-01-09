@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -21,7 +22,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.otto.OttoTool;
@@ -29,7 +32,9 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
+import io.bcaas.exchange.view.pop.ListPop;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -54,7 +59,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected SoftKeyBroadManager softKeyBroadManager;
     protected String TAG;
     protected DataGenerationRegister dataGenerationRegister;
-
+    /*显示地区号的Pop Window*/
+    private ListPop listPop;
 
     //读写权限
     private static String[] PERMISSIONS_STORAGE = {
@@ -64,6 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getArgs(getIntent().getExtras());
         setContentView(getContentView());
         activity = this;
         TAG = activity.getClass().getSimpleName();
@@ -284,5 +291,25 @@ public abstract class BaseActivity extends AppCompatActivity {
             clickTimes = 0;
             return false;
         }
+    }
+
+    /**
+     * 显示当前所有的电话区号
+     *
+     * @param onItemSelectListener 通過傳入的回調來得到選擇的值
+     * @param list                 需要顯示的列表
+     */
+    public void showListPopWindow(OnItemSelectListener onItemSelectListener, List<CountryCodeBean.CountryCode> list) {
+        // 對當前pop window進行置空
+        if (listPop != null) {
+            listPop.dismiss();
+            listPop = null;
+        }
+        listPop = new ListPop(context);
+        listPop.addListAddress(onItemSelectListener, list);
+        listPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
+        //设置layout在PopupWindow中显示的位置
+        listPop.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        setBackgroundAlpha(0.7f);
     }
 }

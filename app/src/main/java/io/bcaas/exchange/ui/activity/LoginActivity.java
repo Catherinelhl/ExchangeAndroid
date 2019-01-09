@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,21 +13,17 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.tools.file.FilePathTool;
-import io.bcaas.exchange.tools.file.ResourceTool;
+import io.bcaas.exchange.tools.app.VersionTool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -68,19 +65,30 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void initView() {
         //设置账号只能输入邮箱类型
         amount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        setAppVersion();
 
+    }
+
+    /**
+     * APP当前的版本信息
+     */
+    private void setAppVersion() {
+        tvVersion.setText(String.format(getString(R.string.format_ssd), getString(R.string.version), VersionTool.getVersionName(this), VersionTool.getVersionCode(this)));
     }
 
     @Override
     public void initData() {
-
         presenter = new LoginPresenterImp(this);
-//        presenter.getImageVerifyCode();
-
     }
 
     @Override
     public void initListener() {
+        tvVersion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         amount.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -221,6 +229,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                 // 重新刷新登录界面的验证码
                 etImageCode.requestImageVerifyCode();
                 break;
+
+
         }
     }
 

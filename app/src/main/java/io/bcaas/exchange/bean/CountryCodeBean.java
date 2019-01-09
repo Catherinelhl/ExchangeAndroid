@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/9
- * <p>
+ *
  * 获取本地地区号码资源
  */
 public class CountryCodeBean implements Serializable {
     public List<CountryCode> data;
 
-    public class CountryCode {
+    public class CountryCode implements Serializable{
         private String countryName;
         private String countryPinyin;
         private String phoneCode;

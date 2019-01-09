@@ -12,6 +12,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.NetStateChangeEvent;
 import io.bcaas.exchange.receiver.NetStateReceiver;
 import io.bcaas.exchange.tools.*;
+import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.device.DeviceTool;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;

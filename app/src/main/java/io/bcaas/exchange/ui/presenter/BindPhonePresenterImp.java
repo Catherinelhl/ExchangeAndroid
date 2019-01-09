@@ -1,10 +1,15 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.FilePathTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.BindPhoneContract;
 import io.bcaas.exchange.ui.interactor.VerifyCodeInteractor;
 import io.bcaas.exchange.vo.MemberVO;
@@ -14,6 +19,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author catherine.brainwilliam
@@ -86,5 +94,35 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
                     }
                 });
 
+    }
+
+    @Override
+    public void getCountryCode(String language) {
+        String json = ResourceTool.getJsonFromAssets(FilePathTool.getCountryCodeFilePath(language));
+        if (StringTool.notEmpty(json)) {
+            CountryCodeBean countryCodeBean = GsonTool.convert(json, CountryCodeBean.class);
+            if (countryCodeBean != null) {
+                List<CountryCodeBean.CountryCode> countryCodesTemp = countryCodeBean.getData();
+                if (ListTool.noEmpty(countryCodesTemp)) {
+                    List<CountryCodeBean.CountryCode> countryCodes = new ArrayList<>();
+                    for (CountryCodeBean.CountryCode countryCode : countryCodesTemp) {
+                        String name = countryCode.getCountryName();
+                        String code = countryCode.getPhoneCode();
+                        if (StringTool.isEmpty(name) || StringTool.isEmpty(code)) {
+                            return;
+                        }
+                        countryCodes.add(countryCode);
+                    }
+                    view.getCountryCodeSuccess(countryCodes);
+                } else {
+                    view.getCountryCodeFailure();
+                }
+
+            }else{
+                view.getCountryCodeFailure();
+
+            }
+
+        }
     }
 }

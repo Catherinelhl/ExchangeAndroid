@@ -132,7 +132,7 @@ public class WithDrawActivity extends BaseActivity {
                     break;
                 case Constants.From.WITHDRAW_SURE:
                     intent.setClass(WithDrawActivity.this, WithDrawDetailActivity.class);
-                    startActivityForResult(intent, Constants.RequestCode.WITDH_DRAW_DETAIL);
+                    startActivityForResult(intent, Constants.RequestCode.WIDTH_DRAW_DETAIL);
                     break;
                 default:
                     //跳转界面
@@ -183,7 +183,7 @@ public class WithDrawActivity extends BaseActivity {
                         withDrawViewThree.refreshData(userInfoBeanZBB);
                     }
                     break;
-                case Constants.RequestCode.WITDH_DRAW_DETAIL:
+                case Constants.RequestCode.WIDTH_DRAW_DETAIL:
                     break;
             }
         }

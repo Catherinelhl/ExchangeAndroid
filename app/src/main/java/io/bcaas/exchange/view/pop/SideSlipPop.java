@@ -53,7 +53,7 @@ public class SideSlipPop extends PopupWindow {
     }
 
     private void initView() {
-        view = LayoutInflater.from(context).inflate(R.layout.popwindow_side_slip, null);
+        view = LayoutInflater.from(context).inflate(R.layout.pop_side_slip, null);
         // 把View添加到PopWindow中
         this.setContentView(view);
         //设置SelectPicPopupWindow弹出窗体的宽1:3.5

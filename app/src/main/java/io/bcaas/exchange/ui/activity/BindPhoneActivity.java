@@ -1,6 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,15 +13,23 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.FilePathTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.BindPhoneContract;
 import io.bcaas.exchange.ui.presenter.BindPhonePresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,6 +43,10 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+    @BindView(R.id.tv_select)
+    TextView tvSelect;
+    @BindView(R.id.tv_code)
+    TextView tvCode;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_message_code)
@@ -42,6 +57,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     Button btnSure;
 
     private BindPhoneContract.Presenter presenter;
+    private List<CountryCodeBean.CountryCode> countryCodes;
 
     @Override
     public int getContentView() {
@@ -55,6 +71,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
 
     @Override
     public void initView() {
+        countryCodes = new ArrayList<>();
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.bind_phone);
         etwaMessageCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
@@ -72,7 +89,8 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                     showToast(getString(R.string.please_input_phone_number));
                     return;
                 }
-                presenter.phoneVerify(phone, getCurrentLanguage());
+                String sendPhoneInfo = tvCode.getText() + phone;
+                presenter.phoneVerify(sendPhoneInfo, getCurrentLanguage());
             }
         }, Constants.EditTextFrom.PHONE);
 
@@ -81,6 +99,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     @Override
     public void initData() {
         presenter = new BindPhonePresenterImp(this);
+        presenter.getCountryCode(getCurrentLanguage());
 
     }
 
@@ -131,7 +150,46 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                             showToast(getString(R.string.please_input_phone_verify_code));
                             return;
                         }
-                        presenter.phoneVerify(phone, getCurrentLanguage());
+                        String sendPhoneInfo = tvCode.getText() + phone;
+                        presenter.phoneVerify(sendPhoneInfo, getCurrentLanguage());
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+        RxView.clicks(tvSelect).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+
+                        if (ListTool.isEmpty(countryCodes)) {
+                            showToast("获取数据失败！");
+                            return;
+                        }
+                        Intent intent = new Intent();
+                        intent.putExtra(Constants.From.COUNTRY_CODE, GsonTool.string(countryCodes));
+                        intent.setClass(BindPhoneActivity.this, CountryCodeActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.COUNTRY_CODE);
+//                showListPopWindow(new OnItemSelectListener() {
+//                    @Override
+//                    public <T> void onItemSelect(T type, String from) {
+//                        LogTool.d(TAG, "onItemSelect:" + type);
+//                    }
+//                }, countryCodes);
 
                     }
 
@@ -165,5 +223,41 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
 
         //验证失败，提示重新验证？
         showToast(info);
+    }
+
+    @Override
+    public void getCountryCodeSuccess(List<CountryCodeBean.CountryCode> countryCodes) {
+        this.countryCodes.clear();
+        this.countryCodes.addAll(countryCodes);
+
+    }
+
+    @Override
+    public void getCountryCodeFailure() {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.COUNTRY_CODE://选择城市区号页面返回
+                    LogTool.d(TAG, "country code");
+                    if (data != null) {
+                        CountryCodeBean.CountryCode countryCode = (CountryCodeBean.CountryCode) data.getSerializableExtra(Constants.KeyMaps.SELECT_COUNTRY_CODE);
+                        if (countryCode != null) {
+                            if (tvCode != null) {
+                                tvCode.setText("+" + countryCode.getPhoneCode());
+                            }
+                            if (tvSelect != null) {
+                                tvSelect.setText(countryCode.getCountryName());
+                            }
+                            LogTool.d(TAG, "当前选中的城市区号：" + countryCode);
+                        }
+                    }
+                    break;
+            }
+        }
     }
 }
