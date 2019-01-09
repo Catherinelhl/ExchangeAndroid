@@ -16,6 +16,10 @@ public interface SafetyCenterContract {
         void getAccountSecuritySuccess(MemberVO memberVO);
 
         void getAccountSecurityFailure(String info);
+
+        void securityPhoneSuccess(String info);
+
+        void securityPhoneFailure(String info);
     }
 
     interface Presenter {
@@ -24,5 +28,13 @@ public interface SafetyCenterContract {
 
         //取得帳戶資訊
         void getAccountSecurity();
+
+        //更改手机验证的状态
+        void securityPhone(String phone, String verifyCode);
+        //更改邮箱验证的状态
+        void securityEmail( String verifyCode);
+        //更改Google验证的状态
+        void securityGoogle(String verifyCode);
+
     }
 }

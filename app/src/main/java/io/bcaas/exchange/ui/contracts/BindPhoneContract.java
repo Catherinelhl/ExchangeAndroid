@@ -12,17 +12,20 @@ import java.util.List;
 public interface BindPhoneContract {
 
     interface View {
-        void bindPhoneSuccess(String info);
+        void securityPhoneSuccess(String info);
 
-        void bindPhoneFailure(String info);
+        void securityPhoneFailure(String info);
+
+        void getPhoneCodeSuccess();
+        void getPhoneCodeFailure();
 
         void getCountryCodeFailure();
         void getCountryCodeSuccess(List<CountryCodeBean.CountryCode> countryCodes);
     }
 
     interface Presenter {
-        void phoneVerify(String phone, String languageCode);
-
+        void getPhoneCode(String phone, String languageCode);
+        void securityPhone(String phone, String verifyCode);
         void getCountryCode(String Language);
     }
 }

@@ -119,5 +119,7 @@
     <string name="close_verify">关闭验证</string>
     <string name="version">Version:</string>
     <string name="format_ssd" formatted="false">%s%s(%d)</string>
+    <string name="bind_success">绑定成功！</string>
+    <string name="modify">修改</string>
 
 </resources>

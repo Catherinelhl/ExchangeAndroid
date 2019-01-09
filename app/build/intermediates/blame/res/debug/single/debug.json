@@ -12,28 +12,28 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_filter.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_filter.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_abc_action_menu_item_layout.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_filter.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_filter.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_background_cache_hint_selector_material_light.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_background_cache_hint_selector_material_light.xml"
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_dark.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_primary_text_disable_only_material_dark.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_text_select_handle_middle_mtrl_dark.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_primary_text_disable_only_material_dark.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_primary_text_disable_only_material_dark.xml"
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_background_cache_hint_selector_material_light.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_background_cache_hint_selector_material_light.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -64,12 +64,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_select_dialog_material.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_mtrl_snackbar_background.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable/mtrl_snackbar_background.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_sell_out_f.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_sell_out_f.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_mtrl_snackbar_background.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable/mtrl_snackbar_background.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -128,12 +128,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout-v21_notification_template_custom_big.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -144,12 +144,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_buy_in.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_scan.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_scan.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
@@ -228,12 +228,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_cb_pwd.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_cb_pwd.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout-v16_notification_template_custom_big.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/layout-v16/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_cb_pwd.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_cb_pwd.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_btn_radio_material.xml.flat",
@@ -256,12 +256,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_abc_search_view.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_search_view.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_view_sell.xml.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_abc_search_view.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_search_view.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon_scan.png.flat",
@@ -284,12 +284,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable/notification_bg_low.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_safety_center.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_safety_center.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable/notification_bg_low.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
@@ -320,12 +320,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_sell_out_f.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/animator_mtrl_btn_state_list_anim.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/animator/mtrl_btn_state_list_anim.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
@@ -384,12 +384,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/fragment_content.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon_withdraw.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xhdpi/icon_withdraw.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-mdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v21_abc_edit_text_material.xml.flat",
@@ -480,12 +480,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xhdpi/icon_safety_center.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v21_abc_list_divider_material.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-v21/abc_list_divider_material.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_my_fund.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_my_fund.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v21_abc_list_divider_material.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-v21/abc_list_divider_material.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -580,20 +580,20 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable/design_fab_background.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_ic_star_half_black_36dp.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_order_f.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_order_f.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon_order_f.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xhdpi/icon_order_f.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -604,12 +604,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_ic_star_black_16dp.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_solid_border_yellow.xml.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/drawable/solid_border_yellow.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_design_menu_item_action_area.xml.flat",
@@ -820,12 +820,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/layout-sw600dp-v13/design_layout_snackbar.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_withdraw.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_withdraw.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_dark.xml.flat",
@@ -860,6 +860,10 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_safety_center.png"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_sell_out.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_sell_out.png"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
@@ -868,20 +872,16 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_sell_out.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_sell_out.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_buy_detail.xml.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_filter.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_filter.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_buy_detail.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/animator_mtrl_btn_unelevated_state_list_anim.xml.flat",
@@ -924,12 +924,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/anim/abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color-v23_abc_tint_default.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_tint_default.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_account_f.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_account_f.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color-v23_abc_tint_default.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_tint_default.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -960,12 +960,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/animator/design_fab_show_motion_spec.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_48dp.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_ic_star_half_black_48dp.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_my_fund.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_my_fund.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_48dp.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -992,12 +992,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/anim/abc_tooltip_enter.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_bg_edit_text.xml.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/drawable/bg_edit_text.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon_withdraw.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxhdpi/icon_withdraw.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_bg_edit_text.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/drawable/bg_edit_text.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_primary_text_material_light.xml.flat",
@@ -1084,12 +1084,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_tint_switch_track.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_ic_search_api_material.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/abc_ic_search_api_material.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon_sell_out_f.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxhdpi/icon_sell_out_f.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_ic_search_api_material.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/abc_ic_search_api_material.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_mtrl_btn_ripple_color.xml.flat",
@@ -1116,6 +1116,10 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_filter.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_filter.png"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
     },
@@ -1124,20 +1128,16 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/color/mtrl_chip_ripple_color.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_filter.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_filter.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_cb_pwd.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_cb_pwd.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_tint_btn_checkable.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_withdraw.xml.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_withdraw.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color/abc_tint_btn_checkable.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -1264,12 +1264,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/tooltip_frame_dark.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_scan.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_scan.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_account.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_account.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_scan.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_scan.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_edit_text_cursor_drawable.xml.flat",
@@ -1320,12 +1320,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable-xhdpi-v4/design_ic_visibility_off.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_safety_center.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_safety_center.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_cb_pwd_d.png.flat",
@@ -1388,20 +1388,20 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/color/mtrl_tabs_icon_color_selector_colored.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_design_snackbar_background.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable/design_snackbar_background.xml"
-    },
-    {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color-v23_abc_tint_switch_track.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_tint_switch_track.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_recharge.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_recharge.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon_drop_down.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xhdpi/icon_drop_down.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_design_snackbar_background.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable/design_snackbar_background.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color-v23_abc_tint_switch_track.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_tint_switch_track.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1424,16 +1424,16 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/animator_mtrl_fab_transformation_sheet_collapse_spec.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/animator/mtrl_fab_transformation_sheet_collapse_spec.xml"
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_reset_password.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_reset_password.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_reset_password.xml.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_reset_password.xml"
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/animator_mtrl_fab_transformation_sheet_collapse_spec.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/animator/mtrl_fab_transformation_sheet_collapse_spec.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_notification_icon_background.xml.flat",
@@ -1568,12 +1568,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/anim-v21_design_bottom_sheet_slide_in.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/anim-v21/design_bottom_sheet_slide_in.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_order_f.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_order_f.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/anim-v21_design_bottom_sheet_slide_in.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/anim-v21/design_bottom_sheet_slide_in.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/animator_mtrl_chip_state_list_anim.xml.flat",
@@ -1748,16 +1748,16 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/abc_cab_background_top_material.xml"
     },
     {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_bind_phone.xml.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_bind_phone.xml"
+    },
+    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
-    },
-    {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_activity_bind_phone.xml.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_bind_phone.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -1900,12 +1900,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-ldrtl-hdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v21_avd_hide_password.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable-v21/avd_hide_password.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v21_avd_hide_password.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable-v21/avd_hide_password.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
@@ -1916,12 +1916,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-mdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_design_ic_visibility.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable-xxhdpi-v4/design_ic_visibility.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_account.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_account.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_design_ic_visibility.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/drawable-xxhdpi-v4/design_ic_visibility.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon_sell_out.png.flat",
@@ -2044,12 +2044,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/item_buy_recycler.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_order.png.flat",
-        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_order.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_tablayout_bcaas.xml.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/tablayout_bcaas.xml"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_order.png.flat",
+        "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_order.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
@@ -2104,12 +2104,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_text_select_handle_right_mtrl_light.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon_account.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-mdpi/icon_account.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-hdpi-v4/abc_text_select_handle_right_mtrl_light.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_tab_indicator_material.xml.flat",
@@ -2280,12 +2280,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_text_material.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_btn_colored_text_material.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_scan.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_scan.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_text_material.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/color-v23/abc_btn_colored_text_material.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
@@ -2408,12 +2408,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl_dark.png"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_title_material.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_alert_dialog_title_material.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_order.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_order.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_title_material.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -2448,12 +2448,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/animator/mtrl_fab_show_motion_spec.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_back.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_back.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_48dp.png.flat",
@@ -2468,12 +2468,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl_dark.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/1aacdc7a559973e68f50891fc1a1b158/res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -2532,12 +2532,12 @@
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/pop_side_slip.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_dark.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/abc_list_selector_holo_dark.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon_recharge.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-hdpi/icon_recharge.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_dark.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -2584,12 +2584,12 @@
         "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
-        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v23_abc_control_background_material.xml.flat",
-        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-v23/abc_control_background_material.xml"
-    },
-    {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon_buy_in.png.flat",
         "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/mipmap-xxxhdpi/icon_buy_in.png"
+    },
+    {
+        "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/drawable-v23_abc_control_background_material.xml.flat",
+        "source": "/Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/229c5405325d2443865fcf2935370e74/res/drawable-v23/abc_control_background_material.xml"
     },
     {
         "merged": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon_sell_out.png.flat",

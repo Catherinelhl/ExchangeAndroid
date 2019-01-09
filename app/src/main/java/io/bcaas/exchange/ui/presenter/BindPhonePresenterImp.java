@@ -11,7 +11,8 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.file.FilePathTool;
 import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.BindPhoneContract;
-import io.bcaas.exchange.ui.interactor.VerifyCodeInteractor;
+import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
+import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
@@ -30,16 +31,16 @@ import java.util.List;
 public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
     private String TAG = BindPhonePresenterImp.class.getSimpleName();
     private BindPhoneContract.View view;
-    private VerifyCodeInteractor verifyCodeInteractor;
+    private SafetyCenterInteractor safetyCenterInteractor;
 
     public BindPhonePresenterImp(BindPhoneContract.View view) {
         super();
         this.view = view;
-        verifyCodeInteractor = new VerifyCodeInteractor();
+        safetyCenterInteractor = new SafetyCenterInteractor();
     }
 
     @Override
-    public void phoneVerify(String phone, String languageCode) {
+    public void getPhoneCode(String phone, String languageCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -49,7 +50,7 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
         requestJson.setMemberVO(memberVO);
         requestJson.setVerificationBean(verificationBean);
         LogTool.d(TAG, requestJson);
-        verifyCodeInteractor.phoneVerify(GsonTool.beanToRequestBody(requestJson))
+        safetyCenterInteractor.phoneVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -62,19 +63,19 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.bindPhoneFailure(MessageConstants.EMPTY);
+                            view.getPhoneCodeFailure();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            view.bindPhoneSuccess(responseJson.getMessage());
+                            view.getPhoneCodeSuccess();
                         } else {
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2019) {
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.bindPhoneFailure(responseJson.getMessage());
+                                view.getPhoneCodeFailure();
                             } else {
-                                view.bindPhoneFailure(MessageConstants.EMPTY);
+                                view.getPhoneCodeFailure();
 
                             }
 
@@ -85,7 +86,7 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.bindPhoneFailure(e.getMessage());
+                        view.getPhoneCodeFailure();
                     }
 
                     @Override
@@ -93,7 +94,66 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
 
                     }
                 });
+    }
 
+    @Override
+    public void securityPhone(String phone, String verifyCode) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setPhone(phone);
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setMemberVO(memberVO);
+        requestJson.setLoginInfoVO(loginInfoVO);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
+        safetyCenterInteractor.securityPhone(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            view.securityPhoneSuccess(responseJson.getMessage());
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.securityPhoneFailure(responseJson.getMessage());
+                            } else {
+                                view.securityPhoneFailure(MessageConstants.EMPTY);
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.securityPhoneFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
@@ -118,7 +178,7 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
                     view.getCountryCodeFailure();
                 }
 
-            }else{
+            } else {
                 view.getCountryCodeFailure();
 
             }

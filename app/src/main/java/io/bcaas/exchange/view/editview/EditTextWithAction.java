@@ -199,56 +199,56 @@ public class EditTextWithAction extends LinearLayout
 
                     @Override
                     public void onNext(Object o) {
-                        switch (from) {
-                            case Constants.EditTextFrom.PHONE:
-                                if (editTextWatcherListener != null) {
-                                    editTextWatcherListener.onAction(from);
+                        if (StringTool.equals(from, Constants.EditTextFrom.PHONE)
+                                || StringTool.equals(from, Constants.EditTextFrom.EMAIL)
+                                || StringTool.equals(from, Constants.EditTextFrom.GOOGLE)) {
+                            if (editTextWatcherListener != null) {
+                                editTextWatcherListener.onAction(from);
+                            }
+                        } else {
+                            // 发送邮箱验证码
+                            //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
+                            String tvActionString = tvAction.getText().toString();
+                            if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
+                                //开始请求验证码数据
+                                if (presenter != null) {
+                                    presenter.emailVerify(Constants.User.MEMBER_ID, BaseApplication.getCurrentLanguage(), Constants.User.MEMBER_ID);
                                 }
-                                break;
-                            default:
-                                //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
-                                String tvActionString = tvAction.getText().toString();
-                                if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
-                                    //开始请求验证码数据
-                                    if (presenter != null) {
-                                        presenter.emailVerify(Constants.User.MEMBER_ID, BaseApplication.getCurrentLanguage(), Constants.User.MEMBER_ID);
-                                    }
-                                    IntervalTimerTool.countDownTimer(60)
-                                            .subscribeOn(Schedulers.newThread())
-                                            .observeOn(AndroidSchedulers.mainThread())
-                                            .doOnSubscribe(new Consumer<Disposable>() {
-                                                @Override
-                                                public void accept(Disposable disposable) throws Exception {
+                                IntervalTimerTool.countDownTimer(60)
+                                        .subscribeOn(Schedulers.newThread())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .doOnSubscribe(new Consumer<Disposable>() {
+                                            @Override
+                                            public void accept(Disposable disposable) throws Exception {
 //                                            LogTool.d(TAG, "计时开始");
-                                                }
-                                            }).subscribe(new Observer<Integer>() {
-                                        @Override
-                                        public void onSubscribe(Disposable d) {
-                                            disposableCountDownTimer = d;
+                                            }
+                                        }).subscribe(new Observer<Integer>() {
+                                    @Override
+                                    public void onSubscribe(Disposable d) {
+                                        disposableCountDownTimer = d;
 
-                                        }
+                                    }
 
-                                        @Override
-                                        public void onNext(Integer integer) {
-                                            tvAction.setText(integer + " s");
-                                        }
+                                    @Override
+                                    public void onNext(Integer integer) {
+                                        tvAction.setText(integer + " s");
+                                    }
 
-                                        @Override
-                                        public void onError(Throwable e) {
+                                    @Override
+                                    public void onError(Throwable e) {
 //                                    LogTool.e(TAG, e.getMessage());
-                                            tvAction.setText(getResources().getString(R.string.send));
-                                            disposeRequest(disposableCountDownTimer);
-                                        }
+                                        tvAction.setText(getResources().getString(R.string.send));
+                                        disposeRequest(disposableCountDownTimer);
+                                    }
 
-                                        @Override
-                                        public void onComplete() {
-                                            LogTool.d(TAG, "计时完成");
-                                            tvAction.setText(getResources().getString(R.string.send));
-                                            disposeRequest(disposableCountDownTimer);
-                                        }
-                                    });
-                                }
-                                break;
+                                    @Override
+                                    public void onComplete() {
+                                        LogTool.d(TAG, "计时完成");
+                                        tvAction.setText(getResources().getString(R.string.send));
+                                        disposeRequest(disposableCountDownTimer);
+                                    }
+                                });
+                            }
                         }
 
 

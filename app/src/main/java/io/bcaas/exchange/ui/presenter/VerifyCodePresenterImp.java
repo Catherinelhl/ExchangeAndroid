@@ -7,7 +7,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
-import io.bcaas.exchange.ui.interactor.VerifyCodeInteractor;
+import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
@@ -27,14 +27,14 @@ import okhttp3.ResponseBody;
 public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
     private String TAG = VerifyCodePresenterImp.class.getSimpleName();
     private VerifyCodeContract.View view;
-    private VerifyCodeInteractor verifyCodeInteractor;
+    private SafetyCenterInteractor safetyCenterInteractor;
 
     private Disposable disposableImageVerifyCode;
 
     public VerifyCodePresenterImp(VerifyCodeContract.View view) {
         super();
         this.view = view;
-        verifyCodeInteractor = new VerifyCodeInteractor();
+        safetyCenterInteractor = new SafetyCenterInteractor();
     }
     @Override
     public void phoneVerify(String phone, String languageCode) {
@@ -47,7 +47,7 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
         requestJson.setMemberVO(memberVO);
         requestJson.setVerificationBean(verificationBean);
         LogTool.d(TAG, requestJson);
-        verifyCodeInteractor.phoneVerify(GsonTool.beanToRequestBody(requestJson))
+        safetyCenterInteractor.phoneVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -106,7 +106,7 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
         requestJson.setVerificationBean(verificationBean);
         LogTool.d(TAG, requestJson);
 
-        verifyCodeInteractor.emailVerify(GsonTool.beanToRequestBody(requestJson))
+        safetyCenterInteractor.emailVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -149,7 +149,7 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
 
     @Override
     public void getImageVerifyCode() {
-        verifyCodeInteractor.getImageVerifyCode()
+        safetyCenterInteractor.getImageVerifyCode()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(ResponseBody::byteStream)

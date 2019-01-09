@@ -49,7 +49,18 @@ public class APIURLConstants {
     /*發送Phone驗證*/
     public static final String API_SEND_PHONE_VERIFY_CODE = "verification/sendPhoneVerifyCode";
     /*驗證雙因素驗證碼*/
-    public static final String API_VERIFY_AUTHENTICATOR_CODE = "/verification/verifyAuthenticatorCode";
+    public static final String API_VERIFY_AUTHENTICATOR_CODE = "verification/verifyAuthenticatorCode";
+
+
+
+    /*更改E-mail驗證狀態*/
+    public static final String API_SECURITY_EMAIL = "member/securityEmail";
+    /*更改手機驗證狀態*/
+    public static final String API_SECURITY_PHONE = "member/securityPhone";
+    /*更改Google驗證狀態*/
+    public static final String API_SECURITY_TWO_FACTORAUTH_VERIFY = "member/securityTwoFactorAuthVerify";
+
+
 
     /*設置資金密碼*/
     public static final String API_SECURITY_TX_PASSWORD = "member/securityTxPassword";

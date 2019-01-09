@@ -50,9 +50,9 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_message_code)
-    EditTextWithAction etwaMessageCode;
+    EditTextWithAction etMessageCode;
     @BindView(R.id.etwa_phone_number)
-    EditTextWithAction etwaPhoneNumber;
+    EditTextWithAction etPhoneNumber;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -71,11 +71,12 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
 
     @Override
     public void initView() {
+        btnSure.setEnabled(false);
         countryCodes = new ArrayList<>();
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.bind_phone);
-        etwaMessageCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etwaMessageCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+        etMessageCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+        etMessageCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
 
@@ -84,13 +85,13 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
             @Override
             public void onAction(String from) {
                 //1：判断手机号非空
-                String phone = etwaPhoneNumber.getContent();
+                String phone = etPhoneNumber.getContent();
                 if (StringTool.isEmpty(phone)) {
                     showToast(getString(R.string.please_input_phone_number));
                     return;
                 }
                 String sendPhoneInfo = tvCode.getText() + phone;
-                presenter.phoneVerify(sendPhoneInfo, getCurrentLanguage());
+                presenter.getPhoneCode(sendPhoneInfo, getCurrentLanguage());
             }
         }, Constants.EditTextFrom.PHONE);
 
@@ -139,25 +140,24 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                     public void onNext(Object o) {
 
                         //1：判断手机号非空
-                        String phone = etwaPhoneNumber.getContent();
+                        String phone = etPhoneNumber.getContent();
                         if (StringTool.isEmpty(phone)) {
                             showToast(getString(R.string.please_input_phone_number));
                             return;
                         }
                         //2：判断验证码非空
-                        String messageCode = etwaMessageCode.getContent();
+                        String messageCode = etMessageCode.getContent();
                         if (StringTool.isEmpty(messageCode)) {
                             showToast(getString(R.string.please_input_phone_verify_code));
                             return;
                         }
                         String sendPhoneInfo = tvCode.getText() + phone;
-                        presenter.phoneVerify(sendPhoneInfo, getCurrentLanguage());
+                        presenter.securityPhone(sendPhoneInfo, messageCode);
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
                     }
 
                     @Override
@@ -213,16 +213,29 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     }
 
     @Override
-    public void bindPhoneSuccess(String info) {
+    public void securityPhoneSuccess(String info) {
         //验证成功，返回到上一个页面，然后重置状态
+        showToast(getString(R.string.bind_success));
         setResult(false);
     }
 
     @Override
-    public void bindPhoneFailure(String info) {
+    public void securityPhoneFailure(String info) {
 
         //验证失败，提示重新验证？
         showToast(info);
+    }
+
+    @Override
+    public void getPhoneCodeSuccess() {
+        //设置「确定」按钮可以点击
+        btnSure.setEnabled(true);
+    }
+
+    @Override
+    public void getPhoneCodeFailure() {
+        // 设置「确定」按钮可以点击
+        btnSure.setEnabled(true);
     }
 
     @Override

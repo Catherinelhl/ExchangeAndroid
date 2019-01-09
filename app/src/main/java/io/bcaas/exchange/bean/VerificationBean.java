@@ -17,7 +17,8 @@ import java.io.Serializable;
 public class VerificationBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-		
+
+
 	/**
 	 *	語言
 	 */
@@ -39,14 +40,22 @@ public class VerificationBean implements Serializable {
 	 */
 	private String authenticatorUrl;
 	/**
-	 *	类型
+	 *	帳號
+	 */
+	private String account;
+	/**
+	 *	密鑰
+	 */
+	private String secret;
+	/**
+	 *	驗證類型(參考verifyCodeTool的定義)
 	 */
 	private String type;
 	/**
-	 *	关闭类型
+	 * 關閉驗證(1:關閉)
 	 */
 	private String closeType;
-	
+
 	public VerificationBean() {
 		super();
 	}
@@ -58,7 +67,7 @@ public class VerificationBean implements Serializable {
 	public void setLanguageCode(String languageCode) {
 		this.languageCode = languageCode;
 	}
-	
+
 	public String getPhone() {
 		return phone;
 	}
@@ -66,7 +75,7 @@ public class VerificationBean implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
 	public String getMail() {
 		return mail;
 	}
@@ -74,7 +83,7 @@ public class VerificationBean implements Serializable {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
+
 	public String getVerifyCode() {
 		return verifyCode;
 	}
@@ -82,13 +91,29 @@ public class VerificationBean implements Serializable {
 	public void setVerifyCode(String verifyCode) {
 		this.verifyCode = verifyCode;
 	}
-	
+
 	public String getAuthenticatorUrl() {
 		return authenticatorUrl;
 	}
 
 	public void setAuthenticatorUrl(String authenticatorUrl) {
 		this.authenticatorUrl = authenticatorUrl;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
 	}
 
 	public String getType() {
@@ -115,6 +140,8 @@ public class VerificationBean implements Serializable {
 				", mail='" + mail + '\'' +
 				", verifyCode='" + verifyCode + '\'' +
 				", authenticatorUrl='" + authenticatorUrl + '\'' +
+				", account='" + account + '\'' +
+				", secret='" + secret + '\'' +
 				", type='" + type + '\'' +
 				", closeType='" + closeType + '\'' +
 				'}';

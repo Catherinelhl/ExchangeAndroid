@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -142,6 +143,184 @@ public class SafetyCenterPresenterImp implements SafetyCenterContract.Presenter 
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.getAccountSecurityFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void securityPhone(String phone, String verifyCode) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setPhone(phone);
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setMemberVO(memberVO);
+        requestJson.setLoginInfoVO(loginInfoVO);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
+        safetyCenterInteractor.securityPhone(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            view.securityPhoneSuccess(responseJson.getMessage());
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.securityPhoneFailure(responseJson.getMessage());
+                            } else {
+                                view.securityPhoneFailure(MessageConstants.EMPTY);
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.securityPhoneFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void securityEmail(String verifyCode) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setMemberVO(memberVO);
+        requestJson.setLoginInfoVO(loginInfoVO);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
+        safetyCenterInteractor.securityEmail(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            view.securityPhoneSuccess(responseJson.getMessage());
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.securityPhoneFailure(responseJson.getMessage());
+                            } else {
+                                view.securityPhoneFailure(MessageConstants.EMPTY);
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.securityPhoneFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void securityGoogle( String verifyCode) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setMemberVO(memberVO);
+        requestJson.setLoginInfoVO(loginInfoVO);
+        requestJson.setVerificationBean(verificationBean);
+        LogTool.d(TAG, requestJson);
+        safetyCenterInteractor.securityTwoFactorVerify(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            view.securityPhoneSuccess(responseJson.getMessage());
+                        } else {
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2019) {
+                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                                view.securityPhoneFailure(responseJson.getMessage());
+                            } else {
+                                view.securityPhoneFailure(MessageConstants.EMPTY);
+
+                            }
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.securityPhoneFailure(e.getMessage());
                     }
 
                     @Override

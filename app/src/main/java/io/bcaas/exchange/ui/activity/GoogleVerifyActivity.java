@@ -9,8 +9,11 @@ import com.jakewharton.rxbinding2.view.RxView;
 import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.GoogleContract;
+import io.bcaas.exchange.ui.presenter.GooglePresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -22,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/28
  * 「 google验证」
  */
-public class GoogleVerifyActivity extends BaseActivity {
+public class GoogleVerifyActivity extends BaseActivity implements GoogleContract.View {
 
 
     @BindView(R.id.ib_back)
@@ -42,6 +45,8 @@ public class GoogleVerifyActivity extends BaseActivity {
     @BindView(R.id.btn_sure)
     Button btnSure;
 
+    private GoogleContract.Presenter presenter;
+
     @Override
     public int getContentView() {
         return R.layout.activity_google_verify;
@@ -56,17 +61,13 @@ public class GoogleVerifyActivity extends BaseActivity {
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.please_set_google_verify);
-        String privateKey = "39LKDBERWWRH343T34VSRG434V43F4G5GT5H";
-        tvMyAddress.setText("密钥:\n" + privateKey);
-        if (ivQrCode != null) {
-            Bitmap qrCode = EncodingUtils.createQRCode(privateKey, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-                    context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
-            ivQrCode.setImageBitmap(qrCode);
-        }
+
     }
 
     @Override
     public void initData() {
+        presenter = new GooglePresenterImp(this);
+        presenter.getAuthenticatorUrl();
 
     }
 
@@ -134,4 +135,37 @@ public class GoogleVerifyActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void getAuthenticatorUrlSuccess(VerificationBean verificationBean) {
+        if (verificationBean == null) {
+            return;
+        }
+        String authenticatorUrl = verificationBean.getAuthenticatorUrl();
+        String account=verificationBean.getAccount();
+        String secret=verificationBean.getSecret();
+        if (tvMyAddress!=null &&StringTool.notEmpty(secret)){
+            tvMyAddress.setText("密钥:\n" + secret);
+            if (ivQrCode != null) {
+                Bitmap qrCode = EncodingUtils.createQRCode(secret, context.getResources().getDimensionPixelOffset(R.dimen.d200),
+                        context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
+                ivQrCode.setImageBitmap(qrCode);
+            }
+        }
+
+    }
+
+    @Override
+    public void getAuthenticatorUrlFailure(String info) {
+
+    }
+
+    @Override
+    public void securityGoogleAuthenticatorSuccess(String info) {
+
+    }
+
+    @Override
+    public void securityGoogleAuthenticatorFailure(String info) {
+
+    }
 }

@@ -2008,6 +2008,7 @@ string appbar_scrolling_view_behavior
 string available
 string bind
 string bind_phone
+string bind_success
 string bottom_sheet_behavior
 string buy
 string buy_detail
@@ -2048,6 +2049,7 @@ string login_password
 string logout
 string message
 string message_verify_code
+string modify
 string modify_login_password
 string mtrl_chip_close_icon_content_description
 string my_all_fund

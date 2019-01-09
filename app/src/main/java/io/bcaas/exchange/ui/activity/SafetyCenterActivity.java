@@ -13,6 +13,7 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
@@ -68,26 +69,33 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.safety_center);
-        //登录密码
-        scivLoginPassword.setTabStatusByText(false, "修改");
-        scivLoginPassword.setOnItemSelectListener(this);
-        //资金密码
-        scivFundPassword.setTabStatusByText(false, "设置");
-        scivFundPassword.setTabInfo("用于提币，交易的验证");
-        scivFundPassword.setOnItemSelectListener(this);
-        //邮箱验证
-        scivEmailVerify.setTabStatusByText(false, "关闭");
-        scivEmailVerify.setOnItemSelectListener(this);
+        //判断当前memberVO是否为空，如果为空，那么就显示默认值
+        MemberVO memberVO = BaseApplication.getMemberVO();
+        if (memberVO == null) {
+            //登录密码
+            scivLoginPassword.setTabStatusByText(false, getString(R.string.modify));
+            scivLoginPassword.setOnItemSelectListener(this);
+            //资金密码
+            scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
+            scivFundPassword.setTabInfo("用于提币，交易的验证");
+            scivFundPassword.setOnItemSelectListener(this);
+            //邮箱验证
+            scivEmailVerify.setTabStatusByText(false, getString(R.string.close));
+            scivEmailVerify.setOnItemSelectListener(this);
+            scivEmailVerify.setTabInfo(BaseApplication.getMemberId());
 
-        //手机验证
-        scivPhoneVerify.setTabStatusByText(false, "绑定");
-        scivPhoneVerify.setTabInfo("用于提币,更改安全设置的验证");
-        scivPhoneVerify.setOnItemSelectListener(this);
+            //手机验证
+            scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
+            scivPhoneVerify.setTabInfo("用于提币,更改安全设置的验证");
+            scivPhoneVerify.setOnItemSelectListener(this);
 
-        //google验证
-        scivGoogleVerify.setTabStatusByText(false, "设置");
-        scivGoogleVerify.setTabInfo("用于提币,交易及更改安全设置的验证");
-        scivGoogleVerify.setOnItemSelectListener(this);
+            //google验证
+            scivGoogleVerify.setTabStatusByText(false, getString(R.string.setting));
+            scivGoogleVerify.setTabInfo("用于提币,交易及更改安全设置的验证");
+            scivGoogleVerify.setOnItemSelectListener(this);
+        } else {
+            getAccountSecuritySuccess(BaseApplication.getMemberVO());
+        }
 
     }
 
@@ -147,6 +155,10 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
+        MemberVO memberVO = BaseApplication.getMemberVO();
+        if (memberVO == null) {
+            return;
+        }
         if (StringTool.equals(from, getString(R.string.login_password))) {
             // 登录密码
             intent.setClass(SafetyCenterActivity.this, ModifyLoginPasswordActivity.class);
@@ -158,23 +170,52 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
             startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
 
         } else if (StringTool.equals(from, getString(R.string.email_verify))) {
-            //邮箱验证，如果当前是需要"绑定"的状态，那么就跳转到「绑定」的状态；如果是已经绑定过的，那么就显示「关闭」，并且跳转到「关闭验证」
-            intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-            bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.EMAIL);
-            intent.putExtras(bundle);
-            startActivityForResult(intent, Constants.RequestCode.EMAIL_VERIFY);
+            int emailVerify = memberVO.getEmailVerify();
+            if (emailVerify == Constants.Status.CLOSE) {
+                //直接调用更改Email的状态
+                presenter.securityEmail(MessageConstants.EMPTY);
+            } else {
+                //邮箱验证，如果当前是需要"绑定"的状态，那么就跳转到「绑定」的状态；如果是已经绑定过的，那么就显示「关闭」，并且跳转到「关闭验证」
+                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.EMAIL);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, Constants.RequestCode.EMAIL_VERIFY);
+            }
+
 
         } else if (StringTool.equals(from, getString(R.string.phone_verify))) {
             //手机验证，如果当前是需要"绑定"的状态，那么就跳转到「绑定」的状态；如果是已经绑定过的，那么就显示「关闭」，并且跳转到「关闭验证」
-            intent.setClass(SafetyCenterActivity.this, BindPhoneActivity.class);
-            startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
-            //             bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.PHONE);;
-            //            intent.putExtras(bundle);
+            int phoneVerify = memberVO.getPhoneVerify();
+            if (phoneVerify == Constants.Status.CLOSE) {
+                //直接调用更改phone的状态
+                presenter.securityPhone(memberVO.getPhone(), MessageConstants.EMPTY);
+            } else if (phoneVerify == Constants.Status.OPEN) {
+                //跳转到「解绑」的操作
+                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.PHONE);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
+            } else {
+                intent.setClass(SafetyCenterActivity.this, BindPhoneActivity.class);
+                startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
+            }
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
-            //Google验证，设置之后就不可更改
-            intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
-            startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+            int googleVerify = memberVO.getTwoFactorAuthVerify();
+            if (googleVerify == Constants.Status.CLOSE) {
+                //直接调用更改Email的状态
+                presenter.securityGoogle(MessageConstants.EMPTY);
+            } else if (googleVerify == Constants.Status.OPEN) {
+                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+            } else {
+                //Google验证，设置之后就不可更改
+                intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
+                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+            }
+
 
         }
     }
@@ -183,6 +224,8 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
+            //刷新当前界面
+            presenter.getAccountSecurity();
             switch (requestCode) {
                 case Constants.RequestCode.MODIFY_LOGIN_PASSWORD:
                     break;
@@ -212,6 +255,10 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.notEmpty(email) && scivEmailVerify != null) {
             scivEmailVerify.setTabInfo(email);
         }
+        String phone = memberVO.getPhone();
+        if (StringTool.notEmpty(phone) && scivPhoneVerify != null) {
+            scivPhoneVerify.setTabInfo(phone);
+        }
         String txPassword = memberVO.getTxPassword();
         int emailVerify = memberVO.getEmailVerify();
         int phoneVerify = memberVO.getPhoneVerify();
@@ -225,23 +272,28 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
         //判断是否开启「邮箱验证」
         if (emailVerify == Constants.Status.CLOSE) {
-            scivEmailVerify.setTabStatusByText(false, getString(R.string.bind));
+            scivEmailVerify.setTabStatusByText(false, getString(R.string.open));
         } else {
             scivEmailVerify.setTabStatusByText(true, getString(R.string.close));
         }
 
         //判断是否开启「手机验证」
         if (phoneVerify == Constants.Status.CLOSE) {
-            scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
-        } else {
+            scivPhoneVerify.setTabStatusByText(false, getString(R.string.open));
+        } else if (twoFactorAuthVerify == Constants.Status.OPEN) {
             scivPhoneVerify.setTabStatusByText(true, getString(R.string.close));
+        } else {
+            scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
         }
 
         //判断是否开启「google验证」
         if (twoFactorAuthVerify == Constants.Status.CLOSE) {
-            scivGoogleVerify.setTabStatusByText(false, getString(R.string.setting));
+            scivGoogleVerify.setTabStatusByText(true, getString(R.string.open));
+        } else if (twoFactorAuthVerify == Constants.Status.OPEN) {
+            scivGoogleVerify.setTabStatusByText(true, getString(R.string.close));
         } else {
-            scivGoogleVerify.setTabStatusByText(true, MessageConstants.EMPTY);
+            scivGoogleVerify.setTabStatusByText(false, getString(R.string.setting));
+
         }
 
     }
@@ -249,5 +301,16 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
     @Override
     public void getAccountSecurityFailure(String info) {
 
+    }
+
+    @Override
+    public void securityPhoneSuccess(String info) {
+        presenter.getAccountSecurity();
+    }
+
+    @Override
+    public void securityPhoneFailure(String info) {
+        //提示"开始失败"
+        showToast(info);
     }
 }

@@ -7,7 +7,6 @@ import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.CloseVerifyCodeContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
-import io.bcaas.exchange.ui.interactor.VerifyCodeInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;

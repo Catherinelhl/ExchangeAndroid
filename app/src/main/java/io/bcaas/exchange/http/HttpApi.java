@@ -77,6 +77,26 @@ public interface HttpApi {
     @GET(APIURLConstants.API_IMAGE_VERIFY_CREATE_URL)
     Observable<ResponseBody> imageVerifyCreate();
 
+
+    /**
+     * 更改E-mail驗證狀態
+     */
+    @POST(APIURLConstants.API_SECURITY_EMAIL)
+    Observable<ResponseJson> securityEmail(@Body RequestBody requestBody);
+
+    /**
+     * 更改手機驗證狀態
+     */
+    @POST(APIURLConstants.API_SECURITY_PHONE)
+    Observable<ResponseJson> securityPhone(@Body RequestBody requestBody);
+
+    /**
+     * 更改Google驗證狀態
+     */
+    @POST(APIURLConstants.API_SECURITY_TWO_FACTORAUTH_VERIFY)
+    Observable<ResponseJson> securityTwoFactorVerify(@Body RequestBody requestBody);
+
+
     /**
      * 取得帳戶所有幣種餘額
      */

@@ -166,6 +166,8 @@ public class Constants {
         public static final String REGISTER_EMAIL_CODE = "registerEmailCode";//注册页面的邮箱验证码
         public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
         public static final String PHONE = "phone";//phone verify
+        public static final String EMAIL = "email";//email verify
+        public static final String GOOGLE = "google";//google verify
     }
 
     /**
@@ -200,6 +202,8 @@ public class Constants {
         public static final String NO_TX_PASSWORD = "0";
         //各种验证就是int 类型：0：CLOSE；1：open
         public static final int CLOSE = 0;
+        public static final int OPEN = 1;
+        public static final int UN_BOUND = 2;
     }
 
     /**

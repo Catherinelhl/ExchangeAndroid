@@ -1,6 +1,7 @@
 package io.bcaas.exchange.vo;
 
 import io.bcaas.exchange.bean.ExchangeBean;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.gson.ServerResponseJson;
 
 import java.util.List;
@@ -42,6 +43,25 @@ public class ResponseJson extends ServerResponseJson {
 
 
 	private ExchangeBean exchangeBean;
+
+	private VerificationBean verificationBean;
+	private List<VerificationBean> verificationBeanList;
+
+	public VerificationBean getVerificationBean() {
+		return verificationBean;
+	}
+
+	public void setVerificationBean(VerificationBean verificationBean) {
+		this.verificationBean = verificationBean;
+	}
+
+	public List<VerificationBean> getVerificationBeanList() {
+		return verificationBeanList;
+	}
+
+	public void setVerificationBeanList(List<VerificationBean> verificationBeanList) {
+		this.verificationBeanList = verificationBeanList;
+	}
 
 	public ExchangeBean getExchangeBean() {
 		return exchangeBean;
@@ -279,6 +299,8 @@ public class ResponseJson extends ServerResponseJson {
 				", memberOrderVO=" + memberOrderVO +
 				", memberOrderVOList=" + memberOrderVOList +
 				", exchangeBean=" + exchangeBean +
+				", verificationBean=" + verificationBean +
+				", verificationBeanList=" + verificationBeanList +
 				'}';
 	}
 }

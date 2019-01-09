@@ -11,6 +11,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.CloseVerifyCodeContract;
 import io.bcaas.exchange.ui.presenter.CloseVerifyPresenterImp;
@@ -86,6 +87,7 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
         etwaMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
         etwaGoogleVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
 
+
     }
 
     @Override
@@ -97,6 +99,39 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
 
     @Override
     public void initListener() {
+        etwaEmailVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+
+            }
+        }, Constants.EditTextFrom.EMAIL);
+        etwaMessageVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+            }
+
+        }, Constants.EditTextFrom.PHONE);
+        etwaGoogleVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+
+            }
+        }, Constants.EditTextFrom.GOOGLE);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
