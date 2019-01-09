@@ -5,21 +5,16 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.NetWorkTool;
-import io.bcaas.exchange.tools.PreferenceTool;
+import io.bcaas.exchange.tools.device.NetWorkTool;
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import okhttp3.*;
 import okio.Buffer;
 import okio.BufferedSource;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.HashSet;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 /**
  * @author catherine.brainwilliam

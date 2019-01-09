@@ -24,7 +24,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
-import io.bcaas.exchange.tools.OttoTool;
+import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
@@ -165,8 +165,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    //''en-us" : 英文
-    //"zh-tw" : 繁中
+    //''zh-cn_CountryCde.json" : 英文
+    //"zh-tw_CountryCde" : 繁中
     //"zh-cn" : 簡中
     /*獲取當前語言環境*/
     protected String getCurrentLanguage() {

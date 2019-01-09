@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import io.bcaas.exchange.event.NetStateChangeEvent;
-import io.bcaas.exchange.tools.OttoTool;
+import io.bcaas.exchange.tools.otto.OttoTool;
 
 /**
  * @author catherine.brainwilliam

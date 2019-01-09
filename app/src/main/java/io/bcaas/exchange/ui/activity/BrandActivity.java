@@ -1,13 +1,12 @@
 package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
-import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.ObservableTimerListener;
-import io.bcaas.exchange.tools.ObservableTimerTool;
+import io.bcaas.exchange.tools.time.ObservableTimerTool;
 
 /**
  * @author catherine.brainwilliam

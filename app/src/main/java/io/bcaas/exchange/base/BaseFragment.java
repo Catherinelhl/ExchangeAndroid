@@ -14,7 +14,7 @@ import butterknife.Unbinder;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.OttoTool;
+import io.bcaas.exchange.tools.otto.OttoTool;
 
 /**
  * @author catherine.brainwilliam

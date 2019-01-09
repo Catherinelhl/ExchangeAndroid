@@ -12,16 +12,21 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.FilePathTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -35,7 +40,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_password)
     EditTextWithAction password;
     @BindView(R.id.etwa_image_code)
-    EditTextWithAction etwaImageCode;
+    EditTextWithAction etImageCode;
     @BindView(R.id.btn_login)
     Button btnLogin;
     @BindView(R.id.tv_forget_password)
@@ -167,7 +172,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                     public void onNext(Object o) {
                         String memberID = Constants.User.MEMBER_ID;
                         String password = Constants.User.MEMBER_PASSWORD;
-                        String verifyCode = etwaImageCode.getContent();
+                        String verifyCode = etImageCode.getContent();
                         //1：判断账号非空
                         if (StringTool.isEmpty(memberID)) {
                             showToast(getString(R.string.input_account));
@@ -209,12 +214,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             case Constants.RequestCode.REGISTER_CODE: //注册页面返回
                 LogTool.d(TAG, "register return");
                 // 重新刷新登录界面的验证码
-                etwaImageCode.requestImageVerifyCode();
+                etImageCode.requestImageVerifyCode();
                 break;
             case Constants.RequestCode.RESET_PASSWORD_CODE://重置密码页面返回
                 LogTool.d(TAG, "reset password");
                 // 重新刷新登录界面的验证码
-                etwaImageCode.requestImageVerifyCode();
+                etImageCode.requestImageVerifyCode();
                 break;
         }
     }

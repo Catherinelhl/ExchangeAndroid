@@ -66,8 +66,8 @@ public class Constants {
         public static final String TW = "TW";//中文（繁體）
         public static final String EN = "EN";//英文
         public static final String ZH_CN = "zh-cn";//中文（简体）
-        public static final String ZH_TW = "zh-tw";//繁中
-        public static final String EN_US = "en-us";//英文
+        public static final String ZH_TW = "zh-tw_CountryCde";//繁中
+        public static final String EN_US = "zh-cn_CountryCde.json";//英文
 
         public static final String LOCAL_DEFAULT_IP = "";
 
@@ -206,6 +206,17 @@ public class Constants {
         public static final String EMAIL = "0";//0:email
         public static final String PHONE = "1";//1:phone
         public static final String GOOGLE = "2";//2:双因素
+
+    }
+
+    /**
+     * 存储路径名字
+     */
+    public class FilePath {
+        public static final String COUNTRY_CODE = "country_code";
+        public static final String ZH_CN_COUNTRY_CODE = "zh-cn_CountryCode";
+        public static final String ZH_TW_COUNTRY_CODE = "zh-tw_CountryCode";
+        public static final String EN_US_COUNTRY_CODE = "en-us_CountryCode";
 
     }
 }

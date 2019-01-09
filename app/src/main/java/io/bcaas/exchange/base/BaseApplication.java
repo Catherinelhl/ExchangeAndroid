@@ -98,9 +98,9 @@ public class BaseApplication extends MultiDexApplication {
 //        if (StringTool.equals(currentLanguage, Constants.ValueMaps.SC)) {
 //            return "zh-cn";
 //        } else if (StringTool.equals(currentLanguage, Constants.ValueMaps.TC)) {
-//            return "zh-tw";
+//            return "zh-tw_CountryCde";
 //        } else {
-//            return "en-us";
+//            return "zh-cn_CountryCde.json";
 //
 //        }
     }

@@ -20,7 +20,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.tools.timer.IntervalTimerTool;
+import io.bcaas.exchange.tools.time.IntervalTimerTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
 import io.bcaas.exchange.ui.presenter.VerifyCodePresenterImp;
 import io.reactivex.Observer;
