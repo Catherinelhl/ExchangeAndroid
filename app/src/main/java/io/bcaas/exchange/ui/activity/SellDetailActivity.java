@@ -7,9 +7,11 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SellContract;
@@ -42,15 +44,23 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
     TextView tvFee;
     @BindView(R.id.etwa_fund_password)
     EditTextWithAction etFundPassword;
-    @BindView(R.id.etwa_random_verify_code)
-    EditTextWithAction etRandomVerifyCode;
+    @BindView(R.id.etwa_google_verify_code)
+    EditTextWithAction etGoogleVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_sell)
     Button btnSell;
+    @BindView(R.id.ib_right)
+    ImageButton ibRight;
+    @BindView(R.id.tv_salable_balance)
+    TextView tvSalableBalance;
+    @BindView(R.id.tv_transaction_amount)
+    TextView tvTransactionAmount;
     private SellContract.Presenter presenter;
     //当前卖出的币种，需要支付的币种
-    private String currencyUid, currencyPaymentUid, amount, unitPrice, fee = "0.0001";
+//    private String currencyUid, currencyPaymentUid, amount, unitPrice, fee = "0.0001";
+
+    private SellDataBean sellDataBean;
 
     @Override
     public int getContentView() {
@@ -62,10 +72,12 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         if (bundle == null) {
             return;
         }
-        currencyUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_UID);
-        currencyPaymentUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID);
-        amount = bundle.getString(Constants.KeyMaps.SELL_AMOUNT);
-        unitPrice = bundle.getString(Constants.KeyMaps.SELL_UNIT_PRICE);
+        // 得到传递过来的售出数据类
+        sellDataBean = (SellDataBean) bundle.getSerializable(Constants.KeyMaps.SELL_DATA_BEAN);
+//        currencyUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_UID);
+//        currencyPaymentUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID);
+//        amount = bundle.getString(Constants.KeyMaps.SELL_AMOUNT);
+//        unitPrice = bundle.getString(Constants.KeyMaps.SELL_UNIT_PRICE);
     }
 
     @Override
@@ -73,15 +85,16 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.buy_detail);
-        if (StringTool.notEmpty(currencyUid)) {
-            tvPrice.setText(unitPrice + "\t " + currencyPaymentUid);
+
+        if (sellDataBean != null) {
+            tvPrice.setText(sellDataBean.getUnitPrice() + "\t " + sellDataBean.getExchangeCurrencyName());
+            tvNumber.setText(sellDataBean.getSellAmount() + "\t " + sellDataBean.getEnName());
+            tvFee.setText(sellDataBean.getGasFeeCharge() + "\t " + sellDataBean.getEnName());
+            tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "\t" + sellDataBean.getBalanceAvailable());
+            tvTransactionAmount.setText(sellDataBean.getTxAmountExceptFeeString());
+            tvPurpleTitle.setText(context.getResources().getString(R.string.sell_out) + "\t \t" + sellDataBean.getEnName());
         }
-        if (StringTool.notEmpty(amount)) {
-            tvNumber.setText(amount + "\t " + currencyUid);
-        }
-        if (StringTool.notEmpty(fee)) {
-            tvFee.setText(fee + "\t " + currencyUid);
-        }
+
 
     }
 
@@ -129,13 +142,16 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
                             return;
                         }
                         //2：判断当前google验证码是否输入
-                        String verifyCode = etRandomVerifyCode.getContent();
+                        String verifyCode = etGoogleVerifyCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
                             showToast("请先输入google验证码！");
                             return;
                         }
                         //3：接口请求数据
-                        presenter.sell(currencyUid, currencyPaymentUid, amount, unitPrice, txPassword, verifyCode);
+                        if (sellDataBean != null) {
+                            presenter.sell(sellDataBean.getCurrencyUid(), sellDataBean.getExchangeCurrencyUid(),
+                                    sellDataBean.getSellAmount(), sellDataBean.getUnitPrice(), txPassword, verifyCode);
+                        }
 
                     }
 
@@ -159,5 +175,12 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
     @Override
     public void sellSuccess(String info) {
         setResult(false);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

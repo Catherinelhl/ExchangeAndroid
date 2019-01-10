@@ -90,13 +90,9 @@ public class SellPresenterImp implements SellContract.Presenter {
                             view.sellSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.sellFailure(responseJson.getMessage());
-                            } else {
-                                view.sellFailure(MessageConstants.EMPTY);
-
-                            }
+//                            if (code == MessageConstants.CODE_2019) {
+                            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                            view.sellFailure(responseJson.getMessage());
 
                         }
 

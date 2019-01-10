@@ -101,7 +101,7 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
         withDrawViewThree.setOnItemSelectListener(onItemSelectListener);
         views.add(withDrawViewThree);
 
-        tabViewAdapter = new TabViewAdapter(views, "0");
+        tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);

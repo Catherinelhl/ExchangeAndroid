@@ -1,8 +1,15 @@
 package io.bcaas.exchange.gson;
 
+import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * BcaasAndroid
@@ -37,7 +44,7 @@ public class JsonTool {
         }
     }
 
-    public static int getInt(String resource, String key,int value) {
+    public static int getInt(String resource, String key, int value) {
         if (StringTool.isEmpty(resource)) {
             return value;
         } else if (StringTool.isEmpty(key)) {
@@ -52,5 +59,30 @@ public class JsonTool {
                 return value;
             }
         }
+    }
+
+    public static CurrencyListVO getNextCurrency(String enName) {
+        CurrencyListVO currencyListVO = new CurrencyListVO();
+        //拿到所有的币种信息
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.isEmpty(memberKeyVOList)) {
+            return currencyListVO;
+        }
+        for (int i = 0; i < memberKeyVOList.size(); i++) {
+            MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
+            if (memberKeyVO == null) {
+                continue;
+            }
+             currencyListVO = memberKeyVO.getCurrencyListVO();
+            if (currencyListVO == null) {
+                continue;
+            }
+            String enNameNew = currencyListVO.getEnName();
+            if (!StringTool.equals(enNameNew, enName)) {
+                break;
+            }
+
+        }
+        return currencyListVO;
     }
 }

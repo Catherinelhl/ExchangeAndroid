@@ -178,4 +178,7 @@ public class MessageConstants {
     public static final String FAILURE_CURRENCYLIST_ADDNEWCURRENCY = "CurrencyList add new currency failure.";
 
 
+
+    public static final String NO_ENOUGH_BALANCE = "-1";
+    public static final String AMOUNT_EXCEPTION_CODE = "-1";
 }

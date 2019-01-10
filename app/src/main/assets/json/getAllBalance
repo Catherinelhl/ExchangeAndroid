@@ -1,9 +1,19 @@
 {
   "memberKeyVOList": [
     {
-      "memberKeyUid": 1,
-      "address": "1AguYgVHDJGknsh3s4pJ5Sdp4NqBsLDkyF",
-      "balanceAvailable": "0.0000000000",
+      "memberKeyUid": 4,
+      "address": "13wy4BRFLM3Yc1eZQ5xxoGjr6b5izx44dr",
+      "balanceAvailable": "20,000.0000000000",
+      "currencyListVO": {
+        "currencyUid": "0",
+        "enName": "BCC",
+        "cnName": "橙塊"
+      }
+    },
+    {
+      "memberKeyUid": 5,
+      "address": "1LKh63pN2w78uLV6pTrLzJtxD19yANbB3L",
+      "balanceAvailable": "20,000.0000000000",
       "currencyListVO": {
         "currencyUid": "1",
         "enName": "BTC",
@@ -11,9 +21,9 @@
       }
     },
     {
-      "memberKeyUid": 2,
-      "address": "0x2fe228216c89f40d845c7324f3fed914ce61e7b6",
-      "balanceAvailable": "0.0000000000",
+      "memberKeyUid": 6,
+      "address": "0x1a50f37a80d4319e9ed3869c6bad2501d7feed24",
+      "balanceAvailable": "5,000.0000000000",
       "currencyListVO": {
         "currencyUid": "2",
         "enName": "ETH",

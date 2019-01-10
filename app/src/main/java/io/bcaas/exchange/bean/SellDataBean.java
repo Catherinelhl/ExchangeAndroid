@@ -1,5 +1,7 @@
 package io.bcaas.exchange.bean;
 
+import io.bcaas.exchange.vo.CurrencyListVO;
+
 import java.io.Serializable;
 
 /**
@@ -7,82 +9,130 @@ import java.io.Serializable;
  * @since 2018/12/29
  * 「售出」界面的传递数据类
  */
-public class SellDataBean implements Serializable {
+public class SellDataBean extends CurrencyListVO implements Serializable {
 
-    //当前币种
-    private String currency;
-    //可售余额
-    private String salableBalance;
-    //汇率
-    private String exchangeRate;
-    //默认交换币种
-    private String exchangeCurrency;
+    /**
+     * 需要交换币种Uid
+     */
+    private String exchangeCurrencyUid;
+    /**
+     * 需要交换币种名称
+     */
+    private String exchangeCurrencyName;
+    /**
+     * 可提現餘額
+     */
+    private String balanceAvailable;
 
-    private String amount;
+    /**
+     * 總餘額
+     */
+    private String balanceTotal;
 
-    public SellDataBean(String salableBalance, String exchangeRate) {
+    /**
+     * 出售金额
+     */
+    private String sellAmount;
+
+    /**
+     * 单价
+     */
+    private String unitPrice;
+
+    /**
+     * 扣除手续费的交易额
+     * double
+     */
+
+    private double txAmountExceptFee;
+
+    /**
+     * 扣除手续费的交易额
+     * 字符串
+     */
+
+    private String txAmountExceptFeeString;
+
+    public SellDataBean(String balanceAvailable) {
         super();
-        this.salableBalance = salableBalance;
-        this.exchangeRate = exchangeRate;
+        this.balanceAvailable = balanceAvailable;
     }
 
-
-    public SellDataBean(String currency, String exchangeCurrency, String salableBalance, String exchangeRate) {
-        super();
-        this.currency = currency;
-        this.salableBalance = salableBalance;
-        this.exchangeRate = exchangeRate;
-        this.exchangeCurrency = exchangeCurrency;
+    public String getExchangeCurrencyUid() {
+        return exchangeCurrencyUid;
     }
 
-    public String getAmount() {
-        return amount;
+    public void setExchangeCurrencyUid(String exchangeCurrencyUid) {
+        this.exchangeCurrencyUid = exchangeCurrencyUid;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public String getBalanceAvailable() {
+        return balanceAvailable;
     }
 
-    public String getExchangeCurrency() {
-        return exchangeCurrency;
+    public void setBalanceAvailable(String balanceAvailable) {
+        this.balanceAvailable = balanceAvailable;
     }
 
-    public void setExchangeCurrency(String exchangeCurrency) {
-        this.exchangeCurrency = exchangeCurrency;
+    public String getBalanceTotal() {
+        return balanceTotal;
     }
 
-    public String getCurrency() {
-        return currency;
+    public void setBalanceTotal(String balanceTotal) {
+        this.balanceTotal = balanceTotal;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public String getSellAmount() {
+        return sellAmount;
     }
 
-    public String getSalableBalance() {
-        return salableBalance;
+    public void setSellAmount(String sellAmount) {
+        this.sellAmount = sellAmount;
     }
 
-    public void setSalableBalance(String salableBalance) {
-        this.salableBalance = salableBalance;
+    public String getUnitPrice() {
+        return unitPrice;
     }
 
-    public String getExchangeRate() {
-        return exchangeRate;
+    public void setUnitPrice(String unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public void setExchangeRate(String exchangeRate) {
-        this.exchangeRate = exchangeRate;
+    public String getExchangeCurrencyName() {
+        return exchangeCurrencyName;
+    }
+
+    public void setExchangeCurrencyName(String exchangeCurrencyName) {
+        this.exchangeCurrencyName = exchangeCurrencyName;
+    }
+
+    public double getTxAmountExceptFee() {
+        return txAmountExceptFee;
+    }
+
+    public void setTxAmountExceptFee(double txAmountExceptFee) {
+        this.txAmountExceptFee = txAmountExceptFee;
+    }
+
+    public String getTxAmountExceptFeeString() {
+        return txAmountExceptFeeString;
+    }
+
+    public void setTxAmountExceptFeeString(String txAmountExceptFeeString) {
+        this.txAmountExceptFeeString = txAmountExceptFeeString;
     }
 
     @Override
     public String toString() {
         return "SellDataBean{" +
-                "currency='" + currency + '\'' +
-                ", salableBalance='" + salableBalance + '\'' +
-                ", exchangeRate='" + exchangeRate + '\'' +
-                ", exchangeCurrency='" + exchangeCurrency + '\'' +
-                ", amount='" + amount + '\'' +
+                "exchangeCurrencyUid='" + exchangeCurrencyUid + '\'' +
+                ", exchangeCurrencyName='" + exchangeCurrencyName + '\'' +
+                ", balanceAvailable='" + balanceAvailable + '\'' +
+                ", balanceTotal='" + balanceTotal + '\'' +
+                ", sellAmount='" + sellAmount + '\'' +
+                ", unitPrice='" + unitPrice + '\'' +
+                ", txAmountExceptFee=" + txAmountExceptFee +
+                ", txAmountExceptFeeString='" + txAmountExceptFeeString + '\'' +
                 '}';
     }
 }

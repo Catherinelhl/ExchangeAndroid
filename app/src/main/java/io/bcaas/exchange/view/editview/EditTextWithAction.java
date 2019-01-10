@@ -323,6 +323,10 @@ public class EditTextWithAction extends LinearLayout
                         //判断当前的图片类型：扫描、验证码
                         switch (behaviour) {
                             case 3:
+                                //清空当前的输入框
+                                if (etContent != null) {
+                                    etContent.setText(MessageConstants.EMPTY);
+                                }
                                 //当前是验证码，点击重新请求验证码
                                 presenter.getImageVerifyCode();
                                 break;

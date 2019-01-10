@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.contracts;
 
+import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
 
 /**
@@ -10,14 +11,19 @@ import io.bcaas.exchange.vo.PaginationVO;
  */
 public interface OrderRecordContract {
 
-    interface View extends BaseContract{
+    interface View extends BaseContract {
         void getRecordFailure(String info);
 
         void getRecordSuccess(PaginationVO paginationVO);
+
+        void cancelOrderFailure(String info);
+        void cancelOrderSuccess(MemberOrderVO memberOrderVO);
     }
 
     interface Presenter {
         void getRecord(int type, String nextObjectId);
 
+        // 撤销订单
+        void cancelOrder(long memberOrderUid);
     }
 }

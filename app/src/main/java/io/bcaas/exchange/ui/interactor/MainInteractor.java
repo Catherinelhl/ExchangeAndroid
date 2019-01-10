@@ -32,14 +32,4 @@ public class MainInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.getAllBalance(body);
     }
-
-    /**
-     * 取得財務紀錄交易資訊
-     *
-     * @param body
-     */
-    public Observable<ResponseJson> getRecord(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getRecord(body);
-    }
 }

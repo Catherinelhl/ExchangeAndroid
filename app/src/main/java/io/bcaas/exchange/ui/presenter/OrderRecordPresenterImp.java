@@ -6,6 +6,7 @@ import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.interactor.MainInteractor;
+import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -19,12 +20,12 @@ import io.reactivex.schedulers.Schedulers;
 public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
     private String TAG = OrderRecordPresenterImp.class.getSimpleName();
     private OrderRecordContract.View view;
-    private MainInteractor mainInteractor;
+    private TxInteractor txInteractor;
 
     public OrderRecordPresenterImp(OrderRecordContract.View view) {
         super();
         this.view = view;
-        mainInteractor = new MainInteractor();
+        txInteractor = new TxInteractor();
     }
 
 
@@ -51,7 +52,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
         LogTool.d(TAG, "getRecord:" + requestJson);
 
-        mainInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
+        txInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -86,6 +87,68 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.getRecordFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void cancelOrder(long memberOrderUid) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        requestJson.setMemberVO(memberVO);
+
+
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setLoginInfoVO(loginInfoVO);
+
+
+        MemberOrderVO memberOrderVO = new MemberOrderVO();
+        memberOrderVO.setMemberOrderUid(memberOrderUid);
+        requestJson.setMemberOrderVO(memberOrderVO);
+
+        LogTool.d(TAG, "cancelOrder:" + requestJson);
+        txInteractor.cancelOrder(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.cancelOrderFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            MemberOrderVO memberOrderVOResponse = responseJson.getMemberOrderVO();
+                            if (memberOrderVOResponse != null) {
+                                view.cancelOrderSuccess(memberOrderVOResponse);
+                            } else {
+                                view.cancelOrderFailure(responseJson.getMessage());
+                            }
+
+                        } else {
+                            int code = responseJson.getCode();
+                            view.cancelOrderFailure(responseJson.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.cancelOrderFailure(e.getMessage());
                     }
 
                     @Override

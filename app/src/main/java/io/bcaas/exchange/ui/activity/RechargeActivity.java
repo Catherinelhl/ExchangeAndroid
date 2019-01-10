@@ -104,7 +104,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         rechargeViewThree.setOnItemSelectListener(onItemSelectListener);
         views.add(rechargeViewThree);
 
-        tabViewAdapter = new TabViewAdapter(views, "0");
+        tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);

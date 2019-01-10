@@ -11,8 +11,13 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -28,12 +33,12 @@ public class SellView extends LinearLayout {
 
     @BindView(R.id.tv_salable_balance)
     TextView tvSalableBalance;
-    @BindView(R.id.tv_exchange_rate)
-    TextView tvExchangeRate;
+    @BindView(R.id.et_rate)
+    EditText etRate;
     @BindView(R.id.tv_exchange_currency)
     TextView tvExchangeCurrency;
-    @BindView(R.id.tv_sell_volume)
-    TextView tvSellVolume;
+    @BindView(R.id.et_sell_volume)
+    EditText etSellVolume;
     @BindView(R.id.tv_current_currency)
     TextView tvCurrentCurrency;
     @BindView(R.id.sb_progress)
@@ -49,10 +54,18 @@ public class SellView extends LinearLayout {
     private Context context;
     private OnItemSelectListener onItemSelectListener;
 
-    private SellDataBean sellDataBean;
+    private MemberKeyVO memberKeyVO;
 
     //当前的汇率，做进度条的系数使用
-    private float salableBalance;
+    private String salableBalance;
+    //得到当前最终的交易额度
+    private double txAmount;
+
+    //得到当前的币种信息
+    private CurrencyListVO currencyListVO, exchangeCurrencyListVO;
+    // TODO: 2019/1/11 暂时手续费是0.0001
+    //得到当前的手续费
+    private String fee = "0.0001";
 
     public SellView(Context context) {
         super(context);
@@ -81,10 +94,29 @@ public class SellView extends LinearLayout {
                     int margin = getResources().getDimensionPixelSize(R.dimen.d20);
                     float width = (seekBarWidth - margin * 3) / 100 * progress; //seekBar当前位置的宽度
                     tvProgressSpeed.setX(width + margin);
-                    String sellVolume = String.valueOf(salableBalance * progress);
+                    String sellVolume = String.valueOf(Float.valueOf(salableBalance) * 0.01f * progress);
                     tvProgressSpeed.setText(sellVolume);
-                    if (tvSellVolume != null) {
-                        tvSellVolume.setText(sellVolume);
+                    if (etSellVolume != null) {
+                        etSellVolume.setText(sellVolume);
+                    }
+                    if (tvFinalTxAmount != null && etRate != null && currencyListVO != null) {
+                        // 得到当前的卖出量
+                        double sellAmount = Double.valueOf(sellVolume);
+                        //得到当前的单价
+                        double rate = Double.valueOf(etRate.getText().toString());
+                        // 得到当前的币种
+                        String enName = currencyListVO.getEnName();
+                        // 得到当前除去手续费之后的交易额度
+                        txAmount = sellAmount * rate - Double.valueOf(fee);
+                        if (txAmount > 0) {
+                            tvFinalTxAmount.setVisibility(VISIBLE);
+                            tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
+                                    + txAmount + "\t" + enName);
+                        } else {
+                            tvFinalTxAmount.setVisibility(INVISIBLE);
+
+                        }
+
                     }
 
                 }
@@ -109,15 +141,14 @@ public class SellView extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
-                        // TODO: 2019/1/10  布局需要修改，用户可以自行输入
                         //1：判断当前卖出价是否输入
-                        String unitPrice = tvExchangeRate.getText().toString();
+                        String unitPrice = etRate.getText().toString();
                         if (StringTool.isEmpty(unitPrice)) {
                             Toast.makeText(context, "请先输入卖出价！", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //2：判断当前卖出量是否输入
-                        String sellAmount = tvExchangeCurrency.getText().toString();
+                        String sellAmount = etSellVolume.getText().toString();
                         if (StringTool.isEmpty(sellAmount)) {
                             Toast.makeText(context, "请先输入卖出量！", Toast.LENGTH_SHORT).show();
                             return;
@@ -127,9 +158,37 @@ public class SellView extends LinearLayout {
                             Toast.makeText(context, "余额不足！", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        //4:回调，进入下一个页面
-                        if (onItemSelectListener != null && sellDataBean != null) {
-                            sellDataBean.setAmount(sellAmount);
+                        //4:判断当前的回调以及会员信息不为空；得到所有需要的数据，然后返回
+                        if (onItemSelectListener != null && memberKeyVO != null) {
+                            //可用余额
+                            SellDataBean sellDataBean = new SellDataBean(memberKeyVO.getBalanceAvailable());
+                            //卖出量
+                            sellDataBean.setSellAmount(sellAmount);
+                            //单价
+                            sellDataBean.setUnitPrice(unitPrice);
+                            //交换的币种uid  && 币种名称
+                            if (exchangeCurrencyListVO != null) {
+                                sellDataBean.setExchangeCurrencyUid(exchangeCurrencyListVO.getCurrencyUid());
+                                sellDataBean.setExchangeCurrencyName(exchangeCurrencyListVO.getEnName());
+                            }
+                            //当前币种信息不为空
+                            if (currencyListVO != null) {
+                                //当前币种的中文名称
+                                sellDataBean.setCnName(currencyListVO.getCnName());
+                                // 当前币种的英文名称
+                                sellDataBean.setEnName(currencyListVO.getEnName());
+                                //当前币种的UID
+                                sellDataBean.setCurrencyUid(currencyListVO.getCurrencyUid());
+
+                            }
+                            // TODO: 2019/1/11 字段需要重构
+                            // 手续费
+                            sellDataBean.setGasFeeCharge(fee);
+                            //得到当前最终的交易额度
+                            sellDataBean.setTxAmountExceptFee(txAmount);
+                            // 直接返回扣除手续费的交易额度文字信息
+                            sellDataBean.setTxAmountExceptFeeString(tvFinalTxAmount.getText().toString());
+                            //回调，进入下一个页面
                             onItemSelectListener.onItemSelect(sellDataBean, Constants.From.SELL_VIEW);
                         }
 
@@ -154,24 +213,35 @@ public class SellView extends LinearLayout {
     /**
      * 根据传入的数据，刷新当前页面
      *
-     * @param sellDataBean
+     * @param memberKeyVO
      */
-    public void refreshData(SellDataBean sellDataBean) {
-        this.sellDataBean = sellDataBean;
-        if (sellDataBean != null) {
+    public void refreshData(MemberKeyVO memberKeyVO) {
+        this.memberKeyVO = memberKeyVO;
+        if (memberKeyVO != null) {
+            currencyListVO = memberKeyVO.getCurrencyListVO();
+            if (currencyListVO == null) {
+                return;
+            }
             if (tvSalableBalance != null) {
-                tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance), sellDataBean.getSalableBalance(), sellDataBean.getCurrency()));
+                tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance),
+                        memberKeyVO.getBalanceAvailable(),
+                        currencyListVO.getEnName()));
             }
             if (tvCurrentCurrency != null) {
-                tvCurrentCurrency.setText(sellDataBean.getCurrency());
+                tvCurrentCurrency.setText(currencyListVO.getEnName());
             }
-            if (tvExchangeRate != null) {
-                tvExchangeRate.setText(sellDataBean.getExchangeRate());
+            if (etRate != null) {
+                etRate.setText("1");
             }
             if (tvExchangeCurrency != null) {
-                tvExchangeCurrency.setText(sellDataBean.getExchangeCurrency());
+                // 得到当前的所有币种，排出当前的币种取下一个
+                exchangeCurrencyListVO = JsonTool.getNextCurrency(currencyListVO.getEnName());
+                if (exchangeCurrencyListVO != null) {
+                    tvExchangeCurrency.setText(exchangeCurrencyListVO.getEnName());
+
+                }
             }
-            salableBalance = Float.valueOf(sellDataBean.getSalableBalance()) * 0.01f;
+            salableBalance = DecimalTool.getCalculateString(memberKeyVO.getBalanceAvailable());
         }
 
     }

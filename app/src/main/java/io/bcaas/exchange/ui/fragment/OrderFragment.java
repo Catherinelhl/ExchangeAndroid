@@ -20,6 +20,7 @@ import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
 
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     private String nextObjectIdRecharge = "1";
     private String nextObjectIdWithDraw = "1";
     private String nextObjectIdTx = "1";
+    //得到当前选中的列表信息
+    private PaginationVO paginationVO;
 
     @Override
     public int getLayoutRes() {
@@ -66,7 +69,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         orderTransactionBeans = new ArrayList<>();
         orderRechargeBeans = new ArrayList<>();
         orderWithDrawBeans = new ArrayList<>();
-
         presenter = new OrderRecordPresenterImp(this);
         initTopTabData();
     }
@@ -78,8 +80,15 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         if (tabLayout == null) {
             return;
         }
+        // 获取「交易」页面的内容
+        if (presenter != null) {
+            presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
+        }
+        // 移除所有的view
         tabLayout.removeTabLayout();
         for (int i = 0; i < 3; i++) {
+            //显示标题
+            tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
             //初始化订单「交易」页面数据
             OrderTransactionBean orderTransactionBean = new OrderTransactionBean();
             orderTransactionBean.setOrderType("出售 BTC");
@@ -110,7 +119,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             orderWithDrawBean.setFee("0.001 BTC");
             orderWithDrawBean.setCurrency("BTC");
             orderWithDrawBeans.add(orderWithDrawBean);
-            tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
 
         }
 
@@ -131,7 +139,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         orderViewThree.setOnItemSelectListener(onItemSelectListener);
         views.add(orderViewThree);
 
-        tabViewAdapter = new TabViewAdapter(views, "2");
+        tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
@@ -141,13 +149,23 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case 0:
+                        if (presenter != null) {
+                            presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
+                        }
                         orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
                         break;
                     case 1:
+                        if (presenter != null) {
+                            presenter.getRecord(Constants.OrderType.RECHARGE, nextObjectIdRecharge);
+                        }
+
                         orderViewTwo.setOrderRechargeAdapter(orderRechargeBeans);
 
                         break;
                     case 2:
+                        if (presenter != null) {
+                            presenter.getRecord(Constants.OrderType.WITHDRAW, nextObjectIdWithDraw);
+                        }
                         orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
 
                         break;
@@ -165,19 +183,19 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             }
         });
         tabLayout.resetSelectedTab(0);
-        if (presenter != null) {
-            presenter.getRecord(Constants.OrderType.RECHARGE, nextObjectIdRecharge);
-            presenter.getRecord(Constants.OrderType.WITHDRAW, nextObjectIdWithDraw);
-            presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
-        }
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
             LogTool.d(TAG, from);
+            if (type == null) {
+                return;
+            }
+            long memberOrderUid = (Long) type;
             switch (from) {
                 case Constants.From.ORDER_TRANSACTION:
+                    presenter.cancelOrder(memberOrderUid);
                     break;
                 case Constants.From.ORDER_RECHARGE:
                     break;
@@ -212,6 +230,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     public void getRecordSuccess(PaginationVO paginationVO) {
         LogTool.d(TAG, "PaginationVO:" + paginationVO);
         if (paginationVO != null) {
+            this.paginationVO = paginationVO;
             int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
             switch (type) {
                 case Constants.OrderType.RECHARGE:
@@ -222,10 +241,19 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     break;
                 case Constants.OrderType.TX:
                     nextObjectIdTx = paginationVO.getNextObjectId();
-
                     break;
             }
 
         }
+    }
+
+    @Override
+    public void cancelOrderFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void cancelOrderSuccess(MemberOrderVO memberOrderVO) {
+        LogTool.d(TAG, "cancelOrderSuccess:" + memberOrderVO);
     }
 }

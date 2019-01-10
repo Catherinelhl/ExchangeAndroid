@@ -6,14 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.bean.OrderRechargeBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 

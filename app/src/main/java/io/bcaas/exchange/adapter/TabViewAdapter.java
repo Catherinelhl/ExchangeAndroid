@@ -12,11 +12,9 @@ import java.util.List;
 
 public class TabViewAdapter extends PagerAdapter {
     private List<View> views;
-    private String type;
 
-    public TabViewAdapter(List<View> views, String type) {
+    public TabViewAdapter(List<View> views) {
         this.views = views;
-        this.type = type;
     }
 
     @Override
@@ -49,11 +47,6 @@ public class TabViewAdapter extends PagerAdapter {
     //设置tablayout标题
     @Override
     public CharSequence getPageTitle(int position) {
-        if (StringTool.equals(type, "2")) {
             return new DataGenerationRegister().getOrderTopTitles(position);
-
-        } else
-            return new DataGenerationRegister().getTabTopTitle(position);
-
     }
 }

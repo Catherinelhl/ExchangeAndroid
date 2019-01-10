@@ -100,7 +100,7 @@
     <string name="sell_out_price">卖出价</string>
     <string name="sell_out_volume">卖出量</string>
     <string name="sell_out_fee_text">出售需支付手续费，手续费为0.0001 BTC</string>
-    <string name="sell_out_transaction_amount">扣除手续费后的交易额：12.834257 ETH</string>
+    <string name="sell_out_transaction_amount">扣除手续费后的交易额：</string>
     <string name="no_google_verify_text">还未启用Google身份验证？</string>
     <string name="wait_to_sell">待出售</string>
     <string name="outcome">支出</string>

@@ -43,9 +43,6 @@ public class SellFragment extends BaseFragment {
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
 
-    private SellView sellViewOne, sellViewTwo, sellViewThree;
-
-    private SellDataBean sellDataBeanETH, sellDataBeanBTC, sellDataBeanZBB;
 
     @Override
     public int getLayoutRes() {
@@ -67,29 +64,30 @@ public class SellFragment extends BaseFragment {
             return;
         }
         tabLayout.removeTabLayout();
-        //得到当前的所有钱包信息
-        RefreshTitle();
-        sellDataBeanETH = new SellDataBean("ETH", "BTC", "9.234314", "4235.234234");
-        sellDataBeanBTC = new SellDataBean("BTC", "ETH", "8.234314", "3235.234234");
-        sellDataBeanZBB = new SellDataBean("ZBB", "BTC", "7.234314", "5.234234");
+        //刷新界面
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            int size = memberKeyVOList.size();
+            //加载数据
+            for (int i = 0; i < size; i++) {
+                //添加标题
+                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
+                if (memberKeyVO != null) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String name = currencyListVO.getEnName();
+                        tabLayout.addTab(name, i);
+                        //初始化数据
+                        SellView sellView = new SellView(getContext());
+                        sellView.refreshData(memberKeyVO);
+                        sellView.setOnItemSelectListener(onItemSelectListener);
+                        views.add(sellView);
 
-        sellViewOne = new SellView(getContext());
-        sellViewOne.refreshData(sellDataBeanETH);
-        sellViewOne.setOnItemSelectListener(onItemSelectListener);
-        views.add(sellViewOne);
-
-        sellViewTwo = new SellView(getContext());
-        sellViewTwo.refreshData(sellDataBeanBTC);
-        sellViewTwo.setOnItemSelectListener(onItemSelectListener);
-        views.add(sellViewTwo);
-
-
-        sellViewThree = new SellView(getContext());
-        sellViewThree.refreshData(sellDataBeanZBB);
-        sellViewThree.setOnItemSelectListener(onItemSelectListener);
-        views.add(sellViewThree);
-
-        tabViewAdapter = new TabViewAdapter(views, "1");
+                    }
+                }
+            }
+        }
+        tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
@@ -137,11 +135,12 @@ public class SellFragment extends BaseFragment {
                 return;
             }
             SellDataBean sellDataBean = (SellDataBean) type;
+            if (sellDataBean == null) {
+                return;
+            }
             Intent intent = new Intent();
-            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_UID, sellDataBean.getCurrency());
-            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID, sellDataBean.getExchangeCurrency());
-            intent.putExtra(Constants.KeyMaps.SELL_AMOUNT, sellDataBean.getSalableBalance());
-            intent.putExtra(Constants.KeyMaps.SELL_UNIT_PRICE, sellDataBean.getExchangeRate());
+            //直接将SellDataBean数据类传递到下一个页面
+            intent.putExtra(Constants.KeyMaps.SELL_DATA_BEAN, sellDataBean);
             intent.setClass(context, SellDetailActivity.class);
             startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
         }
@@ -152,26 +151,5 @@ public class SellFragment extends BaseFragment {
      */
     public void resetView() {
         initTopTabData();
-    }
-
-    public void RefreshTitle() {
-        //得到当前的所有钱包信息
-        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-        if (ListTool.noEmpty(memberKeyVOList)) {
-            int size = memberKeyVOList.size();
-            //加载数据
-            for (int i = 0; i < size; i++) {
-                //添加标题
-                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
-                if (memberKeyVO != null) {
-                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
-                    if (currencyListVO != null) {
-                        String name = currencyListVO.getEnName();
-                        tabLayout.addTab(name, i);
-
-                    }
-                }
-            }
-        }
     }
 }

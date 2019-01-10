@@ -97,7 +97,6 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                     if (currencyListVO != null) {
                         String name = currencyListVO.getEnName();
                         tabLayout.addTab(name, i);
-
                     }
                 }
                 // 添加相对应的数据
@@ -148,7 +147,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
             buyViewThree.setOnItemSelectListener(onItemSelectListener);
             views.add(buyViewThree);
 
-            tabViewAdapter = new TabViewAdapter(views, "0");
+            tabViewAdapter = new TabViewAdapter(views);
             viewPager.setAdapter(tabViewAdapter);
             viewPager.setCurrentItem(0);
             viewPager.setOffscreenPageLimit(size > 3 ? 3 : size);
@@ -157,6 +156,11 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     currentPosition = tab.getPosition();
+                    //刷新当前界面下的内容
+                    if (presenter != null) {
+                        // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
+                        presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+                    }
                     switch (currentPosition) {
                         case 0:
                             buyViewOne.refreshData(buyDataBeansETH);
@@ -182,7 +186,6 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                 }
             });
             tabLayout.resetSelectedTab(0);
-
             if (presenter != null) {
                 // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
                 presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
