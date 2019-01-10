@@ -61,6 +61,7 @@ public class SellPresenterImp implements SellContract.Presenter {
         memberOrderVO.setPaymentCurrencyUid(currencyListVOPayment);
         memberOrderVO.setAmount(amount);
         memberOrderVO.setUnitPrice(unitPrice);
+        requestJson.setMemberOrderVO(memberOrderVO);
 
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);

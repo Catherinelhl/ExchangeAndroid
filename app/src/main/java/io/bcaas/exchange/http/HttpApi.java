@@ -143,6 +143,8 @@ public interface HttpApi {
     Observable<ResponseJson> securityTxPassword(@Body RequestBody requestBody);
 
 
+
+
     /**
      * 撤銷待出售訂單
      */
@@ -159,7 +161,7 @@ public interface HttpApi {
      * 查詢待出售訂單
      */
     @POST(APIURLConstants.API_GET_RECORD_LIST)
-    Observable<ResponseJson> getRecordList(@Body RequestBody requestBody);
+    Observable<ResponseJson> getOrderList(@Body RequestBody requestBody);
 
     /**
      * 購買
@@ -168,4 +170,9 @@ public interface HttpApi {
     Observable<ResponseJson> buy(@Body RequestBody requestBody);
 
 
+    /**
+     * 提现
+     */
+    @POST(APIURLConstants.API_WITH_DRAW)
+    Observable<ResponseJson> withDraw(@Body RequestBody requestBody);
 }

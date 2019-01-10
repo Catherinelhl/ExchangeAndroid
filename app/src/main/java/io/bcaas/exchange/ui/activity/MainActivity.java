@@ -78,6 +78,7 @@ public class MainActivity extends BaseActivity
     public void initView() {
         fragments = new ArrayList<>();
         tvTitle.setVisibility(View.VISIBLE);
+        //显示右边过滤器
         ibRight.setVisibility(View.VISIBLE);
         sideSlipPop = new SideSlipPop(this);
         sideSlipPop.setOnItemSelectListener(onItemSelectListener);
@@ -246,12 +247,15 @@ public class MainActivity extends BaseActivity
                     if (currentFragment instanceof BuyFragment) {
                         ((BuyFragment) currentFragment).resetView();
                     }
+                    //显示右边过滤器
+                    ibRight.setVisibility(View.VISIBLE);
                     break;
                 case 1:
                     setTitle(getString(R.string.sell_title));
                     if (currentFragment instanceof SellFragment) {
                         ((SellFragment) currentFragment).resetView();
                     }
+                    ibRight.setVisibility(View.GONE);
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
@@ -259,9 +263,11 @@ public class MainActivity extends BaseActivity
                     if (currentFragment instanceof OrderFragment) {
                         ((OrderFragment) currentFragment).resetView();
                     }
+                    ibRight.setVisibility(View.GONE);
                     break;
                 case 3:
                     setTitle(getString(R.string.amount_title));
+                    ibRight.setVisibility(View.GONE);
                     break;
             }
         }
@@ -303,9 +309,11 @@ public class MainActivity extends BaseActivity
             //如果当前是从侧滑栏返回
             switch (from) {
                 case Constants.From.SIDE_SLIP:
-                    // TODO: 2019/1/4 根据返回的type，过滤出数据
+                    //通知BuyFragment 根据获取到的type过滤数据
                     String currentMethod = (String) type;
-                    LogTool.d(TAG, "当前选择的方式：" + currentMethod);
+                    if (currentFragment instanceof BuyFragment) {
+                        ((BuyFragment) currentFragment).requestForSaleOrderList(currentMethod);
+                    }
                     break;
                 default:
                     break;

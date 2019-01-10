@@ -15,8 +15,13 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
+import io.bcaas.exchange.ui.contracts.BuyContract;
+import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
+import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
+import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.vo.PaginationVO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,7 +33,7 @@ import java.util.List;
  * <p>
  * 買進
  */
-public class BuyFragment extends BaseFragment {
+public class BuyFragment extends BaseFragment implements ForSaleOrderListContract.View {
     private String TAG = BuyFragment.class.getSimpleName();
 
 
@@ -44,7 +49,12 @@ public class BuyFragment extends BaseFragment {
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
     private BuyView buyViewOne, buyViewTwo, buyViewThree;
+    private ForSaleOrderListContract.Presenter presenter;
+    //标记当前选中的位置，默认为0
+    private int currentPosition = 0;
 
+    //得到当前各页面的nextObjectId,默认是1
+    private String nextObjectId = "1";
 
     @Override
     public int getLayoutRes() {
@@ -53,6 +63,7 @@ public class BuyFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
+        presenter = new ForSaleOrderListPresenterImp(this);
         isPrepared = true;
         buyDataBeansETH = new ArrayList<>();
         buyDataBeansBTC = new ArrayList<>();
@@ -98,7 +109,7 @@ public class BuyFragment extends BaseFragment {
             buyDataBeanZBB.setTotalAccount("45.02387000 ZBB");
             buyDataBeanZBB.setFee("0.00001 ZBB");
             buyDataBeansZBB.add(buyDataBeanZBB);
-            tabLayout.addTab(dataGenerationRegister.getTabTopTitle(i),i);
+            tabLayout.addTab(dataGenerationRegister.getTabTopTitle(i), i);
         }
         buyViewOne = new BuyView(getContext());
         buyViewOne.refreshData(buyDataBeansETH);
@@ -124,8 +135,8 @@ public class BuyFragment extends BaseFragment {
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                switch (position) {
+                currentPosition = tab.getPosition();
+                switch (currentPosition) {
                     case 0:
                         buyViewOne.refreshData(buyDataBeansETH);
                         break;
@@ -150,6 +161,11 @@ public class BuyFragment extends BaseFragment {
             }
         });
         tabLayout.resetSelectedTab(0);
+
+        // TODO: 2019/1/10 接口获取所有的币种
+//        if (presenter != null) {
+//            presenter.getOrderList();
+//        }
     }
 
     @Override
@@ -195,4 +211,28 @@ public class BuyFragment extends BaseFragment {
         initTopTabData();
     }
 
+    /**
+     * 根据传入的支付方式过滤数据
+     *
+     * @param paymentCurrencyUid
+     */
+    public void requestForSaleOrderList(String paymentCurrencyUid) {
+        LogTool.d(TAG, "requestForSaleOrderList：" + paymentCurrencyUid);
+        if (presenter != null) {
+            presenter.getOrderList(dataGenerationRegister.getTabTopTitle(currentPosition), paymentCurrencyUid, nextObjectId);
+        }
+    }
+
+
+    @Override
+    public void getOrderListSuccess(PaginationVO paginationVO) {
+        if (paginationVO != null) {
+
+        }
+    }
+
+    @Override
+    public void getOrderListFailure(String info) {
+        showToast(info);
+    }
 }

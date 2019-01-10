@@ -13,6 +13,9 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.BuyContract;
+import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -24,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/19
  * 购买详情
  */
-public class BuyDetailActivity extends BaseActivity {
+public class BuyDetailActivity extends BaseActivity implements BuyContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -46,14 +49,17 @@ public class BuyDetailActivity extends BaseActivity {
     @BindView(R.id.tv_fee)
     TextView tvFee;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    EditTextWithAction etFundPassword;
     @BindView(R.id.etwa_random_verify_code)
-    EditTextWithAction etwaRandomVerifyCode;
+    EditTextWithAction etRandomVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_buy)
     Button btnBuy;
     private BuyDataBean buyDataBean;
+    private BuyContract.Presenter presenter;
+    // 当前的订单号码
+    private long memberOrderUid;
 
     @Override
     public int getContentView() {
@@ -89,7 +95,7 @@ public class BuyDetailActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        presenter = new BuyPresenterImp(this);
     }
 
     @Override
@@ -125,7 +131,22 @@ public class BuyDetailActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Object o) {
-                        setResult(false);
+
+                        //1：判断当前资金密码是否输入
+                        String txPassword = etFundPassword.getContent();
+                        if (StringTool.isEmpty(txPassword)) {
+                            showToast("请输入资金密码！");
+                            return;
+                        }
+                        //2：判断当前google验证码是否输入
+                        String verifyCode = etRandomVerifyCode.getContent();
+                        if (StringTool.isEmpty(verifyCode)) {
+                            showToast("请先输入google验证码！");
+                            return;
+                        }
+                        //3：接口请求数据
+                        presenter.buy(txPassword, memberOrderUid,  verifyCode);
+
                     }
 
                     @Override
@@ -140,4 +161,13 @@ public class BuyDetailActivity extends BaseActivity {
                 });
     }
 
+    @Override
+    public void buyFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void buySuccess(String info) {
+        setResult(false);
+    }
 }

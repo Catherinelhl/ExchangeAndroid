@@ -11,7 +11,11 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.WithDrawContract;
+import io.bcaas.exchange.ui.presenter.WithDrawPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.vo.MemberOrderVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -22,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2019/1/4
  * 「提现详情，输入密码」
  */
-public class WithDrawDetailActivity extends BaseActivity {
+public class WithDrawDetailActivity extends BaseActivity implements WithDrawContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -54,6 +58,10 @@ public class WithDrawDetailActivity extends BaseActivity {
     @BindView(R.id.btn_sure)
     Button btnSure;
 
+    private String amount, mark, address, currencyUid;
+
+    private WithDrawContract.Presenter presenter;
+
     @Override
     public int getContentView() {
         return R.layout.activity_withdraw_detail;
@@ -78,7 +86,7 @@ public class WithDrawDetailActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        presenter = new WithDrawPresenterImp(this);
     }
 
     @Override
@@ -95,9 +103,46 @@ public class WithDrawDetailActivity extends BaseActivity {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        setResult(false);
+                        //1:判断当前是否输入了资金密码
+                        String txPassword = etwaFundPassword.getContent();
+                        if (StringTool.isEmpty(txPassword)) {
+                            showToast("请输入资金密码！");
+                            return;
+                        }
+                        //2：判断当前是否输入了邮箱验证码
+                        String emailVerifyCode = etwaEmailVerifyCode.getContent();
+                        if (StringTool.isEmpty(emailVerifyCode)) {
+                            showToast("请输入邮箱验证码！");
+                            return;
+                        }
+                        //3:判断当前是否输入手机验证码
+                        String phoneVerifyCode = etwaMessageVerifyCode.getContent();
+                        if (StringTool.isEmpty(phoneVerifyCode)) {
+                            showToast("请输入手机验证码！");
+                            return;
+                        }
+                        //4：判断当前是否输入google验证码
+                        String googleVerifyCode = etwaGoogleVerifyCode.getContent();
+                        if (StringTool.isEmpty(googleVerifyCode)) {
+                            showToast("请输入Google验证码！");
+                            return;
+                        }
+                        MemberOrderVO memberOrderVO = new MemberOrderVO();
+                        memberOrderVO.setAmount(amount);
+                        memberOrderVO.setMark(mark);
+                        //3：请求接口提现
+                        presenter.withDraw(txPassword, memberOrderVO, address, currencyUid);
                     }
                 });
     }
 
+    @Override
+    public void withDrawFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void withDrawSuccess(String info) {
+        setResult(false);
+    }
 }

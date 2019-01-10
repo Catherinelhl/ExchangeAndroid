@@ -146,4 +146,19 @@ public class CurrencyListVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "CurrencyListVO{" +
+				"currencyUid='" + currencyUid + '\'' +
+				", enName='" + enName + '\'' +
+				", cnName='" + cnName + '\'' +
+				", withdrawCharge='" + withdrawCharge + '\'' +
+				", buyCharge='" + buyCharge + '\'' +
+				", sellCharge='" + sellCharge + '\'' +
+				", gasFeeCharge='" + gasFeeCharge + '\'' +
+				", rate='" + rate + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				", createTime='" + createTime + '\'' +
+				'}';
+	}
 }

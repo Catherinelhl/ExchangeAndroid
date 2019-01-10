@@ -62,7 +62,6 @@ public class DataGenerationRegister {
         tabTopTitles.add("BTC");
         tabTopTitles.add("ETH");
         tabTopTitles.add("ZBB");
-        tabTopTitles.add("BTC");
         tabTopTitleCount = tabTopTitles.size();
 
         //初始化Order界面top标题集合

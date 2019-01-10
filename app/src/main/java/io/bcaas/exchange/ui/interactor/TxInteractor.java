@@ -38,9 +38,9 @@ public class TxInteractor {
      *
      * @param body
      */
-    public Observable<ResponseJson> getRecordList(RequestBody body) {
+    public Observable<ResponseJson> getOrderList(RequestBody body) {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getRecordList(body);
+        return httpApi.getOrderList(body);
     }
 
     /**
@@ -51,6 +51,16 @@ public class TxInteractor {
     public Observable<ResponseJson> buy(RequestBody body) {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.buy(body);
+    }
+
+    /**
+     *  提现
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> withDraw(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.withDraw(body);
     }
 
 }
