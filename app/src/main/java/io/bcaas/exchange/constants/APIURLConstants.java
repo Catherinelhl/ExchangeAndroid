@@ -16,6 +16,8 @@ public class APIURLConstants {
     public static final String API_LOGIN = "member/login";
     /*登出*/
     public static final String API_LOGOUT = "member/logout";
+    /*重设密码*/
+    public static final String API_RESET_PASSWORD = "member/resetPassword";
 
 
     /*BTC 取得餘額*/
@@ -37,7 +39,7 @@ public class APIURLConstants {
 
 
     /*取得虛擬貨幣美元現值*/
-    public static final String API_CURRENCY_GET_USD_PRICE = "currency/getUSDPrice";
+    public static final String API_CURRENCY_GET_USD_PRICE = "currencyList/getUSDPrice";
 
 
     /*產生圖形驗證圖*/

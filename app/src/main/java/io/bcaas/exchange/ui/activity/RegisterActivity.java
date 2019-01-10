@@ -210,7 +210,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
     @Override
     public void registerSuccess(String info) {
-        finish();
+        setResult(false);
     }
 
     @Override

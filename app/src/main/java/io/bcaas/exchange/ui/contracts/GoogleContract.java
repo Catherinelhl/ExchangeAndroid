@@ -19,6 +19,7 @@ public interface GoogleContract {
         void securityGoogleAuthenticatorFailure(String info);
 
         void getAuthenticatorImageSuccess(Bitmap bitmap);
+
         void getAuthenticatorImageFailure();
     }
 
@@ -26,5 +27,7 @@ public interface GoogleContract {
         void getAuthenticatorUrl();
 
         void securityGoogleAuthenticator(String verifyCode);
+
+        void getAuthenticatorUrlCreateImage(String url);
     }
 }

@@ -1506,7 +1506,6 @@ id btn_right
 id btn_sell
 id btn_send
 id btn_sure
-id btn_unlock_wallet
 id buttonPanel
 id capture_container
 id capture_crop_view

@@ -26,6 +26,16 @@ public class SafetyCenterInteractor {
     }
 
     /**
+     * 重置密码
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> resetPassword(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.resetPassword(body);
+    }
+
+    /**
      * 取得帳戶資訊
      *
      * @param body
@@ -44,6 +54,7 @@ public class SafetyCenterInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.closeSecurityVerify(body);
     }
+
     /**
      * 邮箱验证
      */
@@ -103,7 +114,6 @@ public class SafetyCenterInteractor {
     }
 
 
-
     /**
      * 更改E-mail驗證狀態
      *
@@ -127,7 +137,7 @@ public class SafetyCenterInteractor {
 
 
     /**
-     *  更改Google驗證狀態
+     * 更改Google驗證狀態
      *
      * @return
      */

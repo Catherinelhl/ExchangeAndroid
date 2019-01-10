@@ -33,15 +33,16 @@ public class MainPresenterImp implements MainContract.Presenter {
     }
 
     @Override
-    public void getCurrencyUSDPrice(String memberId, ExchangeBean exchangeBean) {
+    public void getCurrencyUSDPrice(ExchangeBean exchangeBean) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(memberId);
+        memberVO.setMemberId(BaseApplication.getMemberId());
         requestJson.setMemberVO(memberVO);
+
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
+
         requestJson.setExchangeBean(exchangeBean);
         LogTool.d(TAG, requestJson);
 
@@ -63,7 +64,14 @@ public class MainPresenterImp implements MainContract.Presenter {
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            view.getCurrencyUSDPriceSuccess(responseJson.getExchangeBean().getPriceUSD());
+                            //得到当前返回的数值
+                            ExchangeBean exchangeBeanResponse = responseJson.getExchangeBean();
+                            if (exchangeBeanResponse == null) {
+                                view.getCurrencyUSDPriceFailure(responseJson.getMessage());
+                            } else {
+                                view.getCurrencyUSDPriceSuccess(exchangeBeanResponse);
+
+                            }
                         } else {
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2006) {

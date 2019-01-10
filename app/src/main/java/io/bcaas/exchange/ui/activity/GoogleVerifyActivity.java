@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.VerificationBean;
@@ -142,6 +143,16 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
         if (verificationBean == null) {
             return;
         }
+        //获取雙因素驗證應用路徑，返回直接生成二维码;
+        String authenticatorPath = verificationBean.getAuthenticatorPath();
+        //如果当前路径为空，那么就自己请求数据显示
+        if (StringTool.isEmpty(authenticatorPath)) {
+            presenter.getAuthenticatorUrlCreateImage(verificationBean.getAuthenticatorUrl());
+        } else {
+            Bitmap qrCode = EncodingUtils.createQRCode(authenticatorPath, context.getResources().getDimensionPixelOffset(R.dimen.d200),
+                    context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
+            ivQrCode.setImageBitmap(qrCode);
+        }
         String account = verificationBean.getAccount();
         String secret = verificationBean.getSecret();
         if (tvMyAddress != null && StringTool.notEmpty(secret)) {
@@ -174,9 +185,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
     public void getAuthenticatorImageSuccess(Bitmap bitmap) {
         if (bitmap != null && ivQrCode != null) {
             ivQrCode.setImageBitmap(bitmap);
-//                Bitmap qrCode = EncodingUtils.createQRCode(secret, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-//                        context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
-//                ivQrCode.setImageBitmap(qrCode);
+
         }
     }
 

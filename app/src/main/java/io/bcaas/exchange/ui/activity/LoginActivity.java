@@ -14,6 +14,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -33,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_amount)
-    EditTextWithAction amount;
+    EditTextWithAction acount;
     @BindView(R.id.etwa_password)
     EditTextWithAction password;
     @BindView(R.id.etwa_image_code)
@@ -64,7 +65,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void initView() {
         //设置账号只能输入邮箱类型
-        amount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        acount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         setAppVersion();
 
     }
@@ -89,7 +90,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
             }
         });
-        amount.setEditTextWatcherListener(new EditTextWatcherListener() {
+        acount.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
                 String passwordStr = password.getContent();
@@ -108,7 +109,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         password.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
-                String amountStr = amount.getContent();
+                String amountStr = acount.getContent();
                 if (StringTool.notEmpty(amountStr)) {
                     if (StringTool.equals(amountStr, content)) {
                         hideSoftKeyboard();
@@ -221,6 +222,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         switch (requestCode) {
             case Constants.RequestCode.REGISTER_CODE: //注册页面返回
                 LogTool.d(TAG, "register return");
+                //清空当前界面信息
+                if (etImageCode!=null){
+                    etImageCode.setContent(MessageConstants.EMPTY);
+                }
                 // 重新刷新登录界面的验证码
                 etImageCode.requestImageVerifyCode();
                 break;
@@ -236,12 +241,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void loginSuccess(String info) {
+        hideSoftKeyboard();
         intentToActivity(MainActivity.class, true);
 
     }
 
     @Override
     public void loginFailure(String info) {
+        hideSoftKeyboard();
         showToast(info);
     }
 

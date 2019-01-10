@@ -11,6 +11,8 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
+import io.bcaas.exchange.ui.presenter.ResetPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -22,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/17
  * 重置密码
  */
-public class ResetPasswordActivity extends BaseActivity {
+public class ResetPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -30,15 +32,17 @@ public class ResetPasswordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_amount)
-    EditTextWithAction amount;
+    EditTextWithAction etAccount;
     @BindView(R.id.etwa_password)
-    EditTextWithAction password;
+    EditTextWithAction etPassword;
     @BindView(R.id.etwa_password_confirm)
-    EditTextWithAction passwordConfirm;
+    EditTextWithAction etPasswordConfirm;
     @BindView(R.id.etwa_email_code)
     EditTextWithAction emailCode;
-    @BindView(R.id.btn_unlock_wallet)
-    Button btnUnlockWallet;
+    @BindView(R.id.btn_sure)
+    Button btnSure;
+
+    private ResetPasswordContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -55,10 +59,13 @@ public class ResetPasswordActivity extends BaseActivity {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.reset_password_title);
+
     }
 
     @Override
     public void initData() {
+        presenter = new ResetPasswordPresenterImp(this);
+
 
     }
 
@@ -86,10 +93,49 @@ public class ResetPasswordActivity extends BaseActivity {
 
                     }
                 });
+        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //1:判断当前邮箱的输入
+                        //2：判断当前密码的输入
+                        String password = etPassword.getContent();
+                        //3：判断当前新密码的输入
+                        String newPassword = etPasswordConfirm.getContent();
+                        //4：判断当前验证码的输入
+                        //5：发送请求
+                        presenter.resetPassword(password, newPassword);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void resetPasswordFailure(String info) {
+
+    }
+
+    @Override
+    public void resetPasswordSuccess(String info) {
+
     }
 }

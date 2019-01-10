@@ -45,7 +45,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
             LogTool.e(TAG, e.getMessage());
         }
         requestJson.setMemberVO(memberVO);
-        VerificationBean verificationBean=new VerificationBean();
+        VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
         LogTool.d(TAG, requestJson);
@@ -73,7 +73,13 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                             BaseApplication.setAccessToken(accessToken);
                             view.loginSuccess(accessToken);
                         } else {
-                            view.loginFailure(MessageConstants.EMPTY);
+                            // {"success":false,"code":2005,"message":"Email not register."}
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2005) {
+                                view.loginFailure(MessageConstants.ERROR_EMAIL_NOT_REGISTER);
+                            } else {
+                                view.loginFailure(responseJson.getMessage());
+                            }
 
                         }
 

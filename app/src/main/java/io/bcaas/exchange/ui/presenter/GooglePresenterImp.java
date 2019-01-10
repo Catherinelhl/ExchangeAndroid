@@ -70,43 +70,6 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                 view.getAuthenticatorUrlFailure(MessageConstants.EMPTY);
                             } else {
                                 view.getAuthenticatorUrlSuccess(verificationBean);
-                                //得到当前创建url的地址，重新请求网络获取图片
-                                String authenticatorUrl = verificationBean.getAuthenticatorUrl();
-                                if (StringTool.notEmpty(authenticatorUrl)) {
-                                    safetyCenterInteractor.getAuthenticatorUrlCreateImage(authenticatorUrl)
-                                            .subscribeOn(Schedulers.io())
-                                            .observeOn(AndroidSchedulers.mainThread())
-                                            .map(ResponseBody::byteStream)
-                                            .map(BitmapFactory::decodeStream)
-                                            .subscribe(new Observer<Bitmap>() {
-                                                @Override
-                                                public void onSubscribe(Disposable d) {
-
-                                                }
-
-                                                @Override
-                                                public void onNext(Bitmap bitmap) {
-                                                    view.getAuthenticatorImageSuccess(bitmap);
-
-                                                }
-
-                                                @Override
-                                                public void onError(Throwable e) {
-                                                    view.getAuthenticatorImageFailure();
-
-                                                }
-
-                                                @Override
-                                                public void onComplete() {
-
-                                                }
-                                            });
-
-                                } else {
-                                    // TODO: 2019/1/10 提示数据获取失败？
-                                    view.getAuthenticatorUrlFailure("数据获取失败！");
-
-                                }
                             }
                         } else {
                             int code = responseJson.getCode();
@@ -206,5 +169,45 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
 
                     }
                 });
+    }
+
+    @Override
+    public void getAuthenticatorUrlCreateImage(String url) {
+        //得到当前创建url的地址，重新请求网络获取图片
+        if (StringTool.notEmpty(url)) {
+            safetyCenterInteractor.getAuthenticatorUrlCreateImage(url)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .map(ResponseBody::byteStream)
+                    .map(BitmapFactory::decodeStream)
+                    .subscribe(new Observer<Bitmap>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(Bitmap bitmap) {
+                            view.getAuthenticatorImageSuccess(bitmap);
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            view.getAuthenticatorImageFailure();
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+
+        } else {
+            // TODO: 2019/1/10 提示数据获取失败？
+            view.getAuthenticatorUrlFailure("数据获取失败！");
+
+        }
     }
 }

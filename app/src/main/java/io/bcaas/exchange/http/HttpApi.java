@@ -35,6 +35,15 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_LOGOUT)
     Observable<ResponseJson> logout(@Body RequestBody requestBody);
+    /**
+     *重置密码
+     */
+    @POST(APIURLConstants.API_RESET_PASSWORD)
+    Observable<ResponseJson> resetPassword(@Body RequestBody requestBody);
+
+
+
+
 
     /**
      * 取得虛擬貨幣美元現值

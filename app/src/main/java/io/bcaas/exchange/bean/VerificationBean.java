@@ -56,6 +56,19 @@ public class VerificationBean implements Serializable {
 	 */
 	private String closeType;
 
+	/**
+	 * 雙因素驗證應用路徑
+	 */
+	private String authenticatorPath;
+
+	public String getAuthenticatorPath() {
+		return authenticatorPath;
+	}
+
+	public void setAuthenticatorPath(String authenticatorPath) {
+		this.authenticatorPath = authenticatorPath;
+	}
+
 	public VerificationBean() {
 		super();
 	}
@@ -144,6 +157,7 @@ public class VerificationBean implements Serializable {
 				", secret='" + secret + '\'' +
 				", type='" + type + '\'' +
 				", closeType='" + closeType + '\'' +
+				", authenticatorPath='" + authenticatorPath + '\'' +
 				'}';
 	}
 }

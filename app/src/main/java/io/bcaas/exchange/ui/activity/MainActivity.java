@@ -92,9 +92,9 @@ public class MainActivity extends BaseActivity
         mainPresenter = new MainPresenterImp(this);
         ExchangeBean exchangeBean = new ExchangeBean();
         exchangeBean.setCurrency("BTC");
-        exchangeBean.setBalance("8");
+        exchangeBean.setPriceCurrency("8");
         /*获取币种汇率*/
-        mainPresenter.getCurrencyUSDPrice(Constants.User.MEMBER_ID, exchangeBean);
+        mainPresenter.getCurrencyUSDPrice(exchangeBean);
         /*获取账户所有币种余额*/
         mainPresenter.getAllBalance();
 
@@ -262,8 +262,16 @@ public class MainActivity extends BaseActivity
 
 
     @Override
-    public void getCurrencyUSDPriceSuccess(String info) {
-        LogTool.d(TAG, info);
+    public void getCurrencyUSDPriceSuccess(ExchangeBean exchangeBean) {
+        if (exchangeBean != null) {
+            //当前需要兑换
+            String priceCurrency = exchangeBean.getPriceCurrency();
+            //当前兑换的数额
+            String priceUSD = exchangeBean.getPriceUSD();
+            LogTool.d(TAG, "priceCurrency:" + priceCurrency);
+            LogTool.d(TAG, "priceUSD:" + priceUSD);
+
+        }
     }
 
     @Override
