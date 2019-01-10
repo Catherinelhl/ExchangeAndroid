@@ -71,10 +71,10 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         tvTitle.setText(R.string.safety_center);
         //判断当前memberVO是否为空，如果为空，那么就显示默认值
         MemberVO memberVO = BaseApplication.getMemberVO();
+        //登录密码
+        scivLoginPassword.setTabStatusByText(false, getString(R.string.modify));
+        scivLoginPassword.setOnItemSelectListener(this);
         if (memberVO == null) {
-            //登录密码
-            scivLoginPassword.setTabStatusByText(false, getString(R.string.modify));
-            scivLoginPassword.setOnItemSelectListener(this);
             //资金密码
             scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
             scivFundPassword.setTabInfo("用于提币，交易的验证");
@@ -264,7 +264,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.equals(txPassword, Constants.Status.NO_TX_PASSWORD)) {
             scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
         } else {
-            scivFundPassword.setTabStatusByText(true, MessageConstants.EMPTY);
+            scivFundPassword.setTabStatusByText(true, getString(R.string.modify));
         }
 
         //判断是否开启「邮箱验证」

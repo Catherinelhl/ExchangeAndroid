@@ -5,6 +5,7 @@ import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
@@ -15,6 +16,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author catherine.brainwilliam
@@ -40,14 +43,21 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
-        memberVO.setPassword(password);
-        memberVO.setNewPassword(newPassword);
+        try {
+            memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
+            memberVO.setNewPassword(Sha256Tool.doubleSha256ToString(newPassword));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        requestJson.setMemberVO(memberVO);
+
+
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
+
         LogTool.d(TAG, requestJson);
-        safetyCenterInteractor.forgetPassword(GsonTool.beanToRequestBody(requestJson))
+        safetyCenterInteractor.resetPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -65,21 +75,11 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            VerificationBean verificationBean = responseJson.getVerificationBean();
-                            if (verificationBean == null) {
-                                view.resetPasswordFailure(MessageConstants.EMPTY);
-                            } else {
-                                view.resetPasswordSuccess(MessageConstants.EMPTY);
-                            }
+                            view.resetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.resetPasswordFailure(responseJson.getMessage());
-                            } else {
-                                view.resetPasswordFailure(MessageConstants.EMPTY);
-
-                            }
+                            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                            view.resetPasswordFailure(responseJson.getMessage());
 
                         }
 

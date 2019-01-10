@@ -12,6 +12,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
+import io.bcaas.exchange.ui.presenter.ResetPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -23,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/28
  * 「修改登录密码」
  */
-public class ModifyLoginPasswordActivity extends BaseActivity {
+public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -31,13 +33,15 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_original_password)
-    EditTextWithAction etwaOriginalPassword;
+    EditTextWithAction etOriginalPassword;
     @BindView(R.id.etwa_new_password)
-    EditTextWithAction etwaNewPassword;
+    EditTextWithAction etNewPassword;
     @BindView(R.id.etwa_confirm_new_password)
-    EditTextWithAction etwaConfirmNewPassword;
+    EditTextWithAction etConfirmNewPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
+
+    private ResetPasswordContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -57,7 +61,7 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        presenter = new ResetPasswordPresenterImp(this);
     }
 
     @Override
@@ -95,23 +99,31 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
                     @Override
                     public void onNext(Object o) {
                         //1：判断原登录密码非空
-                        String originalPassword = etwaOriginalPassword.getContent();
+                        String originalPassword = etOriginalPassword.getContent();
                         if (StringTool.isEmpty(originalPassword)) {
                             showToast("请输入原密码！");
                             return;
                         }
                         //2：判断新密码非空
-                        String newPassword = etwaNewPassword.getContent();
+                        String newPassword = etNewPassword.getContent();
                         if (StringTool.isEmpty(newPassword)) {
                             showToast("请输入新密码！");
                             return;
                         }
                         //3：判断确认新密码非空
-                        String confirmNewPassword = etwaConfirmNewPassword.getContent();
+                        String confirmNewPassword = etConfirmNewPassword.getContent();
                         if (StringTool.isEmpty(confirmNewPassword)) {
                             showToast("请输入确认新密码！");
                             return;
                         }
+
+                        //4:判断新密码输入是否一致
+                        if (!StringTool.equals(newPassword, confirmNewPassword)) {
+                            showToast("两次密码输入不一致！");
+                            return;
+                        }
+                        //5：请求接口修改密码
+                        presenter.resetPassword(originalPassword, newPassword);
 
                     }
 
@@ -131,6 +143,16 @@ public class ModifyLoginPasswordActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        setResult(false);
+    }
+
+    @Override
+    public void resetPasswordFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void resetPasswordSuccess(String info) {
         setResult(false);
     }
 }

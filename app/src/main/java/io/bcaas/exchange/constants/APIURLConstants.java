@@ -19,7 +19,7 @@ public class APIURLConstants {
     /*忘记密码*/
     public static final String API_FORGET_PASSWORD = "member/forgotPassword";
     /*重设密码*/
-    public static final String API_RESET_PASSWORD = "member/forgetPassword";
+    public static final String API_RESET_PASSWORD = "member/resetPassword";
 
 
 //    /*BTC 取得餘額*/
