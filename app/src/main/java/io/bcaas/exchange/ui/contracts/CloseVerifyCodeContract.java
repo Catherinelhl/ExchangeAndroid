@@ -12,20 +12,15 @@ import java.util.List;
  */
 public interface CloseVerifyCodeContract {
 
-    interface View {
+    interface View extends AccountSecurityContract.View {
         void closeVerifyCodeSuccess(String info);
 
         void closeVerifyCodeFailure(String info);
 
-        void getAccountSecuritySuccess(MemberVO memberVO);
-
-        void getAccountSecurityFailure(String info);
     }
 
-    interface Presenter {
+    interface Presenter extends AccountSecurityContract.Presenter {
         //关闭验证方式
         void closeVerifyCode(List<VerificationBean> verificationBeans);
-        //取得帳戶資訊
-        void getAccountSecurity();
     }
 }

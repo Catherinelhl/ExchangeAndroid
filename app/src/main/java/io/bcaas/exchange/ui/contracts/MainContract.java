@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2018/12/21
  */
 public interface MainContract {
-    interface View {
+    interface View extends AccountSecurityContract.View {
         void getCurrencyUSDPriceSuccess(ExchangeBean exchangeBean);
 
         void getCurrencyUSDPriceFailure(String info);
@@ -25,9 +25,10 @@ public interface MainContract {
 
     }
 
-    interface Presenter {
+    interface Presenter extends AccountSecurityContract.Presenter {
         void getCurrencyUSDPrice(ExchangeBean exchangeBean);
 
         void getAllBalance();
+
     }
 }

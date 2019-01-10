@@ -7,6 +7,7 @@ import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import com.squareup.otto.Subscribe;
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.NetStateChangeEvent;
@@ -40,8 +41,6 @@ public class BaseApplication extends MultiDexApplication {
     private static boolean isZH;
     /*存储当前的Token*/
     private static String token;
-    /*得到当前是否设置了资金密码*/
-    private static boolean setFundPassword;
     /*当前的语言环境*/
     private static String currentLanguage;
     /*是否是手机版*/
@@ -56,10 +55,13 @@ public class BaseApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        //初始化SP
+        //初始化SharePreference
         preferenceTool = PreferenceTool.getInstance(context());
+        //获取当前设备尺寸信息
         getScreenMeasure();
+        //注册网络变化监听
         registerNetStateReceiver();
+        //初始化服务器设置
         ServerTool.initServerData();
 
     }
@@ -86,11 +88,12 @@ public class BaseApplication extends MultiDexApplication {
     }
 
     public static boolean isSetFundPassword() {
-        return setFundPassword;
-    }
-
-    public static void setFundPassword(boolean setFundPassword) {
-        BaseApplication.setFundPassword = setFundPassword;
+        MemberVO memberVO = getMemberVO();
+        if (memberVO == null) {
+            return false;
+        }
+        String txPassword = memberVO.getTxPassword();
+        return !StringTool.equals(txPassword, Constants.Status.NO_TX_PASSWORD);
     }
 
     public static String getCurrentLanguage() {

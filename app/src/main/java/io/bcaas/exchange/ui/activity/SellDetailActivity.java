@@ -10,9 +10,10 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.SellContract;
+import io.bcaas.exchange.ui.presenter.SellPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -24,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/19
  * 购买详情
  */
-public class SellDetailActivity extends BaseActivity {
+public class SellDetailActivity extends BaseActivity implements SellContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -40,14 +41,16 @@ public class SellDetailActivity extends BaseActivity {
     @BindView(R.id.tv_fee)
     TextView tvFee;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    EditTextWithAction etFundPassword;
     @BindView(R.id.etwa_random_verify_code)
-    EditTextWithAction etwaRandomVerifyCode;
+    EditTextWithAction etRandomVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_sell)
     Button btnSell;
-    private BuyDataBean buyDataBean;
+    private SellContract.Presenter presenter;
+    //当前卖出的币种，需要支付的币种
+    private String currencyUid, currencyPaymentUid, amount, unitPrice, fee = "0.0001";
 
     @Override
     public int getContentView() {
@@ -59,8 +62,10 @@ public class SellDetailActivity extends BaseActivity {
         if (bundle == null) {
             return;
         }
-        buyDataBean = (BuyDataBean) bundle.getSerializable(Constants.KeyMaps.BUY_DETAIL);
-        LogTool.d(TAG, buyDataBean);
+        currencyUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_UID);
+        currencyPaymentUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID);
+        amount = bundle.getString(Constants.KeyMaps.SELL_AMOUNT);
+        unitPrice = bundle.getString(Constants.KeyMaps.SELL_UNIT_PRICE);
     }
 
     @Override
@@ -68,17 +73,21 @@ public class SellDetailActivity extends BaseActivity {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.buy_detail);
-        if (buyDataBean != null) {
-            tvPrice.setText(buyDataBean.getPrice());
-            tvNumber.setText(buyDataBean.getNumber());
-            tvFee.setText(buyDataBean.getFee());
+        if (StringTool.notEmpty(currencyUid)) {
+            tvPrice.setText(unitPrice + "\t " + currencyPaymentUid);
+        }
+        if (StringTool.notEmpty(amount)) {
+            tvNumber.setText(amount + "\t " + currencyUid);
+        }
+        if (StringTool.notEmpty(fee)) {
+            tvFee.setText(fee + "\t " + currencyUid);
         }
 
     }
 
     @Override
     public void initData() {
-
+        presenter = new SellPresenterImp(this);
     }
 
     @Override
@@ -113,7 +122,21 @@ public class SellDetailActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Object o) {
-                        setResult(false);
+                        //1：判断当前资金密码是否输入
+                        String txPassword = etFundPassword.getContent();
+                        if (StringTool.isEmpty(txPassword)) {
+                            showToast("请输入资金密码！");
+                            return;
+                        }
+                        //2：判断当前google验证码是否输入
+                        String verifyCode = etRandomVerifyCode.getContent();
+                        if (StringTool.isEmpty(verifyCode)) {
+                            showToast("请先输入google验证码！");
+                            return;
+                        }
+                        //3：接口请求数据
+                        presenter.sell(currencyUid, currencyPaymentUid, amount, unitPrice, txPassword, verifyCode);
+
                     }
 
                     @Override
@@ -128,4 +151,13 @@ public class SellDetailActivity extends BaseActivity {
                 });
     }
 
+    @Override
+    public void sellFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void sellSuccess(String info) {
+        setResult(false);
+    }
 }

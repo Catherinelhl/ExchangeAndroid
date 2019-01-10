@@ -36,16 +36,6 @@ public class SafetyCenterInteractor {
     }
 
     /**
-     * 取得帳戶資訊
-     *
-     * @param body
-     */
-    public Observable<ResponseJson> getAccountSecurity(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getAccountSecurity(body);
-    }
-
-    /**
      * 验证验证码\关闭安全验证
      *
      * @param body
@@ -146,4 +136,14 @@ public class SafetyCenterInteractor {
         return httpApi.securityTwoFactorVerify(body);
     }
 
+
+    /**
+     * 設置資金密碼
+     *
+     * @return
+     */
+    public Observable<ResponseJson> securityTxPassword(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.securityTxPassword(body);
+    }
 }

@@ -20,6 +20,8 @@
                 android:hint="@string/enter_password"
                 android:layout_marginTop="@dimen/d16"
                 android:minHeight="@dimen/d32"
+                android:ellipsize="end"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:paddingRight="@dimen/d40"
                 android:singleLine="true"/>
         <EditText
@@ -32,6 +34,8 @@
                 android:maxLength="20"
                 android:visibility="gone"
                 android:drawablePadding="@dimen/d10"
+                android:ellipsize="end"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:hint="@string/enter_password"
                 android:layout_marginTop="@dimen/d16"
                 android:minHeight="@dimen/d32"

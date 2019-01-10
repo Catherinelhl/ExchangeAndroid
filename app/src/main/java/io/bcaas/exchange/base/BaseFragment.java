@@ -15,13 +15,14 @@ import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
+import io.bcaas.exchange.ui.contracts.BaseContract;
 
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/4
  * 所有Phone's Fragment 的基類
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements BaseContract {
 
     private String TAG = BaseFragment.class.getSimpleName();
     private View rootView;
@@ -52,7 +53,7 @@ public abstract class BaseFragment extends Fragment {
         if (activity != null) {
             getArgs(activity.getIntent().getExtras());
         }
-        dataGenerationRegister=new DataGenerationRegister();
+        dataGenerationRegister = new DataGenerationRegister();
         initViews(view);
         initListener();
     }
@@ -152,5 +153,17 @@ public abstract class BaseFragment extends Fragment {
                 && (getParentFragment() != null && getParentFragment().getUserVisibleHint());
     }
 
+    @Override
+    public void showLoading() {
+        if (activity != null) {
+            ((BaseActivity) activity).showLoading();
+        }
+    }
 
+    @Override
+    public void hideLoading() {
+        if (activity != null) {
+            ((BaseActivity) activity).hideLoading();
+        }
+    }
 }

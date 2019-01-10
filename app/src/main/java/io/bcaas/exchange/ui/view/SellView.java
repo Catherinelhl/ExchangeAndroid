@@ -4,10 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -15,6 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.StringTool;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -111,7 +109,27 @@ public class SellView extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
-                        if (onItemSelectListener != null) {
+                        // TODO: 2019/1/10  布局需要修改，用户可以自行输入
+                        //1：判断当前卖出价是否输入
+                        String unitPrice = tvExchangeRate.getText().toString();
+                        if (StringTool.isEmpty(unitPrice)) {
+                            Toast.makeText(context, "请先输入卖出价！", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        //2：判断当前卖出量是否输入
+                        String sellAmount = tvExchangeCurrency.getText().toString();
+                        if (StringTool.isEmpty(sellAmount)) {
+                            Toast.makeText(context, "请先输入卖出量！", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        //3：比对当前输入的卖出量《可售余额
+                        if (Double.valueOf(sellAmount) > Double.valueOf(salableBalance)) {
+                            Toast.makeText(context, "余额不足！", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        //4:回调，进入下一个页面
+                        if (onItemSelectListener != null && sellDataBean != null) {
+                            sellDataBean.setAmount(sellAmount);
                             onItemSelectListener.onItemSelect(sellDataBean, Constants.From.SELL_VIEW);
                         }
 
@@ -142,7 +160,7 @@ public class SellView extends LinearLayout {
         this.sellDataBean = sellDataBean;
         if (sellDataBean != null) {
             if (tvSalableBalance != null) {
-                tvSalableBalance.setText(String.format("%s%s   %s", context.getResources().getString(R.string.salable_balance), sellDataBean.getSalableBalance(), sellDataBean.getCurrency()));
+                tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance), sellDataBean.getSalableBalance(), sellDataBean.getCurrency()));
             }
             if (tvCurrentCurrency != null) {
                 tvCurrentCurrency.setText(sellDataBean.getCurrency());

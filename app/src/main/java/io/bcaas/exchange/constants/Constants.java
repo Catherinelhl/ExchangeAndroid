@@ -118,6 +118,11 @@ public class Constants {
         public static final String RESULT = "result";//扫描二维码返回的结果
         public static final String BUY_DETAIL = "buyDetail";
         public static final String SELECT_COUNTRY_CODE = "selectCountryCode";//选择的城市号码
+
+        public static final String SELL_CURRENCY_UID = "sellCurrencyUid";//卖出的币种
+        public static final String SELL_CURRENCY_PAYMENT_UID = "sellCurrencyPaymentUid";//需要支付的币种
+        public static final String SELL_AMOUNT = "sellAmount";//卖出的数量
+        public static final String SELL_UNIT_PRICE = "sellUnitPrice";//卖出的单价
     }
 
     /**

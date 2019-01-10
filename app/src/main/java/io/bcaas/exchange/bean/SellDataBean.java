@@ -18,6 +18,8 @@ public class SellDataBean implements Serializable {
     //默认交换币种
     private String exchangeCurrency;
 
+    private String amount;
+
     public SellDataBean(String salableBalance, String exchangeRate) {
         super();
         this.salableBalance = salableBalance;
@@ -31,6 +33,14 @@ public class SellDataBean implements Serializable {
         this.salableBalance = salableBalance;
         this.exchangeRate = exchangeRate;
         this.exchangeCurrency = exchangeCurrency;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     public String getExchangeCurrency() {
@@ -72,6 +82,7 @@ public class SellDataBean implements Serializable {
                 ", salableBalance='" + salableBalance + '\'' +
                 ", exchangeRate='" + exchangeRate + '\'' +
                 ", exchangeCurrency='" + exchangeCurrency + '\'' +
+                ", amount='" + amount + '\'' +
                 '}';
     }
 }

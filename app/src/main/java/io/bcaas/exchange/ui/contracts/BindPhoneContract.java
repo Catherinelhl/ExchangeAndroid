@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface BindPhoneContract {
 
-    interface View {
+    interface View extends BaseContract{
         void securityPhoneSuccess(String info);
 
         void securityPhoneFailure(String info);

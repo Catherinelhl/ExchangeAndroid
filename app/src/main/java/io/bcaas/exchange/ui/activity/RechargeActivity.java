@@ -18,7 +18,10 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
+import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.view.RechargeView;
+import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -34,7 +37,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 此页面有两种展现形式，如果当前还没有设置资金密码，那么就需要展现设置资金密码的页面，如果当前已经设置了，那么就直接展现用户的账户页面
  */
-public class RechargeActivity extends BaseActivity {
+public class RechargeActivity extends BaseActivity implements AccountSecurityContract.View {
 
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -51,6 +54,7 @@ public class RechargeActivity extends BaseActivity {
     private List<View> views;
 
     private TabViewAdapter tabViewAdapter;
+    private AccountSecurityContract.Presenter presenter;
 
     //定义每个Tab点击需要切换的信息
     private UserInfoBean userInfoBeanBTC, userInfoBeanETH, userInfoBeanZBB;
@@ -74,6 +78,7 @@ public class RechargeActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        presenter = new AccountSecurityPresenterImp(this);
         String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
         userInfoBeanBTC = new UserInfoBean("BTC", info, "39LKDBERWWRH343T34VSRG434V43F4G5GT5H");
         userInfoBeanETH = new UserInfoBean("ETH", info, "sdkjfhakssssjdfkasjdbfnaksdjfblniauksj");
@@ -173,13 +178,23 @@ public class RechargeActivity extends BaseActivity {
 
         switch (requestCode) {
             case Constants.RequestCode.FUND_PASSWORD:
-                //如果从「设置资金密码」页面跳转回来，那么需要重新刷新一下当前的界面
-                if (tabLayout != null) {
-                    rechargeViewOne.refreshData(userInfoBeanBTC);
-                    rechargeViewTwo.refreshData(userInfoBeanETH);
-                    rechargeViewThree.refreshData(userInfoBeanZBB);
-                }
+                //如果从「设置资金密码」页面跳转回来，那么需要重新请求账户资讯
+                presenter.getAccountSecurity();
                 break;
         }
+    }
+
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+        if (tabLayout != null) {
+            rechargeViewOne.refreshData(userInfoBeanBTC);
+            rechargeViewTwo.refreshData(userInfoBeanETH);
+            rechargeViewThree.refreshData(userInfoBeanZBB);
+        }
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+        showToast(info);
     }
 }

@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
@@ -24,6 +25,7 @@ import io.bcaas.exchange.ui.fragment.SellFragment;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
 import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.PaginationVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -98,6 +100,8 @@ public class MainActivity extends BaseActivity
         exchangeBean.setCurrency("BTC");
         exchangeBean.setPriceCurrency("8");
         mainPresenter.getCurrencyUSDPrice(exchangeBean);
+        /*获取账户资讯*/
+        mainPresenter.getAccountSecurity();
         /*获取账户所有币种余额*/
         mainPresenter.getAllBalance();
 
@@ -310,4 +314,14 @@ public class MainActivity extends BaseActivity
         }
     };
 
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+        LogTool.d(TAG, "getAccountSecuritySuccess:" + memberVO);
+
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+        LogTool.d(TAG, "getAccountSecurityFailure:" + info);
+    }
 }

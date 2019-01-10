@@ -5,7 +5,7 @@ package io.bcaas.exchange.ui.contracts;
  * @since 2018/12/21
  */
 public interface RegisterContract {
-    interface View {
+    interface View extends BaseContract{
         void registerSuccess(String info);
 
         void registerFailure(String info);

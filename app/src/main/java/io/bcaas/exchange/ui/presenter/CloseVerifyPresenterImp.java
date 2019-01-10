@@ -22,79 +22,16 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2019/1/8
  */
-public class CloseVerifyPresenterImp implements CloseVerifyCodeContract.Presenter {
+public class CloseVerifyPresenterImp extends AccountSecurityPresenterImp implements CloseVerifyCodeContract.Presenter {
 
     private String TAG = CloseVerifyPresenterImp.class.getSimpleName();
     private CloseVerifyCodeContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
 
     public CloseVerifyPresenterImp(CloseVerifyCodeContract.View view) {
-        super();
+        super(view);
         this.view = view;
         safetyCenterInteractor = new SafetyCenterInteractor();
-    }
-
-    @Override
-    public void getAccountSecurity() {
-        RequestJson requestJson = new RequestJson();
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
-        LoginInfoVO loginInfoVO = new LoginInfoVO();
-        loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setMemberVO(memberVO);
-        requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, requestJson);
-        safetyCenterInteractor.getAccountSecurity(GsonTool.beanToRequestBody(requestJson))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResponseJson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
-                        if (responseJson == null) {
-                            view.getAccountSecurityFailure(MessageConstants.EMPTY);
-                            return;
-                        }
-                        boolean isSuccess = responseJson.isSuccess();
-                        if (isSuccess) {
-                            MemberVO memberVOResponse = responseJson.getMemberVO();
-                            if (memberVOResponse != null) {
-                                // TODO: 2019/1/8 是否需要将这些参数存储起来
-                                view.getAccountSecuritySuccess(memberVOResponse);
-                            } else {
-                                view.getAccountSecurityFailure(MessageConstants.EMPTY);
-
-                            }
-                        } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.getAccountSecurityFailure(responseJson.getMessage());
-                            } else {
-                                view.getAccountSecurityFailure(MessageConstants.EMPTY);
-
-                            }
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogTool.e(TAG, e.getMessage());
-                        view.getAccountSecurityFailure(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 
     /**

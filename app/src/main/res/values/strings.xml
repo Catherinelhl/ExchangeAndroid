@@ -124,5 +124,6 @@
     <string name="private_key_str">密钥:</string>
     <string name="format_ss" formatted="false">%s%s</string>
     <string name="please_input_verify_code">请输入验证码</string>
+    <string name="format_sss" formatted="false">%s%s %s</string>
 
 </resources>

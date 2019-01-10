@@ -29,6 +29,7 @@ import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
@@ -42,7 +43,7 @@ import java.util.Locale;
  * @since 2018/12/4
  * 所有Phone's Activity 的基類
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements BaseContract {
     private Unbinder unbinder;
     protected Context context;
     protected Activity activity;
@@ -311,5 +312,30 @@ public abstract class BaseActivity extends AppCompatActivity {
         //设置layout在PopupWindow中显示的位置
         listPop.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         setBackgroundAlpha(0.7f);
+    }
+
+    public boolean checkActivityState() {
+        return activity != null && !activity.isFinishing();
+    }
+
+    @Override
+    public void showLoading() {
+        if (!checkActivityState()) {
+            return;
+        }
+        hideLoading();
+        bcaasLoadingDialog = new BcaasLoadingDialog(this);
+        bcaasLoadingDialog.setProgressBarColor(getResources().getColor(R.color.orange_FC9003));
+        bcaasLoadingDialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        if (bcaasLoadingDialog != null) {
+            bcaasLoadingDialog.dismiss();
+            bcaasLoadingDialog.cancel();
+            bcaasLoadingDialog = null;
+
+        }
     }
 }

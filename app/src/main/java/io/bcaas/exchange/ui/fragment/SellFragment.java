@@ -130,10 +130,15 @@ public class SellFragment extends BaseFragment {
         @Override
         public <T> void onItemSelect(T type, String from) {
 
+            if (type==null){
+                return;
+            }
+            SellDataBean sellDataBean=(SellDataBean) type;
             Intent intent = new Intent();
-//                        Bundle bundle=new Bundle();
-//                        bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL,buyDataBean);
-//                        intent.putExtras(bundle);
+            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_UID,sellDataBean.getCurrency());
+            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID,sellDataBean.getExchangeCurrency());
+            intent.putExtra(Constants.KeyMaps.SELL_AMOUNT,sellDataBean.getSalableBalance());
+            intent.putExtra(Constants.KeyMaps.SELL_UNIT_PRICE,sellDataBean.getExchangeRate());
             intent.setClass(context, SellDetailActivity.class);
             startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
         }

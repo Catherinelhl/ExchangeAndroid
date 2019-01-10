@@ -2034,6 +2034,7 @@ string fee
 string forget_password
 string format_ss
 string format_ssd
+string format_sss
 string freeze
 string fund_password
 string fund_password_rule

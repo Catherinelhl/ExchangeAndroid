@@ -8,6 +8,7 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.MainContract;
 import io.bcaas.exchange.ui.interactor.MainInteractor;
+import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -21,15 +22,17 @@ import java.util.List;
  * @since 2018/12/21
  * 注册
  */
-public class MainPresenterImp implements MainContract.Presenter {
+public class MainPresenterImp extends AccountSecurityPresenterImp implements MainContract.Presenter {
     private String TAG = MainPresenterImp.class.getSimpleName();
     private MainContract.View view;
     private MainInteractor mainInteractor;
+    private SafetyCenterInteractor safetyCenterInteractor;
 
     public MainPresenterImp(MainContract.View view) {
-        super();
+        super(view);
         this.view = view;
         mainInteractor = new MainInteractor();
+        safetyCenterInteractor = new SafetyCenterInteractor();
     }
 
     @Override
@@ -155,5 +158,6 @@ public class MainPresenterImp implements MainContract.Presenter {
                     }
                 });
     }
+
 
 }

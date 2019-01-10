@@ -12,8 +12,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.contracts.FundPasswordContract;
-import io.bcaas.exchange.ui.presenter.FundPasswordPresenterImp;
+import io.bcaas.exchange.ui.contracts.SetFundPasswordContract;
+import io.bcaas.exchange.ui.presenter.SetFundPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/28
  * 「设置资金密码」
  */
-public class SetFundPasswordActivity extends BaseActivity implements FundPasswordContract.View {
+public class SetFundPasswordActivity extends BaseActivity implements SetFundPasswordContract.View {
 
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -34,13 +34,13 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    EditTextWithAction etFundPassword;
     @BindView(R.id.etwa_confirm_fund_password)
-    EditTextWithAction etwaConfirmFundPassword;
+    EditTextWithAction etConfirmFundPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
-    private FundPasswordContract.Presenter presenter;
+    private SetFundPasswordContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -60,7 +60,7 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
 
     @Override
     public void initData() {
-        presenter = new FundPasswordPresenterImp(this);
+        presenter = new SetFundPasswordPresenterImp(this);
     }
 
     @Override
@@ -91,28 +91,30 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
-
                     }
 
                     @Override
                     public void onNext(Object o) {
 
                         //1：判断密码非空
-                        String password = etwaFundPassword.getContent();
+                        String password = etFundPassword.getContent();
                         if (StringTool.isEmpty(password)) {
                             showToast("请输入资金密码！");
                             return;
                         }
                         //2：判断确认新密码非空
-                        String confirmPassword = etwaConfirmFundPassword.getContent();
+                        String confirmPassword = etConfirmFundPassword.getContent();
                         if (StringTool.isEmpty(confirmPassword)) {
                             showToast("请输入确认密码！");
                             return;
                         }
-
-                        presenter.setFundPassword(password);
-
+                        //3：判断密码和确认密码是否一致
+                        if (!StringTool.equals(password, confirmPassword)) {
+                            showToast("两次密码输入不一致，请确认！");
+                            return;
+                        }
+                        //4:请求接口，上传资金密码
+                        presenter.securityTxPassword(password);
                     }
 
                     @Override
@@ -135,12 +137,13 @@ public class SetFundPasswordActivity extends BaseActivity implements FundPasswor
     }
 
     @Override
-    public void setFundPasswordSuccess() {
+    public void securityTxPasswordSuccess(String info) {
         setResult(false);
     }
 
     @Override
-    public void setFundPasswordFailure() {
+    public void securityTxPasswordFailure(String info) {
+        showToast(info);
 
     }
 }
