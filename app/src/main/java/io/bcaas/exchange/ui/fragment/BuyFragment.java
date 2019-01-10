@@ -9,10 +9,12 @@ import android.view.View;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.contracts.BuyContract;
@@ -21,6 +23,8 @@ import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
 import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.PaginationVO;
 
 import java.time.LocalDate;
@@ -80,92 +84,113 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
             return;
         }
         tabLayout.removeTabLayout();
-        for (int i = 0; i < 3; i++) {
-            BuyDataBean buyDataBean = new BuyDataBean();
-            buyDataBean.setPersonName("Alice");
-            buyDataBean.setBuyMethod("支付方式ETH");
-            buyDataBean.setPrice("2345.02387000 ETH");
-            buyDataBean.setNumber("1.00000000 BTC");
-            buyDataBean.setTotalAccount("2345.02387000 ETH");
-            buyDataBean.setFee("0.00001 ETH");
-            buyDataBeansETH.add(buyDataBean);
+        //得到当前的所有钱包信息
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            int size = memberKeyVOList.size();
+            //加载数据
+            for (int i = 0; i < size; i++) {
+                //添加标题
+                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
+                if (memberKeyVO != null) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String name = currencyListVO.getEnName();
+                        tabLayout.addTab(name, i);
 
-
-            BuyDataBean buyDataBeanBTC = new BuyDataBean();
-            buyDataBeanBTC.setPersonName("Catherine");
-            buyDataBeanBTC.setBuyMethod("支付方式BTC");
-            buyDataBeanBTC.setPrice("345.02387000 BTC");
-            buyDataBeanBTC.setNumber("1.00000000 ETH");
-            buyDataBeanBTC.setTotalAccount("345.02387000 BTC");
-            buyDataBeanBTC.setFee("0.00001 BTC");
-            buyDataBeansBTC.add(buyDataBeanBTC);
-
-
-            BuyDataBean buyDataBeanZBB = new BuyDataBean();
-            buyDataBeanZBB.setPersonName("Lucifer");
-            buyDataBeanZBB.setBuyMethod("支付方式ZBB");
-            buyDataBeanZBB.setPrice("45.02387000 ZBB");
-            buyDataBeanZBB.setNumber("1.00000000 BTC");
-            buyDataBeanZBB.setTotalAccount("45.02387000 ZBB");
-            buyDataBeanZBB.setFee("0.00001 ZBB");
-            buyDataBeansZBB.add(buyDataBeanZBB);
-            tabLayout.addTab(dataGenerationRegister.getTabTopTitle(i), i);
-        }
-        buyViewOne = new BuyView(getContext());
-        buyViewOne.refreshData(buyDataBeansETH);
-        buyViewOne.setOnItemSelectListener(onItemSelectListener);
-        views.add(buyViewOne);
-
-        buyViewTwo = new BuyView(getContext());
-        buyViewTwo.refreshData(buyDataBeansETH);
-        buyViewTwo.setOnItemSelectListener(onItemSelectListener);
-        views.add(buyViewTwo);
-
-
-        buyViewThree = new BuyView(getContext());
-        buyViewThree.refreshData(buyDataBeansETH);
-        buyViewThree.setOnItemSelectListener(onItemSelectListener);
-        views.add(buyViewThree);
-
-        tabViewAdapter = new TabViewAdapter(views, "0");
-        viewPager.setAdapter(tabViewAdapter);
-        viewPager.setCurrentItem(0);
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
-        tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                currentPosition = tab.getPosition();
-                switch (currentPosition) {
-                    case 0:
-                        buyViewOne.refreshData(buyDataBeansETH);
-                        break;
-                    case 1:
-                        buyViewTwo.refreshData(buyDataBeansBTC);
-
-                        break;
-                    case 2:
-                        buyViewThree.refreshData(buyDataBeansZBB);
-                        break;
+                    }
                 }
+                // 添加相对应的数据
+                BuyDataBean buyDataBean = new BuyDataBean();
+                buyDataBean.setPersonName("Alice");
+                buyDataBean.setBuyMethod("支付方式ETH");
+                buyDataBean.setPrice("2345.02387000 ETH");
+                buyDataBean.setNumber("1.00000000 BTC");
+                buyDataBean.setTotalAccount("2345.02387000 ETH");
+                buyDataBean.setFee("0.00001 ETH");
+                buyDataBeansETH.add(buyDataBean);
+
+
+                BuyDataBean buyDataBeanBTC = new BuyDataBean();
+                buyDataBeanBTC.setPersonName("Catherine");
+                buyDataBeanBTC.setBuyMethod("支付方式BTC");
+                buyDataBeanBTC.setPrice("345.02387000 BTC");
+                buyDataBeanBTC.setNumber("1.00000000 ETH");
+                buyDataBeanBTC.setTotalAccount("345.02387000 BTC");
+                buyDataBeanBTC.setFee("0.00001 BTC");
+                buyDataBeansBTC.add(buyDataBeanBTC);
+
+
+                BuyDataBean buyDataBeanZBB = new BuyDataBean();
+                buyDataBeanZBB.setPersonName("Lucifer");
+                buyDataBeanZBB.setBuyMethod("支付方式ZBB");
+                buyDataBeanZBB.setPrice("45.02387000 ZBB");
+                buyDataBeanZBB.setNumber("1.00000000 BTC");
+                buyDataBeanZBB.setTotalAccount("45.02387000 ZBB");
+                buyDataBeanZBB.setFee("0.00001 ZBB");
+                buyDataBeansZBB.add(buyDataBeanZBB);
+
+
             }
+            buyViewOne = new BuyView(getContext());
+            buyViewOne.refreshData(buyDataBeansETH);
+            buyViewOne.setOnItemSelectListener(onItemSelectListener);
+            views.add(buyViewOne);
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            buyViewTwo = new BuyView(getContext());
+            buyViewTwo.refreshData(buyDataBeansETH);
+            buyViewTwo.setOnItemSelectListener(onItemSelectListener);
+            views.add(buyViewTwo);
 
+
+            buyViewThree = new BuyView(getContext());
+            buyViewThree.refreshData(buyDataBeansETH);
+            buyViewThree.setOnItemSelectListener(onItemSelectListener);
+            views.add(buyViewThree);
+
+            tabViewAdapter = new TabViewAdapter(views, "0");
+            viewPager.setAdapter(tabViewAdapter);
+            viewPager.setCurrentItem(0);
+            viewPager.setOffscreenPageLimit(size > 3 ? 3 : size);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
+            tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    currentPosition = tab.getPosition();
+                    switch (currentPosition) {
+                        case 0:
+                            buyViewOne.refreshData(buyDataBeansETH);
+                            break;
+                        case 1:
+                            buyViewTwo.refreshData(buyDataBeansBTC);
+
+                            break;
+                        case 2:
+                            buyViewThree.refreshData(buyDataBeansZBB);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+
+                }
+            });
+            tabLayout.resetSelectedTab(0);
+
+            if (presenter != null) {
+                // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
+                presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
             }
+        } else {
+            //不加载数据
+        }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        tabLayout.resetSelectedTab(0);
-
-        // TODO: 2019/1/10 接口获取所有的币种
-//        if (presenter != null) {
-//            presenter.getOrderList();
-//        }
     }
 
     @Override
@@ -219,7 +244,11 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
     public void requestForSaleOrderList(String paymentCurrencyUid) {
         LogTool.d(TAG, "requestForSaleOrderList：" + paymentCurrencyUid);
         if (presenter != null) {
-            presenter.getOrderList(dataGenerationRegister.getTabTopTitle(currentPosition), paymentCurrencyUid, nextObjectId);
+            List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+            if (ListTool.noEmpty(memberKeyVOList)) {
+                presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(), paymentCurrencyUid, nextObjectId);
+
+            }
         }
     }
 
@@ -234,5 +263,27 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
     @Override
     public void getOrderListFailure(String info) {
         showToast(info);
+    }
+
+    //刷新标题
+    public void RefreshTitle() {
+        //得到当前的所有钱包信息
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            int size = memberKeyVOList.size();
+            //加载数据
+            for (int i = 0; i < size; i++) {
+                //添加标题
+                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
+                if (memberKeyVO != null) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String name = currencyListVO.getEnName();
+                        tabLayout.addTab(name, i);
+
+                    }
+                }
+            }
+        }
     }
 }

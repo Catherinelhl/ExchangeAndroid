@@ -24,6 +24,7 @@ import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
 import io.bcaas.exchange.view.pop.SideSlipPop;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.PaginationVO;
@@ -63,6 +64,7 @@ public class MainActivity extends BaseActivity
 
     //声明侧滑栏
     private SideSlipPop sideSlipPop;
+
 
     @Override
     public int getContentView() {
@@ -150,6 +152,8 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
+                        /*获取账户所有币种余额*/
+                        mainPresenter.getAllBalance();
                     }
 
                     @Override
@@ -295,7 +299,17 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-
+        if (currentFragment instanceof BuyFragment) {
+            //刷新标题
+            ((BuyFragment) currentFragment).resetView();
+            //刷新侧滑栏的值
+            if (sideSlipPop!=null){
+                sideSlipPop.setData();
+            }
+        } else if (currentFragment instanceof SellFragment) {
+            //刷新标题
+            ((SellFragment) currentFragment).resetView();
+        }
     }
 
     @Override
@@ -310,9 +324,16 @@ public class MainActivity extends BaseActivity
             switch (from) {
                 case Constants.From.SIDE_SLIP:
                     //通知BuyFragment 根据获取到的type过滤数据
-                    String currentMethod = (String) type;
+                    MemberKeyVO memberKeyVO = (MemberKeyVO) type;
+                    if (memberKeyVO == null) {
+                        return;
+                    }
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO == null) {
+                        return;
+                    }
                     if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestForSaleOrderList(currentMethod);
+                        ((BuyFragment) currentFragment).requestForSaleOrderList(currencyListVO.getCurrencyUid());
                     }
                     break;
                 default:

@@ -73,6 +73,7 @@ public class Constants {
         public static final String LOCAL_DEFAULT_IP = "";
 
 
+        public static final String ALL_FOR_SALE_ORDER_LIST = "-1";//查询所有的订单信息
     }
 
     /*请求code*/

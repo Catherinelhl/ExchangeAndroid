@@ -27,6 +27,7 @@ import java.util.List;
  * 「订单」页面视图
  */
 public class OrderView extends LinearLayout {
+    private String TAG = OrderView.class.getSimpleName();
     @BindView(R.id.rv_order_data)
     RecyclerView rvOrderData;
     @BindView(R.id.srl_order_data)

@@ -10,6 +10,8 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.device.DensityTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;
 
@@ -20,13 +22,13 @@ import java.util.List;
  */
 public class SidesSlipAdapter extends BaseAdapter {
     private Context context;
-    private List<String> list;
+    private List<MemberKeyVO> memberKeyVOList;
     private OnItemSelectListener onItemSelectListener;
     private int currentPosition = -1;
 
-    public SidesSlipAdapter(Context c, List<String> list) {
+    public SidesSlipAdapter(Context c, List<MemberKeyVO> memberKeyVOList) {
         context = c;
-        this.list = list;
+        this.memberKeyVOList = memberKeyVOList;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -34,11 +36,11 @@ public class SidesSlipAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return ListTool.isEmpty(list) ? 0 : list.size();
+        return ListTool.isEmpty(memberKeyVOList) ? 0 : memberKeyVOList.size();
     }
 
-    public String getItem(int position) {
-        return list.get(position);
+    public MemberKeyVO getItem(int position) {
+        return memberKeyVOList.get(position);
     }
 
     public long getItemId(int position) {
@@ -58,18 +60,27 @@ public class SidesSlipAdapter extends BaseAdapter {
         }
         button.setBackgroundResource(getBg(position));
         button.setTextColor(getColor(position));
-        button.setText(list.get(position));
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentPosition = position;
-                notifyDataSetChanged();
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(list.get(position), Constants.From.SIDE_SLIP);
-                }
+        MemberKeyVO memberKeyVO = memberKeyVOList.get(position);
+        if (memberKeyVO != null) {
+            CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+            if (currencyListVO != null) {
+                button.setText(currencyListVO.getEnName());
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        currentPosition = position;
+                        notifyDataSetChanged();
+                        if (onItemSelectListener != null) {
+                            onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP);
+                        }
+                    }
+                });
+                return button;
             }
-        });
-        return button;
+
+        }
+        return null;
+
     }
 
     private int getBg(int position) {

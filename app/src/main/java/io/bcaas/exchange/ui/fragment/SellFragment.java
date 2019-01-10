@@ -9,14 +9,18 @@ import android.view.View;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.ui.view.SellView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,9 +67,8 @@ public class SellFragment extends BaseFragment {
             return;
         }
         tabLayout.removeTabLayout();
-        tabLayout.addTab(dataGenerationRegister.getTabTopTitle(0),0);
-        tabLayout.addTab(dataGenerationRegister.getTabTopTitle(1),1);
-        tabLayout.addTab(dataGenerationRegister.getTabTopTitle(2),2);
+        //得到当前的所有钱包信息
+        RefreshTitle();
         sellDataBeanETH = new SellDataBean("ETH", "BTC", "9.234314", "4235.234234");
         sellDataBeanBTC = new SellDataBean("BTC", "ETH", "8.234314", "3235.234234");
         sellDataBeanZBB = new SellDataBean("ZBB", "BTC", "7.234314", "5.234234");
@@ -130,15 +133,15 @@ public class SellFragment extends BaseFragment {
         @Override
         public <T> void onItemSelect(T type, String from) {
 
-            if (type==null){
+            if (type == null) {
                 return;
             }
-            SellDataBean sellDataBean=(SellDataBean) type;
+            SellDataBean sellDataBean = (SellDataBean) type;
             Intent intent = new Intent();
-            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_UID,sellDataBean.getCurrency());
-            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID,sellDataBean.getExchangeCurrency());
-            intent.putExtra(Constants.KeyMaps.SELL_AMOUNT,sellDataBean.getSalableBalance());
-            intent.putExtra(Constants.KeyMaps.SELL_UNIT_PRICE,sellDataBean.getExchangeRate());
+            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_UID, sellDataBean.getCurrency());
+            intent.putExtra(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID, sellDataBean.getExchangeCurrency());
+            intent.putExtra(Constants.KeyMaps.SELL_AMOUNT, sellDataBean.getSalableBalance());
+            intent.putExtra(Constants.KeyMaps.SELL_UNIT_PRICE, sellDataBean.getExchangeRate());
             intent.setClass(context, SellDetailActivity.class);
             startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
         }
@@ -151,4 +154,24 @@ public class SellFragment extends BaseFragment {
         initTopTabData();
     }
 
+    public void RefreshTitle() {
+        //得到当前的所有钱包信息
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            int size = memberKeyVOList.size();
+            //加载数据
+            for (int i = 0; i < size; i++) {
+                //添加标题
+                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
+                if (memberKeyVO != null) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String name = currencyListVO.getEnName();
+                        tabLayout.addTab(name, i);
+
+                    }
+                }
+            }
+        }
+    }
 }
