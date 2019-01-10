@@ -14,10 +14,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
 import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
-import io.bcaas.exchange.bean.OrderRechargeBean;
-import io.bcaas.exchange.bean.OrderTransactionBean;
-import io.bcaas.exchange.bean.OrderWithDrawBean;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
 
@@ -81,9 +79,9 @@ public class OrderView extends LinearLayout {
         }
     };
 
-    public void setOrderRechargeAdapter(List<OrderRechargeBean> orderRechargeBeans) {
+    public void setOrderRechargeAdapter(List<MemberOrderVO> memberOrderVOS) {
         if (orderRechargeAdapter == null) {
-            orderRechargeAdapter = new OrderRechargeAdapter(getContext(), orderRechargeBeans);
+            orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
             orderRechargeAdapter.setOnItemSelectListener(onItemSelectListener);
             rvOrderData.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
@@ -92,9 +90,9 @@ public class OrderView extends LinearLayout {
         rvOrderData.setAdapter(orderRechargeAdapter);
     }
 
-    public void setOrderWithDrawAdapter(List<OrderWithDrawBean> orderWithDrawBeans) {
+    public void setOrderWithDrawAdapter(List<MemberOrderVO> memberOrderVOS) {
         if (orderWithdrawAdapter == null) {
-            orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), orderWithDrawBeans);
+            orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
             orderWithdrawAdapter.setOnItemSelectListener(onItemSelectListener);
             rvOrderData.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
@@ -103,7 +101,7 @@ public class OrderView extends LinearLayout {
         rvOrderData.setAdapter(orderWithdrawAdapter);
     }
 
-    public void setOrderTransactionAdapter(List<OrderTransactionBean> orderTransactionBeans) {
+    public void setOrderTransactionAdapter(List<MemberOrderVO> orderTransactionBeans) {
         if (orderTransactionAdapter == null) {
             orderTransactionAdapter = new OrderTransactionAdapter(getContext(), orderTransactionBeans);
             orderTransactionAdapter.setOnItemSelectListener(onItemSelectListener);

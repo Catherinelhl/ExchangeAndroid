@@ -27,4 +27,8 @@ public class FilePathTool {
             return Constants.FilePath.COUNTRY_CODE + File.separator + Constants.FilePath.EN_US_COUNTRY_CODE;
         }
     }
+
+    public static String getJsonFileContent(){
+        return "json" + File.separator + "getOrder";
+    }
 }

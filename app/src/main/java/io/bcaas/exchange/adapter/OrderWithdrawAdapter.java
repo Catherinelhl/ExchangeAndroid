@@ -8,11 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.OrderWithDrawBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
 
@@ -27,13 +26,13 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
 
     private Context context;
-    private List<OrderWithDrawBean> orderWithDrawBeans;
+    private List<MemberOrderVO> memberOrderVOS;
     private OnItemSelectListener onItemSelectListener;
 
-    public OrderWithdrawAdapter(Context context, List<OrderWithDrawBean> orderWithDrawBeans) {
+    public OrderWithdrawAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
-        this.orderWithDrawBeans = orderWithDrawBeans;
+        this.memberOrderVOS = memberOrderVOS;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -49,24 +48,25 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= orderWithDrawBeans.size()) {
+        if (i >= memberOrderVOS.size()) {
             return;
         }
-        OrderWithDrawBean orderWithDrawBean = orderWithDrawBeans.get(i);
-        if (orderWithDrawBean == null) {
+        MemberOrderVO memberOrderVO = memberOrderVOS.get(i);
+        if (memberOrderVO == null) {
             return;
         }
-        viewHolder.tvWithdrawType.setText(orderWithDrawBean.getOrderType());
-        viewHolder.tvWithdrawTime.setText(orderWithDrawBean.getOrderTime());
-        viewHolder.tvWithdrawStatus.setText(orderWithDrawBean.getOrderStatus());
-        viewHolder.tvPayAccount.setText(orderWithDrawBean.getNumber());
-        viewHolder.tvWithdrawAddress.setText(orderWithDrawBean.getAddress());
-        viewHolder.tvFee.setText(orderWithDrawBean.getFee());
+        String enName = memberOrderVO.getCurrencyListVO().getEnName();
+        String paymentEnName = memberOrderVO.getPaymentCurrencyUid().getEnName();
+        viewHolder.tvWithdrawType.setText(String.valueOf(memberOrderVO.getType()));
+        viewHolder.tvWithdrawTime.setText(memberOrderVO.getCreateTime());
+        viewHolder.tvWithdrawStatus.setText(String.valueOf(memberOrderVO.getStatus()));
+        viewHolder.tvPayAccount.setText(memberOrderVO.getPrice() + "\t" + paymentEnName);
+        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + enName);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(orderWithDrawBean, Constants.From.ORDER_WITHDRAW);
+                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_WITHDRAW);
                 }
             }
         });
@@ -74,7 +74,7 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(orderWithDrawBeans) ? 0 : orderWithDrawBeans.size();
+        return ListTool.isEmpty(memberOrderVOS) ? 0 : memberOrderVOS.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

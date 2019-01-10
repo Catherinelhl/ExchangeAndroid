@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.OrderRechargeBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
 
@@ -26,13 +26,13 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
 
     private Context context;
-    private List<OrderRechargeBean> orderRechargeBeans;
+    private List<MemberOrderVO> memberOrderVOS;
     private OnItemSelectListener onItemSelectListener;
 
-    public OrderRechargeAdapter(Context context, List<OrderRechargeBean> orderRechargeBeans) {
+    public OrderRechargeAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
-        this.orderRechargeBeans = orderRechargeBeans;
+        this.memberOrderVOS = memberOrderVOS;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -48,23 +48,23 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= orderRechargeBeans.size()) {
+        if (i >= memberOrderVOS.size()) {
             return;
         }
-        OrderRechargeBean orderRechargeBean = orderRechargeBeans.get(i);
-        if (orderRechargeBean == null) {
+        MemberOrderVO memberOrderVO = memberOrderVOS.get(i);
+        if (memberOrderVO == null) {
             return;
         }
-        viewHolder.tvRechargeType.setText("充值 BTC");
-        viewHolder.tvRechargeTime.setText("2018/12/12");
-        viewHolder.tvRechargeStatus.setText("失败");
-        viewHolder.tvNumber.setText("234.23434254 BTC");
+        viewHolder.tvRechargeType.setText("充值" + "\t" + memberOrderVO.getCurrencyListVO().getEnName());
+        viewHolder.tvRechargeTime.setText(memberOrderVO.getCreateTime());
+        viewHolder.tvRechargeStatus.setText(String.valueOf(memberOrderVO.getStatus()));
+        viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "\t" + memberOrderVO.getCurrencyListVO().getEnName());
         viewHolder.tvRechargeAddress.setText("sadkfjnaskdjfnaksjdnfkasdjnkf");
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(orderRechargeBean,  Constants.From.ORDER_RECHARGE);
+                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_RECHARGE);
                 }
             }
         });
@@ -72,7 +72,7 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(orderRechargeBeans) ? 0 : orderRechargeBeans.size();
+        return ListTool.isEmpty(memberOrderVOS) ? 0 : memberOrderVOS.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

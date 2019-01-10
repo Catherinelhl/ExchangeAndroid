@@ -5,23 +5,26 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import butterknife.BindView;
+import com.google.gson.reflect.TypeToken;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseFragment;
-import io.bcaas.exchange.bean.OrderRechargeBean;
-import io.bcaas.exchange.bean.OrderTransactionBean;
-import io.bcaas.exchange.bean.OrderWithDrawBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.FilePathTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
+import io.bcaas.exchange.vo.ResponseJson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ import java.util.List;
  * @since 2018/12/10
  * <p>
  * 訂單
+ * 点击此页面，展现第一个页面的交易信息；然后点击tapTitle，进行网络的请求
  */
 public class OrderFragment extends BaseFragment implements OrderRecordContract.View {
 
@@ -45,9 +49,9 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     private OrderView orderViewOne, orderViewTwo, orderViewThree;
 
 
-    private List<OrderTransactionBean> orderTransactionBeans;
-    private List<OrderRechargeBean> orderRechargeBeans;
-    private List<OrderWithDrawBean> orderWithDrawBeans;
+    private List<MemberOrderVO> orderTransactionBeans;
+    private List<MemberOrderVO> orderRechargeBeans;
+    private List<MemberOrderVO> orderWithDrawBeans;
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
@@ -89,40 +93,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         for (int i = 0; i < 3; i++) {
             //显示标题
             tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
-            //初始化订单「交易」页面数据
-            OrderTransactionBean orderTransactionBean = new OrderTransactionBean();
-            orderTransactionBean.setOrderType("出售 BTC");
-            orderTransactionBean.setOrderTime("2018/12/12");
-            orderTransactionBean.setOrderStatus("待出售");
-            orderTransactionBean.setOutCome("2.234251 BTC");
-            orderTransactionBean.setInCome("234.2341354213 ETH");
-            orderTransactionBean.setFee("0.001 ETH");
-            orderTransactionBeans.add(orderTransactionBean);
-
-            //初始化订单「充值」页面数据
-            OrderRechargeBean orderRechargeBean = new OrderRechargeBean();
-            orderRechargeBean.setOrderType("充值 BTC");
-            orderRechargeBean.setOrderTime("2018/12/23");
-            orderRechargeBean.setOrderStatus("失败");
-            orderRechargeBean.setNumber("123.2343412 BTC");
-            orderRechargeBean.setAddress("0xajsdnfkjdnfkjsdnfkjasdnfklsanfmlkasdf");
-            orderRechargeBean.setCurrency("BTC");
-            orderRechargeBeans.add(orderRechargeBean);
-
-            //初始化订单「提现」页面数据
-            OrderWithDrawBean orderWithDrawBean = new OrderWithDrawBean();
-            orderWithDrawBean.setOrderType("提现 BTC");
-            orderWithDrawBean.setOrderTime("2018/12/21");
-            orderWithDrawBean.setOrderStatus("待验证");
-            orderWithDrawBean.setNumber("123.3241234123 BTC");
-            orderWithDrawBean.setAddress("0xjshdfjfdbjhabfjhasdbfjkhabsdkfj");
-            orderWithDrawBean.setFee("0.001 BTC");
-            orderWithDrawBean.setCurrency("BTC");
-            orderWithDrawBeans.add(orderWithDrawBean);
-
         }
-
-
         orderViewOne = new OrderView(getContext());
         orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
         orderViewOne.setOnItemSelectListener(onItemSelectListener);
@@ -192,16 +163,22 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             if (type == null) {
                 return;
             }
-            long memberOrderUid = (Long) type;
-            switch (from) {
-                case Constants.From.ORDER_TRANSACTION:
-                    presenter.cancelOrder(memberOrderUid);
-                    break;
-                case Constants.From.ORDER_RECHARGE:
-                    break;
-                case Constants.From.ORDER_WITHDRAW:
-                    break;
+            if (type instanceof Long) {
+                long memberOrderUid = (Long) type;
+                switch (from) {
+                    case Constants.From.ORDER_TRANSACTION:
+                        presenter.cancelOrder(memberOrderUid);
+                        break;
+                    case Constants.From.ORDER_RECHARGE:
+                        presenter.cancelOrder(memberOrderUid);
+                        break;
+                    case Constants.From.ORDER_WITHDRAW:
+                        presenter.cancelOrder(memberOrderUid);
+                        break;
+                }
             }
+
+
         }
     };
 
@@ -231,18 +208,72 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         LogTool.d(TAG, "PaginationVO:" + paginationVO);
         if (paginationVO != null) {
             this.paginationVO = paginationVO;
+            //得到当前接口的页面信息
+            String nextObjectId = paginationVO.getNextObjectId();
+            int totalPageNumber = paginationVO.getTotalPageNumber();
+            long totalObjectNumber = paginationVO.getTotalObjectNumber();
             int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
-            switch (type) {
-                case Constants.OrderType.RECHARGE:
-                    nextObjectIdRecharge = paginationVO.getNextObjectId();
-                    break;
-                case Constants.OrderType.WITHDRAW:
-                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
-                    break;
-                case Constants.OrderType.TX:
-                    nextObjectIdTx = paginationVO.getNextObjectId();
-                    break;
+            LogTool.d(TAG, "当前的Type为：" + type);
+
+            List<Object> objects = paginationVO.getObjectList();
+            if (ListTool.isEmpty(objects)) {
+                // TODO: 2019/1/11 暂时解析本地数据
+                String json = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent());
+                if (StringTool.notEmpty(json)) {
+                    ResponseJson responseJson = GsonTool.convert(json, ResponseJson.class);
+                    if (responseJson != null) {
+                        PaginationVO paginationVO1 = responseJson.getPaginationVO();
+                        if (paginationVO1 != null) {
+                            switch (type) {
+                                case Constants.OrderType.RECHARGE:
+                                    orderRechargeBeans = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                                    }.getType());
+                                    orderViewTwo.setOrderTransactionAdapter(orderRechargeBeans);
+                                    nextObjectIdRecharge = paginationVO.getNextObjectId();
+                                    break;
+                                case Constants.OrderType.WITHDRAW:
+                                    orderWithDrawBeans = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                                    }.getType());
+                                    orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
+                                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
+                                    break;
+                                case Constants.OrderType.TX:
+                                    orderTransactionBeans = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                                    }.getType());
+                                    orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
+                                    nextObjectIdTx = paginationVO.getNextObjectId();
+                                    break;
+                            }
+
+
+                        }
+                    }
+                }
+            }else{
+                switch (type) {
+                    case Constants.OrderType.RECHARGE:
+                        orderRechargeBeans = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                        }.getType());
+                        orderViewTwo.setOrderTransactionAdapter(orderRechargeBeans);
+                        nextObjectIdRecharge = paginationVO.getNextObjectId();
+                        break;
+                    case Constants.OrderType.WITHDRAW:
+                        orderWithDrawBeans = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                        }.getType());
+                        orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
+                        nextObjectIdWithDraw = paginationVO.getNextObjectId();
+                        break;
+                    case Constants.OrderType.TX:
+                        orderTransactionBeans = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                        }.getType());
+                        orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
+                        nextObjectIdTx = paginationVO.getNextObjectId();
+                        break;
+                }
             }
+
+
+
 
         }
     }

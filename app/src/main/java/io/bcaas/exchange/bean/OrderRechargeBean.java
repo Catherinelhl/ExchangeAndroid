@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @since 2018/12/21
  * 订单中的充值
  */
+
+@Deprecated
 public class OrderRechargeBean implements Serializable {
     private String orderStatus;
     private String orderType;

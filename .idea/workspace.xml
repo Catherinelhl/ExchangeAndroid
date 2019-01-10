@@ -28,63 +28,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/json/getOrder" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/drawerlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/drawerlayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/viewpager/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/viewpager/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/io/bcaas/exchange/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/io/bcaas/exchange/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/json/getAllBalance" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/json/getAllBalance" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/TabViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/TabViewAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/SellDataBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/SellDataBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/gson/JsonTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/gson/JsonTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/maker/DataGenerationRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/maker/DataGenerationRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/OrderRecordContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/OrderRecordContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderRechargeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderRechargeBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderTransactionBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderTransactionBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderWithDrawBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderWithDrawBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/file/FilePathTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/file/FilePathTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/AccountFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/AccountFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/TxInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/TxInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/OrderRecordPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/OrderRecordPresenterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -108,119 +74,95 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SellFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="86" column="17" lean-forward="true" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SellDetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="90" column="39" lean-forward="true" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
-              <folding>
-                <element signature="e#2850#2869#0" expanded="true" />
-                <element signature="e#3242#3300#0" expanded="true" />
-                <element signature="e#3465#3516#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SellContract.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SellContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SellPresenterImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="87" column="51" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_sell_detail.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="86" column="65" lean-forward="true" selection-start-line="86" selection-start-column="65" selection-end-line="86" selection-end-column="65" />
-              <folding>
-                <element signature="e#1424#1442#0" expanded="true" />
-                <element signature="e#5293#5305#0" expanded="true" />
-                <element signature="e#5366#5378#0" expanded="true" />
-                <element signature="e#8184#8212#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SellView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="82" column="70" selection-start-line="82" selection-start-column="70" selection-end-line="82" selection-end-column="70" />
-              <folding>
-                <element signature="e#2861#2910#0" expanded="true" />
-                <element signature="e#4062#4132#0" expanded="true" />
-                <element signature="e#8726#8769#0" expanded="true" />
-                <element signature="e#8771#8829#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_sell.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="149" column="57" lean-forward="true" selection-start-line="149" selection-start-column="57" selection-end-line="149" selection-end-column="57" />
-              <folding>
-                <element signature="e#8903#8940#0" expanded="true" />
-                <element signature="e#9103#9115#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OrderFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="195" column="27" lean-forward="true" selection-start-line="195" selection-start-column="27" selection-end-line="195" selection-end-column="27" />
+            <state relative-caret-position="348">
+              <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fragment_content.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="23" column="39" lean-forward="true" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderTransactionAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="63" column="88" selection-start-line="63" selection-start-column="88" selection-end-line="63" selection-end-column="88" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getOrder" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/json/getOrder">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderRechargeAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="61" column="54" lean-forward="true" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderWithdrawAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="60" column="81" selection-start-line="60" selection-start-column="81" selection-end-line="60" selection-end-column="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item_order_transaction_recycler.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_transaction_recycler.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+            <state relative-caret-position="154">
+              <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -240,12 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getArgs</find>
-      <find>verification/getAuthenticatorUrl</find>
-      <find>bind</find>
-      <find>please_input_verify_code</find>
-      <find>reset</find>
-      <find>member/resetPassword</find>
       <find>scivLoginPassword</find>
       <find>amount</find>
       <find>getU</find>
@@ -264,12 +200,18 @@
       <find>fragments</find>
       <find>buyViewTwo</find>
       <find>onIt</find>
-      <find>presenter</find>
       <find>currencyListVO</find>
       <find>prese</find>
       <find>tvFinalTxAmount</find>
       <find>etRate</find>
       <find>salableBalance</find>
+      <find>tv_account_name</find>
+      <find>presenter</find>
+      <find>getOrder</find>
+      <find>Pag</find>
+      <find>paymentCurrencyUid</find>
+      <find>OrderWithDrawBean</find>
+      <find>orderViewOne</find>
     </findStrings>
     <replaceStrings>
       <replace>black_333333</replace>
@@ -4148,17 +4090,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ResetPasswordActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/ForgetPasswordContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetPasswordPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ForgetPasswordActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ModifyLoginPasswordActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BuyContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/ForSaleOrderListContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BuyPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" />
@@ -4171,7 +4102,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/SidesSlipAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/pop/SideSlipPop.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/TabViewAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" />
@@ -4180,7 +4110,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/TxInteractor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/OrderRecordContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/OrderRecordPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/gson/JsonTool.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" />
@@ -4198,7 +4127,20 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/AccountFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/json/getOrder" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderDataBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/file/FilePathTool.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderTransactionBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderWithDrawBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderRechargeBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" />
       </list>
     </option>
   </component>
@@ -4257,6 +4199,24 @@
               <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="bcaas" type="462c0819:PsiDirectoryNode" />
               <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -4268,6 +4228,25 @@
               <item name="exchange" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
               <item name="decimal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="fragment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
@@ -4295,7 +4274,7 @@
     <property name="ExportApk.BuildType" value="release" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="OrderV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java&#10;Sel&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;sellF&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java&#10;Edi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;Ed&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;or&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java&#10;Data&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/maker/DataGenerationRegister.java&#10;Si&#9;PSI&#9;JAVA://io.bcaas.exchange.view.pop.SideSlipPop&#10;http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Or&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForSaleOrderListPresenterImp.java&#10;mainA&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;BuyF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.BuyFragment&#10;buy&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BuyDetailActivity&#10;Saf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java&#10;REset&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java&#10;reset&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_reset_password.xml&#10;Lo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.LoginActivity&#10;Http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;SetF&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;REc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java&#10;BAseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;MainP&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java&#10;htt&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;setF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SetFundPasswordActivity&#10;fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;JsonT&#9;PSI&#9;JAVA://io.bcaas.exchange.gson.JsonTool&#10;Login&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.LoginInfoVO&#10;res&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java&#10;REq&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java&#10;Mem&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.MemberVO&#10;Sys&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/SystemConstants.java&#10;Regi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.RegisterActivity&#10;Ver&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java&#10;sa&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SafetyCenterActivity&#10;REt&#9;PSI&#9;JAVA://io.bcaas.exchange.http.retrofit.RetrofitFactory&#10;ret&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.regex.RegexTool&#10;Bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java&#10;Ht&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Br&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java&#10;Sy&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.SystemConstants&#10;bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;Bra&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BrandActivity" />
+    <property name="SearchEverywhereHistoryKey" value="Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java&#10;Or&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java&#10;Acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;OrderV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java&#10;Sel&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;sellF&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java&#10;Edi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;Ed&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;or&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java&#10;Data&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/maker/DataGenerationRegister.java&#10;Si&#9;PSI&#9;JAVA://io.bcaas.exchange.view.pop.SideSlipPop&#10;http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForSaleOrderListPresenterImp.java&#10;mainA&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;BuyF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.BuyFragment&#10;buy&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BuyDetailActivity&#10;Saf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java&#10;REset&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java&#10;reset&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_reset_password.xml&#10;Lo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.LoginActivity&#10;Http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;SetF&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;REc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java&#10;BAseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;MainP&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java&#10;htt&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;setF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SetFundPasswordActivity&#10;fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;JsonT&#9;PSI&#9;JAVA://io.bcaas.exchange.gson.JsonTool&#10;Login&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.LoginInfoVO&#10;res&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java&#10;REq&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java&#10;Mem&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.MemberVO&#10;Sys&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/SystemConstants.java&#10;Regi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.RegisterActivity&#10;Ver&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java&#10;sa&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SafetyCenterActivity&#10;REt&#9;PSI&#9;JAVA://io.bcaas.exchange.http.retrofit.RetrofitFactory&#10;ret&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.regex.RegexTool&#10;Bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java&#10;Ht&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Br&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java&#10;Sy&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.SystemConstants" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -4309,11 +4288,11 @@
       <recent name="io.bcaas.exchange.activity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/assets/json" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/assets" />
       <recent name="$PROJECT_DIR$/app/src/main/assets/country_code" />
       <recent name="$PROJECT_DIR$/app/src/main/assets/countrycode" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="io.bcaas.exchange.tools.decimal" />
@@ -4500,27 +4479,28 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
+      <window_info id="Build Variants" order="2" sideWeight="0.13080895" side_tool="true" visible="true" weight="0.18641618" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
+      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.27736318" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.31840795" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.11318408" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
-      <window_info id="Build Variants" order="2" sideWeight="0.14285715" side_tool="true" visible="true" weight="0.18641618" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
       <window_info anchor="right" id="Preview" order="3" weight="0.308526" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.33706468" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32894737" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.08457711" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.4950249" />
       <window_info id="Captures" order="2" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85714287" visible="true" weight="0.18641618" />
-      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.31840795" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.86919105" visible="true" weight="0.18641618" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329602" />
       <window_info anchor="right" id="Gradle" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Fabric" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -4529,7 +4509,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329602" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.4477612" />
@@ -4574,171 +4553,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/WithDrawPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/WithDrawContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="126" column="55" selection-start-line="126" selection-start-column="55" selection-end-line="126" selection-end-column="55" />
-          <folding>
-            <element signature="e#2580#2581#0" expanded="true" />
-            <element signature="e#2596#2597#0" expanded="true" />
-            <element signature="e#4766#4767#0" expanded="true" />
-            <element signature="e#4797#4798#0" expanded="true" />
-            <element signature="e#4859#4860#0" expanded="true" />
-            <element signature="e#4891#4892#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="25921" column="18" selection-start-line="25921" selection-start-column="18" selection-end-line="25921" selection-end-column="18" />
-          <folding>
-            <element signature="e#1041530#1041531#0" expanded="true" />
-            <element signature="e#1041568#1041569#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/ForSaleOrderListContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="197" column="26" selection-start-line="197" selection-start-column="26" selection-end-line="197" selection-end-column="26" />
-          <folding>
-            <element signature="e#2825#2826#0" expanded="true" />
-            <element signature="e#2876#2877#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForSaleOrderListPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="167" column="5" selection-start-line="167" selection-start-column="5" selection-end-line="167" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/SidesSlipAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/MainContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="136" column="57" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="120" column="43" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
-          <folding>
-            <element signature="e#3509#3510#0" expanded="true" />
-            <element signature="e#3547#3548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/pop/SideSlipPop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="77" column="21" lean-forward="true" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/BuyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="81" column="33" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RechargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/TabViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#510#511#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
-            <element signature="e#1402#1403#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="100" column="61" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/maker/DataGenerationRegister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="584">
@@ -4771,13 +4585,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/OrderRecordPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4795,17 +4605,6 @@
           <folding>
             <element signature="e#2115#2116#0" expanded="true" />
             <element signature="e#2163#2164#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#969#970#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -5040,17 +4839,206 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_account.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="195" column="27" lean-forward="true" selection-start-line="195" selection-start-column="27" selection-end-line="195" selection-end-column="27" />
+        <state relative-caret-position="271">
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="50" />
+          <folding>
+            <element signature="e#817#829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/AccountFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-496">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/PaginationVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderDataBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/OrderRecordPresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="138" column="55" selection-start-line="138" selection-start-column="37" selection-end-line="138" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/file/FilePathTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding>
+            <element signature="e#997#998#0" expanded="true" />
+            <element signature="e#1079#1080#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2586">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/gson/GsonTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderTransactionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding>
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/SafetyCenterBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderWithDrawBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/OrderRechargeBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        <state relative-caret-position="154">
+          <caret line="92" column="16" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_transaction_recycler.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/fragment/OrderFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="65" column="35" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="23" column="39" lean-forward="true" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="61" column="54" lean-forward="true" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/json/getOrder">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="63" column="88" selection-start-line="63" selection-start-column="88" selection-end-line="63" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="60" column="81" selection-start-line="60" selection-start-column="81" selection-end-line="60" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.OrderTransactionBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
 
@@ -28,13 +27,13 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
 
 
     private Context context;
-    private List<OrderTransactionBean> orderTransactionBeans;
+    private List<MemberOrderVO> memberOrderVOS;
     private OnItemSelectListener onItemSelectListener;
 
-    public OrderTransactionAdapter(Context context, List<OrderTransactionBean> orderTransactionBeans) {
+    public OrderTransactionAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
-        this.orderTransactionBeans = orderTransactionBeans;
+        this.memberOrderVOS = memberOrderVOS;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -50,19 +49,21 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= orderTransactionBeans.size()) {
+        if (i >= memberOrderVOS.size()) {
             return;
         }
-        OrderTransactionBean orderTransactionBean = orderTransactionBeans.get(i);
-        if (orderTransactionBean == null) {
+        MemberOrderVO memberOrderVO = memberOrderVOS.get(i);
+        if (memberOrderVO == null) {
             return;
         }
-        viewHolder.tvTransactionType.setText(orderTransactionBean.getOrderType());
-        viewHolder.tvTransactionTime.setText(orderTransactionBean.getOrderTime());
-        viewHolder.tvTransactionStatus.setText(orderTransactionBean.getOrderStatus());
-        viewHolder.tvPayAccount.setText(orderTransactionBean.getOutCome());
-        viewHolder.tvTotalAccount.setText(orderTransactionBean.getInCome());
-        viewHolder.tvFee.setText(orderTransactionBean.getFee());
+        String enName = memberOrderVO.getCurrencyListVO().getEnName();
+        String paymentEnName = memberOrderVO.getPaymentCurrencyUid().getEnName();
+        viewHolder.tvTransactionType.setText(String.valueOf(memberOrderVO.getType()));
+        viewHolder.tvTransactionTime.setText(memberOrderVO.getCreateTime());
+        viewHolder.tvTransactionStatus.setText(String.valueOf(memberOrderVO.getStatus()));
+        viewHolder.tvPayAccount.setText(memberOrderVO.getAmount() + "\t" + paymentEnName);
+        viewHolder.tvTotalAccount.setText(memberOrderVO.getAmount() + "\t" + enName);
+        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + enName);
 //        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -75,7 +76,7 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(orderTransactionBean, Constants.From.ORDER_TRANSACTION);
+                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_TRANSACTION);
                 }
             }
         });
@@ -83,7 +84,7 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(orderTransactionBeans) ? 0 : orderTransactionBeans.size();
+        return ListTool.isEmpty(memberOrderVOS) ? 0 : memberOrderVOS.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

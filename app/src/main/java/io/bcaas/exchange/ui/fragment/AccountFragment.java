@@ -11,12 +11,11 @@ import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.SettingsAdapter;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.SettingsBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.MyFundActivity;
 import io.bcaas.exchange.ui.activity.RechargeActivity;
 import io.bcaas.exchange.ui.activity.SafetyCenterActivity;
@@ -43,13 +42,6 @@ public class AccountFragment extends BaseFragment {
     RecyclerView rvSetting;
     private SettingsAdapter settingTypesAdapter;
 
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        LogTool.d(TAG, "setUserVisibleHint:" + isVisibleToUser);
-    }
-
     @Override
     public int getLayoutRes() {
         return R.layout.fragment_account;
@@ -58,6 +50,7 @@ public class AccountFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
+        tvAccountName.setText(BaseApplication.getMemberId());
         initAdapter();
     }
 

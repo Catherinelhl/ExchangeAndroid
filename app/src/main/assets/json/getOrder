@@ -1,0 +1,40 @@
+{
+  "paginationVO": {
+    "objectList": [
+      {
+        "memberOrderUid": 1,
+        "memberVO": {
+          "memberId": "1",
+          "isAutoMatchTx": 0
+        },
+        "currencyListVO": {
+          "currencyUid": "1",
+          "enName": "BTC",
+          "cnName": " 比特币"
+        },
+        "paymentCurrencyUid": {
+          "currencyUid": "2",
+          "enName": "ETH",
+          "cnName": "以太坊"
+        },
+        "type": 0,
+        "status": 1,
+        "amount": "100",
+        "unitPrice": "1",
+        "handlingFee": "0.0001",
+        "price": "100",
+        "updateTime": "2018/10/24",
+        "createTime": "2018/10/23",
+        "sellerOrderUid": 1,
+        "expenditure": "",
+        "income": "100"
+      }
+    ],
+    "nextObjectId": "1",
+    "totalPageNumber": 10,
+    "totalObjectNumber": 20
+  },
+  "success": true,
+  "code": 200,
+  "message": "order display success"
+}

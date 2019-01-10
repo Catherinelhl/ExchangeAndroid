@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @since 2018/12/21
  * 订单中的提现数据类
  */
+
+@Deprecated
 public class OrderWithDrawBean implements Serializable {
 
     private String orderStatus;

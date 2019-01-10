@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @since 2018/12/21
  * 订单中的交易
  */
+@Deprecated
 public class OrderTransactionBean implements Serializable {
     private String orderStatus;
     private String orderType;
