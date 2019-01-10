@@ -16,10 +16,10 @@ public class APIURLConstants {
     public static final String API_LOGIN = "member/login";
     /*登出*/
     public static final String API_LOGOUT = "member/logout";
+    /*忘记密码*/
+    public static final String API_FORGET_PASSWORD = "member/forgotPassword";
     /*重设密码*/
-    public static final String API_RESET_PASSWORD = "member/resetPassword";
-    /*修改密码*/
-    public static final String API_MODIFY_PASSWORD = "member/resetPassword";
+    public static final String API_RESET_PASSWORD = "member/forgetPassword";
 
 
 //    /*BTC 取得餘額*/

@@ -36,11 +36,16 @@ public interface HttpApi {
     Observable<ResponseJson> logout(@Body RequestBody requestBody);
 
     /**
-     * 重置密码
+     * 忘记密码
+     */
+    @POST(APIURLConstants.API_FORGET_PASSWORD)
+    Observable<ResponseJson> forgetPassword(@Body RequestBody requestBody);
+
+    /**
+     * 重设密码
      */
     @POST(APIURLConstants.API_RESET_PASSWORD)
     Observable<ResponseJson> resetPassword(@Body RequestBody requestBody);
-
 
     /**
      * 取得虛擬貨幣美元現值
@@ -136,9 +141,6 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_SECURITY_TX_PASSWORD)
     Observable<ResponseJson> securityTxPassword(@Body RequestBody requestBody);
-
-
-
 
 
     /**

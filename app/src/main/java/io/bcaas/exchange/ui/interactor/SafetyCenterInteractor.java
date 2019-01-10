@@ -26,7 +26,17 @@ public class SafetyCenterInteractor {
     }
 
     /**
-     * 重置密码
+     * 忘记密码
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> forgetPassword(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.forgetPassword(body);
+    }
+
+    /**
+     * 重设密码
      *
      * @param body
      */

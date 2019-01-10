@@ -47,7 +47,7 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         LogTool.d(TAG, requestJson);
-        safetyCenterInteractor.resetPassword(GsonTool.beanToRequestBody(requestJson))
+        safetyCenterInteractor.forgetPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {

@@ -147,7 +147,7 @@ ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/s
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:33:19-73
 	android:name
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:30:19-60
-activity#io.bcaas.exchange.ui.activity.ResetPasswordActivity
+activity#io.bcaas.exchange.ui.activity.ForgetPasswordActivity
 ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:35:9-38:75
 	android:screenOrientation
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:37:19-55
@@ -156,7 +156,7 @@ ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/s
 	android:windowSoftInputMode
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:38:19-73
 	android:name
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:35:19-68
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:35:19-69
 activity#io.bcaas.exchange.ui.activity.RegisterActivity
 ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:40:9-43:75
 	android:screenOrientation
