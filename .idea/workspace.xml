@@ -18,6 +18,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="token" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -28,52 +29,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/ResetPasswordContract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/drawerlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/drawerlayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/viewpager/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/viewpager/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/io/bcaas/exchange/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/io/bcaas/exchange/R.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/ExchangeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/ExchangeBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ResetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ResetPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/GoogleContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/GoogleContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/MainContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/MainContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GooglePresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GooglePresenterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/LoginInfoVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/LoginInfoVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/PaginationVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/PaginationVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,24 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
-              <folding>
-                <element signature="e#1735#1736#0" expanded="true" />
-                <element signature="e#1781#1782#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HttpApi.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+            <state relative-caret-position="301">
+              <caret line="124" column="38" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -122,8 +82,8 @@
       <file leaf-file-name="MainInteractor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+            <state relative-caret-position="161">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -131,20 +91,29 @@
       <file leaf-file-name="MainPresenterImp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="71" column="55" lean-forward="true" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
+            <state relative-caret-position="60">
+              <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java">
+      <file leaf-file-name="MemberOrderVO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="271" column="49" selection-start-line="271" selection-start-column="49" selection-end-line="271" selection-end-column="49" />
+            <state relative-caret-position="101">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestJson.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="295" selection-start-line="295" selection-end-line="295" />
               <folding>
-                <element signature="e#9662#9663#0" expanded="true" />
-                <element signature="e#9693#9694#0" expanded="true" />
+                <element signature="e#6523#6524#0" expanded="true" />
+                <element signature="e#6559#6560#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,88 +122,45 @@
       <file leaf-file-name="MainContract.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/MainContract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+            <state relative-caret-position="87">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExchangeBean.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/ExchangeBean.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="154">
+              <caret line="105" column="52" selection-start-line="105" selection-start-column="52" selection-end-line="105" selection-end-column="52" />
               <folding>
-                <element signature="e#854#855#0" expanded="true" />
-                <element signature="e#890#891#0" expanded="true" />
-                <element signature="e#948#949#0" expanded="true" />
-                <element signature="e#998#999#0" expanded="true" />
-                <element signature="e#704#705#0" expanded="true" />
-                <element signature="e#724#725#0" expanded="true" />
-                <element signature="e#766#767#0" expanded="true" />
-                <element signature="e#793#794#0" expanded="true" />
-                <element signature="e#829#830#0" expanded="true" />
-                <element signature="e#854#855#0" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#943#944#0" expanded="true" />
-                <element signature="e#982#983#0" expanded="true" />
-                <element signature="e#1010#1011#0" expanded="true" />
-                <element signature="e#1068#1069#0" expanded="true" />
-                <element signature="e#1111#1112#0" expanded="true" />
-                <element signature="e#1143#1144#0" expanded="true" />
-                <element signature="e#1164#1165#0" expanded="true" />
-                <element signature="e#1208#1209#0" expanded="true" />
-                <element signature="e#1237#1238#0" expanded="true" />
-                <element signature="e#1270#1271#0" expanded="true" />
-                <element signature="e#1292#1293#0" expanded="true" />
-                <element signature="e#1338#1339#0" expanded="true" />
-                <element signature="e#1369#1370#0" expanded="true" />
-                <element signature="e#1402#1403#0" expanded="true" />
-                <element signature="e#1424#1425#0" expanded="true" />
-                <element signature="e#1470#1471#0" expanded="true" />
-                <element signature="e#1501#1502#0" expanded="true" />
-                <element signature="e#1536#1537#0" expanded="true" />
-                <element signature="e#1560#1561#0" expanded="true" />
-                <element signature="e#1610#1611#0" expanded="true" />
-                <element signature="e#1645#1646#0" expanded="true" />
-                <element signature="e#1678#1679#0" expanded="true" />
-                <element signature="e#1700#1701#0" expanded="true" />
-                <element signature="e#1746#1747#0" expanded="true" />
-                <element signature="e#1777#1778#0" expanded="true" />
+                <element signature="e#10852#10853#0" expanded="true" />
+                <element signature="e#10880#10881#0" expanded="true" />
+                <element signature="e#10930#10931#0" expanded="true" />
+                <element signature="e#10961#10962#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestJson.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java">
+      <file leaf-file-name="LoginInfoVO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/LoginInfoVO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+            <state relative-caret-position="162">
+              <caret line="91" column="48" selection-start-line="91" selection-start-column="48" selection-end-line="91" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PaginationVO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/PaginationVO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
               <folding>
-                <element signature="e#1139#1140#0" expanded="true" />
-                <element signature="e#1178#1179#0" expanded="true" />
-                <element signature="e#4171#4172#0" expanded="true" />
-                <element signature="e#4211#4212#0" expanded="true" />
+                <element signature="e#1324#1325#0" expanded="true" />
+                <element signature="e#1363#1364#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="APIURLConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="221" selection-start-line="221" selection-end-line="221" />
             </state>
           </provider>
         </entry>
@@ -265,7 +191,6 @@
       <find>etContent</find>
       <find>tvSafetyCenterAction</find>
       <find>tabType</find>
-      <find>initDa</find>
       <find>sendMailVerifyCode</find>
       <find>behaviour</find>
       <find>setInputType</find>
@@ -284,6 +209,7 @@
       <find>onAc</find>
       <find>amount</find>
       <find>getU</find>
+      <find>initDa</find>
     </findStrings>
     <replaceStrings>
       <replace>black_333333</replace>
@@ -4162,12 +4088,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/TextTool.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/pop/ListPop.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/CountryCodeAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/app/VersionTool.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/pop_show_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/CountryCodeBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/CountryCodeActivity.java" />
@@ -4184,7 +4104,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BindPhoneContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/GoogleGetUrlContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SafetyCenterContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SafetyCenterPresenterImp.java" />
@@ -4200,7 +4119,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/ResetPassword.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/ResetPasswordContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/SafetyCenterInteractor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" />
@@ -4208,10 +4126,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/ExchangeBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/MainContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/PaginationVO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/LoginInfoVO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" />
       </list>
     </option>
@@ -4271,6 +4197,15 @@
               <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="bcaas" type="462c0819:PsiDirectoryNode" />
               <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -4313,7 +4248,7 @@
     <property name="ExportApk.BuildType" value="release" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Regi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.RegisterActivity&#10;Lo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.LoginActivity&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;reset&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ResetPasswordActivity&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Ver&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java&#10;REset&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ResetPasswordActivity&#10;sa&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SafetyCenterActivity&#10;REt&#9;PSI&#9;JAVA://io.bcaas.exchange.http.retrofit.RetrofitFactory&#10;ret&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.regex.RegexTool&#10;Bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java&#10;Ht&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Br&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java&#10;Sy&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.SystemConstants&#10;bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Bra&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BrandActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java&#10;Cons&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Phon&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;With&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawDetailActivity&#10;Requ&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java&#10;ta&#9;FILE&#9;jar:///Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/jars/classes.jar!/android/support/design/widget/TabLayout.class&#10;B&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTabLayout.java&#10;Ma&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Buf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;fun&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_set_fund_password.xml&#10;co&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java&#10;goo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;bind&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;rec&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.RechargeView&#10;my&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;OrderF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.OrderFragment&#10;SellDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SellDetailActivity&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SellF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.SellFragment&#10;Data&#9;PSI&#9;JAVA://io.bcaas.exchange.maker.DataGenerationRegister&#10;reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;colo&#9;PSI&#9;JAVA://android.support.asynclayoutinflater.R.color&#10;inc&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_header.xml" />
+    <property name="SearchEverywhereHistoryKey" value="Login&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.LoginInfoVO&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;res&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java&#10;REq&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java&#10;Mem&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.MemberVO&#10;Sys&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/SystemConstants.java&#10;Http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Regi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.RegisterActivity&#10;Lo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.LoginActivity&#10;reset&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ResetPasswordActivity&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Ver&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/bean/VerificationBean.java&#10;REset&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ResetPasswordActivity&#10;sa&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SafetyCenterActivity&#10;REt&#9;PSI&#9;JAVA://io.bcaas.exchange.http.retrofit.RetrofitFactory&#10;ret&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.regex.RegexTool&#10;Bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java&#10;Ht&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Br&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java&#10;Sy&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.SystemConstants&#10;bin&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;http&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/http/HttpApi.java&#10;Bra&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BrandActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java&#10;Cons&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Phon&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BindPhoneActivity.java&#10;With&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawDetailActivity&#10;Requ&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java&#10;ta&#9;FILE&#9;jar:///Users/catherine.brainwilliam/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/75c4c7d275c2377c2fa195597e5f8a89/jars/classes.jar!/android/support/design/widget/TabLayout.class&#10;B&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/tablayout/BcaasTabLayout.java&#10;Ma&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Buf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;fun&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_set_fund_password.xml&#10;co&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/VerifyMethodCloseOrOpenActivity.java&#10;goo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;bind&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;rec&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.RechargeView&#10;my&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;acc&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.AccountFragment&#10;bu&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java&#10;OrderF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.OrderFragment&#10;SellDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SellDetailActivity&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SellF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.SellFragment" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -4502,24 +4437,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.11318408" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
-      <window_info id="Build Variants" order="2" sideWeight="0.50080514" side_tool="true" visible="true" weight="0.18641618" />
+      <window_info id="Build Variants" order="2" sideWeight="0.50165015" side_tool="true" visible="true" weight="0.18641618" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
       <window_info anchor="right" id="Preview" order="3" weight="0.308526" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.19527364" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32894737" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.08457711" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.22761194" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.6231343" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.18641618" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49834985" visible="true" weight="0.18641618" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.4477612" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -4579,41 +4513,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/country_code/zh-cn_CountryCode">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="1485" column="27" selection-end-line="1497" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/country_code/zh-tw_CountryCode">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/BuyDataAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/SystemConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BrandActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="50" column="5" selection-start-line="48" selection-start-column="27" selection-end-line="50" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/VerifyCodeInteractor.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -4648,19 +4547,6 @@
           <caret line="92" column="29" lean-forward="true" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="284" column="18" selection-start-line="284" selection-start-column="18" selection-end-line="284" selection-end-column="18" />
-          <folding>
-            <element signature="e#1196#1197#0" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
-            <element signature="e#1396#1397#0" expanded="true" />
-            <element signature="e#1430#1431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -4960,7 +4846,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="314">
           <caret line="221" selection-start-line="221" selection-end-line="221" />
         </state>
       </provider>
@@ -4976,44 +4862,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-          <folding>
-            <element signature="e#1139#1140#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-            <element signature="e#4171#4172#0" expanded="true" />
-            <element signature="e#4211#4212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/ExchangeBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="e#854#855#0" expanded="true" />
             <element signature="e#890#891#0" expanded="true" />
@@ -5055,27 +4907,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/SystemConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="71" column="55" lean-forward="true" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
+        <state relative-caret-position="175">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/APIURLConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="124" column="38" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/ResponseJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="294" column="18" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
+          <folding>
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#1342#1343#0" expanded="true" />
+            <element signature="e#1396#1397#0" expanded="true" />
+            <element signature="e#1430#1431#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/MainContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+        <state relative-caret-position="87">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/PaginationVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="e#1324#1325#0" expanded="true" />
+            <element signature="e#1363#1364#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/LoginInfoVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="91" column="48" selection-start-line="91" selection-start-column="48" selection-end-line="91" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/MainPresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/RequestJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="295" selection-start-line="295" selection-end-line="295" />
+          <folding>
+            <element signature="e#6523#6524#0" expanded="true" />
+            <element signature="e#6559#6560#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="271" column="49" selection-start-line="271" selection-start-column="49" selection-end-line="271" selection-end-column="49" />
+        <state relative-caret-position="154">
+          <caret line="105" column="52" selection-start-line="105" selection-start-column="52" selection-end-line="105" selection-end-column="52" />
           <folding>
-            <element signature="e#9662#9663#0" expanded="true" />
-            <element signature="e#9693#9694#0" expanded="true" />
+            <element signature="e#10852#10853#0" expanded="true" />
+            <element signature="e#10880#10881#0" expanded="true" />
+            <element signature="e#10930#10931#0" expanded="true" />
+            <element signature="e#10961#10962#0" expanded="true" />
           </folding>
         </state>
       </provider>

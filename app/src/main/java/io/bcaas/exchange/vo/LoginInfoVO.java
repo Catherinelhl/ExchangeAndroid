@@ -86,4 +86,14 @@ public class LoginInfoVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "LoginInfoVO{" +
+				"memberId='" + memberId + '\'' +
+				", accessToken='" + accessToken + '\'' +
+				", expireTime='" + expireTime + '\'' +
+				", loginTime='" + loginTime + '\'' +
+				", status=" + status +
+				'}';
+	}
 }

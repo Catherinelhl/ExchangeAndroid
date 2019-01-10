@@ -40,6 +40,17 @@ public class RequestJson {
     private VerificationBean verificationBean;
     private List<VerificationBean> verificationBeanList;
 
+
+    private PaginationVO paginationVO;
+
+    public PaginationVO getPaginationVO() {
+        return paginationVO;
+    }
+
+    public void setPaginationVO(PaginationVO paginationVO) {
+        this.paginationVO = paginationVO;
+    }
+
     public VerificationBean getVerificationBean() {
         return verificationBean;
     }
@@ -260,61 +271,25 @@ public class RequestJson {
 
     @Override
     public String toString() {
-        StringBuffer stringBuffer = new StringBuffer("RequestJson{");
-        if (versionVO != null) {
-            stringBuffer.append("versionVO=" + versionVO);
-        }
-        if (versionList != null) {
-            stringBuffer.append(", versionList=" + versionList);
-        }
-        if (memberVO != null) {
-            stringBuffer.append(", memberVO=" + memberVO);
-        }
-        if (memberVOList != null) {
-            stringBuffer.append(", memberVOList=" + memberVOList);
-        }
-        if (loginInfoVO != null) {
-            stringBuffer.append(", loginInfoVO=" + loginInfoVO);
-        }
-        if (loginInfoVOList != null) {
-            stringBuffer.append(", loginInfoVOList=" + loginInfoVOList);
-        }
-        if (currencyListVO != null) {
-            stringBuffer.append(", currencyListVO=" + currencyListVO);
-        }
-        if (currencyListVOList != null) {
-            stringBuffer.append(", currencyListVOList=" + currencyListVOList);
-        }
-        if (currencyServiceChargeVO != null) {
-            stringBuffer.append(", currencyServiceChargeVO=" + currencyServiceChargeVO);
-        }
-        if (currencyServiceChargeVOList != null) {
-            stringBuffer.append(", currencyServiceChargeVOList=" + currencyServiceChargeVOList);
-        }
-        if (memberKeyVO != null) {
-            stringBuffer.append(", memberKeyVO=" + memberKeyVO);
-        }
-        if (memberKeyVOList != null) {
-            stringBuffer.append(",  memberKeyVOList=" + memberKeyVOList);
-        }
-        if (memberOrderVO != null) {
-            stringBuffer.append(", memberOrderVO=" + memberOrderVO);
-        }
-        if (memberOrderVOList != null) {
-            stringBuffer.append(",  memberOrderVOList=" + memberOrderVOList);
-        }
-        if (exchangeBean != null) {
-            stringBuffer.append(",  exchangeBean=" + exchangeBean);
-        }
-        if (verificationBean != null) {
-            stringBuffer.append(",  verificationBean=" + verificationBean);
-        }
-        if (ListTool.noEmpty(verificationBeanList)) {
-            stringBuffer.append(",  verificationBeanList=" + verificationBeanList);
-        }
-
-        stringBuffer.append('}');
-        return stringBuffer.toString();
-
+        return "RequestJson{" +
+                "versionVO=" + versionVO +
+                ", versionList=" + versionList +
+                ", memberVO=" + memberVO +
+                ", memberVOList=" + memberVOList +
+                ", loginInfoVO=" + loginInfoVO +
+                ", loginInfoVOList=" + loginInfoVOList +
+                ", currencyListVO=" + currencyListVO +
+                ", currencyListVOList=" + currencyListVOList +
+                ", currencyServiceChargeVO=" + currencyServiceChargeVO +
+                ", currencyServiceChargeVOList=" + currencyServiceChargeVOList +
+                ", memberKeyVO=" + memberKeyVO +
+                ", memberKeyVOList=" + memberKeyVOList +
+                ", memberOrderVO=" + memberOrderVO +
+                ", memberOrderVOList=" + memberOrderVOList +
+                ", exchangeBean=" + exchangeBean +
+                ", verificationBean=" + verificationBean +
+                ", verificationBeanList=" + verificationBeanList +
+                ", paginationVO=" + paginationVO +
+                '}';
     }
 }

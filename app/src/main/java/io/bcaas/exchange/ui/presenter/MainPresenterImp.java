@@ -104,11 +104,12 @@ public class MainPresenterImp implements MainContract.Presenter {
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
         requestJson.setMemberVO(memberVO);
+
+
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, "getAllBalance:" + requestJson);
 
         mainInteractor.getAllBalance(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -138,14 +139,7 @@ public class MainPresenterImp implements MainContract.Presenter {
 
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2006) {
-                                view.getAllBalanceFailure(MessageConstants.ERROR_EMAIL_ALREADY_REGISTER);
-
-                            } else {
-                                view.getAllBalanceFailure(responseJson.getMessage());
-
-                            }
-
+                            view.getAllBalanceFailure(responseJson.getMessage());
                         }
                     }
 
@@ -153,6 +147,73 @@ public class MainPresenterImp implements MainContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.getAllBalanceFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void getRecord(int type, String nextObjectId) {
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberId());
+        requestJson.setMemberVO(memberVO);
+
+
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setLoginInfoVO(loginInfoVO);
+
+
+        MemberOrderVO memberOrderVO = new MemberOrderVO();
+        memberOrderVO.setType(type);
+        requestJson.setMemberOrderVO(memberOrderVO);
+
+        PaginationVO paginationVO = new PaginationVO();
+        paginationVO.setNextObjectId(nextObjectId);
+        requestJson.setPaginationVO(paginationVO);
+
+        LogTool.d(TAG, "getRecord:" + requestJson);
+
+        mainInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        LogTool.d(TAG, responseJson);
+                        if (responseJson == null) {
+                            view.getRecordFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        boolean isSuccess = responseJson.isSuccess();
+                        if (isSuccess) {
+                            PaginationVO paginationVOResponse = responseJson.getPaginationVO();
+                            if (paginationVOResponse != null) {
+                                view.getRecordSuccess(paginationVOResponse);
+                            } else {
+                                view.getRecordFailure(responseJson.getMessage());
+                            }
+
+                        } else {
+                            int code = responseJson.getCode();
+                            view.getRecordFailure(responseJson.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.getRecordFailure(e.getMessage());
                     }
 
                     @Override

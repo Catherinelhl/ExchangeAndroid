@@ -214,4 +214,22 @@ public class MemberOrderVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberOrderVO{" +
+				"memberOrderUid=" + memberOrderUid +
+				", memberVO=" + memberVO +
+				", type=" + type +
+				", status=" + status +
+				", currencyListVO=" + currencyListVO +
+				", amount='" + amount + '\'' +
+				", unitPrice='" + unitPrice + '\'' +
+				", handlingFee='" + handlingFee + '\'' +
+				", price='" + price + '\'' +
+				", paymentCurrencyUid=" + paymentCurrencyUid +
+				", mark='" + mark + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				", createTime='" + createTime + '\'' +
+				'}';
+	}
 }

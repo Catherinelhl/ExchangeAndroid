@@ -12,6 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -23,6 +24,7 @@ import io.bcaas.exchange.ui.fragment.SellFragment;
 import io.bcaas.exchange.ui.presenter.MainPresenterImp;
 import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.PaginationVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -90,11 +92,14 @@ public class MainActivity extends BaseActivity
     @Override
     public void initData() {
         mainPresenter = new MainPresenterImp(this);
+
+        /*获取币种汇率*/
         ExchangeBean exchangeBean = new ExchangeBean();
         exchangeBean.setCurrency("BTC");
         exchangeBean.setPriceCurrency("8");
-        /*获取币种汇率*/
         mainPresenter.getCurrencyUSDPrice(exchangeBean);
+        /*取得財務紀錄交易資訊*/
+        mainPresenter.getRecord(0, "1");
         /*获取账户所有币种余额*/
         mainPresenter.getAllBalance();
 
@@ -305,4 +310,14 @@ public class MainActivity extends BaseActivity
 
         }
     };
+
+    @Override
+    public void getRecordSuccess(PaginationVO paginationVO) {
+        LogTool.d(TAG, "PaginationVO:" + paginationVO);
+    }
+
+    @Override
+    public void getRecordFailure(String info) {
+        showToast(info);
+    }
 }

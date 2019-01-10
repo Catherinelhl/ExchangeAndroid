@@ -6,7 +6,6 @@ import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.*;
 
 /**
@@ -35,14 +34,12 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_LOGOUT)
     Observable<ResponseJson> logout(@Body RequestBody requestBody);
+
     /**
-     *重置密码
+     * 重置密码
      */
     @POST(APIURLConstants.API_RESET_PASSWORD)
     Observable<ResponseJson> resetPassword(@Body RequestBody requestBody);
-
-
-
 
 
     /**
@@ -105,7 +102,7 @@ public interface HttpApi {
     /**
      * 更改Google驗證狀態
      */
-    @POST(APIURLConstants.API_SECURITY_TWO_FACTORAUTH_VERIFY)
+    @POST(APIURLConstants.API_SECURITY_TWO_FACTOR_AUTH_VERIFY)
     Observable<ResponseJson> securityTwoFactorVerify(@Body RequestBody requestBody);
 
 
@@ -122,10 +119,51 @@ public interface HttpApi {
     Observable<ResponseJson> getAccountSecurity(@Body RequestBody requestBody);
 
     /**
+     * 取得財務紀錄交易資訊
+     */
+    @POST(APIURLConstants.API_GET_RECORD)
+    Observable<ResponseJson> getRecord(@Body RequestBody requestBody);
+
+    /**
      * 验证验证码\关闭安全验证
      */
     @POST(APIURLConstants.API_CLOSE_SECURITY_VERIFY)
     Observable<ResponseJson> closeSecurityVerify(@Body RequestBody requestBody);
+
+
+    /**
+     * 設置資金密碼
+     */
+    @POST(APIURLConstants.API_SECURITY_TX_PASSWORD)
+    Observable<ResponseJson> securityTxPassword(@Body RequestBody requestBody);
+
+
+
+
+
+    /**
+     * 撤銷待出售訂單
+     */
+    @POST(APIURLConstants.API_CANCEL_ORDER)
+    Observable<ResponseJson> cancelOrder(@Body RequestBody requestBody);
+
+    /**
+     * 出售
+     */
+    @POST(APIURLConstants.API_SELL)
+    Observable<ResponseJson> sell(@Body RequestBody requestBody);
+
+    /**
+     * 查詢待出售訂單
+     */
+    @POST(APIURLConstants.API_GET_RECORD_LIST)
+    Observable<ResponseJson> getRecordList(@Body RequestBody requestBody);
+
+    /**
+     * 購買
+     */
+    @POST(APIURLConstants.API_BUY)
+    Observable<ResponseJson> buy(@Body RequestBody requestBody);
 
 
 }

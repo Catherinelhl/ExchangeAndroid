@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.contracts;
 
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.PaginationVO;
 
 import java.util.List;
 
@@ -21,11 +22,18 @@ public interface MainContract {
 
         //获取所有币种余额失败
         void getAllBalanceFailure(String info);
+
+
+        void getRecordFailure(String info);
+
+        void getRecordSuccess(PaginationVO paginationVO);
     }
 
     interface Presenter {
-        void getCurrencyUSDPrice( ExchangeBean exchangeBean);
+        void getCurrencyUSDPrice(ExchangeBean exchangeBean);
 
         void getAllBalance();
+
+        void getRecord(int type, String nextObjectId);
     }
 }

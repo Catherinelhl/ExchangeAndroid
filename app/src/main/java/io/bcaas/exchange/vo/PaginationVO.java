@@ -81,4 +81,14 @@ public class PaginationVO implements Serializable {
 	public void setTotalObjectNumber(long totalObjectNumber) {
 		this.totalObjectNumber = totalObjectNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "PaginationVO{" +
+				"objectList=" + objectList +
+				", nextObjectId='" + nextObjectId + '\'' +
+				", totalPageNumber=" + totalPageNumber +
+				", totalObjectNumber=" + totalObjectNumber +
+				'}';
+	}
 }

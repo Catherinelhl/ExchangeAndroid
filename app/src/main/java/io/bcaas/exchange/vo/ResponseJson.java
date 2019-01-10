@@ -47,6 +47,16 @@ public class ResponseJson extends ServerResponseJson {
 	private VerificationBean verificationBean;
 	private List<VerificationBean> verificationBeanList;
 
+	private PaginationVO paginationVO;
+
+	public PaginationVO getPaginationVO() {
+		return paginationVO;
+	}
+
+	public void setPaginationVO(PaginationVO paginationVO) {
+		this.paginationVO = paginationVO;
+	}
+
 	public VerificationBean getVerificationBean() {
 		return verificationBean;
 	}
@@ -301,6 +311,7 @@ public class ResponseJson extends ServerResponseJson {
 				", exchangeBean=" + exchangeBean +
 				", verificationBean=" + verificationBean +
 				", verificationBeanList=" + verificationBeanList +
+				", paginationVO=" + paginationVO +
 				'}';
 	}
 }
