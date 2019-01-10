@@ -23,17 +23,11 @@ public interface MainContract {
         //获取所有币种余额失败
         void getAllBalanceFailure(String info);
 
-
-        void getRecordFailure(String info);
-
-        void getRecordSuccess(PaginationVO paginationVO);
     }
 
     interface Presenter {
         void getCurrencyUSDPrice(ExchangeBean exchangeBean);
 
         void getAllBalance();
-
-        void getRecord(int type, String nextObjectId);
     }
 }

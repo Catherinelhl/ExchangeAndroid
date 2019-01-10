@@ -227,4 +227,13 @@ public class Constants {
         public static final String EN_US_COUNTRY_CODE = "en-us_CountryCode";
 
     }
+
+    /**
+     * 订单类型
+     */
+    public class OrderType {
+        public static final int RECHARGE = 0;//充值
+        public static final int WITHDRAW = 1;//提现
+        public static final int TX = 2;//交易
+    }
 }

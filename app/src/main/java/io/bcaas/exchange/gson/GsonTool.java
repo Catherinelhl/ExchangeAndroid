@@ -10,6 +10,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 
 /**
@@ -87,5 +88,4 @@ public class GsonTool {
                 .disableHtmlEscaping()
                 .create();
     }
-
 }

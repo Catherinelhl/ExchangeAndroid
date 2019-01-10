@@ -12,10 +12,15 @@ import io.bcaas.exchange.bean.OrderRechargeBean;
 import io.bcaas.exchange.bean.OrderTransactionBean;
 import io.bcaas.exchange.bean.OrderWithDrawBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.gson.GsonTool;
+import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.ui.contracts.OrderRecordContract;
+import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.vo.PaginationVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +31,16 @@ import java.util.List;
  * <p>
  * 訂單
  */
-public class OrderFragment extends BaseFragment {
+public class OrderFragment extends BaseFragment implements OrderRecordContract.View {
+
+    private String TAG = OrderFragment.class.getSimpleName();
 
     @BindView(R.id.tab_layout)
     BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-    private String TAG = OrderFragment.class.getSimpleName();
+
+    private OrderRecordContract.Presenter presenter;
     private OrderView orderViewOne, orderViewTwo, orderViewThree;
 
 
@@ -42,6 +50,9 @@ public class OrderFragment extends BaseFragment {
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
+    private String nextObjectIdRecharge = "1";
+    private String nextObjectIdWithDraw = "1";
+    private String nextObjectIdTx = "1";
 
     @Override
     public int getLayoutRes() {
@@ -55,6 +66,8 @@ public class OrderFragment extends BaseFragment {
         orderTransactionBeans = new ArrayList<>();
         orderRechargeBeans = new ArrayList<>();
         orderWithDrawBeans = new ArrayList<>();
+
+        presenter = new OrderRecordPresenterImp(this);
         initTopTabData();
     }
 
@@ -97,7 +110,7 @@ public class OrderFragment extends BaseFragment {
             orderWithDrawBean.setFee("0.001 BTC");
             orderWithDrawBean.setCurrency("BTC");
             orderWithDrawBeans.add(orderWithDrawBean);
-            tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i),i);
+            tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
 
         }
 
@@ -152,6 +165,11 @@ public class OrderFragment extends BaseFragment {
             }
         });
         tabLayout.resetSelectedTab(0);
+        if (presenter != null) {
+            presenter.getRecord(Constants.OrderType.RECHARGE, nextObjectIdRecharge);
+            presenter.getRecord(Constants.OrderType.WITHDRAW, nextObjectIdWithDraw);
+            presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
+        }
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
@@ -185,4 +203,29 @@ public class OrderFragment extends BaseFragment {
         initTopTabData();
     }
 
+    @Override
+    public void getRecordFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void getRecordSuccess(PaginationVO paginationVO) {
+        LogTool.d(TAG, "PaginationVO:" + paginationVO);
+        if (paginationVO != null) {
+            int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
+            switch (type) {
+                case Constants.OrderType.RECHARGE:
+                    nextObjectIdRecharge = paginationVO.getNextObjectId();
+                    break;
+                case Constants.OrderType.WITHDRAW:
+                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
+                    break;
+                case Constants.OrderType.TX:
+                    nextObjectIdTx = paginationVO.getNextObjectId();
+
+                    break;
+            }
+
+        }
+    }
 }

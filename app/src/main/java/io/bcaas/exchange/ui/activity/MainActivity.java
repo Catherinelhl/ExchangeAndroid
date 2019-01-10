@@ -98,8 +98,6 @@ public class MainActivity extends BaseActivity
         exchangeBean.setCurrency("BTC");
         exchangeBean.setPriceCurrency("8");
         mainPresenter.getCurrencyUSDPrice(exchangeBean);
-        /*取得財務紀錄交易資訊*/
-        mainPresenter.getRecord(0, "1");
         /*获取账户所有币种余额*/
         mainPresenter.getAllBalance();
 
@@ -253,6 +251,7 @@ public class MainActivity extends BaseActivity
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
+                    /*取得財務紀錄交易資訊*/
                     if (currentFragment instanceof OrderFragment) {
                         ((OrderFragment) currentFragment).resetView();
                     }
@@ -311,13 +310,4 @@ public class MainActivity extends BaseActivity
         }
     };
 
-    @Override
-    public void getRecordSuccess(PaginationVO paginationVO) {
-        LogTool.d(TAG, "PaginationVO:" + paginationVO);
-    }
-
-    @Override
-    public void getRecordFailure(String info) {
-        showToast(info);
-    }
 }

@@ -36,4 +36,21 @@ public class JsonTool {
             }
         }
     }
+
+    public static int getInt(String resource, String key,int value) {
+        if (StringTool.isEmpty(resource)) {
+            return value;
+        } else if (StringTool.isEmpty(key)) {
+            return value;
+        } else {
+            JSONObject jsonObject = null;
+
+            try {
+                jsonObject = new JSONObject(resource);
+                return !jsonObject.has(key) ? value : jsonObject.getInt(key);
+            } catch (JSONException var5) {
+                return value;
+            }
+        }
+    }
 }
