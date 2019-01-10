@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
-import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.GoogleContract;
 import io.bcaas.exchange.ui.presenter.GooglePresenterImp;
@@ -67,6 +67,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
     @Override
     public void initData() {
         presenter = new GooglePresenterImp(this);
+        //获取当前绑定google验证的所需信息
         presenter.getAuthenticatorUrl();
 
     }
@@ -109,9 +110,10 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
                         //1：判断验证码非空
                         String verifyCode = etwaVerifyCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
-                            showToast("请输入验证码");
+                            showToast(getString(R.string.please_input_verify_code));
                             return;
                         }
+                        presenter.securityGoogleAuthenticator(verifyCode);
 
                     }
 
@@ -140,16 +142,10 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
         if (verificationBean == null) {
             return;
         }
-        String authenticatorUrl = verificationBean.getAuthenticatorUrl();
-        String account=verificationBean.getAccount();
-        String secret=verificationBean.getSecret();
-        if (tvMyAddress!=null &&StringTool.notEmpty(secret)){
-            tvMyAddress.setText("密钥:\n" + secret);
-            if (ivQrCode != null) {
-                Bitmap qrCode = EncodingUtils.createQRCode(secret, context.getResources().getDimensionPixelOffset(R.dimen.d200),
-                        context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
-                ivQrCode.setImageBitmap(qrCode);
-            }
+        String account = verificationBean.getAccount();
+        String secret = verificationBean.getSecret();
+        if (tvMyAddress != null && StringTool.notEmpty(secret)) {
+            tvMyAddress.setText(String.format(getString(R.string.format_ss), getString(R.string.private_key_str), secret));
         }
 
     }
@@ -161,11 +157,31 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
 
     @Override
     public void securityGoogleAuthenticatorSuccess(String info) {
-
+        //设置google验证成功，返回上一个页面并且刷新界面
+        setResult(false);
     }
 
     @Override
     public void securityGoogleAuthenticatorFailure(String info) {
+        //清空当前数据，提示其重新验证
+        if (etwaVerifyCode != null) {
+            etwaVerifyCode.setContent(MessageConstants.EMPTY);
+        }
+        showToast("设置验证失败，请重新输入验证码。");
+    }
+
+    @Override
+    public void getAuthenticatorImageSuccess(Bitmap bitmap) {
+        if (bitmap != null && ivQrCode != null) {
+            ivQrCode.setImageBitmap(bitmap);
+//                Bitmap qrCode = EncodingUtils.createQRCode(secret, context.getResources().getDimensionPixelOffset(R.dimen.d200),
+//                        context.getResources().getDimensionPixelOffset(R.dimen.d200), null, Constants.Color.foregroundOfQRCode, Constants.Color.backgroundOfQRCode);
+//                ivQrCode.setImageBitmap(qrCode);
+        }
+    }
+
+    @Override
+    public void getAuthenticatorImageFailure() {
 
     }
 }

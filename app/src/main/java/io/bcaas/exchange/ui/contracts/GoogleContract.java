@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.contracts;
 
+import android.graphics.Bitmap;
 import io.bcaas.exchange.bean.VerificationBean;
 
 /**
@@ -16,6 +17,9 @@ public interface GoogleContract {
         void securityGoogleAuthenticatorSuccess(String info);
 
         void securityGoogleAuthenticatorFailure(String info);
+
+        void getAuthenticatorImageSuccess(Bitmap bitmap);
+        void getAuthenticatorImageFailure();
     }
 
     interface Presenter {

@@ -1,10 +1,14 @@
 package io.bcaas.exchange.ui.presenter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.GoogleContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
@@ -15,6 +19,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 /**
  * @author catherine.brainwilliam
@@ -65,7 +70,43 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                 view.getAuthenticatorUrlFailure(MessageConstants.EMPTY);
                             } else {
                                 view.getAuthenticatorUrlSuccess(verificationBean);
+                                //得到当前创建url的地址，重新请求网络获取图片
+                                String authenticatorUrl = verificationBean.getAuthenticatorUrl();
+                                if (StringTool.notEmpty(authenticatorUrl)) {
+                                    safetyCenterInteractor.getAuthenticatorUrlCreateImage(authenticatorUrl)
+                                            .subscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .map(ResponseBody::byteStream)
+                                            .map(BitmapFactory::decodeStream)
+                                            .subscribe(new Observer<Bitmap>() {
+                                                @Override
+                                                public void onSubscribe(Disposable d) {
 
+                                                }
+
+                                                @Override
+                                                public void onNext(Bitmap bitmap) {
+                                                    view.getAuthenticatorImageSuccess(bitmap);
+
+                                                }
+
+                                                @Override
+                                                public void onError(Throwable e) {
+                                                    view.getAuthenticatorImageFailure();
+
+                                                }
+
+                                                @Override
+                                                public void onComplete() {
+
+                                                }
+                                            });
+
+                                } else {
+                                    // TODO: 2019/1/10 提示数据获取失败？
+                                    view.getAuthenticatorUrlFailure("数据获取失败！");
+
+                                }
                             }
                         } else {
                             int code = responseJson.getCode();
@@ -125,7 +166,21 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            view.securityGoogleAuthenticatorSuccess(responseJson.getMessage());
+                            // 获取当前的验证状态
+                            MemberVO memberVOResponse = responseJson.getMemberVO();
+                            if (memberVOResponse != null) {
+                                int twoFactorAuthVerify = memberVOResponse.getTwoFactorAuthVerify();
+                                if (twoFactorAuthVerify == Constants.Status.OPEN) {
+                                    view.securityGoogleAuthenticatorSuccess(responseJson.getMessage());
+                                } else {
+                                    // TODO: 2019/1/10 绑定成功就会等于开启，所以else只是为了容错
+                                    view.securityGoogleAuthenticatorFailure(MessageConstants.EMPTY);
+                                }
+
+                            } else {
+                                view.securityGoogleAuthenticatorFailure(MessageConstants.EMPTY);
+
+                            }
                         } else {
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2019) {

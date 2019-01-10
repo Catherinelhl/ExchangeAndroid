@@ -2033,6 +2033,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fee
 string forget_password
+string format_ss
 string format_ssd
 string freeze
 string fund_password
@@ -2084,9 +2085,11 @@ string please_input_password
 string please_input_phone_number
 string please_input_phone_verify_code
 string please_input_right_email
+string please_input_verify_code
 string please_input_verify_code_first
 string please_set_google_verify
 string price
+string private_key_str
 string qrcode_name
 string random_verify_code
 string recharge

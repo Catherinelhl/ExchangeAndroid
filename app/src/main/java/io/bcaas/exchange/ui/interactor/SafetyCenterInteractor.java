@@ -83,6 +83,16 @@ public class SafetyCenterInteractor {
     }
 
     /**
+     * 2FA 雙因素驗證图片生成
+     *
+     * @return
+     */
+    public Observable<ResponseBody> getAuthenticatorUrlCreateImage(String url) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.authenticatorVerifyCreateImage(url);
+    }
+
+    /**
      * 验证 雙因素驗證码
      *
      * @return

@@ -181,8 +181,6 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
                 intent.putExtras(bundle);
                 startActivityForResult(intent, Constants.RequestCode.EMAIL_VERIFY);
             }
-
-
         } else if (StringTool.equals(from, getString(R.string.phone_verify))) {
             //手机验证，如果当前是需要"绑定"的状态，那么就跳转到「绑定」的状态；如果是已经绑定过的，那么就显示「关闭」，并且跳转到「关闭验证」
             int phoneVerify = memberVO.getPhoneVerify();
@@ -203,20 +201,19 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
             int googleVerify = memberVO.getTwoFactorAuthVerify();
             if (googleVerify == Constants.Status.CLOSE) {
-                //直接调用更改Email的状态
+                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
                 presenter.securityGoogle(MessageConstants.EMPTY);
             } else if (googleVerify == Constants.Status.OPEN) {
+                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
                 intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
                 bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
                 intent.putExtras(bundle);
                 startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
             } else {
-                //Google验证，设置之后就不可更改
+                //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
                 intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
                 startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
             }
-
-
         }
     }
 

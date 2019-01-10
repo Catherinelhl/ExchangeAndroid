@@ -7,10 +7,7 @@ import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
+import retrofit2.http.*;
 
 /**
  * @author catherine.brainwilliam
@@ -63,6 +60,12 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_AUTHENTICATOR_URL)
     Observable<ResponseJson> authenticatorVerify(@Body RequestBody requestBody);
+
+    /**
+     * 2FA 雙因素驗證生成图片
+     */
+    @GET
+    Observable<ResponseBody> authenticatorVerifyCreateImage(@Url String url);
 
 
     /**

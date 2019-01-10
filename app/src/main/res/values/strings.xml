@@ -121,5 +121,8 @@
     <string name="format_ssd" formatted="false">%s%s(%d)</string>
     <string name="bind_success">绑定成功！</string>
     <string name="modify">修改</string>
+    <string name="private_key_str">密钥:</string>
+    <string name="format_ss" formatted="false">%s%s</string>
+    <string name="please_input_verify_code">请输入验证码</string>
 
 </resources>
