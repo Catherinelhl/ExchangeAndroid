@@ -80,7 +80,7 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
-        tvTitle.setText(R.string.buy_detail);
+        tvTitle.setText(R.string.sell_detail);
 
         if (sellDataBean != null) {
             tvPrice.setText(sellDataBean.getUnitPrice() + "\t " + sellDataBean.getExchangeCurrencyName());

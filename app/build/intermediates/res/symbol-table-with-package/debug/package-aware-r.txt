@@ -2118,6 +2118,7 @@ string salable_balance
 string scan_qr_code
 string search_menu_title
 string sell
+string sell_detail
 string sell_number
 string sell_out
 string sell_out_fee_text

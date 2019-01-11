@@ -44,6 +44,8 @@ public class APIURLConstants {
     public static final String API_CURRENCY_GET_USD_PRICE = "currencyList/getUSDPrice";
     /*取得帳戶所有幣種餘額*/
     public static final String API_GET_ALL_BALANCE = "memberKey/getAllBalance";
+    /*取得幣種的手續費*/
+    public static final String API_GET_CURRENCY_CHARGE = "currencyList/getCurrencyCharge";
     /*取得財務紀錄交易資訊*/
     public static final String API_GET_RECORD = "memberOrder/getRecord";
 

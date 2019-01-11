@@ -118,6 +118,12 @@ public interface HttpApi {
     Observable<ResponseJson> getAllBalance(@Body RequestBody requestBody);
 
     /**
+     * 取得幣種的手續費
+     */
+    @POST(APIURLConstants.API_GET_CURRENCY_CHARGE)
+    Observable<ResponseJson> getCurrencyCharge(@Body RequestBody requestBody);
+
+    /**
      * 取得帳戶資訊
      */
     @POST(APIURLConstants.API_GET_ACCOUNT_SECURITY)
@@ -141,8 +147,6 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_SECURITY_TX_PASSWORD)
     Observable<ResponseJson> securityTxPassword(@Body RequestBody requestBody);
-
-
 
 
     /**

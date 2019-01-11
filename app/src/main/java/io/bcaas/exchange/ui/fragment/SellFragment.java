@@ -20,6 +20,8 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
+import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
+import io.bcaas.exchange.ui.presenter.GetCurrencyChargePresenterImp;
 import io.bcaas.exchange.ui.view.SellView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -68,7 +70,6 @@ public class SellFragment extends BaseFragment {
         if (tabLayout == null) {
             return;
         }
-        LogTool.d(TAG, "initTopTabData");
         tabLayout.removeTabLayout();
         //刷新界面
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
@@ -101,8 +102,10 @@ public class SellFragment extends BaseFragment {
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 currentPosition = tab.getPosition();
+                if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                    ((SellView) views.get(currentPosition)).getCurrencyCharge();
+                }
             }
 
             @Override
@@ -116,6 +119,7 @@ public class SellFragment extends BaseFragment {
             }
         });
         tabLayout.resetSelectedTab(0);
+
     }
 
     @Override
@@ -156,15 +160,15 @@ public class SellFragment extends BaseFragment {
                     case Constants.From.SELL_SELECT_CURRENCY:
                         // 显示当前的所有币种信息
                         if (activity != null) {
-                            ((BaseActivity) activity).showListPopWindow(onItemSelectListener );
+                            ((BaseActivity) activity).showListPopWindow(onItemSelectListener);
                         }
                         break;
                     case Constants.From.SELL_SELECTED_CURRENCY:
-                        MemberKeyVO memberKeyVO=(MemberKeyVO)type;
+                        MemberKeyVO memberKeyVO = (MemberKeyVO) type;
                         // 更新当前的界面信息
-                        if (ListTool.noEmpty(views)){
-                            if (currentPosition<views.size()){
-                                ((SellView)views.get(currentPosition)).refreshExchangeCurrency(memberKeyVO);
+                        if (ListTool.noEmpty(views)) {
+                            if (currentPosition < views.size()) {
+                                ((SellView) views.get(currentPosition)).refreshExchangeCurrency(memberKeyVO);
 
                             }
                         }
@@ -193,4 +197,5 @@ public class SellFragment extends BaseFragment {
     public void resetView() {
         initTopTabData();
     }
+
 }

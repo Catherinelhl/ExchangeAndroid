@@ -12,6 +12,15 @@ import okhttp3.RequestBody;
  * 交易相关
  */
 public class TxInteractor {
+    /**
+     * 取得幣種的手續費
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> getCurrencyCharge(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.getCurrencyCharge(body);
+    }
 
     /**
      * 撤銷待出售訂單
@@ -32,6 +41,7 @@ public class TxInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.getRecord(body);
     }
+
     /**
      * 出售
      *
@@ -63,7 +73,7 @@ public class TxInteractor {
     }
 
     /**
-     *  提现
+     * 提现
      *
      * @param body
      */

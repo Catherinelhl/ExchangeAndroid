@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -199,6 +199,31 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
 
                     }
                 });
+
+        RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //跳转到google验证
+                        Intent intent = new Intent();
+                        intent.setClass(BuyDetailActivity.this, GoogleVerifyActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
     }
 
     @Override
@@ -211,10 +236,5 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
         setResult(false);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

@@ -32,4 +32,5 @@ public class MainInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.getAllBalance(body);
     }
+
 }

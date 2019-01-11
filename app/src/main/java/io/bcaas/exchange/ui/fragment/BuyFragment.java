@@ -112,18 +112,16 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     currentPosition = tab.getPosition();
+                    memberOrderVOS.clear();
+                    if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                        ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
+                    }
+                    //清空当前数据，重新请求
                     //刷新当前界面下的内容
                     if (presenter != null) {
                         // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
                         presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
                     }
-                    // TODO: 2019/1/11  更新当前的数据
-//                    if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-//                        if (ListTool.noEmpty(memberKeyVOList)) {
-//                            ((RechargeView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
-//
-//                        }
-//                    }
                 }
 
                 @Override
@@ -250,7 +248,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                 }.getType());
             }
             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                    ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
+                ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
             }
         }
     }
