@@ -17,6 +17,7 @@ public class MessageConstants {
     public static final String EMPTY = "";
     public static final String RECHARGE = "recharge";//充值
     public static final String WITHDRAW = "withDraw";// 提现
+    public static final String DEFAULT_NEXT_OBJECT_ID = "0";//默认的nextObjectId
     public static String HTTP_CONTENT_ENCODING = "Content-Encoding";
     public static final String ENCODE_INGORE_CASE = "identity";//http設置encode忽略
     public static final String CONNECT_EXCEPTION = "connect exception,need switch server...";

@@ -2,6 +2,7 @@ package io.bcaas.exchange.vo;
 
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.ListTool;
 
 import java.util.List;
@@ -271,7 +272,7 @@ public class RequestJson {
 
     @Override
     public String toString() {
-        return "RequestJson{" +
+        return GsonTool.string( "RequestJson{" +
                 "versionVO=" + versionVO +
                 ", versionList=" + versionList +
                 ", memberVO=" + memberVO +
@@ -290,6 +291,6 @@ public class RequestJson {
                 ", verificationBean=" + verificationBean +
                 ", verificationBeanList=" + verificationBeanList +
                 ", paginationVO=" + paginationVO +
-                '}';
+                '}');
     }
 }

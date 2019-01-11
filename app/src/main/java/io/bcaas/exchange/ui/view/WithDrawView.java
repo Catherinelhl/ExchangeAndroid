@@ -10,12 +10,13 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
-import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -38,6 +39,7 @@ public class WithDrawView extends LinearLayout {
     private TextView tvNoFundPasswordTips;
     private TextView tvSetImmediately;
     private LinearLayout llNoFundPassword;
+    String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
 
     private Context context;
     private OnItemSelectListener onItemSelectListener;
@@ -69,8 +71,9 @@ public class WithDrawView extends LinearLayout {
         btnSend = view.findViewById(R.id.btn_send);
         llNoFundPassword = view.findViewById(R.id.ll_no_fund_password);
         tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
-        tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
         llWithDrawContent = view.findViewById(R.id.ll_with_draw_content);
+        tvNoFundPasswordTips = view.findViewById(R.id.tv_no_fund_password_tips);
+        tvNoFundPasswordTips.setText(info);
         etwaReceiveAddress.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -99,8 +102,8 @@ public class WithDrawView extends LinearLayout {
 
                     @Override
                     public void onNext(Object o) {
-                        if (onItemSelectListener!=null){
-                            onItemSelectListener.onItemSelect(MessageConstants.EMPTY,Constants.From.WITHDRAW_SURE);
+                        if (onItemSelectListener != null) {
+                            onItemSelectListener.onItemSelect(MessageConstants.EMPTY, Constants.From.WITHDRAW_SURE);
                         }
                     }
 
@@ -143,27 +146,34 @@ public class WithDrawView extends LinearLayout {
     /**
      * 更新当前界面信息
      *
-     * @param userInfoBean
+     * @param memberKeyVO
      */
-    public void refreshData(UserInfoBean userInfoBean) {
-        //判断当前是否设置资金密码
-        boolean hasFundPassword = BaseApplication.isSetFundPassword();
-        if (llNoFundPassword != null) {
-            llNoFundPassword.setVisibility(hasFundPassword ? GONE : VISIBLE);
+    public void refreshData(MemberKeyVO memberKeyVO) {
+        if (memberKeyVO != null) {
+            CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+            if (currencyListVO == null) {
+                return;
+            }
+            //判断当前是否设置资金密码
+            boolean hasFundPassword = BaseApplication.isSetFundPassword();
+            if (llNoFundPassword != null) {
+                llNoFundPassword.setVisibility(hasFundPassword ? GONE : VISIBLE);
+            }
+
+            if (llWithDrawContent != null) {
+                llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
+            }
+            if (hasFundPassword) {
+                if (tvCashableBalance != null) {
+                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + memberKeyVO.getBalanceAvailable() + "\t" + currencyListVO.getEnName());
+                }
+                if (etwaWithdrawAmount != null) {
+                    etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));
+                    etwaWithdrawAmount.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+                }
+            }
         }
 
-        if (llWithDrawContent != null) {
-            llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
-        }
-        if (hasFundPassword) {
-            if (tvCashableBalance != null) {
-                tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + "231.213415  BTC");
-            }
-            if (etwaWithdrawAmount != null) {
-                etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));
-                etwaWithdrawAmount.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-            }
-        }
 
     }
 

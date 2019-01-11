@@ -120,11 +120,11 @@ public class Constants {
         public static final String BUY_DETAIL = "buyDetail";
         public static final String SELECT_COUNTRY_CODE = "selectCountryCode";//选择的城市号码
 
-//        public static final String SELL_CURRENCY_UID = "sellCurrencyUid";//卖出的币种
+        //        public static final String SELL_CURRENCY_UID = "sellCurrencyUid";//卖出的币种
 //        public static final String SELL_CURRENCY_PAYMENT_UID = "sellCurrencyPaymentUid";//需要支付的币种
 //        public static final String SELL_AMOUNT = "sellAmount";//卖出的数量
 //        public static final String SELL_UNIT_PRICE = "sellUnitPrice";//卖出的单价
-        public static final String SELL_DATA_BEAN= "sellDataBean";//卖出的数据类
+        public static final String SELL_DATA_BEAN = "sellDataBean";//卖出的数据类
     }
 
     /**
@@ -155,7 +155,7 @@ public class Constants {
     }
 
     public class From {
-        public static final String ORDER_TRANSACTION = "orderTransaction";//订单中的交易模块
+        public static final String ORDER_CANCEL_TRANSACTION = "orderCancelTransaction";//撤销订单
         public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
         public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
         public static final String SELL_VIEW = "sellView";//售出
@@ -244,5 +244,7 @@ public class Constants {
         public static final int RECHARGE = 0;//充值
         public static final int WITHDRAW = 1;//提现
         public static final int TX = 2;//交易
+        public static final int BUY = 2;// 买
+        public static final int SELL = 3;// 卖
     }
 }

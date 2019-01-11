@@ -1768,6 +1768,7 @@ id tv_freeze
 id tv_fund_type
 id tv_google_verify_key
 id tv_how_to_verify
+id tv_income
 id tv_info
 id tv_login_now
 id tv_middle_info
@@ -1775,6 +1776,10 @@ id tv_my_address
 id tv_name
 id tv_no_fund_password_tips
 id tv_number
+id tv_order_status
+id tv_order_time
+id tv_order_type
+id tv_outcome
 id tv_pay_account
 id tv_pay_method
 id tv_person_name
@@ -1800,9 +1805,6 @@ id tv_tab_title
 id tv_title
 id tv_total_account
 id tv_transaction_amount
-id tv_transaction_status
-id tv_transaction_time
-id tv_transaction_type
 id tv_version
 id tv_withdraw_address
 id tv_withdraw_status

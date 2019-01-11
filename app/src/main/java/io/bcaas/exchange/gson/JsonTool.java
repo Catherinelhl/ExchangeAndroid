@@ -1,11 +1,13 @@
 package io.bcaas.exchange.gson;
 
+import com.google.gson.JsonArray;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,9 +55,11 @@ public class JsonTool {
             JSONObject jsonObject = null;
 
             try {
-                jsonObject = new JSONObject(resource);
+                JSONArray jsonArray = new JSONArray(resource);
+                jsonObject = jsonArray.getJSONObject(0);
                 return !jsonObject.has(key) ? value : jsonObject.getInt(key);
-            } catch (JSONException var5) {
+            } catch (JSONException e) {
+                e.printStackTrace();
                 return value;
             }
         }
@@ -73,7 +77,7 @@ public class JsonTool {
             if (memberKeyVO == null) {
                 continue;
             }
-             currencyListVO = memberKeyVO.getCurrencyListVO();
+            currencyListVO = memberKeyVO.getCurrencyListVO();
             if (currencyListVO == null) {
                 continue;
             }

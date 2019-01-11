@@ -75,6 +75,11 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         return ListTool.isEmpty(memberOrderVOS) ? 0 : memberOrderVOS.size();
     }
 
+    public void addList(List<MemberOrderVO> memberOrderVOS) {
+        this.memberOrderVOS=memberOrderVOS;
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvRechargeType;
         TextView tvRechargeTime;

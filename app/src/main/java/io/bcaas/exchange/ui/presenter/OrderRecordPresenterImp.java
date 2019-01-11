@@ -50,7 +50,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
 
-        LogTool.d(TAG, "getRecord:" + requestJson);
+        LogTool.d(TAG, "getRecord:" + GsonTool.string(requestJson));
 
         txInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -63,7 +63,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        LogTool.d(TAG, GsonTool.string(responseJson));
                         if (responseJson == null) {
                             view.getRecordFailure(MessageConstants.EMPTY);
                             return;
@@ -98,6 +98,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
     @Override
     public void cancelOrder(long memberOrderUid) {
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -147,13 +148,14 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
+                        view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
                         view.cancelOrderFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

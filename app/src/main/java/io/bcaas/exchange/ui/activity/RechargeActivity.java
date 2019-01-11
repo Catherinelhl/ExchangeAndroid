@@ -149,10 +149,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                if (ListTool.noEmpty(views) && position < views.size()) {
+               currentPosition = tab.getPosition();
+                if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                     if (ListTool.noEmpty(memberKeyVOList)) {
-                        ((RechargeView) views.get(position)).refreshData(memberKeyVOList.get(position));
+                        ((RechargeView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
 
                     }
                 }

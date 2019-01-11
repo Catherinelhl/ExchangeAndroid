@@ -8,15 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.BuyDataBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
-import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberOrderVO;
+import io.bcaas.exchange.vo.MemberVO;
 
 import java.util.List;
 
@@ -29,13 +27,13 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
 
 
     private Context context;
-    private List<BuyDataBean> buyDataBeans;
+    private List<MemberOrderVO> memberOrderVOS;
     private OnItemSelectListener onItemSelectListener;
 
-    public BuyDataAdapter(Context context, List<BuyDataBean> buyDataBeans) {
+    public BuyDataAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
-        this.buyDataBeans = buyDataBeans;
+        this.memberOrderVOS = memberOrderVOS;
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -51,32 +49,39 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= buyDataBeans.size()) {
+        if (i >= memberOrderVOS.size()) {
             return;
         }
-        BuyDataBean buyDataBean = buyDataBeans.get(i);
-        if (buyDataBean == null) {
+        MemberOrderVO memberOrderVO = memberOrderVOS.get(i);
+        if (memberOrderVO == null) {
             return;
         }
-        viewHolder.tvPersonName.setText(buyDataBean.getPersonName());
-        viewHolder.tvPayMethod.setText(buyDataBean.getBuyMethod());
-        viewHolder.tvPrice.setText(buyDataBean.getPrice());
-        viewHolder.tvNumber.setText(buyDataBean.getNumber());
-        viewHolder.tvTotalAccount.setText(buyDataBean.getTotalAccount());
-        viewHolder.tvFee.setText(buyDataBean.getFee());
-//        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onItemSelectListener != null) {
-//                    onItemSelectListener.onItemSelect(buyDataBean, MessageConstants.EMPTY);
-//                }
-//            }
-//        });
+        //得到出售人的名字
+        MemberVO memberVO = memberOrderVO.getMemberVO();
+        if (memberVO != null) {
+            viewHolder.tvPersonName.setText(memberVO.getMemberId());
+        }
+        // 得到需要支付的信息
+        CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
+        if (paymentCurrencyList != null) {
+            String enName = paymentCurrencyList.getEnName();
+            viewHolder.tvPayMethod.setText("支付方式" + "\t" + enName);
+            viewHolder.tvFee.setText(paymentCurrencyList.getBuyCharge() + "\t" + enName);
+            viewHolder.tvPrice.setText(memberOrderVO.getUnitPrice() + "\t" + enName);
+            viewHolder.tvTotalAccount.setText(memberOrderVO.getPrice() + "\t" + enName);
+
+
+        }
+        // 得到当前币种信息
+        CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
+        if (currencyListVO != null) {
+            viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "\t" + currencyListVO.getEnName());
+        }
         viewHolder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(buyDataBean, MessageConstants.EMPTY);
+                    onItemSelectListener.onItemSelect(memberOrderVO, MessageConstants.EMPTY);
                 }
             }
         });
@@ -84,11 +89,11 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(buyDataBeans) ? 0 : buyDataBeans.size();
+        return ListTool.isEmpty(memberOrderVOS) ? 0 : memberOrderVOS.size();
     }
 
-    public void refreshData(List<BuyDataBean> buyDataBeans) {
-        this.buyDataBeans = buyDataBeans;
+    public void refreshData(List<MemberOrderVO> memberOrderVOS) {
+        this.memberOrderVOS = memberOrderVOS;
         notifyDataSetChanged();
     }
 

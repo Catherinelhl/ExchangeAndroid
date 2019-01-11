@@ -159,7 +159,7 @@
                 </LinearLayout>
                 <TextView
                         style="@style/black_16_text_style"
-                        android:text="可用余额 6.2834867843 BTC"
+                        android:id="@+id/tv_salable_balance"
                         android:gravity="center_vertical"
                         android:layout_marginTop="@dimen/d16"
                         android:layout_marginRight="@dimen/d20"
@@ -179,7 +179,7 @@
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
                         bcaas:hint="@string/random_verify_code"
-                        bcaas:behaviour="text"/>
+                        bcaas:behaviour="checkBox"/>
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="horizontal"
                               android:layout_marginTop="@dimen/d12"

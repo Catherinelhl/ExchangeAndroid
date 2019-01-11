@@ -15,7 +15,7 @@
                   android:layout_marginRight="@dimen/d20"
                   android:layout_height="wrap_content">
         <TextView android:layout_width="wrap_content"
-                  android:id="@+id/tv_transaction_type"
+                  android:id="@+id/tv_order_type"
                   style="@style/black_16_text_style"
                   tool:text="@string/sell"
                   android:textStyle="bold"
@@ -23,7 +23,7 @@
                   android:layout_gravity="center"
                   android:layout_height="wrap_content"/>
         <TextView android:layout_width="@dimen/d0"
-                  android:id="@+id/tv_transaction_time"
+                  android:id="@+id/tv_order_time"
                   android:layout_weight="1"
                   android:textSize="@dimen/text_size_14"
                   tool:text="2018/12/19"
@@ -33,7 +33,7 @@
                   android:layout_height="wrap_content"/>
         <TextView
                 android:gravity="center"
-                android:id="@+id/tv_transaction_status"
+                android:id="@+id/tv_order_status"
                 style="@style/ff6f61_14_text_style"
                 tool:text="@string/wait_to_sell"/>
     </LinearLayout>
@@ -55,7 +55,7 @@
                 tool:ignore="InefficientWeight"/>
         <TextView
                 android:gravity="right"
-                android:id="@+id/tv_pay_account"
+                android:id="@+id/tv_outcome"
                 android:layout_weight="1"
                 android:layout_width="@dimen/d0"
                 style="@style/black_14_text_style"
@@ -80,7 +80,7 @@
                 android:gravity="right"
                 android:layout_width="@dimen/d0"
                 android:layout_weight="1"
-                android:id="@+id/tv_total_account"
+                android:id="@+id/tv_income"
                 style="@style/black_14_text_style"
                 tool:text="12.2334623465 ETH"/>
     </LinearLayout>
@@ -88,6 +88,7 @@
                   android:orientation="horizontal"
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_gravity="center"
+                  android:layout_marginBottom="@dimen/d14"
                   android:gravity="center_vertical"
                   android:layout_marginRight="@dimen/d20"
                   android:layout_height="wrap_content">
@@ -110,7 +111,6 @@
             android:textSize="@dimen/text_size_14"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/d30"
-            android:layout_marginTop="@dimen/d14"
             android:minWidth="@dimen/d68"
             android:background="@drawable/stroke_border_grey"
             android:layout_marginBottom="@dimen/d13"

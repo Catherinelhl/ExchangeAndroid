@@ -112,7 +112,7 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, "getAllBalance:" + requestJson);
+        LogTool.d(TAG, "getAllBalance:" + GsonTool.string(requestJson));
 
         mainInteractor.getAllBalance(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())

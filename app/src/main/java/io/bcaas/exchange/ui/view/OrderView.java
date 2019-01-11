@@ -15,6 +15,7 @@ import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
 import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -86,6 +87,8 @@ public class OrderView extends LinearLayout {
             rvOrderData.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
             rvOrderData.setLayoutManager(linearLayoutManager);
+        }else{
+            orderRechargeAdapter.addList(memberOrderVOS);
         }
         rvOrderData.setAdapter(orderRechargeAdapter);
     }
@@ -97,19 +100,24 @@ public class OrderView extends LinearLayout {
             rvOrderData.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
             rvOrderData.setLayoutManager(linearLayoutManager);
+        }else{
+            orderWithdrawAdapter.addList(memberOrderVOS);
         }
         rvOrderData.setAdapter(orderWithdrawAdapter);
     }
 
-    public void setOrderTransactionAdapter(List<MemberOrderVO> orderTransactionBeans) {
+    public void setOrderTransactionAdapter(List<MemberOrderVO> memberOrderVOS) {
+        LogTool.d(TAG,memberOrderVOS);
+
         if (orderTransactionAdapter == null) {
-            orderTransactionAdapter = new OrderTransactionAdapter(getContext(), orderTransactionBeans);
+            orderTransactionAdapter = new OrderTransactionAdapter(getContext(), memberOrderVOS);
             orderTransactionAdapter.setOnItemSelectListener(onItemSelectListener);
             rvOrderData.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
             rvOrderData.setLayoutManager(linearLayoutManager);
+        }else{
+            orderTransactionAdapter.addList(memberOrderVOS);
         }
-
         rvOrderData.setAdapter(orderTransactionAdapter);
     }
 }

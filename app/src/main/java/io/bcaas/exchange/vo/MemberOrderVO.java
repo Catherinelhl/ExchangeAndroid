@@ -74,6 +74,18 @@ public class MemberOrderVO implements Serializable {
 	 */
 	private String createTime;
 
+	/**
+	 * 收入
+	 */
+	private String income;
+
+	public String getIncome() {
+		return income;
+	}
+
+	public void setIncome(String income) {
+		this.income = income;
+	}
 
 	public MemberOrderVO() {
 		super();
@@ -230,6 +242,7 @@ public class MemberOrderVO implements Serializable {
 				", mark='" + mark + '\'' +
 				", updateTime='" + updateTime + '\'' +
 				", createTime='" + createTime + '\'' +
+				", income='" + income + '\'' +
 				'}';
 	}
 }

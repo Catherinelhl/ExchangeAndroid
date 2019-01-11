@@ -51,7 +51,7 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
-        LogTool.d(TAG, "getOrderList:" + requestJson);
+        LogTool.d(TAG, "getOrderList:" + GsonTool.string(requestJson));
         txInteractor.getOrderList(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -72,10 +72,9 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
                         if (isSuccess) {
                             PaginationVO paginationVOResponse = responseJson.getPaginationVO();
                             if (paginationVOResponse != null) {
-                                view.getOrderListSuccess(paginationVO);
+                                view.getOrderListSuccess(paginationVOResponse);
                             } else {
                                 view.getOrderListFailure(MessageConstants.EMPTY);
-
                             }
                         } else {
                             int code = responseJson.getCode();

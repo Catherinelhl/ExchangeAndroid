@@ -10,21 +10,18 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.tools.file.FilePathTool;
-import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
-import io.bcaas.exchange.vo.ResponseJson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,20 +43,18 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     ViewPager viewPager;
 
     private OrderRecordContract.Presenter presenter;
-    private OrderView orderViewOne, orderViewTwo, orderViewThree;
 
 
-    private List<MemberOrderVO> orderTransactionBeans;
-    private List<MemberOrderVO> orderRechargeBeans;
-    private List<MemberOrderVO> orderWithDrawBeans;
+    private List<MemberOrderVO> memberOrderVOList;
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
-    private String nextObjectIdRecharge = "1";
-    private String nextObjectIdWithDraw = "1";
-    private String nextObjectIdTx = "1";
+    private String nextObjectIdRecharge = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectIdWithDraw = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectIdTx = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
     //得到当前选中的列表信息
     private PaginationVO paginationVO;
+    private int currentPosition;
 
     @Override
     public int getLayoutRes() {
@@ -70,9 +65,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     public void initViews(View view) {
         isPrepared = true;
         views = new ArrayList<>();
-        orderTransactionBeans = new ArrayList<>();
-        orderRechargeBeans = new ArrayList<>();
-        orderWithDrawBeans = new ArrayList<>();
+        memberOrderVOList = new ArrayList<>();
         presenter = new OrderRecordPresenterImp(this);
         initTopTabData();
     }
@@ -93,22 +86,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         for (int i = 0; i < 3; i++) {
             //显示标题
             tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
+            OrderView orderView = new OrderView(getContext());
+            orderView.setOrderTransactionAdapter(memberOrderVOList);
+            orderView.setOnItemSelectListener(onItemSelectListener);
+            views.add(orderView);
         }
-        orderViewOne = new OrderView(getContext());
-        orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
-        orderViewOne.setOnItemSelectListener(onItemSelectListener);
-        views.add(orderViewOne);
-
-        orderViewTwo = new OrderView(getContext());
-        orderViewTwo.setOrderRechargeAdapter(orderRechargeBeans);
-        orderViewTwo.setOnItemSelectListener(onItemSelectListener);
-        views.add(orderViewTwo);
-
-
-        orderViewThree = new OrderView(getContext());
-        orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
-        orderViewThree.setOnItemSelectListener(onItemSelectListener);
-        views.add(orderViewThree);
 
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
@@ -118,29 +100,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        if (presenter != null) {
-                            presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
-                        }
-                        orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
-                        break;
-                    case 1:
-                        if (presenter != null) {
-                            presenter.getRecord(Constants.OrderType.RECHARGE, nextObjectIdRecharge);
-                        }
-
-                        orderViewTwo.setOrderRechargeAdapter(orderRechargeBeans);
-
-                        break;
-                    case 2:
-                        if (presenter != null) {
-                            presenter.getRecord(Constants.OrderType.WITHDRAW, nextObjectIdWithDraw);
-                        }
-                        orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
-
-                        break;
-                }
+                currentPosition=tab.getPosition();
+               refreshView();
             }
 
             @Override
@@ -156,6 +117,29 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         tabLayout.resetSelectedTab(0);
     }
 
+    private void refreshView(){
+        switch (currentPosition) {
+            case 0:
+                if (presenter != null) {
+                    presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
+                }
+                break;
+            case 1:
+                if (presenter != null) {
+                    presenter.getRecord(Constants.OrderType.RECHARGE, nextObjectIdRecharge);
+                }
+                break;
+            case 2:
+                if (presenter != null) {
+                    presenter.getRecord(Constants.OrderType.WITHDRAW, nextObjectIdWithDraw);
+                }
+                break;
+        }
+        if (ListTool.noEmpty(views)&&currentPosition<views.size()){
+            ((OrderView) views.get(currentPosition)).setOrderRechargeAdapter(memberOrderVOList);
+        }
+    }
+
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
@@ -166,7 +150,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             if (type instanceof Long) {
                 long memberOrderUid = (Long) type;
                 switch (from) {
-                    case Constants.From.ORDER_TRANSACTION:
+                    case Constants.From.ORDER_CANCEL_TRANSACTION:
+                        // 撤销订单
                         presenter.cancelOrder(memberOrderUid);
                         break;
                     case Constants.From.ORDER_RECHARGE:
@@ -212,69 +197,68 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             String nextObjectId = paginationVO.getNextObjectId();
             int totalPageNumber = paginationVO.getTotalPageNumber();
             long totalObjectNumber = paginationVO.getTotalObjectNumber();
-            int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
-            LogTool.d(TAG, "当前的Type为：" + type);
 
             List<Object> objects = paginationVO.getObjectList();
+            int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
+            LogTool.d(TAG, "当前的Type为：" + type);
             if (ListTool.isEmpty(objects)) {
-                // TODO: 2019/1/11 暂时解析本地数据
-                String json = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent());
-                if (StringTool.notEmpty(json)) {
-                    ResponseJson responseJson = GsonTool.convert(json, ResponseJson.class);
-                    if (responseJson != null) {
-                        PaginationVO paginationVO1 = responseJson.getPaginationVO();
-                        if (paginationVO1 != null) {
-                            switch (type) {
-                                case Constants.OrderType.RECHARGE:
-                                    orderRechargeBeans = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                                    }.getType());
-                                    orderViewTwo.setOrderTransactionAdapter(orderRechargeBeans);
-                                    nextObjectIdRecharge = paginationVO.getNextObjectId();
-                                    break;
-                                case Constants.OrderType.WITHDRAW:
-                                    orderWithDrawBeans = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                                    }.getType());
-                                    orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
-                                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
-                                    break;
-                                case Constants.OrderType.TX:
-                                    orderTransactionBeans = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                                    }.getType());
-                                    orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
-                                    nextObjectIdTx = paginationVO.getNextObjectId();
-                                    break;
-                            }
-
-
-                        }
-                    }
-                }
-            }else{
-                switch (type) {
-                    case Constants.OrderType.RECHARGE:
-                        orderRechargeBeans = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                        }.getType());
-                        orderViewTwo.setOrderTransactionAdapter(orderRechargeBeans);
-                        nextObjectIdRecharge = paginationVO.getNextObjectId();
-                        break;
-                    case Constants.OrderType.WITHDRAW:
-                        orderWithDrawBeans = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                        }.getType());
-                        orderViewThree.setOrderWithDrawAdapter(orderWithDrawBeans);
-                        nextObjectIdWithDraw = paginationVO.getNextObjectId();
-                        break;
-                    case Constants.OrderType.TX:
-                        orderTransactionBeans = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                        }.getType());
-                        orderViewOne.setOrderTransactionAdapter(orderTransactionBeans);
-                        nextObjectIdTx = paginationVO.getNextObjectId();
-                        break;
-                }
+                memberOrderVOList.clear();
+//                // TODO: 2019/1/11 暂时解析本地数据
+//                String json = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent());
+//                if (StringTool.notEmpty(json)) {
+//                    ResponseJson responseJson = GsonTool.convert(json, ResponseJson.class);
+//                    if (responseJson != null) {
+//                        PaginationVO paginationVO1 = responseJson.getPaginationVO();
+//                        if (paginationVO1 != null) {
+//                            int type = JsonTool.getInt(GsonTool.string(paginationVO1.getObjectList()), "type", 0);
+//                            LogTool.d(TAG, "当前的Type为：" + type);
+//                            memberOrderVOList = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+//                            }.getType());
+//                            switch (type) {
+//                                case Constants.OrderType.RECHARGE:
+//
+//                                    orderViewTwo.setOrderTransactionAdapter(memberOrderVOList);
+//                                    nextObjectIdRecharge = paginationVO.getNextObjectId();
+//                                    break;
+//                                case Constants.OrderType.WITHDRAW:
+//                                    orderViewThree.setOrderWithDrawAdapter(memberOrderVOList);
+//                                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
+//                                    break;
+//                                default:
+//                                    orderViewOne.setOrderTransactionAdapter(memberOrderVOList);
+//                                    nextObjectIdTx = paginationVO.getNextObjectId();
+//                                    break;
+//                            }
+//
+//
+//                        }
+//                    }
+//                }
+            } else {
+                memberOrderVOList = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                }.getType());
             }
-
-
-
-
+            LogTool.d(TAG, "memberOrderVOList:" + memberOrderVOList);
+            switch (type) {
+                case Constants.OrderType.RECHARGE:
+                    if (ListTool.noEmpty(views)&&currentPosition<views.size()){
+                        ((OrderView) views.get(1)).setOrderRechargeAdapter(memberOrderVOList);
+                    }
+                    nextObjectIdRecharge = paginationVO.getNextObjectId();
+                    break;
+                case Constants.OrderType.WITHDRAW:
+                    if (ListTool.noEmpty(views)&&currentPosition<views.size()){
+                        ((OrderView) views.get(2)).setOrderWithDrawAdapter(memberOrderVOList);
+                    }
+                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
+                    break;
+                default:
+                    if (ListTool.noEmpty(views)&&currentPosition<views.size()) {
+                        ((OrderView) views.get(0)).setOrderTransactionAdapter(memberOrderVOList);
+                    }
+                    nextObjectIdTx = paginationVO.getNextObjectId();
+                    break;
+            }
         }
     }
 
@@ -286,5 +270,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     @Override
     public void cancelOrderSuccess(MemberOrderVO memberOrderVO) {
         LogTool.d(TAG, "cancelOrderSuccess:" + memberOrderVO);
+       refreshView();
     }
 }

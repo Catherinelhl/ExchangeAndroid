@@ -12,6 +12,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -36,6 +38,11 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         this.memberOrderVOS = memberOrderVOS;
     }
 
+    public void addList(List<MemberOrderVO> memberOrderVOS) {
+        this.memberOrderVOS = memberOrderVOS;
+        notifyDataSetChanged();
+    }
+
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListener = onItemSelectListener;
     }
@@ -56,27 +63,44 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         if (memberOrderVO == null) {
             return;
         }
-        String enName = memberOrderVO.getCurrencyListVO().getEnName();
-        String paymentEnName = memberOrderVO.getPaymentCurrencyUid().getEnName();
-        viewHolder.tvTransactionType.setText(String.valueOf(memberOrderVO.getType()));
-        viewHolder.tvTransactionTime.setText(memberOrderVO.getCreateTime());
-        viewHolder.tvTransactionStatus.setText(String.valueOf(memberOrderVO.getStatus()));
-        viewHolder.tvPayAccount.setText(memberOrderVO.getAmount() + "\t" + paymentEnName);
-        viewHolder.tvTotalAccount.setText(memberOrderVO.getAmount() + "\t" + enName);
-        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + enName);
-//        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (onItemSelectListener != null) {
-//                    onItemSelectListener.onItemSelect(buyDataBean, MessageConstants.EMPTY);
-//                }
-//            }
-//        });
+        // 取得交易币种信息
+        CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
+        if (currencyListVO == null) {
+            return;
+        }
+        // 取得币种的名字
+        String enName = currencyListVO.getEnName();
+        //取得需要支付方的币种信息
+        CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
+        if (paymentCurrencyList == null) {
+            return;
+        }
+        //取得币种的支付名字
+        String paymentEnName = paymentCurrencyList.getEnName();
+        //订单产生类型
+        viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) + enName);
+        //订单产生时间
+        viewHolder.tvOrderTime.setText(memberOrderVO.getCreateTime());
+        //订单状态
+        viewHolder.tvOrderStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
+        // 订单支出
+        viewHolder.tvOutCome.setText(memberOrderVO.getIncome() + "\t" + enName);
+        // 订单收入
+        viewHolder.tvInCome.setText(memberOrderVO.getAmount() + "\t" + paymentEnName);
+        //订单手续费
+        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + paymentEnName);
+        // 判断是否需要显示撤销的按钮；type ==1；status==2
+        if (StringTool.getDisplayOrderStatus(memberOrderVO.getType(), memberOrderVO.getStatus())) {
+            // 需要显示撤销订单按钮
+            viewHolder.btnCancel.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.btnCancel.setVisibility(View.GONE);
+        }
         viewHolder.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_TRANSACTION);
+                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_CANCEL_TRANSACTION);
                 }
             }
         });
@@ -88,21 +112,21 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTransactionType;
-        TextView tvTransactionTime;
-        TextView tvTransactionStatus;
-        TextView tvPayAccount;
-        TextView tvTotalAccount;
+        TextView tvOrderType;
+        TextView tvOrderTime;
+        TextView tvOrderStatus;
+        TextView tvOutCome;
+        TextView tvInCome;
         TextView tvFee;
         Button btnCancel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTransactionType = itemView.findViewById(R.id.tv_transaction_type);
-            tvTransactionTime = itemView.findViewById(R.id.tv_transaction_time);
-            tvTransactionStatus = itemView.findViewById(R.id.tv_transaction_status);
-            tvPayAccount = itemView.findViewById(R.id.tv_pay_account);
-            tvTotalAccount = itemView.findViewById(R.id.tv_total_account);
+            tvOrderType = itemView.findViewById(R.id.tv_order_type);
+            tvOrderTime = itemView.findViewById(R.id.tv_order_time);
+            tvOrderStatus = itemView.findViewById(R.id.tv_order_status);
+            tvOutCome = itemView.findViewById(R.id.tv_outcome);
+            tvInCome = itemView.findViewById(R.id.tv_income);
             tvFee = itemView.findViewById(R.id.tv_fee);
             btnCancel = itemView.findViewById(R.id.btn_cancel);
         }

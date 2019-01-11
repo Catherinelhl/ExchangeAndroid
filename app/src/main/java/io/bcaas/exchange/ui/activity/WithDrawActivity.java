@@ -16,7 +16,6 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
-import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -55,8 +54,6 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 
-    private WithDrawView withDrawViewOne, withDrawViewTwo, withDrawViewThree;
-    private UserInfoBean userInfoBeanBTC, userInfoBeanETH, userInfoBeanZBB;
     private List<View> views;
     private TabViewAdapter tabViewAdapter;
 
@@ -100,39 +97,20 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                         String name = currencyListVO.getEnName();
                         tabLayout.addTab(name, i);
                         //初始化数据
-                        RechargeView rechargeView = new RechargeView(this);
-                        rechargeView.refreshData(memberKeyVO);
-                        rechargeView.setOnItemSelectListener(onItemSelectListener);
-                        views.add(rechargeView);
+                        WithDrawView withDrawView = new WithDrawView(this);
+                        withDrawView.refreshData(memberKeyVO);
+                        withDrawView.setOnItemSelectListener(onItemSelectListener);
+                        views.add(withDrawView);
 
                     }
                 }
             }
         }
-        String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
-        userInfoBeanBTC = new UserInfoBean("BTC", info, "39LKDBERWWRH343T34VSRG434V43F4G5GT5H");
-        userInfoBeanETH = new UserInfoBean("ETH", info, "sdkjfhakssssjdfkasjdbfnaksdjfblniauksj");
-        userInfoBeanZBB = new UserInfoBean("ZBB", info, "q234bv41v2b34m3b24mj12b34jm13hb4jffy1h");
 
         //初始化顶部tab的数据以及相对应的界面信息
         if (tabLayout == null) {
             return;
         }
-        withDrawViewOne = new WithDrawView(this);
-        withDrawViewOne.refreshData(userInfoBeanBTC);
-        withDrawViewOne.setOnItemSelectListener(onItemSelectListener);
-        views.add(withDrawViewOne);
-
-        withDrawViewTwo = new WithDrawView(this);
-        withDrawViewTwo.refreshData(userInfoBeanETH);
-        withDrawViewTwo.setOnItemSelectListener(onItemSelectListener);
-        views.add(withDrawViewTwo);
-
-
-        withDrawViewThree = new WithDrawView(this);
-        withDrawViewThree.refreshData(userInfoBeanZBB);
-        withDrawViewThree.setOnItemSelectListener(onItemSelectListener);
-        views.add(withDrawViewThree);
 
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
@@ -213,18 +191,11 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                         String scanInfo = bundle.getString(Constants.KeyMaps.RESULT);
                         LogTool.d(TAG, "scanInfo:" + scanInfo);
                         //刷新当前界面
-                        switch (currentPosition) {
-                            case 0:
-                                withDrawViewOne.setScanInfo(scanInfo);
-                                break;
-                            case 1:
-                                withDrawViewTwo.setScanInfo(scanInfo);
+                        if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                            if (ListTool.noEmpty(memberKeyVOList)) {
+                                ((RechargeView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
 
-                                break;
-                            case 2:
-                                withDrawViewThree.setScanInfo(scanInfo);
-
-                                break;
+                            }
                         }
                     }
                     break;
@@ -242,9 +213,14 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     @Override
     public void getAccountSecuritySuccess(MemberVO memberVO) {
         if (tabLayout != null) {
-            withDrawViewOne.refreshData(userInfoBeanBTC);
-            withDrawViewTwo.refreshData(userInfoBeanETH);
-            withDrawViewThree.refreshData(userInfoBeanZBB);
+            if (ListTool.noEmpty(views)) {
+                for (int i = 0; i < views.size(); i++) {
+                    if (ListTool.noEmpty(memberKeyVOList)) {
+                        ((RechargeView) views.get(i)).refreshData(memberKeyVOList.get(i));
+
+                    }
+                }
+            }
         }
     }
 

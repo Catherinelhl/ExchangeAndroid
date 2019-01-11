@@ -7,19 +7,25 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.bean.BuyDataBean;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.BuyContract;
 import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.MemberOrderVO;
+import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -56,10 +62,12 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     TextView tvStartImmediate;
     @BindView(R.id.btn_buy)
     Button btnBuy;
-    private BuyDataBean buyDataBean;
+    @BindView(R.id.ib_right)
+    ImageButton ibRight;
+    @BindView(R.id.tv_salable_balance)
+    TextView tvSalableBalance;
+    private MemberOrderVO memberOrderVO;
     private BuyContract.Presenter presenter;
-    // 当前的订单号码
-    private long memberOrderUid;
 
     @Override
     public int getContentView() {
@@ -71,8 +79,7 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
         if (bundle == null) {
             return;
         }
-        buyDataBean = (BuyDataBean) bundle.getSerializable(Constants.KeyMaps.BUY_DETAIL);
-        LogTool.d(TAG, buyDataBean);
+        memberOrderVO = (MemberOrderVO) bundle.getSerializable(Constants.KeyMaps.BUY_DETAIL);
     }
 
     @Override
@@ -80,16 +87,46 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.buy_detail);
-        tvPersonName.setText("ZhangSan");
         tvPayMethod.setText(R.string.pay_method_str);
-        if (buyDataBean != null) {
-            tvPersonName.setText(buyDataBean.getPersonName());
-            tvPayMethod.setText(buyDataBean.getBuyMethod());
-            tvPrice.setText(buyDataBean.getPrice());
-            tvNumber.setText(buyDataBean.getNumber());
-            tvFee.setText(buyDataBean.getFee());
-            tvTotalAccount.setText(buyDataBean.getTotalAccount());
+        if (memberOrderVO != null) {
+            //得到出售人的名字
+            MemberVO memberVO = memberOrderVO.getMemberVO();
+            if (memberVO != null) {
+                tvPersonName.setText(memberVO.getMemberId());
+            }
+            // 得到需要支付的信息
+            CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
+            if (paymentCurrencyList != null) {
+                String enName = paymentCurrencyList.getEnName();
+                tvPayMethod.setText("支付方式" + "\t" + enName);
+                tvFee.setText(paymentCurrencyList.getBuyCharge() + "\t" + enName);
+                tvPrice.setText(memberOrderVO.getUnitPrice() + "\t" + enName);
+                tvTotalAccount.setText(memberOrderVO.getPrice() + "\t" + enName);
+
+
+            }
+            // 得到当前币种信息
+            CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
+            if (currencyListVO != null) {
+                tvNumber.setText(memberOrderVO.getAmount() + "\t" + currencyListVO.getEnName());
+                //得到当前账户信息
+                List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+                if (ListTool.noEmpty(memberKeyVOList)) {
+                    for (MemberKeyVO memberKeyVO : memberKeyVOList) {
+                        CurrencyListVO currencyListVOSelf = memberKeyVO.getCurrencyListVO();
+                        if (currencyListVOSelf != null) {
+                            //比较当前的uid，然后返回余额
+                            String currencyUid = currencyListVOSelf.getCurrencyUid();
+                            if (StringTool.equals(currencyUid, currencyListVO.getCurrencyUid())) {
+                                tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + memberKeyVO.getBalanceAvailable() + "\t" + currencyListVOSelf.getEnName());
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
+
 
     }
 
@@ -144,8 +181,11 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
                             showToast("请先输入google验证码！");
                             return;
                         }
-                        //3：接口请求数据
-                        presenter.buy(txPassword, memberOrderUid,  verifyCode);
+                        if (memberOrderVO != null) {
+                            //3：接口请求数据
+                            presenter.buy(txPassword, memberOrderVO.getMemberOrderUid(), verifyCode);
+                        }
+
 
                     }
 
@@ -169,5 +209,12 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     @Override
     public void buySuccess(String info) {
         setResult(false);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

@@ -161,4 +161,20 @@ public class MemberKeyVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberKeyVO{" +
+				"memberKeyUid=" + memberKeyUid +
+				", privateKey='" + privateKey + '\'' +
+				", publicKey='" + publicKey + '\'' +
+				", address='" + address + '\'' +
+				", balanceTotal='" + balanceTotal + '\'' +
+				", balanceBlocked='" + balanceBlocked + '\'' +
+				", balanceAvailable='" + balanceAvailable + '\'' +
+				", memberVO=" + memberVO +
+				", currencyListVO=" + currencyListVO +
+				", updateTime='" + updateTime + '\'' +
+				", createTime='" + createTime + '\'' +
+				'}';
+	}
 }

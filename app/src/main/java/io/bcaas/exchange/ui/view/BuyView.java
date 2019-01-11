@@ -1,9 +1,6 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,22 +8,13 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Optional;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.BuyDataAdapter;
-import io.bcaas.exchange.bean.BuyDataBean;
-import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.activity.BuyDetailActivity;
+import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.MemberOrderVO;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static android.support.constraint.Constraints.TAG;
 
 /**
  * @author catherine.brainwilliam
@@ -79,14 +67,14 @@ public class BuyView extends LinearLayout {
         this.onItemSelectListenerTemp = onItemSelectListener;
     }
 
-    public void refreshData(List<BuyDataBean> buyDataBeans) {
-        buyDataAdapter = new BuyDataAdapter(this.context, buyDataBeans);
+    public void refreshData(List<MemberOrderVO> memberOrderVOS) {
+        buyDataAdapter = new BuyDataAdapter(this.context, memberOrderVOS);
         buyDataAdapter.setOnItemSelectListener(onItemSelectListener);
         rvBuyData.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
         rvBuyData.setLayoutManager(linearLayoutManager);
         rvBuyData.setAdapter(buyDataAdapter);
-        buyDataAdapter.refreshData(buyDataBeans);
+        buyDataAdapter.refreshData(memberOrderVOS);
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
