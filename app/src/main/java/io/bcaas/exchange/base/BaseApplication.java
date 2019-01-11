@@ -171,6 +171,7 @@ public class BaseApplication extends MultiDexApplication {
     }
 
     public static void setMemberVO(MemberVO memberVO) {
+        LogTool.d(TAG, "存储当前的MemberVo信息：" + memberVO);
         BaseApplication.memberVO = memberVO;
     }
 

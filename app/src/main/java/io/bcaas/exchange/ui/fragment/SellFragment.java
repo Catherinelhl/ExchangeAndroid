@@ -15,6 +15,8 @@ import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.ui.view.SellView;
@@ -63,6 +65,7 @@ public class SellFragment extends BaseFragment {
         if (tabLayout == null) {
             return;
         }
+        LogTool.d(TAG, "initTopTabData");
         tabLayout.removeTabLayout();
         //刷新界面
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
@@ -124,6 +127,16 @@ public class SellFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.SELL_DETAIL_CODE:
+                    //重新请求getAllBalance 信息刷新当前的界面信息
+                    if (activity != null) {
+                        ((MainActivity) activity).getAllBalance();
+                    }
+                    //重置当前界面
+                    resetView();
+                    break;
+            }
         }
     }
 

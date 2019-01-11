@@ -17,6 +17,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
@@ -78,24 +79,24 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
             //资金密码
             scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
             scivFundPassword.setTabInfo("用于提币，交易的验证");
-            scivFundPassword.setOnItemSelectListener(this);
             //邮箱验证
             scivEmailVerify.setTabStatusByText(false, getString(R.string.close));
-            scivEmailVerify.setOnItemSelectListener(this);
             scivEmailVerify.setTabInfo(BaseApplication.getMemberId());
 
             //手机验证
             scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
             scivPhoneVerify.setTabInfo("用于提币,更改安全设置的验证");
-            scivPhoneVerify.setOnItemSelectListener(this);
 
             //google验证
             scivGoogleVerify.setTabStatusByText(false, getString(R.string.setting));
             scivGoogleVerify.setTabInfo("用于提币,交易及更改安全设置的验证");
-            scivGoogleVerify.setOnItemSelectListener(this);
         } else {
             getAccountSecuritySuccess(BaseApplication.getMemberVO());
         }
+        scivFundPassword.setOnItemSelectListener(this);
+        scivEmailVerify.setOnItemSelectListener(this);
+        scivPhoneVerify.setOnItemSelectListener(this);
+        scivGoogleVerify.setOnItemSelectListener(this);
 
     }
 
@@ -156,9 +157,12 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         MemberVO memberVO = BaseApplication.getMemberVO();
+        LogTool.d(TAG, "from:" + from);
+        LogTool.d(TAG, "memberVO:" + memberVO);
         if (memberVO == null) {
             return;
         }
+
         if (StringTool.equals(from, getString(R.string.login_password))) {
             // 登录密码
             intent.setClass(SafetyCenterActivity.this, ModifyLoginPasswordActivity.class);
@@ -200,20 +204,20 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
             int googleVerify = memberVO.getTwoFactorAuthVerify();
-            if (googleVerify == Constants.Status.CLOSE) {
-                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
-                presenter.securityGoogle(MessageConstants.EMPTY);
-            } else if (googleVerify == Constants.Status.OPEN) {
-                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
-                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
-                intent.putExtras(bundle);
-                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-            } else {
+//            if (googleVerify == Constants.Status.CLOSE) {
+//                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
+//                presenter.securityGoogle(MessageConstants.EMPTY);
+//            } else if (googleVerify == Constants.Status.OPEN) {
+//                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
+//                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+//                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
+//                intent.putExtras(bundle);
+//                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+//            } else {
                 //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
                 intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
                 startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-            }
+//            }
         }
     }
 

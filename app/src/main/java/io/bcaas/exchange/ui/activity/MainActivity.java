@@ -105,8 +105,7 @@ public class MainActivity extends BaseActivity
         mainPresenter.getCurrencyUSDPrice(exchangeBean);
         /*获取账户资讯*/
         mainPresenter.getAccountSecurity();
-        /*获取账户所有币种余额*/
-        mainPresenter.getAllBalance();
+        getAllBalance();
 
         for (int i = 0; i < fragments.size(); i++) {
             TabLayout.Tab tab = bottomTabLayout.newTab();
@@ -152,8 +151,7 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
-                        /*获取账户所有币种余额*/
-                        mainPresenter.getAllBalance();
+                        getAllBalance();
                     }
 
                     @Override
@@ -303,7 +301,7 @@ public class MainActivity extends BaseActivity
             //刷新标题
             ((BuyFragment) currentFragment).resetView();
             //刷新侧滑栏的值
-            if (sideSlipPop!=null){
+            if (sideSlipPop != null) {
                 sideSlipPop.setData();
             }
         } else if (currentFragment instanceof SellFragment) {
@@ -352,5 +350,13 @@ public class MainActivity extends BaseActivity
     @Override
     public void getAccountSecurityFailure(String info) {
         LogTool.d(TAG, "getAccountSecurityFailure:" + info);
+    }
+
+    /**
+     * 获取当前的所有钱包币种以及余额信息
+     */
+    public void getAllBalance() {
+        /*获取账户所有币种余额*/
+        mainPresenter.getAllBalance();
     }
 }

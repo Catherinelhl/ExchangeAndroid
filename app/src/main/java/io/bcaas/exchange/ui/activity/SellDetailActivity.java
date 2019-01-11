@@ -1,13 +1,15 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -165,6 +167,32 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
 
                     }
                 });
+
+        RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //跳转到google验证
+                        Intent intent = new Intent();
+                        intent.setClass(SellDetailActivity.this, GoogleVerifyActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
@@ -177,10 +205,15 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         setResult(false);
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.GOOGLE_VERIFY:
+                    break;
+            }
+        }
     }
 }
