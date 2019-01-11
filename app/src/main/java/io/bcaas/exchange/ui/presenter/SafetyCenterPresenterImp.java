@@ -101,7 +101,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, "securityPhone：" + GsonTool.string(requestJson));
         safetyCenterInteractor.securityPhone(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -208,7 +208,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     }
 
     @Override
-    public void securityGoogle( String verifyCode) {
+    public void securityGoogle(String verifyCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());

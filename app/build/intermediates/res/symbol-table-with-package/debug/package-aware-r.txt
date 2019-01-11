@@ -1618,6 +1618,7 @@ id ll_action
 id ll_bottom
 id ll_country_code
 id ll_email
+id ll_google_verify_tips
 id ll_login
 id ll_main
 id ll_no_fund_password
@@ -2142,6 +2143,7 @@ string version
 string wait_to_sell
 string warning
 string with_draw
+string withdraw_need_fee
 string withdraw_tips
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

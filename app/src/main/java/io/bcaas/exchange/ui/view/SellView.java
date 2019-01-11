@@ -20,6 +20,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
@@ -40,7 +41,7 @@ import java.util.concurrent.TimeUnit;
  * 「售出」页面视图
  */
 public class SellView extends LinearLayout implements GetCurrencyChargeContract.View {
-
+    private String TAG = SellView.class.getSimpleName();
 
     @BindView(R.id.tv_salable_balance)
     TextView tvSalableBalance;
@@ -325,7 +326,7 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
 
     @Override
     public void getCurrencyChargeFailure(String info) {
-
+        LogTool.e(TAG, info);
     }
 
     @Override

@@ -25,6 +25,7 @@
             <LinearLayout android:layout_width="match_parent"
                           android:orientation="horizontal"
                           android:layout_marginLeft="@dimen/d20"
+                          android:id="@+id/ll_email"
                           android:layout_marginTop="@dimen/d26"
                           android:layout_height="wrap_content">
 
@@ -38,7 +39,6 @@
                 <TextView android:layout_width="wrap_content"
                           android:id="@+id/tv_email_value"
                           android:textSize="@dimen/text_size_14"
-                          android:text="asdfasdfadf"
                           android:layout_marginLeft="@dimen/d2"
                           android:textColor="@color/grey_666666"
                           android:layout_height="wrap_content"/>
@@ -57,6 +57,7 @@
             <LinearLayout android:layout_width="match_parent"
                           android:orientation="horizontal"
                           android:layout_marginLeft="@dimen/d20"
+                          android:id="@+id/ll_phone"
                           android:layout_marginTop="@dimen/d26"
                           android:layout_height="wrap_content">
 
@@ -70,7 +71,6 @@
                 <TextView android:layout_width="wrap_content"
                           android:id="@+id/tv_phone_value"
                           android:textSize="@dimen/text_size_14"
-                          android:text="18580269120"
                           android:layout_marginLeft="@dimen/d2"
                           android:textColor="@color/grey_666666"
                           android:layout_height="wrap_content"/>
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/d16"
                     android:background="@color/white"
-                    exchange:behaviour="text"
+                    exchange:behaviour="normal"
                     exchange:hint="@string/google_verify"
                     android:layout_height="@dimen/d48"/>
 
@@ -107,6 +107,7 @@
                           android:orientation="horizontal"
                           android:layout_marginTop="@dimen/d12"
                           android:layout_marginLeft="@dimen/d20"
+                          android:id="@+id/ll_google_verify_tips"
                           android:layout_gravity="center"
                           android:gravity="center_vertical"
                           android:layout_marginRight="@dimen/d20"

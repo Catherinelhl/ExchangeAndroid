@@ -1,6 +1,6 @@
 package io.bcaas.exchange.ui.contracts;
 
-import io.bcaas.exchange.vo.MemberOrderVO;
+import io.bcaas.exchange.vo.RequestJson;
 
 /**
  * @author catherine.brainwilliam
@@ -8,21 +8,18 @@ import io.bcaas.exchange.vo.MemberOrderVO;
  * 提现
  */
 public interface WithDrawContract {
-    interface View extends BaseContract {
+    interface View extends AccountSecurityContract.View {
         void withDrawFailure(String info);
 
         void withDrawSuccess(String info);
     }
 
-    interface Presenter {
+    interface Presenter extends AccountSecurityContract.Presenter{
         /**
          * 提现
          *
          * @param txPassword    交易密码
-         * @param memberOrderVO 提现金额+提现备注
-         * @param address       提现地址
-         * @param currencyUid   提现币种
          */
-        void withDraw(String txPassword, MemberOrderVO memberOrderVO, String address, String currencyUid);
+        void withDraw(String txPassword, RequestJson requestJson);
     }
 }

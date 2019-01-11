@@ -55,19 +55,18 @@ public class CountryCodeAdapter extends
         if (countryCodes == null) {
             return;
         }
-        CountryCodeBean.CountryCode countryCode=countryCodes.get(i);
+        CountryCodeBean.CountryCode countryCode = countryCodes.get(i);
         if (countryCode != null) {
             String name = countryCode.getCountryName();
             String code = countryCode.getPhoneCode();
-            if (StringTool.isEmpty(name)||StringTool.isEmpty(code)) {
+            if (StringTool.isEmpty(name) || StringTool.isEmpty(code)) {
                 return;
             }
             //1:获取屏幕的宽度
             int screenWidth = BaseApplication.getScreenWidth();
             int nameWidth = (screenWidth - context.getResources().getDimensionPixelOffset(R.dimen.d5)) / 3;
-            double width = screenWidth - nameWidth - context.getResources().getDimensionPixelOffset(R.dimen.d10);
-            viewHolder.tvContent.setText(TextTool.intelligentOmissionText(viewHolder.tvContent, (int) width, code, true));
-            viewHolder.tvName.setText(TextTool.intelligentOmissionText(viewHolder.tvName, nameWidth, name))
+            viewHolder.tvContent.setText("+" + code);
+            viewHolder.tvName.setText(name)
             ;
             viewHolder.tvName.setOnClickListener(v -> onItemSelectListener.onItemSelect(countryCode, MessageConstants.EMPTY));
             viewHolder.llAddress.setOnClickListener(view -> onItemSelectListener.onItemSelect(countryCode, MessageConstants.EMPTY));

@@ -1,21 +1,24 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.WithDrawContract;
 import io.bcaas.exchange.ui.presenter.WithDrawPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
-import io.bcaas.exchange.vo.MemberOrderVO;
+import io.bcaas.exchange.vo.MemberVO;
+import io.bcaas.exchange.vo.RequestJson;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -57,10 +60,15 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     TextView tvStartImmediate;
     @BindView(R.id.btn_sure)
     Button btnSure;
-
-    private String amount, mark, address, currencyUid;
+    @BindView(R.id.ll_email)
+    LinearLayout llEmail;
+    @BindView(R.id.ll_phone)
+    LinearLayout llPhone;
+    @BindView(R.id.ll_google_verify_tips)
+    LinearLayout llGoogleVerifyTips;
 
     private WithDrawContract.Presenter presenter;
+    private RequestJson requestJson;
 
     @Override
     public int getContentView() {
@@ -69,6 +77,10 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     @Override
     public void getArgs(Bundle bundle) {
+        if (bundle == null) {
+            return;
+        }
+        requestJson = (RequestJson) bundle.getSerializable(Constants.KeyMaps.WITHDRAW_REQUEST_JSON);
 
     }
 
@@ -82,11 +94,16 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
         etwaEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
         etwaGoogleVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
 
+        MemberVO memberVO = BaseApplication.getMemberVO();
+        getAccountSecuritySuccess(memberVO);
+
     }
 
     @Override
     public void initData() {
         presenter = new WithDrawPresenterImp(this);
+        // 获取账户资讯
+        presenter.getAccountSecurity();
     }
 
     @Override
@@ -99,6 +116,16 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                         setResult(true);
                     }
                 });
+        Disposable subscribeStartImmediate = RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        //跳转到google验证
+                        Intent intent = new Intent();
+                        intent.setClass(WithDrawDetailActivity.this, GoogleVerifyActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+                    }
+                });
         Disposable subscribeSure = RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
@@ -109,29 +136,26 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                             showToast("请输入资金密码！");
                             return;
                         }
-                        //2：判断当前是否输入了邮箱验证码
-                        String emailVerifyCode = etwaEmailVerifyCode.getContent();
-                        if (StringTool.isEmpty(emailVerifyCode)) {
-                            showToast("请输入邮箱验证码！");
-                            return;
-                        }
-                        //3:判断当前是否输入手机验证码
-                        String phoneVerifyCode = etwaMessageVerifyCode.getContent();
-                        if (StringTool.isEmpty(phoneVerifyCode)) {
-                            showToast("请输入手机验证码！");
-                            return;
-                        }
-                        //4：判断当前是否输入google验证码
-                        String googleVerifyCode = etwaGoogleVerifyCode.getContent();
-                        if (StringTool.isEmpty(googleVerifyCode)) {
-                            showToast("请输入Google验证码！");
-                            return;
-                        }
-                        MemberOrderVO memberOrderVO = new MemberOrderVO();
-                        memberOrderVO.setAmount(amount);
-                        memberOrderVO.setMark(mark);
+//                        //2：判断当前是否输入了邮箱验证码
+//                        String emailVerifyCode = etwaEmailVerifyCode.getContent();
+//                        if (StringTool.isEmpty(emailVerifyCode)) {
+//                            showToast("请输入邮箱验证码！");
+//                            return;
+//                        }
+//                        //3:判断当前是否输入手机验证码
+//                        String phoneVerifyCode = etwaMessageVerifyCode.getContent();
+//                        if (StringTool.isEmpty(phoneVerifyCode)) {
+//                            showToast("请输入手机验证码！");
+//                            return;
+//                        }
+//                        //4：判断当前是否输入google验证码
+//                        String googleVerifyCode = etwaGoogleVerifyCode.getContent();
+//                        if (StringTool.isEmpty(googleVerifyCode)) {
+//                            showToast("请输入Google验证码！");
+//                            return;
+//                        }
                         //3：请求接口提现
-                        presenter.withDraw(txPassword, memberOrderVO, address, currencyUid);
+                        presenter.withDraw(txPassword, requestJson);
                     }
                 });
     }
@@ -144,5 +168,66 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     @Override
     public void withDrawSuccess(String info) {
         setResult(false);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.GOOGLE_VERIFY:
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+        //根据当前取到的用户信息，判断显示密码验证情况
+        if (memberVO != null) {
+            //1：判断当前是否开启邮箱验证
+            int emailVerify = memberVO.getEmailVerify();
+            String email = memberVO.getMemberId();
+            if (emailVerify == Constants.Status.OPEN) {
+                tvEmailValue.setText(email);
+                llEmail.setVisibility(View.VISIBLE);
+                etwaEmailVerifyCode.setVisibility(View.VISIBLE);
+            } else {
+                etwaEmailVerifyCode.setVisibility(View.GONE);
+                llEmail.setVisibility(View.GONE);
+            }
+            //2：判断当前是否开启电话验证
+            int phoneVerify = memberVO.getPhoneVerify();
+            String phone = memberVO.getPhone();
+            if (phoneVerify == Constants.Status.OPEN) {
+                tvPhoneValue.setText(phone);
+                llPhone.setVisibility(View.VISIBLE);
+                etwaMessageVerifyCode.setVisibility(View.VISIBLE);
+            } else {
+                llPhone.setVisibility(View.GONE);
+                etwaMessageVerifyCode.setVisibility(View.GONE);
+            }
+
+            //3：判断当前是否开启google验证
+            int twoFactorAuthVerify = memberVO.getTwoFactorAuthVerify();
+            if (twoFactorAuthVerify == Constants.Status.OPEN) {
+                llGoogleVerifyTips.setVisibility(View.GONE);
+            } else {
+                llGoogleVerifyTips.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+        showToast(info);
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

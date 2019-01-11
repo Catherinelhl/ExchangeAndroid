@@ -126,5 +126,6 @@
     <string name="please_input_verify_code">请输入验证码</string>
     <string name="format_sss" formatted="false">%s%s %s</string>
     <string name="sell_detail">售出详情</string>
+    <string name="withdraw_need_fee">提现需支付手续费,手续费为:</string>
 
 </resources>

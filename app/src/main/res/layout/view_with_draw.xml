@@ -46,7 +46,7 @@
             <TextView
                     android:id="@+id/tv_fee_tips"
                     android:layout_width="wrap_content"
-                    android:text="提现需支付手续费,手续费为 0.0001 BT"
+                    android:text="@string/withdraw_need_fee"
                     android:textColor="@color/blue_5B88FF"
                     android:layout_marginLeft="@dimen/d20"
                     android:textSize="@dimen/text_size_14"

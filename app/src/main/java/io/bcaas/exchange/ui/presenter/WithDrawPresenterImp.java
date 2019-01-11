@@ -18,21 +18,20 @@ import io.reactivex.schedulers.Schedulers;
  * <p>
  * 提现
  */
-public class WithDrawPresenterImp implements WithDrawContract.Presenter {
+public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements WithDrawContract.Presenter {
 
     private String TAG = WithDrawPresenterImp.class.getSimpleName();
     private WithDrawContract.View view;
     private TxInteractor txInteractor;
 
     public WithDrawPresenterImp(WithDrawContract.View view) {
-        super();
+        super(view);
         this.view = view;
         txInteractor = new TxInteractor();
     }
 
     @Override
-    public void withDraw(String txPassword, MemberOrderVO memberOrderVO, String address, String currencyUid) {
-        RequestJson requestJson = new RequestJson();
+    public void withDraw(String txPassword, RequestJson requestJson) {
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
         memberVO.setTxPassword(txPassword);
@@ -42,16 +41,7 @@ public class WithDrawPresenterImp implements WithDrawContract.Presenter {
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
 
-        requestJson.setMemberOrderVO(memberOrderVO);
-
-        CurrencyListVO currencyListVO = new CurrencyListVO();
-        currencyListVO.setCurrencyUid(currencyUid);
-        requestJson.setCurrencyListVO(currencyListVO);
-
-        MemberKeyVO memberKeyVO = new MemberKeyVO();
-        memberKeyVO.setAddress(address);
-        requestJson.setMemberKeyVO(memberKeyVO);
-        LogTool.d(TAG, "withDraw:" + requestJson);
+        LogTool.d(TAG, "withDraw:" + GsonTool.string(requestJson));
         txInteractor.withDraw(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

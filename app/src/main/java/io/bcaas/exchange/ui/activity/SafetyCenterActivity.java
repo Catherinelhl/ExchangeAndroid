@@ -187,37 +187,41 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
             }
         } else if (StringTool.equals(from, getString(R.string.phone_verify))) {
             //手机验证，如果当前是需要"绑定"的状态，那么就跳转到「绑定」的状态；如果是已经绑定过的，那么就显示「关闭」，并且跳转到「关闭验证」
-            int phoneVerify = memberVO.getPhoneVerify();
-            if (phoneVerify == Constants.Status.CLOSE) {
-                //直接调用更改phone的状态
-                presenter.securityPhone(memberVO.getPhone(), MessageConstants.EMPTY);
-            } else if (phoneVerify == Constants.Status.OPEN) {
-                //跳转到「解绑」的操作
-                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.PHONE);
-                intent.putExtras(bundle);
-                startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
-            } else {
+            String phone = memberVO.getPhone();
+            if (StringTool.isEmpty(phone)) {
                 intent.setClass(SafetyCenterActivity.this, BindPhoneActivity.class);
                 startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
+            } else {
+                int phoneVerify = memberVO.getPhoneVerify();
+                if (phoneVerify == Constants.Status.CLOSE) {
+                    //直接调用更改phone的状态
+                    presenter.securityPhone(memberVO.getPhone(), MessageConstants.EMPTY);
+                } else if (phoneVerify == Constants.Status.OPEN) {
+                    //跳转到「解绑」的操作
+                    intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                    bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.PHONE);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
+                }
             }
+
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
             int googleVerify = memberVO.getTwoFactorAuthVerify();
-//            if (googleVerify == Constants.Status.CLOSE) {
-//                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
-//                presenter.securityGoogle(MessageConstants.EMPTY);
-//            } else if (googleVerify == Constants.Status.OPEN) {
-//                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
-//                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-//                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
-//                intent.putExtras(bundle);
-//                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-//            } else {
+            if (googleVerify == Constants.Status.CLOSE) {
+                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
+                presenter.securityGoogle(MessageConstants.EMPTY);
+            } else if (googleVerify == Constants.Status.OPEN) {
+                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
+                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+            } else {
                 //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
                 intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
                 startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-//            }
+            }
         }
     }
 
@@ -256,10 +260,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.notEmpty(email) && scivEmailVerify != null) {
             scivEmailVerify.setTabInfo(email);
         }
-        String phone = memberVO.getPhone();
-        if (StringTool.notEmpty(phone) && scivPhoneVerify != null) {
-            scivPhoneVerify.setTabInfo(phone);
-        }
+
         String txPassword = memberVO.getTxPassword();
         int emailVerify = memberVO.getEmailVerify();
         int phoneVerify = memberVO.getPhoneVerify();
@@ -277,16 +278,21 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         } else {
             scivEmailVerify.setTabStatusByText(true, getString(R.string.close));
         }
-
-        //判断是否开启「手机验证」
-        if (phoneVerify == Constants.Status.CLOSE) {
-            scivPhoneVerify.setTabStatusByText(false, getString(R.string.open));
-        } else if (twoFactorAuthVerify == Constants.Status.OPEN) {
-            scivPhoneVerify.setTabStatusByText(true, getString(R.string.close));
+        String phone = memberVO.getPhone();
+        if (StringTool.notEmpty(phone)) {
+            if (scivPhoneVerify != null) {
+                scivPhoneVerify.setTabInfo(phone);
+            }
+            //判断是否开启「手机验证」
+            if (phoneVerify == Constants.Status.CLOSE) {
+                scivPhoneVerify.setTabStatusByText(false, getString(R.string.open));
+            } else if (twoFactorAuthVerify == Constants.Status.OPEN) {
+                scivPhoneVerify.setTabStatusByText(true, getString(R.string.close));
+            }
         } else {
             scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
-        }
 
+        }
         //判断是否开启「google验证」
         if (twoFactorAuthVerify == Constants.Status.CLOSE) {
             scivGoogleVerify.setTabStatusByText(true, getString(R.string.open));

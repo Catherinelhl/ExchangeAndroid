@@ -168,8 +168,11 @@ public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
                     for (CountryCodeBean.CountryCode countryCode : countryCodesTemp) {
                         String name = countryCode.getCountryName();
                         String code = countryCode.getPhoneCode();
-                        if (StringTool.isEmpty(name) || StringTool.isEmpty(code)) {
-                            return;
+                        if (StringTool.isEmpty(name)
+                                || StringTool.isEmpty(code)
+                                || StringTool.equals(code, "(null)")
+                                || StringTool.equals(name, "(null)")) {
+                            continue;
                         }
                         countryCodes.add(countryCode);
                     }

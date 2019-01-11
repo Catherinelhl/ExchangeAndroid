@@ -5,6 +5,7 @@ import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.ListTool;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 2018/06/10
  */
-public class RequestJson {
+public class RequestJson implements Serializable {
 
     private VersionVO versionVO;
     private List<VersionVO> versionList;

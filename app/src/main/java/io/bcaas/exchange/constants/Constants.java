@@ -125,6 +125,7 @@ public class Constants {
 //        public static final String SELL_AMOUNT = "sellAmount";//卖出的数量
 //        public static final String SELL_UNIT_PRICE = "sellUnitPrice";//卖出的单价
         public static final String SELL_DATA_BEAN = "sellDataBean";//卖出的数据类
+        public static final String WITHDRAW_REQUEST_JSON = "withDrawRequestJson";//提现的数据类
     }
 
     /**

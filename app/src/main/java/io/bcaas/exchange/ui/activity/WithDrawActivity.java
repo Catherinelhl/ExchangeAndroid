@@ -28,6 +28,7 @@ import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
+import io.bcaas.exchange.vo.RequestJson;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -165,7 +166,15 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                     requestCameraPermission();
                     break;
                 case Constants.From.WITHDRAW_SURE:
+                    if (type == null) {
+                        return;
+                    }
+                    RequestJson requestJson = (RequestJson) type;
+                    if (requestJson == null) {
+                        return;
+                    }
                     intent.setClass(WithDrawActivity.this, WithDrawDetailActivity.class);
+                    intent.putExtra(Constants.KeyMaps.WITHDRAW_REQUEST_JSON, requestJson);
                     startActivityForResult(intent, Constants.RequestCode.WIDTH_DRAW_DETAIL);
                     break;
                 default:
@@ -190,10 +199,11 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                     if (bundle != null) {
                         String scanInfo = bundle.getString(Constants.KeyMaps.RESULT);
                         LogTool.d(TAG, "scanInfo:" + scanInfo);
+                        LogTool.d(TAG, "currentPosition:" + currentPosition);
                         //刷新当前界面
                         if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                             if (ListTool.noEmpty(memberKeyVOList)) {
-                                ((RechargeView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
+                                ((WithDrawView) views.get(currentPosition)).setScanInfo(scanInfo);
 
                             }
                         }
