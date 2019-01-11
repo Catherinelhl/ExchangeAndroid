@@ -15,13 +15,19 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.UserInfoBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
+import io.bcaas.exchange.ui.view.RechargeView;
 import io.bcaas.exchange.ui.view.WithDrawView;
+import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -45,7 +51,7 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tab_layout)
-    TabLayout tabLayout;
+    BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 
@@ -55,6 +61,8 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     private TabViewAdapter tabViewAdapter;
 
     private AccountSecurityContract.Presenter presenter;
+    private int currentPosition;
+    private List<MemberKeyVO> memberKeyVOList;
 
     @Override
     public int getContentView() {
@@ -71,11 +79,36 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
         views = new ArrayList<>();
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.with_draw);
+        memberKeyVOList = new ArrayList<>();
     }
 
     @Override
     public void initData() {
         presenter = new AccountSecurityPresenterImp(this);
+
+        //刷新界面
+        memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            int size = memberKeyVOList.size();
+            //加载数据
+            for (int i = 0; i < size; i++) {
+                //添加标题
+                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
+                if (memberKeyVO != null) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String name = currencyListVO.getEnName();
+                        tabLayout.addTab(name, i);
+                        //初始化数据
+                        RechargeView rechargeView = new RechargeView(this);
+                        rechargeView.refreshData(memberKeyVO);
+                        rechargeView.setOnItemSelectListener(onItemSelectListener);
+                        views.add(rechargeView);
+
+                    }
+                }
+            }
+        }
         String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
         userInfoBeanBTC = new UserInfoBean("BTC", info, "39LKDBERWWRH343T34VSRG434V43F4G5GT5H");
         userInfoBeanETH = new UserInfoBean("ETH", info, "sdkjfhakssssjdfkasjdbfnaksdjfblniauksj");
@@ -105,7 +138,24 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(3);
-        tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
+        tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                currentPosition = tab.getPosition();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
@@ -163,9 +213,7 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                         String scanInfo = bundle.getString(Constants.KeyMaps.RESULT);
                         LogTool.d(TAG, "scanInfo:" + scanInfo);
                         //刷新当前界面
-                        int position = tabLayout.getSelectedTabPosition();
-                        tabLayout.getTabAt(position);
-                        switch (position) {
+                        switch (currentPosition) {
                             case 0:
                                 withDrawViewOne.setScanInfo(scanInfo);
                                 break;

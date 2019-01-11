@@ -9,6 +9,7 @@ import android.view.View;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
+import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.SellDataBean;
@@ -16,9 +17,9 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
-import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.ui.view.SellView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -44,6 +45,8 @@ public class SellFragment extends BaseFragment {
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
+    // 当前tab的选中
+    private int currentPosition = 0;
 
 
     @Override
@@ -99,6 +102,7 @@ public class SellFragment extends BaseFragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
+                currentPosition = tab.getPosition();
             }
 
             @Override
@@ -147,15 +151,39 @@ public class SellFragment extends BaseFragment {
             if (type == null) {
                 return;
             }
-            SellDataBean sellDataBean = (SellDataBean) type;
-            if (sellDataBean == null) {
-                return;
+            if (StringTool.notEmpty(from)) {
+                switch (from) {
+                    case Constants.From.SELL_SELECT_CURRENCY:
+                        // 显示当前的所有币种信息
+                        if (activity != null) {
+                            ((BaseActivity) activity).showListPopWindow(onItemSelectListener );
+                        }
+                        break;
+                    case Constants.From.SELL_SELECTED_CURRENCY:
+                        MemberKeyVO memberKeyVO=(MemberKeyVO)type;
+                        // 更新当前的界面信息
+                        if (ListTool.noEmpty(views)){
+                            if (currentPosition<views.size()){
+                                ((SellView)views.get(currentPosition)).refreshExchangeCurrency(memberKeyVO);
+
+                            }
+                        }
+                        break;
+                    case Constants.From.SELL_VIEW:
+                        SellDataBean sellDataBean = (SellDataBean) type;
+                        if (sellDataBean == null) {
+                            return;
+                        }
+                        Intent intent = new Intent();
+                        //直接将SellDataBean数据类传递到下一个页面
+                        intent.putExtra(Constants.KeyMaps.SELL_DATA_BEAN, sellDataBean);
+                        intent.setClass(context, SellDetailActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
+                        break;
+
+                }
             }
-            Intent intent = new Intent();
-            //直接将SellDataBean数据类传递到下一个页面
-            intent.putExtra(Constants.KeyMaps.SELL_DATA_BEAN, sellDataBean);
-            intent.setClass(context, SellDetailActivity.class);
-            startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
+
         }
     };
 

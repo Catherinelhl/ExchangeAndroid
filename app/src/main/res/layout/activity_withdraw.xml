@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
     <include layout="@layout/include_header"/>
-    <android.support.design.widget.TabLayout
+    <io.bcaas.exchange.view.tablayout.BcaasTabLayout
             app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
@@ -14,7 +14,11 @@
             android:background="@color/white"
             app:tabIndicatorColor="@color/button_color"
             app:tabSelectedTextColor="@color/button_color"
-            app:tabTextColor="@color/black_AEAEAE"
+            app:tabTextColor="@color/black_333333"
+            app:tabMode="scrollable"
+            app:tabIndicatorHeight="@dimen/d2"
+            app:tabIndicatorWidth="@dimen/d16"
+            app:tab_Mode="mode_scrollable"
             android:layout_height="@dimen/d48"/>
 
     <android.support.v4.view.ViewPager

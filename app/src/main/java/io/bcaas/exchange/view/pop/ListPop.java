@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.CountryCodeAdapter;
+import io.bcaas.exchange.adapter.PopListAdapter;
 import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;
 
@@ -44,9 +46,9 @@ public class ListPop extends PopupWindow {
         recyclerView = popWindow.findViewById(R.id.rv_list);
     }
 
-    public void addListAddress(OnItemSelectListener onItemSelectListener, List<CountryCodeBean.CountryCode> list) {
+    public void addList(OnItemSelectListener onItemSelectListener, List<MemberKeyVO> list) {
         this.itemSelectListener = onItemSelectListener;
-        CountryCodeAdapter adapter = new CountryCodeAdapter(context, list);
+        PopListAdapter adapter = new PopListAdapter(context, list);
         adapter.setOnItemSelectListener(popItemSelectListener);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);

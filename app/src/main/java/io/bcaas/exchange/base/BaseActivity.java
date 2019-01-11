@@ -22,11 +22,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.BaseContract;
@@ -34,6 +34,7 @@ import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
 import io.bcaas.exchange.view.pop.ListPop;
+import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;
 import java.util.Locale;
@@ -295,19 +296,23 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     }
 
     /**
-     * 显示当前所有的电话区号
+     * 显示当前所有的币种信息
      *
      * @param onItemSelectListener 通過傳入的回調來得到選擇的值
-     * @param list                 需要顯示的列表
      */
-    public void showListPopWindow(OnItemSelectListener onItemSelectListener, List<CountryCodeBean.CountryCode> list) {
+    public void showListPopWindow(OnItemSelectListener onItemSelectListener) {
         // 對當前pop window進行置空
         if (listPop != null) {
             listPop.dismiss();
             listPop = null;
         }
+        //拿取当前的账户信息
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.isEmpty(memberKeyVOList)) {
+            return;
+        }
         listPop = new ListPop(context);
-        listPop.addListAddress(onItemSelectListener, list);
+        listPop.addList(onItemSelectListener, memberKeyVOList);
         listPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
         //设置layout在PopupWindow中显示的位置
         listPop.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);

@@ -1906,6 +1906,7 @@ layout include_header
 layout item_bottom_tab
 layout item_buy_recycler
 layout item_country_code
+layout item_list_pop
 layout item_my_fund_recycler
 layout item_order_recharge_recycler
 layout item_order_transaction_recycler

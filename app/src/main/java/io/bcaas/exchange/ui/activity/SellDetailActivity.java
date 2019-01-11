@@ -59,8 +59,6 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
     @BindView(R.id.tv_transaction_amount)
     TextView tvTransactionAmount;
     private SellContract.Presenter presenter;
-    //当前卖出的币种，需要支付的币种
-//    private String currencyUid, currencyPaymentUid, amount, unitPrice, fee = "0.0001";
 
     private SellDataBean sellDataBean;
 
@@ -76,10 +74,6 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         }
         // 得到传递过来的售出数据类
         sellDataBean = (SellDataBean) bundle.getSerializable(Constants.KeyMaps.SELL_DATA_BEAN);
-//        currencyUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_UID);
-//        currencyPaymentUid = bundle.getString(Constants.KeyMaps.SELL_CURRENCY_PAYMENT_UID);
-//        amount = bundle.getString(Constants.KeyMaps.SELL_AMOUNT);
-//        unitPrice = bundle.getString(Constants.KeyMaps.SELL_UNIT_PRICE);
     }
 
     @Override

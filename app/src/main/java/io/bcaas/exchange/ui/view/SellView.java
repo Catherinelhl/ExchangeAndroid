@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -9,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -16,11 +18,14 @@ import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
+import io.bcaas.exchange.view.pop.ListPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -204,6 +209,17 @@ public class SellView extends LinearLayout {
 
                     }
                 });
+
+        Disposable subscribe = RxView.clicks(tvExchangeCurrency).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        // 点击可以切换币种
+                        if (onItemSelectListener != null) {
+                            onItemSelectListener.onItemSelect(currencyListVO, Constants.From.SELL_SELECT_CURRENCY);
+                        }
+                    }
+                });
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -246,5 +262,18 @@ public class SellView extends LinearLayout {
 
     }
 
+    /**
+     * 刷新当前的交换信息
+     *
+     * @param memberKeyVO
+     */
+    public void refreshExchangeCurrency(MemberKeyVO memberKeyVO) {
+        if (memberKeyVO!=null){
+            exchangeCurrencyListVO=memberKeyVO.getCurrencyListVO();
+            if (exchangeCurrencyListVO != null) {
+                tvExchangeCurrency.setText(exchangeCurrencyListVO.getEnName());
+            }
 
+        }
+    }
 }
