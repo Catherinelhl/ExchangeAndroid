@@ -204,7 +204,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
      * 獲得照相機權限
      */
     protected void requestCameraPermission() {
-        if (Build.VERSION.SDK_INT > 22) {//这个说明系统版本在6.0之下，不需要动态获取权限
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {//这个说明系统版本在6.0之下，不需要动态获取权限
             if (ContextCompat.checkSelfPermission(this,
                     android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 //先判断有没有权限 ，没有就在这里进行权限的申请

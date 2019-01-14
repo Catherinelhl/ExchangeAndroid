@@ -137,19 +137,19 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                             return;
                         }
 //                        //2：判断当前是否输入了邮箱验证码
-//                        String emailVerifyCode = etwaEmailVerifyCode.getContent();
+//                        String emailVerifyCode = etEmailVerifyCode.getContent();
 //                        if (StringTool.isEmpty(emailVerifyCode)) {
 //                            showToast("请输入邮箱验证码！");
 //                            return;
 //                        }
 //                        //3:判断当前是否输入手机验证码
-//                        String phoneVerifyCode = etwaMessageVerifyCode.getContent();
+//                        String phoneVerifyCode = etMessageVerifyCode.getContent();
 //                        if (StringTool.isEmpty(phoneVerifyCode)) {
 //                            showToast("请输入手机验证码！");
 //                            return;
 //                        }
 //                        //4：判断当前是否输入google验证码
-//                        String googleVerifyCode = etwaGoogleVerifyCode.getContent();
+//                        String googleVerifyCode = etGoogleVerifyCode.getContent();
 //                        if (StringTool.isEmpty(googleVerifyCode)) {
 //                            showToast("请输入Google验证码！");
 //                            return;

@@ -38,6 +38,7 @@ public class Constants {
         public static final int sleep30000 = 30000;
         public static final int sleep50000 = 50000;
         public static final int sleep500000 = 500000;
+        public static final int sleep60 = 60;//60s
     }
 
     public class Color {
@@ -171,13 +172,11 @@ public class Constants {
      * 标识用于Edit的from
      */
     public class EditTextFrom {
-        public static final String LOGIN_AMOUNT = "loginAmount";//登录页面的账户输入框
+        public static final String LOGIN_ACCOUNT = "loginAccount";//登录页面的账户输入框
         public static final String LOGIN_PASSWORD = "loginPassword";//登录页面的密码框
-        public static final String REGISTER_EMAIL_CODE = "registerEmailCode";//注册页面的邮箱验证码
+        public static final String EMAIL_CODE = "emailCode";//邮箱验证码
         public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
-        public static final String PHONE = "phone";//phone verify
-        public static final String EMAIL = "email";//email verify
-        public static final String GOOGLE = "google";//google verify
+        public static final String PHONE_CODE = "phoneCode";//phone verify
     }
 
     /**

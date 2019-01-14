@@ -21,13 +21,13 @@
     {
       "countryName": "安提瓜和巴布达",
       "countryPinyin": "an ti gua he ba bu da",
-      "phoneCode": "1",
+      "phoneCode": "1268",
       "countryCode": "AG"
     },
     {
       "countryName": "安圭拉",
       "countryPinyin": "an gui la",
-      "phoneCode": "1",
+      "phoneCode": "1264",
       "countryCode": "AI"
     },
     {
@@ -63,7 +63,7 @@
     {
       "countryName": "美属萨摩亚",
       "countryPinyin": "mei shu sa mo ya",
-      "phoneCode": "1",
+      "phoneCode": "1684",
       "countryCode": "AS"
     },
     {
@@ -87,7 +87,7 @@
     {
       "countryName": "奥兰群岛",
       "countryPinyin": "ao lan qun dao",
-      "phoneCode": "(null)",
+      "phoneCode": "358",
       "countryCode": "AX"
     },
     {
@@ -105,7 +105,7 @@
     {
       "countryName": "巴巴多斯",
       "countryPinyin": "ba ba duo si",
-      "phoneCode": "1",
+      "phoneCode": "1246",
       "countryCode": "BB"
     },
     {
@@ -159,7 +159,7 @@
     {
       "countryName": "百慕大",
       "countryPinyin": "bai mu da",
-      "phoneCode": "1",
+      "phoneCode": "1441",
       "countryCode": "BM"
     },
     {
@@ -189,7 +189,7 @@
     {
       "countryName": "巴哈马",
       "countryPinyin": "ba ha ma",
-      "phoneCode": "1",
+      "phoneCode": "1242",
       "countryCode": "BS"
     },
     {
@@ -199,9 +199,9 @@
       "countryCode": "BT"
     },
     {
-      "countryName": "布维岛",
+      "countryName": "布韦岛",
       "countryPinyin": "bu wei dao",
-      "phoneCode": "(null)",
+      "phoneCode": "47",
       "countryCode": "BV"
     },
     {
@@ -357,13 +357,13 @@
     {
       "countryName": "多米尼克",
       "countryPinyin": "duo mi ni ke",
-      "phoneCode": "1",
+      "phoneCode": "1767",
       "countryCode": "DM"
     },
     {
       "countryName": "多米尼加共和国",
       "countryPinyin": "duo mi ni jia gong he guo",
-      "phoneCode": "1",
+      "phoneCode": "1890",
       "countryCode": "DO"
     },
     {
@@ -465,7 +465,7 @@
     {
       "countryName": "格林纳达",
       "countryPinyin": "ge lin na da",
-      "phoneCode": "1",
+      "phoneCode": "1809",
       "countryCode": "GD"
     },
     {
@@ -549,7 +549,7 @@
     {
       "countryName": "关岛",
       "countryPinyin": "guan dao",
-      "phoneCode": "1",
+      "phoneCode": "1671",
       "countryCode": "GU"
     },
     {
@@ -573,7 +573,7 @@
     {
       "countryName": "赫德岛和麦克唐纳群岛",
       "countryPinyin": "he de dao he mai ke tang na qun dao",
-      "phoneCode": "(null)",
+      "phoneCode": "61",
       "countryCode": "HM"
     },
     {
@@ -669,7 +669,7 @@
     {
       "countryName": "牙买加",
       "countryPinyin": "ya mai jia",
-      "phoneCode": "1",
+      "phoneCode": "1876",
       "countryCode": "JM"
     },
     {
@@ -717,7 +717,7 @@
     {
       "countryName": "圣基茨和尼维斯",
       "countryPinyin": "sheng ji ci he ni wei si",
-      "phoneCode": "1",
+      "phoneCode": "1869",
       "countryCode": "KN"
     },
     {
@@ -765,7 +765,7 @@
     {
       "countryName": "圣卢西亚",
       "countryPinyin": "sheng lu xi ya",
-      "phoneCode": "1",
+      "phoneCode": "1758",
       "countryCode": "LC"
     },
     {
@@ -891,7 +891,7 @@
     {
       "countryName": "北马里亚纳群岛",
       "countryPinyin": "bei ma li ya na qun dao",
-      "phoneCode": "1",
+      "phoneCode": "1670",
       "countryCode": "MP"
     },
     {
@@ -909,7 +909,7 @@
     {
       "countryName": "蒙特塞拉特",
       "countryPinyin": "meng te sai la te",
-      "phoneCode": "1",
+      "phoneCode": "1664",
       "countryCode": "MS"
     },
     {
@@ -1089,7 +1089,7 @@
     {
       "countryName": "波多黎各",
       "countryPinyin": "bo duo li ge",
-      "phoneCode": "1",
+      "phoneCode": "1787",
       "countryCode": "PR"
     },
     {
@@ -1281,7 +1281,7 @@
     {
       "countryName": "特克斯和凯科斯群岛",
       "countryPinyin": "te ke si he kai ke si qun dao",
-      "phoneCode": "1",
+      "phoneCode": "1649",
       "countryCode": "TC"
     },
     {
@@ -1293,7 +1293,7 @@
     {
       "countryName": "法属南部领地",
       "countryPinyin": "fa shu nan bu ling de",
-      "phoneCode": "(null)",
+      "phoneCode": "33",
       "countryCode": "TF"
     },
     {
@@ -1353,7 +1353,7 @@
     {
       "countryName": "特立尼达和多巴哥",
       "countryPinyin": "te li ni da he duo ba ge",
-      "phoneCode": "1",
+      "phoneCode": "1809",
       "countryCode": "TT"
     },
     {
@@ -1389,7 +1389,7 @@
     {
       "countryName": "美国本土外小岛屿",
       "countryPinyin": "mei guo ben tu wai xiao dao yu",
-      "phoneCode": "(null)",
+      "phoneCode": "1808",
       "countryCode": "UM"
     },
     {
@@ -1419,7 +1419,7 @@
     {
       "countryName": "圣文森特和格林纳丁斯",
       "countryPinyin": "sheng wen sen te he ge lin na ding si",
-      "phoneCode": "1",
+      "phoneCode": "1784",
       "countryCode": "VC"
     },
     {
@@ -1431,13 +1431,13 @@
     {
       "countryName": "英属维京群岛",
       "countryPinyin": "ying shu wei jing qun dao",
-      "phoneCode": "1",
+      "phoneCode": "1284",
       "countryCode": "VG"
     },
     {
       "countryName": "美属维京群岛",
       "countryPinyin": "mei shu wei jing qun dao",
-      "phoneCode": "1",
+      "phoneCode": "1340",
       "countryCode": "VI"
     },
     {

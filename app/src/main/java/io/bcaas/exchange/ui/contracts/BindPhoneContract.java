@@ -11,21 +11,19 @@ import java.util.List;
  */
 public interface BindPhoneContract {
 
-    interface View extends BaseContract{
+    interface View extends PhoneVerifyContract.View {
         void securityPhoneSuccess(String info);
 
         void securityPhoneFailure(String info);
 
-        void getPhoneCodeSuccess();
-        void getPhoneCodeFailure();
-
         void getCountryCodeFailure();
+
         void getCountryCodeSuccess(List<CountryCodeBean.CountryCode> countryCodes);
     }
 
-    interface Presenter {
-        void getPhoneCode(String phone, String languageCode);
+    interface Presenter extends PhoneVerifyContract.Presenter {
         void securityPhone(String phone, String verifyCode);
+
         void getCountryCode(String Language);
     }
 }

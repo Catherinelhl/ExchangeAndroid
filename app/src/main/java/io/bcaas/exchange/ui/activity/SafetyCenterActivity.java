@@ -78,21 +78,23 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (memberVO == null) {
             //资金密码
             scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
-            scivFundPassword.setTabInfo("用于提币，交易的验证");
             //邮箱验证
             scivEmailVerify.setTabStatusByText(false, getString(R.string.close));
-            scivEmailVerify.setTabInfo(BaseApplication.getMemberId());
 
             //手机验证
             scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
-            scivPhoneVerify.setTabInfo("用于提币,更改安全设置的验证");
 
             //google验证
             scivGoogleVerify.setTabStatusByText(false, getString(R.string.setting));
-            scivGoogleVerify.setTabInfo("用于提币,交易及更改安全设置的验证");
         } else {
             getAccountSecuritySuccess(BaseApplication.getMemberVO());
         }
+
+        scivFundPassword.setTabInfo("用于提币，交易的验证");
+        scivEmailVerify.setTabInfo(BaseApplication.getMemberId());
+        scivPhoneVerify.setTabInfo("用于提币,更改安全设置的验证");
+        scivGoogleVerify.setTabInfo("用于提币,交易及更改安全设置的验证");
+
         scivFundPassword.setOnItemSelectListener(this);
         scivEmailVerify.setOnItemSelectListener(this);
         scivPhoneVerify.setOnItemSelectListener(this);
@@ -157,8 +159,6 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         MemberVO memberVO = BaseApplication.getMemberVO();
-        LogTool.d(TAG, "from:" + from);
-        LogTool.d(TAG, "memberVO:" + memberVO);
         if (memberVO == null) {
             return;
         }
@@ -297,7 +297,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (twoFactorAuthVerify == Constants.Status.CLOSE) {
             scivGoogleVerify.setTabStatusByText(true, getString(R.string.open));
         } else if (twoFactorAuthVerify == Constants.Status.OPEN) {
-            scivGoogleVerify.setTabStatusByText(true, getString(R.string.close));
+            scivGoogleVerify.setTabStatusByText(true, MessageConstants.EMPTY);
         } else {
             scivGoogleVerify.setTabStatusByText(false, getString(R.string.setting));
 

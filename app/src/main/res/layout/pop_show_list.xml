@@ -23,7 +23,7 @@
             android:layout_marginTop="@dimen/d10"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:scrollbars="none"
-          />
+            android:scrollbars="vertical"
+        />
     </LinearLayout>
 </LinearLayout>

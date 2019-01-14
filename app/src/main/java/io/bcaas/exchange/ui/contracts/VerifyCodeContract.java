@@ -21,14 +21,9 @@ public interface VerifyCodeContract {
 
         //获取email验证码失败
         void getEmailVerifyFailure(String info);
-
-        void bindPhoneSuccess(String info);
-
-        void bindPhoneFailure(String info);
     }
 
     interface Presenter {
-        void phoneVerify(String phone, String languageCode);
 
         //获取邮件验证码
         void emailVerify(String memberId, String languageCode, String mail);

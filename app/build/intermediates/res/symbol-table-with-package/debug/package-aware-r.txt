@@ -1583,6 +1583,7 @@ id fixed
 id forever
 id ghost_view
 id gone
+id google
 id group_divider
 id groups
 id gv_methods
@@ -2042,6 +2043,7 @@ string format_sss
 string freeze
 string fund_password
 string fund_password_rule
+string get_data_failure
 string google_verify
 string graphic_verify_code
 string hide_bottom_view_on_scroll_behavior

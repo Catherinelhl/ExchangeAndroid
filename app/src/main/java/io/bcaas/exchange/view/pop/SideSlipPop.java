@@ -14,6 +14,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.SidesSlipAdapter;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -125,7 +126,7 @@ public class SideSlipPop extends PopupWindow {
     public void setData() {
         //获取当前的币种
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-        LogTool.d(TAG, "memberKeyVOList:" + memberKeyVOList);
+        LogTool.d(TAG, "memberKeyVOList:" + GsonTool.string(memberKeyVOList));
         if (ListTool.isEmpty(memberKeyVOList)) {
             return;
         }

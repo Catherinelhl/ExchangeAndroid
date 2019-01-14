@@ -139,7 +139,7 @@
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
                         bcaas:hint="@string/random_verify_code"
-                        bcaas:behaviour="normal"
+                        bcaas:behaviour="google"
                 />
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="horizontal"

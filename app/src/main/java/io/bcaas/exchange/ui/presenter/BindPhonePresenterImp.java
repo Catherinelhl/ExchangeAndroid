@@ -28,72 +28,15 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2019/1/8
  */
-public class BindPhonePresenterImp implements BindPhoneContract.Presenter {
+public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements BindPhoneContract.Presenter {
     private String TAG = BindPhonePresenterImp.class.getSimpleName();
     private BindPhoneContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
 
     public BindPhonePresenterImp(BindPhoneContract.View view) {
-        super();
+        super(view);
         this.view = view;
         safetyCenterInteractor = new SafetyCenterInteractor();
-    }
-
-    @Override
-    public void getPhoneCode(String phone, String languageCode) {
-        RequestJson requestJson = new RequestJson();
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
-        VerificationBean verificationBean = new VerificationBean();
-        verificationBean.setPhone(phone);
-        verificationBean.setLanguageCode(languageCode);
-        requestJson.setMemberVO(memberVO);
-        requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
-        safetyCenterInteractor.phoneVerify(GsonTool.beanToRequestBody(requestJson))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResponseJson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
-                        if (responseJson == null) {
-                            view.getPhoneCodeFailure();
-                            return;
-                        }
-                        boolean isSuccess = responseJson.isSuccess();
-                        if (isSuccess) {
-                            view.getPhoneCodeSuccess();
-                        } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.getPhoneCodeFailure();
-                            } else {
-                                view.getPhoneCodeFailure();
-
-                            }
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogTool.e(TAG, e.getMessage());
-                        view.getPhoneCodeFailure();
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 
     @Override

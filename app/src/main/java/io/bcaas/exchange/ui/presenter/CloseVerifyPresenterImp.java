@@ -22,7 +22,9 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2019/1/8
  */
-public class CloseVerifyPresenterImp extends AccountSecurityPresenterImp implements CloseVerifyCodeContract.Presenter {
+public class CloseVerifyPresenterImp
+        extends AccountSecurityPresenterImp
+        implements CloseVerifyCodeContract.Presenter {
 
     private String TAG = CloseVerifyPresenterImp.class.getSimpleName();
     private CloseVerifyCodeContract.View view;
@@ -54,12 +56,15 @@ public class CloseVerifyPresenterImp extends AccountSecurityPresenterImp impleme
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
+        requestJson.setMemberVO(memberVO);
+
+
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
+
         requestJson.setVerificationBeanList(verificationBeans);
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, GsonTool.string(requestJson));
         safetyCenterInteractor.closeSecurityVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -95,6 +100,7 @@ public class CloseVerifyPresenterImp extends AccountSecurityPresenterImp impleme
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
                         LogTool.e(TAG, e.getMessage());
                         view.closeVerifyCodeFailure(e.getMessage());
                     }

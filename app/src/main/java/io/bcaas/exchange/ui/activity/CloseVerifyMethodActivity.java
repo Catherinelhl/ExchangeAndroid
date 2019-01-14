@@ -10,11 +10,12 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.CloseVerifyCodeContract;
+import io.bcaas.exchange.ui.contracts.PhoneVerifyContract;
 import io.bcaas.exchange.ui.presenter.CloseVerifyPresenterImp;
+import io.bcaas.exchange.ui.presenter.PhoneVerifyPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
@@ -31,7 +32,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 1：进入界面获取当前的用户资讯，根据用户打开的验证方式来判断界面具体显示情况
  */
-public class CloseVerifyMethodActivity extends BaseActivity implements CloseVerifyCodeContract.View {
+public class CloseVerifyMethodActivity extends BaseActivity
+        implements CloseVerifyCodeContract.View, PhoneVerifyContract.View {
 
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -57,13 +59,14 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
     @BindView(R.id.tv_google_verify_key)
     TextView tvGoogleVerifyKey;
     @BindView(R.id.etwa_email_verify_code)
-    EditTextWithAction etwaEmailVerifyCode;
+    EditTextWithAction etEmailVerifyCode;
     @BindView(R.id.etwa_message_verify_code)
-    EditTextWithAction etwaMessageVerifyCode;
+    EditTextWithAction etMessageVerifyCode;
     @BindView(R.id.etwa_google_verify_code)
-    EditTextWithAction etwaGoogleVerifyCode;
+    EditTextWithAction etGoogleVerifyCode;
 
     private CloseVerifyCodeContract.Presenter presenter;
+    private PhoneVerifyContract.Presenter phoneVerifyPresenter;
     private String from;//标记当前是从那种验证方式跳入
 
     @Override
@@ -83,10 +86,8 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.close_verify);
-        etwaEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etwaMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etwaGoogleVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-
+        etEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+        etMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
 
     }
 
@@ -94,12 +95,13 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
     public void initData() {
         getAccountSecuritySuccess(BaseApplication.getMemberVO());
         presenter = new CloseVerifyPresenterImp(this);
+        phoneVerifyPresenter = new PhoneVerifyPresenterImp(this);
         presenter.getAccountSecurity();
     }
 
     @Override
     public void initListener() {
-        etwaEmailVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+        etEmailVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
 
@@ -109,19 +111,8 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
             public void onAction(String from) {
 
             }
-        }, Constants.EditTextFrom.EMAIL);
-        etwaMessageVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
-            @Override
-            public void onComplete(String content) {
-
-            }
-
-            @Override
-            public void onAction(String from) {
-            }
-
-        }, Constants.EditTextFrom.PHONE);
-        etwaGoogleVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+        }, Constants.EditTextFrom.EMAIL_CODE);
+        etMessageVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
 
@@ -130,8 +121,21 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
             @Override
             public void onAction(String from) {
 
+                //得到当前用户的手机号码
+                MemberVO memberVO = BaseApplication.getMemberVO();
+                if (memberVO == null) {
+                    showToast(getString(R.string.get_data_failure));
+                    return;
+                }
+                String phone = memberVO.getPhone();
+                if (StringTool.isEmpty(phone)) {
+                    showToast(getString(R.string.please_input_phone_number));
+                    return;
+                }
+                phoneVerifyPresenter.getPhoneCode(phone, getCurrentLanguage());
             }
-        }, Constants.EditTextFrom.GOOGLE);
+
+        }, Constants.EditTextFrom.PHONE_CODE);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -164,33 +168,58 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
 
                     @Override
                     public void onNext(Object o) {
+                        hideSoftKeyboard();
                         List<VerificationBean> verificationBeans = new ArrayList<>();
                         //1：判断邮箱验证码输入非空
-                        String emailVerifyCode = etwaEmailVerifyCode.getContent();
-                        if (StringTool.isEmpty(emailVerifyCode)) {
-                            showToast(getString(R.string.please_input_email_verify_code));
-                            return;
-                        } else {
-                            VerificationBean verificationBean = new VerificationBean();
-                            verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.EMAIL));
-                            verificationBean.setType(Constants.VerifyType.EMAIL);
-                            verificationBean.setMail(BaseApplication.getMemberId());
-                            verificationBean.setVerifyCode(emailVerifyCode);
+                        if (etEmailVerifyCode.getVisibility() == View.VISIBLE) {
+                            String emailVerifyCode = etEmailVerifyCode.getContent();
+                            if (StringTool.isEmpty(emailVerifyCode)) {
+                                showToast(getString(R.string.please_input_email_verify_code));
+                                return;
+                            } else {
+                                VerificationBean verificationBean = new VerificationBean();
+                                verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.EMAIL));
+                                verificationBean.setType(Constants.VerifyType.EMAIL);
+                                verificationBean.setMail(BaseApplication.getMemberId());
+                                verificationBean.setVerifyCode(emailVerifyCode);
+                                verificationBeans.add(verificationBean);
 
+                            }
                         }
                         //2：判断确认短信验证码非空
-                        String messageVerifyCode = etwaMessageVerifyCode.getContent();
-                        if (StringTool.isEmpty(messageVerifyCode)) {
-                            showToast(getString(R.string.please_input_message_code));
-                            return;
-                        } else {
-                            VerificationBean verificationBean = new VerificationBean();
-                            verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.PHONE));
-                            verificationBean.setType(Constants.VerifyType.PHONE);
-                            verificationBean.setMail(BaseApplication.getMemberId());
-                            verificationBean.setVerifyCode(emailVerifyCode);
+                        if (etMessageVerifyCode.getVisibility() == View.VISIBLE) {
+                            String messageVerifyCode = etMessageVerifyCode.getContent();
+                            if (StringTool.isEmpty(messageVerifyCode)) {
+                                showToast(getString(R.string.please_input_message_code));
+                                return;
+                            } else {
+                                MemberVO memberVO = BaseApplication.getMemberVO();
+                                if (memberVO == null) {
+                                    showToast(getString(R.string.get_data_failure));
+                                    return;
+                                }
+                                VerificationBean verificationBean = new VerificationBean();
+                                verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.PHONE));
+                                verificationBean.setType(Constants.VerifyType.PHONE);
+                                verificationBean.setPhone(memberVO.getPhone());
+                                verificationBean.setVerifyCode(messageVerifyCode);
+                                verificationBeans.add(verificationBean);
+                            }
                         }
                         //3：判断是否有google验证
+                        if (etGoogleVerifyCode.getVisibility() == View.VISIBLE) {
+                            String googleVerify = etGoogleVerifyCode.getContent();
+                            if (StringTool.isEmpty(googleVerify)) {
+                                showToast(getString(R.string.please_set_google_verify));
+                                return;
+                            } else {
+                                VerificationBean verificationBean = new VerificationBean();
+                                verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.GOOGLE));
+                                verificationBean.setType(Constants.VerifyType.GOOGLE);
+                                verificationBean.setVerifyCode(googleVerify);
+                                verificationBeans.add(verificationBean);
+                            }
+                        }
                         //4:请求网络关闭当前需要关闭的验证方式
                         presenter.closeVerifyCode(verificationBeans);
 
@@ -217,12 +246,13 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
 
     @Override
     public void closeVerifyCodeSuccess(String info) {
-
+        showToast(info);
+        setResult(false);
     }
 
     @Override
     public void closeVerifyCodeFailure(String info) {
-
+        showToast(info);
     }
 
     /**
@@ -257,20 +287,29 @@ public class CloseVerifyMethodActivity extends BaseActivity implements CloseVeri
         int twoFactorAuthVerify = memberVO.getTwoFactorAuthVerify();
         //判断是否开启「邮箱验证」
         llEmail.setVisibility(emailVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
-        etwaEmailVerifyCode.setVisibility(emailVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
+        etEmailVerifyCode.setVisibility(emailVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
 
         //判断是否开启「手机验证」
         llPhone.setVisibility(phoneVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
-        etwaMessageVerifyCode.setVisibility(phoneVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
+        etMessageVerifyCode.setVisibility(phoneVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
 
         //判断是否开启「google验证」
         tvGoogleVerifyKey.setVisibility(twoFactorAuthVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
-        etwaGoogleVerifyCode.setVisibility(twoFactorAuthVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
+        etGoogleVerifyCode.setVisibility(twoFactorAuthVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
 
     }
 
     @Override
     public void getAccountSecurityFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void getPhoneCodeSuccess(String info) {
+    }
+
+    @Override
+    public void getPhoneCodeFailure(String info) {
         showToast(info);
     }
 }

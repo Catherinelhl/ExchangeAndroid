@@ -20,8 +20,6 @@ import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.tools.file.FilePathTool;
-import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.BindPhoneContract;
 import io.bcaas.exchange.ui.presenter.BindPhonePresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -93,7 +91,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                 String sendPhoneInfo = tvCode.getText() + phone;
                 presenter.getPhoneCode(sendPhoneInfo, getCurrentLanguage());
             }
-        }, Constants.EditTextFrom.PHONE);
+        }, Constants.EditTextFrom.PHONE_CODE);
 
     }
 
@@ -227,13 +225,14 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     }
 
     @Override
-    public void getPhoneCodeSuccess() {
+    public void getPhoneCodeSuccess(String info) {
         //设置「确定」按钮可以点击
         btnSure.setEnabled(true);
     }
 
     @Override
-    public void getPhoneCodeFailure() {
+    public void getPhoneCodeFailure(String info) {
+        showToast(info);
         // 设置「确定」按钮可以点击
         btnSure.setEnabled(true);
     }

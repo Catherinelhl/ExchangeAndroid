@@ -12,6 +12,7 @@ import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.ForgetPasswordContract;
 import io.bcaas.exchange.ui.presenter.ForgetPasswordPresenterImp;
@@ -159,6 +160,17 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
                     }
                 });
+        emailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+
+            }
+        }, Constants.EditTextFrom.EMAIL_CODE);
     }
 
     @Override

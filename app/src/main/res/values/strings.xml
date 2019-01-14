@@ -127,5 +127,6 @@
     <string name="format_sss" formatted="false">%s%s %s</string>
     <string name="sell_detail">售出详情</string>
     <string name="withdraw_need_fee">提现需支付手续费,手续费为:</string>
+    <string name="get_data_failure">获取数据失败</string>
 
 </resources>

@@ -200,7 +200,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
             @Override
             public void onAction(String from) {
             }
-        }, Constants.EditTextFrom.REGISTER_EMAIL_CODE);
+        }, Constants.EditTextFrom.EMAIL_CODE);
     }
 
     @Override

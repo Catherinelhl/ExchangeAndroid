@@ -66,11 +66,14 @@ public class OkHttpInterceptor implements Interceptor {
         } catch (Exception e) {
             if (NetWorkTool.connectTimeOut(e)) {
                 //切换服务器
-                LogTool.d(TAG, request.url() + ":\n" + MessageConstants.CONNECT_EXCEPTION);
+                LogTool.e(TAG, request.url() + ":\n" + MessageConstants.CONNECT_EXCEPTION);
             } else {
-                LogTool.d(TAG, request.url() + ":\n" + e.getMessage());
+                LogTool.e(TAG, request.url() + ":\n" + e.getMessage());
             }
             throw e;
+        }
+        if (response == null) {
+            LogTool.e(TAG, "response is null");
         }
         //-------------获取Response响应的数据然后获取cookies-------------
         List<String> setCookie = response.headers("set-cookie");
@@ -92,6 +95,8 @@ public class OkHttpInterceptor implements Interceptor {
         long contentLength = 0;
         if (responseBody != null) {
             contentLength = responseBody.contentLength();
+        } else {
+            LogTool.e(TAG, "response body is null");
         }
         if (!bodyEncoded(response.headers())) {
             BufferedSource source = responseBody.source();
@@ -101,6 +106,9 @@ public class OkHttpInterceptor implements Interceptor {
             if (contentLength != 0) {
                 // 获取Response的body的字符串 并打印
                 LogTool.d(TAG, " http response " + request.url() + "\n" + buffer.clone().readString(charset));
+            } else {
+                LogTool.e(TAG, "response contentLength is 0");
+
             }
         }
         return response;

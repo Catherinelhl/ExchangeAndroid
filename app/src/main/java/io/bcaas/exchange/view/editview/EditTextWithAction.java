@@ -128,6 +128,7 @@ public class EditTextWithAction extends LinearLayout
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(VISIBLE);
                     imageView.setVisibility(GONE);
+                    etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
                 case 3://图片验证码，需要显示图片信息
                     cbCheck.setVisibility(GONE);
@@ -154,7 +155,13 @@ public class EditTextWithAction extends LinearLayout
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
                     imageView.setVisibility(GONE);
-                    etContent.setInputType(InputType.TYPE_TEXT_VARIATION_PHONETIC);
+                    etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    break;
+                case 6://google号码
+                    cbCheck.setVisibility(GONE);
+                    llAction.setVisibility(GONE);
+                    imageView.setVisibility(GONE);
+                    etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
             }
 
@@ -190,78 +197,26 @@ public class EditTextWithAction extends LinearLayout
             etPassword.setSelection(text.length());
 
         });
-        RxView.clicks(tvAction).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Observer<Object>() {
+        Disposable disposableTvAction = RxView.clicks(tvAction).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Object o) {
-                        if (StringTool.equals(from, Constants.EditTextFrom.PHONE)
-                                || StringTool.equals(from, Constants.EditTextFrom.EMAIL)
-                                || StringTool.equals(from, Constants.EditTextFrom.GOOGLE)) {
-                            if (editTextWatcherListener != null) {
-                                editTextWatcherListener.onAction(from);
-                            }
-                        } else {
-                            // 发送邮箱验证码
-                            //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
-                            String tvActionString = tvAction.getText().toString();
-                            if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
+                    public void accept(Object o) throws Exception {
+                        //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
+                        String tvActionString = tvAction.getText().toString();
+                        if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
+                            if (StringTool.equals(from, Constants.EditTextFrom.EMAIL_CODE)) {//邮箱
                                 //开始请求验证码数据
                                 if (presenter != null) {
                                     presenter.emailVerify(Constants.User.MEMBER_ID, BaseApplication.getCurrentLanguage(), Constants.User.MEMBER_ID);
                                 }
-                                IntervalTimerTool.countDownTimer(60)
-                                        .subscribeOn(Schedulers.newThread())
-                                        .observeOn(AndroidSchedulers.mainThread())
-                                        .doOnSubscribe(new Consumer<Disposable>() {
-                                            @Override
-                                            public void accept(Disposable disposable) throws Exception {
-//                                            LogTool.d(TAG, "计时开始");
-                                            }
-                                        }).subscribe(new Observer<Integer>() {
-                                    @Override
-                                    public void onSubscribe(Disposable d) {
-                                        disposableCountDownTimer = d;
-
-                                    }
-
-                                    @Override
-                                    public void onNext(Integer integer) {
-                                        tvAction.setText(integer + " s");
-                                    }
-
-                                    @Override
-                                    public void onError(Throwable e) {
-//                                    LogTool.e(TAG, e.getMessage());
-                                        tvAction.setText(getResources().getString(R.string.send));
-                                        disposeRequest(disposableCountDownTimer);
-                                    }
-
-                                    @Override
-                                    public void onComplete() {
-                                        LogTool.d(TAG, "计时完成");
-                                        tvAction.setText(getResources().getString(R.string.send));
-                                        disposeRequest(disposableCountDownTimer);
-                                    }
-                                });
                             }
+
+                            startCountDownInterval();
                         }
-
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
+                        //返回回调
+                        if (editTextWatcherListener != null) {
+                            editTextWatcherListener.onAction(from);
+                        }
                     }
                 });
 
@@ -351,6 +306,46 @@ public class EditTextWithAction extends LinearLayout
 
                     }
                 });
+    }
+
+    /**
+     * 开始倒计时
+     * 开始60s倒计时
+     */
+    private void startCountDownInterval() {
+        IntervalTimerTool.countDownTimer(Constants.Time.sleep60)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+//                                            LogTool.d(TAG, "计时开始");
+                    }
+                }).subscribe(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                disposableCountDownTimer = d;
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                tvAction.setText(integer + " s");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                tvAction.setText(getResources().getString(R.string.send));
+                disposeRequest(disposableCountDownTimer);
+            }
+
+            @Override
+            public void onComplete() {
+                LogTool.d(TAG, "计时完成");
+                tvAction.setText(getResources().getString(R.string.send));
+                disposeRequest(disposableCountDownTimer);
+            }
+        });
     }
 
     /**
@@ -459,18 +454,6 @@ public class EditTextWithAction extends LinearLayout
 
     @Override
     public void getEmailVerifyFailure(String info) {
-        LogTool.e(TAG, info);
-
-    }
-
-    @Override
-    public void bindPhoneSuccess(String info) {
-        LogTool.d(TAG, info);
-
-    }
-
-    @Override
-    public void bindPhoneFailure(String info) {
         LogTool.e(TAG, info);
 
     }

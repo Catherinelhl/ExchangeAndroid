@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             public void onAction(String from) {
 
             }
-        }, Constants.EditTextFrom.LOGIN_AMOUNT);
+        }, Constants.EditTextFrom.LOGIN_ACCOUNT);
         password.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {

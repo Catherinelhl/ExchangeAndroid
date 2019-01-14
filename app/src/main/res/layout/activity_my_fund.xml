@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:scrollbars="none"
+                android:scrollbars="vertical"
                 tools:listitem="@layout/item_my_fund_recycler"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
