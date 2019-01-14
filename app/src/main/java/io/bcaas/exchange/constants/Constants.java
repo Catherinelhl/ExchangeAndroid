@@ -164,6 +164,7 @@ public class Constants {
         public static final String SELL_SELECT_CURRENCY = "sellSelectCurrency";//售出页面选择币种
         public static final String SELL_SELECTED_CURRENCY = "sellSelectedCurrency";//售出页面选择了币种
         public static final String SIDE_SLIP = "sideSlip";//侧滑栏
+        public static final String SIDE_SLIP_RESET = "sideSlipReset";//侧滑栏重置数据
         public static final String WITHDRAW_SURE = "withDrawSure";//提现点击确定
         public static final String COUNTRY_CODE = "countryCode";//城市区号
     }

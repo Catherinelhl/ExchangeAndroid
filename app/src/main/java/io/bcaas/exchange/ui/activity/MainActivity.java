@@ -3,7 +3,6 @@ package io.bcaas.exchange.ui.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
@@ -13,7 +12,6 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -27,7 +25,6 @@ import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
-import io.bcaas.exchange.vo.PaginationVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -64,6 +61,8 @@ public class MainActivity extends BaseActivity
 
     //声明侧滑栏
     private SideSlipPop sideSlipPop;
+    //得到当前「买进」页面当前展示的token，用于过滤器过滤
+    private MemberKeyVO currentDisplayType;
 
 
     @Override
@@ -97,12 +96,11 @@ public class MainActivity extends BaseActivity
     @Override
     public void initData() {
         mainPresenter = new MainPresenterImp(this);
-
-        /*获取币种汇率*/
-        ExchangeBean exchangeBean = new ExchangeBean();
-        exchangeBean.setCurrency("BTC");
-        exchangeBean.setPriceCurrency("8");
-        mainPresenter.getCurrencyUSDPrice(exchangeBean);
+// TODO: 2019/1/14   /*获取币种汇率*/
+//        ExchangeBean exchangeBean = new ExchangeBean();
+//        exchangeBean.setCurrency("BTC");
+//        exchangeBean.setPriceCurrency("8");
+//        mainPresenter.getCurrencyUSDPrice(exchangeBean);
         /*获取账户资讯*/
         mainPresenter.getAccountSecurity();
         getAllBalance();
@@ -125,8 +123,6 @@ public class MainActivity extends BaseActivity
                 textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, 0, true), null, null);
-
-
             }
         }
     }
@@ -208,9 +204,14 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
-                        //弹出侧滑栏
-                        sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
-                        setBackgroundAlpha(0.7f);
+                        //刷新侧滑栏的值
+                        if (sideSlipPop != null) {
+                            sideSlipPop.setData(currentDisplayType);
+                            //弹出侧滑栏
+                            sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
+                            setBackgroundAlpha(0.7f);
+                        }
+
                     }
 
                     @Override
@@ -300,10 +301,6 @@ public class MainActivity extends BaseActivity
         if (currentFragment instanceof BuyFragment) {
             //刷新标题
             ((BuyFragment) currentFragment).resetView();
-            //刷新侧滑栏的值
-            if (sideSlipPop != null) {
-                sideSlipPop.setData();
-            }
         } else if (currentFragment instanceof SellFragment) {
             //刷新标题
             ((SellFragment) currentFragment).resetView();
@@ -334,6 +331,12 @@ public class MainActivity extends BaseActivity
                         ((BuyFragment) currentFragment).requestForSaleOrderList(currencyListVO.getCurrencyUid());
                     }
                     break;
+                case Constants.From.SIDE_SLIP_RESET:
+                    //侧滑栏重置当前数据
+                    if (currentFragment instanceof BuyFragment) {
+                        ((BuyFragment) currentFragment).requestForSaleOrderList(Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -358,5 +361,15 @@ public class MainActivity extends BaseActivity
     public void getAllBalance() {
         /*获取账户所有币种余额*/
         mainPresenter.getAllBalance();
+    }
+
+    /**
+     * 当前显示的Token type
+     *
+     * @param memberKeyVO
+     */
+    public void setCurrentDisplayType(MemberKeyVO memberKeyVO) {
+        this.currentDisplayType = memberKeyVO;
+        LogTool.d(TAG, "setCurrentDisplayType:" + memberKeyVO);
     }
 }

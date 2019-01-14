@@ -30,12 +30,10 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
     private List<MemberOrderVO> memberOrderVOS;
     private OnItemSelectListener onItemSelectListener;
 
-    public BuyDataAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
+    public BuyDataAdapter(Context context) {
         super();
         this.context = context;
-        this.memberOrderVOS = memberOrderVOS;
     }
-
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListener = onItemSelectListener;
     }

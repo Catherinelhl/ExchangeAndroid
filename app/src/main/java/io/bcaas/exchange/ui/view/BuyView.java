@@ -22,7 +22,7 @@ import java.util.List;
  * 「购买」页面视图
  */
 public class BuyView extends LinearLayout {
-    private String TAG = "BuyView";
+    private String TAG = BuyView.class.getSimpleName();
     RecyclerView rvBuyData;
     SwipeRefreshLayout srlBuyData;
     private Context context;
@@ -31,12 +31,6 @@ public class BuyView extends LinearLayout {
 
     public BuyView(Context context) {
         super(context);
-        this.context = context;
-        initView();
-    }
-
-    public BuyView(Context context, AttributeSet attrs) {
-        super(context, attrs);
         this.context = context;
         initView();
     }
@@ -60,21 +54,26 @@ public class BuyView extends LinearLayout {
 //            }
 //            onRefreshTransactionRecord("swipeRefreshLayout");
         });
-
+        initAdapter();
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListenerTemp = onItemSelectListener;
     }
 
-    public void refreshData(List<MemberOrderVO> memberOrderVOS) {
-        buyDataAdapter = new BuyDataAdapter(this.context, memberOrderVOS);
+    private void initAdapter() {
+        buyDataAdapter = new BuyDataAdapter(this.context);
         buyDataAdapter.setOnItemSelectListener(onItemSelectListener);
         rvBuyData.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
         rvBuyData.setLayoutManager(linearLayoutManager);
         rvBuyData.setAdapter(buyDataAdapter);
-        buyDataAdapter.refreshData(memberOrderVOS);
+    }
+
+    public void refreshData(List<MemberOrderVO> memberOrderVOS) {
+        if (buyDataAdapter != null) {
+            buyDataAdapter.refreshData(memberOrderVOS);
+        }
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {

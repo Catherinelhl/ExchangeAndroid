@@ -26,9 +26,13 @@ public class SidesSlipAdapter extends BaseAdapter {
     private OnItemSelectListener onItemSelectListener;
     private int currentPosition = -1;
 
-    public SidesSlipAdapter(Context c, List<MemberKeyVO> memberKeyVOList) {
+    public SidesSlipAdapter(Context c) {
         context = c;
+    }
+
+    public void addList(List<MemberKeyVO> memberKeyVOList) {
         this.memberKeyVOList = memberKeyVOList;
+        notifyDataSetChanged();
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {

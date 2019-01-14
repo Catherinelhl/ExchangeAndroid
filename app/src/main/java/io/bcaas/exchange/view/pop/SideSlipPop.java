@@ -18,10 +18,13 @@ import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +43,8 @@ public class SideSlipPop extends PopupWindow {
     private View view;
     //当前的选择
     private MemberKeyVO memberKeyVO;
+    //记录下当前需要过滤的数据游标，用于下一次匹配是否是同样的数据
+    private MemberKeyVO memberKeyVOFilterCursor;
 
     private OnItemSelectListener onItemSelectListener;
     private SidesSlipAdapter sidesSlipAdapter;
@@ -71,6 +76,7 @@ public class SideSlipPop extends PopupWindow {
         tvReset = view.findViewById(R.id.tv_reset);
         tvSure = view.findViewById(R.id.tv_sure);
         tvReset = view.findViewById(R.id.tv_reset);
+        initAdapter();
         RxView.clicks(tvReset).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -82,6 +88,9 @@ public class SideSlipPop extends PopupWindow {
                     public void onNext(Object o) {
                         if (sidesSlipAdapter != null) {
                             sidesSlipAdapter.resetData();
+                        }
+                        if (onItemSelectListener != null) {
+                            onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP_RESET);
                         }
 
                     }
@@ -123,27 +132,67 @@ public class SideSlipPop extends PopupWindow {
                 });
     }
 
-    public void setData() {
-        //获取当前的币种
+    private void initAdapter() {
+        sidesSlipAdapter = new SidesSlipAdapter(context);
+        sidesSlipAdapter.setOnItemSelectListener(new OnItemSelectListener() {
+            @Override
+            public <T> void onItemSelect(T type, String from) {
+                memberKeyVO = (MemberKeyVO) type;
+
+            }
+        });
+        gvMethods.setAdapter(sidesSlipAdapter);
+    }
+
+    /**
+     * @param memberKeyVOFilterCursor 需要过滤掉的数据
+     */
+    public void setData(MemberKeyVO memberKeyVOFilterCursor) {
+        //1：获取当前的所有的币种信息
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
         LogTool.d(TAG, "memberKeyVOList:" + GsonTool.string(memberKeyVOList));
         if (ListTool.isEmpty(memberKeyVOList)) {
             return;
         }
-        if (sidesSlipAdapter == null) {
-            sidesSlipAdapter = new SidesSlipAdapter(context, memberKeyVOList);
-            sidesSlipAdapter.setOnItemSelectListener(new OnItemSelectListener() {
-                @Override
-                public <T> void onItemSelect(T type, String from) {
-                    memberKeyVO = (MemberKeyVO) type;
-
+        //用来存储待会过滤出来的新数组
+        List<MemberKeyVO> memberKeyVOAfterFilter = new ArrayList<>();
+        //2:判断当前用于过滤的游标数据是否为空，否则不执行逻辑比较
+        if (memberKeyVOFilterCursor != null) {
+            //3:判断是否有历史过滤数据
+            if (this.memberKeyVOFilterCursor != null) {
+                //4：判断是否是同一条数据
+                if (!this.memberKeyVOFilterCursor.equals(memberKeyVOFilterCursor)) {
+                    //刷新adapter的数据，并且存储最新游标数据
+                    this.memberKeyVOFilterCursor = memberKeyVOFilterCursor;
+                    if (sidesSlipAdapter != null) {
+                        sidesSlipAdapter.resetData();
+                    }
                 }
-            });
-            gvMethods.setAdapter(sidesSlipAdapter);
-        } else {
-            sidesSlipAdapter.notifyDataSetChanged();
-        }
+            } else {
+                this.memberKeyVOFilterCursor = memberKeyVOFilterCursor;
+            }
+            //5：比较当前的数据，然后过滤掉当前显示的token type
+            for (MemberKeyVO memberKeyVOTemp : memberKeyVOList) {
+                if (memberKeyVOTemp != null) {
+                    CurrencyListVO currencyListVO = memberKeyVOTemp.getCurrencyListVO();
+                    CurrencyListVO currencyListVOFilter = memberKeyVOFilterCursor.getCurrencyListVO();
+                    if (currencyListVO != null && currencyListVOFilter != null) {
+                        //6：比对两者的UID是否一样，如果一样，就需要过滤掉这个数据,否则添加进新数组里面
+                        if (!StringTool.equals(currencyListVO.getCurrencyUid(),
+                                currencyListVOFilter.getCurrencyUid())) {
+                            memberKeyVOAfterFilter.add(memberKeyVOTemp);
 
+                        }
+                    }
+                }
+            }
+        } else {
+            //2 else:将所有数据进行显示
+            memberKeyVOAfterFilter.addAll(memberKeyVOList);
+        }
+        if (sidesSlipAdapter != null) {
+            sidesSlipAdapter.addList(memberKeyVOAfterFilter);
+        }
     }
 
 }

@@ -199,45 +199,15 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             long totalObjectNumber = paginationVO.getTotalObjectNumber();
 
             List<Object> objects = paginationVO.getObjectList();
-            int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
-            LogTool.d(TAG, "当前的Type为：" + type);
+
             if (ListTool.isEmpty(objects)) {
                 memberOrderVOList.clear();
-//                // TODO: 2019/1/11 暂时解析本地数据
-//                String json = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent());
-//                if (StringTool.notEmpty(json)) {
-//                    ResponseJson responseJson = GsonTool.convert(json, ResponseJson.class);
-//                    if (responseJson != null) {
-//                        PaginationVO paginationVO1 = responseJson.getPaginationVO();
-//                        if (paginationVO1 != null) {
-//                            int type = JsonTool.getInt(GsonTool.string(paginationVO1.getObjectList()), "type", 0);
-//                            LogTool.d(TAG, "当前的Type为：" + type);
-//                            memberOrderVOList = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-//                            }.getType());
-//                            switch (type) {
-//                                case Constants.OrderType.RECHARGE:
-//
-//                                    orderViewTwo.setOrderTransactionAdapter(memberOrderVOList);
-//                                    nextObjectIdRecharge = paginationVO.getNextObjectId();
-//                                    break;
-//                                case Constants.OrderType.WITHDRAW:
-//                                    orderViewThree.setOrderWithDrawAdapter(memberOrderVOList);
-//                                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
-//                                    break;
-//                                default:
-//                                    orderViewOne.setOrderTransactionAdapter(memberOrderVOList);
-//                                    nextObjectIdTx = paginationVO.getNextObjectId();
-//                                    break;
-//                            }
-//
-//
-//                        }
-//                    }
-//                }
             } else {
                 memberOrderVOList = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
                 }.getType());
             }
+            int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
+            LogTool.d(TAG, "当前的Type为：" + type);
             LogTool.d(TAG, "memberOrderVOList:" + memberOrderVOList);
             switch (type) {
                 case Constants.OrderType.RECHARGE:

@@ -18,15 +18,16 @@ import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.tools.file.FilePathTool;
-import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
+import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
 import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
-import io.bcaas.exchange.vo.*;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.MemberOrderVO;
+import io.bcaas.exchange.vo.PaginationVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,21 +107,32 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
             tabViewAdapter = new TabViewAdapter(views);
             viewPager.setAdapter(tabViewAdapter);
             viewPager.setCurrentItem(0);
+            //将当前选中的token type返回给MainActivity
+            if (activity != null) {
+                ((MainActivity) activity).setCurrentDisplayType(memberKeyVOListTitle.get(0));
+            }
             viewPager.setOffscreenPageLimit(size > 3 ? 3 : size);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
             tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
+                    // 得到当前的position
                     currentPosition = tab.getPosition();
+                    //将当前选中的token type返回给MainActivity
+                    if (activity != null && currentPosition < size) {
+                        ((MainActivity) activity).setCurrentDisplayType(memberKeyVOListTitle.get(currentPosition));
+                    }
+                    // 清空当前的界面信息
                     memberOrderVOS.clear();
+                    // 刷新界面信息
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
                     }
-                    //清空当前数据，重新请求
-                    //刷新当前界面下的内容
+                    //重新请求数据
                     if (presenter != null) {
                         // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-                        presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+                        presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
+                                Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
                     }
                 }
 
@@ -205,7 +217,6 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
             List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
             if (ListTool.noEmpty(memberKeyVOList)) {
                 presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(), paymentCurrencyUid, nextObjectId);
-
             }
         }
     }
@@ -222,27 +233,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
             List<Object> objects = paginationVO.getObjectList();
             LogTool.d(TAG, objects);
             if (ListTool.isEmpty(objects)) {
-                LogTool.d(TAG, "没有需要处理的信息");
                 memberOrderVOS.clear();
-//                // TODO: 2019/1/11 暂时解析本地数据
-//                String json = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent());
-//                if (StringTool.notEmpty(json)) {
-//                    ResponseJson responseJson = GsonTool.convert(json, ResponseJson.class);
-//                    if (responseJson != null) {
-//                        PaginationVO paginationVO1 = responseJson.getPaginationVO();
-//                        if (paginationVO1 != null) {
-//                            memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO1.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-//                            }.getType());
-//                            if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-//                                if (ListTool.noEmpty(memberOrderVOS)) {
-//                                    ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
-//
-//                                }
-//                            }
-//
-//                        }
-//                    }
-//                }
             } else {
                 memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
                 }.getType());
@@ -258,25 +249,4 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
         showToast(info);
     }
 
-    //刷新标题
-    public void RefreshTitle() {
-        //得到当前的所有钱包信息
-        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-        if (ListTool.noEmpty(memberKeyVOList)) {
-            int size = memberKeyVOList.size();
-            //加载数据
-            for (int i = 0; i < size; i++) {
-                //添加标题
-                MemberKeyVO memberKeyVO = memberKeyVOList.get(i);
-                if (memberKeyVO != null) {
-                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
-                    if (currencyListVO != null) {
-                        String name = currencyListVO.getEnName();
-                        tabLayout.addTab(name, i);
-
-                    }
-                }
-            }
-        }
-    }
 }
