@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.google.gson.reflect.TypeToken;
@@ -17,6 +18,7 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.gson.GsonTool;
+import io.bcaas.exchange.listener.FilterListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -32,14 +34,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class CountryCodeActivity extends BaseActivity {
     private String TAG = CountryCodeActivity.class.getSimpleName();
-    @BindView(R.id.ib_back)
-    ImageButton ibBack;
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
-    @BindView(R.id.rl_header)
-    RelativeLayout rlHeader;
+
+
+    @BindView(R.id.ib_search)
+    ImageButton ibSearch;
+    @BindView(R.id.et_select_content)
+    EditText etSelectContent;
+    @BindView(R.id.tv_cancel)
+    TextView tvCancel;
     @BindView(R.id.rv_list)
     RecyclerView recyclerView;
     private CountryCodeAdapter adapter;
@@ -65,9 +67,6 @@ public class CountryCodeActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        tvTitle.setVisibility(View.VISIBLE);
-        tvTitle.setText("请选择地区号");
-        ibBack.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -78,6 +77,7 @@ public class CountryCodeActivity extends BaseActivity {
     private void initAdapter() {
         adapter = new CountryCodeAdapter(context, countryCodeList);
         adapter.setOnItemSelectListener(onItemSelectListener);
+        adapter.setFilterListener(filterListener);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false));
@@ -85,7 +85,7 @@ public class CountryCodeActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvCancel).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -107,6 +107,35 @@ public class CountryCodeActivity extends BaseActivity {
 
                     }
                 });
+
+        /**
+         * 对编辑框添加文本改变监听，搜索的具体功能在这里实现
+         * 很简单，文本该变的时候进行搜索。关键方法是重写的onTextChanged（）方法。
+         */
+        etSelectContent.addTextChangedListener(new TextWatcher() {
+
+            /**
+             *
+             * 编辑框内容改变的时候会执行该方法
+             */
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                // 如果adapter不为空的话就根据编辑框中的内容来过滤数据
+                if (adapter != null) {
+                    adapter.getFilter().filter(s);
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
@@ -117,6 +146,12 @@ public class CountryCodeActivity extends BaseActivity {
                     setResult((CountryCodeBean.CountryCode) type);
                 }
             }
+        }
+    };
+
+    private FilterListener filterListener = new FilterListener() {
+        @Override
+        public void getFilterData(List<CountryCodeBean.CountryCode> countryCodes) {
         }
     };
 

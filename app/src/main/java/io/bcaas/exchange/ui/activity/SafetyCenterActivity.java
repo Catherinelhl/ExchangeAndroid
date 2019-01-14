@@ -188,22 +188,22 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         } else if (StringTool.equals(from, getString(R.string.phone_verify))) {
             //手机验证，如果当前是需要"绑定"的状态，那么就跳转到「绑定」的状态；如果是已经绑定过的，那么就显示「关闭」，并且跳转到「关闭验证」
             String phone = memberVO.getPhone();
-            if (StringTool.isEmpty(phone)) {
+//            if (StringTool.isEmpty(phone)) {
                 intent.setClass(SafetyCenterActivity.this, BindPhoneActivity.class);
                 startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
-            } else {
-                int phoneVerify = memberVO.getPhoneVerify();
-                if (phoneVerify == Constants.Status.CLOSE) {
-                    //直接调用更改phone的状态
-                    presenter.securityPhone(memberVO.getPhone(), MessageConstants.EMPTY);
-                } else if (phoneVerify == Constants.Status.OPEN) {
-                    //跳转到「解绑」的操作
-                    intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-                    bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.PHONE);
-                    intent.putExtras(bundle);
-                    startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
-                }
-            }
+//            } else {
+//                int phoneVerify = memberVO.getPhoneVerify();
+//                if (phoneVerify == Constants.Status.CLOSE) {
+//                    //直接调用更改phone的状态
+//                    presenter.securityPhone(memberVO.getPhone(), MessageConstants.EMPTY);
+//                } else if (phoneVerify == Constants.Status.OPEN) {
+//                    //跳转到「解绑」的操作
+//                    intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+//                    bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.PHONE);
+//                    intent.putExtras(bundle);
+//                    startActivityForResult(intent, Constants.RequestCode.PHONE_VERIFY);
+//                }
+//            }
 
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {

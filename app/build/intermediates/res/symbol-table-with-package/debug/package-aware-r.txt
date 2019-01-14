@@ -1550,6 +1550,7 @@ id enterAlwaysCollapsed
 id et_content
 id et_password
 id et_rate
+id et_select_content
 id et_sell_volume
 id etwa_account
 id etwa_amount
@@ -1593,6 +1594,7 @@ id home_container
 id ib_back
 id ib_detail
 id ib_right
+id ib_search
 id icon
 id icon_group
 id ifRoom
@@ -1753,6 +1755,7 @@ id transition_transform
 id tv_account_name
 id tv_action
 id tv_available
+id tv_cancel
 id tv_cashable_balance
 id tv_code
 id tv_content
@@ -1959,6 +1962,7 @@ mipmap icon_order_f
 mipmap icon_recharge
 mipmap icon_safety_center
 mipmap icon_scan
+mipmap icon_search
 mipmap icon_sell_out
 mipmap icon_sell_out_f
 mipmap icon_withdraw
@@ -2092,7 +2096,9 @@ string please_input_phone_verify_code
 string please_input_right_email
 string please_input_verify_code
 string please_input_verify_code_first
+string please_select_country_or_region
 string please_set_google_verify
+string plus_sign
 string price
 string private_key_str
 string qrcode_name

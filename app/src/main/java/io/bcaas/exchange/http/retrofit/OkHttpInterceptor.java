@@ -97,6 +97,8 @@ public class OkHttpInterceptor implements Interceptor {
             contentLength = responseBody.contentLength();
         } else {
             LogTool.e(TAG, "response body is null");
+            //java.io.EOFException:End of input at line 1 column 1 path $
+            return null;
         }
         if (!bodyEncoded(response.headers())) {
             BufferedSource source = responseBody.source();

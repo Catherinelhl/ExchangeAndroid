@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Exchange</string>
-    <string name="cancel">cancel</string>
-    <string name="confirm">confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
     <string name="warning">Warning</string>
     <string name="network_not_reachable">Network connection error, please check your network settings</string>
     <string name="password_rule" formatted="false">
@@ -10,7 +10,7 @@
     <string name="login">Login</string>
     <string name="forget_password">Forget password</string>
     <string name="register_now">Register now</string>
-    <string name="send">send</string>
+    <string name="send">Send</string>
     <string name="sure">Sure</string>
     <string name="register_title">Register</string>
     <string name="reset_password_title">Reset password</string>
@@ -128,5 +128,7 @@
     <string name="sell_detail">售出详情</string>
     <string name="withdraw_need_fee">提现需支付手续费,手续费为:</string>
     <string name="get_data_failure">获取数据失败</string>
+    <string name="plus_sign">+</string>
+    <string name="please_select_country_or_region">请选择国家或地区</string>
 
 </resources>

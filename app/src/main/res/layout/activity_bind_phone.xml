@@ -21,11 +21,6 @@
                   android:drawableRight="@mipmap/icon_drop_down"
                   android:textColor="@color/black_333333"
                   android:layout_height="@dimen/d48"/>
-        <!--<View android:layout_width="@dimen/d0.5"-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:background="@color/grey_999999"-->
-        <!--android:layout_height="@dimen/d24"/>-->
         <io.bcaas.exchange.view.editview.EditTextWithAction
                 android:id="@+id/etwa_phone_number"
                 android:layout_width="match_parent"

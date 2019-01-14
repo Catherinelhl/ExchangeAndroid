@@ -173,7 +173,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                     public void onNext(Object o) {
 
                         if (ListTool.isEmpty(countryCodes)) {
-                            showToast("获取数据失败！");
+                            showToast(getString(R.string.get_data_failure));
                             return;
                         }
                         Intent intent = new Intent();
@@ -191,7 +191,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override
@@ -257,7 +257,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                         CountryCodeBean.CountryCode countryCode = (CountryCodeBean.CountryCode) data.getSerializableExtra(Constants.KeyMaps.SELECT_COUNTRY_CODE);
                         if (countryCode != null) {
                             if (tvCode != null) {
-                                tvCode.setText("+" + countryCode.getPhoneCode());
+                                tvCode.setText(getString(R.string.plus_sign) + countryCode.getPhoneCode());
                                 tvCode.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d13));
                                 tvCode.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.mipmap.icon_drop_down), null);
 

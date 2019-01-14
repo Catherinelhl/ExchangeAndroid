@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Exchange</string>
-    <string name="cancel">cancel</string>
-    <string name="confirm">confirm</string>
-    <string name="warning">Warning</string>
-    <string name="network_not_reachable">Network connection error, please check your network settings</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="warning">提示</string>
+    <string name="network_not_reachable">网络连接错误，请检查您的网络设置</string>
     <string name="password_rule" formatted="false">
         <![CDATA[0123456789abcdefghigklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM!@#¥%^&*-_]]></string>
     <string name="enter_password">请输入密码</string>
@@ -108,5 +108,34 @@
     <string name="revoke">撤销</string>
     <string name="available">可用</string>
     <string name="freeze">冻结</string>
+
+    <string name="please_input_account">请输入账号</string>
+    <string name="please_input_right_email">请输入正确的邮箱格式</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="please_input_confirm_password">请输入确认密码</string>
+    <string name="password_does_not_match">两次密码输入不一致</string>
+    <string name="please_input_verify_code_first">请先输入验证码</string>
+    <string name="open">开启</string>
+    <string name="close">关闭</string>
+    <string name="setting">设置</string>
+    <string name="bind">绑定</string>
+    <string name="please_input_phone_number">请输入手机号！</string>
+    <string name="please_input_phone_verify_code">请输入验证码！</string>
+    <string name="please_input_email_verify_code">请输入邮箱验证码</string>
+    <string name="please_input_message_code">请输入短信验证码！</string>
+    <string name="close_verify">关闭验证</string>
+    <string name="version">Version:</string>
+    <string name="format_ssd" formatted="false">%s%s(%d)</string>
+    <string name="bind_success">绑定成功！</string>
+    <string name="modify">修改</string>
+    <string name="private_key_str">密钥:</string>
+    <string name="format_ss" formatted="false">%s%s</string>
+    <string name="please_input_verify_code">请输入验证码</string>
+    <string name="format_sss" formatted="false">%s%s %s</string>
+    <string name="sell_detail">售出详情</string>
+    <string name="withdraw_need_fee">提现需支付手续费,手续费为:</string>
+    <string name="get_data_failure">获取数据失败</string>
+    <string name="plus_sign">+</string>
+    <string name="please_select_country_or_region">请选择国家或地区</string>
 
 </resources>
