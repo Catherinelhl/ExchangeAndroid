@@ -132,24 +132,33 @@ public class CountryCodeAdapter extends
                 results.count = original.size();
             } else {
                 // 创建集合保存过滤后的数据
-                List<CountryCodeBean.CountryCode> mList = new ArrayList<>();
+                List<CountryCodeBean.CountryCode> listNew = new ArrayList<>();
                 // 遍历原始数据集合，根据搜索的规则过滤数据
                 for (CountryCodeBean.CountryCode countryCode : original) {
                     if (countryCode == null) {
                         results.values = original;
                         results.count = original.size();
                     } else {
-                        String s = countryCode.getCountryName();
-                        // 这里就是过滤规则的具体实现【规则有很多，大家可以自己决定怎么实现】
-                        if (s.trim().toLowerCase().contains(constraint.toString().trim().toLowerCase())) {
+                        //取得当前得城市名字
+                        String countryName = countryCode.getCountryName();
+                        // 取得当前得城市名字拼音「中文环境可用」
+                        String countryNamePinyin = countryCode.getCountryPinyin();
+                        //取得当前返回得数据的小写信息·
+                        String constraintLowerCase=constraint.toString().trim().toLowerCase();
+                        if (countryName.trim().toLowerCase().contains(constraintLowerCase)) {
                             // 规则匹配的话就往集合中添加该数据
-                            mList.add(countryCode);
+                            listNew.add(countryCode);
+                        }else if(StringTool.notEmpty(countryNamePinyin)){
+                            //  比较拼音
+                            if (countryNamePinyin.trim().toLowerCase().contains(constraintLowerCase)){
+                                listNew.add(countryCode);
+                            }
                         }
                     }
 
                 }
-                results.values = mList;
-                results.count = mList.size();
+                results.values = listNew;
+                results.count = listNew.size();
             }
 
 

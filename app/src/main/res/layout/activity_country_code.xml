@@ -19,6 +19,9 @@
                   android:layout_weight="1"
                   android:id="@+id/et_select_content"
                   android:hint="@string/please_select_country_or_region"
+                  android:textSize="@dimen/text_size_14"
+                  android:textColor="@color/grey_999999"
+                  android:textCursorDrawable="@drawable/edit_text_cursor_drawable"
                   android:background="@color/transparent"
                   android:layout_height="match_parent"/>
         <TextView android:layout_width="wrap_content"
@@ -26,6 +29,8 @@
                   android:text="@string/cancel"
                   android:layout_gravity="center_vertical"
                   android:gravity="center"
+                  android:fontFamily="sans-serif-medium"
+                  android:textColor="@color/grey_999999"
                   android:paddingRight="@dimen/d20"
                   android:layout_height="match_parent"/>
     </LinearLayout>
