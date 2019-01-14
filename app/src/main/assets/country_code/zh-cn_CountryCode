@@ -565,8 +565,8 @@
       "countryCode": "GY"
     },
     {
-      "countryName": "中国香港特别行政区",
-      "countryPinyin": "zhong guo xiang gang te bie xing zheng qu",
+      "countryName": "香港（中国）",
+      "countryPinyin": "xiang gang（zhong guo）",
       "phoneCode": "852",
       "countryCode": "HK"
     },
@@ -883,8 +883,8 @@
       "countryCode": "MN"
     },
     {
-      "countryName": "中国澳门特别行政区",
-      "countryPinyin": "zhong guo ao men te bie xing zheng qu",
+      "countryName": "澳门（中国）",
+      "countryPinyin": "ao men（zhong guo）",
       "phoneCode": "853",
       "countryCode": "MO"
     },
@@ -1363,8 +1363,8 @@
       "countryCode": "TV"
     },
     {
-      "countryName": "台湾",
-      "countryPinyin": "tai wan",
+      "countryName": "台湾（中国）",
+      "countryPinyin": "tai wan（zhong guo）",
       "phoneCode": "886",
       "countryCode": "TW"
     },

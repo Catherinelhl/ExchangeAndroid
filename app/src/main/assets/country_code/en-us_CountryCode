@@ -471,7 +471,7 @@
       "phoneCode": "595"
     },
     {
-      "countryName": "Hong Kong SAR China",
+      "countryName": "Hong Kong (China)",
       "countryCode": "HK",
       "phoneCode": "852"
     },
@@ -736,7 +736,7 @@
       "phoneCode": "976"
     },
     {
-      "countryName": "Macau SAR China",
+      "countryName": "Macau (China)",
       "countryCode": "MO",
       "phoneCode": "853"
     },
@@ -1136,7 +1136,7 @@
       "phoneCode": "688"
     },
     {
-      "countryName": "Taiwan",
+      "countryName": "Taiwan(China)",
       "countryCode": "TW",
       "phoneCode": "886"
     },

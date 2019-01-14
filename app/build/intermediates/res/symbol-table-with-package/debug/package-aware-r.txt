@@ -1798,7 +1798,6 @@ id tv_register_now
 id tv_reset
 id tv_safety_center_action
 id tv_salable_balance
-id tv_select
 id tv_set_immediately
 id tv_setting_type
 id tv_start_immediate

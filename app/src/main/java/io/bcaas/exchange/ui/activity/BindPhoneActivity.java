@@ -41,8 +41,6 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.tv_select)
-    TextView tvSelect;
     @BindView(R.id.tv_code)
     TextView tvCode;
     @BindView(R.id.rl_header)
@@ -163,7 +161,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
 
                     }
                 });
-        RxView.clicks(tvSelect).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvCode).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -255,16 +253,18 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case Constants.RequestCode.COUNTRY_CODE://选择城市区号页面返回
-                    LogTool.d(TAG, "country code");
                     if (data != null) {
                         CountryCodeBean.CountryCode countryCode = (CountryCodeBean.CountryCode) data.getSerializableExtra(Constants.KeyMaps.SELECT_COUNTRY_CODE);
                         if (countryCode != null) {
                             if (tvCode != null) {
                                 tvCode.setText("+" + countryCode.getPhoneCode());
+                                tvCode.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d13));
+                                tvCode.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.mipmap.icon_drop_down), null);
+
                             }
-                            if (tvSelect != null) {
-                                tvSelect.setText(countryCode.getCountryName());
-                            }
+//                            if (tvCode != null) {
+//                                tvCode.setText(countryCode.getCountryName());
+//                            }
                             LogTool.d(TAG, "当前选中的城市区号：" + countryCode);
                         }
                     }

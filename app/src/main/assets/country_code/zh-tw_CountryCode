@@ -284,7 +284,7 @@
     },
     {
       "countryCode": "CN",
-      "countryName": "中華人民共和國",
+      "countryName": "中國",
       "countryPinyin": "zhong hua ren min gong he guo",
       "phoneCode": "86"
     },
@@ -566,8 +566,8 @@
     },
     {
       "countryCode": "HK",
-      "countryName": "中華人民共和國香港特別行政區",
-      "countryPinyin": "zhong hua ren min gong he guo xiang gang te bie xing zheng qu",
+      "countryName": "香港（中國）",
+      "countryPinyin": "xiang gang（zhong guo）",
       "phoneCode": "852"
     },
     {
@@ -884,8 +884,8 @@
     },
     {
       "countryCode": "MO",
-      "countryName": "中華人民共和國澳門特別行政區",
-      "countryPinyin": "zhong hua ren min gong he guo ao men te bie xing zheng qu",
+      "countryName": "澳門（中國）",
+      "countryPinyin": "ao men（zhong guo）",
       "phoneCode": "853"
     },
     {
@@ -1364,7 +1364,7 @@
     },
     {
       "countryCode": "TW",
-      "countryName": "台灣",
+      "countryName": "台灣（中國）",
       "countryPinyin": "tai wan",
       "phoneCode": "886"
     },
