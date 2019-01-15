@@ -6,17 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.MyFundBean;
+import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
-import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;
 
@@ -30,13 +30,14 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
 
 
     private Context context;
-    private List<MyFundBean> myFundBeans;
+    private List<MemberKeyVO> memberKeyVOS;
     private OnItemSelectListener onItemSelectListener;
 
-    public MyFundDataAdapter(Context context, List<MyFundBean> myFundBeans) {
+    public MyFundDataAdapter(Context context) {
         super();
         this.context = context;
-        this.myFundBeans = myFundBeans;
+        //取得当前的会员信息
+        this.memberKeyVOS = BaseApplication.getMemberKeyVOList();
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -52,16 +53,21 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (i >= myFundBeans.size()) {
+        if (i >= memberKeyVOS.size()) {
             return;
         }
-        MyFundBean myFundBean = myFundBeans.get(i);
-        if (myFundBean == null) {
+        MemberKeyVO memberKeyVO = memberKeyVOS.get(i);
+        if (memberKeyVO == null) {
             return;
         }
-        viewHolder.tvFundType.setText(myFundBean.getFundType());
-        viewHolder.tvFreeze.setText(myFundBean.getFreeze());
-        viewHolder.tvAvailable.setText(myFundBean.getAvailable());
+        CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+        if (currencyListVO == null) {
+            return;
+        }
+        viewHolder.tvFundType.setText(currencyListVO.getEnName());
+        String balanceBlocked = memberKeyVO.getBalanceBlocked();
+        viewHolder.tvFreeze.setText(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked);
+        viewHolder.tvAvailable.setText(memberKeyVO.getBalanceAvailable());
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +80,7 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
                 viewHolder.cbWithdraw.setChecked(false);
                 viewHolder.cbRecharge.setChecked(true);
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(myFundBean, MessageConstants.RECHARGE);
+                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.RECHARGE);
                 }
             }
         });
@@ -84,7 +90,7 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
                 viewHolder.cbRecharge.setChecked(false);
                 viewHolder.cbWithdraw.setChecked(true);
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(myFundBean, MessageConstants.WITHDRAW);
+                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.WITHDRAW);
                 }
             }
         });
@@ -92,12 +98,7 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return ListTool.isEmpty(myFundBeans) ? 0 : myFundBeans.size();
-    }
-
-    public void refreshData(List<MyFundBean> myFundBeans) {
-        this.myFundBeans = myFundBeans;
-        notifyDataSetChanged();
+        return ListTool.isEmpty(memberKeyVOS) ? 0 : memberKeyVOS.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

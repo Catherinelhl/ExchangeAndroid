@@ -75,6 +75,7 @@ public class Constants {
 
 
         public static final String ALL_FOR_SALE_ORDER_LIST = "-1";//查询所有的订单信息
+        public static final String DEFAULT_BALANCE = "0.0000000000";//设置默认金额显示
     }
 
     /*请求code*/
@@ -167,6 +168,9 @@ public class Constants {
         public static final String SIDE_SLIP_RESET = "sideSlipReset";//侧滑栏重置数据
         public static final String WITHDRAW_SURE = "withDrawSure";//提现点击确定
         public static final String COUNTRY_CODE = "countryCode";//城市区号
+        public static final String FUND_ITEM = "fundItem";//资金列表
+        public static final String RECHARGE = "recharge";//充值
+        public static final String WITHDRAW = "withDraw";// 提现
     }
 
     /**

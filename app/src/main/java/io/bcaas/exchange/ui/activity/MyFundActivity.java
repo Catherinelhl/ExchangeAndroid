@@ -14,7 +14,6 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.MyFundDataAdapter;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.bean.MyFundBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
@@ -48,7 +47,6 @@ public class MyFundActivity extends BaseActivity {
     SwipeRefreshLayout srlMyFundData;
 
     private MyFundDataAdapter myFundDataAdapter;
-    private List<MyFundBean> myFundBeanList;
 
     @Override
     public int getContentView() {
@@ -65,27 +63,13 @@ public class MyFundActivity extends BaseActivity {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.my_fund);
-        myFundBeanList = new ArrayList<>();
 
     }
 
     @Override
     public void initData() {
-        initMyFundData();
         initRefreshLayout();
         initAdapter();
-    }
-
-    /**
-     * 初始化「我的资产」数据信息
-     */
-    private void initMyFundData() {
-        MyFundBean myFundBeanBTC = new MyFundBean("BTC", "15.2354252", "23.325425234");
-        MyFundBean myFundBeanETH = new MyFundBean("ETH", "5.2354252", "2.325425234");
-        MyFundBean myFundBeanZBB = new MyFundBean("ZBB", "10.2354252", "3.325425234");
-        myFundBeanList.add(myFundBeanBTC);
-        myFundBeanList.add(myFundBeanETH);
-        myFundBeanList.add(myFundBeanZBB);
     }
 
     private void initRefreshLayout() {
@@ -99,7 +83,7 @@ public class MyFundActivity extends BaseActivity {
     }
 
     private void initAdapter() {
-        myFundDataAdapter = new MyFundDataAdapter(this, myFundBeanList);
+        myFundDataAdapter = new MyFundDataAdapter(this);
         myFundDataAdapter.setOnItemSelectListener(onItemSelectListener);
         rvMyFundData.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
@@ -132,12 +116,12 @@ public class MyFundActivity extends BaseActivity {
         public <T> void onItemSelect(T type, String from) {
             Intent intent = new Intent();
             switch (from) {
-                case MessageConstants.RECHARGE:
+                case Constants.From.RECHARGE:
                     intent.setClass(MyFundActivity.this, RechargeActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.RECHARGE);
                     // 充值
                     break;
-                case MessageConstants.WITHDRAW:
+                case Constants.From.WITHDRAW:
                     intent.setClass(MyFundActivity.this, WithDrawActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
                     //提现
