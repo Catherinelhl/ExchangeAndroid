@@ -62,7 +62,7 @@
                   android:layout_marginRight="@dimen/d20"
                   android:layout_height="wrap_content">
         <TextView
-                style="@style/black_16_text_style"
+                style="@style/black_666_14_text_style"
                 android:text="@string/available"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
@@ -72,7 +72,7 @@
                 android:id="@+id/tv_available"
                 android:layout_weight="1"
                 android:layout_width="@dimen/d0"
-                style="@style/black_14_text_style"
+                style="@style/black_666_14_text_style"
                 tool:text="23.234523 BTC"/>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                   android:layout_marginRight="@dimen/d20"
                   android:layout_height="wrap_content">
         <TextView
-                style="@style/black_16_text_style"
+                style="@style/black_666_14_text_style"
                 android:text="@string/freeze"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
@@ -95,7 +95,7 @@
                 android:layout_width="@dimen/d0"
                 android:layout_weight="1"
                 android:id="@+id/tv_freeze"
-                style="@style/black_14_text_style"
+                style="@style/black_666_14_text_style"
                 tool:text="12.2334623465 ETH"/>
     </LinearLayout>
     <View android:layout_width="match_parent"

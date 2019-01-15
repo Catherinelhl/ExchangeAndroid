@@ -63,17 +63,17 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
         CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
         if (paymentCurrencyList != null) {
             String enName = paymentCurrencyList.getEnName();
-            viewHolder.tvPayMethod.setText("支付方式" + "\t" + enName);
-            viewHolder.tvFee.setText(paymentCurrencyList.getBuyCharge() + "\t" + enName);
-            viewHolder.tvPrice.setText(memberOrderVO.getUnitPrice() + "\t" + enName);
-            viewHolder.tvTotalAccount.setText(memberOrderVO.getPrice() + "\t" + enName);
+            viewHolder.tvPayMethod.setText("支付方式" + "  " + enName);
+            viewHolder.tvFee.setText(paymentCurrencyList.getBuyCharge() + "  " + enName);
+            viewHolder.tvPrice.setText(memberOrderVO.getUnitPrice() + "  " + enName);
+            viewHolder.tvTotalAccount.setText(memberOrderVO.getPrice() + "  " + enName);
 
 
         }
         // 得到当前币种信息
         CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
         if (currencyListVO != null) {
-            viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "\t" + currencyListVO.getEnName());
+            viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + currencyListVO.getEnName());
         }
         viewHolder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override

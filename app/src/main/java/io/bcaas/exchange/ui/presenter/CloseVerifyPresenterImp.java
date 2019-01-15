@@ -90,7 +90,7 @@ public class CloseVerifyPresenterImp
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.closeVerifyCodeFailure(responseJson.getMessage());
                             } else {
-                                view.closeVerifyCodeFailure(MessageConstants.EMPTY);
+                                view.closeVerifyCodeFailure(responseJson.getMessage());
 
                             }
 

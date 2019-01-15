@@ -23,7 +23,7 @@
                         android:layout_marginTop="@dimen/d16"
                         android:layout_marginRight="@dimen/d20"
                         android:layout_marginLeft="@dimen/d20"
-                        android:text="@string/sell_out"
+                        android:text="@string/sell"
                         android:gravity="center_vertical"/>
 
                 <LinearLayout android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                                   android:layout_marginRight="@dimen/d16"
                                   android:layout_height="wrap_content">
                         <TextView
-                                style="@style/black_16_text_style"
+                                style="@style/black_666_14_text_style"
                                 android:text="@string/sell_price"
                                 android:gravity="center_vertical"
                                 android:layout_gravity="center"
@@ -53,7 +53,7 @@
                                 android:id="@+id/tv_price"
                                 android:layout_width="@dimen/d0"
                                 android:layout_weight="1"
-                                style="@style/black_14_text_style"
+                                style="@style/black_666_14_text_style"
                                 tool:text="20.3287461 ETH"
                                 android:gravity="right"/>
                     </LinearLayout>
@@ -68,7 +68,7 @@
                                   android:layout_marginBottom="@dimen/d12"
                                   android:layout_height="wrap_content">
                         <TextView
-                                style="@style/black_16_text_style"
+                                style="@style/black_666_14_text_style"
                                 android:text="@string/sell_number"
                                 android:gravity="center_vertical"
                                 android:layout_gravity="center"
@@ -78,7 +78,7 @@
                                 android:id="@+id/tv_number"
                                 android:layout_weight="1"
                                 android:layout_width="@dimen/d0"
-                                style="@style/black_14_text_style"
+                                style="@style/black_666_14_text_style"
                                 tool:text="23.234523 BTC"/>
                     </LinearLayout>
                     <View style="@style/small_line_style"/>
@@ -92,7 +92,7 @@
                                   android:layout_marginTop="@dimen/d12"
                                   android:layout_height="wrap_content">
                         <TextView
-                                style="@style/black_16_text_style"
+                                style="@style/black_666_14_text_style"
                                 android:text="@string/fee"
                                 android:gravity="center_vertical"
                                 android:layout_gravity="center"
@@ -102,13 +102,13 @@
                                 android:layout_width="@dimen/d0"
                                 android:layout_weight="1"
                                 android:id="@+id/tv_fee"
-                                style="@style/black_14_text_style"
+                                style="@style/black_666_14_text_style"
                                 tool:text="0.001 ETH"/>
                     </LinearLayout>
                 </LinearLayout>
                 <TextView
                         android:id="@+id/tv_salable_balance"
-                        style="@style/black_16_text_style"
+                        style="@style/black_14_text_style"
                         android:text="@string/salable_balance"
                         android:gravity="center_vertical"
                         android:layout_marginTop="@dimen/d16"
@@ -117,10 +117,10 @@
                 />
                 <TextView
                         android:id="@+id/tv_transaction_amount"
-                        style="@style/black_16_text_style"
+                        style="@style/black_14_text_style"
                         android:text="@string/sell_out_transaction_amount"
                         android:gravity="center_vertical"
-                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
                         android:layout_marginTop="@dimen/d16"
                         android:layout_marginRight="@dimen/d20"
                         android:layout_marginLeft="@dimen/d20"

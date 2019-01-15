@@ -67,7 +67,7 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                         if (isSuccess) {
                             VerificationBean verificationBean = responseJson.getVerificationBean();
                             if (verificationBean == null) {
-                                view.getAuthenticatorUrlFailure(MessageConstants.EMPTY);
+                                view.getAuthenticatorUrlFailure(responseJson.getMessage());
                             } else {
                                 view.getAuthenticatorUrlSuccess(verificationBean);
                             }
@@ -77,7 +77,7 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.getAuthenticatorUrlFailure(responseJson.getMessage());
                             } else {
-                                view.getAuthenticatorUrlFailure(MessageConstants.EMPTY);
+                                view.getAuthenticatorUrlFailure(responseJson.getMessage());
 
                             }
 
@@ -137,7 +137,7 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                     view.securityGoogleAuthenticatorSuccess(responseJson.getMessage());
                                 } else {
                                     // TODO: 2019/1/10 绑定成功就会等于开启，所以else只是为了容错
-                                    view.securityGoogleAuthenticatorFailure(MessageConstants.EMPTY);
+                                    view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
                                 }
 
                             } else {
@@ -150,7 +150,7 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
                             } else {
-                                view.securityGoogleAuthenticatorFailure(MessageConstants.EMPTY);
+                                view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
 
                             }
 

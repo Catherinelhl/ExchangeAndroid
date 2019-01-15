@@ -4,8 +4,6 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
-import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
@@ -13,7 +11,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -25,14 +22,12 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
 import io.bcaas.exchange.ui.presenter.GetCurrencyChargePresenterImp;
-import io.bcaas.exchange.view.pop.ListPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -71,14 +66,15 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
     //当前的汇率，做进度条的系数使用
     private String salableBalance;
     //得到当前最终的交易额度
-    private double txAmount;
+    private String txAmount;
 
     //得到当前的币种信息
     private CurrencyListVO currencyListVO, exchangeCurrencyListVO;
     //得到当前的手续费
     private String fee;
     private GetCurrencyChargeContract.Presenter presenter;
-
+    //进度条的边界值
+    private int margin = getResources().getDimensionPixelSize(R.dimen.d20);
 
     public SellView(Context context) {
         super(context);
@@ -90,7 +86,8 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
         View view = LayoutInflater.from(context).inflate(R.layout.view_sell, this, true);
         ButterKnife.bind(view);
         presenter = new GetCurrencyChargePresenterImp(this);
-        etSellVolume.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(8)});
+        etSellVolume.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
+        etRate.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
         initListener();
     }
 
@@ -101,9 +98,9 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                 if (tvProgressSpeed != null && fromUser) {
                     //seekBar的宽度
                     float seekBarWidth = seekBar.getWidth();
-                    int margin = getResources().getDimensionPixelSize(R.dimen.d20);
                     float width = (seekBarWidth - margin * 3) / 100 * progress; //seekBar当前位置的宽度
                     tvProgressSpeed.setX(width + margin);
+                    //得到当前的交易量
                     String sellVolume = String.valueOf(Float.valueOf(salableBalance) * 0.01f * progress);
                     tvProgressSpeed.setText(sellVolume);
 
@@ -112,26 +109,7 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                         etSellVolume.setSelection(sellVolume.length());
                     }
 
-                    if (tvFinalTxAmount != null && etRate != null && currencyListVO != null) {
-                        // 得到当前的卖出量
-                        double sellAmount = Double.valueOf(sellVolume);
-                        //得到当前的单价
-                        double rate = Double.valueOf(etRate.getText().toString());
-                        // 得到当前的币种
-                        String enName = currencyListVO.getEnName();
-                        // 得到当前除去手续费之后的交易额度
-                        txAmount = sellAmount * rate - Double.valueOf(fee);
-                        if (txAmount > 0) {
-                            tvFinalTxAmount.setVisibility(VISIBLE);
-                            tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                                    + txAmount + "\t" + enName);
-                        } else {
-                            tvFinalTxAmount.setVisibility(GONE);
-
-                        }
-
-                    }
-
+                    setTxAmountInfo(sellVolume);
                 }
             }
 
@@ -154,21 +132,23 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = s.toString();
-                if (StringTool.notEmpty(text)) {
+                if (StringTool.notEmpty(text)
+                        && sbProgress != null
+                        && tvProgressSpeed != null) {
                     float volume = Float.valueOf(text);
-                    sbProgress.setProgress((int) (100 * volume / Float.valueOf(salableBalance)));
-                    if (tvProgressSpeed != null) {
+                    if (volume > 0) {
+                        sbProgress.setProgress((int) (100 * volume / Float.valueOf(salableBalance)));
                         tvProgressSpeed.setText(String.valueOf(volume));
                         float seekBarWidth = sbProgress.getWidth();
-                        int margin = getResources().getDimensionPixelSize(R.dimen.d20);
                         float width = (seekBarWidth - margin * 3) / 100 * sbProgress.getProgress(); //seekBar当前位置的宽度
                         tvProgressSpeed.setX(width + margin);
+                        setTxAmountInfo(text);
+                    } else {
+                        resetProgress();
                     }
-                    if (tvFinalTxAmount != null && currencyListVO != null) {
-                        tvFinalTxAmount.setVisibility(VISIBLE);
-                        tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                                + String.valueOf(volume - Double.valueOf(fee)) + "\t" + currencyListVO.getEnName());
-                    }
+
+                } else {
+                    resetProgress();
                 }
             }
 
@@ -189,21 +169,27 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                         //1：判断当前卖出价是否输入
                         String unitPrice = etRate.getText().toString();
                         if (StringTool.isEmpty(unitPrice)) {
-                            Toast.makeText(context, "请先输入卖出价！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.please_input_sell_price, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //2：判断当前卖出量是否输入
                         String sellAmount = etSellVolume.getText().toString();
                         if (StringTool.isEmpty(sellAmount) || StringTool.equals(sellAmount, "0.0")) {
-                            Toast.makeText(context, "请先输入卖出量！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.please_input_sell_volume, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //3：比对当前输入的卖出量《可售余额
-                        if (Double.valueOf(sellAmount) > Double.valueOf(salableBalance)) {
-                            Toast.makeText(context, "余额不足！", Toast.LENGTH_SHORT).show();
+                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, sellAmount), MessageConstants.NO_ENOUGH_BALANCE)) {
+                            Toast.makeText(context, R.string.no_enough_balance, Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        //4:判断当前的回调以及会员信息不为空；得到所有需要的数据，然后返回
+                        //4：判断当前的扣除手续费的交易额不能小于等于0，否则提示不能通过
+                        if (StringTool.notEmpty(txAmount) &&
+                                StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"), MessageConstants.NO_ENOUGH_BALANCE)) {
+                            Toast.makeText(context, R.string.sell_volume_must_over_fee, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        //5:判断当前的回调以及会员信息不为空；得到所有需要的数据，然后返回
                         if (onItemSelectListener != null && memberKeyVO != null) {
                             //可用余额
                             SellDataBean sellDataBean = new SellDataBean(memberKeyVO.getBalanceAvailable());
@@ -265,12 +251,52 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
     }
 
     /**
+     * 计算得到交易额信息
+     *
+     * @param sellVolume 交易量
+     */
+    private void setTxAmountInfo(String sellVolume) {
+        //判断显示交易额/单价/以及用户币种信息数据是否为空
+        if (tvFinalTxAmount != null && etRate != null && exchangeCurrencyListVO != null) {
+            //得到当前的单价
+            String rateStr = etRate.getText().toString();
+            //如果当前没有输入单价，则不显示交易额
+            if (StringTool.isEmpty(rateStr)) {
+                return;
+            }
+            // 得到当前除去手续费之后的交易额度
+//                        1.卖出方手续费单位为出售币种的单位；
+//
+//                        2.卖出方手续费具体比例待定；
+//                        举例，假如用户出售10个BTC,此时 1 BTC = 20 ETH, 手续费为0.1 BTC 则：
+//                        手续费 = 0.1 BTC
+//                                交易额 = (10 - 0.1) * 20 = 200 ETH
+//                        4.用户输入资金密码后，该用户的该笔出售金额被冻结，余额不扣减
+            // 得到当前减去手续费的量
+            String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee);
+            //得到当前可换做售出币种的交易额
+            txAmount = DecimalTool.calculateFirstmultiplySecondValue(volumeExceptFee, rateStr);
+            // 判断当前的交易额是否为0，如果为0，则不显示
+            if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"),
+                    MessageConstants.NO_ENOUGH_BALANCE)) {
+                tvFinalTxAmount.setVisibility(GONE);
+            } else {
+                tvFinalTxAmount.setVisibility(VISIBLE);
+                tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
+                        + txAmount + "  " + exchangeCurrencyListVO.getEnName());
+            }
+
+        }
+    }
+
+    /**
      * 根据传入的数据，刷新当前页面
      *
      * @param memberKeyVO
      */
     public void refreshData(MemberKeyVO memberKeyVO) {
         this.memberKeyVO = memberKeyVO;
+        LogTool.d(TAG, "refreshData:" + memberKeyVO);
         if (memberKeyVO != null) {
             currencyListVO = memberKeyVO.getCurrencyListVO();
             if (currencyListVO == null) {
@@ -285,8 +311,18 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
             if (tvCurrentCurrency != null) {
                 tvCurrentCurrency.setText(currencyListVO.getEnName());
             }
+            //重置界面值
             if (etRate != null) {
                 etRate.setText("1");
+            }
+            if (etSellVolume != null) {
+                etSellVolume.setText("0.0");
+            }
+            resetProgress();
+            //置空当前的交易额信息
+            txAmount = MessageConstants.EMPTY;
+            if (tvFinalTxAmount != null) {
+                tvFinalTxAmount.setVisibility(GONE);
             }
             if (tvExchangeCurrency != null) {
                 // 得到当前的所有币种，排出当前的币种取下一个
@@ -302,6 +338,17 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
             salableBalance = DecimalTool.getCalculateString(memberKeyVO.getBalanceAvailable());
         }
 
+    }
+
+
+    private void resetProgress() {
+        if (sbProgress != null) {
+            sbProgress.setProgress(0);
+        }
+        if (tvProgressSpeed != null) {
+            tvProgressSpeed.setText("0.0");
+            tvProgressSpeed.setX(margin);
+        }
     }
 
     /**
@@ -336,7 +383,7 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
         if (currencyListVO != null) {
             fee = currencyListVO.getSellCharge();
             if (tvFeeIntroduction != null) {
-                tvFeeIntroduction.setText(context.getResources().getString(R.string.sell_out_fee_text) + "  " + fee + currencyListVO.getEnName());
+                tvFeeIntroduction.setText(context.getResources().getString(R.string.sell_out_fee_text) + "  " + fee + "  " + currencyListVO.getEnName());
             }
         }
 

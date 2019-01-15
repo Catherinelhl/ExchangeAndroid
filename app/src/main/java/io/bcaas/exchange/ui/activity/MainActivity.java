@@ -1,6 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -357,9 +360,9 @@ public class MainActivity extends BaseActivity
 
     /**
      * 获取当前的所有钱包币种以及余额信息
+     * 获取账户所有币种余额
      */
     public void getAllBalance() {
-        /*获取账户所有币种余额*/
         mainPresenter.getAllBalance();
     }
 
@@ -371,5 +374,18 @@ public class MainActivity extends BaseActivity
     public void setCurrentDisplayType(MemberKeyVO memberKeyVO) {
         this.currentDisplayType = memberKeyVO;
         LogTool.d(TAG, "setCurrentDisplayType:" + memberKeyVO);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.BUY_DETAIL_CODE:
+                    LogTool.d(TAG, "onActivityResult:" + requestCode);
+                    getAllBalance();
+                    break;
+            }
+        }
     }
 }

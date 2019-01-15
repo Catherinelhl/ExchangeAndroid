@@ -60,8 +60,8 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
         viewHolder.tvWithdrawType.setText(String.valueOf(memberOrderVO.getType()));
         viewHolder.tvWithdrawTime.setText(memberOrderVO.getCreateTime());
         viewHolder.tvWithdrawStatus.setText(String.valueOf(memberOrderVO.getStatus()));
-        viewHolder.tvPayAccount.setText(memberOrderVO.getPrice() + "\t" + paymentEnName);
-        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + enName);
+        viewHolder.tvPayAccount.setText(memberOrderVO.getPrice() + "  " + paymentEnName);
+        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + enName);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

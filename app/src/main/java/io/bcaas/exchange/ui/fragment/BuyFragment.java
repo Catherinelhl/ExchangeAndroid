@@ -171,12 +171,28 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                default:
-                    LogTool.d(TAG, "onActivityResult");
-                    if (presenter != null) {
-                        // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-                        presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+                case Constants.RequestCode.BUY_DETAIL_CODE:
+                    //1：判断当前是否是点击「返回」按钮返回
+                    if (data != null) {
+                        boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
+                        if (!isBack) {
+                            //2：如果当前不是通过「返回」按钮返回，那么需要更新界面
+                            LogTool.d(TAG, "onActivityResult:" + requestCode);
+                            // 1：刷新当前购买页面的待出售数据
+                            if (presenter != null) {
+                                // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
+                                presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+                            }
+                            //2：刷新账户的GetAllBalance
+                            if (activity != null) {
+                                ((MainActivity) activity).getAllBalance();
+                            }
+                        }
                     }
+
+                    break;
+                default:
+
                     break;
             }
         }

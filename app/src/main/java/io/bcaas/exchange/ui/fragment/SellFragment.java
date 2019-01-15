@@ -73,6 +73,7 @@ public class SellFragment extends BaseFragment {
         tabLayout.removeTabLayout();
         //刷新界面
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        LogTool.d(TAG, "initTopTabData:" + memberKeyVOList);
         if (ListTool.noEmpty(memberKeyVOList)) {
             int size = memberKeyVOList.size();
             //加载数据
@@ -104,7 +105,11 @@ public class SellFragment extends BaseFragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
                 if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                    ((SellView) views.get(currentPosition)).getCurrencyCharge();
+                    //刷新界面
+                    List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+                    if (ListTool.noEmpty(memberKeyVOList)) {
+                        ((SellView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
+                    }
                 }
             }
 
@@ -137,12 +142,18 @@ public class SellFragment extends BaseFragment {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case Constants.RequestCode.SELL_DETAIL_CODE:
-                    //重新请求getAllBalance 信息刷新当前的界面信息
-                    if (activity != null) {
-                        ((MainActivity) activity).getAllBalance();
-                    }
-                    //重置当前界面
-                    resetView();
+                    if (data != null) {
+                        boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
+                        if (!isBack) {
+                            LogTool.d(TAG, "onActivityResult:" + requestCode);
+                            //重新请求getAllBalance 信息刷新当前的界面信息
+                            if (activity != null) {
+                                ((MainActivity) activity).getAllBalance();
+                            }
+                            //重置当前界面
+                            resetView();
+                        }
+                        }
                     break;
             }
         }

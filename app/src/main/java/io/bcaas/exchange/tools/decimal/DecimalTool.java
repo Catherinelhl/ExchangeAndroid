@@ -23,20 +23,41 @@ public class DecimalTool {
      * @param firstValue
      * @param secondValue
      */
-    public static String calculateFirstSubtractSecondValue(String firstValue, String secondValue) throws Exception {
+    public static String calculateFirstSubtractSecondValue(String firstValue, String secondValue) {
 
-        DecimalFormat decimalFormat = new DecimalFormat("0.00000000");
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
         // 計算小數八位，第九位無條件捨去
-        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(8, RoundingMode.FLOOR);
-        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(8, RoundingMode.FLOOR);
+        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
 
-        // FirstValue不能小於SecondValue
-        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == -1) {
+        // FirstValue必须大于SecondValue
+        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) != 1) {
             return MessageConstants.NO_ENOUGH_BALANCE;
         }
 
         BigDecimal bigDecimalNum = bigDecimalFirstValue.subtract(bigDecimalSecondValue);
+
+        String num = decimalFormat.format(bigDecimalNum);
+
+        return num;
+    }
+
+    /**
+     * 两个数相乘
+     * @param firstValue
+     * @param secondValue
+     * @return
+     */
+    public static String calculateFirstmultiplySecondValue(String firstValue, String secondValue) {
+
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
+
+        // 計算小數八位，第九位無條件捨去
+        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
+
+        BigDecimal bigDecimalNum = bigDecimalFirstValue.multiply(bigDecimalSecondValue);
 
         String num = decimalFormat.format(bigDecimalNum);
 
@@ -62,7 +83,7 @@ public class DecimalTool {
 
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00000000");
 
-        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(8, RoundingMode.FLOOR);
+        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(10, RoundingMode.FLOOR);
 
         return decimalFormat.format(bigDecimal);
     }
@@ -74,9 +95,9 @@ public class DecimalTool {
      */
     public static String transferStoreDatabase(String decimal) {
 
-        DecimalFormat decimalFormat = new DecimalFormat("0.00000000");
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
-        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(8, RoundingMode.FLOOR);
+        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(10, RoundingMode.FLOOR);
 
         return decimalFormat.format(bigDecimal);
     }
@@ -134,11 +155,11 @@ public class DecimalTool {
         if (StringTool.isEmpty(secondValue)) {
             return firstValue;
         }
-        DecimalFormat decimalFormat = new DecimalFormat("0.00000000");
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
         // 計算小數八位，第九位無條件捨去
-        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(8, RoundingMode.FLOOR);
-        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(8, RoundingMode.FLOOR);
+        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
 
         // 任一value不能小於0
         if (bigDecimalFirstValue.compareTo(BigDecimal.ZERO) == -1
@@ -163,8 +184,8 @@ public class DecimalTool {
      */
     public static boolean compareFirstEqualSecondValue(String firstValue, String secondValue) throws Exception {
         // 計算小數八位，第九位無條件捨去
-        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(8, RoundingMode.FLOOR);
-        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(8, RoundingMode.FLOOR);
+        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
 
         if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == 0) {
             return true;

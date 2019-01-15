@@ -98,10 +98,10 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
             CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
             if (paymentCurrencyList != null) {
                 String enName = paymentCurrencyList.getEnName();
-                tvPayMethod.setText("支付方式" + "\t" + enName);
-                tvFee.setText(paymentCurrencyList.getBuyCharge() + "\t" + enName);
-                tvPrice.setText(memberOrderVO.getUnitPrice() + "\t" + enName);
-                tvTotalAccount.setText(memberOrderVO.getPrice() + "\t" + enName);
+                tvPayMethod.setText(getString(R.string.pay_method_str) + "  " + enName);
+                tvFee.setText(paymentCurrencyList.getBuyCharge() + "  " + enName);
+                tvPrice.setText(memberOrderVO.getUnitPrice() + "  " + enName);
+                tvTotalAccount.setText(memberOrderVO.getPrice() + "  " + enName);
 
 
             }
@@ -110,22 +110,7 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
             if (currencyListVO != null) {
                 String enName = currencyListVO.getEnName();
                 tvPurpleTitle.setText(getString(R.string.buy) + " " + enName);
-                tvNumber.setText(memberOrderVO.getAmount() + "\t" + enName);
-                //得到当前账户信息
-                List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-                if (ListTool.noEmpty(memberKeyVOList)) {
-                    for (MemberKeyVO memberKeyVO : memberKeyVOList) {
-                        CurrencyListVO currencyListVOSelf = memberKeyVO.getCurrencyListVO();
-                        if (currencyListVOSelf != null) {
-                            //比较当前的uid，然后返回余额
-                            String currencyUid = currencyListVOSelf.getCurrencyUid();
-                            if (StringTool.equals(currencyUid, currencyListVO.getCurrencyUid())) {
-                                tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + memberKeyVO.getBalanceAvailable() + "\t" + enName);
-                                break;
-                            }
-                        }
-                    }
-                }
+                tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
             }
         }
 
@@ -174,13 +159,13 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
                         //1：判断当前资金密码是否输入
                         String txPassword = etFundPassword.getContent();
                         if (StringTool.isEmpty(txPassword)) {
-                            showToast("请输入资金密码！");
+                            showToast(getString(R.string.please_input_fund_password));
                             return;
                         }
                         //2：判断当前google验证码是否输入
                         String verifyCode = etRandomVerifyCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
-                            showToast("请先输入google验证码！");
+                            showToast(getString(R.string.please_input_google_verify_code));
                             return;
                         }
                         if (memberOrderVO != null) {
@@ -234,9 +219,18 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     }
 
     @Override
+    public void buySelfError() {
+        showToast(getString(R.string.not_to_buy_self));
+    }
+
+    @Override
     public void buySuccess(String info) {
         setResult(false);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        setResult(true);
+    }
 }

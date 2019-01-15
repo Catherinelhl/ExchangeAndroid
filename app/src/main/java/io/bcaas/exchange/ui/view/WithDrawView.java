@@ -198,7 +198,7 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
             }
             if (hasFundPassword) {
                 if (tvCashableBalance != null) {
-                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + memberKeyVO.getBalanceAvailable() + "\t" + currencyListVO.getEnName());
+                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + memberKeyVO.getBalanceAvailable() + "  " + currencyListVO.getEnName());
                 }
                 if (etwaWithdrawAmount != null) {
                     etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));

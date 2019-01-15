@@ -2013,6 +2013,7 @@ string amount_title
 string app_name
 string appbar_scrolling_view_behavior
 string available
+string available_balance
 string bind
 string bind_phone
 string bind_success
@@ -2045,9 +2046,11 @@ string format_ssd
 string format_sss
 string freeze
 string fund_password
+string fund_password_purpose
 string fund_password_rule
 string get_data_failure
 string google_verify
+string google_verify_purpose
 string graphic_verify_code
 string hide_bottom_view_on_scroll_behavior
 string income
@@ -2066,8 +2069,10 @@ string my_all_fund
 string my_fund
 string network_not_reachable
 string new_password_rule
+string no_enough_balance
 string no_fund_password_tips
 string no_google_verify_text
+string not_to_buy_self
 string number
 string open
 string order
@@ -2086,14 +2091,19 @@ string pay_method_str
 string phone
 string phone_number
 string phone_verify
+string phone_verify_purpose
 string please_input_account
 string please_input_confirm_password
 string please_input_email_verify_code
+string please_input_fund_password
+string please_input_google_verify_code
 string please_input_message_code
 string please_input_password
 string please_input_phone_number
 string please_input_phone_verify_code
 string please_input_right_email
+string please_input_sell_price
+string please_input_sell_volume
 string please_input_verify_code
 string please_input_verify_code_first
 string please_select_country_or_region
@@ -2134,6 +2144,7 @@ string sell_out_transaction_amount
 string sell_out_volume
 string sell_price
 string sell_title
+string sell_volume_must_over_fee
 string send
 string set_fund_password
 string set_immediately
@@ -2655,6 +2666,7 @@ style black_14_edit_text_style
 style black_14_text_style
 style black_16_text_style
 style black_18_text_style
+style black_666_14_text_style
 style black_bold_18_text_style
 style button_style
 style dialog_loading

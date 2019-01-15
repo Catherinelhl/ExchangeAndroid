@@ -100,7 +100,8 @@ public class MessageConstants {
     public static final String ERROR_SELLCHARGE_FORMAT_INVALID = "SellCharge format invalid.";
     public static final int CODE_2041 = 2041;
     public static final String ERROR_UID_FORMAT_INVALID = "Uid format invalid.";
-
+    public static final int CODE_2057 = 2057;
+    public static final String ERROR_ILLEGAL_REQUEST= "Illegal request.";
     // ETH
     public static final int CODE_4000 = 4000;
     public static final String ERROR_ETH_CONNECT = "Connection web3j error.";

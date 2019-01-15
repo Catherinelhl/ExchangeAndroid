@@ -2,6 +2,8 @@ package io.bcaas.exchange.tools;
 
 import android.text.TextUtils;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberOrderVO;
 
 /**
  * @author catherine.brainwilliam
@@ -72,7 +74,7 @@ public class StringTool {
         } else if (type == 2) {
             return "购买";
         } else if (type == 3) {
-            return "售出";
+            return "出售";
         }
         return "充值";
     }
@@ -174,4 +176,5 @@ public class StringTool {
         }
         return false;
     }
+
 }

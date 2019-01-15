@@ -90,10 +90,10 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
             getAccountSecuritySuccess(BaseApplication.getMemberVO());
         }
 
-        scivFundPassword.setTabInfo("用于提币，交易的验证");
+        scivFundPassword.setTabInfo(getString(R.string.fund_password_purpose));
         scivEmailVerify.setTabInfo(BaseApplication.getMemberId());
-        scivPhoneVerify.setTabInfo("用于提币,更改安全设置的验证");
-        scivGoogleVerify.setTabInfo("用于提币,交易及更改安全设置的验证");
+        scivPhoneVerify.setTabInfo(getString(R.string.phone_verify_purpose));
+        scivGoogleVerify.setTabInfo(getString(R.string.google_verify_purpose));
 
         scivFundPassword.setOnItemSelectListener(this);
         scivEmailVerify.setOnItemSelectListener(this);

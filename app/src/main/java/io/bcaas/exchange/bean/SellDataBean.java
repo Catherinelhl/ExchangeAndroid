@@ -44,7 +44,7 @@ public class SellDataBean extends CurrencyListVO implements Serializable {
      * double
      */
 
-    private double txAmountExceptFee;
+    private String txAmountExceptFee;
 
     /**
      * 扣除手续费的交易额
@@ -106,11 +106,11 @@ public class SellDataBean extends CurrencyListVO implements Serializable {
         this.exchangeCurrencyName = exchangeCurrencyName;
     }
 
-    public double getTxAmountExceptFee() {
+    public String getTxAmountExceptFee() {
         return txAmountExceptFee;
     }
 
-    public void setTxAmountExceptFee(double txAmountExceptFee) {
+    public void setTxAmountExceptFee(String txAmountExceptFee) {
         this.txAmountExceptFee = txAmountExceptFee;
     }
 

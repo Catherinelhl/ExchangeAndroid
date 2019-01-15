@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -68,27 +69,38 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         if (currencyListVO == null) {
             return;
         }
-        // 取得币种的名字
-        String enName = currencyListVO.getEnName();
         //取得需要支付方的币种信息
         CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
         if (paymentCurrencyList == null) {
             return;
         }
-        //取得币种的支付名字
-        String paymentEnName = paymentCurrencyList.getEnName();
+        // 取得当前的订单类型
+        //取得币种的支付token type,
+        int type = memberOrderVO.getType();
+        //是否是「购买」
+        boolean isBuy = type == 2;
+        // 取得卖出方币种的名字
+        //如果当前的订单类型是「购买」，那么paymentCurrencyList就是自己；支出单位是取paymentCurrencyList，手续费单位是currencyListVO
+        String enName = isBuy ? currencyListVO.getEnName() : paymentCurrencyList.getEnName();
+        //取得支付方币种的名字
+        //如果当前是「售出」，那么currencyListVO才是自己,支出单位取自己；手续费是paymentCurrencyList
+        String paymentEnName = isBuy ? paymentCurrencyList.getEnName() : currencyListVO.getEnName();
+        //取得fee币种类型,如果当前自己是「售出」，那么手续费单位等于支出方
+        String feeEnName = isBuy ? enName : paymentEnName;
+        //取得当前订单类型单位
+        String orderTokenType = isBuy ? enName : paymentEnName;
         //订单产生类型
-        viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) + enName);
+        viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) +"  "+ orderTokenType);
         //订单产生时间
         viewHolder.tvOrderTime.setText(memberOrderVO.getCreateTime());
         //订单状态
         viewHolder.tvOrderStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         // 订单支出
-        viewHolder.tvOutCome.setText(memberOrderVO.getPrice() + "\t" + paymentEnName);
+        viewHolder.tvOutCome.setText(memberOrderVO.getExpenditure() + "  " + paymentEnName);
         // 订单收入
-        viewHolder.tvInCome.setText(memberOrderVO.getIncome() + "\t" + enName);
+        viewHolder.tvInCome.setText(memberOrderVO.getIncome() + "  " + enName);
         //订单手续费
-        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + paymentEnName);
+        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + feeEnName);
         // 判断是否需要显示撤销的按钮；type ==1；status==2
         if (StringTool.getDisplayOrderStatus(memberOrderVO.getType(), memberOrderVO.getStatus())) {
             // 需要显示撤销订单按钮

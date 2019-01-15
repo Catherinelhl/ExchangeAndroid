@@ -9,6 +9,7 @@ public interface BuyContract {
 
     interface View extends BaseContract {
         void buyFailure(String info);
+        void buySelfError();
         void buySuccess(String info);
     }
 

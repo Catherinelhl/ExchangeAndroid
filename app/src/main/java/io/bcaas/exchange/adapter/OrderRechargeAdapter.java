@@ -55,11 +55,11 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         if (memberOrderVO == null) {
             return;
         }
-        viewHolder.tvRechargeType.setText("充值" + "\t" + memberOrderVO.getCurrencyListVO().getEnName());
+        viewHolder.tvRechargeType.setText("充值" + "  " + memberOrderVO.getCurrencyListVO().getEnName());
         viewHolder.tvRechargeTime.setText(memberOrderVO.getCreateTime());
         viewHolder.tvRechargeStatus.setText(String.valueOf(memberOrderVO.getStatus()));
-        viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "\t" + memberOrderVO.getCurrencyListVO().getEnName());
-        viewHolder.tvRechargeAddress.setText("sadkfjnaskdjfnaksjdnfkasdjnkf");
+        viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + memberOrderVO.getCurrencyListVO().getEnName());
+//        viewHolder.tvRechargeAddress.setText("sadkfjnaskdjfnaksjdnfkasdjnkf");
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

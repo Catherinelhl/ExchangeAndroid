@@ -83,12 +83,12 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         tvTitle.setText(R.string.sell_detail);
 
         if (sellDataBean != null) {
-            tvPrice.setText(sellDataBean.getUnitPrice() + "\t " + sellDataBean.getExchangeCurrencyName());
-            tvNumber.setText(sellDataBean.getSellAmount() + "\t " + sellDataBean.getEnName());
-            tvFee.setText(sellDataBean.getGasFeeCharge() + "\t " + sellDataBean.getEnName());
-            tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "\t" + sellDataBean.getBalanceAvailable());
+            tvPrice.setText(sellDataBean.getUnitPrice() + "  " + sellDataBean.getExchangeCurrencyName());
+            tvNumber.setText(sellDataBean.getSellAmount() + "  " + sellDataBean.getEnName());
+            tvFee.setText(sellDataBean.getGasFeeCharge() + "  " + sellDataBean.getEnName());
+            tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "  " + sellDataBean.getBalanceAvailable() + "  " + sellDataBean.getEnName());
             tvTransactionAmount.setText(sellDataBean.getTxAmountExceptFeeString());
-            tvPurpleTitle.setText(context.getResources().getString(R.string.sell_out) + "\t \t" + sellDataBean.getEnName());
+            tvPurpleTitle.setText(context.getResources().getString(R.string.sell) + "  " + sellDataBean.getEnName());
         }
 
 
@@ -134,13 +134,13 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
                         //1：判断当前资金密码是否输入
                         String txPassword = etFundPassword.getContent();
                         if (StringTool.isEmpty(txPassword)) {
-                            showToast("请输入资金密码！");
+                            showToast(getString(R.string.please_input_fund_password));
                             return;
                         }
                         //2：判断当前google验证码是否输入
                         String verifyCode = etGoogleVerifyCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
-                            showToast("请先输入google验证码！");
+                            showToast(getString(R.string.please_set_google_verify));
                             return;
                         }
                         //3：接口请求数据
@@ -209,5 +209,11 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
                     break;
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        setResult(true);
     }
 }

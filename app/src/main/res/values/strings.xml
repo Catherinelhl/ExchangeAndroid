@@ -130,5 +130,16 @@
     <string name="get_data_failure">获取数据失败</string>
     <string name="plus_sign">+</string>
     <string name="please_select_country_or_region">请选择国家或地区</string>
+    <string name="fund_password_purpose">用于提币，交易的验证</string>
+    <string name="phone_verify_purpose">用于提币,更改安全设置的验证</string>
+    <string name="google_verify_purpose">用于提币,交易及更改安全设置的验证</string>
+    <string name="no_enough_balance">余额不足！</string>
+    <string name="please_input_sell_volume">请先输入卖出量！</string>
+    <string name="please_input_sell_price">请先输入卖出价！</string>
+    <string name="sell_volume_must_over_fee">卖出量不能低于手续费！</string>
+    <string name="please_input_fund_password">请输入资金密码！</string>
+    <string name="please_input_google_verify_code">请先输入google验证码！</string>
+    <string name="available_balance">可用余额</string>
+    <string name="not_to_buy_self">不能购买自己的订单</string>
 
 </resources>

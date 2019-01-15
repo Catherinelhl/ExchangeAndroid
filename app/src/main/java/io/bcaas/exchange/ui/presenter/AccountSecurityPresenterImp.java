@@ -77,7 +77,7 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.getAccountSecurityFailure(responseJson.getMessage());
                             } else {
-                                view.getAccountSecurityFailure(MessageConstants.EMPTY);
+                                view.getAccountSecurityFailure(responseJson.getMessage());
 
                             }
 
