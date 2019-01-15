@@ -70,6 +70,7 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                 view.getAuthenticatorUrlFailure(responseJson.getMessage());
                             } else {
                                 view.getAuthenticatorUrlSuccess(verificationBean);
+                                getAuthenticatorUrlCreateImage(verificationBean.getAuthenticatorUrl());
                             }
                         } else {
                             int code = responseJson.getCode();

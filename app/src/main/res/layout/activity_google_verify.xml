@@ -12,16 +12,15 @@
             android:layout_marginRight="@dimen/d20"
             android:layout_marginLeft="@dimen/d20"
             android:layout_marginTop="@dimen/d24"
-            android:text="1.请用Google验证器扫描以下二维码或手动输入以下密钥"
+            android:text="@string/google_verify_privatekey_intro"
             android:textSize="@dimen/text_size_14"
             android:textColor="@color/black_333333"
             android:layout_height="wrap_content"/>
-    <LinearLayout android:layout_width="match_parent"
-                  android:orientation="horizontal"
-                  android:layout_marginLeft="@dimen/d20"
-                  android:layout_marginRight="@dimen/d20"
-                  android:layout_marginTop="@dimen/d16"
-                  android:layout_height="wrap_content">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_marginRight="@dimen/d20"
+                    android:layout_marginTop="@dimen/d16"
+                    android:layout_height="wrap_content">
         <ImageView
                 android:id="@+id/iv_qr_code"
                 android:layout_width="@dimen/d200"
@@ -29,24 +28,35 @@
                 android:layout_gravity="center"/>
 
         <TextView
-                android:id="@+id/tv_my_address"
-                style="@style/black_14_text_style"
+                android:id="@+id/tv_secret"
+                style="@style/black_666_14_text_style"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="@dimen/d20"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_qr_code"
+                android:text="dasfsa"
+                android:gravity="left"/>
+        <TextView
+                android:id="@+id/tv_account"
+                style="@style/black_666_14_text_style"
+                android:layout_width="wrap_content"
+                android:text="adsfassdfaf"
+                android:layout_below="@+id/tv_secret"
+                android:layout_toRightOf="@+id/iv_qr_code"
                 android:layout_marginRight="@dimen/d20"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_14"
-                android:textColor="@color/grey_666666"
                 android:layout_gravity="center"
                 android:gravity="left"/>
-    </LinearLayout>
+
+    </RelativeLayout>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_marginRight="@dimen/d20"
             android:layout_marginLeft="@dimen/d20"
             android:layout_marginTop="@dimen/d24"
-            android:text="2.请输入Google验证器应用产生的6位验证码"
+            android:text="@string/google_verify_six_verify_code"
             android:textSize="@dimen/text_size_14"
             android:textColor="@color/black_333333"
             android:layout_height="wrap_content"/>
