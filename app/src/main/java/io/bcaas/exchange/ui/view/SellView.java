@@ -167,7 +167,7 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                     if (tvFinalTxAmount != null && currencyListVO != null) {
                         tvFinalTxAmount.setVisibility(VISIBLE);
                         tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                                + txAmount + "\t" + currencyListVO.getEnName());
+                                + String.valueOf(volume - Double.valueOf(fee)) + "\t" + currencyListVO.getEnName());
                     }
                 }
             }

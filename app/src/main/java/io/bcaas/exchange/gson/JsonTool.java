@@ -53,9 +53,11 @@ public class JsonTool {
             return value;
         } else {
             JSONObject jsonObject = null;
-
             try {
                 JSONArray jsonArray = new JSONArray(resource);
+                if (jsonArray.length() ==0){
+                    return value;
+                }
                 jsonObject = jsonArray.getJSONObject(0);
                 return !jsonObject.has(key) ? value : jsonObject.getInt(key);
             } catch (JSONException e) {

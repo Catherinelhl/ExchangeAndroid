@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:ellipsize="end"
-                android:textSize="@dimen/text_size_14"
+                android:textSize="@dimen/text_size_12"
                 android:textColor="@color/grey_999999"
                 tool:text="23.234523 BTC"/>
         <TextView
@@ -38,7 +38,7 @@
                 android:textSize="@dimen/text_size_14"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:minWidth="@dimen/d68"
+                android:layout_marginLeft="@dimen/d14"
                 tool:text="@string/buy"
                 android:layout_gravity="right"
                 android:textColor="@color/blue_5B88FF"

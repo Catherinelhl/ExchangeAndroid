@@ -14,7 +14,7 @@
     <string name="register_now">立即注册</string>
     <string name="sure">确定</string>
     <string name="register_title">注册</string>
-    <string name="reset_password_title">重置密码</string>
+    <string name="reset_password_title">重置登录密码</string>
     <string name="password">密码</string>
     <string name="amount">账号</string>
 
@@ -27,7 +27,7 @@
     <string name="number">数量</string>
     <string name="total_account">总额</string>
     <string name="fee">手续费</string>
-    <string name="price">价格</string>
+    <string name="unit_price">单价</string>
     <string name="fund_password">资金密码</string>
     <string name="random_verify_code">Google 随机验证码</string>
     <string name="start_immediate">立即启用</string>
@@ -52,7 +52,7 @@
     <string name="withdraw_tips">请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。</string>
     <string name="recharge_tips">请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。</string>
     <string name="copy_address">复制地址</string>
-    <string name="logout">退出登录</string>
+    <string name="logout">登出</string>
     <string name="google_verify">google验证</string>
     <string name="phone_verify">手机验证</string>
     <string name="email_verify">邮箱验证</string>
@@ -87,13 +87,13 @@
     <string name="reset">重置</string>
     <string name="pay_method_str">支付方式</string>
     <string name="register_account_hint">请用您的常用邮箱号作为账号</string>
-    <string name="register_password_hint">内容设置新登录密码(至少由8～20位数字与字符组成)</string>
+    <string name="register_password_hint">设置登录密码(8～20位数字与字符组合)</string>
     <string name="register_password_again_hint">请再次输入密码</string>
     <string name="register_email_code_hint">邮箱验证码</string>
     <string name="register_have_account_text">已有账号？</string>
     <string name="register_login_immediately_text">立即登录</string>
     <string name="reset_email_hint">邮箱</string>
-    <string name="reset_set_login_password_hint">设置登录密码(至少由8～20位数字与字符组成)</string>
+    <string name="reset_set_login_password_hint">设置新登录密码(8～20位数字与字符组合)</string>
     <string name="reset_password_again_hint">请再次输入密码</string>
     <string name="reset_email_code_hint">邮箱验证码</string>
     <string name="buy_pay_method_text">支付方式ETH</string>

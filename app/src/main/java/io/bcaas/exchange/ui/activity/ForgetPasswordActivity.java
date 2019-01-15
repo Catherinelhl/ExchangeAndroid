@@ -49,7 +49,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
     @Override
     public int getContentView() {
-        return R.layout.activity_reset_password;
+        return R.layout.activity_forgot_password;
     }
 
     @Override

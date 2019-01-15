@@ -1878,6 +1878,7 @@ layout activity_brand
 layout activity_buy_detail
 layout activity_close_verify_method
 layout activity_country_code
+layout activity_forgot_password
 layout activity_google_verify
 layout activity_login
 layout activity_main
@@ -1885,7 +1886,6 @@ layout activity_modify_login_password
 layout activity_my_fund
 layout activity_recharge
 layout activity_register
-layout activity_reset_password
 layout activity_sefety_center
 layout activity_sell_detail
 layout activity_set_fund_password
@@ -2099,7 +2099,6 @@ string please_input_verify_code_first
 string please_select_country_or_region
 string please_set_google_verify
 string plus_sign
-string price
 string private_key_str
 string qrcode_name
 string random_verify_code
@@ -2146,6 +2145,7 @@ string successfully_copied
 string sure
 string to_setting_grant_permission
 string total_account
+string unit_price
 string version
 string wait_to_sell
 string warning

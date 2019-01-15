@@ -40,7 +40,7 @@
                   android:layout_weight="4"
                   android:id="@+id/tv_sure"
                   android:textSize="@dimen/text_size_16"
-                  android:background="@color/button_color"
+                  android:background="@color/yellow_FFA73B"
                   android:gravity="center"
                   android:text="@string/sure"
                   android:textColor="@color/white"

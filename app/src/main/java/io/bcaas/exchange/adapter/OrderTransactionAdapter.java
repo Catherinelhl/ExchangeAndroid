@@ -84,9 +84,9 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         //订单状态
         viewHolder.tvOrderStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         // 订单支出
-        viewHolder.tvOutCome.setText(memberOrderVO.getIncome() + "\t" + enName);
+        viewHolder.tvOutCome.setText(memberOrderVO.getPrice() + "\t" + paymentEnName);
         // 订单收入
-        viewHolder.tvInCome.setText(memberOrderVO.getAmount() + "\t" + paymentEnName);
+        viewHolder.tvInCome.setText(memberOrderVO.getIncome() + "\t" + enName);
         //订单手续费
         viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "\t" + paymentEnName);
         // 判断是否需要显示撤销的按钮；type ==1；status==2
