@@ -14,6 +14,7 @@ import io.bcaas.exchange.adapter.CountryCodeAdapter;
 import io.bcaas.exchange.adapter.PopListAdapter;
 import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.List;
  * 自定義PopWindow：显示「帳戶地址」列表
  */
 public class ListPop extends PopupWindow {
-
+    private String TAG = ListPop.class.getSimpleName();
     private View popWindow;
     private RecyclerView recyclerView;//显示当前列表
     private OnItemSelectListener itemSelectListener;
@@ -47,6 +48,7 @@ public class ListPop extends PopupWindow {
     }
 
     public void addList(OnItemSelectListener onItemSelectListener, List<MemberKeyVO> list) {
+        LogTool.d(TAG, "addList:" + list);
         this.itemSelectListener = onItemSelectListener;
         PopListAdapter adapter = new PopListAdapter(context, list);
         adapter.setOnItemSelectListener(popItemSelectListener);

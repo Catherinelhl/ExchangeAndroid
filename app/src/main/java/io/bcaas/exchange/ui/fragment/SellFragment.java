@@ -158,10 +158,14 @@ public class SellFragment extends BaseFragment {
             if (StringTool.notEmpty(from)) {
                 switch (from) {
                     case Constants.From.SELL_SELECT_CURRENCY:
-                        // 显示当前的所有币种信息
-                        if (activity != null) {
-                            ((BaseActivity) activity).showListPopWindow(onItemSelectListener);
+                        if (type instanceof CurrencyListVO) {
+                            CurrencyListVO currencyListVO = (CurrencyListVO) type;
+                            // 显示当前的所有币种信息
+                            if (activity != null) {
+                                ((BaseActivity) activity).showListPopWindow(currencyListVO, onItemSelectListener);
+                            }
                         }
+
                         break;
                     case Constants.From.SELL_SELECTED_CURRENCY:
                         MemberKeyVO memberKeyVO = (MemberKeyVO) type;

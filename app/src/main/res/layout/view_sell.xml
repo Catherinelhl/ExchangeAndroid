@@ -40,10 +40,10 @@
                         android:text="@string/sell_out_price"/>
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="horizontal"
-                              android:layout_marginTop="@dimen/d16"
                               android:layout_marginLeft="@dimen/d16"
                               android:layout_marginRight="@dimen/d16"
-                              android:layout_height="wrap_content">
+                              android:gravity="bottom"
+                              android:layout_height="@dimen/d48">
                     <EditText
                             android:id="@+id/et_rate"
                             style="@style/black_14_edit_text_style"
@@ -60,9 +60,11 @@
                             android:id="@+id/tv_exchange_currency"
                             android:layout_width="wrap_content"
                             android:gravity="center_vertical"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/d12"
+                            android:layout_height="@dimen/d30"
+                            android:paddingRight="@dimen/d12"
                             android:textSize="@dimen/text_size_14"
+                            android:drawablePadding="@dimen/d8"
+                            android:drawableRight="@mipmap/icon_drop_down"
                             android:textColor="@color/black_333333"
                             android:text="ETH"/>
 
@@ -162,7 +164,7 @@
                     android:layout_marginTop="@dimen/d16"
                     android:paddingRight="@dimen/d20"
                     android:textSize="@dimen/text_size_14"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:textColor="@color/black_333333"
                     android:text="@string/sell_out_transaction_amount"/>
             <Button

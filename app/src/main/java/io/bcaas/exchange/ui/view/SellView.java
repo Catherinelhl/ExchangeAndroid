@@ -126,7 +126,7 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                             tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
                                     + txAmount + "\t" + enName);
                         } else {
-                            tvFinalTxAmount.setVisibility(INVISIBLE);
+                            tvFinalTxAmount.setVisibility(GONE);
 
                         }
 
@@ -240,7 +240,6 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
 
                     @Override
                     public void onError(Throwable e) {
-
                     }
 
                     @Override
@@ -294,6 +293,9 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                 exchangeCurrencyListVO = JsonTool.getNextCurrency(currencyListVO.getEnName());
                 if (exchangeCurrencyListVO != null) {
                     tvExchangeCurrency.setText(exchangeCurrencyListVO.getEnName());
+                    tvExchangeCurrency.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d8));
+                    tvExchangeCurrency.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.mipmap.icon_drop_down), null);
+
 
                 }
             }

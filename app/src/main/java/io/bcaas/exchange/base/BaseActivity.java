@@ -34,8 +34,10 @@ import io.bcaas.exchange.view.dialog.BcaasDialog;
 import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
 import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
 import io.bcaas.exchange.view.pop.ListPop;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -300,19 +302,41 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
      *
      * @param onItemSelectListener 通過傳入的回調來得到選擇的值
      */
-    public void showListPopWindow(OnItemSelectListener onItemSelectListener) {
-        // 對當前pop window進行置空
+    public void showListPopWindow(CurrencyListVO currencyListVOFilter, OnItemSelectListener onItemSelectListener) {
+        //1： 對當前pop window進行置空
         if (listPop != null) {
             listPop.dismiss();
             listPop = null;
         }
-        //拿取当前的账户信息
+        //2：拿取当前的账户信息
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
         if (ListTool.isEmpty(memberKeyVOList)) {
             return;
         }
+        //3：定义一个新的数组，用于存储待会过滤后的数据
+        List<MemberKeyVO> memberKeyVOAfterFilter = new ArrayList<>();
+        //4：判断当前传进来的token type是否为空
+        if (currencyListVOFilter != null) {
+            for (MemberKeyVO memberKeyVOTemp : memberKeyVOList) {
+                if (memberKeyVOTemp != null) {
+                    CurrencyListVO currencyListVO = memberKeyVOTemp.getCurrencyListVO();
+                    //5：比较当前的数据，然后过滤掉当前显示的token type
+                    if (currencyListVO != null) {
+                        //6：比对两者的UID是否一样，如果一样，就需要过滤掉这个数据,否则添加进新数组里面
+                        if (!StringTool.equals(currencyListVO.getCurrencyUid(),
+                                currencyListVOFilter.getCurrencyUid())) {
+                            memberKeyVOAfterFilter.add(memberKeyVOTemp);
+
+                        }
+                    }
+                }
+            }
+        } else {
+            memberKeyVOAfterFilter.addAll(memberKeyVOList);
+        }
+        //7：开始初始化pop
         listPop = new ListPop(context);
-        listPop.addList(onItemSelectListener, memberKeyVOList);
+        listPop.addList(onItemSelectListener, memberKeyVOAfterFilter);
         listPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
         //设置layout在PopupWindow中显示的位置
         listPop.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
