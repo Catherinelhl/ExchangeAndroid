@@ -18,7 +18,7 @@
                 android:scaleType="fitCenter"
                 android:layout_marginLeft="@dimen/d16"
                 android:layout_marginRight="@dimen/d16"
-                android:src="@mipmap/ic_launcher"
+                android:src="@mipmap/icon_photo"
                 android:layout_height="@dimen/d58"/>
         <TextView android:layout_width="match_parent"
                   android:layout_marginRight="@dimen/d16"

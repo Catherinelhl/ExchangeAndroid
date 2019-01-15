@@ -1959,6 +1959,7 @@ mipmap icon_filter
 mipmap icon_my_fund
 mipmap icon_order
 mipmap icon_order_f
+mipmap icon_photo
 mipmap icon_recharge
 mipmap icon_safety_center
 mipmap icon_scan

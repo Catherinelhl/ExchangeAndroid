@@ -42,7 +42,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
     @BindView(R.id.tv_my_address)
     TextView tvMyAddress;
     @BindView(R.id.etwa_verify_code)
-    EditTextWithAction etwaVerifyCode;
+    EditTextWithAction etVerifyCode;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -109,7 +109,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
                     public void onNext(Object o) {
 
                         //1：判断验证码非空
-                        String verifyCode = etwaVerifyCode.getContent();
+                        String verifyCode = etVerifyCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
                             showToast(getString(R.string.please_input_verify_code));
                             return;
@@ -175,8 +175,8 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
     @Override
     public void securityGoogleAuthenticatorFailure(String info) {
         //清空当前数据，提示其重新验证
-        if (etwaVerifyCode != null) {
-            etwaVerifyCode.setContent(MessageConstants.EMPTY);
+        if (etVerifyCode != null) {
+            etVerifyCode.setContent(MessageConstants.EMPTY);
         }
         showToast("设置验证失败，请重新输入验证码。");
     }

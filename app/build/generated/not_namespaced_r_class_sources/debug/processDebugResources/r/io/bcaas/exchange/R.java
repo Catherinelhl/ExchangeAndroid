@@ -5712,13 +5712,14 @@ public final class R {
     public static final int icon_my_fund=0x7f0c000c;
     public static final int icon_order=0x7f0c000d;
     public static final int icon_order_f=0x7f0c000e;
-    public static final int icon_recharge=0x7f0c000f;
-    public static final int icon_safety_center=0x7f0c0010;
-    public static final int icon_scan=0x7f0c0011;
-    public static final int icon_search=0x7f0c0012;
-    public static final int icon_sell_out=0x7f0c0013;
-    public static final int icon_sell_out_f=0x7f0c0014;
-    public static final int icon_withdraw=0x7f0c0015;
+    public static final int icon_photo=0x7f0c000f;
+    public static final int icon_recharge=0x7f0c0010;
+    public static final int icon_safety_center=0x7f0c0011;
+    public static final int icon_scan=0x7f0c0012;
+    public static final int icon_search=0x7f0c0013;
+    public static final int icon_sell_out=0x7f0c0014;
+    public static final int icon_sell_out_f=0x7f0c0015;
+    public static final int icon_withdraw=0x7f0c0016;
   }
   public static final class raw {
     public static final int beep=0x7f0d0000;
