@@ -39,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/d14"
+                android:paddingRight="@dimen/d20"
                 tool:text="@string/buy"
                 android:layout_gravity="right"
                 android:textColor="@color/blue_5B88FF"

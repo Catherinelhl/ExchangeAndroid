@@ -4,6 +4,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.WithDrawContract;
 import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
@@ -11,6 +12,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author catherine.brainwilliam
@@ -34,7 +37,12 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
     public void withDraw(String txPassword, RequestJson requestJson) {
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
-        memberVO.setTxPassword(txPassword);
+        try {
+            memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
+        }
         requestJson.setMemberVO(memberVO);
 
         LoginInfoVO loginInfoVO = new LoginInfoVO();

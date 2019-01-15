@@ -4,6 +4,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.SetFundPasswordContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
@@ -14,6 +15,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author catherine.brainwilliam
@@ -33,6 +36,7 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
 
     /**
      * 设置当前的资金密码
+     *
      * @param password
      */
     @Override
@@ -40,9 +44,13 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
-        memberVO.setTxPassword(password);
+        try {
+            memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(password));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
+        }
         requestJson.setMemberVO(memberVO);
-
 
 
         LoginInfoVO loginInfoVO = new LoginInfoVO();
@@ -74,7 +82,8 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.securityTxPasswordFailure(responseJson.getMessage());
                             } else {
-                                view.securityTxPasswordFailure(MessageConstants.EMPTY);
+                                //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
+                                view.securityTxPasswordFailure(responseJson.getMessage());
 
                             }
 

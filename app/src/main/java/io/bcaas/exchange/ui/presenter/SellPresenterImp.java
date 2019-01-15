@@ -5,6 +5,7 @@ import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.SellContract;
 import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
@@ -12,6 +13,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author catherine.brainwilliam
@@ -45,7 +48,12 @@ public class SellPresenterImp implements SellContract.Presenter {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
-        memberVO.setTxPassword(txPassword);
+        try {
+            memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
+        }
         requestJson.setMemberVO(memberVO);
 
         LoginInfoVO loginInfoVO = new LoginInfoVO();
@@ -68,7 +76,7 @@ public class SellPresenterImp implements SellContract.Presenter {
         requestJson.setVerificationBean(verificationBean);
 
 
-        LogTool.d(TAG, "sell:" + requestJson);
+        LogTool.d(TAG, "sell:" + GsonTool.string(requestJson));
         txInteractor.sell(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
