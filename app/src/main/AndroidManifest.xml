@@ -19,6 +19,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.activity.BrandActivity"
                   android:screenOrientation="portrait"
@@ -108,7 +110,10 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
-        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.MainActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"
+        />
 
         <!-- 解决Android 7.0文件共享的问题-->
         <provider
