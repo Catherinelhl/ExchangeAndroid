@@ -1787,7 +1787,6 @@ id tv_order_status
 id tv_order_time
 id tv_order_type
 id tv_outcome
-id tv_pay_account
 id tv_pay_method
 id tv_person_name
 id tv_phone_key
@@ -2173,6 +2172,7 @@ string version
 string wait_to_sell
 string warning
 string with_draw
+string withdraw_address
 string withdraw_need_fee
 string withdraw_tips
 style AlertDialog_AppCompat

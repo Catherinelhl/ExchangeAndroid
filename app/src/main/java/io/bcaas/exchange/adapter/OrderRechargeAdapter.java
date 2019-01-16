@@ -11,6 +11,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -55,11 +56,16 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         if (memberOrderVO == null) {
             return;
         }
-        viewHolder.tvRechargeType.setText("充值" + "  " + memberOrderVO.getCurrencyListVO().getEnName());
+        CurrencyListVO currencyListVO = new CurrencyListVO();
+        if (currencyListVO == null) {
+            return;
+        }
+        String enName = currencyListVO.getEnName();
+        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.recharge) + "  " + enName);
         viewHolder.tvRechargeTime.setText(memberOrderVO.getCreateTime());
         viewHolder.tvRechargeStatus.setText(String.valueOf(memberOrderVO.getStatus()));
-        viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + memberOrderVO.getCurrencyListVO().getEnName());
-//        viewHolder.tvRechargeAddress.setText("sadkfjnaskdjfnaksjdnfkasdjnkf");
+        viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
+        viewHolder.tvRechargeAddress.setText(memberOrderVO.getAddress());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +82,7 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
     }
 
     public void addList(List<MemberOrderVO> memberOrderVOS) {
-        this.memberOrderVOS=memberOrderVOS;
+        this.memberOrderVOS = memberOrderVOS;
         notifyDataSetChanged();
     }
 

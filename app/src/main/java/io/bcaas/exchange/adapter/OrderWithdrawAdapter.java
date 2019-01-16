@@ -11,6 +11,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -55,13 +56,22 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
         if (memberOrderVO == null) {
             return;
         }
-        String enName = memberOrderVO.getCurrencyListVO().getEnName();
-        String paymentEnName = memberOrderVO.getPaymentCurrencyUid().getEnName();
+        CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
+        if (currencyListVO == null) {
+            return;
+        }
+        CurrencyListVO paymentCurrencyListVO = memberOrderVO.getPaymentCurrencyUid();
+        if (paymentCurrencyListVO == null) {
+            return;
+        }
+        String enName = currencyListVO.getEnName();
+        String paymentEnName = paymentCurrencyListVO.getEnName();
         viewHolder.tvWithdrawType.setText(String.valueOf(memberOrderVO.getType()));
         viewHolder.tvWithdrawTime.setText(memberOrderVO.getCreateTime());
         viewHolder.tvWithdrawStatus.setText(String.valueOf(memberOrderVO.getStatus()));
-        viewHolder.tvPayAccount.setText(memberOrderVO.getPrice() + "  " + paymentEnName);
+        viewHolder.tv_number.setText(memberOrderVO.getAmount() + "  " + enName);
         viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + enName);
+        viewHolder.tvWithdrawAddress.setText(memberOrderVO.getAddress());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +96,7 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
         TextView tvWithdrawType;
         TextView tvWithdrawTime;
         TextView tvWithdrawStatus;
-        TextView tvPayAccount;
+        TextView tv_number;
         TextView tvFee;
         TextView tvWithdrawAddress;
 
@@ -95,7 +105,7 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
             tvWithdrawType = itemView.findViewById(R.id.tv_withdraw_type);
             tvWithdrawTime = itemView.findViewById(R.id.tv_withdraw_time);
             tvWithdrawStatus = itemView.findViewById(R.id.tv_withdraw_status);
-            tvPayAccount = itemView.findViewById(R.id.tv_pay_account);
+            tv_number = itemView.findViewById(R.id.tv_number);
             tvFee = itemView.findViewById(R.id.tv_fee);
             tvWithdrawAddress = itemView.findViewById(R.id.tv_withdraw_address);
         }

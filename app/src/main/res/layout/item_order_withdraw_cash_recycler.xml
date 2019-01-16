@@ -56,7 +56,7 @@
                 tool:ignore="InefficientWeight"/>
         <TextView
                 android:gravity="right"
-                android:id="@+id/tv_pay_account"
+                android:id="@+id/tv_number"
                 android:layout_weight="1"
                 android:layout_width="@dimen/d0"
                 style="@style/black_666_14_text_style"
@@ -95,7 +95,7 @@
                   android:layout_height="wrap_content">
         <TextView
                 style="@style/black_666_14_text_style"
-                android:text="提币地址"
+                android:text="@string/withdraw_address"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
                 tool:ignore="InefficientWeight"/>
