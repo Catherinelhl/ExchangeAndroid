@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.ui.contracts.BaseContract;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @author catherine.brainwilliam
@@ -31,9 +32,13 @@ public abstract class BasePresenterImp implements BaseContract.Presenter {
 //                .observeOn(AndroidSchedulers.mainThread());
 //    }
 
-//    protected <T> Observable.Transformer<T, T> applyIoSchedulers() {
+    //    protected <T> Observable.Transformer<T, T> applyIoSchedulers() {
 //        return tObservable -> tObservable.subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread());
 //    }
-
+    protected void disposeDisposable(Disposable disposable) {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+    }
 }

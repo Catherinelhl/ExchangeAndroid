@@ -32,7 +32,7 @@ public class DecimalTool {
         BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
 
         // FirstValue必须大于SecondValue
-        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) != 1) {
+        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == - 1) {
             return MessageConstants.NO_ENOUGH_BALANCE;
         }
 

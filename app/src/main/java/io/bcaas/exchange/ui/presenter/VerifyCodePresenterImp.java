@@ -24,12 +24,12 @@ import okhttp3.ResponseBody;
  * <p>
  * 验证码的获取Presenter
  */
-public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
+public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCodeContract.Presenter {
     private String TAG = VerifyCodePresenterImp.class.getSimpleName();
     private VerifyCodeContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
 
-    private Disposable disposableImageVerifyCode;
+    private Disposable disposableImageVerifyCode, disposableEmailVerify;
 
     public VerifyCodePresenterImp(VerifyCodeContract.View view) {
         super();
@@ -55,7 +55,7 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableEmailVerify = d;
                     }
 
                     @Override
@@ -82,10 +82,12 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.getEmailVerifyFailure(e.getMessage());
+                        disposeDisposable(disposableEmailVerify);
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableEmailVerify);
 
                     }
                 });
@@ -117,11 +119,13 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        view.getImageVerifyCodeFailure(e.getMessage());
+                        disposeDisposable(disposableImageVerifyCode);
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableImageVerifyCode);
 
                     }
                 });

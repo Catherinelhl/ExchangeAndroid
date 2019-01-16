@@ -278,14 +278,14 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             //得到当前可换做售出币种的交易额
             txAmount = DecimalTool.calculateFirstmultiplySecondValue(volumeExceptFee, rateStr);
             // 判断当前的交易额是否为0，如果为0，则不显示
-            if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"),
-                    MessageConstants.NO_ENOUGH_BALANCE)) {
-                tvFinalTxAmount.setVisibility(GONE);
-            } else {
+//            if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"),
+//                    MessageConstants.NO_ENOUGH_BALANCE)) {
+//                tvFinalTxAmount.setVisibility(GONE);
+//            } else {
                 tvFinalTxAmount.setVisibility(VISIBLE);
                 tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
                         + txAmount + "  " + exchangeCurrencyListVO.getEnName());
-            }
+//            }
 
         }
     }

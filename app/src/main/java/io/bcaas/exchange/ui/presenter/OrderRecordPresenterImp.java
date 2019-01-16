@@ -17,10 +17,11 @@ import io.reactivex.schedulers.Schedulers;
  * @since 2019/1/10
  * 订单记录
  */
-public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
+public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRecordContract.Presenter {
     private String TAG = OrderRecordPresenterImp.class.getSimpleName();
     private OrderRecordContract.View view;
     private TxInteractor txInteractor;
+    private Disposable disposableGetRecord;
 
     public OrderRecordPresenterImp(OrderRecordContract.View view) {
         super();
@@ -36,6 +37,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableGetRecord);
         //显示加载框
         view.showLoading();
         //组装数据
@@ -57,7 +59,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getRecord",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getRecord", requestJson);
 
         txInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -65,7 +67,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetRecord = d;
                     }
 
                     @Override
@@ -96,11 +98,15 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
                         view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
                         view.getRecordFailure(e.getMessage());
+                        disposeDisposable(disposableGetRecord);
+
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableGetRecord);
+
                     }
                 });
     }
@@ -128,7 +134,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
         MemberOrderVO memberOrderVO = new MemberOrderVO();
         memberOrderVO.setMemberOrderUid(memberOrderUid);
         requestJson.setMemberOrderVO(memberOrderVO);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"cancelOrder:",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "cancelOrder:", requestJson);
         txInteractor.cancelOrder(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

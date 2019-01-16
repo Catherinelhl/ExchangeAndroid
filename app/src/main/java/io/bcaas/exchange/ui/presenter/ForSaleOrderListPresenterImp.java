@@ -16,11 +16,13 @@ import io.reactivex.schedulers.Schedulers;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  */
-public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Presenter {
+public class ForSaleOrderListPresenterImp extends BasePresenterImp implements ForSaleOrderListContract.Presenter {
 
     private String TAG = ForSaleOrderListPresenterImp.class.getSimpleName();
     private ForSaleOrderListContract.View view;
     private TxInteractor txInteractor;
+
+    private Disposable disposableGetOrderList;
 
     public ForSaleOrderListPresenterImp(ForSaleOrderListContract.View view) {
         super();
@@ -35,6 +37,7 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableGetOrderList);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -65,7 +68,7 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetOrderList = d;
                     }
 
                     @Override
@@ -95,12 +98,15 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
                         view.getOrderListFailure(e.getMessage());
+                        disposeDisposable(disposableGetOrderList);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableGetOrderList);
                     }
                 });
     }
+
 }

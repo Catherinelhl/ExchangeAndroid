@@ -225,7 +225,7 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
             if (ListTool.noEmpty(views)) {
                 for (int i = 0; i < views.size(); i++) {
                     if (ListTool.noEmpty(memberKeyVOList)) {
-                        ((RechargeView) views.get(i)).refreshData(memberKeyVOList.get(i));
+                        ((WithDrawView) views.get(i)).refreshData(memberKeyVOList.get(i));
 
                     }
                 }
