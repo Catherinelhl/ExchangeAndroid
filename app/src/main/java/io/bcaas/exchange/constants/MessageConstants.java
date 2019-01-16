@@ -99,7 +99,9 @@ public class MessageConstants {
     public static final int CODE_2041 = 2041;
     public static final String ERROR_UID_FORMAT_INVALID = "Uid format invalid.";
     public static final int CODE_2057 = 2057;
-    public static final String ERROR_ILLEGAL_REQUEST= "Illegal request.";
+    public static final String ERROR_ILLEGAL_REQUEST = "Illegal request.";
+    public static final int CODE_2055 = 2055;
+    public static final String ERROR_INVALID_ORDER_INFORMATION = "Invalid order information.";
     // ETH
     public static final int CODE_4000 = 4000;
     public static final String ERROR_ETH_CONNECT = "Connection web3j error.";
@@ -176,7 +178,6 @@ public class MessageConstants {
     // CurrencyList
     public static final String SUCCESS_CURRENCYLIST_ADDNEWCURRENCY = "CurrencyList add new currency success.";
     public static final String FAILURE_CURRENCYLIST_ADDNEWCURRENCY = "CurrencyList add new currency failure.";
-
 
 
     public static final String NO_ENOUGH_BALANCE = "-1";

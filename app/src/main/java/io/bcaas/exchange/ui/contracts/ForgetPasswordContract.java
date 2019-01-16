@@ -7,7 +7,7 @@ package io.bcaas.exchange.ui.contracts;
  */
 public interface ForgetPasswordContract {
 
-    interface View extends BaseContract{
+    interface View extends BaseContract.View{
         void forgetPasswordFailure(String info);
 
         void forgetPasswordSuccess(String info);

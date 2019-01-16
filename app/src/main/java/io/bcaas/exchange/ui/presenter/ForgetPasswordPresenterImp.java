@@ -41,6 +41,13 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
 
     @Override
     public void forgetPassword(String password, String verifyCode) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -92,12 +99,13 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.forgetPasswordFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

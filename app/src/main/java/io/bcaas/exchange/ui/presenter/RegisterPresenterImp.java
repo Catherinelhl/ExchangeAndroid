@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -37,6 +38,13 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
 
     @Override
     public void register(String memberId, String password, String verifyCode) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(memberId);
@@ -53,7 +61,7 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, "register:"+GsonTool.string(requestJson));
 
         loginInteractor.register(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -90,12 +98,13 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.registerFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

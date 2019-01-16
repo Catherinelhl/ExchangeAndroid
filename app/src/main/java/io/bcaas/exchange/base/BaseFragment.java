@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
@@ -22,7 +23,7 @@ import io.bcaas.exchange.ui.contracts.BaseContract;
  * @since 2018/12/4
  * 所有Phone's Fragment 的基類
  */
-public abstract class BaseFragment extends Fragment implements BaseContract {
+public abstract class BaseFragment extends Fragment implements BaseContract.View {
 
     private String TAG = BaseFragment.class.getSimpleName();
     private View rootView;
@@ -165,5 +166,11 @@ public abstract class BaseFragment extends Fragment implements BaseContract {
         if (activity != null) {
             ((BaseActivity) activity).hideLoading();
         }
+    }
+
+    @Override
+    public void noNetWork() {
+        showToast(getResources().getString(R.string.network_not_reachable));
+
     }
 }

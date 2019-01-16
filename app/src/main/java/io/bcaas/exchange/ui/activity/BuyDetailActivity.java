@@ -102,7 +102,21 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
                 tvFee.setText(paymentCurrencyList.getBuyCharge() + "  " + enName);
                 tvPrice.setText(memberOrderVO.getUnitPrice() + "  " + enName);
                 tvTotalAccount.setText(memberOrderVO.getPrice() + "  " + enName);
-
+                //得到当前账户信息
+                List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+                if (ListTool.noEmpty(memberKeyVOList)) {
+                    for (MemberKeyVO memberKeyVO : memberKeyVOList) {
+                        CurrencyListVO currencyListVOSelf = memberKeyVO.getCurrencyListVO();
+                        if (currencyListVOSelf != null) {
+                            //比较当前的uid，然后返回余额
+                            String currencyUid = currencyListVOSelf.getCurrencyUid();
+                            if (StringTool.equals(currencyUid, paymentCurrencyList.getCurrencyUid())) {
+                                tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + memberKeyVO.getBalanceAvailable() + "\t" + currencyListVOSelf.getEnName());
+                                break;
+                            }
+                        }
+                    }
+                }
 
             }
             // 得到当前币种信息
@@ -146,7 +160,7 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
 
                     }
                 });
-        RxView.clicks(btnBuy).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnBuy).throttleFirst(Constants.Time.sleep10000, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -155,7 +169,6 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
 
                     @Override
                     public void onNext(Object o) {
-
                         //1：判断当前资金密码是否输入
                         String txPassword = etFundPassword.getContent();
                         if (StringTool.isEmpty(txPassword)) {
@@ -171,6 +184,8 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
                         if (memberOrderVO != null) {
                             //3：接口请求数据
                             presenter.buy(txPassword, memberOrderVO.getMemberOrderUid(), verifyCode);
+                            //在接口没有回来之前，不允许重复点击，将按钮设置为不可点击，待结果回来之后再点击
+                            btnBuy.setEnabled(false);
                         }
 
 
@@ -215,16 +230,22 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
 
     @Override
     public void buyFailure(String info) {
+        //设置按钮可点击
+        btnBuy.setEnabled(true);
         showToast(info);
     }
 
     @Override
     public void buySelfError() {
+        //设置按钮可点击
+        btnBuy.setEnabled(true);
         showToast(getString(R.string.not_to_buy_self));
     }
 
     @Override
     public void buySuccess(String info) {
+        //设置按钮可点击
+        btnBuy.setEnabled(true);
         setResult(false);
     }
 

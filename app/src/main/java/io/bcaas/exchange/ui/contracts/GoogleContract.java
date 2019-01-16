@@ -9,7 +9,7 @@ import io.bcaas.exchange.bean.VerificationBean;
  * Google验证获取URL
  */
 public interface GoogleContract {
-    interface View extends BaseContract {
+    interface View extends BaseContract.View {
         void getAuthenticatorUrlSuccess(VerificationBean verificationBean);
 
         void getAuthenticatorUrlFailure(String info);

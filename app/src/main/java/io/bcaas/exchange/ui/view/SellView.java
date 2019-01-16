@@ -186,7 +186,7 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
                         //4：判断当前的扣除手续费的交易额不能小于等于0，否则提示不能通过
                         if (StringTool.notEmpty(txAmount) &&
                                 StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"), MessageConstants.NO_ENOUGH_BALANCE)) {
-                            Toast.makeText(context, R.string.sell_volume_must_over_fee, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.invalid_tx_amount, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //5:判断当前的回调以及会员信息不为空；得到所有需要的数据，然后返回

@@ -5,7 +5,6 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
-import io.bcaas.exchange.ui.interactor.MainInteractor;
 import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
@@ -16,6 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
+ * 订单记录
  */
 public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
     private String TAG = OrderRecordPresenterImp.class.getSimpleName();
@@ -31,6 +31,14 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
     @Override
     public void getRecord(int type, String nextObjectId) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
+        //组装数据
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -85,19 +93,26 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
+                        view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
                         view.getRecordFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }
 
     @Override
     public void cancelOrder(long memberOrderUid) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
@@ -114,7 +129,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
         memberOrderVO.setMemberOrderUid(memberOrderUid);
         requestJson.setMemberOrderVO(memberOrderVO);
 
-        LogTool.d(TAG, "cancelOrder:" + requestJson);
+        LogTool.d(TAG, "cancelOrder:" + GsonTool.string(requestJson));
         txInteractor.cancelOrder(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

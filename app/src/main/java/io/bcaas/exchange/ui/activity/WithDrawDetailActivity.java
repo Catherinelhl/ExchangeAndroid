@@ -39,23 +39,23 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.etwa_fund_password)
-    EditTextWithAction etwaFundPassword;
+    EditTextWithAction etFundPassword;
     @BindView(R.id.tv_email_key)
     TextView tvEmailKey;
     @BindView(R.id.tv_email_value)
     TextView tvEmailValue;
     @BindView(R.id.etwa_email_verify_code)
-    EditTextWithAction etwaEmailVerifyCode;
+    EditTextWithAction etEmailVerifyCode;
     @BindView(R.id.tv_phone_key)
     TextView tvPhoneKey;
     @BindView(R.id.tv_phone_value)
     TextView tvPhoneValue;
     @BindView(R.id.etwa_message_verify_code)
-    EditTextWithAction etwaMessageVerifyCode;
+    EditTextWithAction etMessageVerifyCode;
     @BindView(R.id.tv_google_verify_key)
     TextView tvGoogleVerifyKey;
     @BindView(R.id.etwa_google_verify_code)
-    EditTextWithAction etwaGoogleVerifyCode;
+    EditTextWithAction etGoogleVerifyCode;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
     @BindView(R.id.btn_sure)
@@ -90,9 +90,9 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
         tvTitle.setText(R.string.with_draw);
         ibBack.setVisibility(View.VISIBLE);
 
-        etwaMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etwaEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etwaGoogleVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+        etMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+        etEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+        etGoogleVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
 
         MemberVO memberVO = BaseApplication.getMemberVO();
         getAccountSecuritySuccess(memberVO);
@@ -131,29 +131,37 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                     @Override
                     public void accept(Object o) throws Exception {
                         //1:判断当前是否输入了资金密码
-                        String txPassword = etwaFundPassword.getContent();
+                        String txPassword = etFundPassword.getContent();
                         if (StringTool.isEmpty(txPassword)) {
-                            showToast("请输入资金密码！");
+                            showToast(getString(R.string.please_input_fund_password));
                             return;
                         }
-//                        //2：判断当前是否输入了邮箱验证码
-//                        String emailVerifyCode = etEmailVerifyCode.getContent();
-//                        if (StringTool.isEmpty(emailVerifyCode)) {
-//                            showToast("请输入邮箱验证码！");
-//                            return;
-//                        }
-//                        //3:判断当前是否输入手机验证码
-//                        String phoneVerifyCode = etMessageVerifyCode.getContent();
-//                        if (StringTool.isEmpty(phoneVerifyCode)) {
-//                            showToast("请输入手机验证码！");
-//                            return;
-//                        }
-//                        //4：判断当前是否输入google验证码
-//                        String googleVerifyCode = etGoogleVerifyCode.getContent();
-//                        if (StringTool.isEmpty(googleVerifyCode)) {
-//                            showToast("请输入Google验证码！");
-//                            return;
-//                        }
+                        if (etEmailVerifyCode.getVisibility() == View.VISIBLE) {
+                            //2：判断当前是否输入了邮箱验证码
+                            String emailVerifyCode = etEmailVerifyCode.getContent();
+                            if (StringTool.isEmpty(emailVerifyCode)) {
+                                showToast(getString(R.string.please_input_email_verify_code));
+                                return;
+                            }
+                        }
+                        if (etMessageVerifyCode.getVisibility() == View.VISIBLE) {
+
+                            //3:判断当前是否输入手机验证码
+                            String phoneVerifyCode = etMessageVerifyCode.getContent();
+                            if (StringTool.isEmpty(phoneVerifyCode)) {
+                                showToast(getString(R.string.please_input_phone_verify_code));
+                                return;
+                            }
+                        }
+                        if (etGoogleVerifyCode.getVisibility() == View.VISIBLE) {
+
+                            //4：判断当前是否输入google验证码
+                            String googleVerifyCode = etGoogleVerifyCode.getContent();
+                            if (StringTool.isEmpty(googleVerifyCode)) {
+                                showToast(getString(R.string.please_input_google_verify_code));
+                                return;
+                            }
+                        }
                         //3：请求接口提现
                         presenter.withDraw(txPassword, requestJson);
                     }
@@ -191,9 +199,9 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
             if (emailVerify == Constants.Status.OPEN) {
                 tvEmailValue.setText(email);
                 llEmail.setVisibility(View.VISIBLE);
-                etwaEmailVerifyCode.setVisibility(View.VISIBLE);
+                etEmailVerifyCode.setVisibility(View.VISIBLE);
             } else {
-                etwaEmailVerifyCode.setVisibility(View.GONE);
+                etEmailVerifyCode.setVisibility(View.GONE);
                 llEmail.setVisibility(View.GONE);
             }
             //2：判断当前是否开启电话验证
@@ -202,19 +210,14 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
             if (phoneVerify == Constants.Status.OPEN) {
                 tvPhoneValue.setText(phone);
                 llPhone.setVisibility(View.VISIBLE);
-                etwaMessageVerifyCode.setVisibility(View.VISIBLE);
+                etMessageVerifyCode.setVisibility(View.VISIBLE);
             } else {
                 llPhone.setVisibility(View.GONE);
-                etwaMessageVerifyCode.setVisibility(View.GONE);
+                etMessageVerifyCode.setVisibility(View.GONE);
             }
 
             //3：判断当前是否开启google验证
             int twoFactorAuthVerify = memberVO.getTwoFactorAuthVerify();
-            if (twoFactorAuthVerify == Constants.Status.OPEN) {
-                llGoogleVerifyTips.setVisibility(View.GONE);
-            } else {
-                llGoogleVerifyTips.setVisibility(View.VISIBLE);
-            }
         }
     }
 
@@ -224,10 +227,4 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

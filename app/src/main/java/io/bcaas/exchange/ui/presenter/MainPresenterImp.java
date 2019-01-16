@@ -37,6 +37,13 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
 
     @Override
     public void getCurrencyUSDPrice(ExchangeBean exchangeBean) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -47,7 +54,7 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
         requestJson.setLoginInfoVO(loginInfoVO);
 
         requestJson.setExchangeBean(exchangeBean);
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, "getCurrencyUSDPrice:" + GsonTool.string(requestJson));
 
         mainInteractor.getCurrencyUSDPrice(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -82,7 +89,6 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
 
                             } else {
                                 view.getCurrencyUSDPriceFailure(responseJson.getMessage());
-
                             }
 
                         }
@@ -91,12 +97,13 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.getCurrencyUSDPriceFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

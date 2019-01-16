@@ -7,7 +7,7 @@ package io.bcaas.exchange.ui.contracts;
  */
 public interface ResetPasswordContract {
 
-    interface View extends BaseContract{
+    interface View extends BaseContract.View{
         void resetPasswordFailure(String info);
 
         void resetPasswordSuccess(String info);

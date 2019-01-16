@@ -39,6 +39,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
         if (StringTool.isEmpty(currencyUid)) {
             return;
         }
+
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());

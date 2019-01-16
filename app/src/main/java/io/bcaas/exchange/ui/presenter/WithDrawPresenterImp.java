@@ -35,6 +35,13 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
 
     @Override
     public void withDraw(String txPassword, RequestJson requestJson) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
         try {
@@ -83,12 +90,13 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.withDrawFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

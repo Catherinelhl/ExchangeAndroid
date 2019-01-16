@@ -5,7 +5,15 @@ package io.bcaas.exchange.ui.contracts;
  * @since 2019/1/10
  */
 public interface BaseContract {
-    void showLoading();
+    interface View {
+        void showLoading();//显示加载框
 
-    void hideLoading();
+        void hideLoading();//隐藏加载框
+
+        void noNetWork();//没有网路
+    }
+
+    interface Presenter {
+
+    }
 }

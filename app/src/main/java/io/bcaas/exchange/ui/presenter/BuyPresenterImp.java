@@ -35,6 +35,13 @@ public class BuyPresenterImp implements BuyContract.Presenter {
 
     @Override
     public void buy(String txPassword, long memberOderUid, String verifyCode) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -87,6 +94,9 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                             } else if (code == MessageConstants.CODE_2057) {
                                 //  {"success":false,"code":2057,"message":"Illegal request."}
                                 view.buySelfError();
+                            } else if (code == MessageConstants.CODE_2055) {
+                                //{"success":false,"code":2055,"message":"Invalid order information."}
+                                view.buyFailure(responseJson.getMessage());
                             } else {
                                 view.buyFailure(responseJson.getMessage());
 
@@ -99,12 +109,13 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.buyFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

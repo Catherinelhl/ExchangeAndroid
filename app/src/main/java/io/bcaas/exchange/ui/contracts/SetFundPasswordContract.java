@@ -7,7 +7,7 @@ package io.bcaas.exchange.ui.contracts;
  */
 public interface SetFundPasswordContract {
 
-    interface View extends BaseContract{
+    interface View extends BaseContract.View {
 
         //设置资金密码成功
         void securityTxPasswordSuccess(String info);

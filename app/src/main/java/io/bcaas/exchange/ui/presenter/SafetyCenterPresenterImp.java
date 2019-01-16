@@ -34,6 +34,13 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
     @Override
     public void logout(String memberId) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(memberId);
@@ -78,11 +85,13 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.logoutFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
+                        view.hideLoading();
 
                     }
                 });

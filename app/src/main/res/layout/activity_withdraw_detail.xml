@@ -18,7 +18,7 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/d24"
                     android:background="@color/white"
-                    exchange:behaviour="normal"
+                    exchange:behaviour="checkBox"
                     exchange:hint="@string/fund_password"
                     android:layout_height="@dimen/d48"/>
 

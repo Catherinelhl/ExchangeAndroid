@@ -7,7 +7,7 @@ package io.bcaas.exchange.ui.contracts;
  */
 public interface BuyContract {
 
-    interface View extends BaseContract {
+    interface View extends BaseContract.View {
         void buyFailure(String info);
         void buySelfError();
         void buySuccess(String info);

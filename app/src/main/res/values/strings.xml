@@ -144,5 +144,6 @@
     <string name="google_verify_privatekey_intro">1.请用Google验证器扫描以下二维码或手动输入以下密钥</string>
     <string name="google_verify_six_verify_code">2.请输入Google验证器应用产生的6位验证码</string>
     <string name="google_account">账号:</string>
+    <string name="invalid_tx_amount">无效的交易额</string>
 
 </resources>

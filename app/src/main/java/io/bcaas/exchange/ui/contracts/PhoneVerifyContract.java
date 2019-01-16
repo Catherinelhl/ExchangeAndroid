@@ -7,7 +7,7 @@ package io.bcaas.exchange.ui.contracts;
  */
 public interface PhoneVerifyContract {
 
-    interface View extends BaseContract {
+    interface View extends BaseContract.View {
 
         void getPhoneCodeSuccess(String info);
 

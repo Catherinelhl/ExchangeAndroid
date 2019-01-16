@@ -46,7 +46,7 @@ import java.util.Locale;
  * @since 2018/12/4
  * 所有Phone's Activity 的基類
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseContract {
+public abstract class BaseActivity extends AppCompatActivity implements BaseContract.View {
     private Unbinder unbinder;
     protected Context context;
     protected Activity activity;
@@ -366,5 +366,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             bcaasLoadingDialog = null;
 
         }
+    }
+
+    @Override
+    public void noNetWork() {
+        showToast(getResources().getString(R.string.network_not_reachable));
+
     }
 }

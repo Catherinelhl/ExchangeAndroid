@@ -6,7 +6,7 @@ package io.bcaas.exchange.ui.contracts;
  * 出售
  */
 public interface SellContract {
-    interface View extends BaseContract{
+    interface View extends BaseContract.View{
         void sellFailure(String info);
 
         void sellSuccess(String info);

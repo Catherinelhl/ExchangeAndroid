@@ -40,6 +40,13 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
 
     @Override
     public void resetPassword(String password, String newPassword) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -56,7 +63,7 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
 
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, "resetPassword:"+GsonTool.string(requestJson));
         safetyCenterInteractor.resetPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

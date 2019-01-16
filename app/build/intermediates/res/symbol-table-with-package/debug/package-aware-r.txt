@@ -2063,6 +2063,7 @@ string income
 string input_account
 string input_graphic_verify_code
 string input_password
+string invalid_tx_amount
 string login
 string login_password
 string logout

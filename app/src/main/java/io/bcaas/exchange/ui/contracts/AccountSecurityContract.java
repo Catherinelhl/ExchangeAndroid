@@ -8,7 +8,7 @@ import io.bcaas.exchange.vo.MemberVO;
  * 「获取账户信息」
  */
 public interface AccountSecurityContract {
-    interface View extends BaseContract{
+    interface View extends BaseContract.View{
 
         void getAccountSecuritySuccess(MemberVO memberVO);
 

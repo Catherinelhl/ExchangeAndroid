@@ -24,6 +24,7 @@ import okhttp3.ResponseBody;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/9
+ * Google 验证相关
  */
 public class GooglePresenterImp implements GoogleContract.Presenter {
 
@@ -39,6 +40,13 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
 
     @Override
     public void getAuthenticatorUrl() {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -89,18 +97,26 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.getAuthenticatorUrlFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }
 
     @Override
     public void securityGoogleAuthenticator(String verifyCode) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -162,12 +178,13 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.securityGoogleAuthenticatorFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }
@@ -176,6 +193,13 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
     public void getAuthenticatorUrlCreateImage(String url) {
         //得到当前创建url的地址，重新请求网络获取图片
         if (StringTool.notEmpty(url)) {
+            //判断当前是否有网路
+            if (!BaseApplication.isRealNet()) {
+                view.noNetWork();
+                return;
+            }
+            //显示加载框
+            view.showLoading();
             safetyCenterInteractor.getAuthenticatorUrlCreateImage(url)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -195,13 +219,14 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
 
                         @Override
                         public void onError(Throwable e) {
+                            view.hideLoading();
                             view.getAuthenticatorImageFailure();
 
                         }
 
                         @Override
                         public void onComplete() {
-
+                            view.hideLoading();
                         }
                     });
 

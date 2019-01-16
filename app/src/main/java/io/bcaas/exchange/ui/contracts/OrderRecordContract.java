@@ -11,7 +11,7 @@ import io.bcaas.exchange.vo.PaginationVO;
  */
 public interface OrderRecordContract {
 
-    interface View extends BaseContract {
+    interface View extends BaseContract.View {
         void getRecordFailure(String info);
 
         void getRecordSuccess(PaginationVO paginationVO);

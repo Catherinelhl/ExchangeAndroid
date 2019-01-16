@@ -9,7 +9,7 @@ import io.bcaas.exchange.vo.PaginationVO;
  */
 public interface ForSaleOrderListContract {
 
-    interface View extends BaseContract {
+    interface View extends BaseContract.View {
         void getOrderListSuccess(PaginationVO paginationVO);
 
         void getOrderListFailure(String info);

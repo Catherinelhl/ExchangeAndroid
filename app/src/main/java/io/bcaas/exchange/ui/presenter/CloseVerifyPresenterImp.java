@@ -53,6 +53,13 @@ public class CloseVerifyPresenterImp
      */
     @Override
     public void closeVerifyCode(List<VerificationBean> verificationBeans) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -102,12 +109,13 @@ public class CloseVerifyPresenterImp
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.closeVerifyCodeFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }

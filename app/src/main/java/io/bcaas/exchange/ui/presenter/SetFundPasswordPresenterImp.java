@@ -41,6 +41,13 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
      */
     @Override
     public void securityTxPassword(String password) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -56,7 +63,7 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, requestJson);
+        LogTool.d(TAG, "securityTxPassword:" + GsonTool.string(requestJson));
         safetyCenterInteractor.securityTxPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -94,12 +101,13 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
                         view.securityTxPasswordFailure(e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
 
