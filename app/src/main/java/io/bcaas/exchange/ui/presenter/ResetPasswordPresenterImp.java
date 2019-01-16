@@ -84,7 +84,7 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
                             view.resetPasswordSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-                            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                            view.httpException(responseJson);
                             view.resetPasswordFailure(responseJson.getMessage());
 
                         }

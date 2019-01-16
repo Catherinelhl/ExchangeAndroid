@@ -146,5 +146,8 @@
     <string name="google_account">账号:</string>
     <string name="invalid_tx_amount">无效的交易额</string>
     <string name="input_amount_to_withdraw">输入提现的金额</string>
+    <string name="please_login_again">Please login again</string>
+    <string name="please_input_receive_address">请输入接收地址</string>
+    <string name="please_input_amount_withdraw">请输入提现金额</string>
 
 </resources>

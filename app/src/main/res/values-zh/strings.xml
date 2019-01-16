@@ -137,5 +137,6 @@
     <string name="get_data_failure">获取数据失败</string>
     <string name="plus_sign">+</string>
     <string name="please_select_country_or_region">请选择国家或地区</string>
+    <string name="please_login_again">Please login again</string>
 
 </resources>

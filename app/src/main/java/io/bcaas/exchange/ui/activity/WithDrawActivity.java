@@ -204,7 +204,6 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                         if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                             if (ListTool.noEmpty(memberKeyVOList)) {
                                 ((WithDrawView) views.get(currentPosition)).setScanInfo(scanInfo);
-
                             }
                         }
                     }

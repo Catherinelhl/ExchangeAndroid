@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/27
  * 「售出」页面视图
  */
-public class SellView extends LinearLayout implements GetCurrencyChargeContract.View {
+public class SellView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
     private String TAG = SellView.class.getSimpleName();
 
     @BindView(R.id.tv_salable_balance)
@@ -58,7 +58,6 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
     TextView tvFinalTxAmount;
     @BindView(R.id.btn_sell)
     Button btnSell;
-    private Context context;
     private OnItemSelectListener onItemSelectListener;
 
     private MemberKeyVO memberKeyVO;
@@ -78,20 +77,22 @@ public class SellView extends LinearLayout implements GetCurrencyChargeContract.
 
     public SellView(Context context) {
         super(context);
-        this.context = context;
-        initView();
     }
 
-    private void initView() {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_sell, this, true);
-        ButterKnife.bind(view);
+    @Override
+    protected int setContentView() {
+        return R.layout.view_sell;
+    }
+
+    @Override
+    protected void initView() {
         presenter = new GetCurrencyChargePresenterImp(this);
         etSellVolume.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
         etRate.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
-        initListener();
     }
 
-    private void initListener() {
+    @Override
+    protected void initListener() {
         sbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

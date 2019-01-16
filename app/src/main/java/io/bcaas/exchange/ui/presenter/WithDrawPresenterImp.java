@@ -77,10 +77,8 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
                             view.withDrawSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-//                            if (code == MessageConstants.CODE_2019) {
-                            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                            view.httpException(responseJson);
                             view.withDrawFailure(responseJson.getMessage());
-//                            } else {
 
                         }
 

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
@@ -74,21 +75,21 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
             public void onClick(View v) {
             }
         });
-        viewHolder.cbRecharge.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewHolder.cbWithdraw.setChecked(false);
-                viewHolder.cbRecharge.setChecked(true);
+//                viewHolder.cbWithdraw.setChecked(false);
+//                viewHolder.cbRecharge.setChecked(true);
                 if (onItemSelectListener != null) {
                     onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.RECHARGE);
                 }
             }
         });
-        viewHolder.cbWithdraw.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btnWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewHolder.cbRecharge.setChecked(false);
-                viewHolder.cbWithdraw.setChecked(true);
+//                viewHolder.cbRecharge.setChecked(false);
+//                viewHolder.cbWithdraw.setChecked(true);
                 if (onItemSelectListener != null) {
                     onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.WITHDRAW);
                 }
@@ -103,16 +104,16 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvFundType;
-        CheckBox cbWithdraw;
-        CheckBox cbRecharge;
+        Button btnWithdraw;
+        Button btnRecharge;
         TextView tvAvailable;
         TextView tvFreeze;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFundType = itemView.findViewById(R.id.tv_fund_type);
-            cbWithdraw = itemView.findViewById(R.id.cb_withdraw);
-            cbRecharge = itemView.findViewById(R.id.cb_recharge);
+            btnWithdraw = itemView.findViewById(R.id.btn_withdraw);
+            btnRecharge = itemView.findViewById(R.id.btn_recharge);
             tvAvailable = itemView.findViewById(R.id.tv_available);
             tvFreeze = itemView.findViewById(R.id.tv_freeze);
         }

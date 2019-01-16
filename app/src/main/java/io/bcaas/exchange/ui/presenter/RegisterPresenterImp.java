@@ -86,7 +86,6 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2006) {
                                 view.registerFailure(MessageConstants.ERROR_EMAIL_ALREADY_REGISTER);
-
                             } else {
                                 view.registerFailure(responseJson.getMessage());
 

@@ -86,10 +86,8 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                             view.buySuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.buyFailure(responseJson.getMessage());
-                            } else if (code == MessageConstants.CODE_2057) {
+                            view.httpException(responseJson);
+                            if (code == MessageConstants.CODE_2057) {
                                 //  {"success":false,"code":2057,"message":"Illegal request."}
                                 view.buySelfError();
                             } else if (code == MessageConstants.CODE_2055) {

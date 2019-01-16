@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.presenter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
@@ -26,7 +27,7 @@ import okhttp3.ResponseBody;
  * @since 2019/1/9
  * Google 验证相关
  */
-public class GooglePresenterImp implements GoogleContract.Presenter {
+public class GooglePresenterImp extends BasePresenterImp implements GoogleContract.Presenter {
 
     private String TAG = GooglePresenterImp.class.getSimpleName();
     private GoogleContract.View view;
@@ -78,18 +79,18 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                                 view.getAuthenticatorUrlFailure(responseJson.getMessage());
                             } else {
                                 view.getAuthenticatorUrlSuccess(verificationBean);
-                                getAuthenticatorUrlCreateImage(verificationBean.getAuthenticatorUrl());
+                                //判断当前URL是否为空
+                                String getAuthenticatorUrl = verificationBean.getAuthenticatorUrl();
+                                if (StringTool.notEmpty(getAuthenticatorUrl)) {
+                                    getAuthenticatorUrlCreateImage(verificationBean.getAuthenticatorUrl());
+                                } else {
+                                    view.getAuthenticatorUrlFailure(getString(R.string.get_data_failure));
+                                }
                             }
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.getAuthenticatorUrlFailure(responseJson.getMessage());
-                            } else {
-                                view.getAuthenticatorUrlFailure(responseJson.getMessage());
-
-                            }
-
+                            view.httpException(responseJson);
+                            view.getAuthenticatorUrlFailure(responseJson.getMessage());
                         }
 
                     }
@@ -163,13 +164,8 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
                             }
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
-                            } else {
-                                view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
-
-                            }
+                            view.httpException(responseJson);
+                            view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
 
                         }
 
@@ -192,48 +188,42 @@ public class GooglePresenterImp implements GoogleContract.Presenter {
     @Override
     public void getAuthenticatorUrlCreateImage(String url) {
         //得到当前创建url的地址，重新请求网络获取图片
-        if (StringTool.notEmpty(url)) {
-            //判断当前是否有网路
-            if (!BaseApplication.isRealNet()) {
-                view.noNetWork();
-                return;
-            }
-            //显示加载框
-            view.showLoading();
-            safetyCenterInteractor.getAuthenticatorUrlCreateImage(url)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .map(ResponseBody::byteStream)
-                    .map(BitmapFactory::decodeStream)
-                    .subscribe(new Observer<Bitmap>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(Bitmap bitmap) {
-                            view.getAuthenticatorImageSuccess(bitmap);
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            view.hideLoading();
-                            view.getAuthenticatorImageFailure();
-
-                        }
-
-                        @Override
-                        public void onComplete() {
-                            view.hideLoading();
-                        }
-                    });
-
-        } else {
-            // TODO: 2019/1/10 提示数据获取失败？
-            view.getAuthenticatorUrlFailure("数据获取失败！");
-
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
         }
+        //显示加载框
+        view.showLoading();
+        safetyCenterInteractor.getAuthenticatorUrlCreateImage(url)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(ResponseBody::byteStream)
+                .map(BitmapFactory::decodeStream)
+                .subscribe(new Observer<Bitmap>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Bitmap bitmap) {
+                        view.getAuthenticatorImageSuccess(bitmap);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.hideLoading();
+                        view.getAuthenticatorImageFailure();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        view.hideLoading();
+                    }
+                });
+
     }
 }

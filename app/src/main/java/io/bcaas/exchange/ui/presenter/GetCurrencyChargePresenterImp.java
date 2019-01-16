@@ -39,7 +39,8 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
         if (StringTool.isEmpty(currencyUid)) {
             return;
         }
-
+        //显示加载框
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberId());
@@ -54,7 +55,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
         currencyListVORequest.setCurrencyUid(currencyUid);
         requestJson.setCurrencyListVO(currencyListVORequest);
 
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getCurrencyCharge",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getCurrencyCharge", requestJson);
 
         txInteractor.getCurrencyCharge(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -78,6 +79,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
                             CurrencyListVO currencyListVOResponse = responseJson.getCurrencyListVO();
                             view.getCurrencyChargeSuccess(currencyListVOResponse);
                         } else {
+                            view.httpException(responseJson);
                             view.getCurrencyChargeFailure(responseJson.getMessage());
                         }
 
@@ -85,6 +87,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
 
                     @Override
                     public void onError(Throwable e) {
+                        view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
                         view.getCurrencyChargeFailure(e.getMessage());
 
@@ -92,6 +95,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
 
                     @Override
                     public void onComplete() {
+                        view.hideLoading();
 
                     }
                 });

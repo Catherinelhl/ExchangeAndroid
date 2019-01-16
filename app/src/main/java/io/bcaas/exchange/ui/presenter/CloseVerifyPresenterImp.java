@@ -71,7 +71,7 @@ public class CloseVerifyPresenterImp
         requestJson.setLoginInfoVO(loginInfoVO);
 
         requestJson.setVerificationBeanList(verificationBeans);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"closeVerifyCode",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "closeVerifyCode", requestJson);
         safetyCenterInteractor.closeSecurityVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -92,14 +92,9 @@ public class CloseVerifyPresenterImp
                         if (isSuccess) {
                             view.closeVerifyCodeSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.closeVerifyCodeFailure(responseJson.getMessage());
-                            } else {
-                                view.closeVerifyCodeFailure(responseJson.getMessage());
+                            view.httpException(responseJson);
 
-                            }
+                            view.closeVerifyCodeFailure(responseJson.getMessage());
 
                         }
 

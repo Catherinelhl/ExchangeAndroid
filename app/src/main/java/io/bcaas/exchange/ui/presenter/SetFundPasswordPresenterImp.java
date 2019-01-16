@@ -63,7 +63,7 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityTxPassword",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityTxPassword", requestJson);
         safetyCenterInteractor.securityTxPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -85,14 +85,9 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
                             view.securityTxPasswordSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.securityTxPasswordFailure(responseJson.getMessage());
-                            } else {
-                                //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
-                                view.securityTxPasswordFailure(responseJson.getMessage());
-
-                            }
+                            view.httpException(responseJson);
+                            //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
+                            view.securityTxPasswordFailure(responseJson.getMessage());
 
                         }
 

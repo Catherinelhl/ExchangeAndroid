@@ -7,7 +7,7 @@ import io.bcaas.exchange.vo.CurrencyListVO;
  * @since 2019/1/11
  */
 public interface GetCurrencyChargeContract {
-    interface View {
+    interface View extends BaseContract.View{
         void getCurrencyChargeFailure(String info);
 
         void getCurrencyChargeSuccess(CurrencyListVO currencyListVO);

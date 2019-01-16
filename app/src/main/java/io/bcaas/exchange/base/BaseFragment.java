@@ -17,6 +17,7 @@ import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.ui.contracts.BaseContract;
+import io.bcaas.exchange.vo.ResponseJson;
 
 /**
  * @author catherine.brainwilliam
@@ -135,7 +136,9 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         if (softKeyBroadManager != null && softKeyboardStateListener != null) {
             softKeyBroadManager.removeSoftKeyboardStateListener(softKeyboardStateListener);
         }
-        unbinder.unbind();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
         super.onDestroy();
     }
 
@@ -172,5 +175,12 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     public void noNetWork() {
         showToast(getResources().getString(R.string.network_not_reachable));
 
+    }
+
+    @Override
+    public void httpException(ResponseJson responseJson) {
+        if (activity != null) {
+            ((BaseActivity) activity).httpException(responseJson);
+        }
     }
 }

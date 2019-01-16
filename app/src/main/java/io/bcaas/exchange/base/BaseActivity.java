@@ -23,23 +23,24 @@ import butterknife.Unbinder;
 import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.activity.LoginActivity;
 import io.bcaas.exchange.ui.contracts.BaseContract;
-import io.bcaas.exchange.view.dialog.BcaasDialog;
-import io.bcaas.exchange.view.dialog.BcaasLoadingDialog;
-import io.bcaas.exchange.view.dialog.BcaasSingleDialog;
+import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
+import io.bcaas.exchange.view.dialog.LoadingDialog;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.pop.ListPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.ResponseJson;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * @author catherine.brainwilliam
@@ -51,10 +52,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     protected Context context;
     protected Activity activity;
     /*双按钮弹框*/
-    private BcaasDialog bcaasDialog;
+    private DoubleButtonDialog doubleButtonDialog;
     /*单按钮弹框*/
-    private BcaasSingleDialog bcaasSingleDialog;
-    private BcaasLoadingDialog bcaasLoadingDialog;
+    private SingleButtonDialog singleDialog;
+    private LoadingDialog loadingDialog;
     /*键盘输入管理*/
     private InputMethodManager inputMethodManager;
     /*存儲當前點擊返回按鍵的時間，用於提示連續點擊兩次才能退出*/
@@ -353,17 +354,17 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             return;
         }
         hideLoading();
-        bcaasLoadingDialog = new BcaasLoadingDialog(this);
-        bcaasLoadingDialog.setProgressBarColor(getResources().getColor(R.color.orange_FC9003));
-        bcaasLoadingDialog.show();
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.setProgressBarColor(getResources().getColor(R.color.yellow_FFA73B));
+        loadingDialog.show();
     }
 
     @Override
     public void hideLoading() {
-        if (bcaasLoadingDialog != null) {
-            bcaasLoadingDialog.dismiss();
-            bcaasLoadingDialog.cancel();
-            bcaasLoadingDialog = null;
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+            loadingDialog.cancel();
+            loadingDialog = null;
 
         }
     }
@@ -372,5 +373,134 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     public void noNetWork() {
         showToast(getResources().getString(R.string.network_not_reachable));
 
+    }
+
+    /**
+     * token过期，弹出提示框，并跳出到「登录」页面
+     */
+    public void tokenInvalid() {
+//        showDoubleButtonDialog(getResources().getString(R.string.warning),
+//                getResources().getString(R.string.confirm),
+//                getResources().getString(R.string.cancel), "登录已失效，请重新登录", new DoubleButtonDialog.ConfirmClickListener() {
+//                    @Override
+//                    public void sure() {
+//                        //跳转
+//                    }
+//
+//                    @Override
+//                    public void cancel() {
+//
+//                    }
+//                });
+
+    }
+
+    /**
+     * 跳转到登录页面
+     */
+    private void intentToLoginActivity() {
+        intentToActivity(LoginActivity.class, true);
+
+    }
+
+
+    /**
+     * 显示双按钮对话框
+     *
+     * @param title
+     * @param left
+     * @param right
+     * @param message
+     * @param listener
+     */
+    public void showDoubleButtonDialog(String title, String left, String right, String message, DoubleButtonDialog.ConfirmClickListener listener) {
+        if (doubleButtonDialog == null) {
+            doubleButtonDialog = new DoubleButtonDialog(this);
+        }
+        /*设置弹框点击周围不予消失*/
+        doubleButtonDialog.setCanceledOnTouchOutside(false);
+        /*设置弹框背景*/
+        doubleButtonDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_white));
+        doubleButtonDialog.setLeftText(left)
+                .setRightText(right)
+                .setContent(message)
+                .setTitle(title)
+                .setOnConfirmClickListener(new DoubleButtonDialog.ConfirmClickListener() {
+                    @Override
+                    public void sure() {
+                        listener.sure();
+                        doubleButtonDialog.dismiss();
+                    }
+
+                    @Override
+                    public void cancel() {
+                        listener.cancel();
+                        doubleButtonDialog.dismiss();
+                    }
+                }).show();
+    }
+
+    /**
+     * 显示单按钮对话框
+     *
+     * @param title
+     * @param message
+     * @param listener
+     */
+    public void showSingleDialog(String title, String message, SingleButtonDialog.ConfirmClickListener listener) {
+        if (!checkActivityState()) {
+            return;
+        }
+        if (singleDialog == null) {
+            singleDialog = new SingleButtonDialog(this);
+        }
+        /*设置弹框点击周围不予消失*/
+        singleDialog.setCanceledOnTouchOutside(false);
+        singleDialog.setCancelable(false);
+        /*设置弹框背景*/
+        singleDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_white));
+        singleDialog.setContent(message)
+                .setTitle(title)
+                .setOnConfirmClickListener(() -> {
+                    listener.sure();
+                    singleDialog.dismiss();
+                }).show();
+    }
+
+    /**
+     * 取消双按钮弹框
+     */
+    private void dismissDoubleButtonDialog() {
+        if (doubleButtonDialog != null) {
+            doubleButtonDialog.dismiss();
+            doubleButtonDialog.cancel();
+            doubleButtonDialog = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (unbinder!=null){
+            unbinder.unbind();
+        }
+        dismissDoubleButtonDialog();
+    }
+
+    @Override
+    public void httpException(ResponseJson responseJson) {
+        if (responseJson == null) {
+            return;
+        }
+        int code = responseJson.getCode();
+        //判断是否是Token过期，弹出提示重新登录，然后跳转界面
+        if (code == MessageConstants.CODE_2019) {
+            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+            showSingleDialog(getString(R.string.warning),
+                    getString(R.string.please_login_again), () -> {
+                        //跳转到登录
+                        intentToLoginActivity();
+                    });
+        }
     }
 }

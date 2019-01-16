@@ -1,12 +1,11 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
@@ -33,22 +32,33 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/27
  * 「提现」页面视图
  */
-public class WithDrawView extends LinearLayout implements GetCurrencyChargeContract.View {
+public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
     private String TAG = WithDrawView.class.getSimpleName();
-    private TextView tvCashableBalance;
-    private EditTextWithAction etwaReceiveAddress;
-    private EditTextWithAction etwaWithdrawAmount;
-    private TextView tvFeeTips;
-    private EditTextWithAction etwaRemarks;
-    private TextView tvInfo;
-    private Button btnSend;
-    private LinearLayout llWithDrawContent;
-    private TextView tvNoFundPasswordTips;
-    private TextView tvSetImmediately;
-    private LinearLayout llNoFundPassword;
+
+    @BindView(R.id.tv_cashable_balance)
+    TextView tvCashAbleBalance;
+    @BindView(R.id.etwa_receive_address)
+    EditTextWithAction etReceiveAddress;
+    @BindView(R.id.etwa_withdraw_amount)
+    EditTextWithAction etWithdrawAmount;
+    @BindView(R.id.tv_fee_tips)
+    TextView tvFeeTips;
+    @BindView(R.id.etwa_remarks)
+    EditTextWithAction etRemarks;
+    @BindView(R.id.tv_info)
+    TextView tvInfo;
+    @BindView(R.id.btn_send)
+    Button btnSend;
+    @BindView(R.id.ll_with_draw_content)
+    LinearLayout llWithDrawContent;
+    @BindView(R.id.tv_no_fund_password_tips)
+    TextView tvNoFundPasswordTips;
+    @BindView(R.id.tv_set_immediately)
+    TextView tvSetImmediately;
+    @BindView(R.id.ll_no_fund_password)
+    LinearLayout llNoFundPassword;
     private String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
 
-    private Context context;
     private OnItemSelectListener onItemSelectListener;
     private String fee;
     private CurrencyListVO currencyListVO;
@@ -65,26 +75,23 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
 
     public WithDrawView(Context context) {
         super(context);
-        this.context = context;
         presenter = new GetCurrencyChargePresenterImp(this);
-        initView();
     }
 
-    private void initView() {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_with_draw, this, true);
-        tvCashableBalance = view.findViewById(R.id.tv_cashable_balance);
-        etwaReceiveAddress = view.findViewById(R.id.etwa_receive_address);
-        etwaWithdrawAmount = view.findViewById(R.id.etwa_withdraw_amount);
-        tvInfo = view.findViewById(R.id.tv_info);
-        tvFeeTips = view.findViewById(R.id.tv_fee_tips);
-        etwaRemarks = view.findViewById(R.id.etwa_remarks);
-        btnSend = view.findViewById(R.id.btn_send);
-        llNoFundPassword = view.findViewById(R.id.ll_no_fund_password);
-        tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
-        llWithDrawContent = view.findViewById(R.id.ll_with_draw_content);
-        tvNoFundPasswordTips = view.findViewById(R.id.tv_no_fund_password_tips);
+    @Override
+    protected int setContentView() {
+        return R.layout.view_with_draw;
+    }
+
+    @Override
+    protected void initView() {
         tvNoFundPasswordTips.setText(info);
-        etwaReceiveAddress.setEditTextWatcherListener(new EditTextWatcherListener() {
+
+    }
+
+    @Override
+    protected void initListener() {
+        etReceiveAddress.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
 
@@ -98,12 +105,8 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
                 }
             }
         }, Constants.EditTextFrom.WITHDRAW_SCAN);
-        initListener();
 
-    }
-
-    private void initListener() {
-        etwaWithdrawAmount.setEditTextWatcherListener(new EditTextWatcherListener() {
+        etWithdrawAmount.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
 
@@ -111,12 +114,12 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
 
             @Override
             public void onAction(String from) {
-                if (StringTool.notEmpty(balanceAvailable)){
-                    etwaWithdrawAmount.setContent(balanceAvailable);
+                if (StringTool.notEmpty(balanceAvailable)) {
+                    etWithdrawAmount.setContent(balanceAvailable);
 
                 }
             }
-        },Constants.EditTextFrom.WITHDRAW_AMOUNT);
+        }, Constants.EditTextFrom.WITHDRAW_AMOUNT);
         RxView.clicks(btnSend).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -127,20 +130,20 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
                     @Override
                     public void onNext(Object o) {
                         //1：判断当前地址是否输入
-                        String address = etwaReceiveAddress.getContent();
+                        String address = etReceiveAddress.getContent();
                         if (StringTool.isEmpty(address)) {
-                            Toast.makeText(context, "请输入接收地址", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.please_input_receive_address, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //2：判断当前想要提现的金额是否输入
-                        String withDrawAmount = etwaWithdrawAmount.getContent();
+                        String withDrawAmount = etWithdrawAmount.getContent();
                         if (StringTool.isEmpty(withDrawAmount)) {
-                            Toast.makeText(context, "请输入 提现金额", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, R.string.please_input_amount_withdraw, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         MemberOrderVO memberOrderVO = new MemberOrderVO();
                         memberOrderVO.setAmount(withDrawAmount);
-                        memberOrderVO.setMark(etwaRemarks.getContent());
+                        memberOrderVO.setMark(etRemarks.getContent());
                         RequestJson requestJson = new RequestJson();
                         requestJson.setMemberOrderVO(memberOrderVO);
                         MemberKeyVO memberKeyVOTemp = new MemberKeyVO();
@@ -156,7 +159,7 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override
@@ -180,6 +183,7 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
 
                     @Override
                     public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
 
                     }
 
@@ -196,6 +200,7 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
      * @param memberKeyVO
      */
     public void refreshData(MemberKeyVO memberKeyVO) {
+        tvNoFundPasswordTips.setText(info);
         if (memberKeyVO != null) {
             this.memberKeyVO = memberKeyVO;
             currencyListVO = memberKeyVO.getCurrencyListVO();
@@ -213,13 +218,13 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
                 llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
             }
             if (hasFundPassword) {
-                if (tvCashableBalance != null) {
-                    balanceAvailable= memberKeyVO.getBalanceAvailable();
-                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + balanceAvailable+ "  " + currencyListVO.getEnName());
+                if (tvCashAbleBalance != null) {
+                    balanceAvailable = memberKeyVO.getBalanceAvailable();
+                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + balanceAvailable + "  " + currencyListVO.getEnName());
                 }
-                if (etwaWithdrawAmount != null) {
-                    etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));
-                    etwaWithdrawAmount.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+                if (etWithdrawAmount != null) {
+                    etWithdrawAmount.setRightText(context.getString(R.string.all_in));
+                    etWithdrawAmount.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
                 }
             }
         }
@@ -240,8 +245,8 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
      * @param scanInfo
      */
     public void setScanInfo(String scanInfo) {
-        if (etwaReceiveAddress != null) {
-            etwaReceiveAddress.setContent(scanInfo);
+        if (etReceiveAddress != null) {
+            etReceiveAddress.setContent(scanInfo);
         }
     }
 
@@ -260,4 +265,5 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
         }
 
     }
+
 }

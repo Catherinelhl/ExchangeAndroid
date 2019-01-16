@@ -149,6 +149,7 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
 
                         } else {
                             int code = responseJson.getCode();
+                            view.httpException(responseJson);
                             view.getAllBalanceFailure(responseJson.getMessage());
                         }
                     }

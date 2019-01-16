@@ -22,6 +22,22 @@ public class MemberOrderVO implements Serializable {
      */
     private MemberVO memberVO;
     /**
+     * 幣種清單Uid
+     */
+    private CurrencyListVO currencyListVO;
+    /**
+     * 會員平台地址資訊Uid
+     */
+    private MemberKeyVO memberKeyVO;
+    /**
+     * 賣方訂單編號
+     */
+    private Long sellerOrderUid;
+    /**
+     * 支付的幣種
+     */
+    private CurrencyListVO paymentCurrencyUid;
+    /**
      * 訂單種類<br>
      * (0:充值, 1:提現, 2:買, 3:賣)
      */
@@ -35,9 +51,15 @@ public class MemberOrderVO implements Serializable {
      */
     private Integer status;
     /**
-     * 幣種清單Uid
+     * 是否轉帳給平台集中戶<br>
+     * (0:否, 1:是)
      */
-    private CurrencyListVO currencyListVO;
+    private Integer isTransferPlatform;
+    /**
+     * 是否轉帳給用户<br>
+     * (0:否, 1:是)
+     */
+    private Integer isTransferMember;
     /**
      * 數量
      */
@@ -55,13 +77,29 @@ public class MemberOrderVO implements Serializable {
      */
     private String price;
     /**
-     * 支付的幣種
+     * 支出
      */
-    private CurrencyListVO paymentCurrencyUid;
+    private String expenditure;
+    /**
+     * 收入
+     */
+    private String income;
+    /**
+     * 交易Hash
+     */
+    private String txHash;
     /**
      * 備註(提現)
      */
     private String mark;
+    /**
+     * 出帳, 提币地址
+     */
+    private String address;
+    /**
+     * 礦工費
+     */
+    private String gasFeeCharge;
     /**
      * 更新時間
      */
@@ -71,15 +109,121 @@ public class MemberOrderVO implements Serializable {
      */
     private String createTime;
 
-    /**
-     * 收入
-     */
-    private String income;
+    public MemberOrderVO() {
+        super();
+    }
 
-    /**
-     * 支出
-     */
-    private String expenditure;
+    public Long getMemberOrderUid() {
+        return memberOrderUid;
+    }
+
+    public void setMemberOrderUid(Long memberOrderUid) {
+        this.memberOrderUid = memberOrderUid;
+    }
+
+    public MemberVO getMemberVO() {
+        return memberVO;
+    }
+
+    public void setMemberVO(MemberVO memberVO) {
+        this.memberVO = memberVO;
+    }
+
+    public CurrencyListVO getCurrencyListVO() {
+        return currencyListVO;
+    }
+
+    public void setCurrencyListVO(CurrencyListVO currencyListVO) {
+        this.currencyListVO = currencyListVO;
+    }
+
+    public MemberKeyVO getMemberKeyVO() {
+        return memberKeyVO;
+    }
+
+    public void setMemberKeyVO(MemberKeyVO memberKeyVO) {
+        this.memberKeyVO = memberKeyVO;
+    }
+
+    public Long getSellerOrderUid() {
+        return sellerOrderUid;
+    }
+
+    public void setSellerOrderUid(Long sellerOrderUid) {
+        this.sellerOrderUid = sellerOrderUid;
+    }
+
+    public CurrencyListVO getPaymentCurrencyUid() {
+        return paymentCurrencyUid;
+    }
+
+    public void setPaymentCurrencyUid(CurrencyListVO paymentCurrencyUid) {
+        this.paymentCurrencyUid = paymentCurrencyUid;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getIsTransferPlatform() {
+        return isTransferPlatform;
+    }
+
+    public void setIsTransferPlatform(Integer isTransferPlatform) {
+        this.isTransferPlatform = isTransferPlatform;
+    }
+
+    public Integer getIsTransferMember() {
+        return isTransferMember;
+    }
+
+    public void setIsTransferMember(Integer isTransferMember) {
+        this.isTransferMember = isTransferMember;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public String getHandlingFee() {
+        return handlingFee;
+    }
+
+    public void setHandlingFee(String handlingFee) {
+        this.handlingFee = handlingFee;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public String getExpenditure() {
         return expenditure;
@@ -97,140 +241,53 @@ public class MemberOrderVO implements Serializable {
         this.income = income;
     }
 
-    public MemberOrderVO() {
-        super();
+    public String getTxHash() {
+        return txHash;
     }
 
-
-    public Long getMemberOrderUid() {
-        return memberOrderUid;
+    public void setTxHash(String txHash) {
+        this.txHash = txHash;
     }
-
-
-    public void setMemberOrderUid(Long memberOrderUid) {
-        this.memberOrderUid = memberOrderUid;
-    }
-
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-
-    public MemberVO getMemberVO() {
-        return memberVO;
-    }
-
-
-    public void setMemberVO(MemberVO memberVO) {
-        this.memberVO = memberVO;
-    }
-
-
-    public Integer getType() {
-        return type;
-    }
-
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-
-    public Integer getStatus() {
-        return status;
-    }
-
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-
-    public CurrencyListVO getCurrencyListVO() {
-        return currencyListVO;
-    }
-
-
-    public void setCurrencyListVO(CurrencyListVO currencyListVO) {
-        this.currencyListVO = currencyListVO;
-    }
-
-
-    public String getAmount() {
-        return amount;
-    }
-
-
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-
-    public String getUnitPrice() {
-        return unitPrice;
-    }
-
-
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-
-    public String getHandlingFee() {
-        return handlingFee;
-    }
-
-
-    public void setHandlingFee(String handlingFee) {
-        this.handlingFee = handlingFee;
-    }
-
-
-    public String getPrice() {
-        return price;
-    }
-
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-
-    public CurrencyListVO getPaymentCurrencyUid() {
-        return paymentCurrencyUid;
-    }
-
-
-    public void setPaymentCurrencyUid(CurrencyListVO paymentCurrencyUid) {
-        this.paymentCurrencyUid = paymentCurrencyUid;
-    }
-
 
     public String getMark() {
         return mark;
     }
 
-
     public void setMark(String mark) {
         this.mark = mark;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getGasFeeCharge() {
+        return gasFeeCharge;
+    }
+
+    public void setGasFeeCharge(String gasFeeCharge) {
+        this.gasFeeCharge = gasFeeCharge;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
     public static long getSerialversionuid() {
         return serialVersionUID;
@@ -241,19 +298,26 @@ public class MemberOrderVO implements Serializable {
         return "MemberOrderVO{" +
                 "memberOrderUid=" + memberOrderUid +
                 ", memberVO=" + memberVO +
+                ", currencyListVO=" + currencyListVO +
+                ", memberKeyVO=" + memberKeyVO +
+                ", sellerOrderUid=" + sellerOrderUid +
+                ", paymentCurrencyUid=" + paymentCurrencyUid +
                 ", type=" + type +
                 ", status=" + status +
-                ", currencyListVO=" + currencyListVO +
+                ", isTransferPlatform=" + isTransferPlatform +
+                ", isTransferMember=" + isTransferMember +
                 ", amount='" + amount + '\'' +
                 ", unitPrice='" + unitPrice + '\'' +
                 ", handlingFee='" + handlingFee + '\'' +
                 ", price='" + price + '\'' +
-                ", paymentCurrencyUid=" + paymentCurrencyUid +
+                ", expenditure='" + expenditure + '\'' +
+                ", income='" + income + '\'' +
+                ", txHash='" + txHash + '\'' +
                 ", mark='" + mark + '\'' +
+                ", address='" + address + '\'' +
+                ", gasFeeCharge='" + gasFeeCharge + '\'' +
                 ", updateTime='" + updateTime + '\'' +
                 ", createTime='" + createTime + '\'' +
-                ", income='" + income + '\'' +
-                ", expenditure='" + expenditure + '\'' +
                 '}';
     }
 }

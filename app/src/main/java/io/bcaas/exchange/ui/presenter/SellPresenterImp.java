@@ -81,7 +81,7 @@ public class SellPresenterImp implements SellContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"sell",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "sell", requestJson);
         txInteractor.sell(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -103,8 +103,7 @@ public class SellPresenterImp implements SellContract.Presenter {
                             view.sellSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-//                            if (code == MessageConstants.CODE_2019) {
-                            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                            view.httpException(responseJson);
                             view.sellFailure(responseJson.getMessage());
 
                         }

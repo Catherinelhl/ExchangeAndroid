@@ -87,7 +87,6 @@
             android:background="@color/theme_grey"
             android:layout_height="match_parent">
         <TextView android:layout_width="match_parent"
-
                   android:layout_marginTop="@dimen/d24"
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_marginRight="@dimen/d20"

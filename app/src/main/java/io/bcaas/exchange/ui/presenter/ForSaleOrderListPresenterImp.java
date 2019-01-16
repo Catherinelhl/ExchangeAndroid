@@ -58,7 +58,7 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getOrderList",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getOrderList", requestJson);
         txInteractor.getOrderList(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -85,13 +85,9 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
                             }
                         } else {
                             int code = responseJson.getCode();
-//                            if (code == MessageConstants.CODE_2019) {
-                            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+                            view.httpException(responseJson);
                             view.getOrderListFailure(responseJson.getMessage());
-//                            } else {
-
                         }
-
                     }
 
                     @Override

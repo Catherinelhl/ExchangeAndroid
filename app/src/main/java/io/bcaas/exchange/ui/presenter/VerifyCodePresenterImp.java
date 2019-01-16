@@ -48,8 +48,7 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
         verificationBean.setLanguageCode(languageCode);
         verificationBean.setMail(mail);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
-
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "emailVerify", requestJson);
         safetyCenterInteractor.emailVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -71,6 +70,7 @@ public class VerifyCodePresenterImp implements VerifyCodeContract.Presenter {
                             view.getEmailVerifySuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
+                            // TODO: 2019/1/16 判断是否过期
                             if (code == MessageConstants.CODE_2028) {
                                 //LanguageCode format invalid.
                             }

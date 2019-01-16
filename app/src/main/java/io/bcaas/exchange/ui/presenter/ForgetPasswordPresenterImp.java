@@ -84,14 +84,8 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.forgetPasswordFailure(responseJson.getMessage());
-                            } else {
-                                view.forgetPasswordFailure(responseJson.getMessage());
-
-                            }
-
+                            view.httpException(responseJson);
+                            view.forgetPasswordFailure(responseJson.getMessage());
                         }
 
                     }

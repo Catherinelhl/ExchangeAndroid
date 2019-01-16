@@ -86,6 +86,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
                         } else {
                             int code = responseJson.getCode();
+                            view.httpException(responseJson);
                             view.getRecordFailure(responseJson.getMessage());
                         }
                     }

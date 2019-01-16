@@ -80,14 +80,8 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                         if (isSuccess) {
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.securityPhoneFailure(responseJson.getMessage());
-                            } else {
-                                view.securityPhoneFailure(responseJson.getMessage());
-
-                            }
+                            view.httpException(responseJson);
+                            view.securityPhoneFailure(responseJson.getMessage());
 
                         }
 

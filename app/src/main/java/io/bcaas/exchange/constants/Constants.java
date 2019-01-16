@@ -68,8 +68,8 @@ public class Constants {
         public static final String TW = "TW";//中文（繁體）
         public static final String EN = "EN";//英文
         public static final String ZH_CN = "zh-cn";//中文（简体）
-        public static final String ZH_TW = "zh-tw_CountryCde";//繁中
-        public static final String EN_US = "zh-cn_CountryCde.json";//英文
+        public static final String ZH_TW = "zh-tw";//繁中
+        public static final String EN_US = "zh-cn";//英文
 
         public static final String LOCAL_DEFAULT_IP = "";
 

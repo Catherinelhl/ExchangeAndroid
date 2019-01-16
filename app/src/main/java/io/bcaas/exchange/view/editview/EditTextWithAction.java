@@ -461,7 +461,10 @@ public class EditTextWithAction extends LinearLayout
     @Override
     public void getEmailVerifyFailure(String info) {
         LogTool.e(TAG, info);
-
+        Toast.makeText(context, info, Toast.LENGTH_SHORT).show();
+        // 停止计时
+        tvAction.setText(getResources().getString(R.string.send));
+        disposeRequest(disposableCountDownTimer);
     }
 
     public void setRightText(String info) {
