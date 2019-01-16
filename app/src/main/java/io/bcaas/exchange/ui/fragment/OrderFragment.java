@@ -43,8 +43,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     ViewPager viewPager;
 
     private OrderRecordContract.Presenter presenter;
-
-
     private List<MemberOrderVO> memberOrderVOList;
 
     private TabViewAdapter tabViewAdapter;
@@ -87,7 +85,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             //显示标题
             tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
             OrderView orderView = new OrderView(getContext());
-            orderView.setOrderTransactionAdapter(memberOrderVOList);
+            orderView.setAdapter(memberOrderVOList, currentPosition);
             orderView.setOnItemSelectListener(onItemSelectListener);
             views.add(orderView);
         }
@@ -101,6 +99,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
+                memberOrderVOList.clear();
                 refreshView();
             }
 
@@ -118,6 +117,10 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     }
 
     private void refreshView() {
+        LogTool.d(TAG, "refreshView:" + currentPosition);
+        if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+            ((OrderView) views.get(currentPosition)).setAdapter(memberOrderVOList, currentPosition);
+        }
         switch (currentPosition) {
             case 0:
                 if (presenter != null) {
@@ -135,9 +138,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                 }
                 break;
         }
-        if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-            ((OrderView) views.get(currentPosition)).setOrderRechargeAdapter(memberOrderVOList);
-        }
+
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
@@ -212,19 +213,19 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             switch (type) {
                 case Constants.OrderType.RECHARGE:
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                        ((OrderView) views.get(1)).setOrderRechargeAdapter(memberOrderVOList);
+                        ((OrderView) views.get(1)).setAdapter(memberOrderVOList, 1);
                     }
                     nextObjectIdRecharge = paginationVO.getNextObjectId();
                     break;
                 case Constants.OrderType.WITHDRAW:
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                        ((OrderView) views.get(2)).setOrderWithDrawAdapter(memberOrderVOList);
+                        ((OrderView) views.get(2)).setAdapter(memberOrderVOList, 2);
                     }
                     nextObjectIdWithDraw = paginationVO.getNextObjectId();
                     break;
                 default:
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                        ((OrderView) views.get(0)).setOrderTransactionAdapter(memberOrderVOList);
+                        ((OrderView) views.get(0)).setAdapter(memberOrderVOList, 0);
                     }
                     nextObjectIdTx = paginationVO.getNextObjectId();
                     break;
@@ -234,7 +235,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             memberOrderVOList.clear();
             //判断当前的选中position，然后更新当前页面
             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                ((OrderView) views.get(currentPosition)).setOrderRechargeAdapter(memberOrderVOList);
+                ((OrderView) views.get(currentPosition)).setAdapter(memberOrderVOList, currentPosition);
             }
         }
     }
@@ -246,7 +247,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void cancelOrderSuccess(MemberOrderVO memberOrderVO) {
-        LogTool.d(TAG, "cancelOrderSuccess:" + memberOrderVO);
         refreshView();
     }
 }

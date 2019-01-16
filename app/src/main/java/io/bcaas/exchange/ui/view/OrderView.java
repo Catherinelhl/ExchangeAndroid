@@ -80,44 +80,45 @@ public class OrderView extends LinearLayout {
         }
     };
 
-    public void setOrderRechargeAdapter(List<MemberOrderVO> memberOrderVOS) {
-        if (orderRechargeAdapter == null) {
-            orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
-            orderRechargeAdapter.setOnItemSelectListener(onItemSelectListener);
-            rvOrderData.setHasFixedSize(true);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-            rvOrderData.setLayoutManager(linearLayoutManager);
-        }else{
-            orderRechargeAdapter.addList(memberOrderVOS);
-        }
-        rvOrderData.setAdapter(orderRechargeAdapter);
-    }
+    public void setAdapter(List<MemberOrderVO> memberOrderVOS, int currentPosition) {
+        switch (currentPosition) {
+            case 0://交易
+                if (orderTransactionAdapter == null) {
+                    orderTransactionAdapter = new OrderTransactionAdapter(getContext(), memberOrderVOS);
+                    orderTransactionAdapter.setOnItemSelectListener(onItemSelectListener);
+                    rvOrderData.setHasFixedSize(true);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                    rvOrderData.setLayoutManager(linearLayoutManager);
+                } else {
+                    orderTransactionAdapter.addList(memberOrderVOS);
+                }
+                rvOrderData.setAdapter(orderTransactionAdapter);
+                break;
+            case 1://充值
+                if (orderRechargeAdapter == null) {
+                    orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
+                    orderRechargeAdapter.setOnItemSelectListener(onItemSelectListener);
+                    rvOrderData.setHasFixedSize(true);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                    rvOrderData.setLayoutManager(linearLayoutManager);
+                } else {
+                    orderRechargeAdapter.addList(memberOrderVOS);
+                }
+                rvOrderData.setAdapter(orderRechargeAdapter);
+                break;
+            case 2:// 提現
+                if (orderWithdrawAdapter == null) {
+                    orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
+                    orderWithdrawAdapter.setOnItemSelectListener(onItemSelectListener);
+                    rvOrderData.setHasFixedSize(true);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                    rvOrderData.setLayoutManager(linearLayoutManager);
+                } else {
+                    orderWithdrawAdapter.addList(memberOrderVOS);
+                }
+                rvOrderData.setAdapter(orderWithdrawAdapter);
+                break;
 
-    public void setOrderWithDrawAdapter(List<MemberOrderVO> memberOrderVOS) {
-        if (orderWithdrawAdapter == null) {
-            orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
-            orderWithdrawAdapter.setOnItemSelectListener(onItemSelectListener);
-            rvOrderData.setHasFixedSize(true);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-            rvOrderData.setLayoutManager(linearLayoutManager);
-        }else{
-            orderWithdrawAdapter.addList(memberOrderVOS);
         }
-        rvOrderData.setAdapter(orderWithdrawAdapter);
-    }
-
-    public void setOrderTransactionAdapter(List<MemberOrderVO> memberOrderVOS) {
-        LogTool.d(TAG,memberOrderVOS);
-
-        if (orderTransactionAdapter == null) {
-            orderTransactionAdapter = new OrderTransactionAdapter(getContext(), memberOrderVOS);
-            orderTransactionAdapter.setOnItemSelectListener(onItemSelectListener);
-            rvOrderData.setHasFixedSize(true);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-            rvOrderData.setLayoutManager(linearLayoutManager);
-        }else{
-            orderTransactionAdapter.addList(memberOrderVOS);
-        }
-        rvOrderData.setAdapter(orderTransactionAdapter);
     }
 }
