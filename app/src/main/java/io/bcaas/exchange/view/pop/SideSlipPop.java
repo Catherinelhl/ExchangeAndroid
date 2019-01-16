@@ -41,8 +41,10 @@ public class SideSlipPop extends PopupWindow {
 
     private Context context;
     private View view;
-    //当前的选择
-    private MemberKeyVO memberKeyVO;
+    //一旦点击确定，那么就需要存储下来，如果没有，那么就需要重新信息
+    private MemberKeyVO lastMemberKeyVO;
+    //当前的选择的type信息
+    private MemberKeyVO currentSelectMemberKeyVO;
     //记录下当前需要过滤的数据游标，用于下一次匹配是否是同样的数据
     private MemberKeyVO memberKeyVOFilterCursor;
 
@@ -87,10 +89,11 @@ public class SideSlipPop extends PopupWindow {
                     @Override
                     public void onNext(Object o) {
                         if (sidesSlipAdapter != null) {
-                            sidesSlipAdapter.resetData();
+                            sidesSlipAdapter.resetData(null);
                         }
                         if (onItemSelectListener != null) {
-                            onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP_RESET);
+                            lastMemberKeyVO = null;
+                            onItemSelectListener.onItemSelect(currentSelectMemberKeyVO, Constants.From.SIDE_SLIP_RESET);
                         }
 
                     }
@@ -115,7 +118,8 @@ public class SideSlipPop extends PopupWindow {
                     @Override
                     public void onNext(Object o) {
                         if (onItemSelectListener != null) {
-                            onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP);
+                            lastMemberKeyVO = currentSelectMemberKeyVO;
+                            onItemSelectListener.onItemSelect(currentSelectMemberKeyVO, Constants.From.SIDE_SLIP);
                         }
                         dismiss();
                     }
@@ -137,7 +141,7 @@ public class SideSlipPop extends PopupWindow {
         sidesSlipAdapter.setOnItemSelectListener(new OnItemSelectListener() {
             @Override
             public <T> void onItemSelect(T type, String from) {
-                memberKeyVO = (MemberKeyVO) type;
+                currentSelectMemberKeyVO = (MemberKeyVO) type;
 
             }
         });
@@ -161,11 +165,22 @@ public class SideSlipPop extends PopupWindow {
             //3:判断是否有历史过滤数据
             if (this.memberKeyVOFilterCursor != null) {
                 //4：判断是否是同一条数据
-                if (!this.memberKeyVOFilterCursor.equals(memberKeyVOFilterCursor)) {
+                if (this.memberKeyVOFilterCursor.equals(memberKeyVOFilterCursor)) {
+                    //需要判断上一次是否点击了确定，如果没有，也需要重置数据
+                    if (lastMemberKeyVO == null) {
+                        if (sidesSlipAdapter != null) {
+                            sidesSlipAdapter.resetData(null);
+                        }
+                    }else if(lastMemberKeyVO!=currentSelectMemberKeyVO){
+                        if (sidesSlipAdapter != null) {
+                            sidesSlipAdapter.resetData(lastMemberKeyVO);
+                        }
+                    }
+                } else {
                     //刷新adapter的数据，并且存储最新游标数据
                     this.memberKeyVOFilterCursor = memberKeyVOFilterCursor;
                     if (sidesSlipAdapter != null) {
-                        sidesSlipAdapter.resetData();
+                        sidesSlipAdapter.resetData(null);
                     }
                 }
             } else {

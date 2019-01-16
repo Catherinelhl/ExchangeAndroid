@@ -24,7 +24,7 @@ public class SidesSlipAdapter extends BaseAdapter {
     private Context context;
     private List<MemberKeyVO> memberKeyVOList;
     private OnItemSelectListener onItemSelectListener;
-    private int currentPosition = -1;
+    private MemberKeyVO currentMemberKeyVO;
 
     public SidesSlipAdapter(Context c) {
         context = c;
@@ -62,9 +62,10 @@ public class SidesSlipAdapter extends BaseAdapter {
         } else {
             button = (Button) convertView;
         }
-        button.setBackgroundResource(getBg(position));
-        button.setTextColor(getColor(position));
         MemberKeyVO memberKeyVO = memberKeyVOList.get(position);
+
+        button.setBackgroundResource(getBg(memberKeyVO));
+        button.setTextColor(getColor(memberKeyVO));
         if (memberKeyVO != null) {
             CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
             if (currencyListVO != null) {
@@ -72,7 +73,7 @@ public class SidesSlipAdapter extends BaseAdapter {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        currentPosition = position;
+                        currentMemberKeyVO = memberKeyVO;
                         notifyDataSetChanged();
                         if (onItemSelectListener != null) {
                             onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP);
@@ -87,15 +88,21 @@ public class SidesSlipAdapter extends BaseAdapter {
 
     }
 
-    private int getBg(int position) {
-        if (position == currentPosition) {
+    private int getBg(MemberKeyVO memberKeyVO) {
+        if (currentMemberKeyVO == null) {
+            return R.drawable.solid_border_grey;
+        }
+        if (currentMemberKeyVO.equals(memberKeyVO)) {
             return R.drawable.solid_border_red;
         }
         return R.drawable.solid_border_grey;
     }
 
-    private int getColor(int position) {
-        if (position == currentPosition) {
+    private int getColor(MemberKeyVO memberKeyVO) {
+        if (currentMemberKeyVO == null) {
+            return context.getResources().getColor(R.color.grey_999999);
+        }
+        if (currentMemberKeyVO.equals(memberKeyVO)) {
             return context.getResources().getColor(R.color.white);
         }
         return context.getResources().getColor(R.color.grey_999999);
@@ -104,8 +111,8 @@ public class SidesSlipAdapter extends BaseAdapter {
     /**
      * 重置当前数据
      */
-    public void resetData() {
-        currentPosition = -1;
+    public void resetData(MemberKeyVO memberKeyVO) {
+        currentMemberKeyVO = memberKeyVO;
         notifyDataSetChanged();
     }
 }
