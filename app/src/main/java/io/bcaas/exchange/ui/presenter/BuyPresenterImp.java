@@ -64,9 +64,7 @@ public class BuyPresenterImp implements BuyContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-
-
-        LogTool.d(TAG, "buy:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "buy", requestJson);
         txInteractor.buy(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

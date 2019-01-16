@@ -55,8 +55,7 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-
-        LogTool.d(TAG, "withDraw:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "withDraw", requestJson);
         txInteractor.withDraw(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

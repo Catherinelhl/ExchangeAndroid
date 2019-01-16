@@ -61,7 +61,7 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, "register:"+GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"register",requestJson);
 
         loginInteractor.register(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())

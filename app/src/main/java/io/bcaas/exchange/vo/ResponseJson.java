@@ -2,7 +2,6 @@ package io.bcaas.exchange.vo;
 
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.bean.VerificationBean;
-import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.gson.ServerResponseJson;
 
 import java.util.List;
@@ -291,7 +290,7 @@ public class ResponseJson extends ServerResponseJson {
 
     @Override
     public String toString() {
-        return GsonTool.string("ResponseJson{" +
+        return "ResponseJson{" +
                 "versionVO=" + versionVO +
                 ", versionList=" + versionList +
                 ", memberVO=" + memberVO +
@@ -310,6 +309,6 @@ public class ResponseJson extends ServerResponseJson {
                 ", verificationBean=" + verificationBean +
                 ", verificationBeanList=" + verificationBeanList +
                 ", paginationVO=" + paginationVO +
-                '}');
+                '}';
     }
 }

@@ -55,7 +55,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "login", requestJson);
         loginInteractor.login(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -84,6 +84,13 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2005) {
                                 view.loginFailure(MessageConstants.ERROR_EMAIL_NOT_REGISTER);
+                            } else if (code == MessageConstants.CODE_2010) {
+                                //1：如果当前图形验证码错误，那么返回的是2010，包括输入上一次的code
+                                //  {"success":false,"code":2010,"message":"Verify code fail."}
+                                view.ImageVerifyCodeError(responseJson.getMessage());
+                            } else if (code == MessageConstants.CODE_2025) {
+                                //    {"success":false,"code":2025,"message":"Verify code expire."}
+                                view.ImageVerifyCodeError(responseJson.getMessage());
                             } else {
                                 view.loginFailure(responseJson.getMessage());
                             }

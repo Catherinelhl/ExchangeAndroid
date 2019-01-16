@@ -71,7 +71,7 @@ public class CloseVerifyPresenterImp
         requestJson.setLoginInfoVO(loginInfoVO);
 
         requestJson.setVerificationBeanList(verificationBeans);
-        LogTool.d(TAG, GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"closeVerifyCode",requestJson);
         safetyCenterInteractor.closeSecurityVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

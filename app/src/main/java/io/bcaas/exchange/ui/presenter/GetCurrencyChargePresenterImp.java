@@ -54,7 +54,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
         currencyListVORequest.setCurrencyUid(currencyUid);
         requestJson.setCurrencyListVO(currencyListVORequest);
 
-        LogTool.d(TAG, "getCurrencyCharge:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getCurrencyCharge",requestJson);
 
         txInteractor.getCurrencyCharge(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())

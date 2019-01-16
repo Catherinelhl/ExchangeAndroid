@@ -57,8 +57,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
-
-        LogTool.d(TAG, "getRecord:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getRecord",requestJson);
 
         txInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -71,7 +70,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, GsonTool.string(responseJson));
+                        LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
                             view.getRecordFailure(MessageConstants.EMPTY);
                             return;
@@ -128,8 +127,7 @@ public class OrderRecordPresenterImp implements OrderRecordContract.Presenter {
         MemberOrderVO memberOrderVO = new MemberOrderVO();
         memberOrderVO.setMemberOrderUid(memberOrderUid);
         requestJson.setMemberOrderVO(memberOrderVO);
-
-        LogTool.d(TAG, "cancelOrder:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"cancelOrder:",requestJson);
         txInteractor.cancelOrder(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

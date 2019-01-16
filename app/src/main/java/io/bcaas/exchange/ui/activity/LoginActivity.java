@@ -223,16 +223,20 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             case Constants.RequestCode.REGISTER_CODE: //注册页面返回
                 LogTool.d(TAG, "register return");
                 //清空当前界面信息
-                if (etImageCode!=null){
+                if (etImageCode != null) {
                     etImageCode.setContent(MessageConstants.EMPTY);
+                    // 重新刷新登录界面的验证码
+                    etImageCode.requestImageVerifyCode();
                 }
-                // 重新刷新登录界面的验证码
-                etImageCode.requestImageVerifyCode();
                 break;
             case Constants.RequestCode.RESET_PASSWORD_CODE://重置密码页面返回
                 LogTool.d(TAG, "reset password");
-                // 重新刷新登录界面的验证码
-                etImageCode.requestImageVerifyCode();
+                if (etImageCode != null) {
+                    etImageCode.setContent(MessageConstants.EMPTY);
+                    // 重新刷新登录界面的验证码
+                    etImageCode.requestImageVerifyCode();
+
+                }
                 break;
 
 
@@ -252,4 +256,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         showToast(info);
     }
 
+    @Override
+    public void ImageVerifyCodeError(String info) {
+        hideSoftKeyboard();
+        showToast(info);
+        //验证码错误，主动刷新
+        // 重新刷新登录界面的验证码
+        if (etImageCode != null) {
+            etImageCode.setContent(MessageConstants.EMPTY);
+            etImageCode.requestImageVerifyCode();
+        }
+
+    }
 }

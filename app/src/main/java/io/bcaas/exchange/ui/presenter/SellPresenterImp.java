@@ -81,9 +81,7 @@ public class SellPresenterImp implements SellContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-
-
-        LogTool.d(TAG, "sell:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"sell",requestJson);
         txInteractor.sell(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

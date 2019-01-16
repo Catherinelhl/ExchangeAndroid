@@ -63,7 +63,7 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, "securityTxPassword:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityTxPassword",requestJson);
         safetyCenterInteractor.securityTxPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

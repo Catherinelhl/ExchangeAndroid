@@ -54,7 +54,7 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
         requestJson.setLoginInfoVO(loginInfoVO);
 
         requestJson.setExchangeBean(exchangeBean);
-        LogTool.d(TAG, "getCurrencyUSDPrice:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getCurrencyUSDPrice",requestJson);
 
         mainInteractor.getCurrencyUSDPrice(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -119,7 +119,7 @@ public class MainPresenterImp extends AccountSecurityPresenterImp implements Mai
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, "getAllBalance:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getAllBalance",requestJson);
 
         mainInteractor.getAllBalance(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())

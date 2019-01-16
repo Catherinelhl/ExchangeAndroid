@@ -52,6 +52,8 @@ public class MessageConstants {
     public static final String ERROR_ACCOUNT_FORMAT_INVALID = "Account format invalid.";
     public static final int CODE_2008 = 2008;
     public static final String ERROR_PASSWORD_FORMAT_INVALID = "Password format invalid.";
+    public static final int CODE_2010 = 2010;
+    public static final String ERROR_VERIFY_CODE_FAIL = "Verify code fail.";
     public static final int CODE_2012 = 2012;
     public static final String ERROR_PHONE_FORMAT_INVALID = "Phone format invalid.";
     public static final int CODE_2014 = 2014;
@@ -68,6 +70,8 @@ public class MessageConstants {
     public static final String SUCCESS_ACCESSTOKEN_VERIFY = "AccessToken verify success.";
     public static final int CODE_2022 = 2022;
     public static final String ERROR_TXPASSWORD_SAME_PASSWORD = "TxPassword is the same as the account password.";
+    public static final int CODE_2025 = 2025;
+    public static final String ERROR_VERIFY_CODE_EXPIRE = "Verify code expire.";
     public static final int CODE_2026 = 2026;
     public static final String ERROR_ORDER_TYPE = "Order type format invalid.";
     public static final int CODE_2027 = 2027;
@@ -182,4 +186,9 @@ public class MessageConstants {
 
     public static final String NO_ENOUGH_BALANCE = "-1";
     public static final String AMOUNT_EXCEPTION_CODE = "-1";
+
+    public class LogInfo {
+        public static final String REQUEST_JSON = "【RequestJson】";
+        public static final String RESPONSE_JSON = "【ResponseJson】";
+    }
 }

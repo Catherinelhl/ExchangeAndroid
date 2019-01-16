@@ -49,7 +49,7 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, "getAccountSecurity:" + requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getAccountSecurity", requestJson);
         accountSecurityInteractor.getAccountSecurity(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

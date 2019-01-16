@@ -48,7 +48,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
-        LogTool.d(TAG, requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "logout", requestJson);
         safetyCenterInteractor.logout(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -110,7 +110,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, "securityPhone：" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityPhone",requestJson);
         safetyCenterInteractor.securityPhone(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

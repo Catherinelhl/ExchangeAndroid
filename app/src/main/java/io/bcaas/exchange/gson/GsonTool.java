@@ -4,8 +4,10 @@ package io.bcaas.exchange.gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.encryption.AESTool;
+import io.bcaas.exchange.vo.RequestJson;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -87,5 +89,9 @@ public class GsonTool {
         return new GsonBuilder()
                 .disableHtmlEscaping()
                 .create();
+    }
+
+    public static <T> void logInfo(String TAG, String stuff, String flag, T info) {
+        LogTool.d(TAG, stuff, flag, GsonTool.string(info));
     }
 }

@@ -58,7 +58,7 @@ public class ForSaleOrderListPresenterImp implements ForSaleOrderListContract.Pr
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
-        LogTool.d(TAG, "getOrderList:" + GsonTool.string(requestJson));
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"getOrderList",requestJson);
         txInteractor.getOrderList(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
