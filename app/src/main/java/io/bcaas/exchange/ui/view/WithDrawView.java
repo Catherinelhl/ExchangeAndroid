@@ -46,13 +46,15 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
     private TextView tvNoFundPasswordTips;
     private TextView tvSetImmediately;
     private LinearLayout llNoFundPassword;
-    String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
+    private String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
 
     private Context context;
     private OnItemSelectListener onItemSelectListener;
     private String fee;
     private CurrencyListVO currencyListVO;
     private MemberKeyVO memberKeyVO;
+    //得到可提现余额
+    private String balanceAvailable;
 
     private GetCurrencyChargeContract.Presenter presenter;
 
@@ -101,6 +103,20 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
     }
 
     private void initListener() {
+        etwaWithdrawAmount.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+                if (StringTool.notEmpty(balanceAvailable)){
+                    etwaWithdrawAmount.setContent(balanceAvailable);
+
+                }
+            }
+        },Constants.EditTextFrom.WITHDRAW_AMOUNT);
         RxView.clicks(btnSend).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -122,15 +138,15 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
                             Toast.makeText(context, "请输入 提现金额", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        MemberOrderVO memberOrderVO=new MemberOrderVO();
+                        MemberOrderVO memberOrderVO = new MemberOrderVO();
                         memberOrderVO.setAmount(withDrawAmount);
                         memberOrderVO.setMark(etwaRemarks.getContent());
-                        RequestJson requestJson=new RequestJson();
+                        RequestJson requestJson = new RequestJson();
                         requestJson.setMemberOrderVO(memberOrderVO);
-                        MemberKeyVO memberKeyVOTemp=new MemberKeyVO();
+                        MemberKeyVO memberKeyVOTemp = new MemberKeyVO();
                         memberKeyVOTemp.setAddress(address);
                         requestJson.setMemberKeyVO(memberKeyVOTemp);
-                        CurrencyListVO currencyListVO=new CurrencyListVO();
+                        CurrencyListVO currencyListVO = new CurrencyListVO();
                         currencyListVO.setCurrencyUid(memberKeyVO.getCurrencyListVO().getCurrencyUid());
                         requestJson.setCurrencyListVO(currencyListVO);
                         if (onItemSelectListener != null) {
@@ -198,7 +214,8 @@ public class WithDrawView extends LinearLayout implements GetCurrencyChargeContr
             }
             if (hasFundPassword) {
                 if (tvCashableBalance != null) {
-                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + memberKeyVO.getBalanceAvailable() + "  " + currencyListVO.getEnName());
+                    balanceAvailable= memberKeyVO.getBalanceAvailable();
+                    tvCashableBalance.setText(context.getResources().getString(R.string.cash_able_balance) + balanceAvailable+ "  " + currencyListVO.getEnName());
                 }
                 if (etwaWithdrawAmount != null) {
                     etwaWithdrawAmount.setRightText(context.getString(R.string.all_in));

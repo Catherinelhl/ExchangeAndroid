@@ -2061,6 +2061,7 @@ string graphic_verify_code
 string hide_bottom_view_on_scroll_behavior
 string income
 string input_account
+string input_amount_to_withdraw
 string input_graphic_verify_code
 string input_password
 string invalid_tx_amount

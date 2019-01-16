@@ -182,6 +182,7 @@ public class Constants {
         public static final String EMAIL_CODE = "emailCode";//邮箱验证码
         public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
         public static final String PHONE_CODE = "phoneCode";//phone verify
+        public static final String WITHDRAW_AMOUNT = "withDrawAmount";//提现金额
     }
 
     /**

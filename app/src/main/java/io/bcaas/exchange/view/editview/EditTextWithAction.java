@@ -212,6 +212,12 @@ public class EditTextWithAction extends LinearLayout
                             }
 
                             startCountDownInterval();
+                        } else if (StringTool.equals(tvActionString, getResources().getString(R.string.all_in))) {
+                            //提现界面的「全部发送」
+                            if (StringTool.equals(from, Constants.EditTextFrom.WITHDRAW_AMOUNT)) {
+
+                            }
+
                         }
                         //返回回调
                         if (editTextWatcherListener != null) {

@@ -38,7 +38,7 @@
                       android:layout_height="@dimen/d96">
             <io.bcaas.exchange.view.editview.EditTextWithAction
                     android:id="@+id/etwa_withdraw_amount"
-                    bcaas:hint="输入提现的金额"
+                    bcaas:hint="@string/input_amount_to_withdraw"
                     bcaas:behaviour="text"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/d48"/>

@@ -145,5 +145,6 @@
     <string name="google_verify_six_verify_code">2.请输入Google验证器应用产生的6位验证码</string>
     <string name="google_account">账号:</string>
     <string name="invalid_tx_amount">无效的交易额</string>
+    <string name="input_amount_to_withdraw">输入提现的金额</string>
 
 </resources>
