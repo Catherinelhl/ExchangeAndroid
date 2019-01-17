@@ -10,7 +10,6 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.BuyDataAdapter;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -49,7 +48,6 @@ public class BuyView extends BaseLinearLayout {
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
-        LogTool.d(TAG, "setOnItemSelectListener:" + onItemSelectListenerTemp);
         this.onItemSelectListenerTemp = onItemSelectListener;
     }
 

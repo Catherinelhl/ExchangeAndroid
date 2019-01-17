@@ -2,7 +2,6 @@ package io.bcaas.exchange.tools.decimal;
 
 
 import io.bcaas.exchange.constants.MessageConstants;
-import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 
 import java.math.BigDecimal;
@@ -49,7 +48,7 @@ public class DecimalTool {
      * @param secondValue
      * @return
      */
-    public static String calculateFirstmultiplySecondValue(String firstValue, String secondValue) {
+    public static String calculateFirstMultiplySecondValue(String firstValue, String secondValue) {
 
         DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
@@ -67,7 +66,7 @@ public class DecimalTool {
     /**
      * 去掉分隔符返回可用于计算的数
      */
-    public static String getCalculateString(String number) {
+    public static String getStringReplaceComma(String number) {
         return number.replace(",", "");
     }
 
@@ -106,7 +105,7 @@ public class DecimalTool {
     public static void main(String[] args) {
 
 //        System.out.println(transferDisplay("99999.10006080"));
-        System.out.println(getCalculateString("9,9999.10006080"));
+        System.out.println(getStringReplaceComma("9,9999.10006080"));
 //        System.out.println(transferStoreDatabase("9,9999.10006080"));
 
 //		DecimalFormat decimalFormat = new DecimalFormat("0.00000000");

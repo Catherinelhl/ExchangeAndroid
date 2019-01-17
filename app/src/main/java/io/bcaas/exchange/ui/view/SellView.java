@@ -1,15 +1,11 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.SellDataBean;
@@ -63,7 +59,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 
     private MemberKeyVO memberKeyVO;
 
-    //当前的汇率，做进度条的系数使用
+    //当前的可售余额
     private String salableBalance;
     //得到当前最终的交易额度
     private String txAmount;
@@ -134,24 +130,26 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = s.toString();
-                if (StringTool.notEmpty(text)
-                        && sbProgress != null
-                        && tvProgressSpeed != null) {
+                if (StringTool.notEmpty(text)) {
+                    //判断当前是否大于0
                     float volume = Float.valueOf(text);
                     if (volume > 0) {
-                        sbProgress.setProgress((int) (100 * volume / Float.valueOf(salableBalance)));
-                        tvProgressSpeed.setText(String.valueOf(volume));
-                        float seekBarWidth = sbProgress.getWidth();
-                        float width = (seekBarWidth - margin * 3) / 100 * sbProgress.getProgress(); //seekBar当前位置的宽度
-                        tvProgressSpeed.setX(width + margin);
-                        setTxAmountInfo(text);
+                        // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额
+                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, text), MessageConstants.NO_ENOUGH_BALANCE)) {
+                            etSellVolume.setText(salableBalance);
+                            etSellVolume.setSelection(salableBalance.length());
+                            setProgressByUserInput(salableBalance);
+                        } else {
+                            setProgressByUserInput(text);
+                        }
                     } else {
-                        resetProgress();
+                        setProgressByUserInput(text);
                     }
 
                 } else {
-                    resetProgress();
+                    setProgressByUserInput("0.0");
                 }
+
             }
 
             @Override
@@ -248,6 +246,27 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                 });
     }
 
+    /**
+     * 设置当前用户设置的进度
+     */
+    private void setProgressByUserInput(String text) {
+        double volume = Double.valueOf(text);
+        if (sbProgress != null && tvProgressSpeed != null) {
+            if (volume > 0) {
+                sbProgress.setProgress((int) (100 * volume / Float.valueOf(salableBalance)));
+                tvProgressSpeed.setText(String.valueOf(volume));
+                float seekBarWidth = sbProgress.getWidth();
+                float width = (seekBarWidth - margin * 3) / 100 * sbProgress.getProgress(); //seekBar当前位置的宽度
+                tvProgressSpeed.setX(width + margin);
+                setTxAmountInfo(text);
+            } else {
+                sbProgress.setProgress(0);
+                tvProgressSpeed.setText("0.0");
+                tvProgressSpeed.setX(margin);
+            }
+        }
+    }
+
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListener = onItemSelectListener;
     }
@@ -277,7 +296,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             // 得到当前减去手续费的量
             String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee);
             //得到当前可换做售出币种的交易额
-            txAmount = DecimalTool.calculateFirstmultiplySecondValue(volumeExceptFee, rateStr);
+            txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr);
             // 判断当前的交易额是否为0，如果为0，则不显示
 //            if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"),
 //                    MessageConstants.NO_ENOUGH_BALANCE)) {
@@ -320,7 +339,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             if (etSellVolume != null) {
                 etSellVolume.setText("0.0");
             }
-            resetProgress();
+            setProgressByUserInput("0.0");
             //置空当前的交易额信息
             txAmount = MessageConstants.EMPTY;
             if (tvFinalTxAmount != null) {
@@ -337,20 +356,9 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 
                 }
             }
-            salableBalance = DecimalTool.getCalculateString(memberKeyVO.getBalanceAvailable());
+            salableBalance = DecimalTool.getStringReplaceComma(memberKeyVO.getBalanceAvailable());
         }
 
-    }
-
-
-    private void resetProgress() {
-        if (sbProgress != null) {
-            sbProgress.setProgress(0);
-        }
-        if (tvProgressSpeed != null) {
-            tvProgressSpeed.setText("0.0");
-            tvProgressSpeed.setX(margin);
-        }
     }
 
     /**

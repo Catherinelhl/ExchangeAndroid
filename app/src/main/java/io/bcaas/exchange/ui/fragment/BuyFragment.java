@@ -161,7 +161,7 @@ public class BuyFragment extends BaseFragment
     };
 
     /**
-     * 重置当前界面
+     * 刷新所有界面
      */
     public void refreshView() {
         if (tabLayout == null) {
@@ -292,11 +292,11 @@ public class BuyFragment extends BaseFragment
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        refreshView();
+        //更新当前存储的所有余额即可
     }
 
     @Override
     public void getAllBalanceFailure(String info) {
-
+        LogTool.e(TAG, info);
     }
 }

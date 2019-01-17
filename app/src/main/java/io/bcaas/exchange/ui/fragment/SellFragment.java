@@ -90,8 +90,6 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
                             if (getAllBalancePresenter != null) {
                                 getAllBalancePresenter.getAllBalance();
                             }
-                            //刷新当前界面
-                            refreshView();
                         }
                     }
                     break;
@@ -187,13 +185,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
-                if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                    //刷新界面
-                    List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-                    if (ListTool.noEmpty(memberKeyVOList)) {
-                        ((SellView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
-                    }
-                }
+                refreshCurrentView();
             }
 
             @Override
@@ -211,11 +203,24 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        refreshView();
+        refreshCurrentView();
     }
 
     @Override
     public void getAllBalanceFailure(String info) {
         LogTool.e(TAG, info);
+    }
+
+    /**
+     * 刷新当前显示的页面即可
+     */
+    private void refreshCurrentView() {
+        if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+            //刷新界面
+            List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+            if (ListTool.noEmpty(memberKeyVOList)) {
+                ((SellView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
+            }
+        }
     }
 }
