@@ -80,9 +80,9 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                         if (isSuccess) {
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
-                            view.httpException(responseJson);
-                            view.securityPhoneFailure(responseJson.getMessage());
-
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.securityPhoneFailure(responseJson.getMessage());
+                            }
                         }
 
                     }

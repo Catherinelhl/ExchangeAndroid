@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -387,5 +389,10 @@ public class MainActivity extends BaseActivity
                     break;
             }
         }
+    }
+
+    @Subscribe
+    public void logoutEvent(LogoutEvent logoutEvent) {
+        showLogoutDialog();
     }
 }

@@ -178,9 +178,10 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     }
 
     @Override
-    public void httpException(ResponseJson responseJson) {
+    public boolean httpExceptionDisposed(ResponseJson responseJson) {
         if (activity != null) {
-            ((BaseActivity) activity).httpException(responseJson);
+            return ((BaseActivity) activity).httpExceptionDisposed(responseJson);
         }
+        return false;
     }
 }

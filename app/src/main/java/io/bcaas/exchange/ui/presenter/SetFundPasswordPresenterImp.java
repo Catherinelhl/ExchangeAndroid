@@ -84,10 +84,11 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
                         if (isSuccess) {
                             view.securityTxPasswordSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
-                            view.securityTxPasswordFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
+                                view.securityTxPasswordFailure(responseJson.getMessage());
+                            }
 
                         }
 

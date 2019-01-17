@@ -9,6 +9,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.event.LogoutEvent;
+import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
 import io.bcaas.exchange.vo.ResponseJson;
@@ -30,6 +32,9 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
         ButterKnife.bind(view);
         initView();
         initListener();
+        //注册otto事件
+        OttoTool.getInstance().register(this);
+
     }
 
     protected abstract int setContentView();
@@ -68,15 +73,17 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
     }
 
     @Override
-    public void httpException(ResponseJson responseJson) {
+    public boolean httpExceptionDisposed(ResponseJson responseJson) {
         if (responseJson == null) {
-            return;
+            return false;
         }
         int code = responseJson.getCode();
         //判断是否是Token过期，弹出提示重新登录，然后跳转界面
         if (code == MessageConstants.CODE_2019) {
             //    {"success":false,"code":2019,"message":"AccessToken expire."}
-            // TODO: 2019/1/16 提示界面重新登录
+            OttoTool.getInstance().post(new LogoutEvent());
+            return true;
         }
+        return false;
     }
 }

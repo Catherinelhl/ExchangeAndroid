@@ -102,9 +102,10 @@ public class SellPresenterImp implements SellContract.Presenter {
                         if (isSuccess) {
                             view.sellSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.sellFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.sellFailure(responseJson.getMessage());
+                            }
 
                         }
 

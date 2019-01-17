@@ -71,9 +71,10 @@ public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
                         if (isSuccess) {
                             view.getPhoneCodeSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.getPhoneCodeFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.getPhoneCodeFailure(responseJson.getMessage());
+                            }
                         }
 
                     }

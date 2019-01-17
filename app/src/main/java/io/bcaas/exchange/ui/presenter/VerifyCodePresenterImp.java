@@ -2,7 +2,6 @@ package io.bcaas.exchange.ui.presenter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -70,10 +69,6 @@ public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCo
                             view.getEmailVerifySuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-                            // TODO: 2019/1/16 判断是否过期
-                            if (code == MessageConstants.CODE_2028) {
-                                //LanguageCode format invalid.
-                            }
                             view.getEmailVerifyFailure(responseJson.getMessage());
                         }
                     }

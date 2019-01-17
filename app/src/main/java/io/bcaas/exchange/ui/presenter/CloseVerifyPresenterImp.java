@@ -92,10 +92,10 @@ public class CloseVerifyPresenterImp
                         if (isSuccess) {
                             view.closeVerifyCodeSuccess(responseJson.getMessage());
                         } else {
-                            view.httpException(responseJson);
 
-                            view.closeVerifyCodeFailure(responseJson.getMessage());
-
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.closeVerifyCodeFailure(responseJson.getMessage());
+                            }
                         }
 
                     }

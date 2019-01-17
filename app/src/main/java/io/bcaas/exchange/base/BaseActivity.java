@@ -81,6 +81,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         TAG = activity.getClass().getSimpleName();
         context = getApplicationContext();
         unbinder = ButterKnife.bind(this);
+        //注册OTTO事件
         OttoTool.getInstance().register(this);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         dataGenerationRegister = new DataGenerationRegister();
@@ -499,21 +500,31 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     }
 
     @Override
-    public void httpException(ResponseJson responseJson) {
+    public boolean httpExceptionDisposed(ResponseJson responseJson) {
         if (responseJson == null) {
-            return;
+            return true;
         }
         int code = responseJson.getCode();
         //判断是否是Token过期，弹出提示重新登录，然后跳转界面
         if (code == MessageConstants.CODE_2019) {
-            //清空当前的token
-            BaseApplication.clearToken();
-            //    {"success":false,"code":2019,"message":"AccessToken expire."}
-            showSingleDialog(getString(R.string.warning),
-                    getString(R.string.please_login_again), () -> {
-                        //跳转到登录
-                        intentToLoginActivity();
-                    });
+            showLogoutDialog();
+            return true;
         }
+        return false;
     }
+
+    /**
+     * 显示登出的弹框
+     */
+    public void showLogoutDialog() {
+        //清空当前的token
+        BaseApplication.clearToken();
+        //    {"success":false,"code":2019,"message":"AccessToken expire."}
+        showSingleDialog(getString(R.string.warning),
+                getString(R.string.please_login_again), () -> {
+                    //跳转到登录
+                    intentToLoginActivity();
+                });
+    }
+
 }

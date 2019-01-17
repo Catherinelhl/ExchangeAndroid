@@ -85,18 +85,20 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                         if (isSuccess) {
                             view.buySuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            if (code == MessageConstants.CODE_2057) {
-                                //  {"success":false,"code":2057,"message":"Illegal request."}
-                                view.buySelfError();
-                            } else if (code == MessageConstants.CODE_2055) {
-                                //{"success":false,"code":2055,"message":"Invalid order information."}
-                                view.invalidBuyOrder(responseJson.getMessage());
-                            } else {
-                                view.buyFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2057) {
+                                    //  {"success":false,"code":2057,"message":"Illegal request."}
+                                    view.buySelfError();
+                                } else if (code == MessageConstants.CODE_2055) {
+                                    //{"success":false,"code":2055,"message":"Invalid order information."}
+                                    view.invalidBuyOrder(responseJson.getMessage());
+                                } else {
+                                    view.buyFailure(responseJson.getMessage());
 
+                                }
                             }
+
 
                         }
 

@@ -87,9 +87,10 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp implements Fo
                                 view.getOrderListFailure(MessageConstants.EMPTY);
                             }
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.getOrderListFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.getOrderListFailure(responseJson.getMessage());
+                            }
                         }
                     }
 

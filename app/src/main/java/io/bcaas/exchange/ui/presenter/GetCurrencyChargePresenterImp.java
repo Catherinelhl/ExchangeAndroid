@@ -79,8 +79,9 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
                             CurrencyListVO currencyListVOResponse = responseJson.getCurrencyListVO();
                             view.getCurrencyChargeSuccess(currencyListVOResponse);
                         } else {
-                            view.httpException(responseJson);
-                            view.getCurrencyChargeFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.getCurrencyChargeFailure(responseJson.getMessage());
+                            }
                         }
 
                     }

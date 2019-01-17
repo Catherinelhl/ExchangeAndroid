@@ -7,9 +7,7 @@ import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.ForgetPasswordContract;
-import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
-import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
@@ -83,9 +81,10 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
                         if (isSuccess) {
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.forgetPasswordFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.forgetPasswordFailure(responseJson.getMessage());
+                            }
                         }
 
                     }

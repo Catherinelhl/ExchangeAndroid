@@ -88,9 +88,10 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                                 }
                             }
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.getAuthenticatorUrlFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.getAuthenticatorUrlFailure(responseJson.getMessage());
+                            }
                         }
 
                     }
@@ -154,7 +155,6 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                                 if (twoFactorAuthVerify == Constants.Status.OPEN) {
                                     view.securityGoogleAuthenticatorSuccess(responseJson.getMessage());
                                 } else {
-                                    // TODO: 2019/1/10 绑定成功就会等于开启，所以else只是为了容错
                                     view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
                                 }
 
@@ -163,9 +163,10 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
 
                             }
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
+                            }
 
                         }
 

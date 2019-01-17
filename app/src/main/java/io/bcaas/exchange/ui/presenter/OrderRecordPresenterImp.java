@@ -87,9 +87,10 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                             }
 
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.getRecordFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.getRecordFailure(responseJson.getMessage());
+                            }
                         }
                     }
 

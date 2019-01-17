@@ -1,7 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.base.BaseApplication;
-import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -83,9 +82,10 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
                         if (isSuccess) {
                             view.resetPasswordSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            view.httpException(responseJson);
-                            view.resetPasswordFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.resetPasswordFailure(responseJson.getMessage());
+                            }
 
                         }
 

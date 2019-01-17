@@ -6,7 +6,6 @@ import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.interactor.AccountSecurityInteractor;
-import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
@@ -78,9 +77,10 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
 
                             }
                         } else {
-                            view.httpException(responseJson);
-                            int code = responseJson.getCode();
-                            view.getAccountSecurityFailure(responseJson.getMessage());
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                int code = responseJson.getCode();
+                                view.getAccountSecurityFailure(responseJson.getMessage());
+                            }
 
                         }
 
