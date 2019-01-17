@@ -171,6 +171,7 @@ public class EditTextWithAction extends LinearLayout
 
         }
         initView();
+        initListener();
     }
 
 
@@ -186,6 +187,22 @@ public class EditTextWithAction extends LinearLayout
     }
 
     private void initView() {
+        if (tvAction == null) {
+            return;
+        }
+        //如果当前有Token的话，那么字体颜色就是蓝色，否则是红色
+        if (StringTool.isEmpty(BaseApplication.getToken())) {
+            tvAction.setTextColor(context.getResources().getColor(R.color.button_color));
+        } else {
+            tvAction.setTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+
+        }
+    }
+
+    /**
+     * 监听
+     */
+    private void initListener() {
         cbCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
             String text = etPassword.getText().toString();
             if (StringTool.isEmpty(text)) {
@@ -405,8 +422,11 @@ public class EditTextWithAction extends LinearLayout
 
     }
 
-    public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener, String from) {
+    public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener) {
         this.editTextWatcherListener = editTextWatcherListener;
+    }
+
+    public void setFrom(String from) {
         this.from = from;
     }
 
@@ -472,12 +492,6 @@ public class EditTextWithAction extends LinearLayout
             tvAction.setText(info);
         }
 
-    }
-
-    public void setRightTextColor(int color) {
-        if (tvAction != null) {
-            tvAction.setTextColor(color);
-        }
     }
 
     /**

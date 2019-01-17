@@ -90,9 +90,6 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
         tvTitle.setText(R.string.with_draw);
         ibBack.setVisibility(View.VISIBLE);
 
-        etMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etGoogleVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
 
         MemberVO memberVO = BaseApplication.getMemberVO();
         getAccountSecuritySuccess(memberVO);

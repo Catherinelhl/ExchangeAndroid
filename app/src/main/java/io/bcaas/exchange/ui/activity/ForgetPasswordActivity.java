@@ -12,7 +12,6 @@ import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.ForgetPasswordContract;
 import io.bcaas.exchange.ui.presenter.ForgetPasswordPresenterImp;
@@ -62,6 +61,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.reset_password_title);
+        emailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
 
     }
 
@@ -120,30 +120,30 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
                         //1:判断当前邮箱的输入
                         String memberId = etAccount.getContent();
                         if (StringTool.isEmpty(memberId)) {
-                            showToast("请输入账号信息！");
+                            showToast(getString(R.string.please_input_account_info));
                             return;
                         }
                         //2：判断当前密码的输入
                         String password = etPassword.getContent();
                         if (StringTool.isEmpty(password)) {
-                            showToast("请输入密码！");
+                            showToast(getString(R.string.please_input_password));
                             return;
                         }
                         //3：判断当前密码的确认输入
                         String passwordConfirm = etPasswordConfirm.getContent();
                         if (StringTool.isEmpty(passwordConfirm)) {
-                            showToast("请确认密码！");
+                            showToast(getString(R.string.confirm_password));
                             return;
                         }
                         //4：判断前后密码是否一致
                         if (!StringTool.equals(password, passwordConfirm)) {
-                            showToast("两次密码输入不一致，请确认！");
+                            showToast(getString(R.string.password_does_not_match));
                             return;
                         }
                         //5：判断当前验证码的输入
                         String verifyCode = emailCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
-                            showToast("请输入验证码！");
+                            showToast(getString(R.string.please_input_verify_code));
                             return;
                         }
                         //6：发送请求
@@ -160,17 +160,6 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
                     }
                 });
-        emailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
-            @Override
-            public void onComplete(String content) {
-
-            }
-
-            @Override
-            public void onAction(String from) {
-
-            }
-        }, Constants.EditTextFrom.EMAIL_CODE);
     }
 
     @Override

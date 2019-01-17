@@ -145,6 +145,8 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
     @Override
     public void logoutSuccess(String info) {
+        //清空token
+        BaseApplication.clearToken();
         intentToActivity(LoginActivity.class, true);
     }
 

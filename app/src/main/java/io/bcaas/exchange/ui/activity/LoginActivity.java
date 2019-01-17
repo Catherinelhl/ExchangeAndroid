@@ -13,6 +13,7 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
@@ -64,9 +65,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void initView() {
+        //清除当前的Token
+        BaseApplication.clearToken();
         //设置账号只能输入邮箱类型
         acount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         setAppVersion();
+        acount.setFrom(Constants.EditTextFrom.LOGIN_ACCOUNT);
+        password.setFrom(Constants.EditTextFrom.LOGIN_PASSWORD);
 
     }
 
@@ -105,7 +110,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             public void onAction(String from) {
 
             }
-        }, Constants.EditTextFrom.LOGIN_ACCOUNT);
+        });
         password.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -121,7 +126,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             public void onAction(String from) {
 
             }
-        }, Constants.EditTextFrom.LOGIN_PASSWORD);
+        });
         RxView.clicks(tvRegisterNow).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

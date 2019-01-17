@@ -71,7 +71,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
         countryCodes = new ArrayList<>();
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.bind_phone);
-        etMessageCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
+        etMessageCode.setFrom(Constants.EditTextFrom.PHONE_CODE);
         etMessageCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -89,7 +89,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                 String sendPhoneInfo = tvCode.getText() + phone;
                 presenter.getPhoneCode(sendPhoneInfo, getCurrentLanguage());
             }
-        }, Constants.EditTextFrom.PHONE_CODE);
+        });
 
     }
 

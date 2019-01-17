@@ -87,6 +87,14 @@ public class BaseApplication extends MultiDexApplication {
         return token;
     }
 
+    public static void setToken(String token) {
+        BaseApplication.token = token;
+    }
+
+    public static void clearToken() {
+        BaseApplication.token = MessageConstants.EMPTY;
+    }
+
     public static boolean isSetFundPassword() {
         MemberVO memberVO = getMemberVO();
         if (memberVO == null) {

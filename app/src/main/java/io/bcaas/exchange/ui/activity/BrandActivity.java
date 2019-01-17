@@ -36,6 +36,7 @@ public class BrandActivity extends BaseActivity {
     private ObservableTimerListener observableTimerListener = new ObservableTimerListener() {
         @Override
         public void timeUp(Constants.TimerType timerType) {
+            // TODO: 2019/1/17 判断当前是否有token存在进行不同页面的跳转
 //            if (BuildConfig.DEBUG) {
 //                intentToActivity(MainActivity.class, true);
 //            } else {

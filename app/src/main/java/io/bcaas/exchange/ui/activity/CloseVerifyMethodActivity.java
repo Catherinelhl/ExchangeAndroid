@@ -86,9 +86,8 @@ public class CloseVerifyMethodActivity extends BaseActivity
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.close_verify);
-        etEmailVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-        etMessageVerifyCode.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
-
+        etEmailVerifyCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
+        etMessageVerifyCode.setFrom(Constants.EditTextFrom.PHONE_CODE);
     }
 
     @Override
@@ -111,7 +110,7 @@ public class CloseVerifyMethodActivity extends BaseActivity
             public void onAction(String from) {
 
             }
-        }, Constants.EditTextFrom.EMAIL_CODE);
+        });
         etMessageVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -135,7 +134,7 @@ public class CloseVerifyMethodActivity extends BaseActivity
                 phoneVerifyPresenter.getPhoneCode(phone, getCurrentLanguage());
             }
 
-        }, Constants.EditTextFrom.PHONE_CODE);
+        });
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

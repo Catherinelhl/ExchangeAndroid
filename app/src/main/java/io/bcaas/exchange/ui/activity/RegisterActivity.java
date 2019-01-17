@@ -68,6 +68,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         tvTitle.setText(R.string.register_title);
         //设置账号只能输入邮箱类型
         etAccount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        etEmailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
 
     }
 
@@ -191,16 +192,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        etEmailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
-            @Override
-            public void onComplete(String content) {
-
-            }
-
-            @Override
-            public void onAction(String from) {
-            }
-        }, Constants.EditTextFrom.EMAIL_CODE);
     }
 
     @Override

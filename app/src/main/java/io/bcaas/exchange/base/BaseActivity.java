@@ -495,6 +495,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         int code = responseJson.getCode();
         //判断是否是Token过期，弹出提示重新登录，然后跳转界面
         if (code == MessageConstants.CODE_2019) {
+            //清空当前的token
+            BaseApplication.clearToken();
             //    {"success":false,"code":2019,"message":"AccessToken expire."}
             showSingleDialog(getString(R.string.warning),
                     getString(R.string.please_login_again), () -> {

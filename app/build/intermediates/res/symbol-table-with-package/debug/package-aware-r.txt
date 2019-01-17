@@ -2101,6 +2101,7 @@ string phone_number
 string phone_verify
 string phone_verify_purpose
 string please_input_account
+string please_input_account_info
 string please_input_amount_withdraw
 string please_input_confirm_password
 string please_input_email_verify_code

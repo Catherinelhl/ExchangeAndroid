@@ -86,7 +86,8 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     @Override
     protected void initView() {
         tvNoFundPasswordTips.setText(info);
-
+        etReceiveAddress.setFrom(Constants.EditTextFrom.WITHDRAW_SCAN);
+        etWithdrawAmount.setFrom(Constants.EditTextFrom.WITHDRAW_AMOUNT);
     }
 
     @Override
@@ -104,7 +105,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                     onItemSelectListener.onItemSelect(null, from);
                 }
             }
-        }, Constants.EditTextFrom.WITHDRAW_SCAN);
+        });
 
         etWithdrawAmount.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
@@ -119,7 +120,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
 
                 }
             }
-        }, Constants.EditTextFrom.WITHDRAW_AMOUNT);
+        });
         RxView.clicks(btnSend).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -224,7 +225,6 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                 }
                 if (etWithdrawAmount != null) {
                     etWithdrawAmount.setRightText(context.getString(R.string.all_in));
-                    etWithdrawAmount.setRightTextColor(context.getResources().getColor(R.color.blue_5B88FF));
                 }
             }
         }
