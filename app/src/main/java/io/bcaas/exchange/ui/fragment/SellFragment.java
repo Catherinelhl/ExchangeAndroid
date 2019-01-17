@@ -20,7 +20,9 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
+import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
+import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.presenter.GetCurrencyChargePresenterImp;
 import io.bcaas.exchange.ui.view.SellView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
@@ -37,7 +39,7 @@ import java.util.List;
  * 「售出」
  * 拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
-public class SellFragment extends BaseFragment {
+public class SellFragment extends BaseFragment implements GetAllBalanceContract.View {
     private String TAG = SellFragment.class.getSimpleName();
 
     @BindView(R.id.tab_layout)
@@ -49,6 +51,7 @@ public class SellFragment extends BaseFragment {
     private List<View> views;
     // 当前tab的选中
     private int currentPosition = 0;
+    private GetAllBalanceContract.Presenter getAllBalancePresenter;
 
 
     @Override
@@ -58,15 +61,95 @@ public class SellFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
+        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         isPrepared = true;
         views = new ArrayList<>();
-        initTopTabData();
+        refreshView();
     }
 
+    @Override
+    public void getArgs(Bundle bundle) {
+
+    }
+
+    @Override
+    public void initListener() {
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.SELL_DETAIL_CODE:
+                    if (data != null) {
+                        boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
+                        if (!isBack) {
+                            LogTool.d(TAG, "onActivityResult:" + requestCode);
+                            //重新请求getAllBalance 信息刷新当前的界面信息
+                            if (getAllBalancePresenter != null) {
+                                getAllBalancePresenter.getAllBalance();
+                            }
+                            //刷新当前界面
+                            refreshView();
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+
+            if (type == null) {
+                return;
+            }
+            if (StringTool.notEmpty(from)) {
+                switch (from) {
+                    case Constants.From.SELL_SELECT_CURRENCY:
+                        if (type instanceof CurrencyListVO) {
+                            CurrencyListVO currencyListVO = (CurrencyListVO) type;
+                            // 显示当前的所有币种信息
+                            if (activity != null) {
+                                ((BaseActivity) activity).showListPopWindow(currencyListVO, onItemSelectListener);
+                            }
+                        }
+
+                        break;
+                    case Constants.From.SELL_SELECTED_CURRENCY:
+                        MemberKeyVO memberKeyVO = (MemberKeyVO) type;
+                        // 更新当前的界面信息
+                        if (ListTool.noEmpty(views)) {
+                            if (currentPosition < views.size()) {
+                                ((SellView) views.get(currentPosition)).refreshExchangeCurrency(memberKeyVO);
+
+                            }
+                        }
+                        break;
+                    case Constants.From.SELL_VIEW:
+                        SellDataBean sellDataBean = (SellDataBean) type;
+                        if (sellDataBean == null) {
+                            return;
+                        }
+                        Intent intent = new Intent();
+                        //直接将SellDataBean数据类传递到下一个页面
+                        intent.putExtra(Constants.KeyMaps.SELL_DATA_BEAN, sellDataBean);
+                        intent.setClass(context, SellDetailActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
+                        break;
+
+                }
+            }
+
+        }
+    };
+
     /**
-     * 初始化顶部tab的数据以及相对应的界面信息
+     * 重置当前界面
      */
-    private void initTopTabData() {
+    public void refreshView() {
         if (tabLayout == null) {
             return;
         }
@@ -124,93 +207,15 @@ public class SellFragment extends BaseFragment {
             }
         });
         tabLayout.resetSelectedTab(0);
-
     }
 
     @Override
-    public void getArgs(Bundle bundle) {
-
+    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
+        refreshView();
     }
 
     @Override
-    public void initListener() {
+    public void getAllBalanceFailure(String info) {
+        LogTool.e(TAG, info);
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case Constants.RequestCode.SELL_DETAIL_CODE:
-                    if (data != null) {
-                        boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
-                        if (!isBack) {
-                            LogTool.d(TAG, "onActivityResult:" + requestCode);
-                            //重新请求getAllBalance 信息刷新当前的界面信息
-                            if (activity != null) {
-                                ((MainActivity) activity).getAllBalance();
-                            }
-                            //重置当前界面
-                            resetView();
-                        }
-                        }
-                    break;
-            }
-        }
-    }
-
-    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
-        @Override
-        public <T> void onItemSelect(T type, String from) {
-
-            if (type == null) {
-                return;
-            }
-            if (StringTool.notEmpty(from)) {
-                switch (from) {
-                    case Constants.From.SELL_SELECT_CURRENCY:
-                        if (type instanceof CurrencyListVO) {
-                            CurrencyListVO currencyListVO = (CurrencyListVO) type;
-                            // 显示当前的所有币种信息
-                            if (activity != null) {
-                                ((BaseActivity) activity).showListPopWindow(currencyListVO, onItemSelectListener);
-                            }
-                        }
-
-                        break;
-                    case Constants.From.SELL_SELECTED_CURRENCY:
-                        MemberKeyVO memberKeyVO = (MemberKeyVO) type;
-                        // 更新当前的界面信息
-                        if (ListTool.noEmpty(views)) {
-                            if (currentPosition < views.size()) {
-                                ((SellView) views.get(currentPosition)).refreshExchangeCurrency(memberKeyVO);
-
-                            }
-                        }
-                        break;
-                    case Constants.From.SELL_VIEW:
-                        SellDataBean sellDataBean = (SellDataBean) type;
-                        if (sellDataBean == null) {
-                            return;
-                        }
-                        Intent intent = new Intent();
-                        //直接将SellDataBean数据类传递到下一个页面
-                        intent.putExtra(Constants.KeyMaps.SELL_DATA_BEAN, sellDataBean);
-                        intent.setClass(context, SellDetailActivity.class);
-                        startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
-                        break;
-
-                }
-            }
-
-        }
-    };
-
-    /**
-     * 重置当前界面
-     */
-    public void resetView() {
-        initTopTabData();
-    }
-
 }

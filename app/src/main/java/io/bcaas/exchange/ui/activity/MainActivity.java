@@ -255,7 +255,7 @@ public class MainActivity extends BaseActivity
                 case 0:
                     setTitle(getString(R.string.buy_title));
                     if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).resetView();
+                        ((BuyFragment) currentFragment).refreshView();
                     }
                     //显示右边过滤器
                     ibRight.setVisibility(View.VISIBLE);
@@ -263,7 +263,7 @@ public class MainActivity extends BaseActivity
                 case 1:
                     setTitle(getString(R.string.sell_title));
                     if (currentFragment instanceof SellFragment) {
-                        ((SellFragment) currentFragment).resetView();
+                        ((SellFragment) currentFragment).refreshView();
                     }
                     ibRight.setVisibility(View.GONE);
                     break;
@@ -307,10 +307,10 @@ public class MainActivity extends BaseActivity
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
         if (currentFragment instanceof BuyFragment) {
             //刷新标题
-            ((BuyFragment) currentFragment).resetView();
+            ((BuyFragment) currentFragment).refreshView();
         } else if (currentFragment instanceof SellFragment) {
             //刷新标题
-            ((SellFragment) currentFragment).resetView();
+            ((SellFragment) currentFragment).refreshView();
         }
     }
 
@@ -385,10 +385,7 @@ public class MainActivity extends BaseActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                case Constants.RequestCode.BUY_DETAIL_CODE:
-                    LogTool.d(TAG, "onActivityResult:" + requestCode);
-                    getAllBalance();
-                    break;
+
             }
         }
     }

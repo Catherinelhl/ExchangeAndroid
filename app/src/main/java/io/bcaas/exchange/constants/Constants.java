@@ -171,6 +171,7 @@ public class Constants {
         public static final String FUND_ITEM = "fundItem";//资金列表
         public static final String RECHARGE = "recharge";//充值
         public static final String WITHDRAW = "withDraw";// 提现
+        public static final String BUY = "buy";// 购买
     }
 
     /**

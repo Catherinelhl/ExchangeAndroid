@@ -174,7 +174,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
                                 @Override
                                 public void cancel() {
-
                                 }
                             });
                         }

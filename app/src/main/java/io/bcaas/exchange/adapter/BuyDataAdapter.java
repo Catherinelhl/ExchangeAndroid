@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -79,7 +79,7 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberOrderVO, MessageConstants.EMPTY);
+                    onItemSelectListener.onItemSelect(memberOrderVO, Constants.From.BUY);
                 }
             }
         });

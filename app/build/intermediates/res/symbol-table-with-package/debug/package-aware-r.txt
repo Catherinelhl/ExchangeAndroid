@@ -1718,7 +1718,6 @@ id spread_inside
 id src_atop
 id src_in
 id src_over
-id srl_buy_data
 id srl_data
 id srl_my_fund_data
 id standard

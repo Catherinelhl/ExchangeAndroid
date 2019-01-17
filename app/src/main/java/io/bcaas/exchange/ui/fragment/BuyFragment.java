@@ -22,7 +22,9 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
+import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
+import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -39,7 +41,8 @@ import java.util.List;
  * <p>
  * 買進
  */
-public class BuyFragment extends BaseFragment implements ForSaleOrderListContract.View {
+public class BuyFragment extends BaseFragment
+        implements ForSaleOrderListContract.View, GetAllBalanceContract.View {
     private String TAG = BuyFragment.class.getSimpleName();
 
 
@@ -53,6 +56,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
     private ForSaleOrderListContract.Presenter presenter;
+    private GetAllBalanceContract.Presenter getAllBalancePresenter;
     //标记当前选中的位置，默认为0
     private int currentPosition = 0;
 
@@ -70,6 +74,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
     @Override
     public void initViews(View view) {
         presenter = new ForSaleOrderListPresenterImp(this);
+        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         isPrepared = true;
         views = new ArrayList<>();
         memberOrderVOS = new ArrayList<>();
@@ -81,13 +86,84 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
 
         );
         srlData.setSize(SwipeRefreshLayout.DEFAULT);
-        initTopTabData();
+        refreshView();
     }
 
+    @Override
+    public void getArgs(Bundle bundle) {
+
+    }
+
+    @Override
+    public void initListener() {
+        srlData.setOnRefreshListener(() -> {
+            srlData.setRefreshing(false);
+            requestOrderList();
+        });
+    }
+
+    private void requestOrderList() {
+        // 1：刷新当前购买页面的待出售数据
+
+        if (presenter != null) {
+            // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
+            presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.BUY_DETAIL_CODE:
+                    //1：判断当前是否是点击「返回」按钮返回
+                    if (data != null) {
+                        boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
+                        if (!isBack) {
+                            requestOrderList();
+                            //2：刷新账户的GetAllBalance
+                            if (getAllBalancePresenter != null) {
+                                getAllBalancePresenter.getAllBalance();
+                            }
+                        }
+                    }
+
+                    break;
+                default:
+
+                    break;
+            }
+        }
+    }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            if (type == null) {
+                return;
+            }
+            LogTool.d(TAG, "onItemSelect:" + from);
+            switch (from) {
+                case Constants.From.BUY:
+                    MemberOrderVO memberOrderVO = (MemberOrderVO) type;
+                    LogTool.d(TAG, memberOrderVO);
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL, memberOrderVO);
+                    intent.putExtras(bundle);
+                    intent.setClass(context, BuyDetailActivity.class);
+                    startActivityForResult(intent, Constants.RequestCode.BUY_DETAIL_CODE);
+                    break;
+            }
+
+        }
+    };
+
     /**
-     * 初始化顶部tab的数据以及相对应的界面信息
+     * 重置当前界面
      */
-    private void initTopTabData() {
+    public void refreshView() {
         if (tabLayout == null) {
             return;
         }
@@ -107,7 +183,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                         tabLayout.addTab(name, i);
                     }
                 }
-                BuyView buyView = new BuyView(getContext());
+                BuyView buyView = new BuyView(BaseApplication.context());
                 buyView.refreshData(memberOrderVOS);
                 buyView.setOnItemSelectListener(onItemSelectListener);
                 views.add(buyView);
@@ -161,85 +237,7 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                 presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
             }
 
-        } else {
-            //不加载数据
         }
-    }
-
-    @Override
-    public void getArgs(Bundle bundle) {
-
-    }
-
-    @Override
-    public void initListener() {
-        srlData.setOnRefreshListener(() -> {
-            srlData.setRefreshing(false);
-            requestOrderList();
-        });
-    }
-
-    private void requestOrderList() {
-        // 1：刷新当前购买页面的待出售数据
-
-        if (presenter != null) {
-            // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-            presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
-        }
-    }
-
-    private void getAllBalance() {
-        //2：刷新账户的GetAllBalance
-        if (activity != null) {
-            ((MainActivity) activity).getAllBalance();
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case Constants.RequestCode.BUY_DETAIL_CODE:
-                    //1：判断当前是否是点击「返回」按钮返回
-                    if (data != null) {
-                        boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
-                        if (!isBack) {
-                            requestOrderList();
-                            getAllBalance();
-                        }
-                    }
-
-                    break;
-                default:
-
-                    break;
-            }
-        }
-    }
-
-    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
-        @Override
-        public <T> void onItemSelect(T type, String from) {
-            if (type == null) {
-                return;
-            }
-            MemberOrderVO memberOrderVO = (MemberOrderVO) type;
-            LogTool.d(TAG, memberOrderVO);
-            Intent intent = new Intent();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL, memberOrderVO);
-            intent.putExtras(bundle);
-            intent.setClass(context, BuyDetailActivity.class);
-            startActivityForResult(intent, Constants.RequestCode.BUY_DETAIL_CODE);
-        }
-    };
-
-    /**
-     * 重置当前界面
-     */
-    public void resetView() {
-        initTopTabData();
     }
 
     /**
@@ -292,4 +290,13 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
         showToast(info);
     }
 
+    @Override
+    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
+        refreshView();
+    }
+
+    @Override
+    public void getAllBalanceFailure(String info) {
+
+    }
 }
