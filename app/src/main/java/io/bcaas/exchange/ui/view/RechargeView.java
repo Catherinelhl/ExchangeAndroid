@@ -4,13 +4,10 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.obt.qrcode.encoding.EncodingUtils;
 import io.bcaas.exchange.R;
@@ -29,12 +26,17 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/27
  * 「充值」页面视图
  */
-public class RechargeView extends LinearLayout {
-    ImageView ivQrCode;
-    TextView tvMyAddress;
-    TextView tvCopyAddress;
+public class RechargeView extends BaseLinearLayout {
+    @BindView(R.id.tv_info)
     TextView tvInfo;
+    @BindView(R.id.tv_set_immediately)
     TextView tvSetImmediately;
+    @BindView(R.id.iv_qr_code)
+    ImageView ivQrCode;
+    @BindView(R.id.tv_my_address)
+    TextView tvMyAddress;
+    @BindView(R.id.tv_copy_address)
+    TextView tvCopyAddress;
 
     private Context context;
     private OnItemSelectListener onItemSelectListener;
@@ -50,24 +52,19 @@ public class RechargeView extends LinearLayout {
         initView();
     }
 
-    public RechargeView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        this.context = context;
-        initView();
+    @Override
+    protected int setContentView() {
+        return R.layout.view_recharge;
     }
 
-    private void initView() {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_recharge, this, true);
-        ivQrCode = view.findViewById(R.id.iv_qr_code);
-        tvMyAddress = view.findViewById(R.id.tv_my_address);
-        tvCopyAddress = view.findViewById(R.id.tv_copy_address);
-        tvInfo = view.findViewById(R.id.tv_info);
-        tvSetImmediately = view.findViewById(R.id.tv_set_immediately);
-        initListener();
+
+    @Override
+    protected void initView() {
 
     }
 
-    private void initListener() {
+    @Override
+    protected void initListener() {
         RxView.clicks(tvCopyAddress).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

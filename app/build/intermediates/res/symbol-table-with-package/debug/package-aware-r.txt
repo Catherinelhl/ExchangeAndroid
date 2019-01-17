@@ -1666,6 +1666,7 @@ id right
 id right_icon
 id right_side
 id rl_header
+id rl_no_data
 id rl_setting_types
 id rv_buy_data
 id rv_list
@@ -1911,6 +1912,7 @@ layout design_text_input_password_icon
 layout fragment_account
 layout fragment_content
 layout include_header
+layout include_no_data
 layout item_bottom_tab
 layout item_buy_recycler
 layout item_country_code
@@ -2038,6 +2040,7 @@ string confirm_password
 string congratulations_to_buy_success
 string congratulations_to_register_success
 string congratulations_to_reset_password_success
+string congratulations_to_sell_out
 string congratulations_to_withdraw_success
 string copy_address
 string email
@@ -2081,6 +2084,7 @@ string my_all_fund
 string my_fund
 string network_not_reachable
 string new_password_rule
+string no_data_info
 string no_enough_balance
 string no_fund_password_tips
 string no_google_verify_text
@@ -2685,6 +2689,7 @@ style black_14_text_style
 style black_16_text_style
 style black_18_text_style
 style black_666_14_text_style
+style black_666_16_text_style
 style black_bold_18_text_style
 style button_style
 style dialog_loading

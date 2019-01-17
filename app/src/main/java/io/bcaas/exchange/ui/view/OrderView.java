@@ -4,18 +4,15 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
 import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -25,13 +22,17 @@ import java.util.List;
  * @since 2018/12/27
  * 「订单」页面视图
  */
-public class OrderView extends LinearLayout {
+public class OrderView extends BaseLinearLayout {
     private String TAG = OrderView.class.getSimpleName();
+
+    @BindView(R.id.tv_content)
+    TextView tvContent;
+    @BindView(R.id.rl_no_data)
+    RelativeLayout rlNoData;
     @BindView(R.id.rv_order_data)
     RecyclerView rvOrderData;
     @BindView(R.id.srl_order_data)
     SwipeRefreshLayout srlOrderData;
-    private Context context;
     private OnItemSelectListener onItemSelectListenerTemp;
 
     //订单页面「交易」数据显示的适配器
@@ -43,19 +44,15 @@ public class OrderView extends LinearLayout {
 
     public OrderView(Context context) {
         super(context);
-        this.context = context;
-        initView();
     }
 
-    public OrderView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        this.context = context;
-        initView();
+    @Override
+    protected int setContentView() {
+        return R.layout.view_order;
     }
 
-    private void initView() {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_order, this, true);
-        ButterKnife.bind(view);
+    @Override
+    protected void initView() {
         // 设置加载按钮的形态
         srlOrderData.setColorSchemeResources(
                 R.color.button_color,
@@ -63,6 +60,11 @@ public class OrderView extends LinearLayout {
 
         );
         srlOrderData.setSize(SwipeRefreshLayout.DEFAULT);
+
+    }
+
+    @Override
+    protected void initListener() {
         srlOrderData.setOnRefreshListener(() -> {
             srlOrderData.setRefreshing(false);
         });
@@ -83,40 +85,59 @@ public class OrderView extends LinearLayout {
     public void setAdapter(List<MemberOrderVO> memberOrderVOS, int currentPosition) {
         switch (currentPosition) {
             case 0://交易
-                if (orderTransactionAdapter == null) {
-                    orderTransactionAdapter = new OrderTransactionAdapter(getContext(), memberOrderVOS);
-                    orderTransactionAdapter.setOnItemSelectListener(onItemSelectListener);
-                    rvOrderData.setHasFixedSize(true);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-                    rvOrderData.setLayoutManager(linearLayoutManager);
+                if (ListTool.isEmpty(memberOrderVOS)) {
+                    //显示没有信息页面
+                    rlNoData.setVisibility(VISIBLE);
                 } else {
-                    orderTransactionAdapter.addList(memberOrderVOS);
+                    rlNoData.setVisibility(GONE);
+                    if (orderTransactionAdapter == null) {
+                        orderTransactionAdapter = new OrderTransactionAdapter(getContext(), memberOrderVOS);
+                        orderTransactionAdapter.setOnItemSelectListener(onItemSelectListener);
+                        rvOrderData.setHasFixedSize(true);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                        rvOrderData.setLayoutManager(linearLayoutManager);
+                    } else {
+                        orderTransactionAdapter.addList(memberOrderVOS);
+                    }
+                    rvOrderData.setAdapter(orderTransactionAdapter);
                 }
-                rvOrderData.setAdapter(orderTransactionAdapter);
+
                 break;
             case 1://充值
-                if (orderRechargeAdapter == null) {
-                    orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
-                    orderRechargeAdapter.setOnItemSelectListener(onItemSelectListener);
-                    rvOrderData.setHasFixedSize(true);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-                    rvOrderData.setLayoutManager(linearLayoutManager);
+                if (ListTool.isEmpty(memberOrderVOS)) {
+                    //显示没有信息页面
+                    rlNoData.setVisibility(VISIBLE);
                 } else {
-                    orderRechargeAdapter.addList(memberOrderVOS);
+                    rlNoData.setVisibility(GONE);
+                    if (orderRechargeAdapter == null) {
+                        orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
+                        orderRechargeAdapter.setOnItemSelectListener(onItemSelectListener);
+                        rvOrderData.setHasFixedSize(true);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                        rvOrderData.setLayoutManager(linearLayoutManager);
+                    } else {
+                        orderRechargeAdapter.addList(memberOrderVOS);
+                    }
+                    rvOrderData.setAdapter(orderRechargeAdapter);
                 }
-                rvOrderData.setAdapter(orderRechargeAdapter);
                 break;
             case 2:// 提現
-                if (orderWithdrawAdapter == null) {
-                    orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
-                    orderWithdrawAdapter.setOnItemSelectListener(onItemSelectListener);
-                    rvOrderData.setHasFixedSize(true);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
-                    rvOrderData.setLayoutManager(linearLayoutManager);
+                if (ListTool.isEmpty(memberOrderVOS)) {
+                    //显示没有信息页面
+                    rlNoData.setVisibility(VISIBLE);
                 } else {
-                    orderWithdrawAdapter.addList(memberOrderVOS);
+                    rlNoData.setVisibility(GONE);
+                    if (orderWithdrawAdapter == null) {
+                        orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
+                        orderWithdrawAdapter.setOnItemSelectListener(onItemSelectListener);
+                        rvOrderData.setHasFixedSize(true);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                        rvOrderData.setLayoutManager(linearLayoutManager);
+                    } else {
+                        orderWithdrawAdapter.addList(memberOrderVOS);
+                    }
+                    rvOrderData.setAdapter(orderWithdrawAdapter);
                 }
-                rvOrderData.setAdapter(orderWithdrawAdapter);
                 break;
 
         }

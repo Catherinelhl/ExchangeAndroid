@@ -4,14 +4,13 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.BuyDataAdapter;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -21,24 +20,30 @@ import java.util.List;
  * @since 2018/12/27
  * 「购买」页面视图
  */
-public class BuyView extends LinearLayout {
-    private String TAG = BuyView.class.getSimpleName();
+public class BuyView extends BaseLinearLayout {
+    @BindView(R.id.rv_buy_data)
     RecyclerView rvBuyData;
+    @BindView(R.id.srl_buy_data)
     SwipeRefreshLayout srlBuyData;
-    private Context context;
+    @BindView(R.id.tv_content)
+    TextView tvContent;
+    @BindView(R.id.rl_no_data)
+    RelativeLayout rlNoData;
+    private String TAG = BuyView.class.getSimpleName();
     private BuyDataAdapter buyDataAdapter;
     private OnItemSelectListener onItemSelectListenerTemp;
 
     public BuyView(Context context) {
         super(context);
-        this.context = context;
-        initView();
     }
 
-    private void initView() {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_buy, this, true);
-        rvBuyData = view.findViewById(R.id.rv_buy_data);
-        srlBuyData = view.findViewById(R.id.srl_buy_data);
+    @Override
+    protected int setContentView() {
+        return R.layout.view_buy;
+    }
+
+    @Override
+    protected void initView() {
         // 设置加载按钮的形态
         srlBuyData.setColorSchemeResources(
                 R.color.button_color,
@@ -46,6 +51,11 @@ public class BuyView extends LinearLayout {
 
         );
         srlBuyData.setSize(SwipeRefreshLayout.DEFAULT);
+        initAdapter();
+    }
+
+    @Override
+    protected void initListener() {
         srlBuyData.setOnRefreshListener(() -> {
             srlBuyData.setRefreshing(false);
             //判断如果当前没有币种，那么就暂时不能刷新数据
@@ -54,7 +64,6 @@ public class BuyView extends LinearLayout {
 //            }
 //            onRefreshTransactionRecord("swipeRefreshLayout");
         });
-        initAdapter();
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
@@ -71,9 +80,16 @@ public class BuyView extends LinearLayout {
     }
 
     public void refreshData(List<MemberOrderVO> memberOrderVOS) {
-        if (buyDataAdapter != null) {
-            buyDataAdapter.refreshData(memberOrderVOS);
+        if (ListTool.noEmpty(memberOrderVOS)) {
+            rlNoData.setVisibility(GONE);
+            if (buyDataAdapter != null) {
+                buyDataAdapter.refreshData(memberOrderVOS);
+            }
+        } else {
+            //显示没有信息页面
+            rlNoData.setVisibility(VISIBLE);
         }
+
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {

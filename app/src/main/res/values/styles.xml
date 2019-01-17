@@ -97,6 +97,12 @@
         <item name="android:textColor">@color/grey_666666</item>
         <item name="android:textSize">@dimen/text_size_14</item>
     </style>
+    <style name="black_666_16_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_666666</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
     <style name="ff6f61_14_text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

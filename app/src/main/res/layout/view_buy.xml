@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:background="@color/theme_grey"
-        android:orientation="vertical"
         android:layout_height="match_parent">
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/srl_buy_data"
@@ -20,4 +19,5 @@
                 android:scrollbars="vertical"
                 tools:listitem="@layout/item_buy_recycler"/>
     </android.support.v4.widget.SwipeRefreshLayout>
-</LinearLayout>
+    <include layout="@layout/include_no_data"/>
+</RelativeLayout>

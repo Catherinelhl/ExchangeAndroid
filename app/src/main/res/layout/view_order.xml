@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/theme_grey"
-        android:orientation="vertical">
+        android:background="@color/theme_grey">
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/srl_order_data"
             android:layout_width="match_parent"
@@ -22,5 +21,6 @@
                 tools:listitem="@layout/item_order_transaction_recycler"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <include layout="@layout/include_no_data"/>
 
-</LinearLayout>
+</RelativeLayout>
