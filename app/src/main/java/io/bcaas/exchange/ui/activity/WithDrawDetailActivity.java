@@ -12,9 +12,13 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.PhoneVerifyContract;
 import io.bcaas.exchange.ui.contracts.WithDrawContract;
+import io.bcaas.exchange.ui.presenter.PhoneVerifyPresenterImp;
 import io.bcaas.exchange.ui.presenter.WithDrawPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -23,6 +27,8 @@ import io.bcaas.exchange.vo.RequestJson;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -30,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2019/1/4
  * 「提现详情，输入密码」
  */
-public class WithDrawDetailActivity extends BaseActivity implements WithDrawContract.View {
+public class WithDrawDetailActivity extends BaseActivity implements WithDrawContract.View, PhoneVerifyContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -69,6 +75,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     LinearLayout llGoogleVerifyTips;
 
     private WithDrawContract.Presenter presenter;
+    private PhoneVerifyContract.Presenter phoneVerifyPresenter;
     private RequestJson requestJson;
 
     @Override
@@ -91,7 +98,6 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
         tvTitle.setText(R.string.with_draw);
         ibBack.setVisibility(View.VISIBLE);
 
-
         MemberVO memberVO = BaseApplication.getMemberVO();
         getAccountSecuritySuccess(memberVO);
 
@@ -100,13 +106,35 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     @Override
     public void initData() {
         presenter = new WithDrawPresenterImp(this);
+        phoneVerifyPresenter = new PhoneVerifyPresenterImp(this);
         // 获取账户资讯
         presenter.getAccountSecurity();
     }
 
     @Override
     public void initListener() {
+        etEmailVerifyCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
+        etMessageVerifyCode.setFrom(Constants.EditTextFrom.PHONE_CODE);
+        etMessageVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
 
+            }
+
+            @Override
+            public void onAction(String from) {
+                //得到当前用户的手机号
+                MemberVO memberVO = BaseApplication.getMemberVO();
+                if (memberVO == null) {
+                    return;
+                }
+                String phone = memberVO.getPhone();
+                if (StringTool.isEmpty(phone)) {
+                    return;
+                }
+                phoneVerifyPresenter.getPhoneCode(phone, getCurrentLanguage());
+            }
+        });
         Disposable subscribe = RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
@@ -134,6 +162,8 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                             showToast(getString(R.string.please_input_fund_password));
                             return;
                         }
+                        //定义VerificationBean数组用来存储接下来的各种验证验证码；最多有三个，至少有一个。
+                        List<VerificationBean> verificationBeanList = new ArrayList<>();
                         if (etEmailVerifyCode.getVisibility() == View.VISIBLE) {
                             //2：判断当前是否输入了邮箱验证码
                             String emailVerifyCode = etEmailVerifyCode.getContent();
@@ -141,6 +171,11 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                                 showToast(getString(R.string.please_input_email_verify_code));
                                 return;
                             }
+                            VerificationBean verificationBean = new VerificationBean();
+                            verificationBean.setType(Constants.VerifyType.EMAIL);
+                            verificationBean.setVerifyCode(emailVerifyCode);
+                            verificationBeanList.add(verificationBean);
+
                         }
                         if (etMessageVerifyCode.getVisibility() == View.VISIBLE) {
 
@@ -150,6 +185,11 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                                 showToast(getString(R.string.please_input_phone_verify_code));
                                 return;
                             }
+                            VerificationBean verificationBean = new VerificationBean();
+                            verificationBean.setType(Constants.VerifyType.PHONE);
+                            verificationBean.setVerifyCode(phoneVerifyCode);
+                            verificationBeanList.add(verificationBean);
+
                         }
                         if (etGoogleVerifyCode.getVisibility() == View.VISIBLE) {
 
@@ -159,10 +199,14 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                                 showToast(getString(R.string.please_input_google_verify_code));
                                 return;
                             }
+                            VerificationBean verificationBean = new VerificationBean();
+                            verificationBean.setType(Constants.VerifyType.GOOGLE);
+                            verificationBean.setVerifyCode(googleVerifyCode);
+                            verificationBeanList.add(verificationBean);
                         }
                         if (presenter != null) {
                             btnSure.setEnabled(false);
-
+                            requestJson.setVerificationBeanList(verificationBeanList);
                             //3：请求接口提现
                             presenter.withDraw(txPassword, requestJson);
                         }
@@ -233,6 +277,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
             //3：判断当前是否开启google验证
             int twoFactorAuthVerify = memberVO.getTwoFactorAuthVerify();
+
         }
     }
 
@@ -242,4 +287,13 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     }
 
+    @Override
+    public void getPhoneCodeSuccess(String info) {
+
+    }
+
+    @Override
+    public void getPhoneCodeFailure(String info) {
+        showToast(info);
+    }
 }

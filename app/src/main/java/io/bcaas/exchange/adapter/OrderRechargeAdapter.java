@@ -56,7 +56,7 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         if (memberOrderVO == null) {
             return;
         }
-        CurrencyListVO currencyListVO = new CurrencyListVO();
+        CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
         if (currencyListVO == null) {
             return;
         }
@@ -66,14 +66,6 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         viewHolder.tvRechargeStatus.setText(String.valueOf(memberOrderVO.getStatus()));
         viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
         viewHolder.tvRechargeAddress.setText(memberOrderVO.getAddress());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_RECHARGE);
-                }
-            }
-        });
     }
 
     @Override

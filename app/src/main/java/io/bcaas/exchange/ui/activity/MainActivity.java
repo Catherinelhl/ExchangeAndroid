@@ -14,18 +14,19 @@ import com.jakewharton.rxbinding2.view.RxView;
 import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.ui.contracts.MainContract;
+import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
+import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
 import io.bcaas.exchange.ui.fragment.BuyFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
 import io.bcaas.exchange.ui.fragment.SellFragment;
-import io.bcaas.exchange.ui.presenter.MainPresenterImp;
+import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
+import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -44,7 +45,7 @@ import java.util.concurrent.TimeUnit;
  * 首頁主Activity
  */
 public class MainActivity extends BaseActivity
-        implements MainContract.View {
+        implements AccountSecurityContract.View, GetAllBalanceContract.View {
     @BindView(R.id.home_container)
     FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)
@@ -62,8 +63,8 @@ public class MainActivity extends BaseActivity
     //得到当前显示的Fragment
     private Fragment currentFragment;
 
-    private MainContract.Presenter mainPresenter;
-
+    private AccountSecurityContract.Presenter accountSecurityPresenter;
+    private GetAllBalanceContract.Presenter getAllBalancePresenter;
     //声明侧滑栏
     private SideSlipPop sideSlipPop;
     //得到当前「买进」页面当前展示的token，用于过滤器过滤
@@ -100,14 +101,15 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void initData() {
-        mainPresenter = new MainPresenterImp(this);
+        accountSecurityPresenter = new AccountSecurityPresenterImp(this);
+        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
 // TODO: 2019/1/14   /*获取币种汇率*/
 //        ExchangeBean exchangeBean = new ExchangeBean();
 //        exchangeBean.setCurrency("BTC");
 //        exchangeBean.setPriceCurrency("8");
 //        mainPresenter.getCurrencyUSDPrice(exchangeBean);
         /*获取账户资讯*/
-        mainPresenter.getAccountSecurity();
+        accountSecurityPresenter.getAccountSecurity();
         getAllBalance();
 
         for (int i = 0; i < fragments.size(); i++) {
@@ -283,23 +285,23 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @Override
-    public void getCurrencyUSDPriceSuccess(ExchangeBean exchangeBean) {
-        if (exchangeBean != null) {
-            //当前需要兑换
-            String priceCurrency = exchangeBean.getPriceCurrency();
-            //当前兑换的数额
-            String priceUSD = exchangeBean.getPriceUSD();
-            LogTool.d(TAG, "priceCurrency:" + priceCurrency);
-            LogTool.d(TAG, "priceUSD:" + priceUSD);
-
-        }
-    }
-
-    @Override
-    public void getCurrencyUSDPriceFailure(String info) {
-        showToast(info);
-    }
+//    @Override
+//    public void getCurrencyUSDPriceSuccess(ExchangeBean exchangeBean) {
+//        if (exchangeBean != null) {
+//            //当前需要兑换
+//            String priceCurrency = exchangeBean.getPriceCurrency();
+//            //当前兑换的数额
+//            String priceUSD = exchangeBean.getPriceUSD();
+//            LogTool.d(TAG, "priceCurrency:" + priceCurrency);
+//            LogTool.d(TAG, "priceUSD:" + priceUSD);
+//
+//        }
+//    }
+//
+//    @Override
+//    public void getCurrencyUSDPriceFailure(String info) {
+//        showToast(info);
+//    }
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
@@ -365,7 +367,7 @@ public class MainActivity extends BaseActivity
      * 获取账户所有币种余额
      */
     public void getAllBalance() {
-        mainPresenter.getAllBalance();
+        getAllBalancePresenter.getAllBalance();
     }
 
     /**

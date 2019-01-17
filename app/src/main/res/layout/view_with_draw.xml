@@ -39,7 +39,7 @@
             <io.bcaas.exchange.view.editview.EditTextWithAction
                     android:id="@+id/etwa_withdraw_amount"
                     bcaas:hint="@string/input_amount_to_withdraw"
-                    bcaas:behaviour="text"
+                    bcaas:behaviour="amount"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/d48"/>
             <View style="@style/small_line_style"/>

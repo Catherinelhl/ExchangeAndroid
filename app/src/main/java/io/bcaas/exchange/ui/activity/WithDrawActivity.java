@@ -17,11 +17,14 @@ import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
+import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
+import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.RechargeView;
 import io.bcaas.exchange.ui.view.WithDrawView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
@@ -42,7 +45,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 「提现」
  */
-public class WithDrawActivity extends BaseActivity implements AccountSecurityContract.View {
+public class WithDrawActivity extends BaseActivity
+        implements AccountSecurityContract.View, GetAllBalanceContract.View {
 
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -59,6 +63,7 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     private TabViewAdapter tabViewAdapter;
 
     private AccountSecurityContract.Presenter presenter;
+    private GetAllBalanceContract.Presenter getAllBalancePresenter;
     private int currentPosition;
     private List<MemberKeyVO> memberKeyVOList;
 
@@ -83,7 +88,7 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     @Override
     public void initData() {
         presenter = new AccountSecurityPresenterImp(this);
-
+        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         //刷新界面
         memberKeyVOList = BaseApplication.getMemberKeyVOList();
         if (ListTool.noEmpty(memberKeyVOList)) {
@@ -121,8 +126,10 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
+                hideSoftKeyboard();
                 currentPosition = tab.getPosition();
+                refreshView();
+
             }
 
             @Override
@@ -213,6 +220,8 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
                     presenter.getAccountSecurity();
                     break;
                 case Constants.RequestCode.WIDTH_DRAW_DETAIL:
+                    //刷新當前界面，重新請求餘額
+                    getAllBalancePresenter.getAllBalance();
                     break;
             }
         }
@@ -236,5 +245,30 @@ public class WithDrawActivity extends BaseActivity implements AccountSecurityCon
     @Override
     public void getAccountSecurityFailure(String info) {
         showToast(info);
+    }
+
+    @Override
+    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
+        //刷新当前的界面数据信息
+        this.memberKeyVOList.clear();
+        this.memberKeyVOList = memberKeyVOList;
+        refreshView();
+    }
+
+    @Override
+    public void getAllBalanceFailure(String info) {
+        LogTool.e(TAG, info);
+    }
+
+    /**
+     * 更新当前的界面数据信息
+     */
+    private void refreshView() {
+        if (ListTool.noEmpty(views)
+                && currentPosition < views.size()
+                && ListTool.noEmpty(memberKeyVOList)
+                && currentPosition < memberKeyVOList.size()) {
+            ((WithDrawView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
+        }
     }
 }

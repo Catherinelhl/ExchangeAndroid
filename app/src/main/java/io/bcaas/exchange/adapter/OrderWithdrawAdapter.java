@@ -11,6 +11,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
@@ -60,26 +61,13 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
         if (currencyListVO == null) {
             return;
         }
-        CurrencyListVO paymentCurrencyListVO = memberOrderVO.getPaymentCurrencyUid();
-        if (paymentCurrencyListVO == null) {
-            return;
-        }
         String enName = currencyListVO.getEnName();
-        String paymentEnName = paymentCurrencyListVO.getEnName();
-        viewHolder.tvWithdrawType.setText(String.valueOf(memberOrderVO.getType()));
+        viewHolder.tvWithdrawType.setText(context.getResources().getString(R.string.with_draw) + "  " + enName);
         viewHolder.tvWithdrawTime.setText(memberOrderVO.getCreateTime());
-        viewHolder.tvWithdrawStatus.setText(String.valueOf(memberOrderVO.getStatus()));
+        viewHolder.tvWithdrawStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(),memberOrderVO.getStatus()));
         viewHolder.tv_number.setText(memberOrderVO.getAmount() + "  " + enName);
         viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + enName);
         viewHolder.tvWithdrawAddress.setText(memberOrderVO.getAddress());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_WITHDRAW);
-                }
-            }
-        });
     }
 
     @Override

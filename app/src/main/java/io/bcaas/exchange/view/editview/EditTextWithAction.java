@@ -17,6 +17,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -162,6 +163,12 @@ public class EditTextWithAction extends LinearLayout
                     llAction.setVisibility(GONE);
                     imageView.setVisibility(GONE);
                     etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    break;
+                case 7://amount 输入
+                    cbCheck.setVisibility(GONE);
+                    llAction.setVisibility(VISIBLE);
+                    imageView.setVisibility(GONE);
+                    etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
                     break;
             }
 

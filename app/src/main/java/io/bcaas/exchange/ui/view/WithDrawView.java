@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
+import android.text.InputFilter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
@@ -88,6 +90,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
         tvNoFundPasswordTips.setText(info);
         etReceiveAddress.setFrom(Constants.EditTextFrom.WITHDRAW_SCAN);
         etWithdrawAmount.setFrom(Constants.EditTextFrom.WITHDRAW_AMOUNT);
+
     }
 
     @Override
@@ -143,7 +146,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                             return;
                         }
                         MemberOrderVO memberOrderVO = new MemberOrderVO();
-                        memberOrderVO.setAmount(withDrawAmount);
+                        memberOrderVO.setPrice(withDrawAmount);
                         memberOrderVO.setMark(etRemarks.getContent());
                         RequestJson requestJson = new RequestJson();
                         requestJson.setMemberOrderVO(memberOrderVO);
@@ -258,7 +261,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     @Override
     public void getCurrencyChargeSuccess(CurrencyListVO currencyListVO) {
         if (currencyListVO != null) {
-            fee = currencyListVO.getSellCharge();
+            fee = currencyListVO.getWithdrawCharge();
             if (tvFeeTips != null) {
                 tvFeeTips.setText(context.getResources().getString(R.string.withdraw_need_fee) + "  " + fee + currencyListVO.getEnName());
             }

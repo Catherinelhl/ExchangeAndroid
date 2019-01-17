@@ -3728,6 +3728,7 @@
             <enum name="scan" value="4"/>
             <enum name="phone" value="5"/>
             <enum name="google" value="6"/>
+            <enum name="amount" value="7"/>
         </attr>
         <attr format="integer" name="hintColor"/>
         <attr format="integer" name="textColor"/>
@@ -4583,6 +4584,7 @@
             <enum name="scan" value="4"/>
             <enum name="phone" value="5"/>
             <enum name="google" value="6"/>
+            <enum name="amount" value="7"/>
         </attr>
         <attr format="integer" name="hintColor"/>
         <attr format="integer" name="textColor"/>
