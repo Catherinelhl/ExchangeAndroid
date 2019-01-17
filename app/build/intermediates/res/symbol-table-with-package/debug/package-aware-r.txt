@@ -2035,6 +2035,7 @@ string close_verify
 string confirm
 string confirm_new_password
 string confirm_password
+string congratulations_to_register_success
 string copy_address
 string email
 string email_verify

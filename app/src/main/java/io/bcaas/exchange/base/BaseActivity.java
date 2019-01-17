@@ -440,6 +440,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
                 }).show();
     }
 
+    public void showSingleDialog(String message, SingleButtonDialog.ConfirmClickListener listener) {
+        this.showSingleDialog(getResources().getString(R.string.warning), message, listener);
+    }
+
     /**
      * 显示单按钮对话框
      *
@@ -481,7 +485,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (unbinder!=null){
+        if (unbinder != null) {
             unbinder.unbind();
         }
         dismissDoubleButtonDialog();

@@ -14,10 +14,12 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.presenter.RegisterPresenterImp;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -184,7 +186,8 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override
@@ -201,7 +204,13 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
     @Override
     public void registerSuccess(String info) {
-        setResult(false);
+        // 弹框提示用户注册成功
+        showSingleDialog(getString(R.string.congratulations_to_register_success), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+                setResult(false);
+            }
+        });
     }
 
     @Override
