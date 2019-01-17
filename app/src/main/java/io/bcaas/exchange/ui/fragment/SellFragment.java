@@ -18,12 +18,9 @@ import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
-import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
-import io.bcaas.exchange.ui.presenter.GetCurrencyChargePresenterImp;
 import io.bcaas.exchange.ui.view.SellView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -85,7 +82,6 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
                     if (data != null) {
                         boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                         if (!isBack) {
-                            LogTool.d(TAG, "onActivityResult:" + requestCode);
                             //重新请求getAllBalance 信息刷新当前的界面信息
                             if (getAllBalancePresenter != null) {
                                 getAllBalancePresenter.getAllBalance();
