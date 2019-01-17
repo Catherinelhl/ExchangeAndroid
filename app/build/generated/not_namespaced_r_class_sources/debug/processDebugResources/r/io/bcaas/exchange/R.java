@@ -5463,8 +5463,8 @@ public final class R {
     public static final int src_in=0x7f0800ff;
     public static final int src_over=0x7f080100;
     public static final int srl_buy_data=0x7f080101;
-    public static final int srl_my_fund_data=0x7f080102;
-    public static final int srl_order_data=0x7f080103;
+    public static final int srl_data=0x7f080102;
+    public static final int srl_my_fund_data=0x7f080103;
     public static final int standard=0x7f080104;
     public static final int start=0x7f080105;
     public static final int stretch=0x7f080106;

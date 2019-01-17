@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.fragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import butterknife.BindView;
 import com.google.gson.reflect.TypeToken;
@@ -21,7 +22,6 @@ import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
-import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
@@ -44,7 +44,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-
+    @BindView(R.id.srl_data)
+    SwipeRefreshLayout srlData;
     private OrderRecordContract.Presenter presenter;
     private List<MemberOrderVO> memberOrderVOList;
 
@@ -68,6 +69,13 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         views = new ArrayList<>();
         memberOrderVOList = new ArrayList<>();
         presenter = new OrderRecordPresenterImp(this);
+        // 设置加载按钮的形态
+        srlData.setColorSchemeResources(
+                R.color.button_color,
+                R.color.button_color
+
+        );
+        srlData.setSize(SwipeRefreshLayout.DEFAULT);
         initTopTabData();
     }
 
@@ -193,6 +201,10 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void initListener() {
+        srlData.setOnRefreshListener(() -> {
+            srlData.setRefreshing(false);
+            refreshView();
+        });
     }
 
     /**
@@ -204,11 +216,17 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void getRecordFailure(String info) {
+        if (srlData != null) {
+            srlData.setRefreshing(false);
+        }
         showToast(info);
     }
 
     @Override
     public void getRecordSuccess(PaginationVO paginationVO) {
+        if (srlData != null) {
+            srlData.setRefreshing(false);
+        }
         LogTool.d(TAG, "PaginationVO:" + paginationVO);
         if (paginationVO != null) {
             this.paginationVO = paginationVO;

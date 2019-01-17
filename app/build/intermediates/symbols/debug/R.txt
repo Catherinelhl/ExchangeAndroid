@@ -1717,8 +1717,8 @@ int id src_atop 0x7f0800fe
 int id src_in 0x7f0800ff
 int id src_over 0x7f080100
 int id srl_buy_data 0x7f080101
-int id srl_my_fund_data 0x7f080102
-int id srl_order_data 0x7f080103
+int id srl_data 0x7f080102
+int id srl_my_fund_data 0x7f080103
 int id standard 0x7f080104
 int id start 0x7f080105
 int id stretch 0x7f080106

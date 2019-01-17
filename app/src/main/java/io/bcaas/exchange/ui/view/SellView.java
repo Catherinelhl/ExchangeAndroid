@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -282,9 +283,9 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 //                    MessageConstants.NO_ENOUGH_BALANCE)) {
 //                tvFinalTxAmount.setVisibility(GONE);
 //            } else {
-                tvFinalTxAmount.setVisibility(VISIBLE);
-                tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                        + txAmount + "  " + exchangeCurrencyListVO.getEnName());
+            tvFinalTxAmount.setVisibility(VISIBLE);
+            tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
+                    + txAmount + "  " + exchangeCurrencyListVO.getEnName());
 //            }
 
         }

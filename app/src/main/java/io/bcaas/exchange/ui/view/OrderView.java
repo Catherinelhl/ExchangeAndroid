@@ -31,8 +31,7 @@ public class OrderView extends BaseLinearLayout {
     RelativeLayout rlNoData;
     @BindView(R.id.rv_order_data)
     RecyclerView rvOrderData;
-    @BindView(R.id.srl_order_data)
-    SwipeRefreshLayout srlOrderData;
+
     private OnItemSelectListener onItemSelectListenerTemp;
 
     //订单页面「交易」数据显示的适配器
@@ -53,21 +52,13 @@ public class OrderView extends BaseLinearLayout {
 
     @Override
     protected void initView() {
-        // 设置加载按钮的形态
-        srlOrderData.setColorSchemeResources(
-                R.color.button_color,
-                R.color.button_color
 
-        );
-        srlOrderData.setSize(SwipeRefreshLayout.DEFAULT);
 
     }
 
     @Override
     protected void initListener() {
-        srlOrderData.setOnRefreshListener(() -> {
-            srlOrderData.setRefreshing(false);
-        });
+
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {

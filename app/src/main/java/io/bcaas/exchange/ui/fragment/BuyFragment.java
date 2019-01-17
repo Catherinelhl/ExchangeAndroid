@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import butterknife.BindView;
 import com.google.gson.reflect.TypeToken;
@@ -46,7 +47,8 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
     BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
-
+    @BindView(R.id.srl_data)
+    SwipeRefreshLayout srlData;
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
@@ -72,6 +74,13 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
         views = new ArrayList<>();
         memberOrderVOS = new ArrayList<>();
         memberKeyVOListTitle = new ArrayList<>();
+        // 设置加载按钮的形态
+        srlData.setColorSchemeResources(
+                R.color.button_color,
+                R.color.button_color
+
+        );
+        srlData.setSize(SwipeRefreshLayout.DEFAULT);
         initTopTabData();
     }
 
@@ -164,6 +173,26 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
 
     @Override
     public void initListener() {
+        srlData.setOnRefreshListener(() -> {
+            srlData.setRefreshing(false);
+            requestOrderList();
+        });
+    }
+
+    private void requestOrderList() {
+        // 1：刷新当前购买页面的待出售数据
+
+        if (presenter != null) {
+            // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
+            presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+        }
+    }
+
+    private void getAllBalance() {
+        //2：刷新账户的GetAllBalance
+        if (activity != null) {
+            ((MainActivity) activity).getAllBalance();
+        }
     }
 
     @Override
@@ -176,17 +205,8 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
                     if (data != null) {
                         boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                         if (!isBack) {
-                            //2：如果当前不是通过「返回」按钮返回，那么需要更新界面
-                            LogTool.d(TAG, "onActivityResult:" + requestCode);
-                            // 1：刷新当前购买页面的待出售数据
-                            if (presenter != null) {
-                                // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-                                presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
-                            }
-                            //2：刷新账户的GetAllBalance
-                            if (activity != null) {
-                                ((MainActivity) activity).getAllBalance();
-                            }
+                            requestOrderList();
+                            getAllBalance();
                         }
                     }
 
@@ -240,6 +260,9 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
 
     @Override
     public void getOrderListSuccess(PaginationVO paginationVO) {
+        if (srlData != null) {
+            srlData.setRefreshing(false);
+        }
         if (paginationVO != null) {
             this.paginationVO = paginationVO;
             //得到当前接口的页面信息
@@ -262,6 +285,10 @@ public class BuyFragment extends BaseFragment implements ForSaleOrderListContrac
 
     @Override
     public void getOrderListFailure(String info) {
+
+        if (srlData != null) {
+            srlData.setRefreshing(false);
+        }
         showToast(info);
     }
 
