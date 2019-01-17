@@ -15,6 +15,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.ForgetPasswordContract;
 import io.bcaas.exchange.ui.presenter.ForgetPasswordPresenterImp;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -174,6 +175,12 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
     @Override
     public void forgetPasswordSuccess(String info) {
-        setResult(false);
+        // 弹框提示用户注册成功
+        showSingleDialog(getString(R.string.congratulations_to_reset_password_success), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+                setResult(false);
+            }
+        });
     }
 }
