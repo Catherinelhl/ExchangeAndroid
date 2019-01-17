@@ -9,11 +9,15 @@ public interface BuyContract {
 
     interface View extends BaseContract.View {
         void buyFailure(String info);
+
         void buySelfError();
+
+        void invalidBuyOrder(String info);
+
         void buySuccess(String info);
     }
 
     interface Presenter {
-        void buy(String txPassword,long memberOderUid,String verifyCode);
+        void buy(String txPassword, long memberOderUid, String verifyCode);
     }
 }

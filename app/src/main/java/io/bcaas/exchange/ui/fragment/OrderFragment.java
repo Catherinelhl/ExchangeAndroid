@@ -8,6 +8,7 @@ import butterknife.BindView;
 import com.google.gson.reflect.TypeToken;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
+import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -19,6 +20,8 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
+import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
@@ -152,8 +155,23 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                 long memberOrderUid = (Long) type;
                 switch (from) {
                     case Constants.From.ORDER_CANCEL_TRANSACTION:
-                        // 撤销订单
-                        presenter.cancelOrder(memberOrderUid);
+                        // 弹框提示用户是否确认撤销
+                        if (activity != null) {
+                            ((BaseActivity) activity).showDoubleButtonDialog(getString(R.string.sure_to_cancel_order), new DoubleButtonDialog.ConfirmClickListener() {
+                                @Override
+                                public void sure() {
+                                    // 撤销订单
+                                    presenter.cancelOrder(memberOrderUid);
+                                }
+
+                                @Override
+                                public void cancel() {
+
+                                }
+                            });
+                        }
+
+
                         break;
                     case Constants.From.ORDER_RECHARGE:
                         presenter.cancelOrder(memberOrderUid);

@@ -16,6 +16,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.WithDrawContract;
 import io.bcaas.exchange.ui.presenter.WithDrawPresenterImp;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
@@ -159,20 +160,37 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                                 return;
                             }
                         }
-                        //3：请求接口提现
-                        presenter.withDraw(txPassword, requestJson);
+                        if (presenter != null) {
+                            btnSure.setEnabled(false);
+
+                            //3：请求接口提现
+                            presenter.withDraw(txPassword, requestJson);
+                        }
                     }
                 });
     }
 
     @Override
     public void withDrawFailure(String info) {
-        showToast(info);
+        btnSure.setEnabled(true);
+        // 弹框提示用户 提现 失败
+        showSingleDialog(info, new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+            }
+        });
     }
 
     @Override
     public void withDrawSuccess(String info) {
-        setResult(false);
+        btnSure.setEnabled(true);
+        // 弹框提示用户 提现成功
+        showSingleDialog(getString(R.string.congratulations_to_withdraw_success), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+                setResult(false);
+            }
+        });
     }
 
     @Override

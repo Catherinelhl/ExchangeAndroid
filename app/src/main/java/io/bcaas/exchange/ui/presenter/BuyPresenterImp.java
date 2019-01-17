@@ -92,7 +92,7 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                                 view.buySelfError();
                             } else if (code == MessageConstants.CODE_2055) {
                                 //{"success":false,"code":2055,"message":"Invalid order information."}
-                                view.buyFailure(responseJson.getMessage());
+                                view.invalidBuyOrder(responseJson.getMessage());
                             } else {
                                 view.buyFailure(responseJson.getMessage());
 

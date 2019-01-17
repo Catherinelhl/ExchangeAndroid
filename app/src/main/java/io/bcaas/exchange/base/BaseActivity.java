@@ -403,6 +403,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     }
 
+    public void showDoubleButtonDialog(String message, DoubleButtonDialog.ConfirmClickListener listener) {
+        this.showDoubleButtonDialog(getString(R.string.warning), getString(R.string.cancel), getString(R.string.sure), message, listener);
+    }
+
+    public void showDoubleButtonDialog(String left, String right, String message, DoubleButtonDialog.ConfirmClickListener listener) {
+        this.showDoubleButtonDialog(getString(R.string.warning), left, right, listener);
+    }
 
     /**
      * 显示双按钮对话框

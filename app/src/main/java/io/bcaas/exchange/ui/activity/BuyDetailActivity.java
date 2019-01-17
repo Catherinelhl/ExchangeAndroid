@@ -17,6 +17,7 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.BuyContract;
 import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -232,21 +233,48 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     public void buyFailure(String info) {
         //设置按钮可点击
         btnBuy.setEnabled(true);
-        showToast(info);
+        showSingleDialog(info, new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+            }
+        });
+    }
+
+    @Override
+    public void invalidBuyOrder(String info) {
+        //设置按钮可点击
+        btnBuy.setEnabled(true);
+        //无效的订单
+        showSingleDialog(info, new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+            }
+        });
     }
 
     @Override
     public void buySelfError() {
         //设置按钮可点击
         btnBuy.setEnabled(true);
-        showToast(getString(R.string.not_to_buy_self));
+        // 弹框提示用户购买成功
+        showSingleDialog(getString(R.string.not_to_buy_self), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+            }
+        });
     }
 
     @Override
     public void buySuccess(String info) {
         //设置按钮可点击
         btnBuy.setEnabled(true);
-        setResult(false);
+        // 弹框提示用户购买成功
+        showSingleDialog(getString(R.string.congratulations_to_buy_success), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+                setResult(false);
+            }
+        });
     }
 
     @Override

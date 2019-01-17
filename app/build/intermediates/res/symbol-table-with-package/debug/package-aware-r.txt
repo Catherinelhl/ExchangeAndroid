@@ -2035,7 +2035,10 @@ string close_verify
 string confirm
 string confirm_new_password
 string confirm_password
+string congratulations_to_buy_success
 string congratulations_to_register_success
+string congratulations_to_reset_password_success
+string congratulations_to_withdraw_success
 string copy_address
 string email
 string email_verify
@@ -2167,6 +2170,7 @@ string start_immediate
 string status_bar_notification_info_overflow
 string successfully_copied
 string sure
+string sure_to_cancel_order
 string to_setting_grant_permission
 string total_account
 string unit_price

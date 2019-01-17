@@ -175,7 +175,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
     @Override
     public void forgetPasswordSuccess(String info) {
-        // 弹框提示用户注册成功
+        // 弹框提示用户重置成功
         showSingleDialog(getString(R.string.congratulations_to_reset_password_success), new SingleButtonDialog.ConfirmClickListener() {
             @Override
             public void sure() {

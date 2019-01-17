@@ -22,6 +22,7 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.BindPhoneContract;
 import io.bcaas.exchange.ui.presenter.BindPhonePresenterImp;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -211,15 +212,24 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     @Override
     public void securityPhoneSuccess(String info) {
         //验证成功，返回到上一个页面，然后重置状态
-        showToast(getString(R.string.bind_success));
-        setResult(false);
+        // 弹框提示用户 绑定成功
+        showSingleDialog(getString(R.string.bind_success), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+                setResult(false);
+            }
+        });
     }
 
     @Override
     public void securityPhoneFailure(String info) {
 
         //验证失败，提示重新验证？
-        showToast(info);
+        showSingleDialog(info, new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+            }
+        });
     }
 
     @Override

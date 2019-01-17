@@ -18,6 +18,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SellContract;
 import io.bcaas.exchange.ui.presenter.SellPresenterImp;
+import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -123,7 +124,7 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
 
                     }
                 });
-        RxView.clicks(btnSell).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSell).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -145,6 +146,7 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
                         }
                         //3：接口请求数据
                         if (sellDataBean != null) {
+                            btnSell.setEnabled(false);
                             presenter.sell(sellDataBean.getCurrencyUid(), sellDataBean.getExchangeCurrencyUid(),
                                     sellDataBean.getSellAmount(), sellDataBean.getUnitPrice(), txPassword, verifyCode);
                         }
@@ -191,12 +193,24 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
 
     @Override
     public void sellFailure(String info) {
-        showToast(info);
+        btnSell.setEnabled(true);
+        showSingleDialog(info, new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+            }
+        });
     }
 
     @Override
     public void sellSuccess(String info) {
-        setResult(false);
+        btnSell.setEnabled(true);
+        // 弹框提示用户挂单成功
+        showSingleDialog(getString(R.string.congratulations_to_sell_out), new SingleButtonDialog.ConfirmClickListener() {
+            @Override
+            public void sure() {
+                setResult(false);
+            }
+        });
     }
 
 
