@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
+            "map": [
+                {
+                    "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/src/main/res/values-zh-rTW/strings.xml",
+                    "from": {
+                        "startLines": "1,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "16,62,105",
+                        "endColumns": "45,42,47",
+                        "endOffsets": "57,100,148"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,101,144",
+                        "endColumns": "45,42,47",
+                        "endOffsets": "96,139,187"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/build/intermediates/res/merged/release/values-zh-rTW/values-zh-rTW.xml",
+            "map": [
+                {
+                    "source": "/Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/qrcode/src/main/res/values-zh-rTW/strings.xml",
+                    "from": {
+                        "startLines": "1,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "16,62,105",
+                        "endColumns": "45,42,47",
+                        "endOffsets": "57,100,148"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,101,144",
+                        "endColumns": "45,42,47",
+                        "endOffsets": "96,139,187"
+                    }
+                }
+            ]
+        }
+    ]
+}
