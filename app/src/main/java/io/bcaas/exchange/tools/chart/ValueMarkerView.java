@@ -57,20 +57,20 @@ public class ValueMarkerView extends MarkerView {
         if (this.coinMarketCapBean == null) {
             tvContent.setText(valueFormatter.getFormattedValue(index) + "\n" + format.format(e.getY()));
         } else {
-            int posiontion = (int) index;
+            int position = (int) index;
             List<List<Double>> market_cap_by_available_supply = coinMarketCapBean.getMarket_cap_by_available_supply();
             if (market_cap_by_available_supply == null) {
                 tvContent.setText(valueFormatter.getFormattedValue(index) + "\n" + format.format(e.getY()));
 
             } else {
-                Object object = market_cap_by_available_supply.get(posiontion).get(0);
-                if (object instanceof String) {
-                    String time = (String) object;
-                    tvContent.setText(DateFormatTool.getUTCDateForAMPMFormat(time)
+                Object object = market_cap_by_available_supply.get(position).get(0);
+                if (object instanceof Double) {
+                    double time = (Double) object;
+                    tvContent.setText(DateFormatTool.getUTCDateForChart(time)
                             + "\nMarketValue:" + market_cap_by_available_supply.get((int) index).get(1)
-                            + "\nBTC Price:" + coinMarketCapBean.getPrice_btc().get(posiontion).get(1)
-                            + "\nUSD Price:$" + coinMarketCapBean.getPrice_usd().get(posiontion).get(1)
-                            + "\nVolume:" + coinMarketCapBean.getVolume_usd().get(posiontion).get(1));
+                            + "\nBTC Price:" + coinMarketCapBean.getPrice_btc().get(position).get(1)
+                            + "\nUSD Price:$" + coinMarketCapBean.getPrice_usd().get(position).get(1)
+                            + "\nVolume:" + coinMarketCapBean.getVolume_usd().get(position).get(1));
                 }
 
 
@@ -82,6 +82,6 @@ public class ValueMarkerView extends MarkerView {
 
     @Override
     public MPPointF getOffset() {
-        return new MPPointF(-(getWidth() / 2), -getHeight());
+        return new MPPointF(-200, -getHeight());
     }
 }

@@ -24,7 +24,6 @@ public class Legend extends ComponentBase {
      * This property is deprecated - Use `horizontalAlignment`, `verticalAlignment`, `orientation`, `drawInside`,
      * `direction`.
      */
-    @Deprecated
     public enum LegendPosition {
         RIGHT_OF_CHART, RIGHT_OF_CHART_CENTER, RIGHT_OF_CHART_INSIDE,
         LEFT_OF_CHART, LEFT_OF_CHART_CENTER, LEFT_OF_CHART_INSIDE,

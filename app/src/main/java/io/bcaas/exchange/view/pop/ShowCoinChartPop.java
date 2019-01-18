@@ -10,9 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.CountryCodeAdapter;
 import io.bcaas.exchange.adapter.PopListAdapter;
-import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -23,16 +21,16 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/8/30
  * <p>
- * 自定義PopWindow：显示「币种」列表
+ * 自定義PopWindow：显示当前的币种曲线图
  */
-public class ListPop extends PopupWindow {
-    private String TAG = ListPop.class.getSimpleName();
+public class ShowCoinChartPop extends PopupWindow {
+    private String TAG = ShowCoinChartPop.class.getSimpleName();
     private View popWindow;
     private RecyclerView recyclerView;//显示当前列表
     private OnItemSelectListener itemSelectListener;
     private Context context;
 
-    public ListPop(Context context) {
+    public ShowCoinChartPop(Context context) {
         super(context);
         this.context = context;
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);

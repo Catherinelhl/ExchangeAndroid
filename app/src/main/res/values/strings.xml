@@ -165,5 +165,6 @@
     <string name="reset_fund_password">重置资金密码</string>
     <string name="please_choose">请选择</string>
     <string name="zero">0</string>
+    <string name="retract">收起</string>
 
 </resources>

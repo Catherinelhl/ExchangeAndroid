@@ -13,10 +13,10 @@ import java.util.List;
 public class XLineValueFormatter extends ValueFormatter {
     private String TAG = XLineValueFormatter.class.getSimpleName();
     private final DecimalFormat mFormat;
-    private List<List<String>> allLine;
+    private List<List<Double>> allLine;
 
 
-    public XLineValueFormatter(List<List<String>> allLine) {
+    public XLineValueFormatter(List<List<Double>> allLine) {
         mFormat = new DecimalFormat("##0.0");
         this.allLine = allLine;
 

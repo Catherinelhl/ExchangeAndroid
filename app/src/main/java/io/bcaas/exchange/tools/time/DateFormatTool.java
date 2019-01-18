@@ -35,6 +35,7 @@ public class DateFormatTool {
 
 
     private final static String DATETIMEFORMATWithH = "yy/MM/dd HH";
+    private final static String DATETIMEFORMAT_CHART= "hh:mm";
 
     // Greenwich Mean Time
     private final static String TIMEZONE_GMT = "GMT";
@@ -150,12 +151,12 @@ public class DateFormatTool {
      * @throws Exception
      * @format TimeMillis
      */
-    public static String getUTCDateForAMPMFormat(String timeStamp)  {
+    public static String getUTCDateForAMPMFormat(double timeStamp)  {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_AMPM);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_CHART);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
         Date date = new Date();
-        date.setTime(Long.valueOf(timeStamp));
+        date.setTime((long) timeStamp);
         String dataAMPM = simpleDateFormat.format(date);
         return dataAMPM;
     }
@@ -212,7 +213,6 @@ public class DateFormatTool {
                 cal.add(Calendar.YEAR, -1);
                 break;
         }
-        LogTool.d(TAG,DateFormatTool.getUTCDateForAMPMFormat2(String.valueOf(cal.getTimeInMillis())));
         return cal.getTime();
     }
 
@@ -237,14 +237,14 @@ public class DateFormatTool {
     }
 
 
-    public static String getUTCDateForAMPMFormat2(String timeStamp) {
+    public static String getUTCDateForChart(double timeStamp) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMATWithH);
 //        SimpleDateFormat sdf=new SimpleDateFormat("hh:mm:ss", Locale.getDefault());
 //        sdf.setTimeZone(TimeZone.getTimeZone("GMT+0"));
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
         Date date = new Date();
-        date.setTime(Long.valueOf(timeStamp));
+        date.setTime((long) timeStamp);
         String dataAMPM = simpleDateFormat.format(date);
 
 
