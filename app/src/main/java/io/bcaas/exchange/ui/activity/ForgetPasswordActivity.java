@@ -12,6 +12,7 @@ import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.ForgetPasswordContract;
 import io.bcaas.exchange.ui.presenter.ForgetPasswordPresenterImp;
@@ -101,6 +102,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
                     @Override
                     public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
 
                     }
 
@@ -109,7 +111,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -118,6 +120,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
                     @Override
                     public void onNext(Object o) {
+                        hideSoftKeyboard();
                         //1:判断当前邮箱的输入
                         String memberId = etAccount.getContent();
                         if (StringTool.isEmpty(memberId)) {
@@ -130,30 +133,37 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
                             showToast(getString(R.string.please_input_password));
                             return;
                         }
-                        //3：判断当前密码的确认输入
+                        //3：判断密码是否输入8位
+                        if (password.length() < Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
+                            showToast(getString(R.string.password_to_short));
+                            return;
+                        }
+                        //4：判断当前密码的确认输入
                         String passwordConfirm = etPasswordConfirm.getContent();
                         if (StringTool.isEmpty(passwordConfirm)) {
                             showToast(getString(R.string.confirm_password));
                             return;
                         }
-                        //4：判断前后密码是否一致
+                        //5：判断前后密码是否一致
                         if (!StringTool.equals(password, passwordConfirm)) {
                             showToast(getString(R.string.password_does_not_match));
                             return;
                         }
-                        //5：判断当前验证码的输入
+                        //6：判断当前验证码的输入
                         String verifyCode = emailCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
                             showToast(getString(R.string.please_input_verify_code));
                             return;
                         }
-                        //6：发送请求
-                        presenter.forgetPassword(password, verifyCode);
+                        //7：发送请求
+                        if (presenter !=null) {
+                            presenter.forgetPassword(password, verifyCode);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override

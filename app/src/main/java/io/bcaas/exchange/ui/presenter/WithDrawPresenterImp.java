@@ -43,7 +43,7 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
         //显示加载框
         view.showLoading();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         try {
             memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
         } catch (NoSuchAlgorithmException e) {

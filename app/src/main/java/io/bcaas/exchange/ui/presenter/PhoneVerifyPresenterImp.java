@@ -42,7 +42,7 @@ public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
         }
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setPhone(phone);
         verificationBean.setLanguageCode(languageCode);

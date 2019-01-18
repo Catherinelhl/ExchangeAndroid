@@ -76,8 +76,10 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                         if (isSuccess) {
                             LoginInfoVO loginInfoVO = responseJson.getLoginInfoVO();
                             String accessToken = loginInfoVO.getAccessToken();
-                            LogTool.d(TAG, accessToken);
+                            //存储当前的token
                             BaseApplication.setAccessToken(accessToken);
+                            //存储当前的memberID
+                            BaseApplication.setMemberID(memberId);
                             view.loginSuccess(accessToken);
                         } else {
                             // {"success":false,"code":2005,"message":"Email not register."}

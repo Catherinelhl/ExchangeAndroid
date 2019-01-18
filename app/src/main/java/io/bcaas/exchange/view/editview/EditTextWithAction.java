@@ -231,7 +231,7 @@ public class EditTextWithAction extends LinearLayout
                             if (StringTool.equals(from, Constants.EditTextFrom.EMAIL_CODE)) {//邮箱
                                 //开始请求验证码数据
                                 if (presenter != null) {
-                                    presenter.emailVerify(Constants.User.MEMBER_ID, BaseApplication.getCurrentLanguage(), Constants.User.MEMBER_ID);
+                                    presenter.emailVerify(BaseApplication.getMemberID(), BaseApplication.getCurrentLanguage(), BaseApplication.getMemberID());
                                 }
                             }
 

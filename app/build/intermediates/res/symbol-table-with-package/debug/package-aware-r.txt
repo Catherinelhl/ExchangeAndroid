@@ -1556,6 +1556,7 @@ id italic
 id item_touch_helper_previous_elevation
 id iv_account
 id iv_icon
+id iv_login_logo
 id iv_logo
 id iv_qr_code
 id iv_tab_drawable
@@ -2049,6 +2050,7 @@ string outcome
 string password
 string password_does_not_match
 string password_rule
+string password_to_short
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -2067,6 +2069,8 @@ string please_input_email_verify_code
 string please_input_fund_password
 string please_input_google_verify_code
 string please_input_message_code
+string please_input_new_password
+string please_input_original_password
 string please_input_password
 string please_input_phone_number
 string please_input_phone_verify_code

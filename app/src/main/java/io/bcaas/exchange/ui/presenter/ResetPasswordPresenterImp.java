@@ -48,7 +48,7 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         try {
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
             memberVO.setNewPassword(Sha256Tool.doubleSha256ToString(newPassword));

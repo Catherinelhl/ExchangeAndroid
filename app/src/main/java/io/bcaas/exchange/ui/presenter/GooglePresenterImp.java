@@ -50,7 +50,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setMemberVO(memberVO);
@@ -121,7 +121,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         LoginInfoVO loginInfoVO = new LoginInfoVO();

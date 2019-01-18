@@ -17,6 +17,7 @@ import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
 import io.bcaas.exchange.ui.presenter.GetCurrencyChargePresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -62,7 +63,8 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     private String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
 
     private OnItemSelectListener onItemSelectListener;
-    private String fee;
+    // 需要展现的交易费用：等于Minner's fee plus Handling's Fee
+    private String transactionFee;
     private CurrencyListVO currencyListVO;
     private MemberKeyVO memberKeyVO;
     //得到可提现余额
@@ -261,9 +263,9 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     @Override
     public void getCurrencyChargeSuccess(CurrencyListVO currencyListVO) {
         if (currencyListVO != null) {
-            fee = currencyListVO.getWithdrawCharge();
+            transactionFee = DecimalTool.calculateFirstAddSecondValue(currencyListVO.getWithdrawCharge(), currencyListVO.getGasFeeCharge());
             if (tvFeeTips != null) {
-                tvFeeTips.setText(context.getResources().getString(R.string.withdraw_need_fee) + "  " + fee + currencyListVO.getEnName());
+                tvFeeTips.setText(context.getResources().getString(R.string.withdraw_need_fee) + transactionFee + "  " + currencyListVO.getEnName());
             }
         }
 

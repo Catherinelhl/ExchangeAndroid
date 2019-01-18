@@ -101,7 +101,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     public void securityPhone(String phone, String verifyCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         memberVO.setPhone(phone);
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
@@ -161,7 +161,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     public void securityEmail(String verifyCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         LoginInfoVO loginInfoVO = new LoginInfoVO();
@@ -220,7 +220,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     public void securityGoogle(String verifyCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         LoginInfoVO loginInfoVO = new LoginInfoVO();

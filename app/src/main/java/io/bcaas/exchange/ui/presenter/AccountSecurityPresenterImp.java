@@ -43,11 +43,14 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
+        requestJson.setMemberVO(memberVO);
+
+
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
+
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getAccountSecurity", requestJson);
         accountSecurityInteractor.getAccountSecurity(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())

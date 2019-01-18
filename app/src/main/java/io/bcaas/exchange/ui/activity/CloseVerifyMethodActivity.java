@@ -179,7 +179,7 @@ public class CloseVerifyMethodActivity extends BaseActivity
                                 VerificationBean verificationBean = new VerificationBean();
                                 verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.EMAIL));
                                 verificationBean.setType(Constants.VerifyType.EMAIL);
-                                verificationBean.setMail(BaseApplication.getMemberId());
+                                verificationBean.setMail(BaseApplication.getMemberID());
                                 verificationBean.setVerifyCode(emailVerifyCode);
                                 verificationBeans.add(verificationBean);
 

@@ -62,7 +62,7 @@ public class CloseVerifyPresenterImp
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
 

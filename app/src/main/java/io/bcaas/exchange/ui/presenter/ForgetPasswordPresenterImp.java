@@ -48,7 +48,7 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         try {
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
         } catch (NoSuchAlgorithmException e) {

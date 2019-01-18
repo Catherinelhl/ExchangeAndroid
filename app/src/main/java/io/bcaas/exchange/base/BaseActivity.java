@@ -526,7 +526,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
      */
     public void showLogoutDialog() {
         //清空当前的token
-        BaseApplication.clearToken();
+        BaseApplication.clearTokenAndMemberId();
         //    {"success":false,"code":2019,"message":"AccessToken expire."}
         showSingleDialog(getString(R.string.warning),
                 getString(R.string.please_login_again), () -> {

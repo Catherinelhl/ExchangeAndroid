@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -35,9 +36,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_amount)
-    EditTextWithAction acount;
+    EditTextWithAction etAccount;
     @BindView(R.id.etwa_password)
-    EditTextWithAction password;
+    EditTextWithAction etPassword;
     @BindView(R.id.etwa_image_code)
     EditTextWithAction etImageCode;
     @BindView(R.id.btn_login)
@@ -50,7 +51,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     TextView tvVersion;
     @BindView(R.id.ll_login)
     LinearLayout llLogin;
-
+    @BindView(R.id.iv_login_logo)
+    ImageView ivLoginLogo;
     private LoginContract.Presenter presenter;
 
     @Override
@@ -66,12 +68,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void initView() {
         //清除当前的Token
-        BaseApplication.clearToken();
+        BaseApplication.clearTokenAndMemberId();
         //设置账号只能输入邮箱类型
-        acount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        etAccount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         setAppVersion();
-        acount.setFrom(Constants.EditTextFrom.LOGIN_ACCOUNT);
-        password.setFrom(Constants.EditTextFrom.LOGIN_PASSWORD);
+        etAccount.setFrom(Constants.EditTextFrom.LOGIN_ACCOUNT);
+        etPassword.setFrom(Constants.EditTextFrom.LOGIN_PASSWORD);
 
     }
 
@@ -92,13 +94,22 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         tvVersion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 intentToActivity(GetCoinMarketCapActivity.class, false);
             }
         });
-        acount.setEditTextWatcherListener(new EditTextWatcherListener() {
+        ivLoginLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 2019/1/18 快速设置账号信息
+                etAccount.setContent(Constants.User.MEMBER_ID);
+                etPassword.setContent(Constants.User.MEMBER_PASSWORD);
+            }
+        });
+        etAccount.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
-                String passwordStr = password.getContent();
+                String passwordStr = etPassword.getContent();
                 if (StringTool.notEmpty(passwordStr)) {
                     if (StringTool.equals(passwordStr, content)) {
                         hideSoftKeyboard();
@@ -111,10 +122,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
             }
         });
-        password.setEditTextWatcherListener(new EditTextWatcherListener() {
+        etPassword.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
-                String amountStr = acount.getContent();
+                String amountStr = etAccount.getContent();
                 if (StringTool.notEmpty(amountStr)) {
                     if (StringTool.equals(amountStr, content)) {
                         hideSoftKeyboard();
@@ -184,8 +195,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
                     @Override
                     public void onNext(Object o) {
-                        String memberID = Constants.User.MEMBER_ID;
-                        String password = Constants.User.MEMBER_PASSWORD;
+                        hideSoftKeyboard();
+                        String memberID = etAccount.getContent();
+                        String password = etPassword.getContent();
                         String verifyCode = etImageCode.getContent();
                         //1：判断账号非空
                         if (StringTool.isEmpty(memberID)) {
@@ -202,17 +214,18 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                             showToast(getString(R.string.input_graphic_verify_code));
                             return;
                         }
-                        presenter.login(memberID, password, verifyCode);
+                        if (presenter != null) {
+                            presenter.login(memberID, password, verifyCode);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
                     }
                 });
     }

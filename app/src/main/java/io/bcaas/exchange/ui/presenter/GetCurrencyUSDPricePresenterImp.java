@@ -42,7 +42,7 @@ public class GetCurrencyUSDPricePresenterImp implements GetCurrencyUSDPriceContr
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
         LoginInfoVO loginInfoVO = new LoginInfoVO();

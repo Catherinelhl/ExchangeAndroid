@@ -34,7 +34,7 @@ public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presente
     public void getAllBalance() {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
 

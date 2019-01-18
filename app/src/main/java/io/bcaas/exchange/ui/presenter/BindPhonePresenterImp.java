@@ -50,7 +50,7 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         memberVO.setPhone(phone);
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);

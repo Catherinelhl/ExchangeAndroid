@@ -137,7 +137,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
-        RxView.clicks(btnRegister).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnRegister).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -163,24 +163,29 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
                             showToast(getString(R.string.please_input_password));
                             return;
                         }
-                        //4：判断当前的确认密码是否输入
+                        //4：判断密码是否输入8位
+                        if (password.length() < Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
+                            showToast(getString(R.string.password_to_short));
+                            return;
+                        }
+                        //5：判断当前的确认密码是否输入
                         String passwordConfirmStr = etPasswordConfirm.getContent();
                         if (StringTool.isEmpty(passwordConfirmStr)) {
                             showToast(getString(R.string.please_input_confirm_password));
                             return;
                         }
-                        //5：且是否和登录密码匹配
+                        //6：且是否和登录密码匹配
                         if (!StringTool.equals(password, passwordConfirmStr)) {
                             showToast(getString(R.string.password_does_not_match));
                             return;
                         }
-                        //6：判断当前的邮箱验证码是否输入
+                        //7：判断当前的邮箱验证码是否输入
                         String verifyCode = etEmailCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
                             showToast(getString(R.string.please_input_verify_code_first));
                             return;
                         }
-                        //7：开始请求
+                        //8：开始请求
                         presenter.register(userAccount, password, verifyCode);
                     }
 

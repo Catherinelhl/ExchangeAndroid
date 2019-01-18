@@ -17,7 +17,6 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
@@ -91,7 +90,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         }
 
         scivFundPassword.setTabInfo(getString(R.string.fund_password_purpose));
-        scivEmailVerify.setTabInfo(BaseApplication.getMemberId());
+        scivEmailVerify.setTabInfo(BaseApplication.getMemberID());
         scivPhoneVerify.setTabInfo(getString(R.string.phone_verify_purpose));
         scivGoogleVerify.setTabInfo(getString(R.string.google_verify_purpose));
 
@@ -128,7 +127,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.logout(Constants.User.MEMBER_ID);
+                        presenter.logout(BaseApplication.getMemberID());
                     }
 
                     @Override
@@ -146,7 +145,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
     @Override
     public void logoutSuccess(String info) {
         //清空token
-        BaseApplication.clearToken();
+        BaseApplication.clearTokenAndMemberId();
         intentToActivity(LoginActivity.class, true);
     }
 
@@ -271,7 +270,9 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.equals(txPassword, Constants.Status.NO_TX_PASSWORD)) {
             scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
         } else {
-            scivFundPassword.setTabStatusByText(true, getString(R.string.modify));
+            // TODO: 2019/1/18 暂时没有修改资金密码的接口
+//            scivFundPassword.setTabStatusByText(true, getString(R.string.modify));
+            scivFundPassword.setTabStatusByText(true, MessageConstants.EMPTY);
         }
 
         //判断是否开启「邮箱验证」

@@ -11,6 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
 import io.bcaas.exchange.ui.presenter.ResetPasswordPresenterImp;
@@ -88,7 +89,7 @@ public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPa
 
                     }
                 });
-        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -101,35 +102,43 @@ public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPa
                         //1：判断原登录密码非空
                         String originalPassword = etOriginalPassword.getContent();
                         if (StringTool.isEmpty(originalPassword)) {
-                            showToast("请输入原密码！");
+                            showToast(getString(R.string.please_input_original_password));
                             return;
                         }
                         //2：判断新密码非空
                         String newPassword = etNewPassword.getContent();
                         if (StringTool.isEmpty(newPassword)) {
-                            showToast("请输入新密码！");
-                            return;
-                        }
-                        //3：判断确认新密码非空
-                        String confirmNewPassword = etConfirmNewPassword.getContent();
-                        if (StringTool.isEmpty(confirmNewPassword)) {
-                            showToast("请输入确认新密码！");
+                            showToast(getString(R.string.please_input_new_password));
                             return;
                         }
 
-                        //4:判断新密码输入是否一致
-                        if (!StringTool.equals(newPassword, confirmNewPassword)) {
-                            showToast("两次密码输入不一致！");
+                        //3:判断当前新密码是否输入8位
+                        if (newPassword.length() < Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
+                            showToast(getString(R.string.password_to_short));
                             return;
                         }
-                        //5：请求接口修改密码
-                        presenter.resetPassword(originalPassword, newPassword);
+                        //4：判断确认新密码非空
+                        String confirmNewPassword = etConfirmNewPassword.getContent();
+                        if (StringTool.isEmpty(confirmNewPassword)) {
+                            showToast(getString(R.string.please_input_confirm_password));
+                            return;
+                        }
+
+                        //5:判断新密码输入是否一致
+                        if (!StringTool.equals(newPassword, confirmNewPassword)) {
+                            showToast(getString(R.string.password_does_not_match));
+                            return;
+                        }
+                        //6：请求接口修改密码
+                        if (presenter != null) {
+                            presenter.resetPassword(originalPassword, newPassword);
+                        }
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override

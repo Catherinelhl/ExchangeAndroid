@@ -50,7 +50,7 @@ public class AccountFragment extends BaseFragment {
     @Override
     public void initViews(View view) {
         isPrepared = true;
-        tvAccountName.setText(BaseApplication.getMemberId());
+        tvAccountName.setText(BaseApplication.getMemberID());
         initAdapter();
     }
 

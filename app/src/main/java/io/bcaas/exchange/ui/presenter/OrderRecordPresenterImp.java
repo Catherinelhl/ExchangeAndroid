@@ -43,7 +43,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
         //组装数据
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
 
@@ -123,7 +123,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
 

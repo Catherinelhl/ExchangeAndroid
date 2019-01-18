@@ -49,6 +49,8 @@ public class BaseApplication extends MultiDexApplication {
     private static List<MemberKeyVO> memberKeyVOList;
     /*存储当前的用户资讯*/
     private static MemberVO memberVO;
+    /*存储当前用户的memberId*/
+    private static String memberID;
 
 
     @Override
@@ -91,8 +93,12 @@ public class BaseApplication extends MultiDexApplication {
         BaseApplication.token = token;
     }
 
-    public static void clearToken() {
+    /**
+     * 清除账户token等信息
+     */
+    public static void clearTokenAndMemberId() {
         BaseApplication.token = MessageConstants.EMPTY;
+        BaseApplication.memberID = MessageConstants.EMPTY;
     }
 
     public static boolean isSetFundPassword() {
@@ -121,9 +127,17 @@ public class BaseApplication extends MultiDexApplication {
         BaseApplication.currentLanguage = currentLanguage;
     }
 
-    public static String getMemberId() {
-        // TODO: 2019/1/3 暂时这样写，到时候应该存储起来
-        return Constants.User.MEMBER_ID;
+    public static String getMemberID() {
+        //取到当前的MemberVo信息
+        MemberVO memberVO = getMemberVO();
+        if (memberVO == null) {
+            return memberID;
+        }
+        return memberVO.getMemberId();
+    }
+
+    public static void setMemberID(String memberID) {
+        BaseApplication.memberID = memberID;
     }
 
     public static List<MemberKeyVO> getMemberKeyVOList() {

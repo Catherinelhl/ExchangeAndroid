@@ -43,7 +43,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberId());
+        memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
 
