@@ -18,10 +18,16 @@ public interface HttpApi {
 
 
     /**
-     * 登入
+     * 注册
      */
     @POST(APIURLConstants.API_REGISTER)
     Observable<ResponseJson> register(@Body RequestBody requestBody);
+
+    /**
+     * 验证账号是否注册
+     */
+    @POST(APIURLConstants.API_VERIFY_ACCOUNT)
+    Observable<ResponseJson> verifyAccount(@Body RequestBody requestBody);
 
     /**
      * 登入  @FormUrlEncoded

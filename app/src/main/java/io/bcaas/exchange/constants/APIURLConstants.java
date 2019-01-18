@@ -10,8 +10,8 @@ public class APIURLConstants {
 
     /*会员注册*/
     public static final String API_REGISTER = "member/registerAccount";
-    //    /*驗證帳號是否註冊*/
-//    public static final String API_VERIFY_ACCOUNT = "member/verifyAccount";
+    /*驗證帳號是否註冊*/
+    public static final String API_VERIFY_ACCOUNT = "member/verifyAccount";
     /*登入*/
     public static final String API_LOGIN = "member/login";
     /*登出*/

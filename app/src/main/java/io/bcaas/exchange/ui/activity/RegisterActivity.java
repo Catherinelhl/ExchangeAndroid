@@ -31,7 +31,8 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/17
  * 注册页面
  */
-public class RegisterActivity extends BaseActivity implements RegisterContract.View {
+public class RegisterActivity extends BaseActivity
+        implements RegisterContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -70,7 +71,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         tvTitle.setText(R.string.register_title);
         //设置账号只能输入邮箱类型
         etAccount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etEmailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
+        etEmailCode.setFrom(Constants.EditTextFrom.VERIFY_EMAIL_AND_EMAIL_CODE);
 
     }
 
@@ -200,6 +201,29 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
                     }
                 });
+        etEmailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+                //1：判断当前账号是否输入
+                String userAccount = etAccount.getContent();
+                if (StringTool.isEmpty(userAccount)) {
+                    showToast(getString(R.string.please_input_account));
+                    return;
+                }
+                //2：是否输入正确的邮箱格式
+                if (!RegexTool.isRightEmail(userAccount)) {
+                    showToast(getString(R.string.please_input_right_email));
+                    return;
+                }
+                //检测当前的邮箱是否已经注册
+                presenter.verifyAccount(userAccount);
+            }
+        });
     }
 
     @Override
@@ -221,6 +245,17 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     @Override
     public void registerFailure(String info) {
         showToast(info);
+    }
+
+    @Override
+    public void verifyAccountFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    public void verifyAccountSuccess(String info) {
+        // 开始请求验证码
+        etEmailCode.requestEmail(Constants.EditTextFrom.EMAIL_CODE);
     }
 
 }

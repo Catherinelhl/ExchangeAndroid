@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
+import io.bcaas.exchange.BuildConfig;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -94,8 +95,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         tvVersion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                intentToActivity(GetCoinMarketCapActivity.class, false);
+                if (BuildConfig.DEBUG) {
+                    intentToActivity(GetCoinMarketCapActivity.class, false);
+                }
             }
         });
         ivLoginLogo.setOnClickListener(new View.OnClickListener() {

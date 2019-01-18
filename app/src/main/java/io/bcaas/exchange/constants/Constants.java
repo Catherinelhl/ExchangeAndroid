@@ -185,6 +185,7 @@ public class Constants {
         public static final String LOGIN_ACCOUNT = "loginAccount";//登录页面的账户输入框
         public static final String LOGIN_PASSWORD = "loginPassword";//登录页面的密码框
         public static final String EMAIL_CODE = "emailCode";//邮箱验证码
+        public static final String VERIFY_EMAIL_AND_EMAIL_CODE = "verifyEmailAndEmailCode";//验证邮箱然后发送邮箱验证码
         public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
         public static final String PHONE_CODE = "phoneCode";//phone verify
         public static final String WITHDRAW_AMOUNT = "withDrawAmount";//提现金额

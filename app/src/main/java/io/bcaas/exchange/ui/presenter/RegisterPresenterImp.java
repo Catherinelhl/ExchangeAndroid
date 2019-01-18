@@ -61,7 +61,7 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"register",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "register", requestJson);
 
         loginInteractor.register(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -108,4 +108,59 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                 });
     }
 
+
+    @Override
+    public void verifyAccount(String memberId) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        //显示加载框
+        view.showLoading();
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(memberId);
+        requestJson.setMemberVO(memberVO);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", requestJson);
+
+        loginInteractor.verifyAccount(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", responseJson);
+                        if (responseJson == null) {
+                            view.verifyAccountFailure(MessageConstants.EMPTY);
+                            return;
+                        }
+                        // {"success":false,"code":2005,"message":"Email not register."}
+                        int code = responseJson.getCode();
+                        if (code == MessageConstants.CODE_2005) {
+                            BaseApplication.setMemberID(memberId);
+                            view.verifyAccountSuccess(responseJson.getMessage());
+                        } else {
+                            view.verifyAccountFailure(responseJson.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
+                        view.verifyAccountFailure(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        view.hideLoading();
+                    }
+                });
+    }
 }
