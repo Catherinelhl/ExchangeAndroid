@@ -1,9 +1,8 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.TextWatcher;
+import android.text.*;
+import android.text.style.AbsoluteSizeSpan;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -121,6 +120,22 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 
             }
         });
+        etRate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         etSellVolume.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -143,11 +158,11 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                             setProgressByUserInput(text);
                         }
                     } else {
-                        setProgressByUserInput(text);
+                        setProgressByUserInput("0");
                     }
 
                 } else {
-                    setProgressByUserInput("0.0");
+                    setProgressByUserInput("0");
                 }
 
             }
@@ -261,7 +276,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                 setTxAmountInfo(text);
             } else {
                 sbProgress.setProgress(0);
-                tvProgressSpeed.setText("0.0");
+                tvProgressSpeed.setText(text);
                 tvProgressSpeed.setX(margin);
             }
         }
@@ -332,14 +347,10 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             if (tvCurrentCurrency != null) {
                 tvCurrentCurrency.setText(currencyListVO.getEnName());
             }
-            //重置界面值
-            if (etRate != null) {
-                etRate.setText("1");
-            }
             if (etSellVolume != null) {
-                etSellVolume.setText("0.0");
+                etSellVolume.setText(MessageConstants.EMPTY);
             }
-            setProgressByUserInput("0.0");
+            setProgressByUserInput("0");
             //置空当前的交易额信息
             txAmount = MessageConstants.EMPTY;
             if (tvFinalTxAmount != null) {
@@ -358,7 +369,16 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             }
             salableBalance = DecimalTool.getStringReplaceComma(memberKeyVO.getBalanceAvailable());
         }
+        setEditHintTextSize(etSellVolume, R.string.zero);
+        setEditHintTextSize(etRate, R.string.please_choose);
+    }
 
+    /*设置输入框的hint的大小而不影响text size*/
+    private void setEditHintTextSize(EditText editText, int res) {
+        SpannableString spannableString = new SpannableString(getResources().getString(res));//定义hint的值
+        AbsoluteSizeSpan absoluteSizeSpan = new AbsoluteSizeSpan(14, true);//设置字体大小 true表示单位是sp
+        spannableString.setSpan(absoluteSizeSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        editText.setHint(new SpannedString(spannableString));
     }
 
     /**

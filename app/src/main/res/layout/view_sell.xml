@@ -46,17 +46,14 @@
                               android:layout_height="@dimen/d48">
                     <EditText
                             android:id="@+id/et_rate"
-                            style="@style/black_14_edit_text_style"
+                            style="@style/black_666_18_edit_text_style"
                             android:layout_width="@dimen/d0"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/d12"
-                            android:hint="请输入卖出价"
-                            android:inputType="numberDecimal"
-                            android:textSize="@dimen/text_size_18"
-                            android:textColor="@color/black_333333"
-                            android:text="1238.2314241"/>
+                            android:hint="@string/please_choose"
+                            android:inputType="numberDecimal"/>
                     <TextView
                             android:id="@+id/tv_exchange_currency"
                             android:layout_width="wrap_content"
@@ -93,16 +90,14 @@
                               android:layout_height="wrap_content">
                     <EditText
                             android:id="@+id/et_sell_volume"
-                            style="@style/black_14_edit_text_style"
+                            style="@style/black_666_18_edit_text_style"
                             android:layout_width="@dimen/d0"
                             android:layout_weight="1"
+                            android:hint="@string/zero"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content"
                             android:inputType="numberDecimal"
-                            android:paddingLeft="@dimen/d12"
-                            android:textSize="@dimen/text_size_18"
-                            android:textColor="@color/black_333333"
-                            android:text="0.0"/>
+                            android:paddingLeft="@dimen/d12"/>
                     <TextView
                             android:id="@+id/tv_current_currency"
                             android:layout_width="wrap_content"

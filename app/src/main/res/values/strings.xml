@@ -163,5 +163,7 @@
     <string name="please_input_new_password">请输入新密码！</string>
     <string name="modify_fund_password">修改资金密码</string>
     <string name="reset_fund_password">重置资金密码</string>
+    <string name="please_choose">请选择</string>
+    <string name="zero">0</string>
 
 </resources>
