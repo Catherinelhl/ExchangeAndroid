@@ -172,6 +172,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                     @Override
                     public void onNext(Object o) {
                         Intent intent = new Intent();
+                        intent.putExtra(Constants.KeyMaps.From, Constants.From.LOGIN_PASSWORD);
                         intent.setClass(LoginActivity.this, ForgetPasswordActivity.class);
                         startActivityForResult(intent, Constants.RequestCode.RESET_PASSWORD_CODE);
                     }

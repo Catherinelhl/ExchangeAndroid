@@ -40,18 +40,18 @@
     <string name="input_account">Please input account</string>
     <string name="input_password">Please input password</string>
     <string name="input_graphic_verify_code">Please input graphic verify code.</string>
-    <string name="my_fund">我的资产</string>
+    <string name="my_fund">My Fund</string>
     <string name="withdraw_tips">请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。</string>
     <string name="recharge_tips">请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。</string>
     <string name="copy_address">复制地址</string>
-    <string name="logout">登出</string>
-    <string name="google_verify">google验证</string>
-    <string name="phone_verify">手机验证</string>
-    <string name="email_verify">邮箱验证</string>
-    <string name="login_password">登录密码</string>
+    <string name="logout">Logout</string>
+    <string name="google_verify">google verify</string>
+    <string name="phone_verify">Phone verify</string>
+    <string name="email_verify">Email verify</string>
+    <string name="login_password">Login password</string>
     <string name="original_password">原登录密码</string>
     <string name="new_password_rule">新密码(8~20位数字和字符组合,不能与资金密码相同)</string>
-    <string name="confirm_new_password">确认新密码</string>
+    <string name="confirm_new_password">Confirm new password</string>
     <string name="modify_login_password">修改登录密码</string>
     <string name="confirm_password">确认密码</string>
     <string name="fund_password_rule">资金密码(8~20位数字和字符组合,不能与登录密码相同)</string>
@@ -161,5 +161,7 @@
     <string name="password_to_short">密码不能少于8位</string>
     <string name="please_input_original_password">请输入原密码！</string>
     <string name="please_input_new_password">请输入新密码！</string>
+    <string name="modify_fund_password">修改资金密码</string>
+    <string name="reset_fund_password">重置资金密码</string>
 
 </resources>

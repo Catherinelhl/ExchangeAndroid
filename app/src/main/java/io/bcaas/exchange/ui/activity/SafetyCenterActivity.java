@@ -166,14 +166,22 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
         if (StringTool.equals(from, getString(R.string.login_password))) {
             // 登录密码
-            intent.setClass(SafetyCenterActivity.this, ModifyLoginPasswordActivity.class);
+            intent.putExtra(Constants.KeyMaps.From, Constants.From.LOGIN_PASSWORD);
+            intent.setClass(SafetyCenterActivity.this, ModifyPasswordActivity.class);
             startActivityForResult(intent, Constants.RequestCode.MODIFY_LOGIN_PASSWORD);
 
         } else if (StringTool.equals(from, getString(R.string.fund_password))) {
-            //资金密码，设置之后就不可更改
-            intent.setClass(SafetyCenterActivity.this, SetFundPasswordActivity.class);
-            startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+            //判断是否设置「资金密码」
+            String txPassword = memberVO.getTxPassword();
+            if (StringTool.equals(txPassword, Constants.Status.NO_TX_PASSWORD)) {
+                intent.setClass(SafetyCenterActivity.this, SetFundPasswordActivity.class);
+                startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+            } else {
+                intent.putExtra(Constants.KeyMaps.From, Constants.From.FUND_PASSWORD);
+                intent.setClass(SafetyCenterActivity.this, ModifyPasswordActivity.class);
+                startActivityForResult(intent, Constants.RequestCode.MODIFY_FUND_PASSWORD);
 
+            }
         } else if (StringTool.equals(from, getString(R.string.email_verify))) {
             int emailVerify = memberVO.getEmailVerify();
             if (emailVerify == Constants.Status.CLOSE) {
@@ -270,9 +278,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.equals(txPassword, Constants.Status.NO_TX_PASSWORD)) {
             scivFundPassword.setTabStatusByText(false, getString(R.string.setting));
         } else {
-            // TODO: 2019/1/18 暂时没有修改资金密码的接口
-//            scivFundPassword.setTabStatusByText(true, getString(R.string.modify));
-            scivFundPassword.setTabStatusByText(true, MessageConstants.EMPTY);
+            scivFundPassword.setTabStatusByText(true, getString(R.string.modify));
         }
 
         //判断是否开启「邮箱验证」

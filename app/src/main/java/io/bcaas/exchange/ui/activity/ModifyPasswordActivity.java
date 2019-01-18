@@ -24,9 +24,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「修改登录密码」
+ * 「修改密码」 根据传入的字段来决定修改登录密码还是修改资金密码
  */
-public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
+public class ModifyPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -44,6 +44,9 @@ public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPa
 
     private ResetPasswordContract.Presenter presenter;
 
+    /*标志当前界面是修改登录密码，还是修改资金密码*/
+    private boolean isModifyLoginPassword;
+
     @Override
     public int getContentView() {
         return R.layout.activity_modify_login_password;
@@ -51,13 +54,21 @@ public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPa
 
     @Override
     public void getArgs(Bundle bundle) {
-
+        if (bundle == null) {
+            return;
+        }
+        String from = bundle.getString(Constants.KeyMaps.From);
+        isModifyLoginPassword = StringTool.equals(from, Constants.From.LOGIN_PASSWORD);
     }
 
     @Override
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
-        tvTitle.setText(R.string.modify_login_password);
+        if (isModifyLoginPassword) {
+            tvTitle.setText(R.string.modify_login_password);
+        } else {
+            tvTitle.setText(R.string.modify_fund_password);
+        }
     }
 
     @Override
@@ -129,9 +140,13 @@ public class ModifyLoginPasswordActivity extends BaseActivity implements ResetPa
                             showToast(getString(R.string.password_does_not_match));
                             return;
                         }
-                        //6：请求接口修改密码
-                        if (presenter != null) {
-                            presenter.resetPassword(originalPassword, newPassword);
+                        //6：判断当前修改密码类型：资金还是登录
+                        if (isModifyLoginPassword) {
+                            if (presenter != null) {
+                                presenter.resetPassword(originalPassword, newPassword);
+                            }
+                        } else {
+
                         }
 
                     }

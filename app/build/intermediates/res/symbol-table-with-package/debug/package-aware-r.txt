@@ -2030,6 +2030,7 @@ string logout
 string message
 string message_verify_code
 string modify
+string modify_fund_password
 string modify_login_password
 string mtrl_chip_close_icon_content_description
 string my_all_fund
@@ -2101,6 +2102,7 @@ string remarks
 string reset
 string reset_email_code_hint
 string reset_email_hint
+string reset_fund_password
 string reset_password_again_hint
 string reset_password_title
 string reset_set_login_password_hint

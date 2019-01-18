@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/17
- * 忘记密码
+ * 忘记密码：资金，登录
  */
 public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswordContract.View {
     @BindView(R.id.ib_back)
@@ -48,6 +48,9 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
     private ForgetPasswordContract.Presenter presenter;
 
+    /*标志当前界面是修改登录密码，还是修改资金密码*/
+    private boolean isResetLoginPassword;
+
     @Override
     public int getContentView() {
         return R.layout.activity_forgot_password;
@@ -55,14 +58,23 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
     @Override
     public void getArgs(Bundle bundle) {
-
+        if (bundle == null) {
+            return;
+        }
+        String from = bundle.getString(Constants.KeyMaps.From);
+        isResetLoginPassword = StringTool.equals(from, Constants.From.LOGIN_PASSWORD);
     }
 
     @Override
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
-        tvTitle.setText(R.string.reset_password_title);
+        if (isResetLoginPassword) {
+            tvTitle.setText(R.string.reset_password_title);
+
+        } else {
+            tvTitle.setText(R.string.reset_fund_password);
+        }
         emailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
 
     }
@@ -155,9 +167,13 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
                             showToast(getString(R.string.please_input_verify_code));
                             return;
                         }
-                        //7：发送请求
-                        if (presenter !=null) {
-                            presenter.forgetPassword(password, verifyCode);
+                        //7：判断当前重置密码的性质：登录/资金
+                        if (isResetLoginPassword) {
+                            if (presenter != null) {
+                                presenter.forgetPassword(password, verifyCode);
+                            }
+                        } else {
+
                         }
                     }
 

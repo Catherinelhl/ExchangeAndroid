@@ -89,8 +89,9 @@ public class Constants {
         public static final int RECHARGE = 0x7;//跳转到我的充值页面的code码
         public static final int SAFETY_CENTER = 0x8;//跳转到安全中心页面的code码
         public static final int MODIFY_LOGIN_PASSWORD = 0x9;//跳转到「修改登录密码」页面的code码
-        public static final int FUND_PASSWORD = 0x10;//跳转到资金密码页面的code码
-        public static final int EMAIL_VERIFY = 0x11;//跳转到「邮箱验证」页面的code码
+        public static final int MODIFY_FUND_PASSWORD = 0x10;//跳转到「修改登录密码」页面的code码
+        public static final int FUND_PASSWORD = 0x11;//跳转到资金密码页面的code码
+        public static final int EMAIL_VERIFY = 0x12;//跳转到「邮箱验证」页面的code码
         public static final int PHONE_VERIFY = 0x13;//跳转到「手机验证」页面的code码
         public static final int GOOGLE_VERIFY = 0x14;//跳转到「google验证」页面的code码
         public static final int REQUEST_CODE_CAMERA_SCAN = 0x15;//跳转到「调用扫描」的界面
@@ -173,6 +174,8 @@ public class Constants {
         public static final String WITHDRAW = "withDraw";// 提现
         public static final String BUY = "buy";// 购买
         public static final String COIN_NAME = "coinName";//币种名字
+        public static final String LOGIN_PASSWORD = "loginPassword";//登录密码
+        public static final String FUND_PASSWORD = "fundPassword";//资金密码
     }
 
     /**
@@ -257,7 +260,7 @@ public class Constants {
 
     /**
      * cycle time to choose
-     *
+     * <p>
      * coinName
      */
     public enum CycleTime {

@@ -232,7 +232,7 @@ ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/s
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:78:19-73
 	android:name
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:75:19-67
-activity#io.bcaas.exchange.ui.activity.ModifyLoginPasswordActivity
+activity#io.bcaas.exchange.ui.activity.ModifyPasswordActivity
 ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:81:9-84:75
 	android:screenOrientation
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:82:19-55
@@ -241,7 +241,7 @@ ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/s
 	android:windowSoftInputMode
 		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:84:19-73
 	android:name
-		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:81:19-74
+		ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:81:19-69
 activity#io.bcaas.exchange.ui.activity.SetFundPasswordActivity
 ADDED from /Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml:86:9-89:75
 	android:screenOrientation

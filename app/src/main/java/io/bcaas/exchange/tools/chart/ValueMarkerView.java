@@ -58,7 +58,7 @@ public class ValueMarkerView extends MarkerView {
             tvContent.setText(valueFormatter.getFormattedValue(index) + "\n" + format.format(e.getY()));
         } else {
             int posiontion = (int) index;
-            List<List<Object>> market_cap_by_available_supply = coinMarketCapBean.getMarket_cap_by_available_supply();
+            List<List<Double>> market_cap_by_available_supply = coinMarketCapBean.getMarket_cap_by_available_supply();
             if (market_cap_by_available_supply == null) {
                 tvContent.setText(valueFormatter.getFormattedValue(index) + "\n" + format.format(e.getY()));
 

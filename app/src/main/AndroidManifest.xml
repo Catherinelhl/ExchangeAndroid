@@ -78,7 +78,7 @@
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
 
-        <activity android:name=".ui.activity.ModifyLoginPasswordActivity"
+        <activity android:name=".ui.activity.ModifyPasswordActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
