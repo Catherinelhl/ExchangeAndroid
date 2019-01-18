@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -66,6 +67,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     protected DataGenerationRegister dataGenerationRegister;
     /*显示地区号的Pop Window*/
     private ListPop listPop;
+    /*字体*/
+    protected Typeface tfRegular;
+    protected Typeface tfLight;
 
     //读写权限
     private static String[] PERMISSIONS_STORAGE = {
@@ -79,6 +83,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         setContentView(getContentView());
         activity = this;
         TAG = activity.getClass().getSimpleName();
+
+        tfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
+        tfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
+
         context = getApplicationContext();
         unbinder = ButterKnife.bind(this);
         //注册OTTO事件

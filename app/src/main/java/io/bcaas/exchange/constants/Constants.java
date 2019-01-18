@@ -172,6 +172,7 @@ public class Constants {
         public static final String RECHARGE = "recharge";//充值
         public static final String WITHDRAW = "withDraw";// 提现
         public static final String BUY = "buy";// 购买
+        public static final String COIN_NAME = "coinName";//币种名字
     }
 
     /**
@@ -253,5 +254,34 @@ public class Constants {
         public static final int TX = 2;//交易
         public static final int BUY = 2;// 买
         public static final int SELL = 3;// 卖
+    }
+
+    /**
+     * cycle time to choose
+     *
+     * coinName
+     */
+    public enum CycleTime {
+        oneDay("1D"),
+        sevenDay("7D"),
+        oneMonth("1M"),
+        threeMonth("3M"),
+        oneYear("1Y"),
+        YTD("YTD"),
+        ALL("ALL");
+
+        CycleTime(String s) {
+            this.name = s;
+        }
+
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

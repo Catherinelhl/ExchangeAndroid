@@ -92,7 +92,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         tvVersion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intentToActivity(GetCoinMarketCapActivity.class, false);
             }
         });
         acount.setEditTextWatcherListener(new EditTextWatcherListener() {

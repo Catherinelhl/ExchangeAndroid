@@ -179,4 +179,18 @@ public interface HttpApi {
      */
     @POST(APIURLConstants.API_WITH_DRAW)
     Observable<ResponseJson> withDraw(@Body RequestBody requestBody);
+
+
+    /**
+     * 取得幣種名稱資訊
+     */
+    @POST(APIURLConstants.API_GET_COIN_NAME_LIST)
+    Observable<ResponseJson> getCoinNameList(@Body RequestBody requestBody);
+
+    /**
+     * 取得幣種市值資訊
+     */
+    @POST(APIURLConstants.API_GET_COIN_MARKET_CAP)
+    Observable<ResponseJson> getCoinMarketCap(@Body RequestBody requestBody);
+
 }

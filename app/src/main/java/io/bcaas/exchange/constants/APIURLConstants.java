@@ -89,5 +89,9 @@ public class APIURLConstants {
     /*設置資金密碼*/
     public static final String API_SECURITY_TX_PASSWORD = "member/securityTxPassword";
 
+    /*取得幣種名稱資訊*/
+    public static final String API_GET_COIN_NAME_LIST = "currencyList/getCoinNameList";
+    /*取得幣種市值資訊*/
+    public static final String API_GET_COIN_MARKET_CAP = "currencyList/getCoinMarketCap";
 
 }

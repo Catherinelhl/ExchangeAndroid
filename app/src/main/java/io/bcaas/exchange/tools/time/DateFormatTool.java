@@ -1,10 +1,15 @@
 package io.bcaas.exchange.tools.time;
 
 
+import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.tools.LogTool;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+
+import static android.text.format.Time.TIMEZONE_UTC;
 
 /**
  * @author Costa Peng
@@ -26,6 +31,10 @@ public class DateFormatTool {
 
     private final static String DATETIMEFORMAT_AMPM = "yyyy/MM/dd hh:mm aa";
     private final static String DATETIMEFORMAT_HMS = "yyyy/MM/dd HH:mm:ss";
+
+
+
+    private final static String DATETIMEFORMATWithH = "yy/MM/dd HH";
 
     // Greenwich Mean Time
     private final static String TIMEZONE_GMT = "GMT";
@@ -141,7 +150,7 @@ public class DateFormatTool {
      * @throws Exception
      * @format TimeMillis
      */
-    public static String getUTCDateForAMPMFormat(String timeStamp) throws Exception {
+    public static String getUTCDateForAMPMFormat(String timeStamp)  {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_AMPM);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
@@ -184,5 +193,88 @@ public class DateFormatTool {
         return simpleDateFormat.format(date);
 
     }
+
+    //获取昨天的开始时间
+    public static Date getPastTimeOfStartByCycleTime(Constants.CycleTime cycleTime) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getStartTime());
+        switch (cycleTime) {
+            case oneMonth:
+                cal.add(Calendar.MONTH, -1);
+                break;
+            case threeMonth:
+                cal.add(Calendar.MONTH, -3);
+                break;
+            case YTD:
+                cal.add(Calendar.DAY_OF_MONTH, -1);
+                break;
+            case oneYear:
+                cal.add(Calendar.YEAR, -1);
+                break;
+        }
+        LogTool.d(TAG,DateFormatTool.getUTCDateForAMPMFormat2(String.valueOf(cal.getTimeInMillis())));
+        return cal.getTime();
+    }
+
+    private static Date getStartTime() {
+        Calendar todayStart = Calendar.getInstance();
+        todayStart.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
+        todayStart.set(Calendar.HOUR_OF_DAY, 0);
+        todayStart.set(Calendar.MINUTE, 0);
+        todayStart.set(Calendar.SECOND, 0);
+        todayStart.set(Calendar.MILLISECOND, 0);
+        return todayStart.getTime();
+    }
+
+    private static Date getEndTime() {
+        Calendar todayEnd = Calendar.getInstance();
+        todayEnd.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
+        todayEnd.set(Calendar.HOUR_OF_DAY, 23);
+        todayEnd.set(Calendar.MINUTE, 59);
+        todayEnd.set(Calendar.SECOND, 59);
+        todayEnd.set(Calendar.MILLISECOND, 999);
+        return todayEnd.getTime();
+    }
+
+
+    public static String getUTCDateForAMPMFormat2(String timeStamp) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMATWithH);
+//        SimpleDateFormat sdf=new SimpleDateFormat("hh:mm:ss", Locale.getDefault());
+//        sdf.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
+        Date date = new Date();
+        date.setTime(Long.valueOf(timeStamp));
+        String dataAMPM = simpleDateFormat.format(date);
+
+
+        return dataAMPM;
+    }
+
+
+    /**
+     * 当前年的开始时间
+     *
+     * @return
+     */
+    public static Date getCurrentYearStartTime() {
+        Calendar c = Calendar.getInstance();
+        c.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
+
+        Date now = null;
+        try {
+            c.set(Calendar.MONTH, 0);
+            c.set(Calendar.DATE, 1);
+            c.set(Calendar.HOUR_OF_DAY, 0);
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
+            c.set(Calendar.MILLISECOND, 0);
+            return c.getTime();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return now;
+    }
+
 
 }

@@ -33,4 +33,24 @@ public class MainInteractor {
         return httpApi.getAllBalance(body);
     }
 
+    /**
+     * 取得幣種名稱資訊
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> getCoinNameList(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.getCoinNameList(body);
+    }
+
+    /**
+     * 取得幣種市值資訊
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> getCoinMarketCap(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.getCoinMarketCap(body);
+    }
+
 }

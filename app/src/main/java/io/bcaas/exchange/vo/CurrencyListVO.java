@@ -5,160 +5,171 @@ import java.io.Serializable;
 /**
  * 幣種清單
  *
- * @since 2018/12/11
- *
  * @author Costa
- *
  * @version 1.0.0
- *
+ * @since 2018/12/11
  */
 
 public class CurrencyListVO implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 幣種清單Uid
-	 */
-	private String currencyUid;
-	/**
-	 * 幣種名稱(英文)
-	 */
-	private String enName;
-	/**
-	 * 幣種名稱(中文)
-	 */
-	private String cnName;
-	/**
-	 * 提領 手續費
-	 */
-	private String withdrawCharge;
-	/**
-	 * 購買 手續費
-	 */
-	private String buyCharge;
-	/**
-	 * 銷售 手續費
-	 */
-	private String sellCharge;
-	/**
-	 * 礦工費
-	 */
-	private String gasFeeCharge;
-	/**
-	 * 手續費利率
-	 */
-	private String rate;
-	/**
-	 * 更新時間
-	 */
-	private String updateTime;
-	/**
-	 * 建立時間
-	 */
-	private String createTime;
+    /**
+     * 幣種清單Uid
+     */
+    private String currencyUid;
+    /**
+     * 幣種名稱(英文)
+     */
+    private String enName;
+    /**
+     * 幣種名稱(中文)
+     */
+    private String cnName;
+    /**
+     * 币种的coinName,用于交易所币种名字列表显示
+     */
+    private String coinName;
 
-	public CurrencyListVO() {
-		super();
-	}
+    /**
+     * 提領 手續費
+     */
+    private String withdrawCharge;
+    /**
+     * 購買 手續費
+     */
+    private String buyCharge;
+    /**
+     * 銷售 手續費
+     */
+    private String sellCharge;
+    /**
+     * 礦工費
+     */
+    private String gasFeeCharge;
+    /**
+     * 手續費利率
+     */
+    private String rate;
+    /**
+     * 更新時間
+     */
+    private String updateTime;
+    /**
+     * 建立時間
+     */
+    private String createTime;
 
-	public String getCurrencyUid() {
-		return currencyUid;
-	}
+    public CurrencyListVO() {
+        super();
+    }
 
-	public void setCurrencyUid(String currencyUid) {
-		this.currencyUid = currencyUid;
-	}
+    public String getCurrencyUid() {
+        return currencyUid;
+    }
 
-	public String getEnName() {
-		return enName;
-	}
+    public void setCurrencyUid(String currencyUid) {
+        this.currencyUid = currencyUid;
+    }
 
-	public void setEnName(String enName) {
-		this.enName = enName;
-	}
+    public String getEnName() {
+        return enName;
+    }
 
-	public String getCnName() {
-		return cnName;
-	}
+    public void setEnName(String enName) {
+        this.enName = enName;
+    }
 
-	public void setCnName(String cnName) {
-		this.cnName = cnName;
-	}
+    public String getCnName() {
+        return cnName;
+    }
 
-	public String getWithdrawCharge() {
-		return withdrawCharge;
-	}
+    public void setCnName(String cnName) {
+        this.cnName = cnName;
+    }
 
-	public void setWithdrawCharge(String withdrawCharge) {
-		this.withdrawCharge = withdrawCharge;
-	}
+    public String getWithdrawCharge() {
+        return withdrawCharge;
+    }
 
-	public String getBuyCharge() {
-		return buyCharge;
-	}
+    public String getCoinName() {
+        return coinName;
+    }
 
-	public void setBuyCharge(String buyCharge) {
-		this.buyCharge = buyCharge;
-	}
+    public void setCoinName(String coinName) {
+        this.coinName = coinName;
+    }
 
-	public String getSellCharge() {
-		return sellCharge;
-	}
+    public void setWithdrawCharge(String withdrawCharge) {
+        this.withdrawCharge = withdrawCharge;
+    }
 
-	public void setSellCharge(String sellCharge) {
-		this.sellCharge = sellCharge;
-	}
+    public String getBuyCharge() {
+        return buyCharge;
+    }
 
-	public String getGasFeeCharge() {
-		return gasFeeCharge;
-	}
+    public void setBuyCharge(String buyCharge) {
+        this.buyCharge = buyCharge;
+    }
 
-	public void setGasFeeCharge(String gasFeeCharge) {
-		this.gasFeeCharge = gasFeeCharge;
-	}
+    public String getSellCharge() {
+        return sellCharge;
+    }
 
-	public String getRate() {
-		return rate;
-	}
+    public void setSellCharge(String sellCharge) {
+        this.sellCharge = sellCharge;
+    }
 
-	public void setRate(String rate) {
-		this.rate = rate;
-	}
+    public String getGasFeeCharge() {
+        return gasFeeCharge;
+    }
 
-	public String getUpdateTime() {
-		return updateTime;
-	}
+    public void setGasFeeCharge(String gasFeeCharge) {
+        this.gasFeeCharge = gasFeeCharge;
+    }
 
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
-	}
+    public String getRate() {
+        return rate;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public String getUpdateTime() {
+        return updateTime;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	@Override
-	public String toString() {
-		return "CurrencyListVO{" +
-				"currencyUid='" + currencyUid + '\'' +
-				", enName='" + enName + '\'' +
-				", cnName='" + cnName + '\'' +
-				", withdrawCharge='" + withdrawCharge + '\'' +
-				", buyCharge='" + buyCharge + '\'' +
-				", sellCharge='" + sellCharge + '\'' +
-				", gasFeeCharge='" + gasFeeCharge + '\'' +
-				", rate='" + rate + '\'' +
-				", updateTime='" + updateTime + '\'' +
-				", createTime='" + createTime + '\'' +
-				'}';
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "CurrencyListVO{" +
+                "currencyUid='" + currencyUid + '\'' +
+                ", enName='" + enName + '\'' +
+                ", cnName='" + cnName + '\'' +
+                ", coinName='" + coinName + '\'' +
+                ", withdrawCharge='" + withdrawCharge + '\'' +
+                ", buyCharge='" + buyCharge + '\'' +
+                ", sellCharge='" + sellCharge + '\'' +
+                ", gasFeeCharge='" + gasFeeCharge + '\'' +
+                ", rate='" + rate + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                ", createTime='" + createTime + '\'' +
+                '}';
+    }
 }

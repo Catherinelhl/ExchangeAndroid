@@ -1,5 +1,6 @@
 package io.bcaas.exchange.vo;
 
+import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.gson.ServerResponseJson;
@@ -45,6 +46,16 @@ public class ResponseJson extends ServerResponseJson {
     private List<VerificationBean> verificationBeanList;
 
     private PaginationVO paginationVO;
+
+    private CoinMarketCapBean coinMarketCapBean;
+
+    public CoinMarketCapBean getCoinMarketCapBean() {
+        return coinMarketCapBean;
+    }
+
+    public void setCoinMarketCapBean(CoinMarketCapBean coinMarketCapBean) {
+        this.coinMarketCapBean = coinMarketCapBean;
+    }
 
     public PaginationVO getPaginationVO() {
         return paginationVO;
@@ -309,6 +320,7 @@ public class ResponseJson extends ServerResponseJson {
                 ", verificationBean=" + verificationBean +
                 ", verificationBeanList=" + verificationBeanList +
                 ", paginationVO=" + paginationVO +
+                ", coinMarketCapBean=" + coinMarketCapBean +
                 '}';
     }
 }

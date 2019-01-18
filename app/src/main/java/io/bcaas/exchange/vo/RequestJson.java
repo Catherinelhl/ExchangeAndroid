@@ -1,5 +1,6 @@
 package io.bcaas.exchange.vo;
 
+import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.bean.VerificationBean;
 
@@ -42,6 +43,16 @@ public class RequestJson implements Serializable {
 
 
     private PaginationVO paginationVO;
+
+    private CoinMarketCapBean coinMarketCapBean;
+
+    public CoinMarketCapBean getCoinMarketCapBean() {
+        return coinMarketCapBean;
+    }
+
+    public void setCoinMarketCapBean(CoinMarketCapBean coinMarketCapBean) {
+        this.coinMarketCapBean = coinMarketCapBean;
+    }
 
     public PaginationVO getPaginationVO() {
         return paginationVO;
@@ -290,6 +301,7 @@ public class RequestJson implements Serializable {
                 ", verificationBean=" + verificationBean +
                 ", verificationBeanList=" + verificationBeanList +
                 ", paginationVO=" + paginationVO +
+                ", coinMarketCapBean=" + coinMarketCapBean +
                 '}';
     }
 }

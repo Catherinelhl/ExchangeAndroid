@@ -1,7 +1,6 @@
 package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
-import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
@@ -38,10 +37,9 @@ public class BrandActivity extends BaseActivity {
         public void timeUp(Constants.TimerType timerType) {
             // TODO: 2019/1/17 判断当前是否有token存在进行不同页面的跳转
 //            if (BuildConfig.DEBUG) {
-//                intentToActivity(MainActivity.class, true);
+//                intentToActivity(GetCoinMarketCapActivity.class, true);
 //            } else {
             intentToActivity(LoginActivity.class, true);
-
 //            }
         }
     };
