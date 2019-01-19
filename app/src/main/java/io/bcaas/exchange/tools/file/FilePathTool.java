@@ -28,7 +28,7 @@ public class FilePathTool {
         }
     }
 
-    public static String getJsonFileContent(){
-        return "json" + File.separator + "getOrder";
+    public static String getJsonFileContent(String file){
+        return "json" + File.separator + file;
     }
 }

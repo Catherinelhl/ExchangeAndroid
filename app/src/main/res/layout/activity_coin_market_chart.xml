@@ -4,69 +4,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="@dimen/d200"
-                  android:background="#eeeeee"
-                  android:orientation="horizontal"
-                  android:layout_margin="@dimen/d5">
-        <LinearLayout android:layout_width="@dimen/d0"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:layout_weight="1">
-            <TextView
-                    android:id="@+id/tv_value_usd"
-                    android:minWidth="@dimen/d100"
-                    android:layout_width="wrap_content"
-                    android:text="USD:"
-                    android:layout_marginTop="@dimen/d3"
-                    android:layout_height="wrap_content"/>
-            <TextView
-                    android:id="@+id/tv_volume"
-                    android:text="Volume:"
-                    android:minWidth="@dimen/d100"
-                    android:layout_marginTop="@dimen/d3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            <TextView
-                    android:id="@+id/tv_timer"
-                    android:text="Time:"
-                    android:layout_marginTop="@dimen/d3"
-                    android:minWidth="@dimen/d100"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout android:layout_width="0dp"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:layout_weight="1">
-
-            <TextView
-                    android:id="@+id/tv_value_btc"
-                    android:text="BTC:"
-                    android:layout_marginTop="@dimen/d3"
-                    android:minWidth="@dimen/d100"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            <TextView
-                    android:id="@+id/tv_value_market"
-                    android:text="MarketValue:"
-                    android:layout_marginTop="@dimen/d3"
-                    android:minWidth="@dimen/d100"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-    </LinearLayout>
-    <RadioGroup
-            android:id="@+id/rg_cycle_time"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_height="@dimen/d48">
-
-    </RadioGroup>
-
-    <LinearLayout android:layout_width="match_parent"
                   android:gravity="center_vertical"
                   android:orientation="horizontal"
                   android:paddingLeft="@dimen/d22"

@@ -2,6 +2,7 @@ package io.bcaas.exchange.tools.chart;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import io.bcaas.exchange.tools.LogTool;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class YLineValueFormatter extends ValueFormatter {
 //            return Math.round(value / 1000000000000f) + "tri";
 //
 //        }else {
-            return String.valueOf(value);
+        return String.valueOf(value);
 //        }
     }
 }

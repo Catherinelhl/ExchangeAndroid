@@ -60,7 +60,6 @@
                 android:id="@+id/tv_account"
                 style="@style/black_666_14_text_style"
                 android:layout_width="wrap_content"
-                te
                 android:layout_below="@+id/tv_secret"
                 android:layout_toRightOf="@+id/tv_account_key"
                 android:layout_marginRight="@dimen/d20"
