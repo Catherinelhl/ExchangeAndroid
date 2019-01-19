@@ -1,5 +1,8 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -139,6 +142,36 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
 
                     }
                 });
+        tvAccount.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //获取剪贴板管理器：
+                ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                // 创建普通字符型ClipData
+                ClipData mClipData = ClipData.newPlainText(Constants.KeyMaps.COPY_ACCOUNT, tvAccount.getText().toString());
+                // 将ClipData内容放到系统剪贴板里。
+                if (cm != null) {
+                    cm.setPrimaryClip(mClipData);
+                    showToast(getString(R.string.successfully_copied));
+                }
+                return false;
+            }
+        });
+        tvSecret.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //获取剪贴板管理器：
+                ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                // 创建普通字符型ClipData
+                ClipData mClipData = ClipData.newPlainText(Constants.KeyMaps.COPY_SECRET, tvSecret.getText().toString());
+                // 将ClipData内容放到系统剪贴板里。
+                if (cm != null) {
+                    cm.setPrimaryClip(mClipData);
+                    showToast(getString(R.string.successfully_copied));
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -167,10 +200,10 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
         String account = verificationBean.getAccount();
         String secret = verificationBean.getSecret();
         if (tvSecret != null && StringTool.notEmpty(secret)) {
-            tvSecret.setText(String.format(getString(R.string.format_ss), getString(R.string.private_key_str), secret));
+            tvSecret.setText(secret);
         }
         if (tvAccount != null && StringTool.notEmpty(account)) {
-            tvAccount.setText(getString(R.string.google_account) + account);
+            tvAccount.setText(account);
         }
 
     }

@@ -26,7 +26,16 @@
                 android:layout_width="@dimen/d200"
                 android:layout_height="@dimen/d200"
                 android:layout_gravity="center"/>
-
+        <TextView
+                android:id="@+id/tv_secret_key"
+                style="@style/black_666_14_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/private_key_str"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_qr_code"
+                android:gravity="left"/>
         <TextView
                 android:id="@+id/tv_secret"
                 style="@style/black_666_14_text_style"
@@ -34,16 +43,26 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_secret_key"
+                android:gravity="left"/>
+        <TextView
+                android:id="@+id/tv_account_key"
+                style="@style/black_666_14_text_style"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/tv_secret"
                 android:layout_toRightOf="@+id/iv_qr_code"
-                android:text="dasfsa"
+                android:layout_marginRight="@dimen/d20"
+                android:layout_height="wrap_content"
+                android:text="@string/google_account"
+                android:layout_gravity="center"
                 android:gravity="left"/>
         <TextView
                 android:id="@+id/tv_account"
                 style="@style/black_666_14_text_style"
                 android:layout_width="wrap_content"
-                android:text="adsfassdfaf"
+                te
                 android:layout_below="@+id/tv_secret"
-                android:layout_toRightOf="@+id/iv_qr_code"
+                android:layout_toRightOf="@+id/tv_account_key"
                 android:layout_marginRight="@dimen/d20"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

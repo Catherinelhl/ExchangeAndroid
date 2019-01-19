@@ -119,6 +119,8 @@ public class Constants {
     public class KeyMaps {
         public static final String From = "from";//来自
         public static final String COPY_ADDRESS = "address";
+        public static final String COPY_ACCOUNT = "account";
+        public static final String COPY_SECRET = "secret";
         public static final String RESULT = "result";//扫描二维码返回的结果
         public static final String BUY_DETAIL = "buyDetail";
         public static final String SELECT_COUNTRY_CODE = "selectCountryCode";//选择的城市号码
