@@ -83,9 +83,6 @@ public class GetCoinMarketCapActivity extends BaseActivity
     private LineData data;
     private String labelBTC = "Price(BTC)", labelUSD = "Price(USD)";
 
-    //  设置全屏
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     @Override
     public int getContentView() {
         return R.layout.activity_coin_market_chart;
@@ -107,36 +104,6 @@ public class GetCoinMarketCapActivity extends BaseActivity
 
     @Override
     public void initData() {
-//                    long endTime = System.currentTimeMillis();
-//                    long startTime = 0l;
-//
-//                    switch (cycleTimeType) {
-//
-//                        case oneDay:
-//                            startTime = endTime - 24 * 60 * 60 * 1000;
-//                            break;
-//                        case sevenDay:
-//                            startTime = endTime - 24 * 7 * 60 * 60 * 1000;
-//                            break;
-//                        case oneMonth:
-//                            startTime = getPastTimeOfStartByCycleTime(cycleTimeType).getTime();
-//
-//                            break;
-//                        case threeMonth:
-//                            startTime = getPastTimeOfStartByCycleTime(cycleTimeType).getTime();
-//                            break;
-//                        case oneYear:
-//                            startTime = getPastTimeOfStartByCycleTime(cycleTimeType).getTime();
-//                            break;
-//                        case YTD:// 年初至今
-////                            endTime = getPastTimeOfEndByCycleTime(cycleTimeType).getTime();
-////                            startTime = getPastTimeOfStartByCycleTime(cycleTimeType).getTime();
-//                            startTime = DateFormatTool.getCurrentYearStartTime().getTime();
-//                            break;
-//                        case ALL:
-//                            endTime = 0l;
-//                            startTime = 0l;
-//                            break;
         //默认获取所有的数据信息
         presenter.getCoinMarketCap(coinName, System.currentTimeMillis() - 24 * 60 * 60 * 1000, System.currentTimeMillis());
     }
@@ -152,15 +119,30 @@ public class GetCoinMarketCapActivity extends BaseActivity
             xAxis = chart.getXAxis();
 
             // vertical grid lines
-            xAxis.enableGridDashedLine(10f, 10f, 0f);
+            xAxis.enableGridDashedLine(10f, 10f, 1f);
             // 如果当前没有数据返回，那么就是用默认的
-            if (data != null && priceUSD.size() > 0) {
-                xAxis.setValueFormatter(custom);
-            }
+            xAxis.setValueFormatter(custom);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        }
+            //在缩放时为轴设置最小间隔。轴不允许低于那个限度。这可以用来避免缩放时的标签复制。
+            xAxis.setGranularity(1f);
+            //设置显示X轴的下横线
+            xAxis.setDrawGridLines(true);
+            //设置不显示X轴的下标线
+            xAxis.setDrawAxisLine(false);
 
-        {   // // Chart Style // //
+        }
+        // 设置X放大的最小显示个数
+        chart.setVisibleXRangeMinimum(5);
+        //设置可以自动scale
+        chart.setAutoScaleMinMaxEnabled(true);
+        //是否绘制边线
+        chart.setDrawBorders(false);
+
+        //设置上下内边距
+//        chart.setMinOffset(1f);
+        //图标周围格额外的偏移量
+//        chart.setExtraOffsets(1f, 0f, 1f, 0f);
+        {
             // background color
             chart.setBackgroundColor(Color.WHITE);
 
@@ -190,79 +172,35 @@ public class GetCoinMarketCapActivity extends BaseActivity
             // force pinch zoom along both axis
             chart.setPinchZoom(true);
         }
-
-        ValueFormatter yLineValueFormatter = new YLineValueFormatter();
+        ValueFormatter yLineValueFormatter;
         YAxis yAxisLeft;
         {
+            yLineValueFormatter = new YLineValueFormatter(true);
             // Y-Axis Style
             yAxisLeft = chart.getAxisLeft();
-
-            // disable dual axis (only use LEFT axis)
-//            chart.getAxisRight().setEnabled(false);
+            yAxisLeft.setDrawAxisLine(false);
             // 如果当前没有数据返回，那么就是用默认的
-            if (data != null && priceUSD.size() > 0) {
-                yAxisLeft.setValueFormatter(yLineValueFormatter);
-            }
+            yAxisLeft.setValueFormatter(yLineValueFormatter);
             // horizontal grid lines
-            yAxisLeft.enableGridDashedLine(10f, 10f, 0f);
+            yAxisLeft.enableGridDashedLine(10f, 10f, 1f);
             yAxisLeft.setTextColor(context.getResources().getColor(R.color.green_22ac22));
             yAxisLeft.setTextSize(8);
-            // axis range
-//            yAxis.setAxisMaximum(200f);
-//            yAxis.setAxisMinimum(-50f);
         }
         YAxis yAxisRight;
         {
+            yLineValueFormatter = new YLineValueFormatter(false);
             // Y-Axis Style
             yAxisRight = chart.getAxisRight();
+            yAxisRight.setDrawAxisLine(false);
 
             // disable dual axis (only use LEFT axis)
-//            chart.getAxisRight().setEnabled(false);
-            // 如果当前没有数据返回，那么就是用默认的
-            if (data != null && priceUSD.size() > 0) {
-                yAxisRight.setValueFormatter(yLineValueFormatter);
-            }
+            yAxisRight.setValueFormatter(yLineValueFormatter);
             // horizontal grid lines
-            yAxisRight.enableGridDashedLine(10f, 10f, 0f);
+            yAxisRight.enableGridDashedLine(10f, 10f, 1f);
             yAxisRight.setTextColor(context.getResources().getColor(R.color.yellow_FFA73B));
             yAxisRight.setTextSize(8);
-            // axis range
-//            yAxis.setAxisMaximum(200f);
-//            yAxis.setAxisMinimum(-50f);
         }
-//        {   // // Create Limit Lines // //
-//            LimitLine llXAxis = new LimitLine(9f, "Index 10");
-//            llXAxis.setLineWidth(4f);
-//            llXAxis.enableDashedLine(10f, 10f, 0f);
-//            llXAxis.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-//            llXAxis.setTextSize(8f);
-//            llXAxis.setTypeface(tfRegular);
 //
-//            LimitLine ll1 = new LimitLine(150f, "Upper Limit");
-//            ll1.setLineWidth(4f);
-//            ll1.enableDashedLine(10f, 10f, 0f);
-//            ll1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
-//            ll1.setTextSize(8f);
-//            ll1.setTypeface(tfRegular);
-//
-//            LimitLine ll2 = new LimitLine(-30f, "Lower Limit");
-//            ll2.setLineWidth(4f);
-//            ll2.enableDashedLine(10f, 10f, 0f);
-//            ll2.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-//            ll2.setTextSize(8f);
-//            ll2.setTypeface(tfRegular);
-//
-//            // draw limit lines behind data instead of on top
-//            yAxisLeft.setDrawLimitLinesBehindData(true);
-//            yAxisRight.setDrawLimitLinesBehindData(true);
-//            xAxis.setDrawLimitLinesBehindData(true);
-
-        // add limit lines
-//            yAxis.addLimitLine(ll1);
-//            yAxis.addLimitLine(ll2);
-        //xAxis.addLimitLine(llXAxis);
-
-//        }
 
 
         // draw points over time
@@ -270,17 +208,21 @@ public class GetCoinMarketCapActivity extends BaseActivity
         chart.setScaleYEnabled(false);
         // get the legend (only possible after setting data)
         Legend l = chart.getLegend();
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
-        l.setTextColor(context.getResources().getColor(R.color.green_22ac22));
-        // draw legend entries as lines
-        l.setForm(Legend.LegendForm.EMPTY);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
+////        l.setTextColor(context.getResources().getColor(R.color.green_22ac22));
+//        // draw legend entries as lines
+//        l.setForm(Legend.LegendForm.EMPTY);
+        l.setEnabled(false);
 
-        data = new LineData();
+        if (data == null) {
+            data = new LineData();
+        }
         //添加USD
-        data.addDataSet(initChartData(getValuesEntry(true, priceUSD), labelUSD));
+        data.addDataSet(initLineData(getValuesEntry(true, priceUSD), labelUSD));
         //添加BTC
-        data.addDataSet(initChartData(getValuesEntry(false, priceBTC), labelBTC));
+        data.addDataSet(initLineData(getValuesEntry(true, priceBTC), labelBTC));
+
         // set data
         chart.setData(data);
 
@@ -311,64 +253,36 @@ public class GetCoinMarketCapActivity extends BaseActivity
      */
     private void checkData(String label, List<Entry> values) {
         LineDataSet setLineDataSet;
+        //1:判断当前chart是否为空，否则进入
         if (chart.getData() != null &&
                 chart.getData().getDataSetCount() > 0) {
-            String[] strings = chart.getData().getDataSetLabels();
-            for (String s : strings) {
-                LogTool.d(TAG, "labels:" + s);
-            }
+            //2：取到想要的label的dataSet
             setLineDataSet = (LineDataSet) chart.getData().getDataSetByLabel(label, true);
+            //3:判断当前传入的label是否是USD
             if (StringTool.equals(label, labelUSD)) {
+                //4:判断当前根据label取出的dataSet是否为空，如果为空，那么就初始化然后赋值显示
                 if (setLineDataSet == null) {
-                    initChartData(values, label);
+                    initLineData(values, label);
                 } else {
+                    //4：否则，根据传入的值进行重新显示刷新
                     setLineDataSet.setValues(values);
                     setLineDataSet.notifyDataSetChanged();
                     chart.getData().notifyDataChanged();
                     chart.notifyDataSetChanged();
                 }
             } else {
-                LineDataSet setLineDataSetOther = (LineDataSet) chart.getData().getDataSetByLabel(labelBTC, true);
-                if (setLineDataSetOther != null) {
-                    ArrayList<Entry> valuesOther = new ArrayList<>();
-                    for (int i = 0; i < priceBTC.size(); i++) {
-                        valuesOther.add(new Entry(i, Float.valueOf(String.valueOf(priceBTC.get(i).get(1)))));
-                    }
-                    setLineDataSetOther.setValues(valuesOther);
-                    setLineDataSetOther.notifyDataSetChanged();
-                    chart.getData().notifyDataChanged();
-                    chart.notifyDataSetChanged();
-                }
-
-            }
-
-
-            if (StringTool.equals(label, labelBTC)) {
                 if (setLineDataSet == null) {
-                    initChartData(values, label);
+                    initLineData(values, label);
                 } else {
                     setLineDataSet.setValues(values);
                     setLineDataSet.notifyDataSetChanged();
                     chart.getData().notifyDataChanged();
                     chart.notifyDataSetChanged();
                 }
-
-            } else {
-                LineDataSet setLineDataSetOther = (LineDataSet) chart.getData().getDataSetByLabel(labelUSD, true);
-                if (setLineDataSetOther != null) {
-                    ArrayList<Entry> valuesOther = new ArrayList<>();
-                    for (int i = 0; i < priceUSD.size(); i++) {
-                        valuesOther.add(new Entry(i, Float.valueOf(String.valueOf(priceUSD.get(i).get(1)))));
-                    }
-                    setLineDataSetOther.setValues(valuesOther);
-                    setLineDataSetOther.notifyDataSetChanged();
-                    chart.getData().notifyDataChanged();
-                    chart.notifyDataSetChanged();
-                }
-
             }
+
         } else {
-            initChartData(values, label);
+            initLineData(values, label);
         }
 
     }
@@ -379,7 +293,7 @@ public class GetCoinMarketCapActivity extends BaseActivity
      * @param values
      * @param label
      */
-    private LineDataSet initChartData(List<Entry> values, String label) {
+    private LineDataSet initLineData(List<Entry> values, String label) {
         // create a dataset and give it a type
         LineDataSet setLineDataSet = new LineDataSet(values, label);
         setLineDataSet.setDrawIcons(false);
@@ -389,9 +303,10 @@ public class GetCoinMarketCapActivity extends BaseActivity
         // black lines and points
         if (StringTool.equals(label, labelUSD)) {
             setLineDataSet.setColor(context.getResources().getColor(R.color.green_22ac22));
+            setLineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         } else {
             setLineDataSet.setColor(context.getResources().getColor(R.color.yellow_FFA73B));
-
+            setLineDataSet.setAxisDependency(YAxis.AxisDependency.RIGHT);
         }
         // 设置不画圆
         setLineDataSet.setDrawCircles(false);
@@ -418,12 +333,12 @@ public class GetCoinMarketCapActivity extends BaseActivity
 
         // set the filled area
         setLineDataSet.setDrawFilled(false);
-//        setLineDataSet.setFillFormatter(new IFillFormatter() {
-//            @Override
-//            public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
-//                return chart.getAxisLeft().getAxisMinimum();
-//            }
-//        });
+        setLineDataSet.setFillFormatter(new IFillFormatter() {
+            @Override
+            public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                return chart.getAxisLeft().getAxisMinimum();
+            }
+        });
 
         // drawables only supported on api level 21 and above
 //            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -464,24 +379,18 @@ public class GetCoinMarketCapActivity extends BaseActivity
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 checkData(labelBTC, getValuesEntry(isChecked, priceBTC));
-                Legend l = chart.getLegend();
-                l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-                l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
-                l.setTextColor(context.getResources().getColor(R.color.yellow_FFA73B));
-                // draw legend entries as lines
-                l.setForm(Legend.LegendForm.EMPTY);
+//                chart.getAxisRight().setTextColor(context.getResources().getColor(isChecked ? R.color.yellow_FFA73B : R.color.white));
+//                chart.getAxisLeft().setTextColor(context.getResources().getColor(R.color.white));
+                chart.getAxisRight().setEnabled(isChecked);
             }
         });
         cbUsd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 checkData(labelUSD, getValuesEntry(isChecked, priceUSD));
-                Legend l = chart.getLegend();
-                l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-                l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
-                l.setTextColor(context.getResources().getColor(R.color.green_22ac22));
-                // draw legend entries as lines
-                l.setForm(Legend.LegendForm.EMPTY);
+//                chart.getAxisLeft().setTextColor(context.getResources().getColor(isChecked ? R.color.green_22ac22 : R.color.white));
+//                chart.getAxisRight().setTextColor(context.getResources().getColor(R.color.white));
+                chart.getAxisLeft().setEnabled(isChecked);
 
             }
         });

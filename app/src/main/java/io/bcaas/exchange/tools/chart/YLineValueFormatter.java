@@ -2,9 +2,6 @@ package io.bcaas.exchange.tools.chart;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import io.bcaas.exchange.tools.LogTool;
-
-import java.util.List;
 
 /**
  * Y轴Label定制
@@ -12,9 +9,11 @@ import java.util.List;
 public class YLineValueFormatter extends ValueFormatter {
     private String TAG = YLineValueFormatter.class.getSimpleName();
 
+    //根据是否是左边来决定显示什么样的单位
+    private boolean isLeft;
 
-    public YLineValueFormatter() {
-
+    public YLineValueFormatter(boolean isLeft) {
+        this.isLeft = isLeft;
     }
 
 
@@ -33,7 +32,11 @@ public class YLineValueFormatter extends ValueFormatter {
 //            return Math.round(value / 1000000000000f) + "tri";
 //
 //        }else {
-            return String.valueOf(value);
+        if (isLeft) {
+            return "$" + "  " + String.valueOf(value);
+        } else {
+            return String.valueOf(value) + "  " + "BTC";
+        }
 //        }
     }
 
@@ -52,7 +55,13 @@ public class YLineValueFormatter extends ValueFormatter {
 //            return Math.round(value / 1000000000000f) + "tri";
 //
 //        }else {
-        return String.valueOf(value);
+        if (isLeft) {
+            return "$" + String.valueOf(value);
+
+        } else {
+            return String.valueOf(value) + "BTC";
+
+        }
 //        }
     }
 }
