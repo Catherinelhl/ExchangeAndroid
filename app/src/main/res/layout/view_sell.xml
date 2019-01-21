@@ -171,7 +171,7 @@
                     android:layout_marginTop="@dimen/d38"
                     android:text="@string/sell"/>
             <View android:layout_width="match_parent"
-                  android:layout_height="@dimen/d60"
+                  android:layout_height="@dimen/d67"
                   android:background="@color/transparent"/>
 
         </LinearLayout>
