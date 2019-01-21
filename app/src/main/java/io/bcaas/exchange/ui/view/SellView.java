@@ -5,6 +5,7 @@ import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
 import android.widget.*;
 import butterknife.BindView;
+import com.github.mikephil.charting.charts.LineChart;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.SellDataBean;
@@ -18,6 +19,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.GetCurrencyChargeContract;
 import io.bcaas.exchange.ui.presenter.GetCurrencyChargePresenterImp;
+import io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
@@ -32,6 +34,18 @@ import java.util.concurrent.TimeUnit;
  * 「售出」页面视图
  */
 public class SellView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
+    @BindView(R.id.rl_coin_chart_action)
+    RelativeLayout rlCoinChartAction;
+    @BindView(R.id.cb_usd)
+    CheckBox cbUsd;
+    @BindView(R.id.cb_btc)
+    CheckBox cbBtc;
+    @BindView(R.id.line_chart)
+    LineChart lineChart;
+    @BindView(R.id.rl_sell_view)
+    RelativeLayout rlSellView;
+    @BindView(R.id.sccrl_layout)
+    ShowCoinChartRelativeLayout sccrlLayout;
     private String TAG = SellView.class.getSimpleName();
 
     @BindView(R.id.tv_salable_balance)
@@ -169,7 +183,6 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         RxView.clicks(btnSell).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
@@ -338,10 +351,12 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             if (currencyListVO == null) {
                 return;
             }
+            String enName = currencyListVO.getEnName();
+            sccrlLayout.setCurveName(enName);
             if (tvSalableBalance != null) {
                 tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance),
                         memberKeyVO.getBalanceAvailable(),
-                        currencyListVO.getEnName()));
+                        enName));
             }
             getCurrencyCharge();
             if (tvCurrentCurrency != null) {

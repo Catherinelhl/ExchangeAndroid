@@ -89,4 +89,6 @@ public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presente
                     }
                 });
     }
+
+
 }

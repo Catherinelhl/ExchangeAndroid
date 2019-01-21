@@ -29,7 +29,7 @@
     <color name="grey_666666">#666666</color>
     <color name="green70_18ac22">#b318AC22</color>
     <color name="green_18ac22">#18AC22</color>
-    <color name="green_22ac22">#22ac22</color>
+    <color name="green_005744">#005744</color>
     <color name="orange_yellow">#F5A623</color>
     <color name="orange_FC9003">#FC9003</color>
     <color name="yellow_FFA73B">#FFA73B</color>
@@ -46,6 +46,7 @@
     <color name="black90_1d2124">#e61D2124</color>
     <color name="black20_AEAEAE">#33AEAEAE</color>
     <color name="black_AEAEAE">#AEAEAE</color>
+    <color name="black50_AEAEAE">#80AEAEAE</color>
     <color name="black_333333">#333333</color>
 
     <!--透明度-->

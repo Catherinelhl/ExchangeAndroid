@@ -31,7 +31,7 @@ public class DecimalTool {
         BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
 
         // FirstValue必须大于SecondValue
-        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == - 1) {
+        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == -1) {
             return MessageConstants.NO_ENOUGH_BALANCE;
         }
 
@@ -44,6 +44,7 @@ public class DecimalTool {
 
     /**
      * 两个数相乘
+     *
      * @param firstValue
      * @param secondValue
      * @return
@@ -81,8 +82,24 @@ public class DecimalTool {
         }
 
         DecimalFormat decimalFormat = new DecimalFormat("#,##0.00000000");
-
         BigDecimal bigDecimal = new BigDecimal(decimal).setScale(10, RoundingMode.FLOOR);
+
+        return decimalFormat.format(bigDecimal);
+    }
+
+    /**
+     * chart用于显示数值后面保留多少位小数
+     *
+     * @param decimal
+     */
+    public static String transferDisplay(int newScale, String decimal,String pattern) {
+        if (StringTool.isEmpty(decimal)) {
+            decimal = "0";
+        }
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+//        decimalFormat.setMaximumFractionDigits(maxScale);
+//        decimalFormat.setMinimumFractionDigits(minScale);
+        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(newScale, RoundingMode.FLOOR);
 
         return decimalFormat.format(bigDecimal);
     }

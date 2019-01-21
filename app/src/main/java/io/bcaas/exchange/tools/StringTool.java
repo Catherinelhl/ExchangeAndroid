@@ -1,9 +1,12 @@
 package io.bcaas.exchange.tools;
 
 import android.text.TextUtils;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
+
+import java.util.List;
 
 /**
  * @author catherine.brainwilliam
@@ -177,4 +180,25 @@ public class StringTool {
         return false;
     }
 
+    /**
+     * 根据传入的enName得到CoinName
+     *
+     * @param enName
+     * @return
+     */
+    public static String getCoinNameFromCurrencyList(String enName) {
+        //1:取得当前账户里面的currencyListWithCoinName信息
+        List<CurrencyListVO> currencyListVOList = BaseApplication.getCurrencyListVOSWithCoinName();
+        if (ListTool.isEmpty(currencyListVOList)) {
+            return MessageConstants.EMPTY;
+        }
+        for (CurrencyListVO currencyListVO : currencyListVOList) {
+            if (currencyListVO != null) {
+                if (StringTool.equals(currencyListVO.getEnName(), enName)) {
+                    return currencyListVO.getCoinName();
+                }
+            }
+        }
+        return MessageConstants.EMPTY;
+    }
 }

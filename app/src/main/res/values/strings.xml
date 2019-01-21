@@ -167,5 +167,7 @@
     <string name="zero">0</string>
     <string name="retract">收起</string>
     <string name="expand">展开</string>
+    <string name="price_curve">价格曲线</string>
+    <string name="no_curve_info">没有对应曲线信息</string>
 
 </resources>

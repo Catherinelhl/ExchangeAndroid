@@ -1,9 +1,6 @@
 package io.bcaas.exchange.ui.contracts;
 
 import io.bcaas.exchange.bean.CoinMarketCapBean;
-import io.bcaas.exchange.vo.CurrencyListVO;
-
-import java.util.List;
 
 /**
  * @author catherine.brainwilliam
@@ -12,19 +9,12 @@ import java.util.List;
  */
 public interface GetCoinMarketCapContract {
     interface View {
-        void getCoinNameListSuccess(List<CurrencyListVO> currencyListVOList);
-
-        void getCoinNameListFailure(String info);
-
-
         void getCoinMarketCapSuccess(CoinMarketCapBean coinMarketCapBean);
 
         void getCoinMarketCapFailure(String info);
     }
 
     interface Presenter {
-
-        void getCoinNameList();
 
         void getCoinMarketCap(String coinName, long startTime, long endTime);
     }

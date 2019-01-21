@@ -178,6 +178,7 @@ public class Constants {
         public static final String COIN_NAME = "coinName";//币种名字
         public static final String LOGIN_PASSWORD = "loginPassword";//登录密码
         public static final String FUND_PASSWORD = "fundPassword";//资金密码
+        public static final String RETRACT_CHART = "retractChart";//收起chart图
     }
 
     /**
@@ -288,5 +289,10 @@ public class Constants {
         public void setName(String name) {
             this.name = name;
         }
+    }
+
+    public class Pattern {
+        public static final String EIGHT = "#,##0.00000000";
+        public static final String TWO = "#,##0.00";
     }
 }

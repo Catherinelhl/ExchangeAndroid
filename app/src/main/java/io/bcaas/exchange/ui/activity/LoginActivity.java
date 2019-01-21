@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
-import io.bcaas.exchange.BuildConfig;
 import com.jakewharton.rxbinding2.view.RxView;
+import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
@@ -96,7 +96,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             @Override
             public void onClick(View v) {
                 if (BuildConfig.DEBUG) {
-                    intentToActivity(GetCoinMarketCapActivity.class, false);
+
+//                    intentToActivity(GetCoinMarketCapActivity.class, false);
                 }
             }
         });

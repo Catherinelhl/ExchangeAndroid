@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
@@ -37,6 +38,8 @@ import java.util.List;
  * 拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
 public class SellFragment extends BaseFragment implements GetAllBalanceContract.View {
+    @BindView(R.id.srl_data)
+    SwipeRefreshLayout srlData;
     private String TAG = SellFragment.class.getSimpleName();
 
     @BindView(R.id.tab_layout)
@@ -61,6 +64,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         isPrepared = true;
         views = new ArrayList<>();
+        srlData.setEnabled(false);
         refreshView();
     }
 
@@ -219,4 +223,6 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
             }
         }
     }
+
+
 }

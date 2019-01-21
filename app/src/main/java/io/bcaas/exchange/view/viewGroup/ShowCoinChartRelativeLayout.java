@@ -1,13 +1,13 @@
-package io.bcaas.exchange.ui.activity;
+package io.bcaas.exchange.view.viewGroup;
 
+import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.TextView;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.*;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,24 +21,17 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.google.gson.reflect.TypeToken;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.gson.GsonTool;
-import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.chart.ValueMarkerView;
 import io.bcaas.exchange.tools.chart.XLineValueFormatter;
 import io.bcaas.exchange.tools.chart.YLineValueFormatter;
-import io.bcaas.exchange.tools.file.FilePathTool;
-import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.GetCoinMarketCapContract;
 import io.bcaas.exchange.ui.presenter.GetCoinMarketCapPresenterImp;
-import io.bcaas.exchange.vo.CurrencyListVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -47,66 +40,75 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 多数据
+ * @author catherine.brainwilliam
+ * @since 2018/8/30
  * <p>
- * 接入CoinMarketCap真实数据
+ * 自定義PopWindow：显示当前的币种曲线图
  */
-
-public class GetCoinMarketCapActivity extends BaseActivity
+public class ShowCoinChartRelativeLayout extends RelativeLayout
         implements OnChartValueSelectedListener, GetCoinMarketCapContract.View {
-    private String TAG = GetCoinMarketCapActivity.class.getSimpleName();
+    @BindView(R.id.rl_coin_chart_action)
+    RelativeLayout rlCoinChartAction;
+    @BindView(R.id.ll_coin_chart)
+    LinearLayout llCoinChart;
+    @BindView(R.id.tv_no_data)
+    TextView tvNoData;
+    @BindView(R.id.pb_loading)
+    ProgressBar pbLoading;
+    private String TAG = ShowCoinChartRelativeLayout.class.getSimpleName();
 
     @BindView(R.id.cb_usd)
     CheckBox cbUsd;
     @BindView(R.id.cb_btc)
     CheckBox cbBtc;
-    @BindView(R.id.tv_action)
-    TextView tvAction;
+    @BindView(R.id.tv_extract)
+    TextView tvExtract;
+    @BindView(R.id.tv_curve_name)
+    TextView tvCurveName;
     @BindView(R.id.line_chart)
     LineChart chart;
+    @BindView(R.id.rl_loading_data)
+    RelativeLayout rlLoadingData;
+    @BindView(R.id.tv_expend)
+    TextView tvExpend;
+    private Context context;
 
     //存储当前currency市值
     private List<List<Double>> valueMarket = new ArrayList<>();
-    //    存储当前currency交易量
+    //存储当前currency交易量
     private List<List<Double>> volumeUSD = new ArrayList<>();
     //存储当前currency以BTC为参考
     private List<List<Double>> priceBTC = new ArrayList<>();
     //存储当前currency以USD为参照物
     private List<List<Double>> priceUSD = new ArrayList<>();
-    //默认当前的币种为bitCoin
-    private String coinName = "bitcoin";
-
     private GetCoinMarketCapContract.Presenter presenter;
     //得到当前币种所有的信息
     private CoinMarketCapBean coinMarketCapBean;
 
     private LineData data;
     private String labelBTC = "Price(BTC)", labelUSD = "Price(USD)";
+    //当前coin用于请求数据的coinName
+    private String coinName;
 
-    @Override
-    public int getContentView() {
-        return R.layout.activity_coin_market_chart;
+    public ShowCoinChartRelativeLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_show_coin_chart, this, true);
+        ButterKnife.bind(view);
+        this.context = context;
+        presenter = new GetCoinMarketCapPresenterImp(this);
+        initListener();
     }
 
-    @Override
-    public void getArgs(Bundle bundle) {
-        if (bundle == null) {
+    public void requestInfo(String coinName) {
+        if (StringTool.isEmpty(coinName)) {
+            LogTool.d(TAG, "coinName is Null");
             return;
         }
-    }
-
-    @Override
-    public void initView() {
-        presenter = new GetCoinMarketCapPresenterImp(this);
-        presenter.getCoinNameList();
-
-    }
-
-    @Override
-    public void initData() {
         //默认获取所有的数据信息
         presenter.getCoinMarketCap(coinName, System.currentTimeMillis() - 24 * 60 * 60 * 1000, System.currentTimeMillis());
+
     }
+
 
     /**
      * 初始化线性图表¬
@@ -126,10 +128,10 @@ public class GetCoinMarketCapActivity extends BaseActivity
             //在缩放时为轴设置最小间隔。轴不允许低于那个限度。这可以用来避免缩放时的标签复制。
             xAxis.setGranularity(1f);
             //设置显示X轴的下横线
-            xAxis.setDrawGridLines(true);
+            xAxis.setDrawGridLines(false);
             //设置不显示X轴的下标线
             xAxis.setDrawAxisLine(false);
-
+            xAxis.setTextColor(context.getResources().getColor(R.color.black_AEAEAE));
         }
         // 设置X放大的最小显示个数
         chart.setVisibleXRangeMinimum(5);
@@ -139,9 +141,9 @@ public class GetCoinMarketCapActivity extends BaseActivity
         chart.setDrawBorders(false);
 
         //设置上下内边距
-//        chart.setMinOffset(1f);
+        //  chart.setMinOffset(1f);
         //图标周围格额外的偏移量
-//        chart.setExtraOffsets(1f, 0f, 1f, 0f);
+        // chart.setExtraOffsets(1f, 0f, 1f, 0f);
         {
             // background color
             chart.setBackgroundColor(Color.WHITE);
@@ -159,7 +161,7 @@ public class GetCoinMarketCapActivity extends BaseActivity
 
             // create marker to display box when values are selected
             // Set the marker to the chart
-            ValueMarkerView mv = new ValueMarkerView(this, coinMarketCapBean, custom);
+            ValueMarkerView mv = new ValueMarkerView(context, coinMarketCapBean, custom);
             mv.setChartView(chart);
             chart.setMarker(mv);
 
@@ -178,12 +180,14 @@ public class GetCoinMarketCapActivity extends BaseActivity
             yLineValueFormatter = new YLineValueFormatter(true);
             // Y-Axis Style
             yAxisLeft = chart.getAxisLeft();
+            yAxisLeft.setLabelCount(5, true);
             yAxisLeft.setDrawAxisLine(false);
             // 如果当前没有数据返回，那么就是用默认的
             yAxisLeft.setValueFormatter(yLineValueFormatter);
             // horizontal grid lines
-            yAxisLeft.enableGridDashedLine(10f, 10f, 1f);
-            yAxisLeft.setTextColor(context.getResources().getColor(R.color.green_22ac22));
+//            yAxisLeft.enableGridDashedLine(10f, 10f, 1f);
+            yAxisLeft.setAxisLineColor(context.getResources().getColor(R.color.black20_AEAEAE));
+            yAxisLeft.setTextColor(context.getResources().getColor(R.color.green_005744));
             yAxisLeft.setTextSize(8);
         }
         YAxis yAxisRight;
@@ -192,17 +196,15 @@ public class GetCoinMarketCapActivity extends BaseActivity
             // Y-Axis Style
             yAxisRight = chart.getAxisRight();
             yAxisRight.setDrawAxisLine(false);
-
+            yAxisRight.setLabelCount(5, true);
             // disable dual axis (only use LEFT axis)
             yAxisRight.setValueFormatter(yLineValueFormatter);
             // horizontal grid lines
-            yAxisRight.enableGridDashedLine(10f, 10f, 1f);
+//            yAxisRight.enableGridDashedLine(10f, 10f, 1f);
             yAxisRight.setTextColor(context.getResources().getColor(R.color.yellow_FFA73B));
+//            yAxisRight.setAxisLineColor(context.getResources().getColor(R.color.black20_AEAEAE));
             yAxisRight.setTextSize(8);
         }
-//
-
-
         // draw points over time
         chart.animateX(1500);
         chart.setScaleYEnabled(false);
@@ -226,6 +228,19 @@ public class GetCoinMarketCapActivity extends BaseActivity
         // set data
         chart.setData(data);
 
+    }
+
+    /**
+     * 设置曲线名称
+     *
+     * @param curveName
+     */
+    public void setCurveName(String curveName) {
+        if (tvCurveName != null) {
+            tvCurveName.setText(curveName + "  " + context.getResources().getString(R.string.price_curve));
+        }
+        this.coinName = StringTool.getCoinNameFromCurrencyList(curveName);
+        requestInfo(this.coinName);
     }
 
     /**
@@ -294,7 +309,7 @@ public class GetCoinMarketCapActivity extends BaseActivity
      * @param label
      */
     private LineDataSet initLineData(List<Entry> values, String label) {
-        // create a dataset and give it a type
+        // create a dataSet and give it a type
         LineDataSet setLineDataSet = new LineDataSet(values, label);
         setLineDataSet.setDrawIcons(false);
         // draw dashed line
@@ -302,7 +317,7 @@ public class GetCoinMarketCapActivity extends BaseActivity
 
         // black lines and points
         if (StringTool.equals(label, labelUSD)) {
-            setLineDataSet.setColor(context.getResources().getColor(R.color.green_22ac22));
+            setLineDataSet.setColor(context.getResources().getColor(R.color.green_005744));
             setLineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         } else {
             setLineDataSet.setColor(context.getResources().getColor(R.color.yellow_FFA73B));
@@ -353,14 +368,51 @@ public class GetCoinMarketCapActivity extends BaseActivity
         return setLineDataSet;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
-    }
+    private void initListener() {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return true;
+        Disposable subscribeTvExpend = RxView.clicks(tvExpend).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        //重新请求数据
+                        requestInfo(coinName);
+                        llCoinChart.setVisibility(VISIBLE);
+                        rlCoinChartAction.setVisibility(GONE);
+                        //设置当前界面视图为177
+//                        ViewGroup.LayoutParams layoutParams = ShowCoinChartRelativeLayout.this.getLayoutParams();
+//                        layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.d177);
+//                        ShowCoinChartRelativeLayout.this.setLayoutParams(layoutParams);
+                    }
+                });
+
+        Disposable subscribeTvExtract = RxView.clicks(tvExtract).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        //隐藏chart，显示动作视图
+                        llCoinChart.setVisibility(GONE);
+                        rlCoinChartAction.setVisibility(VISIBLE);
+                        //设置当前界面视图为40
+//                        ViewGroup.LayoutParams layoutParams = ShowCoinChartRelativeLayout.this.getLayoutParams();
+//                        layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.d140);
+//                        ShowCoinChartRelativeLayout.this.setLayoutParams(layoutParams);
+                    }
+                });
+        cbBtc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkData(labelBTC, getValuesEntry(isChecked, priceBTC));
+                chart.getAxisRight().setEnabled(isChecked);
+            }
+        });
+        cbUsd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkData(labelUSD, getValuesEntry(isChecked, priceUSD));
+                chart.getAxisLeft().setEnabled(isChecked);
+
+            }
+        });
     }
 
     @Override
@@ -374,58 +426,11 @@ public class GetCoinMarketCapActivity extends BaseActivity
     }
 
     @Override
-    public void initListener() {
-        cbBtc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                checkData(labelBTC, getValuesEntry(isChecked, priceBTC));
-//                chart.getAxisRight().setTextColor(context.getResources().getColor(isChecked ? R.color.yellow_FFA73B : R.color.white));
-//                chart.getAxisLeft().setTextColor(context.getResources().getColor(R.color.white));
-                chart.getAxisRight().setEnabled(isChecked);
-            }
-        });
-        cbUsd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                checkData(labelUSD, getValuesEntry(isChecked, priceUSD));
-//                chart.getAxisLeft().setTextColor(context.getResources().getColor(isChecked ? R.color.green_22ac22 : R.color.white));
-//                chart.getAxisRight().setTextColor(context.getResources().getColor(R.color.white));
-                chart.getAxisLeft().setEnabled(isChecked);
-
-            }
-        });
-        Disposable subscribe = RxView.clicks(tvAction).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Consumer<Object>() {
-                    @Override
-                    public void accept(Object o) throws Exception {
-                        String text = tvAction.getText().toString();
-                        if (StringTool.equals(text, getString(R.string.retract))) {
-                            tvAction.setText(R.string.expand);
-                        } else {
-                            tvAction.setText(getString(R.string.retract));
-                        }
-                        tvAction.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d5));
-                        tvAction.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.mipmap.icon_drop_down), null);
-
-                    }
-                });
-    }
-
-    @Override
-    public void getCoinNameListSuccess(List<CurrencyListVO> currencyListVOList) {
-        LogTool.d(TAG, currencyListVOList);
-    }
-
-    @Override
-    public void getCoinNameListFailure(String info) {
-        showToast(info);
-    }
-
-    @Override
     public void getCoinMarketCapSuccess(CoinMarketCapBean coinMarketCapBean) {
         if (coinMarketCapBean == null) {
             return;
         }
+        boolean isRefresh = this.coinMarketCapBean == null;
         this.coinMarketCapBean = coinMarketCapBean;
         LogTool.d(TAG, coinMarketCapBean);
         valueMarket = coinMarketCapBean.getMarket_cap_by_available_supply();
@@ -439,29 +444,28 @@ public class GetCoinMarketCapActivity extends BaseActivity
         LogTool.d(TAG, "priceUSD:" + priceUSD);
         volumeUSD = coinMarketCapBean.getVolume_usd();
         LogTool.d(TAG, "volumeUSD:" + volumeUSD);
-        initLineChart();
+
+        // 如果当前有数据，那么就不更新界面
+        if (isRefresh) {
+            initLineChart();
+        }
+        if (rlLoadingData != null) {
+            rlLoadingData.setVisibility(GONE);
+        }
+
+
     }
 
     @Override
     public void getCoinMarketCapFailure(String info) {
-        showToast(info);
-        String content = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent("priceUSD"));
-        if (StringTool.notEmpty(content)) {
-            priceUSD = GsonTool.convert(content, new TypeToken<List<List<Double>>>() {
-            }.getType());
+        LogTool.e(TAG, info);
+        if (rlLoadingData != null
+        && tvNoData!=null
+        && pbLoading!=null) {
+            rlLoadingData.setVisibility(VISIBLE);
+            tvNoData.setText(StringTool.isEmpty(info) ? context.getString(R.string.no_curve_info) : context.getResources().getString(R.string.get_data_failure));
+         pbLoading.setVisibility(GONE);
         }
 
-        String contentBTC = ResourceTool.getJsonFromAssets(FilePathTool.getJsonFileContent("priceBTC"));
-
-        if (StringTool.notEmpty(contentBTC)) {
-            priceBTC = GsonTool.convert(contentBTC, new TypeToken<List<List<Double>>>() {
-            }.getType());
-        }
-
-        if (ListTool.isEmpty(priceUSD)) {
-            return;
-        }
-        //加载离线数据
-        initLineChart();
     }
 }

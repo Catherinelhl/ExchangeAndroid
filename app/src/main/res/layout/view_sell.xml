@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:id="@+id/rl_sell_view"
+        android:layout_height="match_parent"
         android:background="@color/theme_grey">
     <TextView
             android:id="@+id/tv_salable_balance"
@@ -17,6 +18,7 @@
             android:text="@string/salable_balance"/>
     <ScrollView
             android:layout_width="match_parent"
+            android:layout_below="@+id/tv_salable_balance"
             android:layout_height="match_parent">
         <LinearLayout
                 android:layout_width="match_parent"
@@ -169,9 +171,15 @@
                     android:layout_marginTop="@dimen/d38"
                     android:text="@string/sell"/>
             <View android:layout_width="match_parent"
-                  android:layout_height="@dimen/d20"
+                  android:layout_height="@dimen/d60"
                   android:background="@color/transparent"/>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/sccrl_layout"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>

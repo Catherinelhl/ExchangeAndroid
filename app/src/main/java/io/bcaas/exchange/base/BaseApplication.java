@@ -15,6 +15,7 @@ import io.bcaas.exchange.receiver.NetStateReceiver;
 import io.bcaas.exchange.tools.*;
 import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.device.DeviceTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
 
@@ -51,6 +52,8 @@ public class BaseApplication extends MultiDexApplication {
     private static MemberVO memberVO;
     /*存储当前用户的memberId*/
     private static String memberID;
+    /*存储当前携带CoinName的币种信息*/
+    private static List<CurrencyListVO> currencyListVOSWithCoinName;
 
 
     @Override
@@ -72,6 +75,14 @@ public class BaseApplication extends MultiDexApplication {
         return instance.getApplicationContext();
     }
 
+    public static void setCurrencyListWithCoinName(List<CurrencyListVO> currencyListVOS) {
+        BaseApplication.currencyListVOSWithCoinName = currencyListVOS;
+
+    }
+
+    public static List<CurrencyListVO> getCurrencyListVOSWithCoinName() {
+        return currencyListVOSWithCoinName;
+    }
 
     public static boolean isIsPhone() {
         return isPhone;

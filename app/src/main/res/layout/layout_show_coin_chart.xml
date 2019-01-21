@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_height="wrap_content">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:id="@+id/rl_coin_chart_action"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:layout_height="@dimen/d40">
+        <View style="@style/shape_line_style"/>
+        <TextView android:layout_width="wrap_content"
+                  android:textColor="@color/black_AEAEAE"
+                  android:text="@string/price_curve"
+                  android:id="@+id/tv_curve_name"
+                  android:layout_marginLeft="@dimen/d22"
+                  android:layout_centerVertical="true"
+                  android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_expend"
+                  android:layout_alignParentRight="true"
+                  android:drawablePadding="@dimen/d5"
+                  android:layout_marginRight="@dimen/d22"
+                  android:text="@string/expand"
+                  android:textSize="@dimen/text_size_12"
+                  android:minWidth="@dimen/d56"
+                  android:layout_centerVertical="true"
+                  android:background="@drawable/stroke_border_grey"
+                  android:gravity="center_vertical"
+                  android:layout_gravity="center_vertical"
+                  android:drawableRight="@mipmap/icon_drop_down"
+                  android:layout_height="wrap_content"/>
+        <View style="@style/small_line_style"
+              android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:visibility="gone"
+                  android:orientation="vertical"
+                  android:layout_alignParentBottom="true"
+                  android:id="@+id/ll_coin_chart"
+                  android:background="@color/white"
+                  android:layout_height="@dimen/d180">
+        <View style="@style/shape_line_style"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:gravity="center_vertical"
+                      android:orientation="horizontal"
+                      android:paddingLeft="@dimen/d22"
+                      android:paddingRight="@dimen/d22"
+                      android:background="@color/white"
+                      android:layout_height="@dimen/d40">
+            <CheckBox android:layout_width="wrap_content"
+                      android:text="Price(USD)"
+                      android:textColor="@color/green_005744"
+                      android:id="@+id/cb_usd"
+                      android:checked="true"
+                      android:paddingLeft="@dimen/d8"
+                      android:button="@drawable/selector_checkbox_green"
+                      android:textSize="@dimen/text_size_14"
+                      android:layout_height="match_parent"/>
+            <CheckBox android:layout_width="wrap_content"
+                      android:text="Price(BTC)"
+                      android:layout_marginLeft="@dimen/d18"
+                      android:id="@+id/cb_btc"
+                      android:checked="true"
+                      android:paddingLeft="@dimen/d8"
+                      android:textSize="@dimen/text_size_14"
+                      android:button="@drawable/selector_checkbox_yellow"
+                      android:textColor="@color/yellow_FFA73B"
+                      android:layout_height="match_parent"/>
+            <View android:layout_width="@dimen/d0"
+                  android:layout_weight="1"
+                  android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/tv_extract"
+                      android:drawablePadding="@dimen/d5"
+                      android:text="@string/retract"
+                      android:textSize="@dimen/text_size_12"
+                      android:minWidth="@dimen/d56"
+                      android:background="@drawable/stroke_border_grey"
+                      android:gravity="center_vertical"
+                      android:layout_gravity="center_vertical"
+                      android:drawableRight="@mipmap/icon_drop_down"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+                style="@style/small_line_style"
+                android:layout_height="@dimen/d0.2"/>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="@dimen/d137">
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/line_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+            />
+            <RelativeLayout
+                    android:id="@+id/rl_loading_data"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="match_parent">
+                <TextView android:layout_width="wrap_content"
+                          android:id="@+id/tv_no_data"
+                          style="@style/black_666_16_text_style"
+                          android:layout_centerInParent="true"
+                          android:layout_height="wrap_content"/>
+                <ProgressBar
+                        android:id="@+id/pb_loading"
+                        android:layout_width="@dimen/d20"
+                        android:layout_height="@dimen/d20"
+                        android:layout_centerInParent="true"
+                        android:indeterminateTint="@color/button_color"
+                      />
+
+            </RelativeLayout>
+        </RelativeLayout>
+        <View style="@style/small_line_style"/>
+    </LinearLayout>
+</RelativeLayout>

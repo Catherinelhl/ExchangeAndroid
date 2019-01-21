@@ -37,13 +37,12 @@ public class BrandActivity extends BaseActivity {
         @Override
         public void timeUp(Constants.TimerType timerType) {
             // TODO: 2019/1/17 判断当前是否有token存在进行不同页面的跳转
-            if (BuildConfig.DEBUG) {
-                intentToActivity(GetCoinMarketCapActivity.class, true);
-//                intentToActivity(LineChartOfCoinMarketCapActivity.class, true);
+//            if (BuildConfig.DEBUG) {
+//                intentToActivity(GetCoinMarketCapActivity.class, true);
 //                intentToActivity(MainActivity.class, true);
-            } else {
-                intentToActivity(LoginActivity.class, true);
-            }
+//            } else {
+            intentToActivity(LoginActivity.class, true);
+//            }
         }
     };
 

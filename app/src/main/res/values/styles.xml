@@ -88,6 +88,11 @@
         <item name="android:layout_height">@dimen/d0.5</item>
         <item name="android:layout_width">match_parent</item>
     </style>
+    <style name="shape_line_style">
+        <item name="android:background">@drawable/bg_black_shape</item>
+        <item name="android:layout_height">@dimen/d1</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
     <style name="black_18_text_style" parent="marquee_style">
         <item name="android:textColor">@color/black_333333</item>
         <item name="android:textSize">@dimen/text_size_18</item>

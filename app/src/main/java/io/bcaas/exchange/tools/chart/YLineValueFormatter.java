@@ -2,6 +2,8 @@ package io.bcaas.exchange.tools.chart;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
 
 /**
  * Y轴Label定制
@@ -32,10 +34,11 @@ public class YLineValueFormatter extends ValueFormatter {
 //            return Math.round(value / 1000000000000f) + "tri";
 //
 //        }else {
+        //如果是BTC，那么默认显示8位。如果是USD，默认显示小数点后面两位
         if (isLeft) {
-            return "$" + "  " + String.valueOf(value);
+            return "$" + DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.TWO);
         } else {
-            return String.valueOf(value) + "  " + "BTC";
+            return DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.EIGHT) + "  " + "BTC";
         }
 //        }
     }
@@ -56,11 +59,9 @@ public class YLineValueFormatter extends ValueFormatter {
 //
 //        }else {
         if (isLeft) {
-            return "$" + String.valueOf(value);
-
+            return "$" + DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.TWO);
         } else {
-            return String.valueOf(value) + "BTC";
-
+            return DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.EIGHT) + "  " + "BTC";
         }
 //        }
     }

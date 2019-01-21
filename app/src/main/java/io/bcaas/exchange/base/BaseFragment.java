@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
@@ -70,6 +71,10 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         if (!isPrepared) {
             isPrepared = true;
         }
+    }
+
+    public View getView() {
+        return rootView;
     }
 
 
@@ -183,5 +188,16 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
             return ((BaseActivity) activity).httpExceptionDisposed(responseJson);
         }
         return false;
+    }
+
+    /**
+     * 为弹出的popWindow设置背景透明度
+     *
+     * @param bgAlpha
+     */
+    public void setBackgroundAlpha(float bgAlpha) {
+        if (activity != null) {
+            ((BaseActivity) activity).setBackgroundAlpha(bgAlpha);
+        }
     }
 }
