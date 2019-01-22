@@ -255,7 +255,7 @@ public class RegisterActivity extends BaseActivity
     @Override
     public void verifyAccountSuccess(String info) {
         // 开始请求验证码
-        etEmailCode.requestEmail(Constants.EditTextFrom.EMAIL_CODE);
+        etEmailCode.requestEmail();
     }
 
 }

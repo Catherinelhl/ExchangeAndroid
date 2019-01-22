@@ -11,11 +11,13 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.contracts.ForgetPasswordContract;
-import io.bcaas.exchange.ui.presenter.ForgetPasswordPresenterImp;
+import io.bcaas.exchange.ui.contracts.ForgetToResetPasswordContract;
+import io.bcaas.exchange.ui.presenter.ForgetToResetPasswordPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
@@ -28,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/17
  * 忘记密码：资金，登录
  */
-public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswordContract.View {
+public class ForgetToResetPasswordActivity extends BaseActivity implements ForgetToResetPasswordContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -42,11 +44,11 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
     @BindView(R.id.etwa_password_confirm)
     EditTextWithAction etPasswordConfirm;
     @BindView(R.id.etwa_email_code)
-    EditTextWithAction emailCode;
+    EditTextWithAction etEmailCode;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
-    private ForgetPasswordContract.Presenter presenter;
+    private ForgetToResetPasswordContract.Presenter presenter;
 
     /*标志当前界面是修改登录密码，还是修改资金密码*/
     private boolean isResetLoginPassword;
@@ -76,19 +78,40 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
             tvTitle.setText(R.string.reset_fund_password);
             etPassword.setHint(getString(R.string.fun_password_not_same_as_login_password));
         }
-        emailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
+//        etEmailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
 
     }
 
     @Override
     public void initData() {
-        presenter = new ForgetPasswordPresenterImp(this);
+        presenter = new ForgetToResetPasswordPresenterImp(this);
 
 
     }
 
     @Override
     public void initListener() {
+        etEmailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+
+            }
+
+            @Override
+            public void onAction(String from) {
+                //判断当前是否输入账号，如果没有，提示输入，否则发送邮箱验证请求
+                //1:判断当前邮箱的输入
+                String memberId = etAccount.getContent();
+                if (StringTool.isEmpty(memberId)) {
+                    showToast(getString(R.string.please_input_account_info));
+                    return;
+                }
+                //存储当前账号
+                BaseApplication.setMemberID(memberId);
+                //开始发送验证码请求
+                etEmailCode.requestEmail();
+            }
+        });
         tvTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +186,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
                             return;
                         }
                         //6：判断当前验证码的输入
-                        String verifyCode = emailCode.getContent();
+                        String verifyCode = etEmailCode.getContent();
                         if (StringTool.isEmpty(verifyCode)) {
                             showToast(getString(R.string.please_input_verify_code));
                             return;

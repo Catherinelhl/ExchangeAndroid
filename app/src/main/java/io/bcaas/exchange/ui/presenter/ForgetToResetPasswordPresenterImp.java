@@ -2,13 +2,13 @@ package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
-import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
+import io.bcaas.exchange.ui.contracts.ForgetToResetPasswordContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
-import io.bcaas.exchange.vo.LoginInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
@@ -23,17 +23,17 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- * 重设密码
+ * 忘记而重设密码
  */
-public class ResetPasswordPresenterImp extends BasePresenterImp
-        implements ResetPasswordContract.Presenter {
-    private String TAG = ResetPasswordPresenterImp.class.getSimpleName();
+public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
+        implements ForgetToResetPasswordContract.Presenter {
+    private String TAG = ForgetToResetPasswordPresenterImp.class.getSimpleName();
 
-    private ResetPasswordContract.View view;
+    private ForgetToResetPasswordContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
-    private Disposable disposableResetPassword;
+    private Disposable disposableForgetPassword;
 
-    public ResetPasswordPresenterImp(ResetPasswordContract.View view) {
+    public ForgetToResetPasswordPresenterImp(ForgetToResetPasswordContract.View view) {
         super();
         this.view = view;
         safetyCenterInteractor = new SafetyCenterInteractor();
@@ -41,13 +41,13 @@ public class ResetPasswordPresenterImp extends BasePresenterImp
     }
 
     @Override
-    public void resetPassword(String password, String newPassword) {
+    public void forgetPassword(String password, String verifyCode) {
         //判断当前是否有网路
         if (!BaseApplication.isRealNet()) {
             view.noNetWork();
             return;
         }
-        disposeDisposable(disposableResetPassword);
+        disposeDisposable(disposableForgetPassword);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -55,41 +55,39 @@ public class ResetPasswordPresenterImp extends BasePresenterImp
         memberVO.setMemberId(BaseApplication.getMemberID());
         try {
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
-            memberVO.setNewPassword(Sha256Tool.doubleSha256ToString(newPassword));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
         }
         requestJson.setMemberVO(memberVO);
 
-
-        LoginInfoVO loginInfoVO = new LoginInfoVO();
-        loginInfoVO.setAccessToken(BaseApplication.getToken());
-        requestJson.setLoginInfoVO(loginInfoVO);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "resetPassword:", requestJson);
-        safetyCenterInteractor.resetPassword(GsonTool.beanToRequestBody(requestJson))
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(verifyCode);
+        requestJson.setVerificationBean(verificationBean);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "forgetPassword:", requestJson);
+        safetyCenterInteractor.forgetPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableResetPassword = d;
+                        disposableForgetPassword = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "forgetPassword:", requestJson);
                         if (responseJson == null) {
                             view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            view.resetPasswordSuccess(responseJson.getMessage());
+                            view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
+                                view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
                             }
-
                         }
 
                     }
@@ -97,15 +95,15 @@ public class ResetPasswordPresenterImp extends BasePresenterImp
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
-                        disposeDisposable(disposableResetPassword);
-
+                        view.hideLoading();
+                        view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
+                        disposeDisposable(disposableForgetPassword);
                     }
 
                     @Override
                     public void onComplete() {
-                        disposeDisposable(disposableResetPassword);
-
+                        view.hideLoading();
+                        disposeDisposable(disposableForgetPassword);
                     }
                 });
     }

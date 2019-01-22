@@ -37,7 +37,7 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
-        <activity android:name=".ui.activity.ForgetPasswordActivity"
+        <activity android:name=".ui.activity.ForgetToResetPasswordActivity"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
@@ -78,7 +78,7 @@
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
 
-        <activity android:name=".ui.activity.ResetPasswordActivity"
+        <activity android:name=".ui.activity.ModifyPasswordActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>

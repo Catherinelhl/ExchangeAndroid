@@ -13,8 +13,8 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.contracts.ResetPasswordContract;
-import io.bcaas.exchange.ui.presenter.ResetPasswordPresenterImp;
+import io.bcaas.exchange.ui.contracts.ModifyPasswordContract;
+import io.bcaas.exchange.ui.presenter.ModifyPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/28
  * 「重置密码」 根据传入的字段来决定修改登录密码还是修改资金密码
  */
-public class ResetPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
+public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswordContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -46,7 +46,7 @@ public class ResetPasswordActivity extends BaseActivity implements ResetPassword
     @BindView(R.id.ll_immediate_action)
     LinearLayout llImmediateAction;
 
-    private ResetPasswordContract.Presenter presenter;
+    private ModifyPasswordContract.Presenter presenter;
 
     /*标志当前界面是修改登录密码，还是修改资金密码*/
     private boolean isModifyLoginPassword;
@@ -81,7 +81,7 @@ public class ResetPasswordActivity extends BaseActivity implements ResetPassword
 
     @Override
     public void initData() {
-        presenter = new ResetPasswordPresenterImp(this);
+        presenter = new ModifyPasswordPresenterImp(this);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class ResetPasswordActivity extends BaseActivity implements ResetPassword
                         //跳转到重置资金密码界面
                         Intent intent = new Intent();
                         intent.putExtra(Constants.KeyMaps.From, Constants.From.FUND_PASSWORD);
-                        intent.setClass(ResetPasswordActivity.this, ForgetPasswordActivity.class);
+                        intent.setClass(ModifyPasswordActivity.this, ForgetToResetPasswordActivity.class);
                         startActivityForResult(intent, Constants.RequestCode.RESET_PASSWORD_CODE);
                     }
 

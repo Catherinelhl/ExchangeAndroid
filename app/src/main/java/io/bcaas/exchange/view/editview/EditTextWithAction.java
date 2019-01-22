@@ -232,25 +232,27 @@ public class EditTextWithAction extends LinearLayout
                     public void accept(Object o) {
                         //判断当前是否是「发送」字样，如果是，那么就可以进行点击；如果是在倒计时就不能点击
                         String tvActionString = tvAction.getText().toString();
-                        if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
-                            switch (from) {
-                                case Constants.EditTextFrom.EMAIL_CODE://邮箱
-                                    requestEmail(from);
-                                    break;
-                                case Constants.EditTextFrom.VERIFY_EMAIL_AND_EMAIL_CODE:
-                                    //如果当前输入邮箱的验证密码，那么需要验证当前密码是否已经注册过了，如果没有，才开始倒计时请求验证码
-                                    break;
-                                default:
-                                    //开始倒计时
-                                    startCountDownInterval();
-                                    break;
-                            }
+                        if (StringTool.notEmpty(from)) {
+                            if (StringTool.equals(tvActionString, getResources().getString(R.string.send))) {
+                                switch (from) {
+                                    case Constants.EditTextFrom.EMAIL_CODE://邮箱
+                                        requestEmail();
+                                        break;
+                                    case Constants.EditTextFrom.VERIFY_EMAIL_AND_EMAIL_CODE:
+                                        //如果当前输入邮箱的验证密码，那么需要验证当前密码是否已经注册过了，如果没有，才开始倒计时请求验证码
+                                        break;
+                                    default:
+                                        //开始倒计时
+                                        startCountDownInterval();
+                                        break;
+                                }
 
-                        } else if (StringTool.equals(tvActionString, getResources().getString(R.string.all_in))) {
-                            switch (from) {
-                                case Constants.EditTextFrom.WITHDRAW_AMOUNT:
-                                    //提现界面的「全部发送」
-                                    break;
+                            } else if (StringTool.equals(tvActionString, getResources().getString(R.string.all_in))) {
+                                switch (from) {
+                                    case Constants.EditTextFrom.WITHDRAW_AMOUNT:
+                                        //提现界面的「全部发送」
+                                        break;
+                                }
                             }
                         }
                         //返回回调
@@ -531,21 +533,15 @@ public class EditTextWithAction extends LinearLayout
     }
 
     /**
-     * 开始Http请求
-     *
-     * @param emailCode
+     * 开始Http请求邮箱验证码
      */
-    public void requestEmail(String emailCode) {
-        switch (emailCode) {
-            case Constants.EditTextFrom.EMAIL_CODE:
-                //开始请求验证码数据
-                if (presenter != null) {
-                    presenter.emailVerify(BaseApplication.getMemberID(), BaseApplication.getCurrentLanguage(), BaseApplication.getMemberID());
-                }
-                //开始倒计时
-                startCountDownInterval();
-                break;
+    public void requestEmail() {
+        //开始请求验证码数据
+        if (presenter != null) {
+            presenter.emailVerify(BaseApplication.getMemberID(), BaseApplication.getCurrentLanguage(), BaseApplication.getMemberID());
         }
+        //开始倒计时
+        startCountDownInterval();
 
     }
 }
