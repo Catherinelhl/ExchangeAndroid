@@ -9,7 +9,10 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
-import io.bcaas.exchange.vo.*;
+import io.bcaas.exchange.vo.LoginInfoVO;
+import io.bcaas.exchange.vo.MemberVO;
+import io.bcaas.exchange.vo.RequestJson;
+import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -57,7 +60,7 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "login", requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "login:", requestJson);
         loginInteractor.login(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -69,7 +72,8 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "login:", responseJson);
+
                         if (responseJson == null) {
                             view.noData();
                             return;

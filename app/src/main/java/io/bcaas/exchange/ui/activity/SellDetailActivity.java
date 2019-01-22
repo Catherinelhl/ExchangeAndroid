@@ -13,13 +13,17 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SellContract;
 import io.bcaas.exchange.ui.presenter.SellPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -144,7 +148,25 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
                             showToast(getString(R.string.please_set_google_verify));
                             return;
                         }
-                        //3：接口请求数据
+                        //3：判断当前是否设置资金密码
+                        MemberVO memberVO = BaseApplication.getMemberVO();
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            String txPasswordAttribute = memberVO.getTxPassword();
+                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                                showToast(getString(R.string.no_fund_password_please_set_first));
+                                return;
+                            }
+                            //4：判断当前是否设置google验证码
+                            int googleVerifyAttribute = memberVO.getTwoFactorAuthVerify();
+                            if (googleVerifyAttribute == Constants.Status.UN_BOUND) {
+                                showToast(getString(R.string.no_google_verify_please_set_first));
+                                return;
+                            }
+                        }
+
+                        //5：接口请求数据
                         if (sellDataBean != null) {
                             btnSell.setEnabled(false);
                             presenter.sell(sellDataBean.getCurrencyUid(), sellDataBean.getExchangeCurrencyUid(),
@@ -155,7 +177,7 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override

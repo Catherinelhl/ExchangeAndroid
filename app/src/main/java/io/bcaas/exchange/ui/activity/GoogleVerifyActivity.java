@@ -203,7 +203,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
             tvSecret.setText(secret);
         }
         if (tvAccount != null && StringTool.notEmpty(account)) {
-            tvAccount.setText(account);
+            tvAccount.setText(account.trim());
         }
 
     }
@@ -225,7 +225,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
         if (etVerifyCode != null) {
             etVerifyCode.setContent(MessageConstants.EMPTY);
         }
-        showToast("设置验证失败，请重新输入验证码。");
+        showToast(info);
     }
 
     @Override

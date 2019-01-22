@@ -31,7 +31,7 @@
                 style="@style/black_666_14_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:text="@string/private_key_str"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/iv_qr_code"
@@ -41,7 +41,7 @@
                 style="@style/black_666_14_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/tv_secret_key"
                 android:gravity="left"/>
@@ -54,7 +54,7 @@
                 android:layout_marginRight="@dimen/d20"
                 android:layout_height="wrap_content"
                 android:text="@string/google_account"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:gravity="left"/>
         <TextView
                 android:id="@+id/tv_account"
@@ -64,7 +64,7 @@
                 android:layout_toRightOf="@+id/tv_account_key"
                 android:layout_marginRight="@dimen/d20"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
                 android:gravity="left"/>
 
     </RelativeLayout>

@@ -186,7 +186,7 @@
     <string name="failure_to_security_phone">更改手机状态失败</string>
     <string name="failure_to_security_email">更改邮箱状态失败</string>
     <string name="failure_to_security_google">更改google状态失败</string>
-    <string name="failure_to_sell_out_please_try_again">售出失败，请重试</string>
+    <string name="failure_to_sell_out_please_try_again">挂单失败，请重试</string>
     <string name="txpassword_same_as_account_password">TxPassword is the same as the account password.</string>
     <string name="failure_security_txpassword">资金密码设置失败</string>
     <string name="failure_to_withdraw_please_try_again">提现失败，请重试</string>
@@ -197,5 +197,10 @@
     <string name="forget_fund_password">忘记资金密码？</string>
     <string name="immediate_reset">立即重置</string>
     <string name="current_password_is_wrong">密码错误</string>
+    <string name="google_authenticator_verify_fail">Google 身份验证失败</string>
+    <string name="fund_password_is_wrong">资金密码错误</string>
+    <string name="failure_google_set">设置Google验证失败，请重新输入验证码。</string>
+    <string name="no_fund_password_please_set_first">您当前还未设置资金密码,请设置</string>
+    <string name="no_google_verify_please_set_first">您当前还未启用Google身份验证</string>
 
 </resources>

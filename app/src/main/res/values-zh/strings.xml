@@ -180,7 +180,7 @@
     <string name="no_data">没有获取到相关数据</string>
     <string name="email_not_register">邮件没有注册</string>
     <string name="verify_code_fail">Verify code fail</string>
-    <string name="verify_code_expire">Verify code expire</string>
+    <string name="verify_code_expire">验证码过期</string>
     <string name="login_failure_please_try_again">登录失败，请重试</string>
     <string name="email_already_be_register">账号已被注册</string>
     <string name="register_failure_please_try_again">注册失败，请重试</string>
@@ -194,7 +194,7 @@
     <string name="failure_to_security_phone">更改手机状态失败</string>
     <string name="failure_to_security_email">更改邮箱状态失败</string>
     <string name="failure_to_security_google">更改google状态失败</string>
-    <string name="failure_to_sell_out_please_try_again">售出失败，请重试</string>
+    <string name="failure_to_sell_out_please_try_again">挂单失败，请重试</string>
     <string name="txpassword_same_as_account_password">TxPassword is the same as the account password.</string>
     <string name="failure_security_txpassword">资金密码设置失败</string>
     <string name="failure_to_withdraw_please_try_again">提现失败，请重试</string>

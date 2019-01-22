@@ -103,6 +103,8 @@ public class MessageConstants {
     public static final String ERROR_SELLCHARGE_FORMAT_INVALID = "SellCharge format invalid.";
     public static final int CODE_2041 = 2041;
     public static final String ERROR_UID_FORMAT_INVALID = "Uid format invalid.";
+    public static final int CODE_2045 = 2045;
+    public static final String ERROR_AUTHENTICATOR_VERIFY_FAIL = "Authenticator verify fail.";
     public static final int CODE_2057 = 2057;
     public static final String ERROR_ILLEGAL_REQUEST = "Illegal request.";
     public static final int CODE_2055 = 2055;

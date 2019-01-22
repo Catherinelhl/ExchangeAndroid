@@ -32,7 +32,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
     private String TAG = GooglePresenterImp.class.getSimpleName();
     private GoogleContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
-    private Disposable disposableGetAuthenticatorUrl,disposableSecurityGoogleAuthenticator;
+    private Disposable disposableGetAuthenticatorUrl, disposableSecurityGoogleAuthenticator;
 
     public GooglePresenterImp(GoogleContract.View view) {
         super();
@@ -134,6 +134,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityGoogleAuthenticator:", requestJson);
         LogTool.d(TAG, requestJson);
         safetyCenterInteractor.securityTwoFactorVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -141,12 +142,13 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableSecurityGoogleAuthenticator=d;
+                        disposableSecurityGoogleAuthenticator = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "securityGoogleAuthenticator:", responseJson);
+
                         if (responseJson == null) {
                             view.noData();
                             return;
@@ -158,18 +160,15 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                             if (memberVOResponse != null) {
                                 int twoFactorAuthVerify = memberVOResponse.getTwoFactorAuthVerify();
                                 if (twoFactorAuthVerify == Constants.Status.OPEN) {
-                                    view.securityGoogleAuthenticatorSuccess(responseJson.getMessage());
-                                } else {
-                                    view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
                                 }
-
+                                view.securityGoogleAuthenticatorSuccess(responseJson.getMessage());
                             } else {
-                                view.securityGoogleAuthenticatorFailure(MessageConstants.EMPTY);
+                                view.securityGoogleAuthenticatorFailure(getString(R.string.no_data_info));
 
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
+                                view.securityGoogleAuthenticatorFailure(getString(R.string.failure_google_set));
                             }
 
                         }
@@ -180,7 +179,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.securityGoogleAuthenticatorFailure(e.getMessage());
+                        view.securityGoogleAuthenticatorFailure(getString(R.string.failure_google_set));
                         disposeDisposable(disposableSecurityGoogleAuthenticator);
                     }
 
