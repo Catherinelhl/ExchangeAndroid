@@ -14,6 +14,7 @@ import java.util.List;
  * 工具類：字符串判斷
  */
 public class StringTool {
+    private static String TAG = StringTool.class.getSimpleName();
 
     public static boolean isEmpty(String content) {
         return TextUtils.isEmpty(content);
@@ -200,5 +201,19 @@ public class StringTool {
             }
         }
         return MessageConstants.EMPTY;
+    }
+
+    public static String getDisplayTime(String createTime) {
+        if (StringTool.isEmpty(createTime)) {
+            return createTime;
+        }
+        int startIndex = 0;
+        int endIndex = 19;
+        if (endIndex < createTime.length()) {
+            return createTime.substring(startIndex, endIndex);
+
+        } else {
+            return createTime;
+        }
     }
 }

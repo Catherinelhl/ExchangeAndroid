@@ -226,7 +226,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         if (srlData != null) {
             srlData.setRefreshing(false);
         }
-        LogTool.d(TAG, "PaginationVO:" + paginationVO);
+        GsonTool.logInfo(TAG, "PaginationVO:", paginationVO);
         if (paginationVO != null) {
             this.paginationVO = paginationVO;
             //得到当前接口的页面信息
@@ -243,8 +243,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                 }.getType());
             }
             int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
-            LogTool.d(TAG, "当前的Type为：" + type);
-            LogTool.d(TAG, "memberOrderVOList:" + memberOrderVOList);
+            GsonTool.logInfo(TAG, "当前的Type为:", type);
+            GsonTool.logInfo(TAG, "memberOrderVOList:", memberOrderVOList);
             switch (type) {
                 case Constants.OrderType.RECHARGE:
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
