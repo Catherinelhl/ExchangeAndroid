@@ -16,6 +16,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.ForgetToResetPasswordContract;
 import io.bcaas.exchange.ui.presenter.ForgetToResetPasswordPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
@@ -169,9 +170,10 @@ public class ForgetToResetPasswordActivity extends BaseActivity implements Forge
                             showToast(getString(R.string.please_input_password));
                             return;
                         }
-                        //3：判断密码是否输入8位
-                        if (password.length() < Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
-                            showToast(getString(R.string.password_to_short));
+
+                        //3：判断密码是否输入8位,是否符合密码输入规则
+                        if (!RegexTool.isValidatePassword(password)) {
+                            showToast(getResources().getString(R.string.password_rule_of_length));
                             return;
                         }
                         //4：判断当前密码的确认输入

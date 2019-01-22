@@ -14,7 +14,7 @@ public class RegexTool {
 
     private static final String EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     private static final String MONEY = "^\\d{n}$";
-    public static final String PASSWORD = "^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9!@#$%^&*_]{8,16}$";
+    public static final String PASSWORD = "^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9!@#$%^&*_]{8,20}$";
     public static final String REPLACE_BLANK = "\t|\r|\n|\\s*";
     public static final String IS_CHINESE = "[\u4e00-\u9fa5]+";
     private static final String VERSION = "^-?[\\d.]+(?:e-?\\d+)?$";
@@ -31,15 +31,6 @@ public class RegexTool {
         Pattern pattern = Pattern.compile(regex);
 
         return pattern;
-    }
-
-    public static boolean isRightPassword(String version) {
-
-        Pattern pattern = getPattern(PASSWORD);
-
-        Matcher matcher = pattern.matcher(version);
-
-        return matcher.matches();
     }
 
     public static boolean isRightEmail(String info) {
@@ -96,14 +87,6 @@ public class RegexTool {
         Matcher matcher = pattern.matcher(password);
 
         return matcher.matches();
-    }
-
-    /*判断是否是字符*/
-    public static boolean isCharacter(String str) {
-        if (str.matches(PASSWORD)) {
-            return true;
-        }
-        return false;
     }
 
     /*将当前的空格替换掉*/

@@ -13,6 +13,7 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.ModifyPasswordContract;
 import io.bcaas.exchange.ui.presenter.ModifyPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -157,9 +158,9 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
                             return;
                         }
 
-                        //3:判断当前新密码是否输入8位
-                        if (newPassword.length() < Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
-                            showToast(getString(R.string.password_to_short));
+                        //3:判断当前新密码是否输入8位,是否符合密码输入规则
+                        if (!RegexTool.isValidatePassword(newPassword)) {
+                            showToast(getResources().getString(R.string.password_rule_of_length));
                             return;
                         }
                         //4：判断确认新密码非空

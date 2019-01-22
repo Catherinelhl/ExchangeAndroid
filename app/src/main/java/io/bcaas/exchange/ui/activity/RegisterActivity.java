@@ -164,9 +164,10 @@ public class RegisterActivity extends BaseActivity
                             showToast(getString(R.string.please_input_password));
                             return;
                         }
-                        //4：判断密码是否输入8位
-                        if (password.length() < Constants.ValueMaps.PASSWORD_MIN_LENGTH) {
-                            showToast(getString(R.string.password_to_short));
+
+                        //4：判断密码是否输入8位,是否符合密码输入规则
+                        if (!RegexTool.isValidatePassword(password)){
+                            showToast(getResources().getString(R.string.password_rule_of_length));
                             return;
                         }
                         //5：判断当前的确认密码是否输入
