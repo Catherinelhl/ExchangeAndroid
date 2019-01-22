@@ -8,13 +8,13 @@ import io.bcaas.exchange.bean.CoinMarketCapBean;
  * 取得币种以及相对应的币种市值信息
  */
 public interface GetCoinMarketCapContract {
-    interface View {
+    interface View extends  BaseContract.View{
         void getCoinMarketCapSuccess(CoinMarketCapBean coinMarketCapBean);
 
         void getCoinMarketCapFailure(String info);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.Presenter{
 
         void getCoinMarketCap(String coinName, long startTime, long endTime);
     }

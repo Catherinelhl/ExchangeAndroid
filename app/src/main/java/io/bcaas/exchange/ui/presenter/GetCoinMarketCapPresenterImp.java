@@ -17,11 +17,13 @@ import io.reactivex.schedulers.Schedulers;
  * @author catherine.brainwilliam
  * @since 2019/1/18
  */
-public class GetCoinMarketCapPresenterImp implements GetCoinMarketCapContract.Presenter {
+public class GetCoinMarketCapPresenterImp extends BasePresenterImp
+        implements GetCoinMarketCapContract.Presenter {
     private String TAG = GetCoinMarketCapPresenterImp.class.getSimpleName();
 
     private GetCoinMarketCapContract.View view;
     private MainInteractor interactor;
+    private Disposable disposableGetCoinMarketCap;
 
     public GetCoinMarketCapPresenterImp(GetCoinMarketCapContract.View view) {
         super();
@@ -31,6 +33,7 @@ public class GetCoinMarketCapPresenterImp implements GetCoinMarketCapContract.Pr
 
     @Override
     public void getCoinMarketCap(String coinName, long startTime, long endTime) {
+        disposeDisposable(disposableGetCoinMarketCap);
         RequestJson requestJson = new RequestJson();
         CoinMarketCapBean coinMarketCapBean = new CoinMarketCapBean();
         coinMarketCapBean.setCoinName(coinName);
@@ -45,14 +48,14 @@ public class GetCoinMarketCapPresenterImp implements GetCoinMarketCapContract.Pr
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetCoinMarketCap=d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getCoinMarketCap:", responseJson);
                         if (responseJson == null) {
-                            view.getCoinMarketCapFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -63,9 +66,7 @@ public class GetCoinMarketCapPresenterImp implements GetCoinMarketCapContract.Pr
                             } else {
                                 view.getCoinMarketCapFailure(responseJson.getMessage());
                             }
-
                         } else {
-                            int code = responseJson.getCode();
                             view.getCoinMarketCapFailure(responseJson.getMessage());
                         }
                     }
@@ -74,10 +75,12 @@ public class GetCoinMarketCapPresenterImp implements GetCoinMarketCapContract.Pr
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.getCoinMarketCapFailure(e.getMessage());
+                        disposeDisposable(disposableGetCoinMarketCap);
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableGetCoinMarketCap);
 
                     }
                 });

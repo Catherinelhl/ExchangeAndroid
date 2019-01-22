@@ -32,6 +32,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
     private String TAG = GooglePresenterImp.class.getSimpleName();
     private GoogleContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableGetAuthenticatorUrl,disposableSecurityGoogleAuthenticator;
 
     public GooglePresenterImp(GoogleContract.View view) {
         super();
@@ -46,6 +47,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableGetAuthenticatorUrl);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -62,14 +64,14 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetAuthenticatorUrl = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getAuthenticatorUrlFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -84,13 +86,12 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                                 if (StringTool.notEmpty(getAuthenticatorUrl)) {
                                     getAuthenticatorUrlCreateImage(verificationBean.getAuthenticatorUrl());
                                 } else {
-                                    view.getAuthenticatorUrlFailure(getString(R.string.get_data_failure));
+                                    view.getAuthenticatorUrlFailure(getString(R.string.no_data_info));
                                 }
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.getAuthenticatorUrlFailure(responseJson.getMessage());
+                                view.getAuthenticatorUrlFailure(getString(R.string.get_data_failure));
                             }
                         }
 
@@ -100,12 +101,15 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.getAuthenticatorUrlFailure(e.getMessage());
+                        view.getAuthenticatorUrlFailure(getString(R.string.get_data_failure));
+                        disposeDisposable(disposableGetAuthenticatorUrl);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableGetAuthenticatorUrl);
+
                     }
                 });
     }
@@ -117,6 +121,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableSecurityGoogleAuthenticator);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -136,14 +141,14 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSecurityGoogleAuthenticator=d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.securityGoogleAuthenticatorFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -164,7 +169,6 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
                                 view.securityGoogleAuthenticatorFailure(responseJson.getMessage());
                             }
 
@@ -177,11 +181,14 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
                         view.securityGoogleAuthenticatorFailure(e.getMessage());
+                        disposeDisposable(disposableSecurityGoogleAuthenticator);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableSecurityGoogleAuthenticator);
+
                     }
                 });
     }

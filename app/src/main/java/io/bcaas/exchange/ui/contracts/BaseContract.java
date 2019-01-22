@@ -16,8 +16,12 @@ public interface BaseContract {
 
         //没有网路
         void noNetWork();
+
         //http 异常信息处理
         boolean httpExceptionDisposed(ResponseJson responseJson);
+
+        //没有数据
+        void noData();
     }
 
     interface Presenter {

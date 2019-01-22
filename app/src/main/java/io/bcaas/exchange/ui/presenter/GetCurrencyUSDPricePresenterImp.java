@@ -20,6 +20,8 @@ import io.reactivex.schedulers.Schedulers;
  * @author catherine.brainwilliam
  * @since 2019/1/17
  */
+
+@Deprecated
 public class GetCurrencyUSDPricePresenterImp implements GetCurrencyUSDPriceContract.Presenter {
     private String TAG = GetCurrencyUSDPricePresenterImp.class.getSimpleName();
     private GetCurrencyUSDPriceContract.View view;

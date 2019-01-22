@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -20,12 +21,12 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2018/12/21
  */
-public class LoginPresenterImp implements LoginContract.Presenter {
+public class LoginPresenterImp extends BasePresenterImp implements LoginContract.Presenter {
     private String TAG = LoginPresenterImp.class.getSimpleName();
     private LoginContract.View view;
     private LoginInteractor loginInteractor;
 
-    private Disposable disposableLogin, disposableImageVerifyCode;
+    private Disposable disposableLogin;
 
     public LoginPresenterImp(LoginContract.View view) {
         super();
@@ -40,6 +41,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableLogin);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -69,7 +71,7 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.loginFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -80,21 +82,22 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                             BaseApplication.setAccessToken(accessToken);
                             //存储当前的memberID
                             BaseApplication.setMemberID(memberId);
+                            //将成功状态返回界面
                             view.loginSuccess(accessToken);
                         } else {
                             // {"success":false,"code":2005,"message":"Email not register."}
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2005) {
-                                view.loginFailure(MessageConstants.ERROR_EMAIL_NOT_REGISTER);
+                                view.loginFailure(getString(R.string.email_not_register));
                             } else if (code == MessageConstants.CODE_2010) {
                                 //1：如果当前图形验证码错误，那么返回的是2010，包括输入上一次的code
                                 //  {"success":false,"code":2010,"message":"Verify code fail."}
-                                view.ImageVerifyCodeError(responseJson.getMessage());
+                                view.ImageVerifyCodeError(getString(R.string.verify_code_fail));
                             } else if (code == MessageConstants.CODE_2025) {
                                 //    {"success":false,"code":2025,"message":"Verify code expire."}
-                                view.ImageVerifyCodeError(responseJson.getMessage());
+                                view.ImageVerifyCodeError(getString(R.string.verify_code_expire));
                             } else {
-                                view.loginFailure(responseJson.getMessage());
+                                view.loginFailure(getString(R.string.login_failure_please_try_again));
                             }
 
                         }
@@ -105,12 +108,15 @@ public class LoginPresenterImp implements LoginContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.loginFailure(e.getMessage());
+                        view.loginFailure(getString(R.string.login_failure_please_try_again));
+                        disposeDisposable(disposableLogin);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableLogin);
+
                     }
                 });
     }

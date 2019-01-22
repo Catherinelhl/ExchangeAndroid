@@ -152,7 +152,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
                 // 将ClipData内容放到系统剪贴板里。
                 if (cm != null) {
                     cm.setPrimaryClip(mClipData);
-                    showToast(getString(R.string.successfully_copied));
+                    showToast(getString(R.string.successfully_copied_account));
                 }
                 return false;
             }
@@ -167,7 +167,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
                 // 将ClipData内容放到系统剪贴板里。
                 if (cm != null) {
                     cm.setPrimaryClip(mClipData);
-                    showToast(getString(R.string.successfully_copied));
+                    showToast(getString(R.string.successfully_copied_secret));
                 }
                 return false;
             }

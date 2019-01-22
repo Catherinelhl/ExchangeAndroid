@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -24,11 +25,13 @@ import java.security.NoSuchAlgorithmException;
  * <p>
  * 重设密码
  */
-public class ResetPasswordPresenterImp implements ResetPasswordContract.Presenter {
+public class ResetPasswordPresenterImp extends BasePresenterImp
+        implements ResetPasswordContract.Presenter {
     private String TAG = ResetPasswordPresenterImp.class.getSimpleName();
 
     private ResetPasswordContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableResetPassword;
 
     public ResetPasswordPresenterImp(ResetPasswordContract.View view) {
         super();
@@ -44,6 +47,7 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableResetPassword);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -61,21 +65,21 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"resetPassword:",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "resetPassword:", requestJson);
         safetyCenterInteractor.resetPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableResetPassword = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.resetPasswordFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -83,8 +87,7 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
                             view.resetPasswordSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.resetPasswordFailure(responseJson.getMessage());
+                                view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
                             }
 
                         }
@@ -94,11 +97,14 @@ public class ResetPasswordPresenterImp implements ResetPasswordContract.Presente
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.resetPasswordFailure(e.getMessage());
+                        view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
+                        disposeDisposable(disposableResetPassword);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableResetPassword);
 
                     }
                 });

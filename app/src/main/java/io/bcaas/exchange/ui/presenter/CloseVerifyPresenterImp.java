@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -29,6 +30,7 @@ public class CloseVerifyPresenterImp
     private String TAG = CloseVerifyPresenterImp.class.getSimpleName();
     private CloseVerifyCodeContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableCloseVerifyCode;
 
     public CloseVerifyPresenterImp(CloseVerifyCodeContract.View view) {
         super(view);
@@ -58,6 +60,7 @@ public class CloseVerifyPresenterImp
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableCloseVerifyCode);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -78,14 +81,14 @@ public class CloseVerifyPresenterImp
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableCloseVerifyCode=d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.closeVerifyCodeFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -94,7 +97,7 @@ public class CloseVerifyPresenterImp
                         } else {
 
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.closeVerifyCodeFailure(responseJson.getMessage());
+                                view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
                             }
                         }
 
@@ -105,12 +108,15 @@ public class CloseVerifyPresenterImp
                         e.printStackTrace();
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.closeVerifyCodeFailure(e.getMessage());
+                        view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
+                        disposeDisposable(disposableCloseVerifyCode);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableCloseVerifyCode);
+
                     }
                 });
     }

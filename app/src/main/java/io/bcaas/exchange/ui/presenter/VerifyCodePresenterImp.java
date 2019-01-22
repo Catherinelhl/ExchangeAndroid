@@ -23,7 +23,8 @@ import okhttp3.ResponseBody;
  * <p>
  * 验证码的获取Presenter
  */
-public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCodeContract.Presenter {
+public class VerifyCodePresenterImp extends BasePresenterImp
+        implements VerifyCodeContract.Presenter {
     private String TAG = VerifyCodePresenterImp.class.getSimpleName();
     private VerifyCodeContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
@@ -39,6 +40,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCo
 
     @Override
     public void emailVerify(String memberId, String languageCode, String mail) {
+        disposeDisposable(disposableEmailVerify);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(memberId);
@@ -47,19 +49,20 @@ public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCo
         verificationBean.setLanguageCode(languageCode);
         verificationBean.setMail(mail);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "emailVerify", requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "emailVerify:", requestJson);
         safetyCenterInteractor.emailVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+
                         disposableEmailVerify = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "emailVerify:", requestJson);
                         if (responseJson == null) {
                             view.getEmailVerifyFailure(MessageConstants.EMPTY);
                             return;
@@ -68,7 +71,6 @@ public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCo
                         if (isSuccess) {
                             view.getEmailVerifySuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
                             view.getEmailVerifyFailure(responseJson.getMessage());
                         }
                     }
@@ -90,6 +92,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp implements VerifyCo
 
     @Override
     public void getImageVerifyCode() {
+        disposeDisposable(disposableImageVerifyCode);
         safetyCenterInteractor.getImageVerifyCode()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -20,11 +21,13 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  */
-public class SellPresenterImp implements SellContract.Presenter {
+public class SellPresenterImp extends BasePresenterImp
+        implements SellContract.Presenter {
     private String TAG = SellPresenterImp.class.getSimpleName();
 
     private SellContract.View view;
     private TxInteractor txInteractor;
+    private Disposable disposableSell;
 
     public SellPresenterImp(SellContract.View view) {
         super();
@@ -50,6 +53,7 @@ public class SellPresenterImp implements SellContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableSell);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -81,21 +85,21 @@ public class SellPresenterImp implements SellContract.Presenter {
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "sell", requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "sell:", requestJson);
         txInteractor.sell(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSell = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "sell:", responseJson);
                         if (responseJson == null) {
-                            view.sellFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -103,8 +107,7 @@ public class SellPresenterImp implements SellContract.Presenter {
                             view.sellSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.sellFailure(responseJson.getMessage());
+                                view.sellFailure(getString(R.string.failure_to_sell_out_please_try_again));
                             }
 
                         }
@@ -115,12 +118,16 @@ public class SellPresenterImp implements SellContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.sellFailure(e.getMessage());
+                        view.sellFailure(getString(R.string.failure_to_sell_out_please_try_again));
+                        disposeDisposable(disposableSell);
+
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableSell);
+
                     }
                 });
     }

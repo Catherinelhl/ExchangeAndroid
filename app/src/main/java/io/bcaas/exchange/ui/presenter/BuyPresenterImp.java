@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -21,11 +22,12 @@ import java.security.NoSuchAlgorithmException;
  * @since 2019/1/10
  * 购买
  */
-public class BuyPresenterImp implements BuyContract.Presenter {
+public class BuyPresenterImp extends BasePresenterImp implements BuyContract.Presenter {
 
     private String TAG = BuyPresenterImp.class.getSimpleName();
     private BuyContract.View view;
     private TxInteractor txInteractor;
+    private Disposable disposableBuy;
 
     public BuyPresenterImp(BuyContract.View view) {
         super();
@@ -40,6 +42,7 @@ public class BuyPresenterImp implements BuyContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableBuy);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -71,14 +74,14 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableBuy=d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.buyFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -92,9 +95,9 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                                     view.buySelfError();
                                 } else if (code == MessageConstants.CODE_2055) {
                                     //{"success":false,"code":2055,"message":"Invalid order information."}
-                                    view.invalidBuyOrder(responseJson.getMessage());
+                                    view.invalidBuyOrder(getString(R.string.invalid_order_information) );
                                 } else {
-                                    view.buyFailure(responseJson.getMessage());
+                                    view.buyFailure(getString(R.string.failure_to_buy_please_try_again));
 
                                 }
                             }
@@ -108,12 +111,14 @@ public class BuyPresenterImp implements BuyContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.buyFailure(e.getMessage());
+                        view.buyFailure(getString(R.string.failure_to_buy_please_try_again));
+                        disposeDisposable(disposableBuy);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableBuy);
                     }
                 });
     }

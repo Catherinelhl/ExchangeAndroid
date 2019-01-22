@@ -32,6 +32,7 @@ import io.bcaas.exchange.tools.chart.XLineValueFormatter;
 import io.bcaas.exchange.tools.chart.YLineValueFormatter;
 import io.bcaas.exchange.ui.contracts.GetCoinMarketCapContract;
 import io.bcaas.exchange.ui.presenter.GetCoinMarketCapPresenterImp;
+import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -460,12 +461,37 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
     public void getCoinMarketCapFailure(String info) {
         LogTool.e(TAG, info);
         if (rlLoadingData != null
-        && tvNoData!=null
-        && pbLoading!=null) {
+                && tvNoData != null
+                && pbLoading != null) {
             rlLoadingData.setVisibility(VISIBLE);
             tvNoData.setText(StringTool.isEmpty(info) ? context.getString(R.string.no_curve_info) : context.getResources().getString(R.string.get_data_failure));
-         pbLoading.setVisibility(GONE);
+            pbLoading.setVisibility(GONE);
         }
 
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void noNetWork() {
+
+    }
+
+    @Override
+    public boolean httpExceptionDisposed(ResponseJson responseJson) {
+        return false;
+    }
+
+    @Override
+    public void noData() {
+        LogTool.e(TAG, context.getResources().getString(R.string.no_data));
     }
 }

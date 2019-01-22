@@ -1,8 +1,8 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.PhoneVerifyContract;
@@ -20,11 +20,12 @@ import io.reactivex.schedulers.Schedulers;
  * @since 2019/1/14
  * 手机验证
  */
-public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
+public class PhoneVerifyPresenterImp extends BasePresenterImp implements PhoneVerifyContract.Presenter {
 
     private String TAG = PhoneVerifyPresenterImp.class.getSimpleName();
     private PhoneVerifyContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableGetPhoneCode;
 
     public PhoneVerifyPresenterImp(PhoneVerifyContract.View view) {
         super();
@@ -40,6 +41,7 @@ public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableGetPhoneCode);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -55,14 +57,14 @@ public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetPhoneCode = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getPhoneCodeFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -70,8 +72,7 @@ public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
                             view.getPhoneCodeSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.getPhoneCodeFailure(responseJson.getMessage());
+                                view.getPhoneCodeFailure(getString(R.string.failure_get_phone_verify_code));
                             }
                         }
 
@@ -80,11 +81,15 @@ public class PhoneVerifyPresenterImp implements PhoneVerifyContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.getPhoneCodeFailure(e.getMessage());
+                        view.getPhoneCodeFailure(getString(R.string.failure_get_phone_verify_code));
+                        disposeDisposable(disposableGetPhoneCode);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableGetPhoneCode);
+
                     }
                 });
     }

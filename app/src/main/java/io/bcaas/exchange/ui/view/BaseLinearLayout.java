@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.LogoutEvent;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
@@ -21,6 +21,7 @@ import io.bcaas.exchange.vo.ResponseJson;
  */
 public abstract class BaseLinearLayout extends LinearLayout implements BaseContract.View {
 
+    private String TAG = BaseLinearLayout.class.getSimpleName();
     protected Context context;
     private View view;
     private LoadingDialog loadingDialog;
@@ -85,5 +86,10 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void noData() {
+        LogTool.e(TAG,context.getResources().getString(R.string.no_data));
     }
 }

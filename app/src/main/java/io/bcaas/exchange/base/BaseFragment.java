@@ -190,14 +190,8 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         return false;
     }
 
-    /**
-     * 为弹出的popWindow设置背景透明度
-     *
-     * @param bgAlpha
-     */
-    public void setBackgroundAlpha(float bgAlpha) {
-        if (activity != null) {
-            ((BaseActivity) activity).setBackgroundAlpha(bgAlpha);
-        }
+    @Override
+    public void noData() {
+        LogTool.e(TAG, getString(R.string.no_data));
     }
 }

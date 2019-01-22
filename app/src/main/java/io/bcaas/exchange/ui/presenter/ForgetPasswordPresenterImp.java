@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -24,11 +25,13 @@ import java.security.NoSuchAlgorithmException;
  * <p>
  * 忘记密码
  */
-public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presenter {
+public class ForgetPasswordPresenterImp extends BasePresenterImp
+        implements ForgetPasswordContract.Presenter {
     private String TAG = ForgetPasswordPresenterImp.class.getSimpleName();
 
     private ForgetPasswordContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableForgetPassword;
 
     public ForgetPasswordPresenterImp(ForgetPasswordContract.View view) {
         super();
@@ -44,6 +47,7 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableForgetPassword);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -53,28 +57,28 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
         }
         requestJson.setMemberVO(memberVO);
 
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
-
-        LogTool.d(TAG, requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "forgetPassword:", requestJson);
         safetyCenterInteractor.forgetPassword(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableForgetPassword = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "forgetPassword:", requestJson);
                         if (responseJson == null) {
-                            view.forgetPasswordFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -82,8 +86,7 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.forgetPasswordFailure(responseJson.getMessage());
+                                view.forgetPasswordFailure(getString(R.string.get_data_failure));
                             }
                         }
 
@@ -93,12 +96,14 @@ public class ForgetPasswordPresenterImp implements ForgetPasswordContract.Presen
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.forgetPasswordFailure(e.getMessage());
+                        view.forgetPasswordFailure(getString(R.string.get_data_failure));
+                        disposeDisposable(disposableForgetPassword);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableForgetPassword);
                     }
                 });
     }

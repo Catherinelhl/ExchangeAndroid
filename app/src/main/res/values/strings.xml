@@ -169,5 +169,28 @@
     <string name="expand">展开</string>
     <string name="price_curve">价格曲线</string>
     <string name="no_curve_info">没有对应曲线信息</string>
+    <string name="no_data">没有获取到相关数据</string>
+    <string name="email_not_register">邮件没有注册</string>
+    <string name="verify_code_fail">Verify code fail</string>
+    <string name="verify_code_expire">Verify code expire</string>
+    <string name="login_failure_please_try_again">登录失败，请重试</string>
+    <string name="email_already_be_register">账号已被注册</string>
+    <string name="register_failure_please_try_again">注册失败，请重试</string>
+    <string name="failure_to_bind_phone">手机绑定失败</string>
+    <string name="failure_to_buy_please_try_again">购买失败，请重试</string>
+    <string name="invalid_order_information">Invalid order information.</string>
+    <string name="failure_to_close_verify_please_try_again">关闭验证失败，请重试</string>
+    <string name="cancel_order_failure_please_try_again">撤销订单失败，请重试</string>
+    <string name="failure_get_phone_verify_code">获取验证码失败</string>
+    <string name="failure_to_reset_password">密码重置失败</string>
+    <string name="failure_to_security_phone">更改手机状态失败</string>
+    <string name="failure_to_security_email">更改邮箱状态失败</string>
+    <string name="failure_to_security_google">更改google状态失败</string>
+    <string name="failure_to_sell_out_please_try_again">售出失败，请重试</string>
+    <string name="txpassword_same_as_account_password">TxPassword is the same as the account password.</string>
+    <string name="failure_security_txpassword">资金密码设置失败</string>
+    <string name="failure_to_withdraw_please_try_again">提现失败，请重试</string>
+    <string name="successfully_copied_secret">Successfully copied secret</string>
+    <string name="successfully_copied_account">Successfully copied account</string>
 
 </resources>

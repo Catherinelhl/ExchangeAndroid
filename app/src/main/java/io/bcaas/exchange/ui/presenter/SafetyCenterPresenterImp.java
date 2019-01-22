@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.MessageConstants;
@@ -25,6 +26,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     private String TAG = SafetyCenterPresenterImp.class.getSimpleName();
     private SafetyCenterContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableLogout, disposableSecurityPhone, disposableSecurityEmail, disposableSecurityGoogle;
 
     public SafetyCenterPresenterImp(SafetyCenterContract.View view) {
         super(view);
@@ -39,6 +41,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableLogout);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -48,21 +51,22 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "logout", requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "logout:", requestJson);
         safetyCenterInteractor.logout(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableLogout = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "logout:", responseJson);
+
                         if (responseJson == null) {
-                            view.logoutFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -87,11 +91,13 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
                         view.logoutFailure(e.getMessage());
+                        disposeDisposable(disposableLogout);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableLogout);
 
                     }
                 });
@@ -99,6 +105,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
     @Override
     public void securityPhone(String phone, String verifyCode) {
+        disposeDisposable(disposableSecurityPhone);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -110,34 +117,30 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityPhone",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityPhone", requestJson);
         safetyCenterInteractor.securityPhone(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSecurityPhone = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG,MessageConstants.LogInfo.RESPONSE_JSON,"securityPhone:",responseJson);
+
                         if (responseJson == null) {
-                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.securityPhoneFailure(responseJson.getMessage());
-                            } else {
-                                view.securityPhoneFailure(MessageConstants.EMPTY);
-
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.securityPhoneFailure(getString(R.string.failure_to_security_phone));
                             }
 
                         }
@@ -147,18 +150,20 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.securityPhoneFailure(e.getMessage());
+                        view.securityPhoneFailure(getString(R.string.failure_to_security_phone));
+                        disposeDisposable(disposableSecurityPhone);
                     }
 
                     @Override
                     public void onComplete() {
-
+                        disposeDisposable(disposableSecurityPhone);
                     }
                 });
     }
 
     @Override
     public void securityEmail(String verifyCode) {
+        disposeDisposable(disposableSecurityEmail);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -169,33 +174,30 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityEmail:",requestJson);
         safetyCenterInteractor.securityEmail(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSecurityEmail = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG,MessageConstants.LogInfo.RESPONSE_JSON,"securityEmail:",responseJson);
+
                         if (responseJson == null) {
-                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.securityPhoneFailure(responseJson.getMessage());
-                            } else {
-                                view.securityPhoneFailure(MessageConstants.EMPTY);
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.securityPhoneFailure(getString(R.string.failure_to_security_email));
 
                             }
 
@@ -206,11 +208,15 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.securityPhoneFailure(e.getMessage());
+                        view.securityPhoneFailure(getString(R.string.failure_to_security_email));
+                        disposeDisposable(disposableSecurityEmail);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableSecurityEmail);
+
 
                     }
                 });
@@ -218,6 +224,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
     @Override
     public void securityGoogle(String verifyCode) {
+        disposeDisposable(disposableSecurityGoogle);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -228,36 +235,30 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
+        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityGoogle:",requestJson);
         safetyCenterInteractor.securityTwoFactorVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSecurityGoogle = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG,MessageConstants.LogInfo.RESPONSE_JSON,"securityGoogle:",responseJson);
                         if (responseJson == null) {
-                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
-                            int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
-                                //    {"success":false,"code":2019,"message":"AccessToken expire."}
-                                view.securityPhoneFailure(responseJson.getMessage());
-                            } else {
-                                view.securityPhoneFailure(MessageConstants.EMPTY);
-
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.securityPhoneFailure(getString(R.string.failure_to_security_google));
                             }
-
                         }
 
                     }
@@ -265,11 +266,15 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.securityPhoneFailure(e.getMessage());
+                        view.securityPhoneFailure(getString(R.string.failure_to_security_google));
+                        disposeDisposable(disposableSecurityGoogle);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableSecurityGoogle);
+
 
                     }
                 });

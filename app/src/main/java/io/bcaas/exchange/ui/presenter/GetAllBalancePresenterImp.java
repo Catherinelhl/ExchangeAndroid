@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -19,10 +20,12 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2019/1/17
  */
-public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presenter {
+public class GetAllBalancePresenterImp extends BasePresenterImp
+        implements GetAllBalanceContract.Presenter {
     private String TAG = GetAllBalancePresenterImp.class.getSimpleName();
     private GetAllBalanceContract.View view;
     private MainInteractor interactor;
+    private Disposable disposableGetAllBalance;
 
     public GetAllBalancePresenterImp(GetAllBalanceContract.View view) {
         super();
@@ -32,6 +35,7 @@ public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presente
 
     @Override
     public void getAllBalance() {
+        disposeDisposable(disposableGetAllBalance);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -49,14 +53,14 @@ public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presente
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetAllBalance=d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getAllBalanceFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -66,13 +70,12 @@ public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presente
                                 BaseApplication.setMemberKeyVOList(memberKeyVOList);
                                 view.getAllBalanceSuccess(responseJson.getMemberKeyVOList());
                             } else {
-                                view.getAllBalanceFailure(responseJson.getMessage());
+                                view.getAllBalanceFailure(getString(R.string.no_data_info));
                             }
 
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.getAllBalanceFailure(responseJson.getMessage());
+                                view.getAllBalanceFailure(getString(R.string.get_data_failure));
                             }
                         }
                     }
@@ -80,11 +83,14 @@ public class GetAllBalancePresenterImp implements GetAllBalanceContract.Presente
                     @Override
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
-                        view.getAllBalanceFailure(e.getMessage());
+                        view.getAllBalanceFailure(getString(R.string.get_data_failure));
+                        disposeDisposable(disposableGetAllBalance);
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableGetAllBalance);
+
 
                     }
                 });

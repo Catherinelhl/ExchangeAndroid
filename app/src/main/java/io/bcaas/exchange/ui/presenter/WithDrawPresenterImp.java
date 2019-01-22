@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -21,11 +22,13 @@ import java.security.NoSuchAlgorithmException;
  * <p>
  * 提现
  */
-public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements WithDrawContract.Presenter {
+public class WithDrawPresenterImp extends AccountSecurityPresenterImp
+        implements WithDrawContract.Presenter {
 
     private String TAG = WithDrawPresenterImp.class.getSimpleName();
     private WithDrawContract.View view;
     private TxInteractor txInteractor;
+    private Disposable disposableWithDraw;
 
     public WithDrawPresenterImp(WithDrawContract.View view) {
         super(view);
@@ -40,6 +43,7 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableWithDraw);
         //显示加载框
         view.showLoading();
         MemberVO memberVO = new MemberVO();
@@ -55,21 +59,22 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "withDraw", requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "withDraw:", requestJson);
         txInteractor.withDraw(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableWithDraw = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "withDraw:", responseJson);
+
                         if (responseJson == null) {
-                            view.withDrawFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -77,8 +82,7 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
                             view.withDrawSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.withDrawFailure(responseJson.getMessage());
+                                view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
                             }
 
                         }
@@ -89,12 +93,14 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp implements
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.withDrawFailure(e.getMessage());
+                        view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
+                        disposeDisposable(disposableWithDraw);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableWithDraw);
                     }
                 });
     }

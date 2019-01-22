@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.bean.VerificationBean;
@@ -32,6 +33,7 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
     private String TAG = BindPhonePresenterImp.class.getSimpleName();
     private BindPhoneContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableSecurityPhone;
 
     public BindPhonePresenterImp(BindPhoneContract.View view) {
         super(view);
@@ -46,6 +48,7 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableSecurityPhone);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -66,14 +69,14 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSecurityPhone=d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.securityPhoneFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -81,7 +84,7 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.securityPhoneFailure(responseJson.getMessage());
+                                view.securityPhoneFailure(getString(R.string.failure_to_bind_phone));
                             }
                         }
 
@@ -92,11 +95,14 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
                         view.securityPhoneFailure(e.getMessage());
+                        disposeDisposable(disposableSecurityPhone);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableSecurityPhone);
+
                     }
                 });
     }
@@ -115,8 +121,8 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                         String code = countryCode.getPhoneCode();
                         if (StringTool.isEmpty(name)
                                 || StringTool.isEmpty(code)
-                                || StringTool.equals(code, "(null)")
-                                || StringTool.equals(name, "(null)")) {
+                                || StringTool.equals(code, MessageConstants.NULL)
+                                || StringTool.equals(name,  MessageConstants.NULL)) {
                             continue;
                         }
                         countryCodes.add(countryCode);

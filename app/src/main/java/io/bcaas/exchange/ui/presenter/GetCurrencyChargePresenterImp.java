@@ -19,11 +19,13 @@ import io.reactivex.schedulers.Schedulers;
  * <p>
  * 取得幣種的手續費
  */
-public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.Presenter {
+public class GetCurrencyChargePresenterImp extends BasePresenterImp
+        implements GetCurrencyChargeContract.Presenter {
     private String TAG = GetCurrencyChargePresenterImp.class.getSimpleName();
 
     private GetCurrencyChargeContract.View view;
     private TxInteractor txInteractor;
+    private Disposable disposableGetCurrencyCharge;
 
     public GetCurrencyChargePresenterImp(GetCurrencyChargeContract.View view) {
         super();
@@ -39,6 +41,7 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
         if (StringTool.isEmpty(currencyUid)) {
             return;
         }
+        disposeDisposable(disposableGetCurrencyCharge);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -63,15 +66,14 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetCurrencyCharge = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getCurrencyChargeFailure(MessageConstants.EMPTY);
-
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -91,12 +93,14 @@ public class GetCurrencyChargePresenterImp implements GetCurrencyChargeContract.
                         view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
                         view.getCurrencyChargeFailure(e.getMessage());
+                        disposeDisposable(disposableGetCurrencyCharge);
 
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableGetCurrencyCharge);
 
                     }
                 });

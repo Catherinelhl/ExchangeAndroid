@@ -29,6 +29,7 @@ import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.LoginActivity;
@@ -381,6 +382,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     @Override
     public void noNetWork() {
         showToast(getResources().getString(R.string.network_not_reachable));
+
+    }
+
+    @Override
+    public void noData() {
+        LogTool.d(TAG,getString(R.string.no_data));
 
     }
 

@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -21,7 +22,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
     private String TAG = OrderRecordPresenterImp.class.getSimpleName();
     private OrderRecordContract.View view;
     private TxInteractor txInteractor;
-    private Disposable disposableGetRecord;
+    private Disposable disposableGetRecord,disposableCancelOrder;
 
     public OrderRecordPresenterImp(OrderRecordContract.View view) {
         super();
@@ -74,7 +75,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getRecordFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -83,13 +84,12 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                             if (paginationVOResponse != null) {
                                 view.getRecordSuccess(paginationVOResponse);
                             } else {
-                                view.getRecordFailure(responseJson.getMessage());
+                                view.getRecordFailure(getString(R.string.no_data_info));
                             }
 
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.getRecordFailure(responseJson.getMessage());
+                                view.getRecordFailure(getString(R.string.get_data_failure));
                             }
                         }
                     }
@@ -98,7 +98,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                     public void onError(Throwable e) {
                         view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
-                        view.getRecordFailure(e.getMessage());
+                        view.getRecordFailure(getString(R.string.get_data_failure));
                         disposeDisposable(disposableGetRecord);
 
                     }
@@ -119,6 +119,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableCancelOrder);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -158,12 +159,11 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                             if (memberOrderVOResponse != null) {
                                 view.cancelOrderSuccess(memberOrderVOResponse);
                             } else {
-                                view.cancelOrderFailure(responseJson.getMessage());
+                                view.cancelOrderFailure(getString(R.string.no_data_info));
                             }
 
                         } else {
-                            int code = responseJson.getCode();
-                            view.cancelOrderFailure(responseJson.getMessage());
+                            view.cancelOrderFailure(getString(R.string.cancel_order_failure_please_try_again));
                         }
                     }
 
@@ -171,12 +171,16 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                     public void onError(Throwable e) {
                         view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
-                        view.cancelOrderFailure(e.getMessage());
+                        view.cancelOrderFailure(getString(R.string.cancel_order_failure_please_try_again));
+                        disposeDisposable(disposableCancelOrder);
+
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableCancelOrder);
+
                     }
                 });
     }

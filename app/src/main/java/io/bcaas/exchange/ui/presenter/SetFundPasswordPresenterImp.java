@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -23,10 +24,12 @@ import java.security.NoSuchAlgorithmException;
  * @since 2019/1/2
  * 「设置资金密码」
  */
-public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Presenter {
+public class SetFundPasswordPresenterImp extends BasePresenterImp 
+        implements SetFundPasswordContract.Presenter {
     private String TAG = SetFundPasswordPresenterImp.class.getSimpleName();
     private SetFundPasswordContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
+    private Disposable disposableSecurityTxPassword;
 
     public SetFundPasswordPresenterImp(SetFundPasswordContract.View view) {
         super();
@@ -46,6 +49,7 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableSecurityTxPassword);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -75,9 +79,9 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "securityTxPassword", responseJson);
                         if (responseJson == null) {
-                            view.securityTxPasswordFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -86,8 +90,14 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
                                 int code = responseJson.getCode();
-                                //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
-                                view.securityTxPasswordFailure(responseJson.getMessage());
+                                if (code==MessageConstants.CODE_2022){
+                                    //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
+                                    view.securityTxPasswordFailure(getString(R.string.txpassword_same_as_account_password));
+
+                                }else{
+                                    view.securityTxPasswordFailure(getString(R.string.failure_security_txpassword));
+                                }
+                              
                             }
 
                         }
@@ -98,12 +108,16 @@ public class SetFundPasswordPresenterImp implements SetFundPasswordContract.Pres
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.securityTxPasswordFailure(e.getMessage());
+                        view.securityTxPasswordFailure(getString(R.string.failure_security_txpassword));
+                        disposeDisposable(disposableSecurityTxPassword);
+
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableSecurityTxPassword);
+
                     }
                 });
 

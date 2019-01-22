@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -16,7 +17,8 @@ import io.reactivex.schedulers.Schedulers;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  */
-public class ForSaleOrderListPresenterImp extends BasePresenterImp implements ForSaleOrderListContract.Presenter {
+public class ForSaleOrderListPresenterImp extends BasePresenterImp
+        implements ForSaleOrderListContract.Presenter {
 
     private String TAG = ForSaleOrderListPresenterImp.class.getSimpleName();
     private ForSaleOrderListContract.View view;
@@ -67,7 +69,8 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp implements Fo
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(Disposable d)
+                    {
                         disposableGetOrderList = d;
                     }
 
@@ -75,7 +78,7 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp implements Fo
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getOrderListFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -88,8 +91,7 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp implements Fo
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.getOrderListFailure(responseJson.getMessage());
+                                view.getOrderListFailure(getString(R.string.get_data_failure));
                             }
                         }
                     }
@@ -98,7 +100,7 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp implements Fo
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.getOrderListFailure(e.getMessage());
+                        view.getOrderListFailure(getString(R.string.get_data_failure));
                         disposeDisposable(disposableGetOrderList);
                     }
 

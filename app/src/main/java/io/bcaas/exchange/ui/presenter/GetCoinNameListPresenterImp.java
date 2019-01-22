@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -21,11 +22,13 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2019/1/21
  */
-public class GetCoinNameListPresenterImp implements GetCoinNameListContract.Presenter {
+public class GetCoinNameListPresenterImp extends BasePresenterImp
+        implements GetCoinNameListContract.Presenter {
 
     private String TAG = GetCoinNameListPresenterImp.class.getSimpleName();
     private GetCoinNameListContract.View view;
     private MainInteractor interactor;
+    private Disposable disposableGetCoinNameList;
 
     public GetCoinNameListPresenterImp(GetCoinNameListContract.View view) {
         super();
@@ -35,20 +38,21 @@ public class GetCoinNameListPresenterImp implements GetCoinNameListContract.Pres
 
     @Override
     public void getCoinNameList() {
+        disposeDisposable(disposableGetCoinNameList);
         interactor.getCoinNameList(GsonTool.beanToRequestBody(new RequestJson()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetCoinNameList = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getCoinNameList:", responseJson);
                         if (responseJson == null) {
-                            view.getCoinNameListFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -59,11 +63,10 @@ public class GetCoinNameListPresenterImp implements GetCoinNameListContract.Pres
                                 BaseApplication.setCurrencyListWithCoinName(currencyListVOS);
                                 view.getCoinNameListSuccess(currencyListVOS);
                             } else {
-                                view.getCoinNameListFailure(responseJson.getMessage());
+                                view.getCoinNameListFailure(getString(R.string.no_data_info));
                             }
 
                         } else {
-                            int code = responseJson.getCode();
                             view.getCoinNameListFailure(responseJson.getMessage());
                         }
                     }
@@ -72,10 +75,12 @@ public class GetCoinNameListPresenterImp implements GetCoinNameListContract.Pres
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.getCoinNameListFailure(e.getMessage());
+                        disposeDisposable(disposableGetCoinNameList);
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableGetCoinNameList);
 
                     }
                 });

@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -20,11 +21,13 @@ import io.reactivex.schedulers.Schedulers;
  * @since 2019/1/8
  * 获取账户信息
  */
-public class AccountSecurityPresenterImp implements AccountSecurityContract.Presenter {
+public class AccountSecurityPresenterImp extends BasePresenterImp
+        implements AccountSecurityContract.Presenter {
 
     private String TAG = AccountSecurityPresenterImp.class.getSimpleName();
     private AccountSecurityContract.View view;
     private AccountSecurityInteractor accountSecurityInteractor;
+    private Disposable disposableGetAccountSecurity;
 
     public AccountSecurityPresenterImp(AccountSecurityContract.View view) {
         super();
@@ -39,6 +42,7 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableGetAccountSecurity);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -58,14 +62,14 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetAccountSecurity = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         LogTool.d(TAG, responseJson);
                         if (responseJson == null) {
-                            view.getAccountSecurityFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         boolean isSuccess = responseJson.isSuccess();
@@ -76,13 +80,11 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
                                 BaseApplication.setMemberVO(memberVOResponse);
                                 view.getAccountSecuritySuccess(memberVOResponse);
                             } else {
-                                view.getAccountSecurityFailure(MessageConstants.EMPTY);
-
+                                view.getAccountSecurityFailure(getString(R.string.no_data_info));
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code = responseJson.getCode();
-                                view.getAccountSecurityFailure(responseJson.getMessage());
+                                view.getAccountSecurityFailure(getString(R.string.get_data_failure));
                             }
 
                         }
@@ -93,12 +95,14 @@ public class AccountSecurityPresenterImp implements AccountSecurityContract.Pres
                     public void onError(Throwable e) {
                         view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
-                        view.getAccountSecurityFailure(e.getMessage());
+                        view.getAccountSecurityFailure(getString(R.string.get_data_failure));
+                        disposeDisposable(disposableGetAccountSecurity);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableGetAccountSecurity);
 
                     }
                 });

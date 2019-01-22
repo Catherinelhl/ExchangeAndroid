@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -24,10 +25,12 @@ import java.security.NoSuchAlgorithmException;
  * @since 2018/12/21
  * 注册
  */
-public class RegisterPresenterImp implements RegisterContract.Presenter {
+public class RegisterPresenterImp extends BasePresenterImp implements RegisterContract.Presenter {
     private String TAG = RegisterPresenterImp.class.getSimpleName();
     private RegisterContract.View view;
     private LoginInteractor loginInteractor;
+
+    private Disposable disposableRegister, disposableVerifyAccount;
 
     public RegisterPresenterImp(RegisterContract.View view) {
         super();
@@ -43,6 +46,7 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableRegister);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -55,9 +59,6 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
             LogTool.e(TAG, e.getMessage());
         }
         requestJson.setMemberVO(memberVO);
-        if (StringTool.isEmpty(verifyCode)) {
-            return;
-        }
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         requestJson.setVerificationBean(verificationBean);
@@ -69,7 +70,7 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableRegister = d;
                     }
 
                     @Override
@@ -99,11 +100,14 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
                         view.registerFailure(e.getMessage());
+                        disposeDisposable(disposableRegister);
+
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableRegister);
                     }
                 });
     }
@@ -116,6 +120,7 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableVerifyAccount);
         //显示加载框
         view.showLoading();
         RequestJson requestJson = new RequestJson();
@@ -130,23 +135,24 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableVerifyAccount = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", responseJson);
                         if (responseJson == null) {
-                            view.verifyAccountFailure(MessageConstants.EMPTY);
+                            view.noData();
                             return;
                         }
                         // {"success":false,"code":2005,"message":"Email not register."}
                         int code = responseJson.getCode();
                         if (code == MessageConstants.CODE_2005) {
+                            //代表当前账号是没有被注册过的
                             BaseApplication.setMemberID(memberId);
                             view.verifyAccountSuccess(responseJson.getMessage());
                         } else {
-                            view.verifyAccountFailure(responseJson.getMessage());
+                            view.verifyAccountFailure(getString(R.string.email_already_be_register));
                         }
                     }
 
@@ -154,12 +160,14 @@ public class RegisterPresenterImp implements RegisterContract.Presenter {
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.verifyAccountFailure(e.getMessage());
+                        view.verifyAccountFailure(getString(R.string.register_failure_please_try_again));
+                        disposeDisposable(disposableVerifyAccount);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableVerifyAccount);
                     }
                 });
     }
