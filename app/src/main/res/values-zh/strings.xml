@@ -201,5 +201,8 @@
     <string name="successfully_copied_secret">Successfully copied secret</string>
     <string name="successfully_copied_account">Successfully copied account</string>
     <string name="fun_password_not_same_as_login_password">新密码(8~20位数字和字符组合,不能与登录密码相同)</string>
-
+    <string name="orignal_password">原资金密码</string>
+    <string name="forget_fund_password">忘记资金密码？</string>
+    <string name="immediate_reset">立即重置</string>
+    <string name="current_password_is_wrong">密码错误</string>
 </resources>

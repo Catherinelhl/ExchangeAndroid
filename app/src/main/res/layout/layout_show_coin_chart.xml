@@ -8,7 +8,7 @@
                     android:id="@+id/rl_coin_chart_action"
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/bg_grey_with_shadow"
-                    android:layout_height="@dimen/d48">
+                    android:layout_height="@dimen/d45">
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_height="@dimen/d41">

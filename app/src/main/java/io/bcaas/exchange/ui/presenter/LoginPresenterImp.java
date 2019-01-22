@@ -96,6 +96,10 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                             } else if (code == MessageConstants.CODE_2025) {
                                 //    {"success":false,"code":2025,"message":"Verify code expire."}
                                 view.ImageVerifyCodeError(getString(R.string.verify_code_expire));
+                            } else if (code == MessageConstants.CODE_2015) {
+                                // {"success":false,"code":2015,"message":"Current password is wrong."}
+                                view.loginFailure(getString(R.string.current_password_is_wrong));
+
                             } else {
                                 view.loginFailure(getString(R.string.login_failure_please_try_again));
                             }
