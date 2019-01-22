@@ -41,15 +41,15 @@
                   android:orientation="horizontal"
                   android:gravity="center_vertical"
                   android:minHeight="@dimen/d20"
+                  android:layout_marginLeft="@dimen/d20"
                   android:layout_marginTop="@dimen/d12"
                   android:layout_height="wrap_content">
-        <CheckBox android:layout_width="@dimen/d22"
+        <CheckBox android:layout_width="wrap_content"
                   android:id="@+id/cb_agreement"
-                  android:layout_height="@dimen/d22"/>
+                  android:layout_height="wrap_content"/>
         <io.bcaas.exchange.view.textview.AppendStringLayout
                 android:layout_width="match_parent"
                 android:id="@+id/asp_user_agreement"
-                android:layout_marginLeft="@dimen/d5"
                 exchange:content="@string/user_agreement_content"
                 exchange:action_text="@string/user_agreement"
                 exchange:action_color="@color/button_color"
