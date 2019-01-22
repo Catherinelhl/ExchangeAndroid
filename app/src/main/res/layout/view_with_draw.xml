@@ -5,8 +5,6 @@
         android:layout_width="match_parent"
         android:background="@color/theme_grey"
         android:layout_height="match_parent">
-
-
     <LinearLayout
             android:id="@+id/ll_with_draw_content"
             android:layout_width="match_parent"
@@ -78,33 +76,5 @@
         <View android:layout_width="match_parent"
               android:layout_height="@dimen/d20"
               android:background="@color/transparent"/>
-    </LinearLayout>
-    <LinearLayout
-            android:id="@+id/ll_no_fund_password"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:background="@color/theme_grey"
-            android:layout_height="match_parent">
-        <TextView android:layout_width="match_parent"
-                  android:layout_marginTop="@dimen/d24"
-                  android:layout_marginLeft="@dimen/d20"
-                  android:layout_marginRight="@dimen/d20"
-                  android:text="@string/no_fund_password_tips"
-                  android:textSize="@dimen/text_size_14"
-                  android:id="@+id/tv_no_fund_password_tips"
-                  android:textColor="@color/grey_999999"
-                  android:layout_height="wrap_content"/>
-        <TextView
-                android:id="@+id/tv_set_immediately"
-                android:layout_width="wrap_content"
-                android:text="@string/set_immediately"
-                android:textColor="@color/blue_5B88FF"
-                android:textSize="@dimen/text_size_14"
-                android:layout_marginTop="@dimen/d16"
-                android:layout_marginLeft="@dimen/d20"
-                android:layout_marginRight="@dimen/d20"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:gravity="left"/>
     </LinearLayout>
 </RelativeLayout>

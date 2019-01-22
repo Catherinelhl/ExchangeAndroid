@@ -15,6 +15,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.PhoneVerifyContract;
 import io.bcaas.exchange.ui.contracts.WithDrawContract;
@@ -22,6 +23,7 @@ import io.bcaas.exchange.ui.presenter.PhoneVerifyPresenterImp;
 import io.bcaas.exchange.ui.presenter.WithDrawPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.textview.AppendStringLayout;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.reactivex.disposables.Disposable;
@@ -63,16 +65,16 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     TextView tvGoogleVerifyKey;
     @BindView(R.id.etwa_google_verify_code)
     EditTextWithAction etGoogleVerifyCode;
-    @BindView(R.id.tv_start_immediate)
-    TextView tvStartImmediate;
     @BindView(R.id.btn_sure)
     Button btnSure;
     @BindView(R.id.ll_email)
     LinearLayout llEmail;
     @BindView(R.id.ll_phone)
     LinearLayout llPhone;
-    @BindView(R.id.ll_google_verify_tips)
-    LinearLayout llGoogleVerifyTips;
+    @BindView(R.id.asp_fund)
+    AppendStringLayout aspFund;
+    @BindView(R.id.asp_google)
+    AppendStringLayout aspGoogle;
 
     private WithDrawContract.Presenter presenter;
     private PhoneVerifyContract.Presenter phoneVerifyPresenter;
@@ -100,6 +102,8 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
         MemberVO memberVO = BaseApplication.getMemberVO();
         getAccountSecuritySuccess(memberVO);
+        aspFund.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.FUND_PASSWORD);
+        aspGoogle.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.GOOGLE_VERIFY);
 
     }
 
@@ -142,16 +146,6 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                         setResult(true);
                     }
                 });
-        Disposable subscribeStartImmediate = RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Consumer<Object>() {
-                    @Override
-                    public void accept(Object o) throws Exception {
-                        //跳转到google验证
-                        Intent intent = new Intent();
-                        intent.setClass(WithDrawDetailActivity.this, GoogleVerifyActivity.class);
-                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-                    }
-                });
         Disposable subscribeSure = RxView.clicks(btnSure).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
@@ -192,7 +186,6 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
                         }
                         if (etGoogleVerifyCode.getVisibility() == View.VISIBLE) {
-
                             //4：判断当前是否输入google验证码
                             String googleVerifyCode = etGoogleVerifyCode.getContent();
                             if (StringTool.isEmpty(googleVerifyCode)) {
@@ -204,10 +197,28 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                             verificationBean.setVerifyCode(googleVerifyCode);
                             verificationBeanList.add(verificationBean);
                         }
+
+                        //3：判断当前是否设置资金密码
+                        MemberVO memberVO = BaseApplication.getMemberVO();
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            String txPasswordAttribute = memberVO.getTxPassword();
+                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                                showToast(getString(R.string.no_fund_password_please_set_first));
+                                return;
+                            }
+                            //4：判断当前是否设置google验证码
+                            int googleVerifyAttribute = memberVO.getTwoFactorAuthVerify();
+                            if (googleVerifyAttribute == Constants.Status.UN_BOUND) {
+                                showToast(getString(R.string.no_google_verify_please_set_first));
+                                return;
+                            }
+                        }
                         if (presenter != null) {
                             btnSure.setEnabled(false);
                             requestJson.setVerificationBeanList(verificationBeanList);
-                            //3：请求接口提现
+                            //4：请求接口提现
                             presenter.withDraw(txPassword, requestJson);
                         }
                     }
@@ -244,6 +255,8 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
             switch (requestCode) {
                 case Constants.RequestCode.GOOGLE_VERIFY:
                     break;
+                case Constants.RequestCode.FUND_PASSWORD:
+                    break;
             }
         }
     }
@@ -274,10 +287,6 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                 llPhone.setVisibility(View.GONE);
                 etMessageVerifyCode.setVisibility(View.GONE);
             }
-
-            //3：判断当前是否开启google验证
-            int twoFactorAuthVerify = memberVO.getTwoFactorAuthVerify();
-
         }
     }
 
@@ -296,4 +305,48 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     public void getPhoneCodeFailure(String info) {
         showToast(info);
     }
+
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            if (StringTool.notEmpty(from)) {
+                switch (from) {
+                    case Constants.ActionFrom.GOOGLE_VERIFY:
+                        //跳转到google验证
+                        Intent intent = new Intent();
+                        intent.setClass(WithDrawDetailActivity.this, GoogleVerifyActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+                        break;
+                    case Constants.ActionFrom.FUND_PASSWORD:
+                        //如果当前是资金密码，那么本地对用户是否设置了资金密码进行判断
+                        MemberVO memberVO = BaseApplication.getMemberVO();
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            String txPasswordAttribute = memberVO.getTxPassword();
+                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                                intentToSetFundPasswordActivity();
+                            } else {
+                                showToast(getString(R.string.have_set_fund_password));
+                            }
+                        } else {
+                            intentToSetFundPasswordActivity();
+                        }
+                        break;
+                }
+            }
+        }
+    };
+
+    /**
+     * 跳转到设置资金密码的页面
+     */
+    private void intentToSetFundPasswordActivity() {
+        Intent intent = new Intent();
+        intent.setClass(this, SetFundPasswordActivity.class);
+        startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+    }
+
+
 }

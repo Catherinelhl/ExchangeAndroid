@@ -195,6 +195,14 @@ public class Constants {
     }
 
     /**
+     * 表示动作来向
+     */
+    public class ActionFrom{
+        public static final String GOOGLE_VERIFY="googleVerify";
+        public static final String FUND_PASSWORD="fundPassword";
+    }
+
+    /**
      * 定义一下设置的类型
      */
     public enum SettingType {
@@ -223,6 +231,7 @@ public class Constants {
         //txPassword = 0，表示尚未設置資金密碼
         //txPassword = 1，表示尚已設置資金密碼
         public static final String NO_TX_PASSWORD = "0";
+        public static final String HAS_TX_PASSWORD = "1";
         //各种验证就是int 类型：0：CLOSE；1：open
         public static final int CLOSE = 0;
         public static final int OPEN = 1;

@@ -8,17 +8,20 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.BuyContract;
 import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.textview.AppendStringLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
@@ -59,14 +62,16 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     EditTextWithAction etFundPassword;
     @BindView(R.id.etwa_random_verify_code)
     EditTextWithAction etRandomVerifyCode;
-    @BindView(R.id.tv_start_immediate)
-    TextView tvStartImmediate;
     @BindView(R.id.btn_buy)
     Button btnBuy;
     @BindView(R.id.ib_right)
     ImageButton ibRight;
     @BindView(R.id.tv_salable_balance)
     TextView tvSalableBalance;
+    @BindView(R.id.asp_fund)
+    AppendStringLayout aspFund;
+    @BindView(R.id.asp_google)
+    AppendStringLayout aspGoogle;
     private MemberOrderVO memberOrderVO;
     private BuyContract.Presenter presenter;
 
@@ -128,7 +133,8 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
                 tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
             }
         }
-
+        aspFund.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.FUND_PASSWORD);
+        aspGoogle.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.GOOGLE_VERIFY);
 
     }
 
@@ -220,31 +226,6 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
 
                     }
                 });
-
-        RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Observer<Object>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(Object o) {
-                        //跳转到google验证
-                        Intent intent = new Intent();
-                        intent.setClass(BuyDetailActivity.this, GoogleVerifyActivity.class);
-                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                    }
-                });
     }
 
     @Override
@@ -300,4 +281,46 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
         super.onBackPressed();
         setResult(true);
     }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            if (StringTool.notEmpty(from)) {
+                switch (from) {
+                    case Constants.ActionFrom.GOOGLE_VERIFY:
+                        //跳转到google验证
+                        Intent intent = new Intent();
+                        intent.setClass(BuyDetailActivity.this, GoogleVerifyActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+                        break;
+                    case Constants.ActionFrom.FUND_PASSWORD:
+                        //如果当前是资金密码，那么本地对用户是否设置了资金密码进行判断
+                        MemberVO memberVO = BaseApplication.getMemberVO();
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            String txPasswordAttribute = memberVO.getTxPassword();
+                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                                intentToSetFundPasswordActivity();
+                            } else {
+                                showToast(getString(R.string.have_set_fund_password));
+                            }
+                        } else {
+                            intentToSetFundPasswordActivity();
+                        }
+                        break;
+                }
+            }
+        }
+    };
+
+    /**
+     * 跳转到设置资金密码的页面
+     */
+    private void intentToSetFundPasswordActivity() {
+        Intent intent = new Intent();
+        intent.setClass(this, SetFundPasswordActivity.class);
+        startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+    }
+
 }

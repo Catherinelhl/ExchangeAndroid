@@ -1,7 +1,6 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.text.InputFilter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,8 +10,6 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
-import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
@@ -54,14 +51,6 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     Button btnSend;
     @BindView(R.id.ll_with_draw_content)
     LinearLayout llWithDrawContent;
-    @BindView(R.id.tv_no_fund_password_tips)
-    TextView tvNoFundPasswordTips;
-    @BindView(R.id.tv_set_immediately)
-    TextView tvSetImmediately;
-    @BindView(R.id.ll_no_fund_password)
-    LinearLayout llNoFundPassword;
-    private String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
-
     private OnItemSelectListener onItemSelectListener;
     // 需要展现的交易费用：等于Minner's fee plus Handling's Fee
     private String transactionFee;
@@ -89,7 +78,6 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
 
     @Override
     protected void initView() {
-        tvNoFundPasswordTips.setText(info);
         etReceiveAddress.setFrom(Constants.EditTextFrom.WITHDRAW_SCAN);
         etWithdrawAmount.setFrom(Constants.EditTextFrom.WITHDRAW_AMOUNT);
 
@@ -173,31 +161,6 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
 
                     }
                 });
-        RxView.clicks(tvSetImmediately).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Observer<Object>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Object o) {
-                        if (onItemSelectListener != null) {
-                            onItemSelectListener.onItemSelect(MessageConstants.EMPTY, MessageConstants.EMPTY);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogTool.e(TAG, e.getMessage());
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
     }
 
     /**
@@ -206,7 +169,6 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
      * @param memberKeyVO
      */
     public void refreshData(MemberKeyVO memberKeyVO) {
-        tvNoFundPasswordTips.setText(info);
         if (memberKeyVO != null) {
             this.memberKeyVO = memberKeyVO;
             currencyListVO = memberKeyVO.getCurrencyListVO();
@@ -216,10 +178,6 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
             getCurrencyCharge();
             //判断当前是否设置资金密码
             boolean hasFundPassword = BaseApplication.isSetFundPassword();
-            if (llNoFundPassword != null) {
-                llNoFundPassword.setVisibility(hasFundPassword ? GONE : VISIBLE);
-            }
-
             if (llWithDrawContent != null) {
                 llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
             }

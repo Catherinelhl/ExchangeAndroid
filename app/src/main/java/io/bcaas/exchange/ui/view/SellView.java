@@ -142,7 +142,15 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content = s.toString();
+                if (StringTool.notEmpty(content)) {
+                    //判断当前是否输入交易量
+                    if (tvProgressSpeed != null) {
+                        String volume = tvProgressSpeed.getText().toString();
+                        setTxAmountInfo(volume);
 
+                    }
+                }
             }
 
             @Override
@@ -306,7 +314,9 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
      */
     private void setTxAmountInfo(String sellVolume) {
         //判断显示交易额/单价/以及用户币种信息数据是否为空
-        if (tvFinalTxAmount != null && etRate != null && exchangeCurrencyListVO != null) {
+        if (tvFinalTxAmount != null
+                && etRate != null
+                && exchangeCurrencyListVO != null) {
             //得到当前的单价
             String rateStr = etRate.getText().toString();
             //如果当前没有输入单价，则不显示交易额
@@ -325,15 +335,9 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee);
             //得到当前可换做售出币种的交易额
             txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr);
-            // 判断当前的交易额是否为0，如果为0，则不显示
-//            if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"),
-//                    MessageConstants.NO_ENOUGH_BALANCE)) {
-//                tvFinalTxAmount.setVisibility(GONE);
-//            } else {
             tvFinalTxAmount.setVisibility(VISIBLE);
             tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
                     + txAmount + "  " + exchangeCurrencyListVO.getEnName());
-//            }
 
         }
     }

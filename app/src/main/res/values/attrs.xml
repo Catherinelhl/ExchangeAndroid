@@ -48,6 +48,16 @@
     </declare-styleable>
 
 
+    <!--文字追加-->
+    <declare-styleable name="appendStringStyle">
+        <attr name="content" format="string"/>
+        <attr name="action_text" format="string"/>
+        <attr name="content_color" format="integer"/>
+        <attr name="action_color" format="integer"/>
+        <attr name="text_size" format="float"/>
+    </declare-styleable>
+
+
     <declare-styleable name="safetyCenterItem">
         <attr name="tabText" format="string"/>
     </declare-styleable>

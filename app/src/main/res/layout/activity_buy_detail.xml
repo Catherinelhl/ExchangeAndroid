@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tool="http://schemas.android.com/tools"
-              xmlns:bcaas="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              xmlns:exchange="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
               android:orientation="vertical"
               android:background="@color/theme_grey"
               android:layout_height="wrap_content">
@@ -171,40 +171,29 @@
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
-                        bcaas:hint="@string/fund_password"
-                        bcaas:behaviour="checkBox"/>
+                        exchange:hint="@string/fund_password"
+                        exchange:behaviour="checkBox"/>
+                <io.bcaas.exchange.view.textview.AppendStringLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/asp_fund"
+                        android:layout_marginTop="@dimen/d12"
+                        exchange:content="@string/not_fund_password_yet"
+                        exchange:action_text="@string/start_immediate"
+                        android:layout_height="wrap_content"/>
                 <io.bcaas.exchange.view.editview.EditTextWithAction
                         android:id="@+id/etwa_random_verify_code"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/d20"
                         android:layout_height="wrap_content"
-                        bcaas:hint="@string/random_verify_code"
-                        bcaas:behaviour="google"/>
-                <LinearLayout android:layout_width="match_parent"
-                              android:orientation="horizontal"
-                              android:layout_marginTop="@dimen/d12"
-                              android:layout_marginLeft="@dimen/d20"
-                              android:layout_marginBottom="@dimen/d12"
-                              android:layout_gravity="center"
-                              android:gravity="center_vertical"
-                              android:layout_marginRight="@dimen/d20"
-                              android:layout_height="wrap_content">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/text_size_12"
-                            android:text="@string/no_google_verify_text"
-                            android:gravity="center_vertical"
-                            android:layout_gravity="center"
-                    />
-                    <TextView
-                            android:id="@+id/tv_start_immediate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/d12"
-                            android:textColor="@color/blue_5B88FF"
-                            android:text="@string/start_immediate"/>
-                </LinearLayout>
+                        exchange:hint="@string/please_input_google_code_hint"
+                        exchange:behaviour="google"/>
+                <io.bcaas.exchange.view.textview.AppendStringLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/asp_google"
+                        android:layout_marginTop="@dimen/d12"
+                        exchange:content="@string/no_google_verify_text"
+                        exchange:action_text="@string/start_immediate"
+                        android:layout_height="wrap_content"/>
             </LinearLayout>
             <Button
                     android:id="@+id/btn_buy"
