@@ -278,6 +278,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void loginFailure(String info) {
         hideSoftKeyboard();
+        // 重新刷新登录界面的验证码
+        if (etImageCode != null) {
+            etImageCode.setContent(MessageConstants.EMPTY);
+            etImageCode.requestImageVerifyCode();
+        }
         showToast(info);
     }
 
