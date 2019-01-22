@@ -86,7 +86,7 @@ public class ForgetPasswordPresenterImp extends BasePresenterImp
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.forgetPasswordFailure(getString(R.string.get_data_failure));
+                                view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
                             }
                         }
 
@@ -96,7 +96,7 @@ public class ForgetPasswordPresenterImp extends BasePresenterImp
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.forgetPasswordFailure(getString(R.string.get_data_failure));
+                        view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
                         disposeDisposable(disposableForgetPassword);
                     }
 

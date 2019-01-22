@@ -1,12 +1,13 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -41,6 +42,10 @@ public class ModifyPasswordActivity extends BaseActivity implements ResetPasswor
     EditTextWithAction etConfirmNewPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
+    @BindView(R.id.tv_start_immediate)
+    TextView tvStartImmediate;
+    @BindView(R.id.ll_immediate_action)
+    LinearLayout llImmediateAction;
 
     private ResetPasswordContract.Presenter presenter;
 
@@ -68,6 +73,10 @@ public class ModifyPasswordActivity extends BaseActivity implements ResetPasswor
             tvTitle.setText(R.string.modify_login_password);
         } else {
             tvTitle.setText(R.string.modify_fund_password);
+            llImmediateAction.setVisibility(View.VISIBLE);
+            etNewPassword.setHint(getString(R.string.fun_password_not_same_as_login_password));
+            etOriginalPassword.setHint(getString(R.string.orignal_password));
+
         }
     }
 
@@ -78,6 +87,32 @@ public class ModifyPasswordActivity extends BaseActivity implements ResetPasswor
 
     @Override
     public void initListener() {
+        RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //跳转到重置资金密码界面
+                        Intent intent = new Intent();
+                        intent.putExtra(Constants.KeyMaps.From, Constants.From.FUND_PASSWORD);
+                        intent.setClass(ModifyPasswordActivity.this, ForgetPasswordActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.RESET_PASSWORD_CODE);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -178,5 +213,17 @@ public class ModifyPasswordActivity extends BaseActivity implements ResetPasswor
     @Override
     public void resetPasswordSuccess(String info) {
         setResult(false);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.RESET_PASSWORD_CODE:
+
+                    break;
+            }
+        }
     }
 }

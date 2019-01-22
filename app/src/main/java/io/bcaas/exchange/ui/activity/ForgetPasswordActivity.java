@@ -74,6 +74,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
 
         } else {
             tvTitle.setText(R.string.reset_fund_password);
+            etPassword.setHint(getString(R.string.fun_password_not_same_as_login_password));
         }
         emailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
 

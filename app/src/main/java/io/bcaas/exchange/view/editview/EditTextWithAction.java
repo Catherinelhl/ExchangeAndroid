@@ -434,6 +434,15 @@ public class EditTextWithAction extends LinearLayout
 
     }
 
+    public void setHint(String info){
+        if (etContent!=null){
+            etContent.setHint(info);
+        }
+        if (etPassword!=null){
+            etPassword.setHint(info);
+        }
+    }
+
     public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener) {
         this.editTextWatcherListener = editTextWatcherListener;
     }
