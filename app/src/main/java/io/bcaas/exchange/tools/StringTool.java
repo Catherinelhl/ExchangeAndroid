@@ -203,6 +203,11 @@ public class StringTool {
         return MessageConstants.EMPTY;
     }
 
+    /**
+     * 得到显示的时间
+     * @param createTime
+     * @return
+     */
     public static String getDisplayTime(String createTime) {
         if (StringTool.isEmpty(createTime)) {
             return createTime;
@@ -211,7 +216,6 @@ public class StringTool {
         int endIndex = 19;
         if (endIndex < createTime.length()) {
             return createTime.substring(startIndex, endIndex);
-
         } else {
             return createTime;
         }

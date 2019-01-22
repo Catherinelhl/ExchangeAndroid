@@ -208,6 +208,8 @@
     <string name="not_fund_password_yet">还没设置资金密码？</string>
     <string name="have_set_fund_password">您已设置资金密码</string>
     <string name="please_input_google_code_hint">请输入 Google 随机验证码</string>
+    <string name="user_agreement_content">我已阅读并同意</string>
+    <string name="user_agreement">《用户协议》</string>
 
 
 </resources>

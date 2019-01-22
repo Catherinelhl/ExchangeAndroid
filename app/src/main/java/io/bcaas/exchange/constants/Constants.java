@@ -200,6 +200,7 @@ public class Constants {
     public class ActionFrom{
         public static final String GOOGLE_VERIFY="googleVerify";
         public static final String FUND_PASSWORD="fundPassword";
+        public static final String LOGIN = "login";
     }
 
     /**

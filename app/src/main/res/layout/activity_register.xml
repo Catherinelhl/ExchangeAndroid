@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:bcaas="http://schemas.android.com/apk/res-auto"
+              xmlns:exchange="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -9,7 +9,7 @@
     <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_account"
             android:layout_width="match_parent"
-            bcaas:hint="@string/register_account_hint"
+            exchange:hint="@string/register_account_hint"
             android:layout_marginTop="@dimen/d16"
             android:layout_height="wrap_content"
     />
@@ -17,51 +17,60 @@
             android:id="@+id/etwa_password"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
-            bcaas:hint="@string/register_password_hint"
-            bcaas:behaviour="checkBox"
+            exchange:hint="@string/register_password_hint"
+            exchange:behaviour="checkBox"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_password_confirm"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
-            bcaas:hint="@string/register_password_again_hint"
-            bcaas:behaviour="checkBox"
+            exchange:hint="@string/register_password_again_hint"
+            exchange:behaviour="checkBox"
             android:layout_height="wrap_content"
     />
     <io.bcaas.exchange.view.editview.EditTextWithAction
             android:id="@+id/etwa_email_code"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/d16"
-            bcaas:hint="@string/register_email_code_hint"
-            bcaas:behaviour="text"
+            exchange:hint="@string/register_email_code_hint"
+            exchange:behaviour="text"
             android:layout_height="wrap_content"
     />
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:gravity="center_vertical"
+                  android:minHeight="@dimen/d20"
+                  android:layout_marginTop="@dimen/d12"
+                  android:layout_height="wrap_content">
+        <CheckBox android:layout_width="@dimen/d22"
+                  android:id="@+id/cb_agreement"
+                  android:layout_height="@dimen/d22"/>
+        <io.bcaas.exchange.view.textview.AppendStringLayout
+                android:layout_width="match_parent"
+                android:id="@+id/asp_user_agreement"
+                android:layout_marginLeft="@dimen/d5"
+                exchange:content="@string/user_agreement_content"
+                exchange:action_text="@string/user_agreement"
+                exchange:action_color="@color/button_color"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 
     <Button
             android:id="@+id/btn_register"
             style="@style/button_style"
             android:layout_marginTop="@dimen/d35"
             android:text="@string/sure"/>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/d16"
-            android:layout_marginLeft="@dimen/d20"
-            android:orientation="horizontal"
-            android:layout_alignParentLeft="true"
-            android:padding="@dimen/d2"
-            android:layout_height="wrap_content">
-        <TextView
-                style="@style/black_14_text_style"
-                android:layout_width="wrap_content"
-                android:gravity="center_vertical"
-                android:text="@string/register_have_account_text"/>
-        <TextView
-                android:id="@+id/tv_login_now"
-                style="@style/ff6f61_14_text_style"
-                android:gravity="center_vertical"
-                android:text="@string/register_login_immediately_text"/>
 
-    </LinearLayout>
+    <io.bcaas.exchange.view.textview.AppendStringLayout
+            android:layout_width="match_parent"
+            android:id="@+id/asp_login"
+            android:layout_marginTop="@dimen/d12"
+            exchange:content="@string/register_have_account_text"
+            exchange:action_text="@string/register_login_immediately_text"
+            exchange:action_color="@color/button_color"
+            exchange:text_size="14"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>

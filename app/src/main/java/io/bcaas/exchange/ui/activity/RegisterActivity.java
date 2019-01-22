@@ -3,10 +3,7 @@ package io.bcaas.exchange.ui.activity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.BuildConfig;
@@ -14,6 +11,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.regex.RegexTool;
@@ -21,6 +19,7 @@ import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.presenter.RegisterPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.textview.AppendStringLayout;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -49,8 +48,12 @@ public class RegisterActivity extends BaseActivity
     EditTextWithAction etEmailCode;
     @BindView(R.id.btn_register)
     Button btnRegister;
-    @BindView(R.id.tv_login_now)
-    TextView tvLoginNow;
+    @BindView(R.id.asp_login)
+    AppendStringLayout aspLogin;
+    @BindView(R.id.asp_user_agreement)
+    AppendStringLayout aspUserAgreement;
+    @BindView(R.id.cb_agreement)
+    CheckBox cbAgreement;
 
     private RegisterContract.Presenter presenter;
 
@@ -72,7 +75,7 @@ public class RegisterActivity extends BaseActivity
         //设置账号只能输入邮箱类型
         etAccount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         etEmailCode.setFrom(Constants.EditTextFrom.VERIFY_EMAIL_AND_EMAIL_CODE);
-
+        aspLogin.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.LOGIN);
     }
 
     @Override
@@ -82,6 +85,12 @@ public class RegisterActivity extends BaseActivity
 
     @Override
     public void initListener() {
+        cbAgreement.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });
         tvTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,28 +113,6 @@ public class RegisterActivity extends BaseActivity
                     @Override
                     public void onNext(Object o) {
                         setResult(true);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-        RxView.clicks(tvLoginNow).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Observer<Object>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Object o) {
-                        setResult(false);
                     }
 
                     @Override
@@ -166,7 +153,7 @@ public class RegisterActivity extends BaseActivity
                         }
 
                         //4：判断密码是否输入8位,是否符合密码输入规则
-                        if (!RegexTool.isValidatePassword(password)){
+                        if (!RegexTool.isValidatePassword(password)) {
                             showToast(getResources().getString(R.string.password_rule_of_length));
                             return;
                         }
@@ -258,5 +245,18 @@ public class RegisterActivity extends BaseActivity
         // 开始请求验证码
         etEmailCode.requestEmail();
     }
+
+    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            if (StringTool.notEmpty(from)) {
+                switch (from) {
+                    case Constants.ActionFrom.LOGIN:
+                        setResult(false);
+                        break;
+                }
+            }
+        }
+    };
 
 }
