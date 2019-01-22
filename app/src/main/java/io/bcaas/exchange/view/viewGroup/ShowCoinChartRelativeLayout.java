@@ -48,6 +48,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class ShowCoinChartRelativeLayout extends RelativeLayout
         implements OnChartValueSelectedListener, GetCoinMarketCapContract.View {
+    private String TAG = ShowCoinChartRelativeLayout.class.getSimpleName();
+
     @BindView(R.id.rl_coin_chart_action)
     RelativeLayout rlCoinChartAction;
     @BindView(R.id.ll_coin_chart)
@@ -56,7 +58,6 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
     TextView tvNoData;
     @BindView(R.id.pb_loading)
     ProgressBar pbLoading;
-    private String TAG = ShowCoinChartRelativeLayout.class.getSimpleName();
 
     @BindView(R.id.cb_usd)
     CheckBox cbUsd;
@@ -105,7 +106,7 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
             LogTool.d(TAG, "coinName is Null");
             return;
         }
-        //默认获取所有的数据信息
+        //默认获取所有的数据信息,默认显示前一天
         presenter.getCoinMarketCap(coinName, System.currentTimeMillis() - 24 * 60 * 60 * 1000, System.currentTimeMillis());
 
     }
@@ -202,6 +203,8 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
             yAxisRight.setValueFormatter(yLineValueFormatter);
             // horizontal grid lines
 //            yAxisRight.enableGridDashedLine(10f, 10f, 1f);
+            yAxisRight.setAxisLineColor(context.getResources().getColor(R.color.black20_AEAEAE));
+
             yAxisRight.setTextColor(context.getResources().getColor(R.color.yellow_FFA73B));
 //            yAxisRight.setAxisLineColor(context.getResources().getColor(R.color.black20_AEAEAE));
             yAxisRight.setTextSize(8);
