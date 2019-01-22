@@ -78,7 +78,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.logoutSuccess(responseJson.getMessage());
                             } else {
-                                view.logoutFailure(responseJson.getMessage());
+                                view.logoutSuccess(responseJson.getMessage());
 
                             }
 
@@ -90,7 +90,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.logoutFailure(e.getMessage());
+                        view.logoutSuccess(e.getMessage());
                         disposeDisposable(disposableLogout);
                     }
 

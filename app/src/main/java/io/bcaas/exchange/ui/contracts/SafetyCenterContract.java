@@ -8,9 +8,6 @@ package io.bcaas.exchange.ui.contracts;
 public interface SafetyCenterContract {
     interface View extends AccountSecurityContract.View {
         void logoutSuccess(String info);
-
-        void logoutFailure(String info);
-
         void securityPhoneSuccess(String info);
 
         void securityPhoneFailure(String info);

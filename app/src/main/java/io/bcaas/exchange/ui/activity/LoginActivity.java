@@ -21,6 +21,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.app.ActivityTool;
 import io.bcaas.exchange.tools.app.VersionTool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
@@ -68,6 +69,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void initView() {
+        //清理掉除loginActivity之外的所有Activity
+        ActivityTool.getInstance().removeAllActivityExceptIt(TAG);
         //清除当前的Token
         BaseApplication.clearTokenAndMemberId();
         //设置账号只能输入邮箱类型

@@ -30,6 +30,7 @@ import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.app.ActivityTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.LoginActivity;
@@ -84,7 +85,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         setContentView(getContentView());
         activity = this;
         TAG = activity.getClass().getSimpleName();
-
+        //将当前的Activity加入管理器
+        ActivityTool.getInstance().addActivity(this);
+        //设置字体
         tfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         tfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
 
@@ -387,7 +390,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void noData() {
-        LogTool.d(TAG,getString(R.string.no_data));
+        LogTool.d(TAG, getString(R.string.no_data));
 
     }
 

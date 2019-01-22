@@ -150,11 +150,6 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
     }
 
     @Override
-    public void logoutFailure(String info) {
-
-    }
-
-    @Override
     public <T> void onItemSelect(T type, String from) {
 
         Intent intent = new Intent();
