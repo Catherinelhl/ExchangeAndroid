@@ -204,6 +204,7 @@
     <string name="no_google_verify_please_set_first">您当前还未启用Google身份验证</string>
     <string name="password_rule_of_length">At least 8 to 20 digits and characters</string>
     <string name="receive_address">接收%s的地址</string>
+    <string name="address_format_error">Address format error</string>
 
 
 </resources>

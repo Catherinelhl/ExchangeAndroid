@@ -109,6 +109,9 @@ public class BaseApplication extends MultiDexApplication {
      */
     public static void clearTokenAndMemberId() {
         BaseApplication.token = MessageConstants.EMPTY;
+        BaseApplication.setMemberVO(null);
+        BaseApplication.setCurrencyListWithCoinName(null);
+        BaseApplication.setMemberKeyVOList(null);
         BaseApplication.memberID = MessageConstants.EMPTY;
     }
 

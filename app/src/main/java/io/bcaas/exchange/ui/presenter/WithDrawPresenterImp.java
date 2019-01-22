@@ -82,7 +82,17 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp
                             view.withDrawSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
+                                //判断当前是否是地址错误
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_4001
+                                        || code == MessageConstants.CODE_5001
+                                        || code == MessageConstants.CODE_3000
+                                        || code == MessageConstants.CODE_3004) {
+                                    //地址格式错误
+                                    view.withDrawFailure(getString(R.string.address_format_error));
+                                } else {
+                                    view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
+                                }
                             }
 
                         }

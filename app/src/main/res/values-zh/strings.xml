@@ -206,5 +206,6 @@
     <string name="immediate_reset">立即重置</string>
     <string name="current_password_is_wrong">密码错误</string>
     <string name="password_rule_of_length">密码至少由8~20位数字与字符组成</string>
+    <string name="address_format_error">地址格式错误</string>
 
 </resources>

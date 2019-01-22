@@ -109,6 +109,11 @@ public class MessageConstants {
     public static final String ERROR_ILLEGAL_REQUEST = "Illegal request.";
     public static final int CODE_2055 = 2055;
     public static final String ERROR_INVALID_ORDER_INFORMATION = "Invalid order information.";
+    //BTC
+    public static final int CODE_3000 = 3000;
+    public static final String ERROR_SEND_WALLET_ADDRESS_INVALID = "Send wallet address invalid.";
+    public static final int CODE_3004 = 3004;
+    public static final String ERROR_BTC_WALLETADDRESS_FORMAT_INVALID = "WalletAddress format invalid.";
     // ETH
     public static final int CODE_4000 = 4000;
     public static final String ERROR_ETH_CONNECT = "Connection web3j error.";
@@ -135,6 +140,8 @@ public class MessageConstants {
     public static final int CODE_4011 = 4011;
     public static final String ETH_TXSTATUS_COMPLETED = "ETH tx status completed.";
 
+    public static final int CODE_5001 = 5001;
+    public static final String BCC_WALLET_ADDRESS_FORMAT_INVALID = "WalletAddress format invalid.";
     public static final String SUCCESS_GETTXSTATUS = "Get txStatus success.";
     public static final String FAILURE_GETTXSTATUS = "Get txStatus failure.";
     public static final String SUCCESS_PUSHTX = "PushTx success.";
