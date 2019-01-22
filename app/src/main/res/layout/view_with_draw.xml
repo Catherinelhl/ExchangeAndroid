@@ -25,7 +25,6 @@
                 android:text="@string/cash_able_balance"/>
         <io.bcaas.exchange.view.editview.EditTextWithAction
                 android:id="@+id/etwa_receive_address"
-                bcaas:hint="接收BTC的地址"
                 bcaas:behaviour="scan"
                 android:background="@color/white"
                 android:layout_marginTop="@dimen/d24"

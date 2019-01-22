@@ -203,6 +203,7 @@
     <string name="no_fund_password_please_set_first">您当前还未设置资金密码,请设置</string>
     <string name="no_google_verify_please_set_first">您当前还未启用Google身份验证</string>
     <string name="password_rule_of_length">At least 8 to 20 digits and characters</string>
+    <string name="receive_address">接收%s的地址</string>
 
 
 </resources>

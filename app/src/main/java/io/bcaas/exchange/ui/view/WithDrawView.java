@@ -224,9 +224,13 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                 llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
             }
             if (hasFundPassword) {
+                String enName = currencyListVO.getEnName();
                 if (tvCashAbleBalance != null) {
                     balanceAvailable = memberKeyVO.getBalanceAvailable();
-                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + balanceAvailable + "  " + currencyListVO.getEnName());
+                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + balanceAvailable + "  " + enName);
+                }
+                if (etReceiveAddress != null) {
+                    etReceiveAddress.setHint(String.format(context.getString(R.string.receive_address), enName));
                 }
                 if (etWithdrawAmount != null) {
                     etWithdrawAmount.setRightText(context.getString(R.string.all_in));
