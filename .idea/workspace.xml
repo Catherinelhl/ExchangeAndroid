@@ -27,10 +27,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,20 +115,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="158" column="45" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="45" />
+            <state relative-caret-position="205">
+              <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="169" column="56" selection-start-line="169" selection-start-column="56" selection-end-line="169" selection-end-column="56" />
+            <state relative-caret-position="262">
+              <caret line="174" column="34" lean-forward="true" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -151,7 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>initLineData</find>
       <find>mEnabled</find>
       <find>line</find>
       <find>sideSlipPop</find>
@@ -181,6 +177,7 @@
       <find>labelBTC</find>
       <find>出售成功</find>
       <find>congratulations_to_sell_out</find>
+      <find>confirm new</find>
     </findStrings>
     <replaceStrings>
       <replace>black_333333</replace>
@@ -5897,7 +5894,7 @@
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="SellDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SellDetailActivity&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;Sho&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;Val&#9;PSI&#9;JAVA://com.github.mikephil.charting.formatter.ValueFormatter&#10;login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/RegisterPresenterImp.java&#10;for&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ForgetPasswordActivity&#10;ResetP&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java&#10;Goo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;BAseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;se&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml&#10;no_da&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_no_data.xml&#10;sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml&#10;color&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.Color&#10;Se&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml&#10;BAseL&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/BaseLinearLayout.java&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;BuyF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.BuyFragment&#10;BaseFra&#9;PSI&#9;JAVA://io.bcaas.exchange.base.BaseFragment&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java&#10;SellF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.SellFragment&#10;Co&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;a&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml&#10;Coi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;Bra&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BrandActivity&#10;GetC&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;SellV&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.SellView&#10;Http&#9;PSI&#9;JAVA://io.bcaas.exchange.http.HttpApi&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;Regis&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Saf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Get&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;RE&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;With&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;Mod&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ModifyLoginPasswordActivity&#10;For&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/ForgetPasswordActivity.java&#10;REg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Cons&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Res&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.ResponseJson&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;getC&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java&#10;DateF&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.time.DateFormatTool&#10;MainA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Curren&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;Buy&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/BuyFragment.java" />
+    <property name="SearchEverywhereHistoryKey" value="reset&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java&#10;SellDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SellDetailActivity&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;Sho&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;Val&#9;PSI&#9;JAVA://com.github.mikephil.charting.formatter.ValueFormatter&#10;login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/RegisterPresenterImp.java&#10;for&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ForgetPasswordActivity&#10;ResetP&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ResetPasswordPresenterImp.java&#10;Goo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;BAseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;se&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml&#10;no_da&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/include_no_data.xml&#10;sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml&#10;color&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.Color&#10;Se&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/view_sell.xml&#10;BAseL&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/BaseLinearLayout.java&#10;Main&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;BuyF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.BuyFragment&#10;BaseFra&#9;PSI&#9;JAVA://io.bcaas.exchange.base.BaseFragment&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/fragment/SellFragment.java&#10;SellF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.fragment.SellFragment&#10;Co&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;a&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/AndroidManifest.xml&#10;Coi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;Bra&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BrandActivity&#10;GetC&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;SellV&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.SellView&#10;Http&#9;PSI&#9;JAVA://io.bcaas.exchange.http.HttpApi&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;Regis&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Saf&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Get&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GetCoinMarketCapActivity.java&#10;RE&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;With&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;Sa&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;Mod&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ModifyLoginPasswordActivity&#10;For&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/ForgetPasswordActivity.java&#10;REg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Cons&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Res&#9;PSI&#9;JAVA://io.bcaas.exchange.vo.ResponseJson&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;getC&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java&#10;DateF&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.time.DateFormatTool&#10;MainA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java&#10;Curren&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -6085,7 +6082,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8687589" visible="true" weight="0.2015896" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -6573,17 +6569,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="158" column="45" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="45" />
+        <state relative-caret-position="262">
+          <caret line="174" column="34" lean-forward="true" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="169" column="56" selection-start-line="169" selection-start-column="56" selection-end-line="169" selection-end-column="56" />
+        <state relative-caret-position="205">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
         </state>
       </provider>
     </entry>

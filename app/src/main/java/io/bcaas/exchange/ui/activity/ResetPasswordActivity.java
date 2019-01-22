@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -25,9 +24,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「修改密码」 根据传入的字段来决定修改登录密码还是修改资金密码
+ * 「重置密码」 根据传入的字段来决定修改登录密码还是修改资金密码
  */
-public class ModifyPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
+public class ResetPasswordActivity extends BaseActivity implements ResetPasswordContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -99,7 +98,7 @@ public class ModifyPasswordActivity extends BaseActivity implements ResetPasswor
                         //跳转到重置资金密码界面
                         Intent intent = new Intent();
                         intent.putExtra(Constants.KeyMaps.From, Constants.From.FUND_PASSWORD);
-                        intent.setClass(ModifyPasswordActivity.this, ForgetPasswordActivity.class);
+                        intent.setClass(ResetPasswordActivity.this, ForgetPasswordActivity.class);
                         startActivityForResult(intent, Constants.RequestCode.RESET_PASSWORD_CODE);
                     }
 

@@ -201,4 +201,5 @@
     <string name="successfully_copied_secret">Successfully copied secret</string>
     <string name="successfully_copied_account">Successfully copied account</string>
     <string name="fun_password_not_same_as_login_password">新密码(8~20位数字和字符组合,不能与登录密码相同)</string>
+
 </resources>

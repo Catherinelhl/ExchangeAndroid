@@ -162,7 +162,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
         if (StringTool.equals(from, getString(R.string.login_password))) {
             // 登录密码
             intent.putExtra(Constants.KeyMaps.From, Constants.From.LOGIN_PASSWORD);
-            intent.setClass(SafetyCenterActivity.this, ModifyPasswordActivity.class);
+            intent.setClass(SafetyCenterActivity.this, ResetPasswordActivity.class);
             startActivityForResult(intent, Constants.RequestCode.MODIFY_LOGIN_PASSWORD);
 
         } else if (StringTool.equals(from, getString(R.string.fund_password))) {
@@ -173,7 +173,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
                 startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
             } else {
                 intent.putExtra(Constants.KeyMaps.From, Constants.From.FUND_PASSWORD);
-                intent.setClass(SafetyCenterActivity.this, ModifyPasswordActivity.class);
+                intent.setClass(SafetyCenterActivity.this, ResetPasswordActivity.class);
                 startActivityForResult(intent, Constants.RequestCode.MODIFY_FUND_PASSWORD);
 
             }

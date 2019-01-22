@@ -172,9 +172,7 @@ public class EditTextWithAction extends LinearLayout
                     break;
             }
 
-            if (StringTool.notEmpty(hint)) {
-                setEditHintTextSize(hint);
-            }
+            setEditHintTextSize(hint);
 
         }
         initView();
@@ -186,11 +184,18 @@ public class EditTextWithAction extends LinearLayout
      * 设置输入框的hint的大小而不影响text size
      */
     private void setEditHintTextSize(String hint) {
+        if (StringTool.isEmpty(hint)) {
+            return;
+        }
         SpannableString spannableString = new SpannableString(hint);//定义hint的值
         AbsoluteSizeSpan absoluteSizeSpan = new AbsoluteSizeSpan(14, true);//设置字体大小 true表示单位是sp
         spannableString.setSpan(absoluteSizeSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        etContent.setHint(new SpannedString(spannableString));
-        etPassword.setHint(new SpannedString(spannableString));
+        if (etContent != null) {
+            etContent.setHint(new SpannedString(spannableString));
+        }
+        if (etPassword != null) {
+            etPassword.setHint(new SpannedString(spannableString));
+        }
     }
 
     private void initView() {
@@ -434,13 +439,14 @@ public class EditTextWithAction extends LinearLayout
 
     }
 
-    public void setHint(String info){
-        if (etContent!=null){
+    public void setHint(String info) {
+        if (etContent != null) {
             etContent.setHint(info);
         }
-        if (etPassword!=null){
+        if (etPassword != null) {
             etPassword.setHint(info);
         }
+        setEditHintTextSize(info);
     }
 
     public void setEditTextWatcherListener(EditTextWatcherListener editTextWatcherListener) {
