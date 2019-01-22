@@ -11,7 +11,9 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.SetFundPasswordContract;
 import io.bcaas.exchange.ui.presenter.SetFundPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -99,27 +101,35 @@ public class SetFundPasswordActivity extends BaseActivity implements SetFundPass
                         //1：判断密码非空
                         String password = etFundPassword.getContent();
                         if (StringTool.isEmpty(password)) {
-                            showToast("请输入资金密码！");
+                            showToast(getString(R.string.please_input_fund_password));
                             return;
                         }
-                        //2：判断确认新密码非空
+
+                        //2：判断密码是否输入8位,是否符合密码输入规则
+                        if (!RegexTool.isValidatePassword(password)) {
+                            showToast(getResources().getString(R.string.password_rule_of_length));
+                            return;
+                        }
+                        //3：判断确认新密码非空
                         String confirmPassword = etConfirmFundPassword.getContent();
                         if (StringTool.isEmpty(confirmPassword)) {
-                            showToast("请输入确认密码！");
+                            showToast(getString(R.string.please_input_confirm_password));
                             return;
                         }
-                        //3：判断密码和确认密码是否一致
+                        //4：判断密码和确认密码是否一致
                         if (!StringTool.equals(password, confirmPassword)) {
-                            showToast("两次密码输入不一致，请确认！");
+                            showToast(getString(R.string.password_does_not_match));
                             return;
                         }
-                        //4:请求接口，上传资金密码
-                        presenter.securityTxPassword(password);
+                        if (presenter != null) {
+                            //5:请求接口，上传资金密码
+                            presenter.securityTxPassword(password);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogTool.e(TAG, e.getMessage());
                     }
 
                     @Override
