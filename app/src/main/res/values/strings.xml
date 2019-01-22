@@ -156,7 +156,7 @@
     <string name="congratulations_to_buy_success">恭喜您，购买成功</string>
     <string name="sure_to_cancel_order">确定要撤销吗？</string>
     <string name="congratulations_to_withdraw_success">恭喜您，提现成功！</string>
-    <string name="congratulations_to_sell_out">恭喜您，售出成功！</string>
+    <string name="congratulations_to_sell_out">恭喜您，挂单成功！</string>
     <string name="no_data_info">没有数据信息</string>
     <string name="password_to_short">密码不能少于8位</string>
     <string name="please_input_original_password">请输入原密码！</string>
