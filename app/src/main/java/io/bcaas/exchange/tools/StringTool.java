@@ -2,7 +2,9 @@ package io.bcaas.exchange.tools;
 
 import android.text.TextUtils;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
@@ -202,5 +204,40 @@ public class StringTool {
             }
         }
         return MessageConstants.EMPTY;
+    }
+
+    /**
+     * 根据传入的UID来决定显示文本的精度
+     *
+     * @param balanceAvailable
+     * @param uid
+     * @return
+     */
+    public static String getDisplayAmountByUId(String balanceAvailable, String uid) {
+        if (StringTool.notEmpty(uid)) {
+            switch (uid) {
+                case "0"://BCC
+                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT);
+                case "1"://BTC
+                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT);
+                case "2"://ETH
+                    return DecimalTool.transferDisplay(10, balanceAvailable, Constants.Pattern.TEN);
+            }
+        }
+        return balanceAvailable;
+    }
+
+    public static String getMinValuesByUid(String uid) {
+        if (StringTool.notEmpty(uid)) {
+            switch (uid) {
+                case "0"://BCC
+                    return Constants.DigitalPrecision.BCC;
+                case "1"://BTC
+                    return Constants.DigitalPrecision.BTC;
+                case "2"://ETH
+                    return Constants.DigitalPrecision.ETH;
+            }
+        }
+        return null;
     }
 }

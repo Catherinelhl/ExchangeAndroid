@@ -114,6 +114,8 @@ public class MessageConstants {
     public static final String ERROR_ILLEGAL_REQUEST = "Illegal request.";
     public static final int CODE_2055 = 2055;
     public static final String ERROR_INVALID_ORDER_INFORMATION = "Invalid order information.";
+    public static final int CODE_2086= 2086;
+    public static final String ERROR_PHONE_ALREADY_REGISTER = "Phone already register.";
     //BTC
     public static final int CODE_3000 = 3000;
     public static final String ERROR_SEND_WALLET_ADDRESS_INVALID = "Send wallet address invalid.";

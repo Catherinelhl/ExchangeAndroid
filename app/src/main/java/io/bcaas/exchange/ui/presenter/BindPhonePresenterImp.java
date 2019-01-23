@@ -84,7 +84,13 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.securityPhoneFailure(getString(R.string.failure_to_bind_phone));
+                                int code=responseJson.getCode();
+                                if (code==MessageConstants.CODE_2086){
+                                    view.securityPhoneFailure(getString(R.string.please_do_not_bind_phone_repeat));
+                                }else{
+                                    view.securityPhoneFailure(getString(R.string.failure_to_bind_phone));
+
+                                }
                             }
                         }
 

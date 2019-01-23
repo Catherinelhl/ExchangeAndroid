@@ -5,7 +5,6 @@ import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
 import android.widget.*;
 import butterknife.BindView;
-import com.github.mikephil.charting.charts.LineChart;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.SellDataBean;
@@ -32,18 +31,9 @@ import java.util.concurrent.TimeUnit;
  * @author catherine.brainwilliam
  * @since 2018/12/27
  * 「售出」页面视图
+ * 需要判断当前的Token性质，如果是BTC/BCC，那么保留8位小数点；如果是ETH，保留十位
  */
 public class SellView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
-    @BindView(R.id.rl_coin_chart_action)
-    RelativeLayout rlCoinChartAction;
-    @BindView(R.id.cb_usd)
-    CheckBox cbUsd;
-    @BindView(R.id.cb_btc)
-    CheckBox cbBtc;
-    @BindView(R.id.line_chart)
-    LineChart lineChart;
-    @BindView(R.id.rl_sell_view)
-    RelativeLayout rlSellView;
     @BindView(R.id.sccrl_layout)
     ShowCoinChartRelativeLayout sccrlLayout;
     private String TAG = SellView.class.getSimpleName();
@@ -336,10 +326,12 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             // 得到当前减去手续费的量
             String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee, true);
             //得到当前可换做售出币种的交易额
-            txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr);
-            tvFinalTxAmount.setVisibility(VISIBLE);
-            tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                    + txAmount + "  " + exchangeCurrencyListVO.getEnName());
+            txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr, currencyListVO.getCurrencyUid());
+            if (StringTool.notEmpty(txAmount)) {
+                tvFinalTxAmount.setVisibility(VISIBLE);
+                tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
+                        + txAmount + "  " + exchangeCurrencyListVO.getEnName());
+            }
 
         }
     }
@@ -358,10 +350,11 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                 return;
             }
             String enName = currencyListVO.getEnName();
+            String uid = currencyListVO.getCurrencyUid();
             sccrlLayout.setCurveName(enName);
             if (tvSalableBalance != null) {
                 tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance),
-                        memberKeyVO.getBalanceAvailable(),
+                        StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid),
                         enName));
             }
             getCurrencyCharge();

@@ -56,19 +56,21 @@ public class DecimalTool {
      * @param secondValue
      * @return
      */
-    public static String calculateFirstMultiplySecondValue(String firstValue, String secondValue) {
+    public static String calculateFirstMultiplySecondValue(String firstValue, String secondValue, String uid) {
 
-        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
+//        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
         // 計算小數八位，第九位無條件捨去
-        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue).setScale(10, RoundingMode.FLOOR);
-        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimalFirstValue = new BigDecimal(firstValue);//.setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue);//.setScale(10, RoundingMode.FLOOR);
 
         BigDecimal bigDecimalNum = bigDecimalFirstValue.multiply(bigDecimalSecondValue);
+        String minValue = StringTool.getMinValuesByUid(uid);
+        if (StringTool.equals(calculateFirstSubtractSecondValue(bigDecimalNum.toString(), minValue, false), MessageConstants.NO_ENOUGH_BALANCE)) {
+            return MessageConstants.EMPTY;
+        }
 
-        String num = decimalFormat.format(bigDecimalNum);
-
-        return num;
+        return StringTool.getDisplayAmountByUId(bigDecimalNum.toString(), uid);
     }
 
     /**
