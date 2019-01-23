@@ -92,9 +92,13 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
                                 int code = responseJson.getCode();
-                                if (code == MessageConstants.CODE_2046) {
+                                if (code == MessageConstants.CODE_2046
+                                        || code == MessageConstants.CODE_2010) {
                                     //    {"success":false,"code":2046,"message":"Verify mail code fail."}
                                     view.forgetPasswordFailure(getString(R.string.verify_mail_code_fail));
+
+                                }else if(code==MessageConstants.CODE_2025){
+                                    view.forgetPasswordFailure(getString(R.string.verify_code_expire));
                                 } else {
                                     view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
                                 }

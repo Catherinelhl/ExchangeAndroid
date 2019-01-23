@@ -92,7 +92,11 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                             } else if (code == MessageConstants.CODE_2046) {
                                 //    {"success":false,"code":2046,"message":"Verify mail code fail."}
                                 view.registerFailure(getString(R.string.verify_mail_code_fail));
-                            } else {
+                            } else if (code == MessageConstants.CODE_2010) {
+                                view.registerFailure(getString(R.string.verify_code_fail));
+                            } else if (code == MessageConstants.CODE_2025) {
+                                view.registerFailure(getString(R.string.verify_code_expire));
+                            }  else {
                                 view.registerFailure(responseJson.getMessage());
 
                             }

@@ -74,7 +74,7 @@ public class BuyPresenterImp extends BasePresenterImp implements BuyContract.Pre
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableBuy=d;
+                        disposableBuy = d;
                     }
 
                     @Override
@@ -93,9 +93,11 @@ public class BuyPresenterImp extends BasePresenterImp implements BuyContract.Pre
                                 if (code == MessageConstants.CODE_2057) {
                                     //  {"success":false,"code":2057,"message":"Illegal request."}
                                     view.buySelfError();
+                                } else if (code == MessageConstants.CODE_2015) {
+                                    view.buyFailure(getString(R.string.fund_password_is_wrong));
                                 } else if (code == MessageConstants.CODE_2055) {
                                     //{"success":false,"code":2055,"message":"Invalid order information."}
-                                    view.invalidBuyOrder(getString(R.string.invalid_order_information) );
+                                    view.invalidBuyOrder(getString(R.string.invalid_order_information));
                                 } else {
                                     view.buyFailure(getString(R.string.failure_to_buy_please_try_again));
 

@@ -107,6 +107,10 @@ public class CloseVerifyPresenterImp
                                 } else if (code == MessageConstants.CODE_2045) {
                                     //  {"success":false,"code":2045,"message":"Authenticator verify fail."}
                                     view.closeVerifyCodeFailure(getString(R.string.google_authenticator_verify_fail));
+                                } else if (code == MessageConstants.CODE_2010) {
+                                    view.closeVerifyCodeFailure(getString(R.string.verify_code_fail));
+                                } else if (code == MessageConstants.CODE_2025) {
+                                    view.closeVerifyCodeFailure(getString(R.string.verify_code_expire));
                                 } else {
                                     view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
                                 }
