@@ -18,7 +18,7 @@
                   android:id="@+id/tv_recharge_type"
                   style="@style/black_16_text_style"
                   tool:text="充值 BTC"
-                  android:textStyle="bold"
+                  android:fontFamily="sans-serif-medium"
                   android:gravity="center_vertical"
                   android:layout_gravity="center"
                   android:layout_height="wrap_content"/>

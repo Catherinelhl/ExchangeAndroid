@@ -2,14 +2,12 @@ package io.bcaas.exchange.tools.time;
 
 
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.tools.LogTool;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
-import static android.text.format.Time.TIMEZONE_UTC;
 
 /**
  * @author Costa Peng
@@ -23,6 +21,7 @@ public class DateFormatTool {
     private static final String TAG = "DateFormatTool";
 
     private final static String DATETIMEFORMAT_TZ = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    private final static String DATETIMEFORMAT_HMSS = "yyyy-MM-dd HH:mm:ss.SSS";
     // private final static String DATETIMEFORMAT_TZ = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     // private final static String DATETIMEFORMAT_TZ = "MM/dd/yyyy KK:mm:ss a Z";
 
@@ -33,9 +32,8 @@ public class DateFormatTool {
     private final static String DATETIMEFORMAT_HMS = "yyyy/MM/dd HH:mm:ss";
 
 
-
     private final static String DATETIMEFORMATWithH = "yy/MM/dd HH";
-    private final static String DATETIMEFORMAT_CHART= "hh:mm";
+    private final static String DATETIMEFORMAT_CHART = "hh:mm";
 
     // Greenwich Mean Time
     private final static String TIMEZONE_GMT = "GMT";
@@ -80,6 +78,28 @@ public class DateFormatTool {
         Date dateUTC = simpleDateFormat.parse(dateString);
 
         return dateUTC;
+    }
+
+    /**
+     * 将当前服务器的时间转换成当前系统时间，去掉毫秒
+     *
+     * @param dateString
+     * @return
+     * @throws Exception
+     */
+    public static String timeZoneFormatUTCDate(String dateString) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_HMSS);
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
+        Date dateUTC = null;
+        try {
+            dateUTC = simpleDateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat simpleDateFormatTimeZone = new SimpleDateFormat(DATETIMEFORMAT_HMS);
+        simpleDateFormatTimeZone.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
+        return simpleDateFormatTimeZone.format(dateUTC);
     }
 
     // 取出日期(年,月,日)
@@ -151,7 +171,7 @@ public class DateFormatTool {
      * @throws Exception
      * @format TimeMillis
      */
-    public static String getUTCDateForAMPMFormat(double timeStamp)  {
+    public static String getUTCDateForAMPMFormat(double timeStamp) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_CHART);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
@@ -167,7 +187,7 @@ public class DateFormatTool {
      * @throws Exception
      * @format TimeMillis
      */
-    public static String getUTCDateTransferCurrentTimeZone(String timeStamp)  {
+    public static String getUTCDateTransferCurrentTimeZone(String timeStamp) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_AMPM);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
@@ -185,7 +205,7 @@ public class DateFormatTool {
      * @throws Exception
      * @format TimeMillis
      */
-    public static String getUTCDateTransferCurrentTimeZoneHMS(String timeStamp)  {
+    public static String getUTCDateTransferCurrentTimeZoneHMS(String timeStamp) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_HMS);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));

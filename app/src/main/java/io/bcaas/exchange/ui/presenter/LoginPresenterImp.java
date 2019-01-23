@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -86,6 +87,7 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                             BaseApplication.setAccessToken(accessToken);
                             //存储当前的memberID
                             BaseApplication.setMemberID(memberId);
+                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID,memberId);
                             //将成功状态返回界面
                             view.loginSuccess(accessToken);
                         } else {

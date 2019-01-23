@@ -13,6 +13,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
@@ -90,7 +91,7 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         //订单产生类型
         viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) +"  "+ orderTokenType);
         //订单产生时间
-        viewHolder.tvOrderTime.setText(StringTool.getDisplayTime(memberOrderVO.getCreateTime()));
+        viewHolder.tvOrderTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         //订单状态
         viewHolder.tvOrderStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         // 订单支出

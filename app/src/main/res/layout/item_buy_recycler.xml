@@ -38,7 +38,7 @@
             android:layout_marginRight="@dimen/d20"
             android:layout_marginLeft="@dimen/d20"
             tool:text="20.3287461 ETH"
-            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
             tool:ignore="InefficientWeight"/>
     <LinearLayout android:layout_width="match_parent"

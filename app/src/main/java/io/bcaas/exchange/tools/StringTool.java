@@ -203,24 +203,4 @@ public class StringTool {
         }
         return MessageConstants.EMPTY;
     }
-
-    /**
-     * 得到显示的时间
-     *
-     * @param createTime
-     * @return
-     */
-    public static String getDisplayTime(String createTime) {
-        if (StringTool.isEmpty(createTime)) {
-            return createTime;
-        }
-        int startIndex = 0;
-        int endIndex = 19;
-        if (endIndex < createTime.length()) {
-            //DateFormatTool.getUTCDateTransferCurrentTimeZoneHMS(
-            return createTime.substring(startIndex, endIndex);
-        } else {
-            return createTime;
-        }
-    }
 }

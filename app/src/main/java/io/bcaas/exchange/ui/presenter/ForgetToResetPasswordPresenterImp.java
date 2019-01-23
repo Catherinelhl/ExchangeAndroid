@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -52,6 +53,8 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
+        String memberId = BaseApplication.getMemberID();
+        memberVO.setMemberId(memberId);
         try {
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
         } catch (NoSuchAlgorithmException e) {
@@ -82,6 +85,7 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
+                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberId);
                             //存储当前账号
                             BaseApplication.setMemberID(BaseApplication.getMemberID());
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
