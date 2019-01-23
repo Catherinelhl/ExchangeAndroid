@@ -5,19 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.event.NetStateChangeEvent;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
+
+import java.time.temporal.TemporalAccessor;
 
 /**
  * @author catherine.brainwilliam
  * 廣播：監聽系統網絡變化然後進行廣播
  */
 public class NetStateReceiver extends BroadcastReceiver {
+    private String TAG = NetStateReceiver.class.getSimpleName();
     private ConnectivityManager connectivityManager;
     private NetworkInfo networkInfo;
 
     public NetStateReceiver() {
-        OttoTool.getInstance().register(this);
+        OttoTool.getInstance().register(BaseApplication.context());
     }
 
     @Override
@@ -27,8 +32,10 @@ public class NetStateReceiver extends BroadcastReceiver {
             connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             networkInfo = connectivityManager.getActiveNetworkInfo();
             if (networkInfo == null || !networkInfo.isConnectedOrConnecting()) {
+                LogTool.d(TAG, "netChanged");
                 OttoTool.getInstance().post(new NetStateChangeEvent(false));
             } else {
+                LogTool.d(TAG, "netChanged");
                 OttoTool.getInstance().post(new NetStateChangeEvent(true));
             }
         }

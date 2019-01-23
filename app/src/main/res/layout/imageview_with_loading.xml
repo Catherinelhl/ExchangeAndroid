@@ -9,7 +9,6 @@
             android:id="@+id/img"
             android:layout_width="wrap_content"
             android:scaleType="fitCenter"
-            android:minHeight="@dimen/d32"
             android:layout_centerVertical="true"
             android:layout_height="wrap_content"/>
     <ProgressBar

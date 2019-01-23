@@ -193,6 +193,7 @@
                         android:layout_marginTop="@dimen/d12"
                         exchange:content="@string/no_google_verify_text"
                         exchange:action_text="@string/start_immediate"
+                        android:layout_marginBottom="@dimen/d12"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
             <Button

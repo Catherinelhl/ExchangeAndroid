@@ -96,6 +96,10 @@ public class VerifyCodePresenterImp extends BasePresenterImp
 
     @Override
     public void getImageVerifyCode() {
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
         disposeDisposable(disposableImageVerifyCode);
         safetyCenterInteractor.getImageVerifyCode()
                 .subscribeOn(Schedulers.io())

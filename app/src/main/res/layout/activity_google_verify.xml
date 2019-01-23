@@ -21,10 +21,10 @@
                     android:layout_marginRight="@dimen/d20"
                     android:layout_marginTop="@dimen/d16"
                     android:layout_height="wrap_content">
-        <ImageView
-                android:id="@+id/iv_qr_code"
-                android:layout_width="@dimen/d200"
-                android:layout_height="@dimen/d200"
+        <io.bcaas.exchange.view.viewGroup.ImageViewWithLoading
+                android:id="@+id/iwl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
         <TextView
                 android:id="@+id/tv_secret_key"
@@ -34,7 +34,7 @@
                 android:layout_gravity="left"
                 android:text="@string/private_key_str"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/iv_qr_code"
+                android:layout_toRightOf="@+id/iwl"
                 android:gravity="left"/>
         <TextView
                 android:id="@+id/tv_secret"
@@ -50,7 +50,7 @@
                 style="@style/black_666_14_text_style"
                 android:layout_width="wrap_content"
                 android:layout_below="@+id/tv_secret"
-                android:layout_toRightOf="@+id/iv_qr_code"
+                android:layout_toRightOf="@+id/iwl"
                 android:layout_marginRight="@dimen/d20"
                 android:layout_height="wrap_content"
                 android:text="@string/google_account"

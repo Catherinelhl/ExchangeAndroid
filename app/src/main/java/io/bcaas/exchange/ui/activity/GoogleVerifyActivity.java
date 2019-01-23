@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.GoogleContract;
 import io.bcaas.exchange.ui.presenter.GooglePresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.viewGroup.ImageViewWithLoading;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -42,8 +44,8 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
     RelativeLayout rlHeader;
     @BindView(R.id.tv_how_to_verify)
     TextView tvHowToVerify;
-    @BindView(R.id.iv_qr_code)
-    ImageView ivQrCode;
+    @BindView(R.id.iwl)
+    ImageViewWithLoading imageViewWithLoading;
     @BindView(R.id.tv_secret)
     TextView tvSecret;
     @BindView(R.id.tv_account)
@@ -70,13 +72,8 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.please_set_google_verify);
         //设置图片的大小
-        ViewGroup.LayoutParams params = ivQrCode.getLayoutParams();
         int width = BaseApplication.getScreenWidth() / 5 * 2;
-        params.width = width;
-        params.height = width;
-        ivQrCode.setLayoutParams(params);
-
-
+        imageViewWithLoading.setImageMeasure(width, width);
     }
 
     @Override
@@ -230,8 +227,8 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
 
     @Override
     public void getAuthenticatorImageSuccess(Bitmap bitmap) {
-        if (bitmap != null && ivQrCode != null) {
-            ivQrCode.setImageBitmap(bitmap);
+        if (bitmap != null && imageViewWithLoading != null) {
+            imageViewWithLoading.setBitmap(bitmap);
 
         }
     }

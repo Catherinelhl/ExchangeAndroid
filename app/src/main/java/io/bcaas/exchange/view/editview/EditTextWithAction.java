@@ -26,6 +26,7 @@ import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.time.IntervalTimerTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
 import io.bcaas.exchange.ui.presenter.VerifyCodePresenterImp;
+import io.bcaas.exchange.view.viewGroup.ImageViewWithLoading;
 import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -58,8 +59,8 @@ public class EditTextWithAction extends LinearLayout
     LinearLayout llPasswordKey;
     @BindView(R.id.ll_action)
     LinearLayout llAction;
-    @BindView(R.id.img)
-    ImageView imageView;
+    @BindView(R.id.iwl)
+    ImageViewWithLoading imageViewWithLoading;
 
 
     private Context context;
@@ -113,12 +114,12 @@ public class EditTextWithAction extends LinearLayout
                 case 0://默认样式，什么也不显示
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
-                    imageView.setVisibility(GONE);
+                    imageViewWithLoading.setVisibility(GONE);
                     break;
                 case 1://密码输入框，需要显示小眼睛
                     cbCheck.setVisibility(VISIBLE);
                     llAction.setVisibility(GONE);
-                    imageView.setVisibility(GONE);
+                    imageViewWithLoading.setVisibility(GONE);
                     //显示密码框，隐藏文本框
                     etPassword.setVisibility(VISIBLE);
                     etContent.setVisibility(GONE);
@@ -131,46 +132,42 @@ public class EditTextWithAction extends LinearLayout
                 case 2://文字验证码，需要显示发送
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(VISIBLE);
-                    imageView.setVisibility(GONE);
+                    imageViewWithLoading.setVisibility(GONE);
                     etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
                 case 3://图片验证码，需要显示图片信息
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
-                    imageView.setVisibility(VISIBLE);
+                    imageViewWithLoading.setVisibility(VISIBLE);
                     presenter.getImageVerifyCode();
                     //重新设定图片的大小
-                    ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-                    layoutParams.width = context.getResources().getDimensionPixelOffset(R.dimen.d115);
-                    layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.d32);
-                    imageView.setLayoutParams(layoutParams);
+                    imageViewWithLoading.setImageMeasure(context.getResources().getDimensionPixelOffset(R.dimen.d115),
+                            context.getResources().getDimensionPixelOffset(R.dimen.d32));
                     break;
                 case 4://显示扫描
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
-                    imageView.setVisibility(VISIBLE);
-                    imageView.setImageResource(R.mipmap.icon_scan);
-                    ViewGroup.LayoutParams layoutParamScan = imageView.getLayoutParams();
-                    layoutParamScan.width = context.getResources().getDimensionPixelOffset(R.dimen.d21);
-                    layoutParamScan.height = context.getResources().getDimensionPixelOffset(R.dimen.d21);
-                    imageView.setLayoutParams(layoutParamScan);
+                    imageViewWithLoading.setVisibility(VISIBLE);
+                    imageViewWithLoading.setSrc(R.mipmap.icon_scan);
+                    imageViewWithLoading.setImageMeasure(context.getResources().getDimensionPixelOffset(R.dimen.d21),
+                            context.getResources().getDimensionPixelOffset(R.dimen.d21));
                     break;
                 case 5://手机号码
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
-                    imageView.setVisibility(GONE);
+                    imageViewWithLoading.setVisibility(GONE);
                     etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
                 case 6://google号码
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(GONE);
-                    imageView.setVisibility(GONE);
+                    imageViewWithLoading.setVisibility(GONE);
                     etContent.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
                 case 7://amount 输入
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(VISIBLE);
-                    imageView.setVisibility(GONE);
+                    imageViewWithLoading.setVisibility(GONE);
                     etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
                     break;
             }
@@ -313,7 +310,7 @@ public class EditTextWithAction extends LinearLayout
             }
         });
 
-        RxView.clicks(imageView).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(imageViewWithLoading).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -487,15 +484,15 @@ public class EditTextWithAction extends LinearLayout
     }
 
     public void setImageBitmap(Bitmap bitmap) {
-        if (imageView != null) {
-            imageView.setImageBitmap(bitmap);
+        if (imageViewWithLoading != null) {
+            imageViewWithLoading.setBitmap(bitmap);
         }
     }
 
     @Override
     public void getImageVerifyCodeSuccess(Bitmap bitmap) {
-        if (imageView != null) {
-            imageView.setImageBitmap(bitmap);
+        if (imageViewWithLoading != null) {
+            imageViewWithLoading.setBitmap(bitmap);
         }
     }
 

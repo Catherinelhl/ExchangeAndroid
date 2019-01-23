@@ -78,13 +78,12 @@
 
         </LinearLayout>
 
-        <ImageView
-                android:id="@+id/img"
+        <io.bcaas.exchange.view.viewGroup.ImageViewWithLoading
+                android:id="@+id/iwl"
                 android:layout_width="wrap_content"
-                android:scaleType="fitCenter"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_height="@dimen/d32"/>
+                android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
