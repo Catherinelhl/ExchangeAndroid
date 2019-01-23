@@ -158,6 +158,7 @@ public class Constants {
         public static final String SP_EXCHANGE = "EXCHANGE";
         public static final String ACCESS_TOKEN = "accessToken";//token 信息
         public static final String LANGUAGE_TYPE = "languageType";//當前的語言環境
+        public static final String MEMBER_ID = "memberId";//当前的账户信息
     }
 
     public class From {

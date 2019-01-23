@@ -78,6 +78,17 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         setAppVersion();
         etAccount.setFrom(Constants.EditTextFrom.LOGIN_ACCOUNT);
         etPassword.setFrom(Constants.EditTextFrom.LOGIN_PASSWORD);
+        refreshAccountInfo();
+    }
+
+
+    private void refreshAccountInfo() {
+        //取得上一次的历史登录信息
+        String memberIdHistory = BaseApplication.getStringFromSP(Constants.Preference.MEMBER_ID);
+        if (StringTool.notEmpty(memberIdHistory)
+                && etAccount != null) {
+            etAccount.setContent(memberIdHistory);
+        }
 
     }
 
@@ -246,22 +257,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         }
         switch (requestCode) {
             case Constants.RequestCode.REGISTER_CODE: //注册页面返回
-                LogTool.d(TAG, "register return");
-                //清空当前界面信息
-                if (etImageCode != null) {
-                    etImageCode.setContent(MessageConstants.EMPTY);
-                    // 重新刷新登录界面的验证码
-                    etImageCode.requestImageVerifyCode();
-                }
-                break;
             case Constants.RequestCode.RESET_PASSWORD_CODE://重置密码页面返回
-                LogTool.d(TAG, "reset password");
                 if (etImageCode != null) {
                     etImageCode.setContent(MessageConstants.EMPTY);
                     // 重新刷新登录界面的验证码
                     etImageCode.requestImageVerifyCode();
 
                 }
+                refreshAccountInfo();
                 break;
 
 

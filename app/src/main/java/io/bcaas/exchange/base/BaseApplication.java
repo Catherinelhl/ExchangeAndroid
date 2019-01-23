@@ -127,14 +127,6 @@ public class BaseApplication extends MultiDexApplication {
     public static String getCurrentLanguage() {
         //3:匹配當前的語言獲取，返回APP裡面識別的TAG
         return currentLanguage;
-//        if (StringTool.equals(currentLanguage, Constants.ValueMaps.SC)) {
-//            return "zh-cn";
-//        } else if (StringTool.equals(currentLanguage, Constants.ValueMaps.TC)) {
-//            return "zh-tw_CountryCde";
-//        } else {
-//            return "zh-cn_CountryCde.json";
-//
-//        }
     }
 
     public static void setCurrentLanguage(String currentLanguage) {
@@ -151,6 +143,8 @@ public class BaseApplication extends MultiDexApplication {
     }
 
     public static void setMemberID(String memberID) {
+        //存储当前的账号信息
+        BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberID);
         BaseApplication.memberID = memberID;
     }
 
