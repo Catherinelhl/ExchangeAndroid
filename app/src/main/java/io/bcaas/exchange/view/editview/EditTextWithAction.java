@@ -20,6 +20,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.listener.OnTextChangeListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
@@ -75,6 +76,12 @@ public class EditTextWithAction extends LinearLayout
 
     //用于倒计时的订阅
     private Disposable disposableCountDownTimer;
+    //监听当前文本的变化
+    private OnTextChangeListener onTextChangeListener;
+
+    public void setOnTextChangeListener(OnTextChangeListener onTextChangeListener) {
+        this.onTextChangeListener = onTextChangeListener;
+    }
 
     public EditTextWithAction(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -274,6 +281,9 @@ public class EditTextWithAction extends LinearLayout
                 if (s != null) {
                     String content = s.toString();
                     if (StringTool.notEmpty(content)) {
+                        if (onTextChangeListener != null) {
+                            onTextChangeListener.onTextChange(content);
+                        }
                         etContent.setSelection(content.length());
 
                     }
@@ -350,6 +360,7 @@ public class EditTextWithAction extends LinearLayout
                     }
                 });
     }
+
 
     /**
      * 开始倒计时

@@ -10,8 +10,10 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.listener.OnTextChangeListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
@@ -85,6 +87,22 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
 
     @Override
     protected void initListener() {
+        etWithdrawAmount.setOnTextChangeListener(new OnTextChangeListener() {
+            @Override
+            public void onTextChange(String content) {
+                //判断当前是否大于0
+                float volume = Float.valueOf(content);
+                if (volume > 0) {
+                    // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额
+                    if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(balanceAvailable, content,true), MessageConstants.NO_ENOUGH_BALANCE)) {
+                        etWithdrawAmount.setContent(balanceAvailable);
+                    }
+                } else {
+
+                }
+
+            }
+        });
         etReceiveAddress.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {
@@ -133,6 +151,11 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                         String withDrawAmount = etWithdrawAmount.getContent();
                         if (StringTool.isEmpty(withDrawAmount)) {
                             Toast.makeText(context, R.string.please_input_amount_withdraw, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(withDrawAmount, transactionFee, false),
+                                MessageConstants.NO_ENOUGH_BALANCE)) {
+                            Toast.makeText(context, R.string.amount_must_be_more_than_fee, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         MemberOrderVO memberOrderVO = new MemberOrderVO();

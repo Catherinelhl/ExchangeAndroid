@@ -214,6 +214,7 @@
     <string name="email_not_register">邮箱未注册</string>
     <string name="verify_mail_code_fail">邮箱验证码错误</string>
     <string name="verify_phone_code_fail">手机验证码错误</string>
+    <string name="amount_must_be_more_than_fee">The amount must  be more than the handling fee</string>
 
 
 </resources>

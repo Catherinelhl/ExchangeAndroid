@@ -221,5 +221,6 @@
     <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
     <string name="email_not_register">Email not register</string>
     <string name="verify_phone_code_fail">手机验证码错误</string>
+    <string name="amount_must_be_more_than_fee">金额必须大于手续费</string>
 
 </resources>

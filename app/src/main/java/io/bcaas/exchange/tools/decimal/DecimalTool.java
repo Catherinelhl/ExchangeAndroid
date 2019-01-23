@@ -21,8 +21,9 @@ public class DecimalTool {
      *
      * @param firstValue
      * @param secondValue
+     * @param canEqual    是否可以相等
      */
-    public static String calculateFirstSubtractSecondValue(String firstValue, String secondValue) {
+    public static String calculateFirstSubtractSecondValue(String firstValue, String secondValue, boolean canEqual) {
 
         DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
@@ -31,8 +32,14 @@ public class DecimalTool {
         BigDecimal bigDecimalSecondValue = new BigDecimal(secondValue).setScale(10, RoundingMode.FLOOR);
 
         // FirstValue必须大于SecondValue
-        if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == -1) {
-            return MessageConstants.NO_ENOUGH_BALANCE;
+        if (canEqual) {
+            if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) == -1) {
+                return MessageConstants.NO_ENOUGH_BALANCE;
+            }
+        } else {
+            if (bigDecimalFirstValue.compareTo(bigDecimalSecondValue) != 1) {
+                return MessageConstants.NO_ENOUGH_BALANCE;
+            }
         }
 
         BigDecimal bigDecimalNum = bigDecimalFirstValue.subtract(bigDecimalSecondValue);
@@ -92,7 +99,7 @@ public class DecimalTool {
      *
      * @param decimal
      */
-    public static String transferDisplay(int newScale, String decimal,String pattern) {
+    public static String transferDisplay(int newScale, String decimal, String pattern) {
         if (StringTool.isEmpty(decimal)) {
             decimal = "0";
         }

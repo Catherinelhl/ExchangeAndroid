@@ -172,7 +172,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                     float volume = Float.valueOf(text);
                     if (volume > 0) {
                         // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额
-                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, text), MessageConstants.NO_ENOUGH_BALANCE)) {
+                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, text, true), MessageConstants.NO_ENOUGH_BALANCE)) {
                             etSellVolume.setText(salableBalance);
                             etSellVolume.setSelection(salableBalance.length());
                             setProgressByUserInput(salableBalance);
@@ -215,13 +215,14 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                             return;
                         }
                         //3：比对当前输入的卖出量《可售余额
-                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, sellAmount), MessageConstants.NO_ENOUGH_BALANCE)) {
+                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, sellAmount, true), MessageConstants.NO_ENOUGH_BALANCE)) {
                             Toast.makeText(context, R.string.no_enough_balance, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         //4：判断当前的扣除手续费的交易额不能小于等于0，否则提示不能通过
                         if (StringTool.notEmpty(txAmount) &&
-                                StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0"), MessageConstants.NO_ENOUGH_BALANCE)) {
+                                StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0", false),
+                                        MessageConstants.NO_ENOUGH_BALANCE)) {
                             Toast.makeText(context, R.string.invalid_tx_amount, Toast.LENGTH_SHORT).show();
                             return;
                         }
@@ -332,7 +333,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
 //                                交易额 = (10 - 0.1) * 20 = 200 ETH
 //                        4.用户输入资金密码后，该用户的该笔出售金额被冻结，余额不扣减
             // 得到当前减去手续费的量
-            String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee);
+            String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee, true);
             //得到当前可换做售出币种的交易额
             txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr);
             tvFinalTxAmount.setVisibility(VISIBLE);
