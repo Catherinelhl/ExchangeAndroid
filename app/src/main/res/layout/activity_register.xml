@@ -44,14 +44,17 @@
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_marginTop="@dimen/d12"
                   android:layout_height="wrap_content">
-        <CheckBox android:layout_width="wrap_content"
+        <CheckBox android:layout_width="@dimen/d22"
                   android:id="@+id/cb_agreement"
-                  android:layout_height="wrap_content"/>
+                  android:gravity="center"
+                  android:layout_gravity="center"
+                  android:button="@drawable/selector_checkbox_yellow"
+                  android:layout_height="@dimen/d22"/>
         <io.bcaas.exchange.view.textview.AppendStringLayout
                 android:layout_width="match_parent"
                 android:id="@+id/asp_user_agreement"
                 exchange:content="@string/user_agreement_content"
-                android:layout_marginLeft="-15dp"
+                android:layout_marginLeft="-20dp"
                 exchange:action_text="@string/user_agreement"
                 exchange:action_color="@color/button_color"
                 android:layout_height="wrap_content"/>
