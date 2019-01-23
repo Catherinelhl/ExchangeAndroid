@@ -24,16 +24,6 @@ public class LoginInteractor {
         return httpApi.register(body);
     }
 
-
-    /**
-     * 验证当前账户是否已经注册
-     *
-     * @param body
-     */
-    public Observable<ResponseJson> verifyAccount(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.verifyAccount(body);
-    }
     /**
      * 登入
      *

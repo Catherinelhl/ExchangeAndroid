@@ -17,13 +17,16 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.time.IntervalTimerTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
 import io.bcaas.exchange.ui.presenter.VerifyCodePresenterImp;
+import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -238,7 +241,8 @@ public class EditTextWithAction extends LinearLayout
                                     case Constants.EditTextFrom.EMAIL_CODE://邮箱
                                         requestEmail();
                                         break;
-                                    case Constants.EditTextFrom.VERIFY_EMAIL_AND_EMAIL_CODE:
+                                    case Constants.EditTextFrom.REGISTER_VERIFY_EMAIL:
+                                    case Constants.EditTextFrom.FORGET_VERIFY_EMAIL:
                                         //如果当前输入邮箱的验证密码，那么需要验证当前密码是否已经注册过了，如果没有，才开始倒计时请求验证码
                                         break;
                                     default:
@@ -543,5 +547,60 @@ public class EditTextWithAction extends LinearLayout
         //开始倒计时
         startCountDownInterval();
 
+    }
+
+    public void verifyAccount(String memberId) {
+        if (presenter != null) {
+            presenter.verifyAccount(memberId, from);
+        }
+    }
+
+    @Override
+    public void verifyAccountFailure(String info) {
+        if (context != null) {
+            Toast.makeText(context, info, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void verifyAccountSuccess(String info) {
+        // 开始请求验证码
+        requestEmail();
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void noNetWork() {
+        Toast.makeText(context, getResources().getString(R.string.network_not_reachable), Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public boolean httpExceptionDisposed(ResponseJson responseJson) {
+        if (responseJson == null) {
+            return false;
+        }
+        int code = responseJson.getCode();
+        //判断是否是Token过期，弹出提示重新登录，然后跳转界面
+        if (code == MessageConstants.CODE_2019) {
+            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+            OttoTool.getInstance().post(new LogoutEvent());
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void noData() {
+        LogTool.d(TAG, context.getResources().getString(R.string.no_data));
     }
 }

@@ -212,6 +212,7 @@
     <string name="user_agreement">《用户协议》</string>
     <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
     <string name="double_click_for_exit">Press the return button again to exit the program</string>
+    <string name="please_register_email">请先注册邮箱</string>
 
 
 </resources>

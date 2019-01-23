@@ -2,10 +2,14 @@ package io.bcaas.exchange.ui.presenter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import io.bcaas.exchange.R;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.MemberVO;
@@ -29,7 +33,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp
     private VerifyCodeContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
 
-    private Disposable disposableImageVerifyCode, disposableEmailVerify;
+    private Disposable disposableImageVerifyCode, disposableEmailVerify, disposableVerifyAccount;
 
     public VerifyCodePresenterImp(VerifyCodeContract.View view) {
         super();
@@ -125,6 +129,81 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                     public void onComplete() {
                         disposeDisposable(disposableImageVerifyCode);
 
+                    }
+                });
+    }
+
+    @Override
+    public void verifyAccount(String memberId, String from) {
+        //判断当前是否有网路
+        if (!BaseApplication.isRealNet()) {
+            view.noNetWork();
+            return;
+        }
+        disposeDisposable(disposableVerifyAccount);
+        //显示加载框
+        view.showLoading();
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(memberId);
+        requestJson.setMemberVO(memberVO);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", requestJson);
+
+        safetyCenterInteractor.verifyAccount(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposableVerifyAccount = d;
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", responseJson);
+                        if (responseJson == null) {
+                            view.noData();
+                            return;
+                        }
+                        // {"success":false,"code":2005,"message":"Email not register."}
+                        int code = responseJson.getCode();
+                        //如果当前from==注册，那么检测2005，如果==忘记密码，那么检测200
+                        if (StringTool.equals(from, Constants.EditTextFrom.REGISTER_VERIFY_EMAIL)) {
+                            if (code == MessageConstants.CODE_2005) {
+                                //代表当前账号是没有被注册过的
+                                BaseApplication.setMemberID(memberId);
+                                view.verifyAccountSuccess(responseJson.getMessage());
+                            } else {
+                                view.verifyAccountFailure(getString(R.string.email_already_be_register));
+                            }
+                        } else {
+                            if (code == MessageConstants.CODE_200) {
+                                //代表当前账号是没有被注册过的
+                                BaseApplication.setMemberID(memberId);
+                                view.verifyAccountSuccess(responseJson.getMessage());
+                            } else {
+                                view.verifyAccountFailure(getString(R.string.please_register_email));
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogTool.e(TAG, e.getMessage());
+                        view.hideLoading();
+                        if (StringTool.equals(from, Constants.EditTextFrom.REGISTER_VERIFY_EMAIL)) {
+                            view.verifyAccountFailure(getString(R.string.register_failure_please_try_again));
+                        } else {
+                            view.verifyAccountFailure(getString(R.string.failure_to_reset_password));
+                        }
+                        disposeDisposable(disposableVerifyAccount);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        view.hideLoading();
+                        disposeDisposable(disposableVerifyAccount);
                     }
                 });
     }

@@ -10,16 +10,9 @@ public interface RegisterContract {
 
         void registerFailure(String info);
 
-        void verifyAccountFailure(String info);
-
-        void verifyAccountSuccess(String info);
-
     }
 
     interface Presenter {
-        /*验证当前账户是否已经注册过了*/
-        void verifyAccount(String memberId);
-
         void register(String memberId, String password, String realIp);
 
     }

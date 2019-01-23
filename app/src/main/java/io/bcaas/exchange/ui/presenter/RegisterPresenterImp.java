@@ -1,19 +1,17 @@
 package io.bcaas.exchange.ui.presenter;
 
-import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
-import io.bcaas.exchange.bean.VerificationBean;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -115,63 +113,4 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                 });
     }
 
-
-    @Override
-    public void verifyAccount(String memberId) {
-        //判断当前是否有网路
-        if (!BaseApplication.isRealNet()) {
-            view.noNetWork();
-            return;
-        }
-        disposeDisposable(disposableVerifyAccount);
-        //显示加载框
-        view.showLoading();
-        RequestJson requestJson = new RequestJson();
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(memberId);
-        requestJson.setMemberVO(memberVO);
-        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", requestJson);
-
-        loginInteractor.verifyAccount(GsonTool.beanToRequestBody(requestJson))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResponseJson>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        disposableVerifyAccount = d;
-                    }
-
-                    @Override
-                    public void onNext(ResponseJson responseJson) {
-                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "verifyAccount:", responseJson);
-                        if (responseJson == null) {
-                            view.noData();
-                            return;
-                        }
-                        // {"success":false,"code":2005,"message":"Email not register."}
-                        int code = responseJson.getCode();
-                        if (code == MessageConstants.CODE_2005) {
-                            //代表当前账号是没有被注册过的
-                            BaseApplication.setMemberID(memberId);
-                            view.verifyAccountSuccess(responseJson.getMessage());
-                        } else {
-                            view.verifyAccountFailure(getString(R.string.email_already_be_register));
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogTool.e(TAG, e.getMessage());
-                        view.hideLoading();
-                        view.verifyAccountFailure(getString(R.string.register_failure_please_try_again));
-                        disposeDisposable(disposableVerifyAccount);
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        view.hideLoading();
-                        disposeDisposable(disposableVerifyAccount);
-                    }
-                });
-    }
 }

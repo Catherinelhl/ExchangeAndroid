@@ -63,6 +63,17 @@ public class SafetyCenterInteractor {
         return httpApi.emailVerify(body);
     }
 
+
+
+    /**
+     * 验证当前账户是否已经注册
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> verifyAccount(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.verifyAccount(body);
+    }
     /**
      * 获取图形验证码
      *

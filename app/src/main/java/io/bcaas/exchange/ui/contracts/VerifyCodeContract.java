@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
  */
 public interface VerifyCodeContract {
 
-    interface View {
+    interface View extends BaseContract.View{
         //获取图片验证码成功
         void getImageVerifyCodeSuccess(Bitmap bitmap);
 
@@ -21,15 +21,23 @@ public interface VerifyCodeContract {
 
         //获取email验证码失败
         void getEmailVerifyFailure(String info);
+
+        void verifyAccountFailure(String info);
+
+        void verifyAccountSuccess(String info);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.Presenter{
 
         //获取邮件验证码
         void emailVerify(String memberId, String languageCode, String mail);
 
         //获取图片验证码
         void getImageVerifyCode();
+
+        /*验证当前账户是否已经注册过了*/
+        void verifyAccount(String memberId,String from);
+
 
     }
 

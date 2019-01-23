@@ -74,7 +74,7 @@ public class RegisterActivity extends BaseActivity
         tvTitle.setText(R.string.register_title);
         //设置账号只能输入邮箱类型
         etAccount.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etEmailCode.setFrom(Constants.EditTextFrom.VERIFY_EMAIL_AND_EMAIL_CODE);
+        etEmailCode.setFrom(Constants.EditTextFrom.REGISTER_VERIFY_EMAIL);
         aspLogin.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.LOGIN);
     }
 
@@ -175,7 +175,7 @@ public class RegisterActivity extends BaseActivity
                             return;
                         }
                         //8：判断用户是否阅读用户协议
-                        if (!cbAgreement.isChecked()){
+                        if (!cbAgreement.isChecked()) {
                             showToast(getString(R.string.please_read_and_agree_user_agreement));
                             return;
                         }
@@ -214,7 +214,7 @@ public class RegisterActivity extends BaseActivity
                     return;
                 }
                 //检测当前的邮箱是否已经注册
-                presenter.verifyAccount(userAccount);
+                etEmailCode.verifyAccount(userAccount);
             }
         });
     }
@@ -238,17 +238,6 @@ public class RegisterActivity extends BaseActivity
     @Override
     public void registerFailure(String info) {
         showToast(info);
-    }
-
-    @Override
-    public void verifyAccountFailure(String info) {
-        showToast(info);
-    }
-
-    @Override
-    public void verifyAccountSuccess(String info) {
-        // 开始请求验证码
-        etEmailCode.requestEmail();
     }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {

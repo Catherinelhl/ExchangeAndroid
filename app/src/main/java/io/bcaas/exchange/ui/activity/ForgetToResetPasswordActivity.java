@@ -11,7 +11,6 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.tools.LogTool;
@@ -74,13 +73,11 @@ public class ForgetToResetPasswordActivity extends BaseActivity implements Forge
         tvTitle.setVisibility(View.VISIBLE);
         if (isResetLoginPassword) {
             tvTitle.setText(R.string.reset_password_title);
-
         } else {
             tvTitle.setText(R.string.reset_fund_password);
             etPassword.setHint(getString(R.string.fun_password_not_same_as_login_password));
         }
-//        etEmailCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
-
+        etEmailCode.setFrom(Constants.EditTextFrom.FORGET_VERIFY_EMAIL);
     }
 
     @Override
@@ -100,15 +97,19 @@ public class ForgetToResetPasswordActivity extends BaseActivity implements Forge
 
             @Override
             public void onAction(String from) {
-                //判断当前是否输入账号，如果没有，提示输入，否则发送邮箱验证请求
-                //1:判断当前邮箱的输入
-                String memberId = etAccount.getContent();
-                if (StringTool.isEmpty(memberId)) {
-                    showToast(getString(R.string.please_input_account_info));
+                //1：判断当前账号是否输入
+                String userAccount = etAccount.getContent();
+                if (StringTool.isEmpty(userAccount)) {
+                    showToast(getString(R.string.please_input_account));
                     return;
                 }
-                //开始发送验证码请求
-                etEmailCode.requestEmail();
+                //2：是否输入正确的邮箱格式
+                if (!RegexTool.isRightEmail(userAccount)) {
+                    showToast(getString(R.string.please_input_right_email));
+                    return;
+                }
+                //检测当前的邮箱是否已经注册
+                etEmailCode.verifyAccount(userAccount);
             }
         });
         tvTitle.setOnClickListener(new View.OnClickListener() {
