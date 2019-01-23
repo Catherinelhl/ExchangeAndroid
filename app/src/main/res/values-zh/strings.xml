@@ -178,7 +178,7 @@
     <string name="no_curve_info">没有对应曲线信息</string>
     <string name="no_data">没有获取到相关数据</string>
     <string name="verify_code_fail">Verify code fail</string>
-    <string name="verify_code_expire">验证码过期</string>
+    <string name="verify_code_expire">验证码已过期</string>
     <string name="login_failure_please_try_again">登录失败，请重试</string>
     <string name="email_already_be_register">账号已被注册</string>
     <string name="register_failure_please_try_again">注册失败，请重试</string>

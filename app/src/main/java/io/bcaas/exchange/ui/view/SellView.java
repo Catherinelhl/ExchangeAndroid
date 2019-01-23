@@ -172,7 +172,8 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                     float volume = Float.valueOf(text);
                     if (volume > 0) {
                         // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额
-                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, text, true), MessageConstants.NO_ENOUGH_BALANCE)) {
+                        if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, text, true),
+                                MessageConstants.NO_ENOUGH_BALANCE)) {
                             etSellVolume.setText(salableBalance);
                             etSellVolume.setSelection(salableBalance.length());
                             setProgressByUserInput(salableBalance);

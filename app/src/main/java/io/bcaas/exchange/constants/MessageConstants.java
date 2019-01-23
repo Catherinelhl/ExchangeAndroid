@@ -108,6 +108,7 @@ public class MessageConstants {
    public static final int CODE_2046 = 2046;
     public static final String ERROR_VERIFY_MAIL_CODE_FAIL = "Verify mail code fail.";
     public static final int CODE_2047 = 2047;
+    public static final int CODE_2048 = 2048;
     public static final String ERROR_VERIFY_PHONE_CODE_FAIL = "Verify phone code fail.";
     public static final int CODE_2057 = 2057;
     public static final String ERROR_ILLEGAL_REQUEST = "Illegal request.";
