@@ -278,23 +278,24 @@ public class CloseVerifyMethodActivity extends BaseActivity
         if (StringTool.notEmpty(email) && tvEmailValue != null) {
             tvEmailValue.setText(email);
         }
-        if (StringTool.notEmpty(phone) && tvPhoneValue != null) {
+        if (StringTool.notEmpty(phone)
+                && tvPhoneValue != null) {
             tvPhoneValue.setText(phone);
         }
-        int emailVerify = memberVO.getEmailVerify();
-        int phoneVerify = memberVO.getPhoneVerify();
-        int twoFactorAuthVerify = memberVO.getTwoFactorAuthVerify();
+        boolean openEmailVerify = memberVO.getEmailVerify() == Constants.Status.OPEN;
+        boolean openPhoneVerify = memberVO.getPhoneVerify() == Constants.Status.OPEN && StringTool.notEmpty(phone);
+        boolean openTwoFactorAuthVerify = memberVO.getTwoFactorAuthVerify() == Constants.Status.OPEN;
         //判断是否开启「邮箱验证」
-        llEmail.setVisibility(emailVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
-        etEmailVerifyCode.setVisibility(emailVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
+        llEmail.setVisibility(openEmailVerify ? View.VISIBLE : View.GONE);
+        etEmailVerifyCode.setVisibility(openEmailVerify ? View.VISIBLE : View.GONE);
 
         //判断是否开启「手机验证」
-        llPhone.setVisibility(phoneVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
-        etMessageVerifyCode.setVisibility(phoneVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
+        llPhone.setVisibility(openPhoneVerify ? View.VISIBLE : View.GONE);
+        etMessageVerifyCode.setVisibility(openPhoneVerify ? View.VISIBLE : View.GONE);
 
         //判断是否开启「google验证」
-        tvGoogleVerifyKey.setVisibility(twoFactorAuthVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
-        etGoogleVerifyCode.setVisibility(twoFactorAuthVerify == Constants.Status.CLOSE ? View.GONE : View.VISIBLE);
+        tvGoogleVerifyKey.setVisibility(openTwoFactorAuthVerify ? View.VISIBLE : View.GONE);
+        etGoogleVerifyCode.setVisibility(openTwoFactorAuthVerify ? View.VISIBLE : View.GONE);
 
     }
 

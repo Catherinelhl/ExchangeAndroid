@@ -105,6 +105,10 @@ public class MessageConstants {
     public static final String ERROR_UID_FORMAT_INVALID = "Uid format invalid.";
     public static final int CODE_2045 = 2045;
     public static final String ERROR_AUTHENTICATOR_VERIFY_FAIL = "Authenticator verify fail.";
+   public static final int CODE_2046 = 2046;
+    public static final String ERROR_VERIFY_MAIL_CODE_FAIL = "Verify mail code fail.";
+    public static final int CODE_2047 = 2047;
+    public static final String ERROR_VERIFY_PHONE_CODE_FAIL = "Verify phone code fail.";
     public static final int CODE_2057 = 2057;
     public static final String ERROR_ILLEGAL_REQUEST = "Illegal request.";
     public static final int CODE_2055 = 2055;

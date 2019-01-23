@@ -81,12 +81,12 @@ public class CloseVerifyPresenterImp
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableCloseVerifyCode=d;
+                        disposableCloseVerifyCode = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "closeVerifyCode", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;
@@ -97,7 +97,19 @@ public class CloseVerifyPresenterImp
                         } else {
 
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2046) {
+                                    //    {"success":false,"code":2046,"message":"Verify mail code fail."}
+                                    view.closeVerifyCodeFailure(getString(R.string.verify_mail_code_fail));
+                                } else if (code == MessageConstants.CODE_2047) {
+                                    //{"success":false,"code":2047,"message":"Verify phone code fail."}
+                                    view.closeVerifyCodeFailure(getString(R.string.verify_phone_code_fail));
+                                } else if (code == MessageConstants.CODE_2045) {
+                                    //  {"success":false,"code":2045,"message":"Authenticator verify fail."}
+                                    view.closeVerifyCodeFailure(getString(R.string.google_authenticator_verify_fail));
+                                } else {
+                                    view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
+                                }
                             }
                         }
 

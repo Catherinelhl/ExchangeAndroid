@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
@@ -74,7 +75,7 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "register", responseJson);
                         if (responseJson == null) {
                             view.registerFailure(MessageConstants.EMPTY);
                             return;
@@ -88,6 +89,9 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2006) {
                                 view.registerFailure(MessageConstants.ERROR_EMAIL_ALREADY_REGISTER);
+                            } else if (code == MessageConstants.CODE_2046) {
+                                //    {"success":false,"code":2046,"message":"Verify mail code fail."}
+                                view.registerFailure(getString(R.string.verify_mail_code_fail));
                             } else {
                                 view.registerFailure(responseJson.getMessage());
 

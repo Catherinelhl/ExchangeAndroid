@@ -197,7 +197,7 @@
     <string name="immediate_reset">立即重置</string>
     <string name="current_password_is_wrong">密码错误</string>
     <string name="password_rule_of_length">At least 8 to 20 digits and characters</string>
-    <string name="address_format_error">Address format error</string>
+    <string name="address_format_error">Receive address format error</string>
 
     <string name="google_authenticator_verify_fail">Google 身份验证失败</string>
     <string name="fund_password_is_wrong">资金密码错误</string>
@@ -213,6 +213,8 @@
     <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
     <string name="double_click_for_exit">Press the return button again to exit the program</string>
     <string name="please_register_email">请先注册邮箱</string>
+    <string name="verify_mail_code_fail">邮箱验证码错误</string>
+    <string name="verify_phone_code_fail">手机验证码错误</string>
 
 
 </resources>

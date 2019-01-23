@@ -90,6 +90,15 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp
                                         || code == MessageConstants.CODE_3004) {
                                     //地址格式错误
                                     view.withDrawFailure(getString(R.string.address_format_error));
+                                } else if (code == MessageConstants.CODE_2046) {
+                                    //    {"success":false,"code":2046,"message":"Verify mail code fail."}
+                                    view.withDrawFailure(getString(R.string.verify_mail_code_fail));
+                                } else if (code == MessageConstants.CODE_2047) {
+                                    //{"success":false,"code":2047,"message":"Verify phone code fail."}
+                                    view.withDrawFailure(getString(R.string.verify_phone_code_fail));
+                                } else if (code == MessageConstants.CODE_2045) {
+                                    //  {"success":false,"code":2045,"message":"Authenticator verify fail."}
+                                    view.withDrawFailure(getString(R.string.google_authenticator_verify_fail));
                                 } else {
                                     view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
                                 }

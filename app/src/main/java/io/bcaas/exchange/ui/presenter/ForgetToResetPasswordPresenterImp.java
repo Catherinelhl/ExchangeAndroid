@@ -91,7 +91,13 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2046) {
+                                    //    {"success":false,"code":2046,"message":"Verify mail code fail."}
+                                    view.forgetPasswordFailure(getString(R.string.verify_mail_code_fail));
+                                } else {
+                                    view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
+                                }
                             }
                         }
 

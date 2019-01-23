@@ -205,7 +205,7 @@
     <string name="immediate_reset">立即重置</string>
     <string name="current_password_is_wrong">密码错误</string>
     <string name="password_rule_of_length">密码至少由8~20位数字与字符组成</string>
-    <string name="address_format_error">地址格式错误</string>
+    <string name="address_format_error">接收地址格式错误</string>
     <string name="google_authenticator_verify_fail">Google 身份验证失败</string>
     <string name="fund_password_is_wrong">资金密码错误</string>
     <string name="failure_google_set">设置Google验证失败，请重新输入验证码。</string>
@@ -216,5 +216,11 @@
     <string name="have_set_fund_password">您已设置资金密码</string>
     <string name="please_input_google_code_hint">请输入 Google 随机验证码</string>
     <string name="double_click_for_exit">再按一次返回键退出程序</string>
+    <string name="verify_mail_code_fail">邮箱验证码错误</string>
+    <string name="user_agreement_content">我已阅读并同意</string>
+    <string name="user_agreement">《用户协议》</string>
+    <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
+    <string name="please_register_email">请先注册邮箱</string>
+    <string name="verify_phone_code_fail">手机验证码错误</string>
 
 </resources>
