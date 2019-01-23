@@ -37,8 +37,14 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
     public MyFundDataAdapter(Context context) {
         super();
         this.context = context;
-        //取得当前的会员信息
-        this.memberKeyVOS = BaseApplication.getMemberKeyVOList();
+    }
+
+    /**
+     * 刷新当前adapter的数据
+     */
+    public void refreshData(List<MemberKeyVO> memberKeyVOS) {
+        this.memberKeyVOS = memberKeyVOS;
+        notifyDataSetChanged();
     }
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {

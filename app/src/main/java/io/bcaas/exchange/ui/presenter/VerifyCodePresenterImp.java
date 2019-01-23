@@ -182,7 +182,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                                 BaseApplication.setMemberID(memberId);
                                 view.verifyAccountSuccess(responseJson.getMessage());
                             } else {
-                                view.verifyAccountFailure(getString(R.string.please_register_email));
+                                view.verifyAccountFailure(getString(R.string.email_not_register));
                             }
                         }
 

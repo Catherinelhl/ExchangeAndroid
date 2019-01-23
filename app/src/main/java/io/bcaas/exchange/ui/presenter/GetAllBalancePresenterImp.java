@@ -53,12 +53,12 @@ public class GetAllBalancePresenterImp extends BasePresenterImp
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableGetAllBalance=d;
+                        disposableGetAllBalance = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getAllBalance", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;

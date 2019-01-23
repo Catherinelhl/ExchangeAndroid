@@ -1,7 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,9 +16,14 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.MyFundDataAdapter;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
+import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -31,7 +38,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 「我的资产」
  */
-public class MyFundActivity extends BaseActivity {
+public class MyFundActivity extends BaseActivity
+        implements GetAllBalanceContract.View {
 
     private String TAG = MyFundActivity.class.getSimpleName();
 
@@ -47,6 +55,8 @@ public class MyFundActivity extends BaseActivity {
     SwipeRefreshLayout srlMyFundData;
 
     private MyFundDataAdapter myFundDataAdapter;
+    private GetAllBalanceContract.Presenter getAllBalancePresenter;
+
 
     @Override
     public int getContentView() {
@@ -68,6 +78,8 @@ public class MyFundActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
+        getAllBalancePresenter.getAllBalance();
         initRefreshLayout();
         initAdapter();
     }
@@ -84,6 +96,7 @@ public class MyFundActivity extends BaseActivity {
 
     private void initAdapter() {
         myFundDataAdapter = new MyFundDataAdapter(this);
+        myFundDataAdapter.refreshData(BaseApplication.getMemberKeyVOList());
         myFundDataAdapter.setOnItemSelectListener(onItemSelectListener);
         rvMyFundData.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
@@ -96,11 +109,11 @@ public class MyFundActivity extends BaseActivity {
     public void initListener() {
         srlMyFundData.setOnRefreshListener(() -> {
             srlMyFundData.setRefreshing(false);
-            //判断如果当前没有币种，那么就暂时不能刷新数据
-//            if (StringTool.isEmpty(Bas.getBlockService())) {
-//                return;
-//            }
-//            onRefreshTransactionRecord("swipeRefreshLayout");
+            //刷新当前的资金信息
+            if (getAllBalancePresenter != null) {
+                getAllBalancePresenter.getAllBalance();
+
+            }
         });
         Disposable subscribe = RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
@@ -136,4 +149,32 @@ public class MyFundActivity extends BaseActivity {
         setResult(false);
     }
 
+    @Override
+    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            if (myFundDataAdapter != null) {
+                myFundDataAdapter.refreshData(memberKeyVOList);
+            }
+        }
+    }
+
+    @Override
+    public void getAllBalanceFailure(String info) {
+        showToast(info);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.RECHARGE:
+                case Constants.RequestCode.WITH_DRAW:
+                    if (getAllBalancePresenter != null) {
+                        getAllBalancePresenter.getAllBalance();
+                    }
+                    break;
+            }
+        }
+    }
 }

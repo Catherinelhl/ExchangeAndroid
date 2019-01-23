@@ -177,7 +177,6 @@
     <string name="price_curve">价格曲线</string>
     <string name="no_curve_info">没有对应曲线信息</string>
     <string name="no_data">没有获取到相关数据</string>
-    <string name="email_not_register">邮件没有注册</string>
     <string name="verify_code_fail">Verify code fail</string>
     <string name="verify_code_expire">验证码过期</string>
     <string name="login_failure_please_try_again">登录失败，请重试</string>
@@ -220,7 +219,7 @@
     <string name="user_agreement_content">我已阅读并同意</string>
     <string name="user_agreement">《用户协议》</string>
     <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
-    <string name="please_register_email">请先注册邮箱</string>
+    <string name="email_not_register">Email not register</string>
     <string name="verify_phone_code_fail">手机验证码错误</string>
 
 </resources>
