@@ -3,6 +3,7 @@ package io.bcaas.exchange.tools;
 import android.text.TextUtils;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
@@ -205,6 +206,7 @@ public class StringTool {
 
     /**
      * 得到显示的时间
+     *
      * @param createTime
      * @return
      */
@@ -215,6 +217,7 @@ public class StringTool {
         int startIndex = 0;
         int endIndex = 19;
         if (endIndex < createTime.length()) {
+            //DateFormatTool.getUTCDateTransferCurrentTimeZoneHMS(
             return createTime.substring(startIndex, endIndex);
         } else {
             return createTime;
