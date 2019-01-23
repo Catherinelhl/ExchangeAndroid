@@ -74,7 +74,9 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                             view.logoutSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
-                            if (code == MessageConstants.CODE_2019) {
+                            if (code == MessageConstants.CODE_2019
+                                    || code == MessageConstants.CODE_2016
+                                    || code == MessageConstants.CODE_2018) {
                                 //    {"success":false,"code":2019,"message":"AccessToken expire."}
                                 view.logoutSuccess(responseJson.getMessage());
                             } else {

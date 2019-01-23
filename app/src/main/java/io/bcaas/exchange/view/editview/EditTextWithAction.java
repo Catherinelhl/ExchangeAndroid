@@ -591,7 +591,9 @@ public class EditTextWithAction extends LinearLayout
         }
         int code = responseJson.getCode();
         //判断是否是Token过期，弹出提示重新登录，然后跳转界面
-        if (code == MessageConstants.CODE_2019) {
+        if (code == MessageConstants.CODE_2019
+                || code == MessageConstants.CODE_2016
+                || code == MessageConstants.CODE_2018) {
             //    {"success":false,"code":2019,"message":"AccessToken expire."}
             OttoTool.getInstance().post(new LogoutEvent());
             return true;
