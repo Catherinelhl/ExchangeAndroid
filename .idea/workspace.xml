@@ -29,314 +29,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/generated/source/buildConfig/debug/com/github/mikephil/charting/BuildConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/compile_only_not_namespaced_r_class_jar/release/generateReleaseRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/compile_only_not_namespaced_r_class_jar/release/generateReleaseRFile/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/debug-mergeJniLibs/merge-state" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/intermediate-jars/debug/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/intermediate-jars/debug/res.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/BuildConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/ChartAnimator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$17.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$18.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$19.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$20.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$21.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$22.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$23.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$24.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$25.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$26.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$27.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$28.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$EasingFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/buffer/AbstractBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/buffer/BarBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/buffer/HorizontalBarBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarLineChartBase$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarLineChartBase$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarLineChartBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BubbleChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/CandleStickChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/Chart$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/Chart$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/Chart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/CombinedChart$DrawOrder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/CombinedChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/HorizontalBarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/LineChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieRadarChartBase$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieRadarChartBase$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieRadarChartBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/RadarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/ScatterChart$ScatterShape.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/ScatterChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/AxisBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/ComponentBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Description.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/IMarker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendDirection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendHorizontalAlignment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendOrientation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendPosition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendVerticalAlignment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/LegendEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/LimitLine$LimitLabelPosition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/LimitLine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/MarkerImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/MarkerView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/XAxis$XAxisPosition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/XAxis.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/YAxis$AxisDependency.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/YAxis$YAxisLabelPosition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/YAxis.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarLineScatterCandleBubbleData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarLineScatterCandleBubbleDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BaseDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BaseEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BubbleData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BubbleDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BubbleEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CandleData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CandleDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CandleEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ChartData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CombinedData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/DataSet$Rounding.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/DataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/Entry$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/Entry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineDataSet$Mode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineRadarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineScatterCandleRadarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieDataSet$ValuePosition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/RadarData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/RadarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/RadarEntry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ScatterData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ScatterDataSet$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ScatterDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/filter/Approximator$Line.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/filter/Approximator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/exception/DrawingDataSetNotCreatedException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/ColorFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/DefaultAxisValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/DefaultFillFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/DefaultValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IAxisValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IFillFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IndexAxisValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/LargeValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/PercentFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/StackedValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/ValueFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/BarHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/ChartHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/CombinedHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/Highlight.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/HorizontalBarHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/IHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/PieHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/PieRadarHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/RadarHighlighter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/Range.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/BarDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/BarLineScatterCandleBubbleDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/BubbleDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/CandleDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/ChartInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/CombinedDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/LineDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/ScatterDataProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IBarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IBarLineScatterCandleBubbleDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IBubbleDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ICandleDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ILineDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ILineRadarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ILineScatterCandleRadarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IPieDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IRadarDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IScatterDataSet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/AnimatedMoveViewJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/AnimatedViewPortJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/AnimatedZoomJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/MoveViewJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/ViewPortJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/ZoomJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/BarLineChartTouchListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/ChartTouchListener$ChartGesture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/ChartTouchListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnChartGestureListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnChartValueSelectedListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnDrawLineChartTouchListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnDrawListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/PieRadarChartTouchListener$AngularVelocitySample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/PieRadarChartTouchListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/matrix/Vector3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/model/GradientColor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/AxisRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BarChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BarLineScatterCandleBubbleRenderer$XBounds.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BarLineScatterCandleBubbleRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BubbleChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/CandleStickChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/CombinedChartRenderer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/CombinedChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/DataRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/HorizontalBarChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LegendRenderer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LegendRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineChartRenderer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineChartRenderer$DataSetImageCache.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineRadarRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineScatterCandleRadarRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/PieChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/RadarChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/Renderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/ScatterChartRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/XAxisRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/XAxisRendererHorizontalBarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/XAxisRendererRadarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/YAxisRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/YAxisRendererHorizontalBarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/YAxisRendererRadarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/ChevronDownShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/ChevronUpShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/CircleShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/CrossShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/IShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/SquareShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/TriangleShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/XShapeRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ColorTemplate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/EntryXComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/FSize.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/FileUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/HorizontalViewPortHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/MPPointD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/MPPointF$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/MPPointF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ObjectPool$Poolable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ObjectPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/Transformer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/TransformerHorizontalBarChart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ViewPortHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/library_manifest/debug/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/merged_manifests/debug/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/symbols/debug/R.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/intermediates/transforms/stripDebugSymbol/debug/__content__.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPChartLib/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/generated/source/buildConfig/debug/com/obt/qrcode/BuildConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/qrcode/build/intermediates/compile_only_not_namespaced_r_class_jar/release/generateReleaseRFile/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/debug-mergeJniLibs/merge-state" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/compile_only_not_namespaced_r_class_jar/release/generateReleaseRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/qrcode/build/intermediates/compile_only_not_namespaced_r_class_jar/release/generateReleaseRFile/R.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/intermediate-jars/debug/classes.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/intermediate-jars/debug/res.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/BuildConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/activity/CaptureActivity$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/activity/CaptureActivity$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/activity/CaptureActivity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/AutoFocusManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/AutoFocusManager$AutoFocusTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/AutoFocusManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/CameraConfigurationManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/CameraConfigurationManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/CameraManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/PreviewCallback.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/open/OpenCameraInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/decode/DecodeFormatManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/decode/DecodeHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/decode/DecodeThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/encoding/EncodingUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/BeepManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/CaptureActivityHandler$State.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/CaptureActivityHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer$InactivityAsyncTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer$PowerStatusReceiver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/library_manifest/debug/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/merged_manifests/debug/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/bg_qr_grey.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/img_scan_code.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/scan_line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/shadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/layout/aty_capture.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/raw/beep.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/values-zh-rCN/values-zh-rCN.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/values-zh-rTW/values-zh-rTW.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/symbols/debug/R.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/intermediates/transforms/stripDebugSymbol/debug/__content__.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcode/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -384,7 +84,7 @@
         <counts>
           <entry key="dummy" value="26" />
           <entry key="gradle" value="56" />
-          <entry key="java" value="18082" />
+          <entry key="java" value="18158" />
           <entry key="properties" value="42" />
           <entry key="xml" value="2559" />
         </counts>
@@ -392,7 +92,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="56" />
-          <entry key="JAVA" value="18082" />
+          <entry key="JAVA" value="18158" />
           <entry key="PLAIN_TEXT" value="26" />
           <entry key="Properties" value="42" />
           <entry key="XML" value="2559" />
@@ -404,10 +104,10 @@
           <entry key="bat" value="1" />
           <entry key="class" value="1" />
           <entry key="gitignore" value="2" />
-          <entry key="gradle" value="12" />
+          <entry key="gradle" value="14" />
           <entry key="gradlew" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="459" />
+          <entry key="java" value="463" />
           <entry key="png" value="4" />
           <entry key="priceBTC" value="1" />
           <entry key="priceUSD" value="1" />
@@ -419,10 +119,10 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="Groovy" value="12" />
+          <entry key="Groovy" value="14" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="4" />
-          <entry key="JAVA" value="459" />
+          <entry key="JAVA" value="463" />
           <entry key="JSON" value="3" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="ProGuard File" value="7" />
@@ -438,59 +138,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="228" column="25" lean-forward="true" selection-start-line="228" selection-start-column="25" selection-end-line="228" selection-end-column="25" />
+            <state relative-caret-position="146">
+              <caret line="198" column="40" lean-forward="true" selection-start-line="198" selection-start-column="40" selection-end-line="198" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="99" column="72" lean-forward="true" selection-start-line="99" selection-start-column="72" selection-end-line="99" selection-end-column="72" />
+            <state relative-caret-position="90">
+              <caret line="210" column="17" lean-forward="true" selection-start-line="210" selection-start-column="17" selection-end-line="210" selection-end-column="17" />
               <folding>
-                <element signature="e#4282#4323#0" expanded="true" />
-                <element signature="e#4466#4504#0" expanded="true" />
+                <element signature="e#8646#8672#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="110" column="37" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="199" column="47" lean-forward="true" selection-start-line="199" selection-start-column="47" selection-end-line="199" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="89" lean-forward="true" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
+            <state relative-caret-position="269">
+              <caret line="314" column="7" lean-forward="true" selection-start-line="314" selection-start-column="7" selection-end-line="314" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -6090,7 +5762,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_my_fund_recycler.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/RegisterContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/ForgetToResetPasswordActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/VerifyCodeContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/LoginInteractor.java" />
@@ -6128,6 +5799,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" />
       </list>
     </option>
   </component>
@@ -6233,7 +5905,7 @@
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;WithV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;buy_de&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;Goog&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;forget&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;buyPre&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.BuyPresenterImp&#10;curre&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;GetO&#9;PSI&#9;JAVA://com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;Fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;withdr&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/layout_edittext_with_action.xml&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;For&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;Dec&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.decimal.DecimalTool&#10;dec&#9;RUN_CONFIGURATION&#9;DecimalTool&#10;order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;Showc&#9;PSI&#9;JAVA://io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_withdraw_detail.xml&#10;Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;re&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ma&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;Reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;REg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_register.xml&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;buy&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;orderTra&#9;PSI&#9;JAVA://io.bcaas.exchange.adapter.OrderTransactionAdapter&#10;OrderView&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.OrderView&#10;SellVi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.SellView&#10;Sellde&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;Buy&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java&#10;SellDE&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;Withd&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;WithD&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Safe&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Rec&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/RechargeView.java&#10;Me&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;SetF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SetFundPasswordActivity&#10;Mo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/ModifyPasswordActivity.java&#10;buyDe&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BuyDetailActivity&#10;Rech&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.RechargeView" />
+    <property name="SearchEverywhereHistoryKey" value="Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;Con&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Mes&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;Mess&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;WithV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;buy_de&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;Goog&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;forget&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;buyPre&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.BuyPresenterImp&#10;curre&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;GetO&#9;PSI&#9;JAVA://com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;Fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;withdr&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java&#10;Ed&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/layout_edittext_with_action.xml&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;For&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;Dec&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.decimal.DecimalTool&#10;dec&#9;RUN_CONFIGURATION&#9;DecimalTool&#10;order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;Showc&#9;PSI&#9;JAVA://io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_withdraw_detail.xml&#10;Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;re&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ma&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;Reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;REg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_register.xml&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;buy&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;orderTra&#9;PSI&#9;JAVA://io.bcaas.exchange.adapter.OrderTransactionAdapter&#10;OrderView&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.OrderView&#10;SellVi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.view.SellView&#10;Sellde&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;Buy&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java&#10;SellDE&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;Withd&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java&#10;WithD&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Safe&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SafetyCenterActivity.java&#10;Rec&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/RechargeView.java&#10;Me&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -6421,12 +6093,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85503685" visible="true" weight="0.24060693" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85658914" visible="true" weight="0.13872832" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
-      <window_info id="Build Variants" order="3" sideWeight="0.14496315" side_tool="true" visible="true" weight="0.24060693" />
+      <window_info id="Build Variants" order="3" sideWeight="0.14341085" side_tool="true" visible="true" weight="0.13872832" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Favorites" order="5" sideWeight="0.12942989" side_tool="true" weight="0.2015896" />
       <window_info id="Captures" order="6" side_tool="true" weight="0.25" />
@@ -6440,10 +6111,10 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.19283065" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.49690977" />
+      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" weight="0.49690977" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.83065516" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.66625464" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.6143387" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.043263286" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -6494,24 +6165,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetAllBalancePresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="58" column="29" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MyFundActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="155" column="40" selection-start-line="155" selection-start-column="40" selection-end-line="155" selection-end-column="40" />
-          <folding>
-            <element signature="e#5099#5100#0" expanded="true" />
-            <element signature="e#5118#5119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -6766,13 +6419,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="195" column="43" selection-start-line="195" selection-start-column="43" selection-end-line="195" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/listener/EditTextWatcherListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -6851,38 +6497,58 @@
     <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="89" lean-forward="true" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="228" column="25" lean-forward="true" selection-start-line="228" selection-start-column="25" selection-end-line="228" selection-end-column="25" />
+          <caret line="20" column="89" selection-start-line="20" selection-start-column="89" selection-end-line="20" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
-          <caret line="199" column="47" lean-forward="true" selection-start-line="199" selection-start-column="47" selection-end-line="199" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="110" column="37" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="37" />
+          <caret line="199" column="47" selection-start-line="199" selection-start-column="47" selection-end-line="199" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="99" column="72" lean-forward="true" selection-start-line="99" selection-start-column="72" selection-end-line="99" selection-end-column="72" />
+        <state relative-caret-position="285">
+          <caret line="102" column="22" selection-start-line="102" selection-start-column="22" selection-end-line="102" selection-end-column="22" />
           <folding>
             <element signature="e#4282#4323#0" expanded="true" />
             <element signature="e#4466#4504#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qrcode/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="314" column="7" lean-forward="true" selection-start-line="314" selection-start-column="7" selection-end-line="314" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="198" column="40" lean-forward="true" selection-start-line="198" selection-start-column="40" selection-end-line="198" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="210" column="17" lean-forward="true" selection-start-line="210" selection-start-column="17" selection-end-line="210" selection-end-column="17" />
+          <folding>
+            <element signature="e#8646#8672#0" expanded="true" />
           </folding>
         </state>
       </provider>

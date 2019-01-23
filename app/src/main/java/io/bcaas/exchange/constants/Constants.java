@@ -199,9 +199,9 @@ public class Constants {
     /**
      * 表示动作来向
      */
-    public class ActionFrom{
-        public static final String GOOGLE_VERIFY="googleVerify";
-        public static final String FUND_PASSWORD="fundPassword";
+    public class ActionFrom {
+        public static final String GOOGLE_VERIFY = "googleVerify";
+        public static final String FUND_PASSWORD = "fundPassword";
         public static final String LOGIN = "login";
     }
 
@@ -308,4 +308,15 @@ public class Constants {
         public static final String TEN = "#,##0.0000000000";
         public static final String TWO = "#,##0.00";
     }
+
+
+    /**
+     * 数字精度
+     */
+    public class DigitalPrecision {
+        public static final String BTC = "0.00000001";
+        public static final String ETH = "0.0000000001";
+        public static final String BCC = "0.00000001";
+    }
+
 }
