@@ -52,7 +52,6 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(BaseApplication.getMemberID());
         try {
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
         } catch (NoSuchAlgorithmException e) {
@@ -83,6 +82,8 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
+                            //存储当前账号
+                            BaseApplication.setMemberID(BaseApplication.getMemberID());
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {

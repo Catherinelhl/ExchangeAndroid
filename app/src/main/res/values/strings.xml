@@ -210,6 +210,8 @@
     <string name="please_input_google_code_hint">请输入 Google 随机验证码</string>
     <string name="user_agreement_content">我已阅读并同意</string>
     <string name="user_agreement">《用户协议》</string>
+    <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
+    <string name="double_click_for_exit">Press the return button again to exit the program</string>
 
 
 </resources>

@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/asp_user_agreement"
                 exchange:content="@string/user_agreement_content"
+                android:layout_marginLeft="-15dp"
                 exchange:action_text="@string/user_agreement"
                 exchange:action_color="@color/button_color"
                 android:layout_height="wrap_content"/>

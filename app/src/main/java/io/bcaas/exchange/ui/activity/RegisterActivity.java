@@ -174,7 +174,12 @@ public class RegisterActivity extends BaseActivity
                             showToast(getString(R.string.please_input_verify_code_first));
                             return;
                         }
-                        //8：开始请求
+                        //8：判断用户是否阅读用户协议
+                        if (!cbAgreement.isChecked()){
+                            showToast(getString(R.string.please_read_and_agree_user_agreement));
+                            return;
+                        }
+                        //9：开始请求
                         presenter.register(userAccount, password, verifyCode);
                     }
 

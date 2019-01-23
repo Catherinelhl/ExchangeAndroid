@@ -423,4 +423,13 @@ public class MainActivity extends BaseActivity
         LogTool.e(TAG, info);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        if (multipleClickToDo(2)) {
+            super.onBackPressed();
+        } else {
+            showToast(getString(R.string.double_click_for_exit));
+        }
+    }
 }

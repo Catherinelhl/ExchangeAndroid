@@ -107,8 +107,6 @@ public class ForgetToResetPasswordActivity extends BaseActivity implements Forge
                     showToast(getString(R.string.please_input_account_info));
                     return;
                 }
-                //存储当前账号
-                BaseApplication.setMemberID(memberId);
                 //开始发送验证码请求
                 etEmailCode.requestEmail();
             }

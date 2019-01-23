@@ -143,8 +143,6 @@ public class BaseApplication extends MultiDexApplication {
     }
 
     public static void setMemberID(String memberID) {
-        //存储当前的账号信息
-        BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberID);
         BaseApplication.memberID = memberID;
     }
 

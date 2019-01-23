@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -82,6 +83,8 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
+                            //存储当前的账号信息
+                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberId);
                             view.registerSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();

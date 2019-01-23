@@ -215,5 +215,6 @@
     <string name="not_fund_password_yet">还没设置资金密码？</string>
     <string name="have_set_fund_password">您已设置资金密码</string>
     <string name="please_input_google_code_hint">请输入 Google 随机验证码</string>
+    <string name="double_click_for_exit">再按一次返回键退出程序</string>
 
 </resources>
