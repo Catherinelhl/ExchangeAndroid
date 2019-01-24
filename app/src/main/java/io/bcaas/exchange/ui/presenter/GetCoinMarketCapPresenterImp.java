@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -48,7 +49,7 @@ public class GetCoinMarketCapPresenterImp extends BasePresenterImp
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableGetCoinMarketCap=d;
+                        disposableGetCoinMarketCap = d;
                     }
 
                     @Override
@@ -67,7 +68,13 @@ public class GetCoinMarketCapPresenterImp extends BasePresenterImp
                                 view.getCoinMarketCapFailure(responseJson.getMessage());
                             }
                         } else {
-                            view.getCoinMarketCapFailure(responseJson.getMessage());
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2087) {
+                                view.getCoinMarketCapFailure(MessageConstants.EMPTY);
+                            } else {
+                                view.getCoinMarketCapFailure(responseJson.getMessage());
+
+                            }
                         }
                     }
 

@@ -215,7 +215,7 @@
     <string name="verify_mail_code_fail">邮箱验证码错误</string>
     <string name="verify_phone_code_fail">手机验证码错误</string>
     <string name="amount_must_be_more_than_fee">The amount must  be more than the handling fee</string>
-    <string name="please_do_not_bind_phone_repeat">请勿重复绑定手机号</string>
+    <string name="phone_number_had_bind">手机号已被绑定</string>
     <string name="please_register_email_first">邮箱未注册，请先注册。</string>
     <string name="account_address">出账地址</string>
 

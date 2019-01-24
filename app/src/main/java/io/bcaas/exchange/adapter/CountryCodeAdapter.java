@@ -72,8 +72,7 @@ public class CountryCodeAdapter extends
                 return;
             }
             viewHolder.tvContent.setText(context.getResources().getString(R.string.plus_sign) + code);
-            viewHolder.tvName.setText(name)
-            ;
+            viewHolder.tvName.setText(name);
             viewHolder.tvName.setOnClickListener(v -> onItemSelectListener.onItemSelect(countryCode, MessageConstants.EMPTY));
             viewHolder.llAddress.setOnClickListener(view -> onItemSelectListener.onItemSelect(countryCode, MessageConstants.EMPTY));
         }

@@ -58,10 +58,11 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
             return;
         }
         String enName = currencyListVO.getEnName();
+        String uid = currencyListVO.getCurrencyUid();
         viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.recharge) + "  " + enName);
         viewHolder.tvRechargeTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvRechargeStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
-        viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
+        viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);
         viewHolder.tvRechargeAddress.setText(memberOrderVO.getAddress());
     }
 

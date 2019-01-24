@@ -12,6 +12,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.MemberVO;
@@ -34,6 +35,7 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
         super();
         this.context = context;
     }
+
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListener = onItemSelectListener;
     }
@@ -63,17 +65,16 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
         CurrencyListVO paymentCurrencyList = memberOrderVO.getPaymentCurrencyUid();
         if (paymentCurrencyList != null) {
             String enName = paymentCurrencyList.getEnName();
-            viewHolder.tvPayMethod.setText("支付方式" + "  " + enName);
-            viewHolder.tvFee.setText(paymentCurrencyList.getBuyCharge() + "  " + enName);
-            viewHolder.tvPrice.setText(memberOrderVO.getUnitPrice() + "  " + enName);
-            viewHolder.tvTotalAccount.setText(memberOrderVO.getPrice() + "  " + enName);
-
-
+            String uid = paymentCurrencyList.getCurrencyUid();
+            viewHolder.tvPayMethod.setText(context.getResources().getString(R.string.pay_method_str) + "  " + enName);
+            viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(paymentCurrencyList.getBuyCharge(), uid) + "  " + enName);
+            viewHolder.tvPrice.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getUnitPrice(), uid) + "  " + enName);
+            viewHolder.tvTotalAccount.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getPrice(), uid) + "  " + enName);
         }
         // 得到当前币种信息
         CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
         if (currencyListVO != null) {
-            viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + currencyListVO.getEnName());
+            viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), currencyListVO.getCurrencyUid()) + "  " + currencyListVO.getEnName());
         }
         viewHolder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override

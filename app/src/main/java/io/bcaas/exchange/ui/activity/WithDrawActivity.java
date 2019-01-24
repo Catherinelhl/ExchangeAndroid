@@ -182,10 +182,6 @@ public class WithDrawActivity extends BaseActivity
                     intent.putExtra(Constants.KeyMaps.WITHDRAW_REQUEST_JSON, requestJson);
                     startActivityForResult(intent, Constants.RequestCode.WIDTH_DRAW_DETAIL);
                     break;
-                default:
-                    intent.setClass(context, SetFundPasswordActivity.class);
-                    startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
-                    break;
             }
         }
     };
@@ -212,10 +208,6 @@ public class WithDrawActivity extends BaseActivity
                             }
                         }
                     }
-                    break;
-                case Constants.RequestCode.FUND_PASSWORD:
-                    //如果从「设置资金密码」页面跳转回来，那么需要重新请求账户资讯
-                    presenter.getAccountSecurity();
                     break;
                 case Constants.RequestCode.WIDTH_DRAW_DETAIL:
                     //刷新當前界面，重新請求餘額

@@ -91,10 +91,13 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         tvTitle.setText(R.string.sell_detail);
 
         if (sellDataBean != null) {
-            tvPrice.setText(sellDataBean.getUnitPrice() + "  " + sellDataBean.getExchangeCurrencyName());
-            tvNumber.setText(sellDataBean.getSellAmount() + "  " + sellDataBean.getEnName());
-            tvFee.setText(sellDataBean.getGasFeeCharge() + "  " + sellDataBean.getEnName());
-            tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "  " + sellDataBean.getBalanceAvailable() + "  " + sellDataBean.getEnName());
+            String exchangeUid = sellDataBean.getExchangeCurrencyUid();
+            String uid = sellDataBean.getCurrencyUid();
+            String enName = sellDataBean.getEnName();
+            tvPrice.setText(StringTool.getDisplayAmountByUId(sellDataBean.getUnitPrice(), exchangeUid) + "  " + sellDataBean.getExchangeCurrencyName());
+            tvNumber.setText(StringTool.getDisplayAmountByUId(sellDataBean.getSellAmount(), uid) + "  " + enName);
+            tvFee.setText(StringTool.getDisplayAmountByUId(sellDataBean.getGasFeeCharge(), uid) + "  " + enName);
+            tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "  " + StringTool.getDisplayAmountByUId(sellDataBean.getBalanceAvailable(), uid) + "  " + enName);
             tvTransactionAmount.setText(sellDataBean.getTxAmountExceptFeeString());
             tvPurpleTitle.setText(context.getResources().getString(R.string.sell) + "  " + sellDataBean.getEnName());
         }
@@ -213,6 +216,7 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
             }
         });
     }
+
     public void onBackPressed() {
         super.onBackPressed();
         setResult(true);

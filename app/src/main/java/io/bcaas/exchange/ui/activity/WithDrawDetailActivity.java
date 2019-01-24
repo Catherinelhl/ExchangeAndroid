@@ -254,8 +254,9 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case Constants.RequestCode.GOOGLE_VERIFY:
-                    break;
                 case Constants.RequestCode.FUND_PASSWORD:
+                    //如果从「设置资金密码」页面跳转回来，那么需要重新请求账户资讯
+                    presenter.getAccountSecurity();
                     break;
             }
         }

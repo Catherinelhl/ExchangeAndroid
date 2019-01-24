@@ -81,25 +81,28 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         // 取得卖出方币种的名字
         //如果当前的订单类型是「购买」，那么paymentCurrencyList就是自己；支出单位是取paymentCurrencyList，手续费单位是currencyListVO
         String enName = isBuy ? currencyListVO.getEnName() : paymentCurrencyList.getEnName();
+        String uid = isBuy ? currencyListVO.getCurrencyUid() : paymentCurrencyList.getCurrencyUid();
         //取得支付方币种的名字
         //如果当前是「售出」，那么currencyListVO才是自己,支出单位取自己；手续费是paymentCurrencyList
         String paymentEnName = isBuy ? paymentCurrencyList.getEnName() : currencyListVO.getEnName();
+        String paymentUid = isBuy ? paymentCurrencyList.getCurrencyUid() : currencyListVO.getCurrencyUid();
         //取得fee币种类型,如果当前自己是「售出」，那么手续费单位等于支出方
         String feeEnName = isBuy ? enName : paymentEnName;
+        String feeUid = isBuy ? uid : paymentUid;
         //取得当前订单类型单位
         String orderTokenType = isBuy ? enName : paymentEnName;
         //订单产生类型
-        viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) +"  "+ orderTokenType);
+        viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) + "  " + orderTokenType);
         //订单产生时间
         viewHolder.tvOrderTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         //订单状态
         viewHolder.tvOrderStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         // 订单支出
-        viewHolder.tvOutCome.setText(memberOrderVO.getExpenditure() + "  " + paymentEnName);
+        viewHolder.tvOutCome.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getExpenditure(), paymentUid) + "  " + paymentEnName);
         // 订单收入
-        viewHolder.tvInCome.setText(memberOrderVO.getIncome() + "  " + enName);
+        viewHolder.tvInCome.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getIncome(), uid) + "  " + enName);
         //订单手续费
-        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + feeEnName);
+        viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), feeUid) + "  " + feeEnName);
         // 判断是否需要显示撤销的按钮；type ==1；status==2
         if (StringTool.getDisplayOrderStatus(memberOrderVO.getType(), memberOrderVO.getStatus())) {
             // 需要显示撤销订单按钮

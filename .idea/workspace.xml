@@ -18,7 +18,6 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="getA" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="exchange" />
   </component>
@@ -29,317 +28,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/generated/source/buildConfig/debug/com/github/mikephil/charting/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageDebugAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/intermediate-jars/debug/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/intermediate-jars/debug/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/ChartAnimator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$10.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$11.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$12.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$13.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$14.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$15.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$16.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$17.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$18.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$19.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$20.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$21.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$22.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$23.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$24.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$25.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$26.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$27.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$28.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$6.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$7.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$8.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$9.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing$EasingFunction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/animation/Easing.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/buffer/AbstractBuffer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/buffer/BarBuffer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/buffer/HorizontalBarBuffer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarLineChartBase$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarLineChartBase$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BarLineChartBase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/BubbleChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/CandleStickChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/Chart$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/Chart$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/Chart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/CombinedChart$DrawOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/CombinedChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/HorizontalBarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/LineChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieRadarChartBase$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieRadarChartBase$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/PieRadarChartBase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/RadarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/ScatterChart$ScatterShape.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/charts/ScatterChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/AxisBase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/ComponentBase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Description.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/IMarker.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendDirection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendForm.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendHorizontalAlignment.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendOrientation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendPosition.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend$LegendVerticalAlignment.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/Legend.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/LegendEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/LimitLine$LimitLabelPosition.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/LimitLine.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/MarkerImage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/MarkerView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/XAxis$XAxisPosition.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/XAxis.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/YAxis$AxisDependency.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/YAxis$YAxisLabelPosition.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/components/YAxis.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarLineScatterCandleBubbleData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BarLineScatterCandleBubbleDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BaseDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BaseEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BubbleData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BubbleDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/BubbleEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CandleData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CandleDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CandleEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ChartData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/CombinedData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/DataSet$Rounding.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/DataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/Entry$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/Entry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineDataSet$Mode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineRadarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/LineScatterCandleRadarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieDataSet$ValuePosition.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/PieEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/RadarData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/RadarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/RadarEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ScatterData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ScatterDataSet$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/ScatterDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/filter/Approximator$Line.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/data/filter/Approximator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/exception/DrawingDataSetNotCreatedException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/ColorFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/DefaultAxisValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/DefaultFillFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/DefaultValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IAxisValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IFillFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/IndexAxisValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/LargeValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/PercentFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/StackedValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/formatter/ValueFormatter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/BarHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/ChartHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/CombinedHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/Highlight.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/HorizontalBarHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/IHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/PieHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/PieRadarHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/RadarHighlighter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/highlight/Range.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/BarDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/BarLineScatterCandleBubbleDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/BubbleDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/CandleDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/ChartInterface.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/CombinedDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/LineDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/dataprovider/ScatterDataProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IBarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IBarLineScatterCandleBubbleDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IBubbleDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ICandleDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ILineDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ILineRadarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/ILineScatterCandleRadarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IPieDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IRadarDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/interfaces/datasets/IScatterDataSet.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/AnimatedMoveViewJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/AnimatedViewPortJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/AnimatedZoomJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/MoveViewJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/ViewPortJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/jobs/ZoomJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/BarLineChartTouchListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/ChartTouchListener$ChartGesture.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/ChartTouchListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnChartGestureListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnChartValueSelectedListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnDrawLineChartTouchListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/OnDrawListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/PieRadarChartTouchListener$AngularVelocitySample.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/listener/PieRadarChartTouchListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/matrix/Vector3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/model/GradientColor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/AxisRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BarChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BarLineScatterCandleBubbleRenderer$XBounds.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BarLineScatterCandleBubbleRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/BubbleChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/CandleStickChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/CombinedChartRenderer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/CombinedChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/DataRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/HorizontalBarChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LegendRenderer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LegendRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineChartRenderer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineChartRenderer$DataSetImageCache.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineRadarRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/LineScatterCandleRadarRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/PieChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/RadarChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/Renderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/ScatterChartRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/XAxisRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/XAxisRendererHorizontalBarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/XAxisRendererRadarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/YAxisRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/YAxisRendererHorizontalBarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/YAxisRendererRadarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/ChevronDownShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/ChevronUpShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/CircleShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/CrossShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/IShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/SquareShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/TriangleShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/renderer/scatter/XShapeRenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ColorTemplate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/EntryXComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/FSize.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/FileUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/HorizontalViewPortHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/MPPointD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/MPPointF$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/MPPointF.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ObjectPool$Poolable.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ObjectPool.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/Transformer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/TransformerHorizontalBarChart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/Utils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/github/mikephil/charting/utils/ViewPortHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/library_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/merged_manifests/debug/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/intermediates/transforms/stripDebugSymbol/debug/__content__.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MPChartLib/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/generated/source/buildConfig/debug/com/obt/qrcode/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugAssets/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/intermediate-jars/debug/classes.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/intermediate-jars/debug/res.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/BuildConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/activity/CaptureActivity$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/activity/CaptureActivity$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/activity/CaptureActivity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/AutoFocusManager$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/AutoFocusManager$AutoFocusTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/AutoFocusManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/CameraConfigurationManager$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/CameraConfigurationManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/CameraManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/PreviewCallback.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/camera/open/OpenCameraInterface.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/decode/DecodeFormatManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/decode/DecodeHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/decode/DecodeThread.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/encoding/EncodingUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/BeepManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/CaptureActivityHandler$State.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/CaptureActivityHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer$InactivityAsyncTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer$PowerStatusReceiver.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/obt/qrcode/utils/InactivityTimer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/library_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/merged_manifests/debug/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/bg_qr_grey.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/img_scan_code.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/scan_line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/drawable/shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/layout/aty_capture.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/raw/beep.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/values-zh-rCN/values-zh-rCN.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/values-zh-rTW/values-zh-rTW.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/packaged_res/debug/values/values.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/intermediates/transforms/stripDebugSymbol/debug/__content__.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qrcode/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/BuyDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/BuyDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/CountryCodeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/CountryCodeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/event/LogoutEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/event/LogoutEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/BaseLinearLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/BaseLinearLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -390,18 +95,18 @@
         <counts>
           <entry key="dummy" value="26" />
           <entry key="gradle" value="56" />
-          <entry key="java" value="19983" />
+          <entry key="java" value="20572" />
           <entry key="properties" value="43" />
-          <entry key="xml" value="2601" />
+          <entry key="xml" value="2606" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="56" />
-          <entry key="JAVA" value="19983" />
+          <entry key="JAVA" value="20572" />
           <entry key="PLAIN_TEXT" value="26" />
           <entry key="Properties" value="43" />
-          <entry key="XML" value="2601" />
+          <entry key="XML" value="2606" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -414,13 +119,13 @@
           <entry key="gradle" value="15" />
           <entry key="gradlew" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="527" />
+          <entry key="java" value="552" />
           <entry key="png" value="4" />
           <entry key="priceBTC" value="1" />
           <entry key="priceUSD" value="1" />
           <entry key="pro" value="7" />
           <entry key="properties" value="11" />
-          <entry key="xml" value="161" />
+          <entry key="xml" value="166" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -429,12 +134,12 @@
           <entry key="Groovy" value="15" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="4" />
-          <entry key="JAVA" value="527" />
+          <entry key="JAVA" value="552" />
           <entry key="JSON" value="4" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="ProGuard File" value="7" />
           <entry key="Properties" value="11" />
-          <entry key="XML" value="161" />
+          <entry key="XML" value="166" />
         </counts>
       </usages-collector>
     </session>
@@ -445,71 +150,80 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="210" column="41" selection-start-line="210" selection-start-column="41" selection-end-line="210" selection-end-column="41" />
-              <folding>
-                <element signature="e#8185#8228#0" expanded="true" />
-                <element signature="e#8587#8588#0" expanded="true" />
-                <element signature="e#8663#8664#0" expanded="true" />
-                <element signature="e#8952#8953#0" expanded="true" />
-                <element signature="e#8988#8989#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="257">
+              <caret line="120" column="37" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="475" column="9" selection-start-line="465" selection-start-column="6" selection-end-line="475" selection-end-column="9" />
+            <state relative-caret-position="250">
+              <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="222" column="50" selection-start-line="222" selection-start-column="50" selection-end-line="222" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="435" column="32" selection-start-line="435" selection-start-column="32" selection-end-line="435" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="394" column="52" lean-forward="true" selection-start-line="394" selection-start-column="52" selection-end-line="394" selection-end-column="52" />
+            <state relative-caret-position="174">
+              <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
               <folding>
-                <element signature="e#2567#2616#0" expanded="true" />
-                <element signature="e#16542#16543#0" expanded="true" />
-                <element signature="e#16618#16619#0" expanded="true" />
-                <element signature="e#17089#17090#0" expanded="true" />
-                <element signature="e#17125#17126#0" expanded="true" />
-                <element signature="e#17332#17392#0" expanded="true" />
+                <element signature="e#3319#3351#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="54" column="45" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+            <state relative-caret-position="10">
+              <caret line="217" column="6" selection-start-line="217" selection-start-column="6" selection-end-line="217" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/SellDataBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="249" column="37" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="319" column="43" selection-start-line="319" selection-start-column="43" selection-end-line="319" selection-end-column="43" />
+            <state relative-caret-position="280">
+              <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
+              <folding>
+                <element signature="e#1755#1756#0" expanded="true" />
+                <element signature="e#1787#1788#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -529,10 +243,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>etReceiveAddress</find>
-      <find>srlMyFundData</find>
-      <find>startA</find>
-      <find>email_not_register</find>
       <find>2016</find>
       <find>token</find>
       <find>account</find>
@@ -559,6 +269,10 @@
       <find>tvExchangeCurrency</find>
       <find>etRa</find>
       <find>refre</find>
+      <find>FUND_PASSWORD</find>
+      <find>tx</find>
+      <find>txAmount</find>
+      <find>重复</find>
     </findStrings>
     <replaceStrings>
       <replace>black_333333</replace>
@@ -6096,11 +5810,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/AccountSecurityPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/CloseVerifyMethodActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_edittext_with_action.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetAllBalancePresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MyFundActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SafetyCenterPresenterImp.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
@@ -6112,41 +5821,46 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sell_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/listener/OnTextChangeListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BindPhonePresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_recharge_recycler.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_withdraw_cash_recycler.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCurrencyChargePresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BuyContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/SellContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" />
         <option value="$PROJECT_DIR$/gradle.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BuyPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/WithDrawPresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/VerifyCodePresenterImp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/event/LogoutEvent.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/BaseLinearLayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/editview/EditTextWithAction.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_recharge_recycler.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_withdraw_cash_recycler.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/CountryCodeAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/BuyDataAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java" />
       </list>
     </option>
   </component>
@@ -6209,6 +5923,25 @@
             <path>
               <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="io" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="bcaas" type="462c0819:PsiDirectoryNode" />
+              <item name="exchange" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="activity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ExchangeAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
@@ -6264,7 +5997,7 @@
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java&#10;sellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Sho&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;Strint&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/StringTool.java&#10;Edi&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.EditTextFrom&#10;Ed&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;fo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;For&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ForgetToResetPasswordActivity&#10;Fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;with&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;wi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.WithDrawPresenterImp&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Goo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java&#10;withD&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;orderRE&#9;PSI&#9;JAVA://io.bcaas.exchange.adapter.OrderRechargeAdapter&#10;Bin&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;getAll&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/assets/json/getAllBalance&#10;Con&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Mes&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;Mess&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;WithV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;buy_de&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;Goog&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;forget&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;buyPre&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.BuyPresenterImp&#10;curre&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;GetO&#9;PSI&#9;JAVA://com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;withdr&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;Dec&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.decimal.DecimalTool&#10;dec&#9;RUN_CONFIGURATION&#9;DecimalTool&#10;order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;Showc&#9;PSI&#9;JAVA://io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;re&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ma&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;Reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;REg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_register.xml&#10;BaseA&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java&#10;buy&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml" />
+    <property name="SearchEverywhereHistoryKey" value="Show&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;SellDe&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;sellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SetF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SetFundPasswordActivity&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java&#10;Sho&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;Strint&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/StringTool.java&#10;Edi&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.EditTextFrom&#10;Ed&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;fo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;For&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ForgetToResetPasswordActivity&#10;Fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;with&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;wi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.WithDrawPresenterImp&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Goo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java&#10;withD&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;orderRE&#9;PSI&#9;JAVA://io.bcaas.exchange.adapter.OrderRechargeAdapter&#10;Bin&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;getAll&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/assets/json/getAllBalance&#10;Con&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Mes&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;Mess&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;WithV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;buy_de&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;Goog&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;forget&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;buyPre&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.BuyPresenterImp&#10;curre&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;GetO&#9;PSI&#9;JAVA://com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;withdr&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;Dec&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.decimal.DecimalTool&#10;dec&#9;RUN_CONFIGURATION&#9;DecimalTool&#10;order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;Showc&#9;PSI&#9;JAVA://io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;re&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ma&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;Reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -6455,7 +6188,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85257983" visible="true" weight="0.20881502" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -6474,7 +6206,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.19283065" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.30160692" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.50309026" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.2051916" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.66625464" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.42027193" />
@@ -6528,166 +6260,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="83" column="78" lean-forward="true" selection-start-line="83" selection-start-column="78" selection-end-line="83" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/OrderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="119" column="60" selection-start-line="119" selection-start-column="60" selection-end-line="119" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/vo/MemberOrderVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="283" column="26" selection-start-line="283" selection-start-column="26" selection-end-line="283" selection-end-column="26" />
-          <folding>
-            <element signature="e#5497#5498#0" expanded="true" />
-            <element signature="e#5530#5531#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="95" column="129" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="60" column="80" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="80" />
-          <folding>
-            <element signature="e#2121#2173#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="42" column="84" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="110" column="40" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_recharge_recycler.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="85" column="37" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
-          <folding>
-            <element signature="e#1798#1810#0" expanded="true" />
-            <element signature="e#2549#2565#0" expanded="true" />
-            <element signature="e#3815#3826#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_withdraw_cash_recycler.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="109" column="42" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
-          <folding>
-            <element signature="e#1283#1294#0" expanded="true" />
-            <element signature="e#1851#1863#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCurrencyChargePresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="83" column="68" selection-start-line="83" selection-start-column="68" selection-end-line="83" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="234" column="58" selection-start-line="234" selection-start-column="58" selection-end-line="234" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/base/BaseApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="201" column="30" selection-start-line="201" selection-start-column="30" selection-end-line="201" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6383#6384#0" expanded="true" />
-            <element signature="e#6414#6415#0" expanded="true" />
-            <element signature="e#7869#7870#0" expanded="true" />
-            <element signature="e#7899#7900#0" expanded="true" />
-            <element signature="e#8161#8162#0" expanded="true" />
-            <element signature="e#8210#8211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BasePresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/AccountSecurityContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/AccountSecurityPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="31" column="62" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/BuyContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="294" column="71" selection-start-line="294" selection-start-column="71" selection-end-line="294" selection-end-column="71" />
-          <folding>
-            <element signature="e#5470#5471#0" expanded="true" />
-            <element signature="e#5523#5524#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -6702,17 +6274,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="286" selection-start-line="286" selection-end-line="286" />
-          <folding>
-            <element signature="e#7875#7876#0" expanded="true" />
-            <element signature="e#7923#7924#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MPChartLib/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -6720,13 +6281,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="116" column="37" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -6761,13 +6315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/MyFundActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
@@ -6789,20 +6336,6 @@
           <folding>
             <element signature="e#4549#4587#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="217" selection-start-line="217" selection-end-line="218" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="207" column="63" lean-forward="true" selection-start-line="207" selection-start-column="63" selection-end-line="207" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -6884,27 +6417,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="103" column="25" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/chart/YLineValueFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="39" column="16" lean-forward="true" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="464" lean-forward="true" selection-start-line="464" selection-end-line="464" />
-          <folding>
-            <element signature="e#18562#18617#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6922,32 +6438,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="210" column="41" selection-start-line="210" selection-start-column="41" selection-end-line="210" selection-end-column="41" />
-          <folding>
-            <element signature="e#8185#8228#0" expanded="true" />
-            <element signature="e#8587#8588#0" expanded="true" />
-            <element signature="e#8663#8664#0" expanded="true" />
-            <element signature="e#8952#8953#0" expanded="true" />
-            <element signature="e#8988#8989#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_sell.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
           <caret line="54" column="45" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="319" column="43" selection-start-line="319" selection-start-column="43" selection-end-line="319" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -6958,17 +6453,232 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_recharge_recycler.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="84" selection-start-line="84" selection-end-line="85" />
+          <folding>
+            <element signature="e#3619#3644#0" expanded="true" />
+            <element signature="e#4038#4050#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_withdraw_cash_recycler.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="100" column="47" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
+          <folding>
+            <element signature="e#4627#4653#0" expanded="true" />
+            <element signature="e#5102#5114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="146" column="115" selection-start-line="146" selection-start-column="115" selection-end-line="146" selection-end-column="115" />
+          <folding>
+            <element signature="e#8185#8228#0" expanded="true" />
+            <element signature="e#8587#8588#0" expanded="true" />
+            <element signature="e#8663#8664#0" expanded="true" />
+            <element signature="e#8952#8953#0" expanded="true" />
+            <element signature="e#8988#8989#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/BuyDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="325" column="50" selection-start-line="325" selection-start-column="50" selection-end-line="325" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="92" column="42" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="258" column="51" selection-start-line="258" selection-start-column="51" selection-end-line="258" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="212" column="35" selection-start-line="212" selection-start-column="35" selection-end-line="212" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/CountryCodeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="77" column="9" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/MyFundDataAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="77" column="110" selection-start-line="77" selection-start-column="110" selection-end-line="77" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="64" column="99" selection-start-line="64" selection-start-column="99" selection-end-line="64" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="100" column="92" selection-start-line="100" selection-start-column="92" selection-end-line="100" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/PopListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-368">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/SettingsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-109">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/SidesSlipAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/TabViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/widget/EditText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="135" column="30" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="30" />
+          <folding>
+            <element signature="e#4619#4620#0" expanded="true" />
+            <element signature="e#4675#4676#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/BuyDataAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="76" column="73" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+          <folding>
+            <element signature="e#2214#2271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/SellDataBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
+          <folding>
+            <element signature="e#1755#1756#0" expanded="true" />
+            <element signature="e#1787#1788#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="394" column="52" lean-forward="true" selection-start-line="394" selection-start-column="52" selection-end-line="394" selection-end-column="52" />
+        <state relative-caret-position="10">
+          <caret line="217" column="6" selection-start-line="217" selection-start-column="6" selection-end-line="217" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="222" column="50" selection-start-line="222" selection-start-column="50" selection-end-line="222" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="435" column="32" selection-start-line="435" selection-start-column="32" selection-end-line="435" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="120" column="37" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
           <folding>
-            <element signature="e#2567#2616#0" expanded="true" />
-            <element signature="e#16542#16543#0" expanded="true" />
-            <element signature="e#16618#16619#0" expanded="true" />
-            <element signature="e#17089#17090#0" expanded="true" />
-            <element signature="e#17125#17126#0" expanded="true" />
-            <element signature="e#17332#17392#0" expanded="true" />
+            <element signature="e#3319#3351#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -153,6 +153,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                             Toast.makeText(context, R.string.please_input_amount_withdraw, Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        //3：输入的金额必须大于手续费
                         if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(withDrawAmount, transactionFee, false),
                                 MessageConstants.NO_ENOUGH_BALANCE)) {
                             Toast.makeText(context, R.string.amount_must_be_more_than_fee, Toast.LENGTH_SHORT).show();

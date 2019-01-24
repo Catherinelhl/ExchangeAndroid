@@ -222,6 +222,6 @@
     <string name="email_not_register">邮箱未注册</string>
     <string name="verify_phone_code_fail">手机验证码错误</string>
     <string name="amount_must_be_more_than_fee">金额必须大于手续费</string>
-    <string name="please_do_not_bind_phone_repeat">请勿重复绑定手机号</string>
+    <string name="phone_number_had_bind">手机号已被绑定</string>
 
 </resources>

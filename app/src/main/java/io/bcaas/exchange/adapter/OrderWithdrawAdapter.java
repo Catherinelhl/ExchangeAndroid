@@ -56,11 +56,12 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
             return;
         }
         String enName = currencyListVO.getEnName();
+        String uid = currencyListVO.getCurrencyUid();
         viewHolder.tvWithdrawType.setText(context.getResources().getString(R.string.with_draw) + "  " + enName);
         viewHolder.tvWithdrawTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvWithdrawStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
-        viewHolder.tv_number.setText(memberOrderVO.getAmount() + "  " + enName);
-        viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + enName);
+        viewHolder.tv_number.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);
+        viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), uid) + "  " + enName);
         viewHolder.tvWithdrawAddress.setText(memberOrderVO.getAddress());
     }
 

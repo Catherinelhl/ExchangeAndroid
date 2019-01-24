@@ -118,6 +118,8 @@ public class MessageConstants {
     public static final String ERROR_INSUFFICIENT_BALANCES = "Insufficient balances.";
     public static final int CODE_2086= 2086;
     public static final String ERROR_PHONE_ALREADY_REGISTER = "Phone already register.";
+    public static final int CODE_2087 = 2087;
+    public static final String ERROR_COINNAME_IN_CURRENCY_BAN_ROSTER = "CoinName in currency ban roster.";
     //BTC
     public static final int CODE_3000 = 3000;
     public static final String ERROR_SEND_WALLET_ADDRESS_INVALID = "Send wallet address invalid.";

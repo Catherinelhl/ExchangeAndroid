@@ -71,10 +71,11 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         if (currencyListVO == null) {
             return;
         }
+        String uid = currencyListVO.getCurrencyUid();
         viewHolder.tvFundType.setText(currencyListVO.getEnName());
         String balanceBlocked = memberKeyVO.getBalanceBlocked();
-        viewHolder.tvFreeze.setText(StringTool.getDisplayAmountByUId(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked, currencyListVO.getCurrencyUid()));
-        viewHolder.tvAvailable.setText(StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), currencyListVO.getCurrencyUid()));
+        viewHolder.tvFreeze.setText(StringTool.getDisplayAmountByUId(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked, uid));
+        viewHolder.tvAvailable.setText(StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

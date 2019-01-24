@@ -171,7 +171,6 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                         if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, text, true),
                                 MessageConstants.NO_ENOUGH_BALANCE)) {
                             etSellVolume.setText(salableBalance);
-                            etSellVolume.setSelection(salableBalance.length());
                             setProgressByUserInput(salableBalance);
                         } else {
                             setProgressByUserInput(text);
@@ -333,11 +332,13 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee, true);
             //得到当前可换做售出币种的交易额
             txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr, currencyListVO.getCurrencyUid());
-            if (StringTool.notEmpty(txAmount)) {
-                tvFinalTxAmount.setVisibility(VISIBLE);
-                tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                        + txAmount + "  " + exchangeCurrencyListVO.getEnName());
-            }
+            boolean isShow = StringTool.notEmpty(txAmount)
+                    && !StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0", false),
+                    MessageConstants.NO_ENOUGH_BALANCE)
+                    && !StringTool.equals(txAmount, MessageConstants.NO_ENOUGH_BALANCE);
+            tvFinalTxAmount.setVisibility(isShow ? VISIBLE : GONE);
+            tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
+                    + txAmount + "  " + exchangeCurrencyListVO.getEnName());
 
         }
     }
