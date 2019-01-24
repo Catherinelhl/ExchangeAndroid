@@ -18,6 +18,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="getAll" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="exchange" />
   </component>
@@ -28,7 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dcb7d7d-1061-4137-8bcf-a32faae008f3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,18 +80,18 @@
         <counts>
           <entry key="dummy" value="26" />
           <entry key="gradle" value="56" />
-          <entry key="java" value="20578" />
+          <entry key="java" value="20618" />
           <entry key="properties" value="43" />
-          <entry key="xml" value="2631" />
+          <entry key="xml" value="2647" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="56" />
-          <entry key="JAVA" value="20578" />
+          <entry key="JAVA" value="20618" />
           <entry key="PLAIN_TEXT" value="26" />
           <entry key="Properties" value="43" />
-          <entry key="XML" value="2631" />
+          <entry key="XML" value="2647" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -101,7 +104,7 @@
           <entry key="gradle" value="15" />
           <entry key="gradlew" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="554" />
+          <entry key="java" value="560" />
           <entry key="png" value="4" />
           <entry key="priceBTC" value="1" />
           <entry key="priceUSD" value="1" />
@@ -116,7 +119,7 @@
           <entry key="Groovy" value="15" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="4" />
-          <entry key="JAVA" value="554" />
+          <entry key="JAVA" value="560" />
           <entry key="JSON" value="4" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="ProGuard File" value="7" />
@@ -132,55 +135,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="120" column="37" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
+            <state relative-caret-position="80">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="171" column="34" selection-start-line="171" selection-start-column="18" selection-end-line="171" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="195" column="53" selection-start-line="195" selection-start-column="18" selection-end-line="195" selection-end-column="53" />
+            <state relative-caret-position="3079">
+              <caret line="226" column="38" selection-start-line="226" selection-start-column="38" selection-end-line="226" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="472" column="52" selection-start-line="472" selection-start-column="48" selection-end-line="472" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+            <state relative-caret-position="260">
+              <caret line="238" column="13" lean-forward="true" selection-start-line="238" selection-start-column="13" selection-end-line="238" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -195,32 +171,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/contracts/GetCoinMarketCapContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="13" column="36" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10">
-              <caret line="217" column="6" selection-start-line="217" selection-start-column="6" selection-end-line="217" selection-end-column="6" />
+            <state relative-caret-position="32">
+              <caret line="335" column="120" lean-forward="true" selection-start-line="335" selection-start-column="120" selection-end-line="335" selection-end-column="120" />
+              <folding>
+                <element signature="e#8445#8471#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/bean/SellDataBean.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
-              <folding>
-                <element signature="e#1755#1756#0" expanded="true" />
-                <element signature="e#1787#1788#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="194">
+              <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="123" column="39" selection-start-line="123" selection-start-column="39" selection-end-line="123" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetAllBalancePresenterImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -240,9 +242,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>account</find>
-      <find>expi</find>
-      <find>Verify</find>
       <find>verification/create</find>
       <find>no_google_verify_text</find>
       <find>realNet</find>
@@ -270,6 +269,9 @@
       <find>重复</find>
       <find>getCoinMarketCapFailure</find>
       <find>txpassword_same_as_account_password</find>
+      <find>verify_code_fail</find>
+      <find>calculateFirstSubtractSecondValue</find>
+      <find>getAll</find>
     </findStrings>
     <replaceStrings>
       <replace>black_333333</replace>
@@ -5842,7 +5844,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_recharge_recycler.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_order_withdraw_cash_recycler.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/WithDrawDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/decimal/DecimalTool.java" />
@@ -5852,12 +5853,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/OrderWithdrawAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/adapter/BuyDataAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetCoinMarketCapPresenterImp.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java" />
       </list>
     </option>
   </component>
@@ -5994,7 +5996,7 @@
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="Show&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;SellDe&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;sellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SetF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SetFundPasswordActivity&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java&#10;Sho&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;Strint&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/StringTool.java&#10;Edi&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.EditTextFrom&#10;Ed&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;fo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;For&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ForgetToResetPasswordActivity&#10;Fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;with&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;wi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.WithDrawPresenterImp&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Goo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java&#10;withD&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;orderRE&#9;PSI&#9;JAVA://io.bcaas.exchange.adapter.OrderRechargeAdapter&#10;Bin&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;getAll&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/assets/json/getAllBalance&#10;Con&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Mes&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;Mess&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;WithV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;buy_de&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;Goog&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;forget&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;buyPre&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.BuyPresenterImp&#10;curre&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;GetO&#9;PSI&#9;JAVA://com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;withdr&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;Dec&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.decimal.DecimalTool&#10;dec&#9;RUN_CONFIGURATION&#9;DecimalTool&#10;order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;Showc&#9;PSI&#9;JAVA://io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;re&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Ma&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MainActivity&#10;Reg&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="httpA&#9;PSI&#9;JAVA://io.bcaas.exchange.http.HttpApi&#10;http&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.Http&#10;With&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;SellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;Show&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;SellDe&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java&#10;sellV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java&#10;SetF&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.SetFundPasswordActivity&#10;Order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderRechargeAdapter.java&#10;Sho&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/view/viewGroup/ShowCoinChartRelativeLayout.java&#10;Strint&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/StringTool.java&#10;Edi&#9;PSI&#9;JAVA://io.bcaas.exchange.constants.Constants.EditTextFrom&#10;Ed&#9;PSI&#9;JAVA://io.bcaas.exchange.view.editview.EditTextWithAction&#10;fo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;For&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.ForgetToResetPasswordActivity&#10;Fun&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.MyFundActivity&#10;with&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;wi&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.WithDrawPresenterImp&#10;Sell&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java&#10;Wi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;Goo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/GoogleVerifyActivity.java&#10;withD&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;orderRE&#9;PSI&#9;JAVA://io.bcaas.exchange.adapter.OrderRechargeAdapter&#10;Bin&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.BindPhoneActivity&#10;getAll&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/assets/json/getAllBalance&#10;Con&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/Constants.java&#10;Mes&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;Mess&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java&#10;for&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;WithV&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java&#10;buy_de&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/res/layout/activity_buy_detail.xml&#10;Goog&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.GoogleVerifyActivity&#10;Log&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;forget&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/ForgetToResetPasswordPresenterImp.java&#10;buyPre&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.presenter.BuyPresenterImp&#10;curre&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/vo/CurrencyListVO.java&#10;GetO&#9;PSI&#9;JAVA://com.sun.org.apache.xalan.internal.xsltc.cmdline.getopt.GetOpt&#10;Base&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/base/BaseActivity.java&#10;withdr&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.WithDrawActivity&#10;clo&#9;PSI&#9;JAVA://io.bcaas.exchange.ui.activity.CloseVerifyMethodActivity&#10;Clo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/CloseVerifyPresenterImp.java&#10;Regi&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java&#10;Login&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/presenter/LoginPresenterImp.java&#10;Date&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/tools/time/DateFormatTool.java&#10;Dec&#9;PSI&#9;JAVA://io.bcaas.exchange.tools.decimal.DecimalTool&#10;dec&#9;RUN_CONFIGURATION&#9;DecimalTool&#10;order&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/adapter/OrderTransactionAdapter.java&#10;Showc&#9;PSI&#9;JAVA://io.bcaas.exchange.view.viewGroup.ShowCoinChartRelativeLayout&#10;Lo&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/LoginActivity.java&#10;re&#9;FILE&#9;file:///Users/catherine.brainwilliam/AndroidOBTProject/ExchangeAndroid/app/src/main/java/io/bcaas/exchange/ui/activity/RegisterActivity.java" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
@@ -6186,7 +6188,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.85257983" visible="true" weight="0.20881502" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.85257983" visible="true" weight="0.20881502" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" sideWeight="0.14742015" side_tool="true" weight="0.13872832" />
@@ -6203,7 +6205,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.19283065" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5014451" side_tool="true" weight="0.45646766" />
-      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.21508035" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="9" sideWeight="0.49855492" visible="true" weight="0.15945612" />
       <window_info anchor="bottom" id="Build" order="10" sideWeight="0.49927744" weight="0.2051916" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.66625464" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.42027193" />
@@ -6257,27 +6259,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MPChartLib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/BuyPresenterImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="100" column="51" selection-start-line="100" selection-start-column="51" selection-end-line="100" selection-end-column="51" />
-          <folding>
-            <element signature="e#4530#4567#0" expanded="true" />
-            <element signature="e#4386#4437#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/SellPresenterImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -6429,13 +6410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="249" column="37" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_order_recharge_recycler.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -6460,20 +6434,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="146" column="115" selection-start-line="146" selection-start-column="115" selection-end-line="146" selection-end-column="115" />
-          <folding>
-            <element signature="e#8185#8228#0" expanded="true" />
-            <element signature="e#8587#8588#0" expanded="true" />
-            <element signature="e#8663#8664#0" expanded="true" />
-            <element signature="e#8952#8953#0" expanded="true" />
-            <element signature="e#8988#8989#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SetFundPasswordActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -6485,13 +6445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="325" column="50" selection-start-line="325" selection-start-column="50" selection-end-line="325" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="92" column="42" selection-start-line="92" selection-start-column="42" selection-end-line="92" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -6614,20 +6567,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="217" column="6" selection-start-line="217" selection-start-column="6" selection-end-line="217" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="133" column="19" selection-start-line="133" selection-start-column="19" selection-end-line="133" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/MessageConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -6663,17 +6602,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="171" column="34" selection-start-line="171" selection-start-column="18" selection-end-line="171" selection-end-column="34" />
+        <state relative-caret-position="3079">
+          <caret line="226" column="38" selection-start-line="226" selection-start-column="38" selection-end-line="226" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-zh/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="195" column="53" selection-start-line="195" selection-start-column="18" selection-end-line="195" selection-end-column="53" />
+        <state relative-caret-position="28">
+          <caret line="159" column="13" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/activity/SellDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/WithDrawView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="160" column="25" selection-start-line="160" selection-start-column="25" selection-end-line="160" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/view/SellView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="335" column="120" lean-forward="true" selection-start-line="335" selection-start-column="120" selection-end-line="335" selection-end-column="120" />
+          <folding>
+            <element signature="e#8445#8471#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/tools/StringTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="238" column="13" lean-forward="true" selection-start-line="238" selection-start-column="13" selection-end-line="238" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/http/HttpApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="123" column="39" selection-start-line="123" selection-start-column="39" selection-end-line="123" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/interactor/MainInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/bcaas/exchange/ui/presenter/GetAllBalancePresenterImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
         </state>
       </provider>
     </entry>

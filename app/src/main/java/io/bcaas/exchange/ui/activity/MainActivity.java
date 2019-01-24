@@ -267,6 +267,9 @@ public class MainActivity extends BaseActivity
             if (currentFragment != null) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.home_container, currentFragment).commit();
             }
+            if (getAllBalancePresenter != null) {
+                getAllBalancePresenter.getAllBalance();
+            }
             switch (position) {
                 case 0:
                     setTitle(getString(R.string.buy_title));

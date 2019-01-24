@@ -215,9 +215,9 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                             Toast.makeText(context, R.string.no_enough_balance, Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        //4：判断当前的扣除手续费的交易额不能小于等于0，否则提示不能通过
+                        //4：判断当前的扣除手续费的交易额不能小于当前币种的最小单位，否则提示不能通过
                         if (StringTool.notEmpty(txAmount) &&
-                                StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0", false),
+                                StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, StringTool.getMinValuesByUid(currencyListVO.getCurrencyUid()), false),
                                         MessageConstants.NO_ENOUGH_BALANCE)) {
                             Toast.makeText(context, R.string.invalid_tx_amount, Toast.LENGTH_SHORT).show();
                             return;
@@ -333,7 +333,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             //得到当前可换做售出币种的交易额
             txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr, currencyListVO.getCurrencyUid());
             boolean isShow = StringTool.notEmpty(txAmount)
-                    && !StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, "0", false),
+                    && !StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, StringTool.getMinValuesByUid(currencyListVO.getCurrencyUid()), false),
                     MessageConstants.NO_ENOUGH_BALANCE)
                     && !StringTool.equals(txAmount, MessageConstants.NO_ENOUGH_BALANCE);
             tvFinalTxAmount.setVisibility(isShow ? VISIBLE : GONE);
