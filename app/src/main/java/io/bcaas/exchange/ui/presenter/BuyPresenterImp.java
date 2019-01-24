@@ -98,6 +98,9 @@ public class BuyPresenterImp extends AccountSecurityPresenterImp implements BuyC
                                 } else if (code == MessageConstants.CODE_2055) {
                                     //{"success":false,"code":2055,"message":"Invalid order information."}
                                     view.invalidBuyOrder(getString(R.string.invalid_order_information));
+                                } else if (code == MessageConstants.CODE_2066) {
+                                    //    {"success":false,"code":2066,"message":"Insufficient balances."}
+                                    view.buyFailure(getString(R.string.no_enough_balance));
                                 } else {
                                     view.buyFailure(getString(R.string.failure_to_buy_please_try_again));
 

@@ -101,10 +101,13 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp
                                 } else if (code == MessageConstants.CODE_2045) {
                                     //  {"success":false,"code":2045,"message":"Authenticator verify fail."}
                                     view.withDrawFailure(getString(R.string.google_authenticator_verify_fail));
-                                }  else if (code == MessageConstants.CODE_2010) {
+                                } else if (code == MessageConstants.CODE_2010) {
                                     view.withDrawFailure(getString(R.string.verify_code_fail));
                                 } else if (code == MessageConstants.CODE_2025) {
                                     view.withDrawFailure(getString(R.string.verify_code_expire));
+                                } else if (code == MessageConstants.CODE_2066) {
+                                    //    {"success":false,"code":2066,"message":"Insufficient balances."}
+                                    view.withDrawFailure(getString(R.string.no_enough_balance));
                                 } else {
                                     view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
                                 }

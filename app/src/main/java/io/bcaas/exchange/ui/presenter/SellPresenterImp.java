@@ -112,8 +112,11 @@ public class SellPresenterImp extends AccountSecurityPresenterImp
                                     // {"success":false,"code":2045,"message":"Authenticator verify fail."}
                                     view.sellFailure(getString(R.string.google_authenticator_verify_fail));
                                 } else if (code == MessageConstants.CODE_2015) {
-                                   // {"success":false,"code":2015,"message":"Current password is wrong."}
+                                    // {"success":false,"code":2015,"message":"Current password is wrong."}
                                     view.sellFailure(getString(R.string.fund_password_is_wrong));
+                                } else if (code == MessageConstants.CODE_2066) {
+                                    //    {"success":false,"code":2066,"message":"Insufficient balances."}
+                                    view.sellFailure(getString(R.string.no_enough_balance));
                                 } else {
                                     view.sellFailure(getString(R.string.failure_to_sell_out_please_try_again));
                                 }
