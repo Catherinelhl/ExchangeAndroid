@@ -24,7 +24,7 @@ import java.security.NoSuchAlgorithmException;
  * @since 2019/1/2
  * 「设置资金密码」
  */
-public class SetFundPasswordPresenterImp extends BasePresenterImp 
+public class SetFundPasswordPresenterImp extends BasePresenterImp
         implements SetFundPasswordContract.Presenter {
     private String TAG = SetFundPasswordPresenterImp.class.getSimpleName();
     private SetFundPasswordContract.View view;
@@ -90,14 +90,19 @@ public class SetFundPasswordPresenterImp extends BasePresenterImp
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
                                 int code = responseJson.getCode();
-                                if (code==MessageConstants.CODE_2022){
+                                if (code == MessageConstants.CODE_2030) {
+                                    //"New password is same as current password."
+                                    view.securityTxPasswordFailure(getString(R.string.txpassword_same_as_account_password));
+                                } else if (code == MessageConstants.CODE_2029) {
+                                    view.securityTxPasswordFailure(getString(R.string.new_and_old_password_not_consistent));
+                                } else if (code == MessageConstants.CODE_2022) {
                                     //{"success":false,"code":2022,"message":"TxPassword is the same as the account password."}
                                     view.securityTxPasswordFailure(getString(R.string.txpassword_same_as_account_password));
 
-                                }else{
+                                } else {
                                     view.securityTxPasswordFailure(getString(R.string.failure_security_txpassword));
                                 }
-                              
+
                             }
 
                         }

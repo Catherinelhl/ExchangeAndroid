@@ -100,6 +100,11 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                                 } else if (code == MessageConstants.CODE_2025
                                         || code == MessageConstants.CODE_2048) {
                                     view.forgetPasswordFailure(getString(R.string.verify_code_expire));
+                                } else if (code == MessageConstants.CODE_2030) {
+                                    //"New password is same as current password."
+                                    view.forgetPasswordFailure(getString(R.string.login_and_fund_password_not_consistent));
+                                } else if (code == MessageConstants.CODE_2029) {
+                                    view.forgetPasswordFailure(getString(R.string.new_and_old_password_not_consistent));
                                 } else {
                                     view.forgetPasswordFailure(getString(R.string.failure_to_reset_password));
                                 }

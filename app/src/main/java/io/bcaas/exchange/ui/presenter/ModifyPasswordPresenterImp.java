@@ -77,7 +77,7 @@ public class ModifyPasswordPresenterImp extends BasePresenterImp
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "resetPassword:", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;
@@ -87,7 +87,15 @@ public class ModifyPasswordPresenterImp extends BasePresenterImp
                             view.resetPasswordSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2030) {
+                                    //"New password is same as current password."
+                                    view.resetPasswordFailure(getString(R.string.login_and_fund_password_not_consistent));
+                                } else if (code == MessageConstants.CODE_2029) {
+                                    view.resetPasswordFailure(getString(R.string.new_and_old_password_not_consistent));
+                                } else {
+                                    view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
+                                }
                             }
 
                         }

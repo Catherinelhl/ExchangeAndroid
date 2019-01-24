@@ -219,6 +219,8 @@
     <string name="please_register_email_first">邮箱未注册，请先注册。</string>
     <string name="account_address">出账地址</string>
     <string name="google_verify_fail">Google authenticator verify fail.</string>
+    <string name="new_and_old_password_not_consistent">新密码不能与旧密码一致</string>
+    <string name="login_and_fund_password_not_consistent">登录密码不能和资金密码一致</string>
 
 
 </resources>
