@@ -8,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
@@ -29,16 +28,11 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
 
     private Context context;
     private List<MemberOrderVO> memberOrderVOS;
-    private OnItemSelectListener onItemSelectListener;
 
     public OrderWithdrawAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
         this.memberOrderVOS = memberOrderVOS;
-    }
-
-    public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
-        this.onItemSelectListener = onItemSelectListener;
     }
 
     @NonNull
@@ -63,8 +57,8 @@ public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdap
         }
         String enName = currencyListVO.getEnName();
         viewHolder.tvWithdrawType.setText(context.getResources().getString(R.string.with_draw) + "  " + enName);
-        viewHolder.tvWithdrawTime.setText(memberOrderVO.getCreateTime());
-        viewHolder.tvWithdrawStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(),memberOrderVO.getStatus()));
+        viewHolder.tvWithdrawTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
+        viewHolder.tvWithdrawStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         viewHolder.tv_number.setText(memberOrderVO.getAmount() + "  " + enName);
         viewHolder.tvFee.setText(memberOrderVO.getHandlingFee() + "  " + enName);
         viewHolder.tvWithdrawAddress.setText(memberOrderVO.getAddress());

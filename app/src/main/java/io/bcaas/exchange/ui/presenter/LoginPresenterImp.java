@@ -74,7 +74,6 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "login:", responseJson);
-
                         if (responseJson == null) {
                             view.noData();
                             return;

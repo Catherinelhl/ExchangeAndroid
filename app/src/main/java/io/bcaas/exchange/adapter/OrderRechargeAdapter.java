@@ -11,6 +11,8 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
@@ -28,16 +30,11 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
 
     private Context context;
     private List<MemberOrderVO> memberOrderVOS;
-    private OnItemSelectListener onItemSelectListener;
 
     public OrderRechargeAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
         this.memberOrderVOS = memberOrderVOS;
-    }
-
-    public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
-        this.onItemSelectListener = onItemSelectListener;
     }
 
     @NonNull
@@ -62,8 +59,8 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         }
         String enName = currencyListVO.getEnName();
         viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.recharge) + "  " + enName);
-        viewHolder.tvRechargeTime.setText(memberOrderVO.getCreateTime());
-        viewHolder.tvRechargeStatus.setText(String.valueOf(memberOrderVO.getStatus()));
+        viewHolder.tvRechargeTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
+        viewHolder.tvRechargeStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         viewHolder.tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
         viewHolder.tvRechargeAddress.setText(memberOrderVO.getAddress());
     }

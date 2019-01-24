@@ -100,6 +100,8 @@ public class StringTool {
                     return "失敗";
                 } else if (status == 1) {
                     return "已完成";
+                } else if (status == 2) {
+                    return "待验证";
                 }
                 break;
             case 1://提现

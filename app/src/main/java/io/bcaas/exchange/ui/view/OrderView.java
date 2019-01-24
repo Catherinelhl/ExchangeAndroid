@@ -101,7 +101,6 @@ public class OrderView extends BaseLinearLayout {
                     rlNoData.setVisibility(GONE);
                     if (orderRechargeAdapter == null) {
                         orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
-                        orderRechargeAdapter.setOnItemSelectListener(onItemSelectListener);
                         rvOrderData.setHasFixedSize(true);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
                         rvOrderData.setLayoutManager(linearLayoutManager);
@@ -119,7 +118,6 @@ public class OrderView extends BaseLinearLayout {
                     rlNoData.setVisibility(GONE);
                     if (orderWithdrawAdapter == null) {
                         orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
-                        orderWithdrawAdapter.setOnItemSelectListener(onItemSelectListener);
                         rvOrderData.setHasFixedSize(true);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
                         rvOrderData.setLayoutManager(linearLayoutManager);
