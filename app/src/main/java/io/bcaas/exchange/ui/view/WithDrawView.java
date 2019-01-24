@@ -94,7 +94,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                 float volume = Float.valueOf(content);
                 if (volume > 0) {
                     // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额
-                    if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(balanceAvailable, content,true), MessageConstants.NO_ENOUGH_BALANCE)) {
+                    if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(balanceAvailable, content, true), MessageConstants.NO_ENOUGH_BALANCE)) {
                         etWithdrawAmount.setContent(balanceAvailable);
                     }
                 } else {
@@ -195,16 +195,8 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
         if (memberKeyVO != null) {
             this.memberKeyVO = memberKeyVO;
             currencyListVO = memberKeyVO.getCurrencyListVO();
-            if (currencyListVO == null) {
-                return;
-            }
-            getCurrencyCharge();
-            //判断当前是否设置资金密码
-            boolean hasFundPassword = BaseApplication.isSetFundPassword();
-            if (llWithDrawContent != null) {
-                llWithDrawContent.setVisibility(hasFundPassword ? VISIBLE : GONE);
-            }
-            if (hasFundPassword) {
+            if (currencyListVO != null) {
+                getCurrencyCharge();
                 String enName = currencyListVO.getEnName();
                 if (tvCashAbleBalance != null) {
                     balanceAvailable = memberKeyVO.getBalanceAvailable();

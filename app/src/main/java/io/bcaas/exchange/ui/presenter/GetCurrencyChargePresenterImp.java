@@ -71,7 +71,7 @@ public class GetCurrencyChargePresenterImp extends BasePresenterImp
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getCurrencyCharge", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;
