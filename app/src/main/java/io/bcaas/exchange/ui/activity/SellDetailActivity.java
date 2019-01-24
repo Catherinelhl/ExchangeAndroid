@@ -213,23 +213,6 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
             }
         });
     }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case Constants.RequestCode.GOOGLE_VERIFY:
-                    break;
-                case Constants.RequestCode.FUND_PASSWORD:
-                    break;
-
-            }
-        }
-    }
-
-    @Override
     public void onBackPressed() {
         super.onBackPressed();
         setResult(true);
@@ -276,4 +259,28 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                // 如果当前是从设置google以及验证资金密码返回，应该更新当前用户的安全验证问题
+                case Constants.RequestCode.GOOGLE_VERIFY:
+                case Constants.RequestCode.FUND_PASSWORD:
+                    presenter.getAccountSecurity();
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+
+    }
 }

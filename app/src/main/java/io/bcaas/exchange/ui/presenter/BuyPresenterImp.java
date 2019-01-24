@@ -22,7 +22,7 @@ import java.security.NoSuchAlgorithmException;
  * @since 2019/1/10
  * 购买
  */
-public class BuyPresenterImp extends BasePresenterImp implements BuyContract.Presenter {
+public class BuyPresenterImp extends AccountSecurityPresenterImp implements BuyContract.Presenter {
 
     private String TAG = BuyPresenterImp.class.getSimpleName();
     private BuyContract.View view;
@@ -30,7 +30,7 @@ public class BuyPresenterImp extends BasePresenterImp implements BuyContract.Pre
     private Disposable disposableBuy;
 
     public BuyPresenterImp(BuyContract.View view) {
-        super();
+        super(view);
         this.view = view;
         txInteractor = new TxInteractor();
     }

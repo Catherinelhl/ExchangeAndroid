@@ -1,7 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -314,6 +316,20 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
         }
     };
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                // 如果当前是从设置google以及验证资金密码返回，应该更新当前用户的安全验证问题
+                case Constants.RequestCode.GOOGLE_VERIFY:
+                case Constants.RequestCode.FUND_PASSWORD:
+                    presenter.getAccountSecurity();
+                    break;
+            }
+        }
+    }
+
     /**
      * 跳转到设置资金密码的页面
      */
@@ -323,4 +339,13 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
         startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
     }
 
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+
+    }
 }

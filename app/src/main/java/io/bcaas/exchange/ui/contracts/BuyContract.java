@@ -7,7 +7,7 @@ package io.bcaas.exchange.ui.contracts;
  */
 public interface BuyContract {
 
-    interface View extends BaseContract.View {
+    interface View extends AccountSecurityContract.View {
         void buyFailure(String info);
 
         void buySelfError();
@@ -17,7 +17,7 @@ public interface BuyContract {
         void buySuccess(String info);
     }
 
-    interface Presenter {
+    interface Presenter extends AccountSecurityContract.Presenter{
         void buy(String txPassword, long memberOderUid, String verifyCode);
     }
 }

@@ -21,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  */
-public class SellPresenterImp extends BasePresenterImp
+public class SellPresenterImp extends AccountSecurityPresenterImp
         implements SellContract.Presenter {
     private String TAG = SellPresenterImp.class.getSimpleName();
 
@@ -30,7 +30,7 @@ public class SellPresenterImp extends BasePresenterImp
     private Disposable disposableSell;
 
     public SellPresenterImp(SellContract.View view) {
-        super();
+        super(view);
         this.view = view;
         this.txInteractor = new TxInteractor();
     }

@@ -6,14 +6,14 @@ package io.bcaas.exchange.ui.contracts;
  * 出售
  */
 public interface SellContract {
-    interface View extends BaseContract.View{
+    interface View extends AccountSecurityContract.View{
         void sellFailure(String info);
 
         void sellSuccess(String info);
 
     }
 
-    interface Presenter {
+    interface Presenter extends AccountSecurityContract.Presenter{
         /**
          * 售出
          *
