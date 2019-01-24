@@ -435,6 +435,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                         new AmountEditTextFilter()
                                 .setDigits(StringTool.getDigitsNumber(exchangeCurrencyListVO.getCurrencyUid()))});
                 etRate.setText(MessageConstants.EMPTY);
+                txAmount = MessageConstants.EMPTY;
 
             }
 

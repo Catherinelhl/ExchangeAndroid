@@ -225,4 +225,6 @@
     <string name="phone_number_had_bind">手机号已被绑定</string>
     <string name="please_register_email_first">邮箱未注册，请先注册。</string>
     <string name="account_address">出账地址</string>
+    <string name="google_verify_fail">Google 验证失败</string>
+
 </resources>

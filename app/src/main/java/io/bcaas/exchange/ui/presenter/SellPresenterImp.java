@@ -110,7 +110,7 @@ public class SellPresenterImp extends AccountSecurityPresenterImp
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2045) {
                                     // {"success":false,"code":2045,"message":"Authenticator verify fail."}
-                                    view.sellFailure(getString(R.string.google_authenticator_verify_fail));
+                                    view.sellFailure(getString(R.string.google_verify_fail));
                                 } else if (code == MessageConstants.CODE_2015) {
                                     // {"success":false,"code":2015,"message":"Current password is wrong."}
                                     view.sellFailure(getString(R.string.fund_password_is_wrong));
