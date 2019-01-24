@@ -189,7 +189,6 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                                 view.verifyAccountFailure(getString(R.string.email_not_register));
                             }
                         }
-
                     }
 
                     @Override

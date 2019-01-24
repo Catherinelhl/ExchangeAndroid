@@ -6,4 +6,13 @@ package io.bcaas.exchange.event;
  * 提示登出事件
  */
 public class LogoutEvent {
+   private String info;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 }

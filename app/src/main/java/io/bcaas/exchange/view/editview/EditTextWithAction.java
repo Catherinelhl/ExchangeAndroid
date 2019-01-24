@@ -78,6 +78,8 @@ public class EditTextWithAction extends LinearLayout
     private Disposable disposableCountDownTimer;
     //监听当前文本的变化
     private OnTextChangeListener onTextChangeListener;
+    //当前默认的textSize
+    private int defaultTextSize = 16;
 
     public void setOnTextChangeListener(OnTextChangeListener onTextChangeListener) {
         this.onTextChangeListener = onTextChangeListener;
@@ -96,7 +98,7 @@ public class EditTextWithAction extends LinearLayout
             /*声明需要显示的标题以及hint*/
             String hint = typedArray.getString(R.styleable.editViewWithAction_hint);
             /*声明内容的字体大小*/
-            float textSize = typedArray.getFloat(R.styleable.editViewWithAction_textSize, 16);
+            float textSize = typedArray.getFloat(R.styleable.editViewWithAction_textSize, defaultTextSize);
             boolean showLine = typedArray.getBoolean(R.styleable.editViewWithAction_showLine, true);
             behaviour = typedArray.getInt(R.styleable.editViewWithAction_behaviour, 0);
             int textColor = typedArray.getInteger(R.styleable.editViewWithAction_textColor, context.getResources().getColor(R.color.black_1d2124));
@@ -175,7 +177,7 @@ public class EditTextWithAction extends LinearLayout
                     cbCheck.setVisibility(GONE);
                     llAction.setVisibility(VISIBLE);
                     imageViewWithLoading.setVisibility(GONE);
-                    etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
+                    etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(8)});
                     break;
             }
 
@@ -403,25 +405,6 @@ public class EditTextWithAction extends LinearLayout
     }
 
     /**
-     * 设置是否显示Check action
-     *
-     * @param show
-     */
-    public void showCheck(boolean show) {
-        cbCheck.setVisibility(show ? VISIBLE : GONE);
-    }
-
-    /**
-     * 设置是否显示文本动作
-     *
-     * @param show
-     */
-    public void showTextAction(boolean show) {
-        tvAction.setVisibility(show ? VISIBLE : GONE);
-
-    }
-
-    /**
      * 获取内容
      */
     public String getContent() {
@@ -469,6 +452,28 @@ public class EditTextWithAction extends LinearLayout
 
     public void setFrom(String from) {
         this.from = from;
+    }
+
+    /**
+     * 传入当前页面展现数据对应的UID，根据UID来重新设置输入框条件限制
+     *
+     * @param uid
+     */
+    public void setUID(String uid) {
+        if (StringTool.isEmpty(uid)) {
+            return;
+        }
+        switch (uid) {
+            case "0"://BCC
+                etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(8)});
+                break;
+            case "1"://BTC
+                etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(8)});
+                break;
+            case "2"://ETH
+                etContent.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
+                break;
+        }
     }
 
     private void disposeRequest(Disposable disposable) {
@@ -604,6 +609,11 @@ public class EditTextWithAction extends LinearLayout
                 || code == MessageConstants.CODE_2018) {
             //    {"success":false,"code":2019,"message":"AccessToken expire."}
             OttoTool.getInstance().post(new LogoutEvent());
+            return true;
+        }else if (code == MessageConstants.CODE_2005) {
+            LogoutEvent logoutEvent = new LogoutEvent();
+            logoutEvent.setInfo(context.getString(R.string.please_register_email_first));
+            OttoTool.getInstance().post(logoutEvent);
             return true;
         }
         return false;

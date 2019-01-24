@@ -86,12 +86,17 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
             //    {"success":false,"code":2019,"message":"AccessToken expire."}
             OttoTool.getInstance().post(new LogoutEvent());
             return true;
+        } else if (code == MessageConstants.CODE_2005) {
+            LogoutEvent logoutEvent = new LogoutEvent();
+            logoutEvent.setInfo(context.getString(R.string.please_register_email_first));
+            OttoTool.getInstance().post(logoutEvent);
+            return true;
         }
         return false;
     }
 
     @Override
     public void noData() {
-        LogTool.e(TAG,context.getResources().getString(R.string.no_data));
+        LogTool.e(TAG, context.getResources().getString(R.string.no_data));
     }
 }

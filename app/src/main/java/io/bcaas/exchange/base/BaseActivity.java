@@ -529,6 +529,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
                 || code == MessageConstants.CODE_2018) {
             showLogoutDialog();
             return true;
+        } else if (code == MessageConstants.CODE_2005) {
+            showLogoutDialog(getString(R.string.please_register_email_first));
+            return true;
         }
         return false;
     }
@@ -537,14 +540,20 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
      * 显示登出的弹框
      */
     public void showLogoutDialog() {
+        showLogoutDialog(getString(R.string.please_login_again));
+    }
+
+    /**
+     * 显示登出的弹框
+     */
+    public void showLogoutDialog(String info) {
         //清空当前的token
         BaseApplication.clearTokenAndMemberId();
         //    {"success":false,"code":2019,"message":"AccessToken expire."}
         showSingleDialog(getString(R.string.warning),
-                getString(R.string.please_login_again), () -> {
+                info, () -> {
                     //跳转到登录
                     intentToLoginActivity();
                 });
     }
-
 }

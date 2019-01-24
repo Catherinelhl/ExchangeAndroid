@@ -73,8 +73,8 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         }
         viewHolder.tvFundType.setText(currencyListVO.getEnName());
         String balanceBlocked = memberKeyVO.getBalanceBlocked();
-        viewHolder.tvFreeze.setText(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked);
-        viewHolder.tvAvailable.setText(memberKeyVO.getBalanceAvailable());
+        viewHolder.tvFreeze.setText(StringTool.getDisplayAmountByUId(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked, currencyListVO.getCurrencyUid()));
+        viewHolder.tvAvailable.setText(StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), currencyListVO.getCurrencyUid()));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,8 +84,6 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         viewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                viewHolder.cbWithdraw.setChecked(false);
-//                viewHolder.cbRecharge.setChecked(true);
                 if (onItemSelectListener != null) {
                     onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.RECHARGE);
                 }
@@ -94,8 +92,6 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         viewHolder.btnWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                viewHolder.cbRecharge.setChecked(false);
-//                viewHolder.cbWithdraw.setChecked(true);
                 if (onItemSelectListener != null) {
                     onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.WITHDRAW);
                 }

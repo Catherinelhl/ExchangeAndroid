@@ -106,6 +106,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tv_withdraw_address"
                 style="@style/black_666_12_text_style"
+                android:layout_marginLeft="@dimen/d16"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="middle"
                 android:singleLine="true"/>

@@ -198,15 +198,17 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
             if (currencyListVO != null) {
                 getCurrencyCharge();
                 String enName = currencyListVO.getEnName();
+                String uid = currencyListVO.getCurrencyUid();
                 if (tvCashAbleBalance != null) {
-                    balanceAvailable = memberKeyVO.getBalanceAvailable();
-                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + balanceAvailable + "  " + enName);
+                    balanceAvailable = StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid);
+                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + " " + balanceAvailable + "  " + enName);
                 }
                 if (etReceiveAddress != null) {
                     etReceiveAddress.setHint(String.format(context.getString(R.string.receive_address), enName));
                 }
                 if (etWithdrawAmount != null) {
                     etWithdrawAmount.setRightText(context.getString(R.string.all_in));
+                    etWithdrawAmount.setUID(uid);
                 }
             }
         }
@@ -242,7 +244,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
         if (currencyListVO != null) {
             transactionFee = DecimalTool.calculateFirstAddSecondValue(currencyListVO.getWithdrawCharge(), currencyListVO.getGasFeeCharge());
             if (tvFeeTips != null) {
-                tvFeeTips.setText(context.getResources().getString(R.string.withdraw_need_fee) + transactionFee + "  " + currencyListVO.getEnName());
+                tvFeeTips.setText(context.getResources().getString(R.string.withdraw_need_fee) + " " + StringTool.getDisplayAmountByUId(transactionFee, currencyListVO.getCurrencyUid()) + "  " + currencyListVO.getEnName());
             }
         }
 

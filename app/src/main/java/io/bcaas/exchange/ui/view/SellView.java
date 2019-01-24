@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.view;
 import android.content.Context;
 import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
+import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -87,8 +88,13 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
     @Override
     protected void initView() {
         presenter = new GetCurrencyChargePresenterImp(this);
-        etSellVolume.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
-        etRate.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(10)});
+        //设置卖出量的输入限制
+        etSellVolume.setFilters(new InputFilter[]{
+                new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_EIGHT)});
+        //设置卖出价的输入限制
+        etRate.setFilters(new InputFilter[]{
+                new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_EIGHT)});
+
     }
 
     @Override
@@ -363,6 +369,9 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             }
             if (etSellVolume != null) {
                 etSellVolume.setText(MessageConstants.EMPTY);
+                etSellVolume.setFilters(
+                        new InputFilter[]{new AmountEditTextFilter().setDigits(StringTool.getDigitsNumber(uid))});
+
             }
             setProgressByUserInput("0");
             //置空当前的交易额信息
@@ -375,16 +384,24 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
                 exchangeCurrencyListVO = JsonTool.getNextCurrency(currencyListVO.getEnName());
                 if (exchangeCurrencyListVO != null) {
                     tvExchangeCurrency.setText(exchangeCurrencyListVO.getEnName());
+                    if (etRate != null) {
+                        //根据当前的uid来判断输入位数限制
+                        etRate.setText(MessageConstants.EMPTY);
+                        etRate.setFilters(new InputFilter[]{
+                                new AmountEditTextFilter()
+                                        .setDigits(StringTool.getDigitsNumber(exchangeCurrencyListVO.getCurrencyUid()))});
+                    }
                     tvExchangeCurrency.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d8));
                     tvExchangeCurrency.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.mipmap.icon_drop_down), null);
-
-
                 }
             }
             salableBalance = DecimalTool.getStringReplaceComma(memberKeyVO.getBalanceAvailable());
         }
+
         setEditHintTextSize(etSellVolume, R.string.zero);
+
         setEditHintTextSize(etRate, R.string.please_choose);
+
     }
 
     /*设置输入框的hint的大小而不影响text size*/
@@ -412,6 +429,12 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
             exchangeCurrencyListVO = memberKeyVO.getCurrencyListVO();
             if (exchangeCurrencyListVO != null) {
                 tvExchangeCurrency.setText(exchangeCurrencyListVO.getEnName());
+                //根据当前的uid来判断输入位数限制
+                etRate.setFilters(new InputFilter[]{
+                        new AmountEditTextFilter()
+                                .setDigits(StringTool.getDigitsNumber(exchangeCurrencyListVO.getCurrencyUid()))});
+                etRate.setText(MessageConstants.EMPTY);
+
             }
 
         }
@@ -427,7 +450,7 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
         if (currencyListVO != null) {
             fee = currencyListVO.getSellCharge();
             if (tvFeeIntroduction != null) {
-                tvFeeIntroduction.setText(context.getResources().getString(R.string.sell_out_fee_text) + "  " + fee + "  " + currencyListVO.getEnName());
+                tvFeeIntroduction.setText(context.getResources().getString(R.string.sell_out_fee_text) + "  " + StringTool.getDisplayAmountByUId(fee, currencyListVO.getCurrencyUid()) + "  " + currencyListVO.getEnName());
             }
         }
 

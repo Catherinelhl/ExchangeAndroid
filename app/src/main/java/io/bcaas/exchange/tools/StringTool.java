@@ -5,9 +5,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
-import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
-import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
 
@@ -241,5 +239,25 @@ public class StringTool {
             }
         }
         return null;
+    }
+
+    /**
+     * 根据传入的uid，得到相对应的保留精度
+     *
+     * @param currencyUid
+     * @return
+     */
+    public static int getDigitsNumber(String currencyUid) {
+        if (StringTool.isEmpty(currencyUid)) {
+            return Constants.DigitalPrecision.LIMIT_EIGHT;
+        }
+        switch (currencyUid) {
+            case "0"://BCC
+            case "1"://BTC
+                return Constants.DigitalPrecision.LIMIT_EIGHT;
+            case "2"://ETH
+                return Constants.DigitalPrecision.LIMIT_TEN;
+        }
+        return Constants.DigitalPrecision.LIMIT_EIGHT;
     }
 }

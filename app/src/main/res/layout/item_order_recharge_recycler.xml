@@ -73,7 +73,7 @@
                   android:layout_height="wrap_content">
         <TextView
                 style="@style/black_666_14_text_style"
-                android:text="出账地址"
+                android:text="@string/account_address"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
                 tool:ignore="InefficientWeight"/>
@@ -82,6 +82,7 @@
                 android:layout_width="@dimen/d0"
                 android:layout_weight="1"
                 android:id="@+id/tv_recharge_address"
+                android:layout_marginLeft="@dimen/d16"
                 style="@style/black_666_12_text_style"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="middle"

@@ -25,11 +25,14 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.chart.ValueMarkerView;
 import io.bcaas.exchange.tools.chart.XLineValueFormatter;
 import io.bcaas.exchange.tools.chart.YLineValueFormatter;
+import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.ui.contracts.GetCoinMarketCapContract;
 import io.bcaas.exchange.ui.presenter.GetCoinMarketCapPresenterImp;
 import io.bcaas.exchange.vo.ResponseJson;
@@ -490,6 +493,23 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
 
     @Override
     public boolean httpExceptionDisposed(ResponseJson responseJson) {
+        if (responseJson == null) {
+            return false;
+        }
+        int code = responseJson.getCode();
+        //判断是否是Token过期，弹出提示重新登录，然后跳转界面
+        if (code == MessageConstants.CODE_2019
+                || code == MessageConstants.CODE_2016
+                || code == MessageConstants.CODE_2018) {
+            //    {"success":false,"code":2019,"message":"AccessToken expire."}
+            OttoTool.getInstance().post(new LogoutEvent());
+            return true;
+        } else if (code == MessageConstants.CODE_2005) {
+            LogoutEvent logoutEvent = new LogoutEvent();
+            logoutEvent.setInfo(context.getString(R.string.please_register_email_first));
+            OttoTool.getInstance().post(logoutEvent);
+            return true;
+        }
         return false;
     }
 

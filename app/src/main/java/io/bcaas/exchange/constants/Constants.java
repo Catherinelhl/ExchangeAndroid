@@ -317,6 +317,8 @@ public class Constants {
         public static final String BTC = "0.00000001";//BTC的最小单位
         public static final String ETH = "0.0000000001";//ETH的最小单位
         public static final String BCC = "0.00000001";//BCC的最小单位
+        public static final int LIMIT_EIGHT = 8;//BCC\BTC 的输入位数限制
+        public static final int LIMIT_TEN = 10;//ETH的输入位数限制
     }
 
 }

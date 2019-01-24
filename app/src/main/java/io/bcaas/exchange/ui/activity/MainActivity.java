@@ -19,6 +19,7 @@ import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.contracts.GetCoinNameListContract;
@@ -410,7 +411,15 @@ public class MainActivity extends BaseActivity
 
     @Subscribe
     public void logoutEvent(LogoutEvent logoutEvent) {
-        showLogoutDialog();
+        if (logoutEvent != null) {
+            String info = logoutEvent.getInfo();
+            if (StringTool.isEmpty(info)) {
+                showLogoutDialog();
+
+            } else {
+                showLogoutDialog(info);
+            }
+        }
     }
 
 
