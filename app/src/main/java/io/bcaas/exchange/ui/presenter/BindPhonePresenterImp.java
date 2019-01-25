@@ -62,19 +62,19 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        LogTool.d(TAG, requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityPhone:", requestJson);
         safetyCenterInteractor.securityPhone(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableSecurityPhone=d;
+                        disposableSecurityPhone = d;
                     }
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "securityPhone:", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;
@@ -84,10 +84,13 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code=responseJson.getCode();
-                                if (code==MessageConstants.CODE_2086){
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2086) {
                                     view.securityPhoneFailure(getString(R.string.phone_number_had_bind));
-                                }else{
+                                } else if (code == MessageConstants.CODE_2047) {
+                                    //    {"success":false,"code":2047,"message":"Verify phone code fail."}
+                                    view.securityPhoneFailure(getString(R.string.verify_phone_code_fail));
+                                } else {
                                     view.securityPhoneFailure(getString(R.string.failure_to_bind_phone));
 
                                 }
@@ -128,7 +131,7 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
                         if (StringTool.isEmpty(name)
                                 || StringTool.isEmpty(code)
                                 || StringTool.equals(code, MessageConstants.NULL)
-                                || StringTool.equals(name,  MessageConstants.NULL)) {
+                                || StringTool.equals(name, MessageConstants.NULL)) {
                             continue;
                         }
                         countryCodes.add(countryCode);

@@ -104,6 +104,7 @@ public class ModifyPasswordPresenterImp extends BasePresenterImp
 
                     @Override
                     public void onError(Throwable e) {
+                        view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
                         view.resetPasswordFailure(getString(R.string.failure_to_reset_password));
                         disposeDisposable(disposableResetPassword);
@@ -112,6 +113,7 @@ public class ModifyPasswordPresenterImp extends BasePresenterImp
 
                     @Override
                     public void onComplete() {
+                        view.hideLoading();
                         disposeDisposable(disposableResetPassword);
 
                     }
