@@ -33,7 +33,7 @@ import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.app.ActivityTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.activity.LoginActivity;
+import io.bcaas.exchange.ui.activity.*;
 import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
@@ -41,6 +41,7 @@ import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.pop.ListPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
+import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.ResponseJson;
 
 import java.util.*;
@@ -556,4 +557,67 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
                     intentToLoginActivity();
                 });
     }
+
+    /**
+     * 跳转到设置google验证密码的页面
+     */
+    protected void intentToGoogleVerifyActivity(Activity activity) {
+        //跳转到google验证
+        Intent intent = new Intent();
+        intent.setClass(activity, GoogleVerifyActivity.class);
+        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+    }
+
+    /**
+     * 跳转到设置资金密码的页面
+     */
+    protected void intentToSetFundPasswordActivity(Activity activity) {
+        Intent intent = new Intent();
+        intent.setClass(activity, SetFundPasswordActivity.class);
+        startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
+    }
+
+
+    protected OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
+        @Override
+        public <T> void onItemSelect(T type, String from) {
+            if (StringTool.notEmpty(from)) {
+                //如果当前是资金密码，那么本地对用户是否设置了资金密码进行判断
+                MemberVO memberVO = BaseApplication.getMemberVO();
+                switch (from) {
+                    case Constants.ActionFrom.GOOGLE_VERIFY:
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            int googleVerify = memberVO.getTwoFactorAuthVerify();
+                            if (googleVerify == Constants.Status.OPEN) {
+                                showToast(getString(R.string.have_google_verify));
+
+                            } else {
+                                intentToGoogleVerifyActivity(activity);
+                            }
+                        } else {
+                            intentToGoogleVerifyActivity(activity);
+                        }
+                        break;
+                    case Constants.ActionFrom.FUND_PASSWORD:
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            String txPasswordAttribute = memberVO.getTxPassword();
+                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                                intentToSetFundPasswordActivity(activity);
+                            } else {
+                                showToast(getString(R.string.have_set_fund_password));
+                            }
+                        } else {
+                            intentToSetFundPasswordActivity(activity);
+                        }
+                        break;
+                }
+            }
+        }
+    };
+
+
 }

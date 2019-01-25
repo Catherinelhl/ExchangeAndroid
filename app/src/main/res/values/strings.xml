@@ -221,6 +221,7 @@
     <string name="new_and_old_password_not_consistent">新密码不能与旧密码一致</string>
     <string name="login_and_fund_password_not_consistent">登录密码不能和资金密码一致</string>
     <string name="verify_phone_code_fail">Verify phone code fail</string>
+    <string name="have_google_verify">您已启用Google验证</string>
 
 
 </resources>

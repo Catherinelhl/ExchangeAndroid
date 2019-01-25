@@ -223,8 +223,8 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
                 startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
             } else {
                 //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
-                intent.setClass(SafetyCenterActivity.this, GoogleVerifyActivity.class);
-                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+                intentToGoogleVerifyActivity(SafetyCenterActivity.this);
+
             }
         }
     }

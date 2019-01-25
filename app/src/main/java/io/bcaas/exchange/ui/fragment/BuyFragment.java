@@ -63,7 +63,6 @@ public class BuyFragment extends BaseFragment
     //得到当前各页面的nextObjectId,默认是1
     private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
     private List<MemberOrderVO> memberOrderVOS;
-    private PaginationVO paginationVO;
     private List<MemberKeyVO> memberKeyVOListTitle;
 
     @Override
@@ -104,10 +103,10 @@ public class BuyFragment extends BaseFragment
 
     private void requestOrderList() {
         // 1：刷新当前购买页面的待出售数据
-
-        if (presenter != null) {
+        if (presenter != null && ListTool.noEmpty(memberKeyVOListTitle)) {
             // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-            presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+            presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
+                    Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
         }
     }
 
@@ -214,11 +213,7 @@ public class BuyFragment extends BaseFragment
                         ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
                     }
                     //重新请求数据
-                    if (presenter != null) {
-                        // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-                        presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
-                                Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
-                    }
+                    requestOrderList();
                 }
 
                 @Override
@@ -232,11 +227,7 @@ public class BuyFragment extends BaseFragment
                 }
             });
             tabLayout.resetSelectedTab(0);
-            if (presenter != null) {
-                // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
-                presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(), Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
-            }
-
+            requestOrderList();
         }
     }
 
@@ -250,7 +241,8 @@ public class BuyFragment extends BaseFragment
         if (presenter != null) {
             List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
             if (ListTool.noEmpty(memberKeyVOList)) {
-                presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(), paymentCurrencyUid, nextObjectId);
+                presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
+                        paymentCurrencyUid, nextObjectId);
             }
         }
     }
@@ -262,9 +254,8 @@ public class BuyFragment extends BaseFragment
             srlData.setRefreshing(false);
         }
         if (paginationVO != null) {
-            this.paginationVO = paginationVO;
             //得到当前接口的页面信息
-            String nextObjectId = paginationVO.getNextObjectId();
+             nextObjectId = paginationVO.getNextObjectId();
             Integer totalPageNumber = paginationVO.getTotalPageNumber();
             Long totalObjectNumber = paginationVO.getTotalObjectNumber();
             List<Object> objects = paginationVO.getObjectList();

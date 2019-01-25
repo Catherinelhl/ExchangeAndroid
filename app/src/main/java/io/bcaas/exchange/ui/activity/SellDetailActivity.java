@@ -16,7 +16,6 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SellContract;
@@ -221,48 +220,6 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
         super.onBackPressed();
         setResult(true);
     }
-
-    private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
-        @Override
-        public <T> void onItemSelect(T type, String from) {
-            if (StringTool.notEmpty(from)) {
-                switch (from) {
-                    case Constants.ActionFrom.GOOGLE_VERIFY:
-                        //跳转到google验证
-                        Intent intent = new Intent();
-                        intent.setClass(SellDetailActivity.this, GoogleVerifyActivity.class);
-                        startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-                        break;
-                    case Constants.ActionFrom.FUND_PASSWORD:
-                        //如果当前是资金密码，那么本地对用户是否设置了资金密码进行判断
-                        MemberVO memberVO = BaseApplication.getMemberVO();
-                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
-                        if (memberVO != null) {
-                            //判断是否设置「资金密码」
-                            String txPasswordAttribute = memberVO.getTxPassword();
-                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
-                                intentToSetFundPasswordActivity();
-                            } else {
-                                showToast(getString(R.string.have_set_fund_password));
-                            }
-                        } else {
-                            intentToSetFundPasswordActivity();
-                        }
-                        break;
-                }
-            }
-        }
-    };
-
-    /**
-     * 跳转到设置资金密码的页面
-     */
-    private void intentToSetFundPasswordActivity() {
-        Intent intent = new Intent();
-        intent.setClass(this, SetFundPasswordActivity.class);
-        startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
