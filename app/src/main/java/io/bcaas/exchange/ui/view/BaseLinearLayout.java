@@ -2,13 +2,17 @@ package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.LogoutEvent;
+import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
+import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.ui.contracts.BaseContract;
@@ -25,6 +29,11 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
     protected Context context;
     private View view;
     private LoadingDialog loadingDialog;
+    /*软键盘管理*/
+    protected SoftKeyBroadManager softKeyBroadManager;
+
+    //隐藏当前软键盘的监听
+    protected HideSoftKeyBoardListener hideSoftKeyBoardListener;
 
     public BaseLinearLayout(Context context) {
         super(context);
@@ -36,6 +45,10 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
         //注册otto事件
         OttoTool.getInstance().register(this);
 
+    }
+
+    public void setHideSoftKeyBoardListener(HideSoftKeyBoardListener hideSoftKeyBoardListener) {
+        this.hideSoftKeyBoardListener = hideSoftKeyBoardListener;
     }
 
     protected abstract int setContentView();
@@ -99,4 +112,27 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
     public void noData() {
         LogTool.e(TAG, context.getResources().getString(R.string.no_data));
     }
+
+    /**
+     * 通过传入的View 来隐藏当前的软键盘
+     *
+     * @param view
+     */
+    protected void hideSoftKeyBoardByTouchView(View view) {
+        if (view == null) {
+            return;
+        }
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (hideSoftKeyBoardListener != null) {
+                    hideSoftKeyBoardListener.hideSoftKeyBoard();
+                }
+                return false;
+            }
+        });
+
+
+    }
+
 }

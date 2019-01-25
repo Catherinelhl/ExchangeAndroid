@@ -2,10 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
@@ -39,6 +36,8 @@ public class SetFundPasswordActivity extends BaseActivity implements SetFundPass
     EditTextWithAction etFundPassword;
     @BindView(R.id.etwa_confirm_fund_password)
     EditTextWithAction etConfirmFundPassword;
+    @BindView(R.id.ll_set_fund_password)
+    LinearLayout llSetFundPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -67,6 +66,7 @@ public class SetFundPasswordActivity extends BaseActivity implements SetFundPass
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llSetFundPassword);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

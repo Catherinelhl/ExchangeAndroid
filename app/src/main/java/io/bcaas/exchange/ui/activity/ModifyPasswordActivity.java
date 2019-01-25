@@ -46,6 +46,8 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
     TextView tvStartImmediate;
     @BindView(R.id.ll_immediate_action)
     LinearLayout llImmediateAction;
+    @BindView(R.id.ll_modify_password)
+    LinearLayout llModifyPassword;
 
     private ModifyPasswordContract.Presenter presenter;
 
@@ -54,7 +56,7 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
 
     @Override
     public int getContentView() {
-        return R.layout.activity_modify_login_password;
+        return R.layout.activity_modify_password;
     }
 
     @Override
@@ -87,6 +89,7 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llModifyPassword);
         RxView.clicks(tvStartImmediate).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

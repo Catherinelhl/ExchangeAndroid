@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.app.ActivityTool;
@@ -79,6 +81,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         etAccount.setFrom(Constants.EditTextFrom.LOGIN_ACCOUNT);
         etPassword.setFrom(Constants.EditTextFrom.LOGIN_PASSWORD);
         refreshAccountInfo();
+        softKeyBroadManager = new SoftKeyBroadManager(llLogin, btnLogin);
+
     }
 
 
@@ -106,6 +110,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llLogin);
         tvVersion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,6 +16,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ import com.obt.qrcode.activity.CaptureActivity;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
@@ -170,6 +173,26 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             }
         }
         return false;
+
+    }
+
+    /**
+     * 通过传入的View 来隐藏当前的软键盘
+     *
+     * @param view
+     */
+    protected void hideSoftKeyBoardByTouchView(View view) {
+        if (view == null) {
+            return;
+        }
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                hideSoftKeyboard();
+                return false;
+            }
+        });
+
 
     }
 
@@ -619,5 +642,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         }
     };
 
+    protected HideSoftKeyBoardListener hideSoftKeyBoardListener = new HideSoftKeyBoardListener() {
+        @Override
+        public void hideSoftKeyBoard() {
+            hideSoftKeyboard();
+        }
+    };
 
 }

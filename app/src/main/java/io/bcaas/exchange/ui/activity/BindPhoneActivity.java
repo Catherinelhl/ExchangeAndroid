@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
@@ -52,6 +50,8 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     EditTextWithAction etPhoneNumber;
     @BindView(R.id.btn_sure)
     Button btnSure;
+    @BindView(R.id.ll_bind_phone)
+    LinearLayout llBindPhone;
 
     private BindPhoneContract.Presenter presenter;
     private List<CountryCodeBean.CountryCode> countryCodes;
@@ -103,6 +103,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llBindPhone);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

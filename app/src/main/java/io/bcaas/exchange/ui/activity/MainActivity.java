@@ -61,6 +61,8 @@ public class MainActivity extends BaseActivity
     ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
+    @BindView(R.id.ll_main)
+    LinearLayout llMain;
 
 
     //声明当前需要和底部栏搭配的所有fragment
@@ -161,6 +163,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llMain);
         RxView.clicks(tvTitle).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

@@ -56,6 +56,8 @@ public class CloseVerifyMethodActivity extends BaseActivity
     LinearLayout llEmail;
     @BindView(R.id.ll_phone)
     LinearLayout llPhone;
+    @BindView(R.id.ll_close_verify_method)
+    LinearLayout llCloseVerifyMethod;
     @BindView(R.id.tv_google_verify_key)
     TextView tvGoogleVerifyKey;
     @BindView(R.id.etwa_email_verify_code)
@@ -100,6 +102,7 @@ public class CloseVerifyMethodActivity extends BaseActivity
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llCloseVerifyMethod);
         etEmailVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {

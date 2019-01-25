@@ -54,6 +54,8 @@ public class RegisterActivity extends BaseActivity
     AppendStringLayout aspUserAgreement;
     @BindView(R.id.cb_agreement)
     CheckBox cbAgreement;
+    @BindView(R.id.ll_register)
+    LinearLayout llRegister;
 
     private RegisterContract.Presenter presenter;
 
@@ -85,6 +87,7 @@ public class RegisterActivity extends BaseActivity
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llRegister);
         cbAgreement.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

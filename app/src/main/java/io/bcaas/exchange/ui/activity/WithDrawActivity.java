@@ -22,7 +22,6 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
-import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.WithDrawView;
 import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
@@ -60,7 +59,6 @@ public class WithDrawActivity extends BaseActivity
     private List<View> views;
     private TabViewAdapter tabViewAdapter;
 
-    private AccountSecurityContract.Presenter presenter;
     private GetAllBalanceContract.Presenter getAllBalancePresenter;
     private int currentPosition;
     private List<MemberKeyVO> memberKeyVOList;
@@ -85,7 +83,6 @@ public class WithDrawActivity extends BaseActivity
 
     @Override
     public void initData() {
-        presenter = new AccountSecurityPresenterImp(this);
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         //刷新界面
         memberKeyVOList = BaseApplication.getMemberKeyVOList();
@@ -102,6 +99,7 @@ public class WithDrawActivity extends BaseActivity
                         tabLayout.addTab(name, i);
                         //初始化数据
                         WithDrawView withDrawView = new WithDrawView(this);
+                        withDrawView.setHideSoftKeyBoardListener(hideSoftKeyBoardListener);
                         withDrawView.refreshData(memberKeyVO);
                         withDrawView.setOnItemSelectListener(onItemSelectListener);
                         views.add(withDrawView);

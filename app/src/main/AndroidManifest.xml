@@ -21,21 +21,18 @@
             android:theme="@style/AppTheme"
             tools:replace="android:appComponentFactory"
             android:appComponentFactory="whateverString"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.activity.BrandActivity"
-                  android:screenOrientation="portrait"
-                  android:windowSoftInputMode="adjustResize|stateHidden">
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.LoginActivity"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
                   android:screenOrientation="portrait"
-                  android:launchMode="singleTask"
-                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+                  android:launchMode="singleTask"/>
 
         <activity android:name=".ui.activity.ForgetToResetPasswordActivity"
                   android:launchMode="singleTask"
@@ -115,7 +112,7 @@
         <activity android:name=".ui.activity.MainActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
-                  android:windowSoftInputMode="adjustResize|stateHidden"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
         />
 
         <!-- 解决Android 7.0文件共享的问题-->

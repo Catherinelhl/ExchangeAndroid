@@ -48,7 +48,7 @@ public class AppendStringLayout extends LinearLayout {
             String content = typedArray.getString(R.styleable.appendStringStyle_content);
             String actionText = typedArray.getString(R.styleable.appendStringStyle_action_text);
             float textSize = typedArray.getFloat(R.styleable.appendStringStyle_text_size, 12);
-            int contentColor = typedArray.getInteger(R.styleable.appendStringStyle_content_color, context.getResources().getColor(R.color.black_333333));
+            int contentColor = typedArray.getInteger(R.styleable.appendStringStyle_content_color, context.getResources().getColor(R.color.grey_666666));
             int actionColor = typedArray.getInteger(R.styleable.appendStringStyle_action_color, context.getResources().getColor(R.color.blue_5B88FF));
 
             typedArray.recycle();
@@ -72,7 +72,7 @@ public class AppendStringLayout extends LinearLayout {
     }
 
     public void setContent(String info) {
-        this.setContent(info, R.color.black_333333);
+        this.setContent(info, R.color.grey_666666);
     }
 
     public void setContent(String info, int color) {

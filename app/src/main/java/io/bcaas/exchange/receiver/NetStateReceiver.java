@@ -7,10 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.event.NetStateChangeEvent;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
-
-import java.time.temporal.TemporalAccessor;
 
 /**
  * @author catherine.brainwilliam
@@ -32,10 +29,8 @@ public class NetStateReceiver extends BroadcastReceiver {
             connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             networkInfo = connectivityManager.getActiveNetworkInfo();
             if (networkInfo == null || !networkInfo.isConnectedOrConnecting()) {
-                LogTool.d(TAG, "netChanged");
                 OttoTool.getInstance().post(new NetStateChangeEvent(false));
             } else {
-                LogTool.d(TAG, "netChanged");
                 OttoTool.getInstance().post(new NetStateChangeEvent(true));
             }
         }

@@ -3,6 +3,7 @@
               xmlns:exchange="http://schemas.android.com/apk/res-auto" xmlns:tool="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
+              android:id="@+id/ll_google_verify"
               android:layout_height="match_parent">
     <include layout="@layout/include_header"/>
 

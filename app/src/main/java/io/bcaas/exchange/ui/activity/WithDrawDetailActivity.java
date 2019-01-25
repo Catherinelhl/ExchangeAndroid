@@ -67,8 +67,12 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     Button btnSure;
     @BindView(R.id.ll_email)
     LinearLayout llEmail;
+    @BindView(R.id.ll_withdraw)
+    LinearLayout llWithdraw;
     @BindView(R.id.ll_phone)
     LinearLayout llPhone;
+    @BindView(R.id.sv_withdraw)
+    ScrollView svWithDraw;
     @BindView(R.id.asp_fund)
     AppendStringLayout aspFund;
     @BindView(R.id.asp_google)
@@ -115,6 +119,8 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llWithdraw);
+        hideSoftKeyBoardByTouchView(svWithDraw);
         etEmailVerifyCode.setFrom(Constants.EditTextFrom.EMAIL_CODE);
         etMessageVerifyCode.setFrom(Constants.EditTextFrom.PHONE_CODE);
         etMessageVerifyCode.setEditTextWatcherListener(new EditTextWatcherListener() {

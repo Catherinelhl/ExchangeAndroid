@@ -169,6 +169,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
                         //初始化数据
                         SellView sellView = new SellView(getContext());
                         sellView.refreshData(memberKeyVO);
+                        sellView.setHideSoftKeyBoardListener(hideSoftKeyBoardListener);
                         sellView.setOnItemSelectListener(onItemSelectListener);
                         views.add(sellView);
 

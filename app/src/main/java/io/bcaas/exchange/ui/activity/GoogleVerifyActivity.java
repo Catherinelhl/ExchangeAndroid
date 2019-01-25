@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -54,6 +55,8 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
     EditTextWithAction etVerifyCode;
     @BindView(R.id.btn_sure)
     Button btnSure;
+    @BindView(R.id.ll_google_verify)
+    LinearLayout llGoogleVerify;
 
     private GoogleContract.Presenter presenter;
 
@@ -86,6 +89,7 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llGoogleVerify);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

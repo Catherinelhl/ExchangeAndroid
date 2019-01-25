@@ -261,7 +261,6 @@ public class BaseApplication extends MultiDexApplication {
 
     @Subscribe
     public void netChanged(NetStateChangeEvent stateChangeEvent) {
-        LogTool.d(TAG, "netChanged" + stateChangeEvent.isConnect());
         setRealNet(stateChangeEvent.isConnect());
     }
 

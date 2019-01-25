@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.view;
 import android.content.Context;
 import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
@@ -13,7 +14,9 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.AmountEditTextFilter;
+import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
@@ -34,7 +37,8 @@ import java.util.concurrent.TimeUnit;
  * 「售出」页面视图
  * 需要判断当前的Token性质，如果是BTC/BCC，那么保留8位小数点；如果是ETH，保留十位
  */
-public class SellView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
+public class SellView extends BaseLinearLayout
+        implements GetCurrencyChargeContract.View {
     @BindView(R.id.sccrl_layout)
     ShowCoinChartRelativeLayout sccrlLayout;
     private String TAG = SellView.class.getSimpleName();
@@ -59,6 +63,14 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
     TextView tvFinalTxAmount;
     @BindView(R.id.btn_sell)
     Button btnSell;
+    @BindView(R.id.rl_sell_view)
+    RelativeLayout rlSellView;
+    @BindView(R.id.ll_sell_view)
+    LinearLayout llSellView;
+    @BindView(R.id.sv_sell_view)
+    ScrollView svSellView;
+    @BindView(R.id.v_space)
+    View vSpace;
     private OnItemSelectListener onItemSelectListener;
 
     private MemberKeyVO memberKeyVO;
@@ -94,11 +106,13 @@ public class SellView extends BaseLinearLayout implements GetCurrencyChargeContr
         //设置卖出价的输入限制
         etRate.setFilters(new InputFilter[]{
                 new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_EIGHT)});
+        softKeyBroadManager = new SoftKeyBroadManager(llSellView, tvFeeIntroduction);
 
     }
 
     @Override
     protected void initListener() {
+        hideSoftKeyBoardByTouchView(svSellView);
         sbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

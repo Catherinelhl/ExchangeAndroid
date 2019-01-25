@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
 import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
@@ -194,4 +195,13 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     public void noData() {
         LogTool.e(TAG, getString(R.string.no_data));
     }
+
+    protected HideSoftKeyBoardListener hideSoftKeyBoardListener = new HideSoftKeyBoardListener() {
+        @Override
+        public void hideSoftKeyBoard() {
+            if (activity != null) {
+                ((BaseActivity) activity).hideSoftKeyboard();
+            }
+        }
+    };
 }

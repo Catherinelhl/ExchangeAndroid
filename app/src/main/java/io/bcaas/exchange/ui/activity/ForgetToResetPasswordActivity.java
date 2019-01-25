@@ -2,10 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.BuildConfig;
@@ -45,6 +42,8 @@ public class ForgetToResetPasswordActivity extends BaseActivity implements Forge
     EditTextWithAction etPasswordConfirm;
     @BindView(R.id.etwa_email_code)
     EditTextWithAction etEmailCode;
+    @BindView(R.id.ll_forgot_password)
+    LinearLayout llForgotPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
 
@@ -89,6 +88,7 @@ public class ForgetToResetPasswordActivity extends BaseActivity implements Forge
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llForgotPassword);
         etEmailCode.setEditTextWatcherListener(new EditTextWatcherListener() {
             @Override
             public void onComplete(String content) {

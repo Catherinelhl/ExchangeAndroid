@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -74,6 +72,10 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     AppendStringLayout aspFund;
     @BindView(R.id.asp_google)
     AppendStringLayout aspGoogle;
+    @BindView(R.id.ll_buy_detail)
+    LinearLayout llBuyDetail;
+    @BindView(R.id.sv_buy_detail)
+    ScrollView svBuyDetail;
     private MemberOrderVO memberOrderVO;
     private BuyContract.Presenter presenter;
 
@@ -147,6 +149,8 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llBuyDetail);
+        hideSoftKeyBoardByTouchView(svBuyDetail);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

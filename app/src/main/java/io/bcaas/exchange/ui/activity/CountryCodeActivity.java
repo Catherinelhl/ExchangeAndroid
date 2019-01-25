@@ -6,8 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.google.gson.reflect.TypeToken;
@@ -42,6 +45,8 @@ public class CountryCodeActivity extends BaseActivity {
     EditText etSelectContent;
     @BindView(R.id.tv_cancel)
     TextView tvCancel;
+    @BindView(R.id.ll_country_code)
+    LinearLayout llCountryCode;
     @BindView(R.id.rv_list)
     RecyclerView recyclerView;
     private CountryCodeAdapter adapter;
@@ -85,6 +90,7 @@ public class CountryCodeActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llCountryCode);
         RxView.clicks(tvCancel).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override

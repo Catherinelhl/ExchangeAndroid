@@ -1,10 +1,7 @@
 package io.bcaas.exchange.ui.view;
 
 import android.content.Context;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
@@ -49,6 +46,8 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     EditTextWithAction etRemarks;
     @BindView(R.id.tv_info)
     TextView tvInfo;
+    @BindView(R.id.rl_withdraw)
+    RelativeLayout rlWithdraw;
     @BindView(R.id.btn_send)
     Button btnSend;
     @BindView(R.id.ll_with_draw_content)
@@ -67,6 +66,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListener = onItemSelectListener;
     }
+
 
     public WithDrawView(Context context) {
         super(context);
@@ -87,6 +87,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
 
     @Override
     protected void initListener() {
+        hideSoftKeyBoardByTouchView(llWithDrawContent);
         etWithdrawAmount.setOnTextChangeListener(new OnTextChangeListener() {
             @Override
             public void onTextChange(String content) {
