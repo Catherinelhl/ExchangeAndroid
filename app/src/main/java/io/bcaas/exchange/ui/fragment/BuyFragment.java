@@ -163,10 +163,12 @@ public class BuyFragment extends BaseFragment
      * 刷新所有界面
      */
     public void refreshView() {
-        if (tabLayout == null) {
+        if (tabLayout == null&&viewPager ==null) {
             return;
         }
         tabLayout.removeTabLayout();
+        viewPager.removeAllViews();
+        views.clear();
         //得到当前的所有钱包信息
         memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
         if (ListTool.noEmpty(memberKeyVOListTitle)) {

@@ -83,7 +83,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
      * 初始化顶部tab的数据以及相对应的界面信息
      */
     private void initTopTabData() {
-        if (tabLayout == null) {
+        if (tabLayout == null&& viewPager==null) {
             return;
         }
         // 获取「交易」页面的内容
@@ -92,6 +92,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         }
         // 移除所有的view
         tabLayout.removeTabLayout();
+        viewPager.removeAllViews();
+        views.clear();
         for (int i = 0; i < 3; i++) {
             //显示标题
             tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);

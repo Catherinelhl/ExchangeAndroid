@@ -383,12 +383,7 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
                     public void accept(Object o) throws Exception {
                         //重新请求数据
                         requestInfo(coinName);
-                        llCoinChart.setVisibility(VISIBLE);
-                        rlCoinChartAction.setVisibility(GONE);
-                        //设置当前界面视图为177
-//                        ViewGroup.LayoutParams layoutParams = ShowCoinChartRelativeLayout.this.getLayoutParams();
-//                        layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.d177);
-//                        ShowCoinChartRelativeLayout.this.setLayoutParams(layoutParams);
+                        ExpendChart(true);
                     }
                 });
 
@@ -397,12 +392,7 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
                     @Override
                     public void accept(Object o) throws Exception {
                         //隐藏chart，显示动作视图
-                        llCoinChart.setVisibility(GONE);
-                        rlCoinChartAction.setVisibility(VISIBLE);
-                        //设置当前界面视图为40
-//                        ViewGroup.LayoutParams layoutParams = ShowCoinChartRelativeLayout.this.getLayoutParams();
-//                        layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.d140);
-//                        ShowCoinChartRelativeLayout.this.setLayoutParams(layoutParams);
+                        ExpendChart(false);
                     }
                 });
         cbBtc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -420,6 +410,12 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
 
             }
         });
+    }
+
+    public void ExpendChart(boolean isShow) {
+        //隐藏chart，显示动作视图
+        llCoinChart.setVisibility(isShow ? VISIBLE : GONE);
+        rlCoinChartAction.setVisibility(isShow ? GONE : VISIBLE);
     }
 
     @Override

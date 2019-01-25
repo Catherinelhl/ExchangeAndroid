@@ -148,10 +148,12 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
      * 重置当前界面
      */
     public void refreshView() {
-        if (tabLayout == null) {
+        if (tabLayout == null && viewPager == null) {
             return;
         }
         tabLayout.removeTabLayout();
+        viewPager.removeAllViews();
+        views.clear();
         //刷新界面
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
         LogTool.d(TAG, "initTopTabData:" + memberKeyVOList);
@@ -180,13 +182,13 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
-        viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
                 refreshCurrentView();
+                LogTool.d(TAG, "onTabSelected:" + currentPosition);
             }
 
             @Override
