@@ -119,7 +119,7 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
                             //比较当前的uid，然后返回余额
                             String currencyUid = currencyListVOSelf.getCurrencyUid();
                             if (StringTool.equals(currencyUid, paymentCurrencyList.getCurrencyUid())) {
-                                tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + memberKeyVO.getBalanceAvailable() + "\t" + currencyListVOSelf.getEnName());
+                                tvSalableBalance.setText(context.getResources().getString(R.string.available_balance) + memberKeyVO.getBalanceAvailable() + "\t" + currencyListVOSelf.getEnName());
                                 break;
                             }
                         }
