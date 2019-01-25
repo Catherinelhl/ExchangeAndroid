@@ -229,5 +229,6 @@
     <string name="login_and_fund_password_not_consistent">登录密码不能和资金密码一致</string>
     <string name="verify_phone_code_fail">手机验证码错误</string>
     <string name="have_google_verify">您已启用Google验证</string>
-
+    <string name="label_usd">价格(USD)</string>
+    <string name="label_btc">价格(BTC)</string>
 </resources>

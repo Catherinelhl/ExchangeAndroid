@@ -33,7 +33,7 @@ public class DateFormatTool {
 
 
     private final static String DATETIMEFORMATWithH = "yy/MM/dd HH";
-    private final static String DATETIMEFORMAT_CHART = "hh:mm";
+    private final static String DATETIMEFORMAT_CHART = "HH:mm";
 
     // Greenwich Mean Time
     private final static String TIMEZONE_GMT = "GMT";
@@ -174,7 +174,8 @@ public class DateFormatTool {
     public static String getUTCDateForAMPMFormat(double timeStamp) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATETIMEFORMAT_CHART);
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TIMEZONE_UTC));
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(TimeZone.getDefault().getID()));
+
         Date date = new Date();
         date.setTime((long) timeStamp);
         String dataAMPM = simpleDateFormat.format(date);
