@@ -229,11 +229,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         GsonTool.logInfo(TAG, "PaginationVO:", paginationVO);
         if (paginationVO != null) {
             this.paginationVO = paginationVO;
-            //得到当前接口的页面信息
-            String nextObjectId = paginationVO.getNextObjectId();
-            int totalPageNumber = paginationVO.getTotalPageNumber();
-            long totalObjectNumber = paginationVO.getTotalObjectNumber();
-
             List<Object> objects = paginationVO.getObjectList();
 
             if (ListTool.isEmpty(objects)) {
