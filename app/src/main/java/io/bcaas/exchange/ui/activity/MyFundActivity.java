@@ -21,8 +21,11 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -127,7 +130,30 @@ public class MyFundActivity extends BaseActivity
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
+            if (type == null) {
+                return;
+            }
+            if (StringTool.isEmpty(from)) {
+                return;
+            }
+            //接收当前传回来的MemberKeyVO信息
+            MemberKeyVO memberKeyVO = null;
+            if (type instanceof MemberKeyVO) {
+                memberKeyVO = (MemberKeyVO) type;
+            }
+            if (memberKeyVO == null) {
+                return;
+            }
+            CurrencyListVO currencyListVO=memberKeyVO.getCurrencyListVO();
+            if (currencyListVO==null){
+             return;
+            }
+            String uid=currencyListVO.getCurrencyUid();
+            if (StringTool.isEmpty(uid)){
+                return;
+            }
             Intent intent = new Intent();
+            intent.putExtra(Constants.KeyMaps.From, uid);
             switch (from) {
                 case Constants.From.RECHARGE:
                     intent.setClass(MyFundActivity.this, RechargeActivity.class);

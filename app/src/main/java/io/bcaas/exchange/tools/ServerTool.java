@@ -3,6 +3,7 @@ package io.bcaas.exchange.tools;
 import io.bcaas.exchange.bean.ServerBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.SystemConstants;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.vo.SeedFullNodeVO;
 
 import java.util.ArrayList;
@@ -21,19 +22,13 @@ public class ServerTool {
     public static boolean needResetServerStatus;
     /*当前默认的服务器*/
     private static ServerBean defaultServerBean;
-    /*存储当前连接服务器的类型 国际SIT*/
-    private static String serverType = Constants.ServerType.INTERNATIONAL_SIT;
 
-    /*存储当前连接服务器的类型 国际UAT*/
-//    private static  String serverType = Constants.ServerType.INTERNATIONAL_UAT;
-    /*存储当前连接服务器的类型 国际PRD*/
-//    private static  String serverType = Constants.ServerType.INTERNATIONAL_PRD;
     public static String getServerType() {
-        return serverType;
+        return SystemConstants.serverType;
     }
 
     public static void setServerType(String serverType) {
-        ServerTool.serverType = serverType;
+        SystemConstants.serverType = serverType;
     }
 
     /**
@@ -136,7 +131,7 @@ public class ServerTool {
         // 1：为了数据添加不重复，先清理到所有的数据
         cleanServerInfo();
         //2：判断当前的服务器类型，根据标注的服务器类型添加相对应的服务器数据
-        switch (serverType) {
+        switch (getServerType()) {
             //3：添加所有的服务器至全局通用的服务器遍历数组里面进行stand by
             case Constants.ServerType.INTERNATIONAL_SIT:
                 SFNServerBeanList.addAll(addInternationalSTIServers());
@@ -150,8 +145,7 @@ public class ServerTool {
             default:
                 break;
         }
-
-        LogTool.d(TAG, serverType + ":" + SFNServerBeanList);
+        GsonTool.logInfo(TAG, getServerType(), SFNServerBeanList);
     }
 
     //清除所有的服务器信息

@@ -290,4 +290,15 @@ public class BcaasTabLayout extends FrameLayout {
         tabText.setText(text);
         return view;
     }
+
+    /**
+     * 设置选中的tab
+     *
+     * @param position
+     */
+    public void selectTab(int position) {
+        if (mTabLayout != null) {
+            mTabLayout.getTabAt(position).select();
+        }
+    }
 }

@@ -17,9 +17,11 @@ import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
@@ -62,6 +64,8 @@ public class WithDrawActivity extends BaseActivity
     private GetAllBalanceContract.Presenter getAllBalancePresenter;
     private int currentPosition;
     private List<MemberKeyVO> memberKeyVOList;
+    //用来接收当前界面传输过来的值
+    private String uIDFrom;
 
     @Override
     public int getContentView() {
@@ -70,7 +74,10 @@ public class WithDrawActivity extends BaseActivity
 
     @Override
     public void getArgs(Bundle bundle) {
-
+        if (bundle == null) {
+            return;
+        }
+        uIDFrom = bundle.getString(Constants.KeyMaps.From);
     }
 
     @Override
@@ -83,6 +90,8 @@ public class WithDrawActivity extends BaseActivity
 
     @Override
     public void initData() {
+        int selectItem = 0;
+
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         //刷新界面
         memberKeyVOList = BaseApplication.getMemberKeyVOList();
@@ -95,6 +104,11 @@ public class WithDrawActivity extends BaseActivity
                 if (memberKeyVO != null) {
                     CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
                     if (currencyListVO != null) {
+                        //比对当前传输过来的MemberKeyVo信息，然后选中相对应的item
+                        if (StringTool.equals(uIDFrom, currencyListVO.getCurrencyUid())) {
+                            selectItem = i;
+                            LogTool.d(TAG, "selectItem:" + selectItem);
+                        }
                         String name = currencyListVO.getEnName();
                         tabLayout.addTab(name, i);
                         //初始化数据
@@ -116,7 +130,8 @@ public class WithDrawActivity extends BaseActivity
 
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
-        viewPager.setCurrentItem(0);
+        tabLayout.selectTab(selectItem);
+        viewPager.setCurrentItem(selectItem);
         viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {

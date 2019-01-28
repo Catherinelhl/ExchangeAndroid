@@ -13,8 +13,8 @@ package io.bcaas.exchange.constants;
  */
 
 public class SystemConstants {
-
-    private static String TAG = SystemConstants.class.getSimpleName();
+    /*存储当前连接服务器的类型 国际SIT*/
+    public static String serverType = Constants.ServerType.INTERNATIONAL_SIT;
 
     /****************HTTP [SFN] API [START] ****************/
     /*Internet*/
@@ -45,7 +45,6 @@ public class SystemConstants {
     public static String APPLICATION_URL_INTERNATIONAL_UAT = "https://uatapp.bcaas.io/";
     //PRO
     public static String APPLICATION_URL_INTERNATIONAL_PRO = "https://application.bcaas.io";
-
 
 
     /***************BcassApplication api,默認端口80 [END] ********************/

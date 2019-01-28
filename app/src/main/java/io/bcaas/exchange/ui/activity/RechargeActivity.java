@@ -17,8 +17,11 @@ import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.view.RechargeView;
@@ -61,6 +64,9 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
     private List<MemberKeyVO> memberKeyVOList;
     private int currentPosition;
+    //用来接收当前界面传输过来的值
+    private String uIDFrom;
+
 
     @Override
     public int getContentView() {
@@ -69,7 +75,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
     @Override
     public void getArgs(Bundle bundle) {
-
+        if (bundle == null) {
+            return;
+        }
+        uIDFrom = bundle.getString(Constants.KeyMaps.From);
     }
 
     @Override
@@ -82,6 +91,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
     @Override
     public void initData() {
+        int selectItem = 0;
         presenter = new AccountSecurityPresenterImp(this);
         //刷新界面
         memberKeyVOList = BaseApplication.getMemberKeyVOList();
@@ -94,6 +104,11 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                 if (memberKeyVO != null) {
                     CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
                     if (currencyListVO != null) {
+                        //比对当前传输过来的MemberKeyVo信息，然后选中相对应的item
+                        if (StringTool.equals(uIDFrom, currencyListVO.getCurrencyUid())) {
+                            selectItem = i;
+                            LogTool.d(TAG, "selectItem:" + selectItem);
+                        }
                         String name = currencyListVO.getEnName();
                         tabLayout.addTab(name, i);
                         //初始化数据
@@ -110,10 +125,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         if (tabLayout == null) {
             return;
         }
-
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
-        viewPager.setCurrentItem(0);
+        tabLayout.selectTab(selectItem);
+        viewPager.setCurrentItem(selectItem);
         viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
@@ -149,7 +164,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-               currentPosition = tab.getPosition();
+                currentPosition = tab.getPosition();
                 if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                     if (ListTool.noEmpty(memberKeyVOList)) {
                         ((RechargeView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));

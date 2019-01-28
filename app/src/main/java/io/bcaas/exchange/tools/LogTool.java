@@ -63,20 +63,21 @@ public class LogTool {
             }
             value.append(", ");
         }
-
+        System.out.println("values:" + value);
+        String valueStr = value.toString();
         // 打印
         switch (mark) {
             case D:
-                printfLine(D, tag, value.toString());
+                printfLine(D, tag, valueStr);
                 break;
             case E:
-                printfLine(E, tag, value.toString());
+                printfLine(E, tag, valueStr);
                 break;
             case V:
-                printfLine(V, tag, value.toString());
+                printfLine(V, tag, valueStr);
                 break;
             case I:
-                printfLine(I, tag, value.toString());
+                printfLine(I, tag, valueStr);
                 break;
         }
 

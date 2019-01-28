@@ -50,14 +50,8 @@ public class Constants {
 
     public class ValueMaps {
 
-        public static final int TOAST_SHORT = 0;
         public static final int TIME_OUT_TIME_LONG = 30;//设置超时时间
-        //TCP  C-S 发送心跳信息间隔
-        public static final long HEART_BEAT_TIME = 30;
         public static final int PASSWORD_MIN_LENGTH = 8;// 输入密码的最小长度
-        public static final String FROM_BRAND = "brand";
-        //打印当前设备的内存
-        public static final long LOG_TIME = 1;
         public static final int STAY_BRAND_ACTIVITY_TIME = 1;//如果当前不用编辑页面，停留在页面的时间1s
 
         public static final String THREE_STAR = "***";
@@ -125,10 +119,6 @@ public class Constants {
         public static final String BUY_DETAIL = "buyDetail";
         public static final String SELECT_COUNTRY_CODE = "selectCountryCode";//选择的城市号码
 
-        //        public static final String SELL_CURRENCY_UID = "sellCurrencyUid";//卖出的币种
-//        public static final String SELL_CURRENCY_PAYMENT_UID = "sellCurrencyPaymentUid";//需要支付的币种
-//        public static final String SELL_AMOUNT = "sellAmount";//卖出的数量
-//        public static final String SELL_UNIT_PRICE = "sellUnitPrice";//卖出的单价
         public static final String SELL_DATA_BEAN = "sellDataBean";//卖出的数据类
         public static final String WITHDRAW_REQUEST_JSON = "withDrawRequestJson";//提现的数据类
     }
@@ -142,17 +132,6 @@ public class Constants {
         public static final String INTERNATIONAL_PRD = "internationalPRD";
 
     }
-
-    /**
-     * 切换服务器类型显示名字
-     */
-    public static class ServerTypeName {
-        public static final String INTERNATIONAL_SIT = "国际 SIT";
-        public static final String INTERNATIONAL_UAT = "国际 UAT";
-        public static final String INTERNATIONAL_PRD = "国际 PRD";
-
-    }
-
 
     public class Preference {
         public static final String SP_EXCHANGE = "EXCHANGE";

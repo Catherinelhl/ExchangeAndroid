@@ -93,8 +93,9 @@ public class GsonTool {
     }
 
     public static <T> void logInfo(String TAG, String flag, T info) {
-        LogTool.d(TAG,flag, GsonTool.string(info));
+        LogTool.d(TAG, flag, GsonTool.string(info));
     }
+
     public static <T> void logInfo(String TAG, String stuff, String flag, T info) {
         LogTool.d(TAG, stuff, flag, GsonTool.string(info));
     }
