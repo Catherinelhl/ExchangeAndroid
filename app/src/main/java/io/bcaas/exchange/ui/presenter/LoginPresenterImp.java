@@ -86,7 +86,7 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                             BaseApplication.setAccessToken(accessToken);
                             //存储当前的memberID
                             BaseApplication.setMemberID(memberId);
-                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID,memberId);
+                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberId);
                             //将成功状态返回界面
                             view.loginSuccess(accessToken);
                         } else {
@@ -98,6 +98,8 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                                 //1：如果当前图形验证码错误，那么返回的是2010，包括输入上一次的code
                                 //  {"success":false,"code":2010,"message":"Verify code fail."}
                                 view.ImageVerifyCodeError(getString(R.string.verify_code_fail));
+                            } else if (code == MessageConstants.CODE_2067) {
+                                view.loginFailure(getString(R.string.verify_code_format_invalid));
                             } else if (code == MessageConstants.CODE_2025) {
                                 //    {"success":false,"code":2025,"message":"Verify code expire."}
                                 view.ImageVerifyCodeError(getString(R.string.verify_code_expire));

@@ -93,7 +93,11 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2004) {
                                     view.getOrderListFailure(getString(R.string.no_more_info));
-                                } else {
+                                } else if (code == MessageConstants.CODE_2027) {
+                                    view.getOrderListFailure(getString(R.string.data_format_exception));
+                                } else if(code == MessageConstants.CODE_2041){
+                                    view.getOrderListFailure(getString(R.string.data_format_exception));
+                                }else {
                                     view.getOrderListFailure(getString(R.string.get_data_failure));
                                 }
                             }

@@ -228,6 +228,18 @@
     <string name="eth_recharge_info">请勿将BCC/BTC发送至您的以太坊（ETH）地址，否则资金将会遗失。ETH的交易需要接近20个区块的确认，可能会花费15分钟以上才能完成。</string>
     <string name="bcc_recharge_info">请勿将BTC/ETH发送至您的Bcaas（BCC）地址，否则资金将会遗失。</string>
     <string name="no_more_info">没有更多信息了</string>
+    <string name="send_phone_message_fail">发送手机验证码失败。</string>
+    <string name="send_mail_code_fail">发送邮箱验证码错误。</string>
+    <string name="order_type_invalid">无效的订单类型。</string>
+    <string name="data_format_exception">数据传输格式错误。</string>
+    <string name="order_type_error">订单状态异常。</string>
+    <string name="verify_type_error">验证类型异常。</string>
+    <string name="balance_and_account_compare_failure">用户余额与账户匹配失败。</string>
+    <string name="withdraw_mark_format_invalid">提现备注无效。</string>
+    <string name="withdraw_config_address_failure">提现地址失败。</string>
+    <string name="withdraw_config_private_failure">提现配置私钥失败。</string>
+    <string name="verify_code_format_invalid">验证码格式无效。</string>
+    <string name="withdraw_price_less_than_fee">提现金额不能低于手续费。</string>
 
 
 </resources>

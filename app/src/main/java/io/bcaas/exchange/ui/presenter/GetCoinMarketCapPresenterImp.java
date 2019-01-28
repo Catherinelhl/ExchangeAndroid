@@ -71,6 +71,10 @@ public class GetCoinMarketCapPresenterImp extends BasePresenterImp
                             int code = responseJson.getCode();
                             if (code == MessageConstants.CODE_2087) {
                                 view.getCoinMarketCapFailure(MessageConstants.EMPTY);
+                            } else if (code == MessageConstants.CODE_2077
+                                    || code == MessageConstants.CODE_2078
+                                    || code == MessageConstants.CODE_2079) {
+                                view.getCoinMarketCapFailure(getString(R.string.data_format_exception));
                             } else {
                                 view.getCoinMarketCapFailure(responseJson.getMessage());
 

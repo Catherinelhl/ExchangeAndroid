@@ -550,7 +550,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         //判断是否是Token过期，弹出提示重新登录，然后跳转界面
         if (code == MessageConstants.CODE_2019
                 || code == MessageConstants.CODE_2016
-                || code == MessageConstants.CODE_2018) {
+                || code == MessageConstants.CODE_2018
+                || code == MessageConstants.CODE_2043) {
             showLogoutDialog();
             return true;
         } else if (code == MessageConstants.CODE_2005) {

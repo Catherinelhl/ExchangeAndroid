@@ -97,6 +97,8 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                                     //    {"success":false,"code":2046,"message":"Verify mail code fail."}
                                     view.forgetPasswordFailure(getString(R.string.verify_mail_code_fail));
 
+                                } else if (code == MessageConstants.CODE_2067) {
+                                    view.forgetPasswordFailure(getString(R.string.verify_code_format_invalid));
                                 } else if (code == MessageConstants.CODE_2025
                                         || code == MessageConstants.CODE_2048) {
                                     view.forgetPasswordFailure(getString(R.string.verify_code_expire));

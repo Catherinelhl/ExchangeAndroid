@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.bean.VerificationBean;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.contracts.PhoneVerifyContract;
@@ -72,7 +73,16 @@ public class PhoneVerifyPresenterImp extends BasePresenterImp implements PhoneVe
                             view.getPhoneCodeSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.getPhoneCodeFailure(getString(R.string.failure_get_phone_verify_code));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2009) {
+                                    view.getPhoneCodeFailure(getString(R.string.send_phone_message_fail));
+                                } else if (code == MessageConstants.CODE_2010) {
+                                    view.getPhoneCodeFailure(getString(R.string.verify_code_fail));
+                                } else if (code == MessageConstants.CODE_2067) {
+                                    view.getPhoneCodeFailure(getString(R.string.verify_code_format_invalid));
+                                }else {
+                                    view.getPhoneCodeFailure(getString(R.string.failure_get_phone_verify_code));
+                                }
                             }
                         }
 

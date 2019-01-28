@@ -92,7 +92,9 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2004) {
                                     view.getRecordFailure(getString(R.string.no_more_info));
-                                } else {
+                                } else if(code==MessageConstants.CODE_2027){
+                                    view.getRecordFailure(getString(R.string.data_format_exception));
+                                }else {
                                     view.getRecordFailure(getString(R.string.get_data_failure));
 
                                 }

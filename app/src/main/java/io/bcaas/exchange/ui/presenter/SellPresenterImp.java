@@ -117,6 +117,8 @@ public class SellPresenterImp extends AccountSecurityPresenterImp
                                 } else if (code == MessageConstants.CODE_2066) {
                                     //    {"success":false,"code":2066,"message":"Insufficient balances."}
                                     view.sellFailure(getString(R.string.no_enough_balance));
+                                } else if (code == MessageConstants.CODE_2041) {
+                                    view.sellFailure(getString(R.string.data_format_exception));
                                 } else {
                                     view.sellFailure(getString(R.string.failure_to_sell_out_please_try_again));
                                 }

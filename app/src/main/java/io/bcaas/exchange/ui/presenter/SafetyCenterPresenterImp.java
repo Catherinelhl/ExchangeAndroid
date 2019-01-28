@@ -131,7 +131,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        GsonTool.logInfo(TAG,MessageConstants.LogInfo.RESPONSE_JSON,"securityPhone:",responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "securityPhone:", responseJson);
 
                         if (responseJson == null) {
                             view.noData();
@@ -176,7 +176,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityEmail:",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityEmail:", requestJson);
         safetyCenterInteractor.securityEmail(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -188,7 +188,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        GsonTool.logInfo(TAG,MessageConstants.LogInfo.RESPONSE_JSON,"securityEmail:",responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "securityEmail:", responseJson);
 
                         if (responseJson == null) {
                             view.noData();
@@ -199,7 +199,12 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                             view.securityPhoneSuccess(responseJson.getMessage());
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.securityPhoneFailure(getString(R.string.failure_to_security_email));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2021) {
+                                    view.securityPhoneFailure(getString(R.string.send_mail_code_fail));
+                                } else {
+                                    view.securityPhoneFailure(getString(R.string.failure_to_security_email));
+                                }
 
                             }
 
@@ -237,7 +242,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
         requestJson.setMemberVO(memberVO);
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
-        GsonTool.logInfo(TAG,MessageConstants.LogInfo.REQUEST_JSON,"securityGoogle:",requestJson);
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityGoogle:", requestJson);
         safetyCenterInteractor.securityTwoFactorVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -249,7 +254,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        GsonTool.logInfo(TAG,MessageConstants.LogInfo.RESPONSE_JSON,"securityGoogle:",responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "securityGoogle:", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;

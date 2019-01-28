@@ -111,7 +111,11 @@ public class CloseVerifyPresenterImp
                                     view.closeVerifyCodeFailure(getString(R.string.verify_code_fail));
                                 } else if (code == MessageConstants.CODE_2025) {
                                     view.closeVerifyCodeFailure(getString(R.string.verify_code_expire));
-                                } else {
+                                } else if (code == MessageConstants.CODE_2044) {
+                                    view.closeVerifyCodeFailure(getString(R.string.verify_type_error));
+                                } else if (code == MessageConstants.CODE_2067) {
+                                    view.closeVerifyCodeFailure(getString(R.string.verify_code_format_invalid));
+                                }else {
                                     view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
                                 }
                             }

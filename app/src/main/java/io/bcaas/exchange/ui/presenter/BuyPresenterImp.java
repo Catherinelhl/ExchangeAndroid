@@ -101,6 +101,17 @@ public class BuyPresenterImp extends AccountSecurityPresenterImp implements BuyC
                                 } else if (code == MessageConstants.CODE_2066) {
                                     //    {"success":false,"code":2066,"message":"Insufficient balances."}
                                     view.buyFailure(getString(R.string.no_enough_balance));
+                                } else if (code == MessageConstants.CODE_2026) {
+                                    view.buyFailure(getString(R.string.order_type_invalid));
+
+                                } else if (code == MessageConstants.CODE_2032) {
+                                    view.buyFailure(getString(R.string.order_type_error));
+
+                                } else if (code == MessageConstants.CODE_2058) {
+                                    view.buyFailure(getString(R.string.no_enough_balance));
+
+                                } else if (code == MessageConstants.CODE_2059) {
+                                    view.buyFailure(getString(R.string.balance_and_account_compare_failure));
                                 } else {
                                     view.buyFailure(getString(R.string.failure_to_buy_please_try_again));
 

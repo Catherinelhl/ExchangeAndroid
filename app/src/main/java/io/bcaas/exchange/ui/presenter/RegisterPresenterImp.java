@@ -96,7 +96,9 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                                 view.registerFailure(getString(R.string.verify_code_fail));
                             } else if (code == MessageConstants.CODE_2025) {
                                 view.registerFailure(getString(R.string.verify_code_expire));
-                            }  else {
+                            } else if (code == MessageConstants.CODE_2067) {
+                                view.registerFailure(getString(R.string.verify_code_format_invalid));
+                            } else {
                                 view.registerFailure(responseJson.getMessage());
 
                             }

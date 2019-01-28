@@ -75,7 +75,13 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                         if (isSuccess) {
                             view.getEmailVerifySuccess(responseJson.getMessage());
                         } else {
-                            view.getEmailVerifyFailure(responseJson.getMessage());
+                            int code = responseJson.getCode();
+                            if (code == MessageConstants.CODE_2021) {
+                                view.getEmailVerifyFailure(getString(R.string.send_mail_code_fail));
+
+                            } else {
+                                view.getEmailVerifyFailure(responseJson.getMessage());
+                            }
                         }
                     }
 

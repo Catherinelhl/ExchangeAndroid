@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.presenter;
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -82,7 +83,12 @@ public class GetCurrencyChargePresenterImp extends BasePresenterImp
                             view.getCurrencyChargeSuccess(currencyListVOResponse);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.getCurrencyChargeFailure(responseJson.getMessage());
+                                int code=responseJson.getCode();
+                                 if(code == MessageConstants.CODE_2041){
+                                    view.getCurrencyChargeFailure(getString(R.string.data_format_exception));
+                                }else {
+                                    view.getCurrencyChargeFailure(responseJson.getMessage());
+                                }
                             }
                         }
 

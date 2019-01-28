@@ -108,6 +108,20 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp
                                 } else if (code == MessageConstants.CODE_2066) {
                                     //    {"success":false,"code":2066,"message":"Insufficient balances."}
                                     view.withDrawFailure(getString(R.string.no_enough_balance));
+                                } else if (code == MessageConstants.CODE_2044) {
+                                    view.withDrawFailure(getString(R.string.verify_type_error));
+                                } else if (code == MessageConstants.CODE_2063) {
+                                    view.withDrawFailure(getString(R.string.withdraw_mark_format_invalid));
+                                } else if (code == MessageConstants.CODE_2064) {
+                                    view.withDrawFailure(getString(R.string.withdraw_config_address_failure));
+                                } else if (code == MessageConstants.CODE_2065) {
+                                    view.withDrawFailure(getString(R.string.withdraw_config_private_failure));
+                                } else if (code == MessageConstants.CODE_2066) {
+                                    view.withDrawFailure(getString(R.string.no_enough_balance));
+                                } else if (code == MessageConstants.CODE_2067) {
+                                    view.withDrawFailure(getString(R.string.verify_code_format_invalid));
+                                } else if (code == MessageConstants.CODE_2068) {
+                                    view.withDrawFailure(getString(R.string.withdraw_price_less_than_fee));
                                 } else {
                                     view.withDrawFailure(getString(R.string.failure_to_withdraw_please_try_again));
                                 }
