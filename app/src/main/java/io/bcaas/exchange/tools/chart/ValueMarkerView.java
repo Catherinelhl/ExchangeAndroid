@@ -70,10 +70,10 @@ public class ValueMarkerView extends MarkerView {
                     double time = (Double) object;
                     // + "\nMarketValue:" + market_cap_by_available_supply.get((int) index).get(1)
                     //+ "\nVolume:" + DecimalTool.transferDisplay(10, String.valueOf(coinMarketCapBean.getVolume_usd().get(position).get(1)),
-                    //                            Constants.Pattern.TEN)
+                    //                            Constants.Pattern.TEN_DISPLAY)
                     tvContent.setText(DateFormatTool.getUTCDateForChart(time)
-                            + "\nBTC:" + DecimalTool.transferDisplay(10, String.valueOf(coinMarketCapBean.getPrice_btc().get(position).get(1)), Constants.Pattern.EIGHT) + " BTC"
-                            + "\nUSD:$" + DecimalTool.transferDisplay(10, String.valueOf(coinMarketCapBean.getPrice_usd().get(position).get(1)), Constants.Pattern.EIGHT)
+                            + "\nBTC:" + DecimalTool.transferDisplay(10, String.valueOf(coinMarketCapBean.getPrice_btc().get(position).get(1)), Constants.Pattern.EIGHT_DISPLAY) + " BTC"
+                            + "\nUSD:$" + DecimalTool.transferDisplay(10, String.valueOf(coinMarketCapBean.getPrice_usd().get(position).get(1)), Constants.Pattern.EIGHT_DISPLAY)
                     );
                 }
 

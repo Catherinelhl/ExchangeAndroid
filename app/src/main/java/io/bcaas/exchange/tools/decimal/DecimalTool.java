@@ -67,10 +67,10 @@ public class DecimalTool {
         BigDecimal bigDecimalNum = bigDecimalFirstValue.multiply(bigDecimalSecondValue);
         String minValue = StringTool.getMinValuesByUid(uid);
         if (StringTool.equals(calculateFirstSubtractSecondValue(bigDecimalNum.toString(), minValue, false), MessageConstants.NO_ENOUGH_BALANCE)) {
-            return  MessageConstants.NO_ENOUGH_BALANCE;
+            return MessageConstants.NO_ENOUGH_BALANCE;
         }
 
-        return StringTool.getDisplayAmountByUId(bigDecimalNum.toString(), uid);
+        return StringTool.getTransferStoreDatabaseAmountByUId(bigDecimalNum.toString(), uid);
     }
 
     /**
@@ -106,8 +106,6 @@ public class DecimalTool {
             decimal = "0";
         }
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
-//        decimalFormat.setMaximumFractionDigits(maxScale);
-//        decimalFormat.setMinimumFractionDigits(minScale);
         BigDecimal bigDecimal = new BigDecimal(decimal).setScale(newScale, RoundingMode.FLOOR);
 
         return decimalFormat.format(bigDecimal);
@@ -118,17 +116,18 @@ public class DecimalTool {
      *
      * @param decimal
      */
-    public static String transferStoreDatabase(String decimal) {
+    public static String transferStoreDatabase(int newScale, String decimal, String pattern) {
 
-        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
 
-        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(10, RoundingMode.FLOOR);
+        BigDecimal bigDecimal = new BigDecimal(decimal).setScale(newScale, RoundingMode.FLOOR);
 
         return decimalFormat.format(bigDecimal);
     }
 
 
     public static void main(String[] args) {
+        System.out.println(DecimalTool.calculateFirstSubtractSecondValue("1,999.99999999", "1", true));
 
 //        System.out.println(transferDisplay("99999.10006080"));
         System.out.println(getStringReplaceComma("9,9999.10006080"));

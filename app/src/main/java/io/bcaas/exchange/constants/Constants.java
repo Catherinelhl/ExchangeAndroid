@@ -283,9 +283,13 @@ public class Constants {
     }
 
     public class Pattern {
-        public static final String EIGHT = "#,##0.00000000";
-        public static final String TEN = "#,##0.0000000000";
-        public static final String TWO = "#,##0.00";
+        public static final String EIGHT_DISPLAY = "#,##0.00000000";
+        public static final String TEN_DISPLAY = "#,##0.0000000000";
+        public static final String TWO_DISPLAY = "#,##0.00";
+
+        public static final String EIGHT = "0.00000000";
+        public static final String TEN = "0.0000000000";
+        public static final String TWO = "0.00";
     }
 
 

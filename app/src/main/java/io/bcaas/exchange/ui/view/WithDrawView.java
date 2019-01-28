@@ -100,6 +100,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                 }                //判断当前是否大于0
                 float volume = Float.valueOf(content);
                 if (volume > 0) {
+                    LogTool.d(TAG, "balanceAvailable:" + balanceAvailable);
                     // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额
                     if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(balanceAvailable, content, true), MessageConstants.NO_ENOUGH_BALANCE)) {
                         etWithdrawAmount.setContent(balanceAvailable);
@@ -202,14 +203,18 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     public void refreshData(MemberKeyVO memberKeyVO) {
         if (memberKeyVO != null) {
             this.memberKeyVO = memberKeyVO;
+            LogTool.d(TAG, "refreshData:" + memberKeyVO);
             currencyListVO = memberKeyVO.getCurrencyListVO();
             if (currencyListVO != null) {
                 getCurrencyCharge();
                 String enName = currencyListVO.getEnName();
                 String uid = currencyListVO.getCurrencyUid();
                 if (tvCashAbleBalance != null) {
-                    balanceAvailable = StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid);
-                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + " " + balanceAvailable + "  " + enName);
+                    String balance = memberKeyVO.getBalanceAvailable();
+                    String balanceAvailableDisplay = StringTool.getDisplayAmountByUId(balance, uid);
+                    balanceAvailable = StringTool.getTransferStoreDatabaseAmountByUId(balance, uid);
+                    LogTool.d(TAG, "refreshData:balanceAvailable:" + balanceAvailable);
+                    tvCashAbleBalance.setText(context.getResources().getString(R.string.cash_able_balance) + " " + balanceAvailableDisplay + "  " + enName);
                 }
                 if (etReceiveAddress != null) {
                     etReceiveAddress.setHint(String.format(context.getString(R.string.receive_address), enName));

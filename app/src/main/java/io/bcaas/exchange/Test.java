@@ -1,5 +1,7 @@
 package io.bcaas.exchange;
 
+import io.bcaas.exchange.tools.decimal.DecimalTool;
+
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/25
@@ -46,6 +48,7 @@ public class Test {
     }
 
     public static void main(String[] args) {
+        System.out.println(DecimalTool.calculateFirstSubtractSecondValue("1,999.99999999","1",true));
 //        try {
 //            //173af653133d964edfc16cafe0aba33c8f500a07f3ba3f81943916910c257057
 //            //5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3

@@ -36,9 +36,9 @@ public class YLineValueFormatter extends ValueFormatter {
 //        }else {
         //如果是BTC，那么默认显示8位。如果是USD，默认显示小数点后面两位
         if (isLeft) {
-            return "$" + DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.TWO);
+            return "$" + DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.TWO_DISPLAY);
         } else {
-            return DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.EIGHT) + "  " + "BTC";
+            return DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.EIGHT_DISPLAY) + "  " + "BTC";
         }
 //        }
     }
@@ -59,9 +59,9 @@ public class YLineValueFormatter extends ValueFormatter {
 //
 //        }else {
         if (isLeft) {
-            return "$" + DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.TWO);
+            return "$" + DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.TWO_DISPLAY);
         } else {
-            return DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.EIGHT) + "  " + "BTC";
+            return DecimalTool.transferDisplay(2, String.valueOf(value), Constants.Pattern.EIGHT_DISPLAY) + "  " + "BTC";
         }
 //        }
     }

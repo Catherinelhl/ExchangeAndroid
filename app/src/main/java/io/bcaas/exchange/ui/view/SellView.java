@@ -344,15 +344,16 @@ public class SellView extends BaseLinearLayout
 //                        4.用户输入资金密码后，该用户的该笔出售金额被冻结，余额不扣减
             // 得到当前减去手续费的量
             String volumeExceptFee = DecimalTool.calculateFirstSubtractSecondValue(sellVolume, fee, true);
+            String uid = currencyListVO.getCurrencyUid();
             //得到当前可换做售出币种的交易额
-            txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr, currencyListVO.getCurrencyUid());
+            txAmount = DecimalTool.calculateFirstMultiplySecondValue(volumeExceptFee, rateStr, uid);
             boolean isShow = StringTool.notEmpty(txAmount)
-                    && !StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, StringTool.getMinValuesByUid(currencyListVO.getCurrencyUid()), false),
+                    && !StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, StringTool.getMinValuesByUid(uid), false),
                     MessageConstants.NO_ENOUGH_BALANCE)
                     && !StringTool.equals(txAmount, MessageConstants.NO_ENOUGH_BALANCE);
             tvFinalTxAmount.setVisibility(isShow ? VISIBLE : GONE);
             tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                    + txAmount + "  " + exchangeCurrencyListVO.getEnName());
+                    + StringTool.getDisplayAmountByUId(txAmount, uid) + "  " + exchangeCurrencyListVO.getEnName());
 
         }
     }

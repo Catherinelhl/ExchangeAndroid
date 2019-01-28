@@ -217,11 +217,32 @@ public class StringTool {
         if (StringTool.notEmpty(uid)) {
             switch (uid) {
                 case "0"://BCC
-                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT);
+                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT_DISPLAY);
                 case "1"://BTC
-                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT);
+                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT_DISPLAY);
                 case "2"://ETH
-                    return DecimalTool.transferDisplay(10, balanceAvailable, Constants.Pattern.TEN);
+                    return DecimalTool.transferDisplay(10, balanceAvailable, Constants.Pattern.TEN_DISPLAY);
+            }
+        }
+        return balanceAvailable;
+    }
+
+    /**
+     * 根据传入的UID来决定逻辑处理的数据格式
+     *
+     * @param balanceAvailable
+     * @param uid
+     * @return
+     */
+    public static String getTransferStoreDatabaseAmountByUId(String balanceAvailable, String uid) {
+        if (StringTool.notEmpty(uid)) {
+            switch (uid) {
+                case "0"://BCC
+                    return DecimalTool.transferStoreDatabase(8, balanceAvailable, Constants.Pattern.EIGHT);
+                case "1"://BTC
+                    return DecimalTool.transferStoreDatabase(8, balanceAvailable, Constants.Pattern.EIGHT);
+                case "2"://ETH
+                    return DecimalTool.transferStoreDatabase(10, balanceAvailable, Constants.Pattern.TEN);
             }
         }
         return balanceAvailable;
