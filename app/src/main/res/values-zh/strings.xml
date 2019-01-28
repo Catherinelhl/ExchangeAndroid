@@ -221,7 +221,7 @@
     <string name="please_read_and_agree_user_agreement">请先阅读并同意《用户协议》</string>
     <string name="email_not_register">邮箱未注册</string>
     <string name="amount_must_be_more_than_fee">金额必须大于手续费</string>
-    <string name="phone_number_had_bind">手机号已被绑定</string>
+    <string name="phone_number_had_bind">当前手机号已被他人绑定，请更换手机号</string>
     <string name="please_register_email_first">邮箱未注册，请先注册。</string>
     <string name="account_address">出账地址</string>
     <string name="google_verify_fail">Google 验证失败</string>

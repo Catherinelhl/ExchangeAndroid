@@ -214,7 +214,7 @@
     <string name="email_not_register">Email not register</string>
     <string name="verify_mail_code_fail">邮箱验证码错误</string>
     <string name="amount_must_be_more_than_fee">The amount must  be more than the handling fee</string>
-    <string name="phone_number_had_bind">手机号已被绑定</string>
+    <string name="phone_number_had_bind">当前手机号已被他人绑定，请更换手机号</string>
     <string name="please_register_email_first">邮箱未注册，请先注册。</string>
     <string name="account_address">出账地址</string>
     <string name="google_verify_fail">Google authenticator verify fail.</string>
