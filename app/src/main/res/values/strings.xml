@@ -224,6 +224,9 @@
     <string name="have_google_verify">您已启用Google验证</string>
     <string name="label_usd">Price(USD)</string>
     <string name="label_btc">Price(BTC)</string>
+    <string name="btc_recharge_info">请勿将ETH/BCC发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。</string>
+    <string name="eth_recharge_info">请勿将BCC/BTC发送至您的以太坊（ETH）地址，否则资金将会遗失。ETH的交易需要接近20个区块的确认，可能会花费15分钟以上才能完成。</string>
+    <string name="bcc_recharge_info">请勿将BTC/ETH发送至您的Bcaas（BCC）地址，否则资金将会遗失。</string>
 
 
 </resources>

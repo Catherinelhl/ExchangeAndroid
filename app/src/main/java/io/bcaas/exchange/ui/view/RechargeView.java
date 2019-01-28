@@ -15,6 +15,8 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -40,7 +42,6 @@ public class RechargeView extends BaseLinearLayout {
 
     private Context context;
     private OnItemSelectListener onItemSelectListener;
-    String info = "请勿将ETH/ZBA发送至您的比特币(BTC)地址,否则资金将会遗失。比特币的交易需要六个区块的确认,可能会花费1个小时以上才能完成。";
 
     public void setOnItemSelectListener(OnItemSelectListener onItemSelectListener) {
         this.onItemSelectListener = onItemSelectListener;
@@ -156,7 +157,22 @@ public class RechargeView extends BaseLinearLayout {
                 }
 
                 if (tvInfo != null) {
-                    tvInfo.setText(info);
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String uid = currencyListVO.getCurrencyUid();
+                        if (StringTool.equals(uid, "1")) {//BTC
+                            tvInfo.setText(context.getResources().getString(R.string.btc_recharge_info));
+
+                        } else if (StringTool.equals(uid, "2")) {//ETH
+                            tvInfo.setText(context.getResources().getString(R.string.eth_recharge_info));
+
+                        } else {//BCC
+                            tvInfo.setText(context.getResources().getString(R.string.bcc_recharge_info));
+                        }
+                    } else {//BCC
+                        tvInfo.setText(context.getResources().getString(R.string.bcc_recharge_info));
+
+                    }
                 }
             }
         } else {
