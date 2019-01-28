@@ -91,7 +91,13 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
         etWithdrawAmount.setOnTextChangeListener(new OnTextChangeListener() {
             @Override
             public void onTextChange(String content) {
-                //判断当前是否大于0
+                if (StringTool.isEmpty(content)) {
+                    return;
+                }
+                if (StringTool.equals(content, ".")) {
+                    return;
+
+                }                //判断当前是否大于0
                 float volume = Float.valueOf(content);
                 if (volume > 0) {
                     // 判断当前输入的数量是否大于可售余额，如果输入的是一个大于可售余额的数，那么直接显示可售余额

@@ -209,7 +209,7 @@
     <string name="fund_password_is_wrong">资金密码错误</string>
     <string name="failure_google_set">设置Google验证失败，请重新输入验证码。</string>
     <string name="no_fund_password_please_set_first">您当前还未设置资金密码,请设置</string>
-    <string name="no_google_verify_please_set_first">您当前还未启用Google身份验证</string>
+    <string name="no_google_verify_please_set_first">您当前还未启用Google身份验证,请先启动</string>
     <string name="receive_address">接收%s的地址</string>
     <string name="not_fund_password_yet">还没设置资金密码？</string>
     <string name="have_set_fund_password">您已设置资金密码</string>
