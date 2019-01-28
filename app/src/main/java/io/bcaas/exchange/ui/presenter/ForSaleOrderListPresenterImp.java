@@ -69,8 +69,7 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
-                    public void onSubscribe(Disposable d)
-                    {
+                    public void onSubscribe(Disposable d) {
                         disposableGetOrderList = d;
                     }
 
@@ -91,7 +90,12 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.getOrderListFailure(getString(R.string.get_data_failure));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2004) {
+                                    view.getOrderListFailure(getString(R.string.no_more_info));
+                                } else {
+                                    view.getOrderListFailure(getString(R.string.get_data_failure));
+                                }
                             }
                         }
                     }

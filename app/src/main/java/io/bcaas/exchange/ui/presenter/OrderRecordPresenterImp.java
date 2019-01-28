@@ -22,7 +22,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
     private String TAG = OrderRecordPresenterImp.class.getSimpleName();
     private OrderRecordContract.View view;
     private TxInteractor txInteractor;
-    private Disposable disposableGetRecord,disposableCancelOrder;
+    private Disposable disposableGetRecord, disposableCancelOrder;
 
     public OrderRecordPresenterImp(OrderRecordContract.View view) {
         super();
@@ -89,7 +89,13 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
 
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                view.getRecordFailure(getString(R.string.get_data_failure));
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2004) {
+                                    view.getRecordFailure(getString(R.string.no_more_info));
+                                } else {
+                                    view.getRecordFailure(getString(R.string.get_data_failure));
+
+                                }
                             }
                         }
                     }
