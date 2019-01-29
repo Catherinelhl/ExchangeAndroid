@@ -1,1 +1,1 @@
-include ':app', ':qrcode',':MPChartLib'
+include ':app',':MPChartLib'
