@@ -23,7 +23,7 @@ import io.bcaas.exchange.ui.activity.SellDetailActivity;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.SellView;
-import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
@@ -34,7 +34,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * Fragment：「「售出」
+ * Fragment：「售出」
  * Notice：拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
 public class SellFragment extends BaseFragment implements GetAllBalanceContract.View {

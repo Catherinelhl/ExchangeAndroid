@@ -5,7 +5,7 @@ import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.base.BaseLinearLayout;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;

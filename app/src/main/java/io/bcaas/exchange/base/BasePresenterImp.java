@@ -1,9 +1,7 @@
-package io.bcaas.exchange.ui.presenter;
+package io.bcaas.exchange.base;
 
 import android.content.Context;
 import android.content.res.Resources;
-import io.bcaas.exchange.base.BaseApplication;
-import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.reactivex.disposables.Disposable;
 
 /**

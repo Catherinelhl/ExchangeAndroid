@@ -1,4 +1,4 @@
-package io.bcaas.exchange.ui.view;
+package io.bcaas.exchange.base;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
-import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
 import io.bcaas.exchange.vo.ResponseJson;
 

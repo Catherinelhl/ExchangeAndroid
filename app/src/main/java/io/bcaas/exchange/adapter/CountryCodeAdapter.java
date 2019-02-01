@@ -26,7 +26,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/8/15
  * <p>
- * 「城市区号」：用於顯示已經存在的所有地址數據填充在PopWindow裡的適配器
+ * 數據適配器：「城市区号」：用於顯示已經存在的所有地址數據填充在PopWindow裡的適配器
  */
 public class CountryCodeAdapter extends
         RecyclerView.Adapter<CountryCodeAdapter.viewHolder> implements Filterable {

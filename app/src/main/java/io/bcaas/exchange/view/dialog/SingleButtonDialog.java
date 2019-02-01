@@ -30,7 +30,7 @@ public class SingleButtonDialog extends Dialog {
 
     public SingleButtonDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_bcaas_single_dialog, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_single_button_dialog, null);
         setContentView(view);
         btnSure = view.findViewById(R.id.btn_sure);
         tvTitle = view.findViewById(R.id.tv_title);

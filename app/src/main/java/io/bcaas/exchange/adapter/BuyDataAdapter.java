@@ -23,7 +23,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/12/19
  * <p>
- * 「购买」：页面数据适配器
+ * 數據適配器：「购买」：页面数据适配器
  */
 public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHolder> {
     private String TAG = BuyDataAdapter.class.getSimpleName();

@@ -26,7 +26,7 @@ import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
-import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberOrderVO;

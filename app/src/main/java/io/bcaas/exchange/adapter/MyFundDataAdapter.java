@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 「我的资产」：数据适配
+ * 數據適配器：「我的资产」：数据适配
  */
 public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.ViewHolder> {
     private String TAG = MyFundDataAdapter.class.getSimpleName();

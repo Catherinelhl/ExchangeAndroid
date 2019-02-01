@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.contracts;
 
 import android.graphics.Bitmap;
+import io.bcaas.exchange.base.BaseContract;
 import io.bcaas.exchange.bean.VerificationBean;
 
 /**

@@ -29,7 +29,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.maker.DataGenerationRegister;
+import io.bcaas.exchange.manager.DataGenerationManager;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -40,7 +40,6 @@ import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.ui.activity.GoogleVerifyActivity;
 import io.bcaas.exchange.ui.activity.LoginActivity;
 import io.bcaas.exchange.ui.activity.SetFundPasswordActivity;
-import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
@@ -75,7 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     /*软键盘管理*/
     protected SoftKeyBroadManager softKeyBroadManager;
     protected String TAG;
-    protected DataGenerationRegister dataGenerationRegister;
+    protected DataGenerationManager dataGenerationManager;
     /*显示地区号的Pop Window*/
     private ListPop listPop;
     /*字体*/
@@ -105,7 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         //注册OTTO事件
         OttoTool.getInstance().register(this);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        dataGenerationRegister = new DataGenerationRegister();
+        dataGenerationManager = new DataGenerationManager();
 
         initView();
         initData();

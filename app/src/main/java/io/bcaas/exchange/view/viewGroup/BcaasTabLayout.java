@@ -1,4 +1,4 @@
-package io.bcaas.exchange.view.tablayout;
+package io.bcaas.exchange.view.viewGroup;
 
 import android.content.Context;
 import android.content.res.TypedArray;

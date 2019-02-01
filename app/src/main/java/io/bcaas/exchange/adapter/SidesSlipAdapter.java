@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/4
- * 侧滑栏数据适配器
+ * 數據適配器：侧滑栏数据适配器
  */
 public class SidesSlipAdapter extends BaseAdapter {
     private Context context;

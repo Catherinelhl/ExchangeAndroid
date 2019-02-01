@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 「提现」：页面数据适配
+ * 數據適配器：「提现」：页面数据适配
  */
 public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdapter.ViewHolder> {
     private Context context;

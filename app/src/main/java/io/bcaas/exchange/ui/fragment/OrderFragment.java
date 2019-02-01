@@ -22,7 +22,7 @@ import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
-import io.bcaas.exchange.view.tablayout.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
 
@@ -96,7 +96,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         views.clear();
         for (int i = 0; i < 3; i++) {
             //显示标题
-            tabLayout.addTab(dataGenerationRegister.getOrderTopTitles(i), i);
+            tabLayout.addTab(dataGenerationManager.getOrderTopTitles(i), i);
             OrderView orderView = new OrderView(getContext());
             orderView.setAdapter(memberOrderVOList, currentPosition);
             orderView.setOnItemSelectListener(onItemSelectListener);

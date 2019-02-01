@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 /**
- * @projectName: BcaasAndroid
+ * @projectName: ExchangeAndroid
  * @packageName: io.bcaas.tools
  * @author: catherine
  * @time: 2018/9/10

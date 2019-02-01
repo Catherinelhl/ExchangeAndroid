@@ -10,6 +10,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
 import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
+import io.bcaas.exchange.base.BaseLinearLayout;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.vo.MemberOrderVO;

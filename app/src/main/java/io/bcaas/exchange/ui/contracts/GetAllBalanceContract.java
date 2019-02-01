@@ -1,5 +1,6 @@
 package io.bcaas.exchange.ui.contracts;
 
+import io.bcaas.exchange.base.BaseContract;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;

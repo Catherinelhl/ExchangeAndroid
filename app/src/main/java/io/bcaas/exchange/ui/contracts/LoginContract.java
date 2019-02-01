@@ -1,6 +1,8 @@
 package io.bcaas.exchange.ui.contracts;
 
 
+import io.bcaas.exchange.base.BaseContract;
+
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21

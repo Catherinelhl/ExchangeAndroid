@@ -7,10 +7,7 @@ import java.io.Serializable;
  * @version 1.0.0
  * @since 2018-12-17
  * <p>
- * 实体类：
- * 2FA 雙因素驗證<br>
- * Email驗證<br>
- * Phone驗證
+ * 实体类：2FA 雙因素驗證、 Email驗證、 Phone驗證
  */
 public class VerificationBean implements Serializable {
 

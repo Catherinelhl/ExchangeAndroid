@@ -1,9 +1,11 @@
 package io.bcaas.exchange.ui.contracts;
 
+import io.bcaas.exchange.base.BaseContract;
+
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- *  界面与数据相互作用的协议类：修改密码
+ *  ModifyPasswordContractModifyPasswordContract
  */
 public interface ModifyPasswordContract {
 

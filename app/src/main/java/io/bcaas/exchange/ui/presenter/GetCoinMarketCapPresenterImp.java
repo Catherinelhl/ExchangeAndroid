@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.presenter;
 
 import io.bcaas.exchange.R;
+import io.bcaas.exchange.base.BasePresenterImp;
 import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;

@@ -23,7 +23,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/8/15
  * <p>
- * 「PopWindow 列表」：用於顯示需要显示在PopWindow裡的適配器
+ * 數據適配器：「PopWindow 列表」：用於顯示需要显示在PopWindow裡的適配器
  */
 public class PopListAdapter extends
         RecyclerView.Adapter<PopListAdapter.viewHolder> {

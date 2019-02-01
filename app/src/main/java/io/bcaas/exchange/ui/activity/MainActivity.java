@@ -137,8 +137,8 @@ public class MainActivity extends BaseActivity
             TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
 //            textView.getPaint().setShader(getShader(textView, false));
             textView.setTextColor(context.getResources().getColor(R.color.grey_999999));
-            textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, i, false), null, null);
-            textView.setText(dataGenerationRegister.getTabTitle(i));
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(this, i, false), null, null);
+            textView.setText(dataGenerationManager.getTabTitle(i));
             //自定义布局-----
 
             bottomTabLayout.addTab(tab);
@@ -147,7 +147,7 @@ public class MainActivity extends BaseActivity
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
                 textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2
-                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(this, 0, true), null, null);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(this, 0, true), null, null);
             }
         }
     }
@@ -196,7 +196,7 @@ public class MainActivity extends BaseActivity
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
                 textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2：如果是直接就用一个TextView控件来表示了，那么就可以直接用下面这一句来表示
-                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
             }
 
@@ -207,7 +207,7 @@ public class MainActivity extends BaseActivity
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
                 textView.setTextColor(context.getResources().getColor(R.color.grey_999999));
                 //method 2
-                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(MainActivity.this, tab.getPosition(), false), null, null);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), false), null, null);
 
             }
 
@@ -217,7 +217,7 @@ public class MainActivity extends BaseActivity
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
                 textView.setTextColor(context.getResources().getColor(R.color.button_color));
                 //method 2
-                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationRegister.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
             }
         });

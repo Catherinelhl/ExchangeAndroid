@@ -1,4 +1,4 @@
-package io.bcaas.exchange.ui.contracts;
+package io.bcaas.exchange.base;
 
 import io.bcaas.exchange.vo.ResponseJson;
 

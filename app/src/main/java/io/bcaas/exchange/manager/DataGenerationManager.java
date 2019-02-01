@@ -1,4 +1,4 @@
-package io.bcaas.exchange.maker;
+package io.bcaas.exchange.manager;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -14,7 +14,7 @@ import java.util.List;
  * <p>
  * 数据生成寄存器
  */
-public class DataGenerationRegister {
+public class DataGenerationManager {
 
     //底部tab的标题集合
     private List<String> tabTitles = new ArrayList<>();
@@ -29,7 +29,7 @@ public class DataGenerationRegister {
     //顶部tab 订单页面的标题数量
     private int tabOrderTopTitleCount;
 
-    public DataGenerationRegister() {
+    public DataGenerationManager() {
         super();
         initData();
     }

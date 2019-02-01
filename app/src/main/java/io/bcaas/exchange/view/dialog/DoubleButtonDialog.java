@@ -33,7 +33,7 @@ public class DoubleButtonDialog extends Dialog {
     public DoubleButtonDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
         this.context = context;
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_bcaas_dialog, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_double_button_dialog, null);
         setContentView(view);
         btnLeft = view.findViewById(R.id.btn_left);
         btnRight = view.findViewById(R.id.btn_right);

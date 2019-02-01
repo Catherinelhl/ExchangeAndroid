@@ -9,16 +9,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.listener.HideSoftKeyBoardListener;
-import io.bcaas.exchange.maker.DataGenerationRegister;
+import io.bcaas.exchange.manager.DataGenerationManager;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
-import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.vo.ResponseJson;
 
 /**
@@ -36,7 +34,7 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     protected SoftKeyBroadManager softKeyBroadManager;
     /*监管当前fragment的状态：是否准备好；是否第一次可见；是否第一次不可见*/
     protected boolean isPrepared, isFirstVisible, isFirstInvisible;
-    protected DataGenerationRegister dataGenerationRegister;
+    protected DataGenerationManager dataGenerationManager;
 
     @Nullable
     @Override
@@ -57,7 +55,7 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         if (activity != null) {
             getArgs(activity.getIntent().getExtras());
         }
-        dataGenerationRegister = new DataGenerationRegister();
+        dataGenerationManager = new DataGenerationManager();
         initViews(view);
         initListener();
     }
