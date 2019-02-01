@@ -3,7 +3,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 「安全中心」
+ *  界面与数据相互作用的协议类：「安全中心」
  */
 public interface SafetyCenterContract {
     interface View extends AccountSecurityContract.View {

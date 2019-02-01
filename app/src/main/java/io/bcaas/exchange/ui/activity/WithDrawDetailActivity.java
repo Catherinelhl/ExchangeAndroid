@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/4
- * 「提现详情，输入密码」
+ * Activity：「提现详情，输入密码」
  */
 public class WithDrawDetailActivity extends BaseActivity implements WithDrawContract.View, PhoneVerifyContract.View {
     @BindView(R.id.ib_back)

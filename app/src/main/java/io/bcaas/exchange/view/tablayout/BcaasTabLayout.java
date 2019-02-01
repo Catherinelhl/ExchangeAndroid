@@ -28,6 +28,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/7
+ * 自定义视图：APP的底部导航栏
  */
 public class BcaasTabLayout extends FrameLayout {
     private String TAG = BcaasTabLayout.class.getSimpleName();

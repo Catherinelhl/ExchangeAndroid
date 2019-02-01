@@ -39,7 +39,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * 買進
+ * Fragment：「買進」
  */
 public class BuyFragment extends BaseFragment
         implements ForSaleOrderListContract.View, GetAllBalanceContract.View {

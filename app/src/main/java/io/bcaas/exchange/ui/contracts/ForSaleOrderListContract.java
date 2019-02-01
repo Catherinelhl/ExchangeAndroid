@@ -5,7 +5,7 @@ import io.bcaas.exchange.vo.PaginationVO;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- * 待出售
+ *  界面与数据相互作用的协议类：待出售
  */
 public interface ForSaleOrderListContract {
 

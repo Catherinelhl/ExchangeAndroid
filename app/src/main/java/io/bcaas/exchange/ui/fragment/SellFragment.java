@@ -34,8 +34,8 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * 「售出」
- * 拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
+ * Fragment：「「售出」
+ * Notice：拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
 public class SellFragment extends BaseFragment implements GetAllBalanceContract.View {
     @BindView(R.id.srl_data)

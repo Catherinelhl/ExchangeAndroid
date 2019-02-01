@@ -10,6 +10,10 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
 
+/**
+ * 自定义视图：自定义字体大小的文本
+ */
+@Deprecated
 public class RichTextView extends TextView {
 
     public static final int LEFT = 1, TOP = 2, RIGHT = 3, BOTTOM = 4;

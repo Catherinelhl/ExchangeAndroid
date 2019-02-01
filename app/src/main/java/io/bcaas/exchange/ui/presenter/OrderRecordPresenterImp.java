@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- * 订单记录
+ * 数据交互实现类：订单记录
  */
 public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRecordContract.Presenter {
     private String TAG = OrderRecordPresenterImp.class.getSimpleName();

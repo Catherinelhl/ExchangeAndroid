@@ -3,7 +3,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- * 出售
+ *  界面与数据相互作用的协议类：出售
  */
 public interface SellContract {
     interface View extends AccountSecurityContract.View{

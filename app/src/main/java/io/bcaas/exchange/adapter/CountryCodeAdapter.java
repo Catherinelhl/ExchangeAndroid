@@ -26,7 +26,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/8/15
  * <p>
- * 用於顯示已經存在的所有地址數據填充在PopWindow裡的適配器
+ * 「城市区号」：用於顯示已經存在的所有地址數據填充在PopWindow裡的適配器
  */
 public class CountryCodeAdapter extends
         RecyclerView.Adapter<CountryCodeAdapter.viewHolder> implements Filterable {
@@ -143,13 +143,13 @@ public class CountryCodeAdapter extends
                         // 取得当前得城市名字拼音「中文环境可用」
                         String countryNamePinyin = countryCode.getCountryPinyin();
                         //取得当前返回得数据的小写信息·
-                        String constraintLowerCase=constraint.toString().trim().toLowerCase();
+                        String constraintLowerCase = constraint.toString().trim().toLowerCase();
                         if (countryName.trim().toLowerCase().contains(constraintLowerCase)) {
                             // 规则匹配的话就往集合中添加该数据
                             listNew.add(countryCode);
-                        }else if(StringTool.notEmpty(countryNamePinyin)){
+                        } else if (StringTool.notEmpty(countryNamePinyin)) {
                             //  比较拼音
-                            if (countryNamePinyin.trim().toLowerCase().contains(constraintLowerCase)){
+                            if (countryNamePinyin.trim().toLowerCase().contains(constraintLowerCase)) {
                                 listNew.add(countryCode);
                             }
                         }

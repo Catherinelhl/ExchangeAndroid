@@ -20,6 +20,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
+ * 数据交互实现类：出售
  */
 public class SellPresenterImp extends AccountSecurityPresenterImp
         implements SellContract.Presenter {

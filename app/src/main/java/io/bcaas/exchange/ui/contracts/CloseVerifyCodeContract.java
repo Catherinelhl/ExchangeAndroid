@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
- * 「关闭验证」
+ *  界面与数据相互作用的协议类：「关闭验证」
  */
 public interface CloseVerifyCodeContract {
 

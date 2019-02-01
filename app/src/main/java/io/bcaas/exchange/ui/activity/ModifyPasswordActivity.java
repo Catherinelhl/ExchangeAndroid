@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「重置密码」 根据传入的字段来决定修改登录密码还是修改资金密码
+ * Activity：「重置密码」 根据传入的字段来决定修改登录密码还是修改资金密码
  */
 public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswordContract.View {
     @BindView(R.id.ib_back)

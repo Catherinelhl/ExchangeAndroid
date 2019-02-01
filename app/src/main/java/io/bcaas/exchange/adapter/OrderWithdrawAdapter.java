@@ -19,13 +19,9 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 订单页面的提现
+ * 「提现」：页面数据适配
  */
 public class OrderWithdrawAdapter extends RecyclerView.Adapter<OrderWithdrawAdapter.ViewHolder> {
-
-    private String TAG = OrderWithdrawAdapter.class.getSimpleName();
-
-
     private Context context;
     private List<MemberOrderVO> memberOrderVOS;
 

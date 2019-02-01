@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/14
- * 手机验证
+ * 数据交互实现类：手机验证
  */
 public class PhoneVerifyPresenterImp extends BasePresenterImp implements PhoneVerifyContract.Presenter {
 

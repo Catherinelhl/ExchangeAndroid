@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「安全中心」
+ * Activity：「安全中心」
  */
 public class SafetyCenterActivity extends BaseActivity implements SafetyCenterContract.View, OnItemSelectListener {
     @BindView(R.id.ib_back)

@@ -19,6 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/17
+ * 数据交互实现类：获取当前币种与USD之间的汇率数据
  */
 
 @Deprecated

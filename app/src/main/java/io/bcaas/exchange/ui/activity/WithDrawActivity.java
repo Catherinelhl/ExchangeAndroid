@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit;
  * @author catherine.brainwilliam
  * @since 2018/12/28
  * <p>
- * 「提现」
+ * Activity：「提现」
  */
 public class WithDrawActivity extends BaseActivity
         implements AccountSecurityContract.View, GetAllBalanceContract.View {

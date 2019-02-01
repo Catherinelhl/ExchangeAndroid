@@ -25,7 +25,7 @@ import okhttp3.ResponseBody;
  * @author catherine.brainwilliam
  * @since 2018/12/21
  * <p>
- * 验证码的获取Presenter
+ * 数据交互实现类： 验证码的获取
  */
 public class VerifyCodePresenterImp extends BasePresenterImp
         implements VerifyCodeContract.Presenter {

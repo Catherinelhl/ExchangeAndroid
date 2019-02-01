@@ -9,7 +9,7 @@ import okhttp3.RequestBody;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 「获取账户资讯」
+ * 数据与请求相互作用类：「获取账户资讯」
  */
 public class AccountSecurityInteractor {
 

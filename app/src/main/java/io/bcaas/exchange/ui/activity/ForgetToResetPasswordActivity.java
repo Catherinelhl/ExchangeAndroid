@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/17
- * 忘记密码：资金，登录
+ * Activity：忘记密码：资金，登录
  */
 public class ForgetToResetPasswordActivity extends BaseActivity implements ForgetToResetPasswordContract.View {
     @BindView(R.id.ib_back)

@@ -3,7 +3,7 @@ package io.bcaas.exchange.vo;
 import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.bean.ExchangeBean;
 import io.bcaas.exchange.bean.VerificationBean;
-import io.bcaas.exchange.gson.ServerResponseJson;
+import io.bcaas.exchange.bean.ServerResponseJson;
 
 import java.util.List;
 

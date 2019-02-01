@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 购买详情
+ * Activity：购买详情
  */
 public class BuyDetailActivity extends BaseActivity implements BuyContract.View {
     @BindView(R.id.ib_back)

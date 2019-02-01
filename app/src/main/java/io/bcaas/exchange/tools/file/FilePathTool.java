@@ -8,7 +8,7 @@ import java.io.File;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/9
- * 管理文件路径
+ * 工具类：管理文件路径
  */
 public class FilePathTool {
 

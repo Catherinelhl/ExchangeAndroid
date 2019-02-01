@@ -20,7 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 「安全中心」
+ * 数据交互实现类：「安全中心」
  */
 public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implements SafetyCenterContract.Presenter {
     private String TAG = SafetyCenterPresenterImp.class.getSimpleName();

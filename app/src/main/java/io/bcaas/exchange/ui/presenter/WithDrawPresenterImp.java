@@ -20,7 +20,7 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- * 提现
+ * 数据交互实现类：提现
  */
 public class WithDrawPresenterImp extends AccountSecurityPresenterImp
         implements WithDrawContract.Presenter {

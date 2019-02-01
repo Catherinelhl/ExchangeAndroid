@@ -16,6 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
+ * 数据交互实现类：获取待出售列表
  */
 public class ForSaleOrderListPresenterImp extends BasePresenterImp
         implements ForSaleOrderListContract.Presenter {

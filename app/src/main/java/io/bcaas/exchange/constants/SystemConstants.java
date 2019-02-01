@@ -9,7 +9,9 @@ package io.bcaas.exchange.constants;
  * <p>
  * api ip manager
  * <p>
- * 定義對應Config常數(API)
+ *
+ * 常量类：定義對應Config常數(API)
+ *
  */
 
 public class SystemConstants {

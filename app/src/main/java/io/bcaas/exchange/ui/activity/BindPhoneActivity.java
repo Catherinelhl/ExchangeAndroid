@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「绑定手机」
+ * Activity：「绑定手机」
  */
 public class BindPhoneActivity extends BaseActivity implements BindPhoneContract.View {
 

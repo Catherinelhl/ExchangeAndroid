@@ -1,8 +1,6 @@
 package io.bcaas.exchange.gson;
 
-import com.google.gson.JsonArray;
 import io.bcaas.exchange.base.BaseApplication;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.vo.CurrencyListVO;

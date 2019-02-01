@@ -7,6 +7,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
@@ -24,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
+ * 数据交互实现类：登录
  */
 public class LoginPresenterImp extends BasePresenterImp implements LoginContract.Presenter {
     private String TAG = LoginPresenterImp.class.getSimpleName();
@@ -86,7 +88,7 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                             BaseApplication.setAccessToken(accessToken);
                             //存储当前的memberID
                             BaseApplication.setMemberID(memberId);
-                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberId);
+                           PreferenceTool.getInstance().saveString(Constants.Preference.MEMBER_ID, memberId);
                             //将成功状态返回界面
                             view.loginSuccess(accessToken);
                         } else {

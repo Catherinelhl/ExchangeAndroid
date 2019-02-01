@@ -40,7 +40,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/17
- * 自定义一个带有动作的EditView，可能是「Check」，可能是「Send」 and so on
+ * 自定义视图：一个带有动作的EditView，可能是「Check」，可能是「Send」 and so on
  */
 public class EditTextWithAction extends LinearLayout
         implements VerifyCodeContract.View {

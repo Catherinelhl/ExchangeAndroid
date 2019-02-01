@@ -1,7 +1,6 @@
 package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
-import io.bcaas.exchange.BuildConfig;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
@@ -13,7 +12,7 @@ import io.bcaas.exchange.tools.time.ObservableTimerTool;
  * @author catherine.brainwilliam
  * @since 2018/12/18
  * <p>
- * 引导页面
+ * Activity：引导页面
  */
 public class BrandActivity extends BaseActivity {
     @Override
@@ -29,7 +28,7 @@ public class BrandActivity extends BaseActivity {
     @Override
     public void initView() {
         BaseApplication.setCurrentLanguage(getCurrentLanguage());
-        ObservableTimerTool.countDownTimerBySetTime(Constants.ValueMaps.STAY_BRAND_ACTIVITY_TIME, observableTimerListener);
+        ObservableTimerTool.countDownTimerBySetTime(Constants.Time.STAY_BRAND_ACTIVITY, observableTimerListener);
     }
 
 

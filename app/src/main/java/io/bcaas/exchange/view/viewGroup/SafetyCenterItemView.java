@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 自定义一个显示「安全中心」的View
+ * 自定义视图：一个显示「安全中心」的View
  */
 public class SafetyCenterItemView extends LinearLayout {
     @BindView(R.id.tv_name)

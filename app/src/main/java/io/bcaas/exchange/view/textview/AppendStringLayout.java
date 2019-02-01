@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/22
- * 拼接字符的layout
+ * 自定义视图：拼接字符的layout
  */
 public class AppendStringLayout extends LinearLayout {
     @BindView(R.id.tv_content)

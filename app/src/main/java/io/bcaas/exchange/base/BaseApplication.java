@@ -35,8 +35,6 @@ public class BaseApplication extends MultiDexApplication {
     protected static int screenWidth;
     /*屏幕的高*/
     protected static int screenHeight;
-    /*SP存儲工具類*/
-    private static PreferenceTool preferenceTool;
     /*判断当前程序是否真的有网*/
     private static boolean realNet = true;
     /*当前的语言环境,默认是英文*/
@@ -61,8 +59,6 @@ public class BaseApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        //初始化SharePreference
-        preferenceTool = PreferenceTool.getInstance(context());
         //获取当前设备尺寸信息
         getScreenMeasure();
         //注册网络变化监听
@@ -211,48 +207,6 @@ public class BaseApplication extends MultiDexApplication {
     public static int getScreenHeight() {
         return screenHeight;
     }
-
-    /**
-     * 從SP裡面獲取數據
-     *
-     * @param key
-     * @return
-     */
-    public static String getStringFromSP(String key) {
-        if (preferenceTool == null) {
-            preferenceTool = PreferenceTool.getInstance(context());
-        }
-        return preferenceTool.getString(key);
-    }
-
-    public static Boolean getBooleanFromSP(String key) {
-        if (preferenceTool == null) {
-            preferenceTool = PreferenceTool.getInstance(context());
-        }
-        return preferenceTool.getBoolean(key);
-    }
-
-
-    /**
-     * 往SP裡面存儲數據
-     *
-     * @param key
-     * @param value
-     */
-    public static void setStringToSP(String key, String value) {
-        if (preferenceTool == null) {
-            preferenceTool = PreferenceTool.getInstance(context());
-        }
-        preferenceTool.saveString(key, value);
-    }
-
-    public static void setBooleanToSP(String key, Boolean value) {
-        if (preferenceTool == null) {
-            preferenceTool = PreferenceTool.getInstance(context());
-        }
-        preferenceTool.saveBoolean(key, value);
-    }
-
 
     /*检测当前网络是否是真的*/
     public static boolean isRealNet() {

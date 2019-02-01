@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 订单页面的交易
+ * 「订单」：页面数据适配
  */
 public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransactionAdapter.ViewHolder> {
 

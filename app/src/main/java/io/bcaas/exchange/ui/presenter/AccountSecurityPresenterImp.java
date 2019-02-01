@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
- * 获取账户信息
+ * 数据交互实现类：获取账户信息
  */
 public class AccountSecurityPresenterImp extends BasePresenterImp
         implements AccountSecurityContract.Presenter {

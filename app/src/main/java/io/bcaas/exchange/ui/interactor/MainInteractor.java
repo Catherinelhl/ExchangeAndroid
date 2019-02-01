@@ -9,7 +9,7 @@ import okhttp3.RequestBody;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 首页
+ * 数据与请求相互作用类：首页/进入APP会需要的用户基本信息
  */
 public class MainInteractor {
 

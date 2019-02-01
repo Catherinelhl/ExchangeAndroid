@@ -21,6 +21,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/21
+ * 数据交互实现类：获取当前APP对应币种的数据交互CoinName
  */
 public class GetCoinNameListPresenterImp extends BasePresenterImp
         implements GetCoinNameListContract.Presenter {

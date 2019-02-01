@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/29
- * 「售出」界面的传递数据类
+ * 实体类：「售出」界面的传递数据类
  */
 public class SellDataBean extends CurrencyListVO implements Serializable {
 

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/25
- * 一个管理时间间隔的工具
+ * 工具类：一个管理时间间隔的工具
  */
 public class IntervalTimerTool {
 

@@ -3,11 +3,11 @@ package io.bcaas.exchange.bean;
 import java.io.Serializable;
 
 /**
- * 個人交易Info
- *
  * @author Costa Peng
  * @version 1.0.0
  * @since 2018-12-17
+ * <p>
+ * 实体类：個人交易Info
  */
 public class ExchangeBean implements Serializable {
 

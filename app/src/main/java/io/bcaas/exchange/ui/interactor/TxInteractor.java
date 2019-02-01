@@ -9,7 +9,7 @@ import okhttp3.RequestBody;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 交易相关
+ * 数据与请求相互作用类：交易相关
  */
 public class TxInteractor {
     /**

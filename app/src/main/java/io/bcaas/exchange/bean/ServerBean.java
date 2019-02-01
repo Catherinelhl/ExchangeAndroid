@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author catherine.brainwilliam
  * @since 2018/9/17
  * <p>
- * 存儲當前所在SFN的環境的所有可切換的服務器信息數據類
+ * 实体类：存儲當前所在SFN的環境的所有可切換的服務器信息數據類
  */
 public class ServerBean implements Serializable {
     /*id，增序,默认为-1*/

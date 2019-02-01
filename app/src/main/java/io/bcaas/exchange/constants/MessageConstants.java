@@ -3,13 +3,10 @@ package io.bcaas.exchange.constants;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/3
+ * <p>
+ * 常量类：服务器接口返回的相关code以及message
  */
 public class MessageConstants {
-
-    public static final int CODE_404 = 404; // Failure
-
-    public static final int CODE_2028 = 2028; //LanguageCode format invalid.
-    public static final String CODE_2028_MSG = "LanguageCode format invalid."; // LanguageCode format invalid.
 
 
     //字节码格式
@@ -17,7 +14,7 @@ public class MessageConstants {
     public static final String EMPTY = "";
     public static final String DEFAULT_NEXT_OBJECT_ID = "0";//默认的nextObjectId
     public static final String NULL = "(null)";
-    public static String HTTP_CONTENT_ENCODING = "Content-Encoding";
+    public static final String HTTP_CONTENT_ENCODING = "Content-Encoding";
     public static final String ENCODE_INGORE_CASE = "identity";//http設置encode忽略
     public static final String CONNECT_EXCEPTION = "connect exception,need switch server...";
 
@@ -25,16 +22,12 @@ public class MessageConstants {
     public static final String SCREEN_HEIGHT = "screen height:";
     public static final String DEVICE_INFO = "Devices info:";
 
-
-    public static final boolean STATUS_SUCCESS = true;
-    public static final boolean STATUS_FAILURE = false;
-
     public static final int CODE_200 = 200; // Success
     public static final int CODE_400 = 400; // Failure
 
     // Common
+    public static final int CODE_404 = 404; // Failure
     public static final String SUCCESS_REGEX = "Regex Success.";
-
     public static final int CODE_2000 = 2000;
     public static final String ERROR_VO_ISNULL_TYPE = "VO is null or type error.";
     public static final int CODE_2001 = 2001;
@@ -139,7 +132,7 @@ public class MessageConstants {
     public static final String ERROR_VERIFY_CODE_FORMAT_INVALID = "Verify code format invalid.";
     public static final int CODE_2068 = 2068;
     public static final String ERROR_WITHDRAW_PRICE_LESS_THAN_EQUAL_TO_ALL_FEE = "Withdraw price less than equal to all fee.";
-   public static final int CODE_2077 = 2077;
+    public static final int CODE_2077 = 2077;
     public static final String ERROR_COINNAME_FORMAT = "CoinName foramt error.";
     public static final int CODE_2078 = 2078;
     public static final String ERROR_STARTTIME_FORMAT = "StartTime foramt error.";
@@ -179,61 +172,7 @@ public class MessageConstants {
     public static final String ETH_TXSTATUS_PROCESSING = "ETH tx status processing.";
     public static final int CODE_4011 = 4011;
     public static final String ETH_TXSTATUS_COMPLETED = "ETH tx status completed.";
-
     public static final int CODE_5001 = 5001;
-    public static final String BCC_WALLET_ADDRESS_FORMAT_INVALID = "WalletAddress format invalid.";
-    public static final String SUCCESS_GETTXSTATUS = "Get txStatus success.";
-    public static final String FAILURE_GETTXSTATUS = "Get txStatus failure.";
-    public static final String SUCCESS_PUSHTX = "PushTx success.";
-    public static final String FAILURE_PUSHTX = "PushTx failure.";
-
-    // API Type...
-    // Version
-    public static final String SUCCESS_ADDVERSIONINFO = "Add version info success.";
-    public static final String FAILURE_ADDVERSIONINFO = "Add version info failure.";
-
-    // Member
-    public static final String SUCCESS_MEMBER_REGISTERACCOUNT = "Member register account success.";
-    public static final String FAILURE_MEMBER_REGISTERACCOUNT = "Member register account failure.";
-    public static final String SUCCESS_MEMBER_LOGIN = "Member login success.";
-    public static final String FAILURE_MEMBER_LOGIN = "Member login failure.";
-    public static final String SUCCESS_MEMBER_LOGOUT = "Member logout success.";
-    public static final String FAILURE_MEMBER_LOGOUT = "Member logout failure.";
-    public static final String SUCCESS_MEMBER_RESETPASSWORD = "Member reset password success.";
-    public static final String FAILURE_MEMBER_RESETPASSWORD = "Member reset password failure.";
-    public static final String SUCCESS_MEMBER_VERIFYACCOUNT = "Member verify account success.";
-    public static final String FAILURE_MEMBER_VERIFYACCOUNT = "Member verify account failure.";
-    public static final String SUCCESS_MEMBER_SECURITYEMAIL = "Member security email setting success.";
-    public static final String FAILURE_MEMBER_SECURITYEMAIL = "Member security email setting failure.";
-    public static final String SUCCESS_MEMBER_SECURITYPHONE = "Member security phone setting success.";
-    public static final String FAILURE_MEMBER_SECURITYPHONE = "Member security phone setting failure.";
-    public static final String SUCCESS_MEMBER_SECURITYTXPASSWORD = "Member security txPassword setting success.";
-    public static final String FAILURE_MEMBER_SECURITYTXPASSWORD = "Member security txPassword setting failure.";
-    public static final String SUCCESS_MEMBER_SECURITY2FA = "Member security two-factor authentication setting success.";
-    public static final String FAILURE_MEMBER_SECURITY2FA = "Member security two-factor authentication setting failure.";
-    public static final String SUCCESS_MEMBER_SECURITYINFO = "Member security info success.";
-    public static final String FAILURE_MEMBER_SECURITYINFO = "Member security info failure.";
-    public static final String SUCCESS_MEMBER_GETRECORD = "Member get record success.";
-    public static final String FAILURE_MEMBER_GETRECORD = "Member get record failure.";
-
-
-    // MemberOrder
-    public static final String SUCCESS_MEMBERORDER_GETRECORD = "Member get record success.";
-    public static final String FAILURE_MEMBERORDER_GETRECORD = "Member get record failure.";
-    public static final String SUCCESS_MEMBERORDER_CANCEL = "Member order cancel success.";
-    public static final String FAILURE_MEMBERORDER_CANCEL = "Member order cancel failure.";
-
-    // MemberKey
-    public static final String SUCCESS_MEMBERKEY_CREATEADDRESS = "MemberKey create address success.";
-    public static final String FAILURE_MEMBERKEY_CREATEADDRESS = "MemberKey create address failure.";
-    public static final String SUCCESS_MEMBERKEY_GETALLBALANCE = "MemberKey get all balance success.";
-    public static final String FAILURE_MEMBERKEY_GETALLBALANCE = "MemberKey get all balance failure.";
-
-    // CurrencyList
-    public static final String SUCCESS_CURRENCYLIST_ADDNEWCURRENCY = "CurrencyList add new currency success.";
-    public static final String FAILURE_CURRENCYLIST_ADDNEWCURRENCY = "CurrencyList add new currency failure.";
-
-
     public static final String NO_ENOUGH_BALANCE = "-1";
     public static final String AMOUNT_EXCEPTION_CODE = "-1";
 

@@ -28,6 +28,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
+ * 数据交互实现类：绑定手机号
  */
 public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements BindPhoneContract.Presenter {
     private String TAG = BindPhonePresenterImp.class.getSimpleName();

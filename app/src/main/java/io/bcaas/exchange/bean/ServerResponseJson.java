@@ -1,13 +1,12 @@
-package io.bcaas.exchange.gson;
+package io.bcaas.exchange.bean;
 
 import java.io.Serializable;
 
 /**
- * Server 回應使用, 回傳封包格式定義
- *
  * @author Costa Peng
  * @version 1.0.0
  * @since 2018/06/10
+ * 实体类：Server 回應使用, 回傳封包格式定義
  */
 public class ServerResponseJson implements Serializable {
 

@@ -28,7 +28,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * 帳戶
+ * Fragment：「帳戶」
  */
 public class AccountFragment extends BaseFragment {
     private String TAG = AccountFragment.class.getSimpleName();

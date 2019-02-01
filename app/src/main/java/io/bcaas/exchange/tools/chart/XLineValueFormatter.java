@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 /**
- * X轴label数据定制
+ * 「Chart图」：X轴label数据定制
  */
 public class XLineValueFormatter extends ValueFormatter {
     private String TAG = XLineValueFormatter.class.getSimpleName();

@@ -3,7 +3,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- * 修改密码
+ *  界面与数据相互作用的协议类：修改密码
  */
 public interface ModifyPasswordContract {
 

@@ -22,7 +22,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/2
- * 「设置资金密码」
+ * 数据交互实现类：「设置资金密码」
  */
 public class SetFundPasswordPresenterImp extends BasePresenterImp
         implements SetFundPasswordContract.Presenter {

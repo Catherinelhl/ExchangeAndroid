@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author Catherine
  * <p>
- * 显示Bcaas自定义的线图信息
+ * 「Chart图」：显示Bcaas自定义的点击显示的线图信息
  */
 @SuppressLint("ViewConstructor")
 public class ValueMarkerView extends MarkerView {

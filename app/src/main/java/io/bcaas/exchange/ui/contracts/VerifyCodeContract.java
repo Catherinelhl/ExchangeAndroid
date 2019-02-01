@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/27
- * 验证码的Contract
+ *  界面与数据相互作用的协议类：验证码相关
  */
 public interface VerifyCodeContract {
 

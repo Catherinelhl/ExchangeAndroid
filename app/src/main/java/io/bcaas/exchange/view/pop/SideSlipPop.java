@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/4
- * 侧滑界面，这里用的是自定义popWindow来实现
+ * 自定义视图：侧滑界面，这里用的是自定义popWindow来实现
  */
 public class SideSlipPop extends PopupWindow {
     private String TAG = SideSlipPop.class.getSimpleName();

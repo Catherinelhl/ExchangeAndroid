@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/21
- * 获取CoinName
+ *  界面与数据相互作用的协议类：获取CoinName
  */
 public interface GetCoinNameListContract {
 

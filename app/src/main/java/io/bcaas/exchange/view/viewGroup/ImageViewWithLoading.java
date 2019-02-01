@@ -18,7 +18,7 @@ import io.bcaas.exchange.R;
  * @author catherine.brainwilliam
  * @since 2019/1/23
  * <p>
- * 一个自带加载过程的图片
+ * 自定义视图：一个自带加载过程的图片
  */
 public class ImageViewWithLoading extends RelativeLayout {
 

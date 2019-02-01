@@ -17,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/18
+ * 数据交互实现类：获取币种的市场信息形成Chart图
  */
 public class GetCoinMarketCapPresenterImp extends BasePresenterImp
         implements GetCoinMarketCapContract.Presenter {

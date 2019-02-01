@@ -33,10 +33,13 @@ import io.bcaas.exchange.maker.DataGenerationRegister;
 import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.app.ActivityTool;
-import io.bcaas.exchange.tools.otto.OttoTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.activity.*;
+import io.bcaas.exchange.tools.app.ActivityTool;
+import io.bcaas.exchange.tools.app.PreferenceTool;
+import io.bcaas.exchange.tools.otto.OttoTool;
+import io.bcaas.exchange.ui.activity.GoogleVerifyActivity;
+import io.bcaas.exchange.ui.activity.LoginActivity;
+import io.bcaas.exchange.ui.activity.SetFundPasswordActivity;
 import io.bcaas.exchange.ui.contracts.BaseContract;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
@@ -47,7 +50,9 @@ import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.bcaas.exchange.vo.ResponseJson;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * @author catherine.brainwilliam
@@ -220,7 +225,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     /*獲取當前語言環境*/
     protected String getCurrentLanguage() {
         // 1：檢查應用是否已經有用戶自己存儲的語言種類
-        String currentString = BaseApplication.getStringFromSP(Constants.Preference.LANGUAGE_TYPE);
+        String currentString = PreferenceTool.getInstance().getString(Constants.Preference.LANGUAGE_TYPE);
         if (StringTool.isEmpty(currentString)) {
             //2:當前的選中為空，那麼就默認讀取當前系統的語言環境
             Locale locale = getResources().getConfiguration().locale;
@@ -250,7 +255,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
                 //先判断有没有权限 ，没有就在这里进行权限的申请
                 ActivityCompat.requestPermissions(this,
                         new String[]{android.Manifest.permission.CAMERA}, Constants.RequestCode.REQUEST_CODE_CAMERA_OK);
-
             } else {
                 //说明已经获取到摄像头权限了 想干嘛干嘛
                 intentToCaptureActivity();
@@ -419,26 +423,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     }
 
     /**
-     * token过期，弹出提示框，并跳出到「登录」页面
-     */
-    public void tokenInvalid() {
-//        showDoubleButtonDialog(getResources().getString(R.string.warning),
-//                getResources().getString(R.string.confirm),
-//                getResources().getString(R.string.cancel), "登录已失效，请重新登录", new DoubleButtonDialog.ConfirmClickListener() {
-//                    @Override
-//                    public void sure() {
-//                        //跳转
-//                    }
-//
-//                    @Override
-//                    public void cancel() {
-//
-//                    }
-//                });
-
-    }
-
-    /**
      * 跳转到登录页面
      */
     private void intentToLoginActivity() {
@@ -448,10 +432,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     public void showDoubleButtonDialog(String message, DoubleButtonDialog.ConfirmClickListener listener) {
         this.showDoubleButtonDialog(getString(R.string.warning), getString(R.string.cancel), getString(R.string.confirm), message, listener);
-    }
-
-    public void showDoubleButtonDialog(String left, String right, String message, DoubleButtonDialog.ConfirmClickListener listener) {
-        this.showDoubleButtonDialog(getString(R.string.warning), left, right, listener);
     }
 
     /**

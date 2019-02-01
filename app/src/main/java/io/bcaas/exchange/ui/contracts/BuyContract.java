@@ -3,7 +3,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- * 购买
+ *  界面与数据相互作用的协议类：购买
  */
 public interface BuyContract {
 

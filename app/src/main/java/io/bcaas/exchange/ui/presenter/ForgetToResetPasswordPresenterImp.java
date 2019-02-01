@@ -7,6 +7,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.ForgetToResetPasswordContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
@@ -24,7 +25,7 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- * 忘记而重设密码
+ * 数据交互实现类：忘记而重设密码
  */
 public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
         implements ForgetToResetPasswordContract.Presenter {
@@ -85,7 +86,7 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberId);
+                           PreferenceTool.getInstance().saveString(Constants.Preference.MEMBER_ID, memberId);
                             //存储当前账号
                             BaseApplication.setMemberID(BaseApplication.getMemberID());
                             view.forgetPasswordSuccess(MessageConstants.EMPTY);

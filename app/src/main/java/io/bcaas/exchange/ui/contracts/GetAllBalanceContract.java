@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/17
- * 取得账户所有币种信息
+ *  界面与数据相互作用的协议类：取得账户所有币种信息
  */
 public interface GetAllBalanceContract {
 

@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  * @author catherine.brainwilliam
  * @since 2018/12/27
  * 「售出」页面视图
- * 需要判断当前的Token性质，如果是BTC/BCC，那么保留8位小数点；如果是ETH，保留十位
+ * Notice：需要判断当前的Token性质，如果是BTC/BCC，那么保留8位小数点；如果是ETH，保留十位
  */
 public class SellView extends BaseLinearLayout
         implements GetCurrencyChargeContract.View {

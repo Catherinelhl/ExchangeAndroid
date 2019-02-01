@@ -23,7 +23,7 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- * 修改密码
+ * 数据交互实现类：修改密码
  */
 public class ModifyPasswordPresenterImp extends BasePresenterImp
         implements ModifyPasswordContract.Presenter {

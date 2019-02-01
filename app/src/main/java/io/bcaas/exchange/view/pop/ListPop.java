@@ -10,11 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.CountryCodeAdapter;
 import io.bcaas.exchange.adapter.PopListAdapter;
-import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
 import java.util.List;
@@ -48,7 +45,6 @@ public class ListPop extends PopupWindow {
     }
 
     public void addList(OnItemSelectListener onItemSelectListener, List<MemberKeyVO> list) {
-        LogTool.d(TAG, "addList:" + list);
         this.itemSelectListener = onItemSelectListener;
         PopListAdapter adapter = new PopListAdapter(context, list);
         adapter.setOnItemSelectListener(popItemSelectListener);

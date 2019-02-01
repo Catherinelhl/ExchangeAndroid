@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 貨幣市價資訊
+ * 实体类：貨幣市價資訊
  */
+
 public class CoinMarketCapBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -24,6 +24,7 @@ import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.app.ActivityTool;
+import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.app.VersionTool;
 import io.bcaas.exchange.ui.contracts.LoginContract;
 import io.bcaas.exchange.ui.presenter.LoginPresenterImp;
@@ -36,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/14
- * 登录页面
+ * Activity：登录页面
  */
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     @BindView(R.id.etwa_amount)
@@ -88,7 +89,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     private void refreshAccountInfo() {
         //取得上一次的历史登录信息
-        String memberIdHistory = BaseApplication.getStringFromSP(Constants.Preference.MEMBER_ID);
+        String memberIdHistory = PreferenceTool.getInstance().getString(Constants.Preference.MEMBER_ID);
         if (StringTool.notEmpty(memberIdHistory)
                 && etAccount != null) {
             etAccount.setContent(memberIdHistory);

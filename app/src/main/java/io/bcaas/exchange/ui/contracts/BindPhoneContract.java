@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
- * 绑定手机
+ *  界面与数据相互作用的协议类：绑定手机
  */
 public interface BindPhoneContract {
 

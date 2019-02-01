@@ -22,6 +22,8 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
+ *
+ * 数据交互实现类：关闭安全验证
  */
 public class CloseVerifyPresenterImp
         extends AccountSecurityPresenterImp

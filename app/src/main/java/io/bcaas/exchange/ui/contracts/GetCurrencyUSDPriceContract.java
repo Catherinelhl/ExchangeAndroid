@@ -5,7 +5,7 @@ import io.bcaas.exchange.bean.ExchangeBean;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/17
- * 获得当前汇率
+ *  界面与数据相互作用的协议类：获得当前汇率
  */
 public interface GetCurrencyUSDPriceContract {
 

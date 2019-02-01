@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/16
+ * 数据交互实现类：所有数据交互类的实现类的基类
  */
 public abstract class BasePresenterImp implements BaseContract.Presenter {
     private String TAG = BasePresenterImp.class.getSimpleName();

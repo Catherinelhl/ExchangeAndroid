@@ -4,12 +4,13 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.maker.DataGenerationRegister;
-import io.bcaas.exchange.tools.StringTool;
 
 import java.util.List;
 
+/**
+ * TabLayout  数据适配
+ */
 public class TabViewAdapter extends PagerAdapter {
     private List<View> views;
 
@@ -44,9 +45,9 @@ public class TabViewAdapter extends PagerAdapter {
         return POSITION_NONE;
     }
 
-    //设置tablayout标题
+    //设置tabLayout标题
     @Override
     public CharSequence getPageTitle(int position) {
-            return new DataGenerationRegister().getOrderTopTitles(position);
+        return new DataGenerationRegister().getOrderTopTitles(position);
     }
 }

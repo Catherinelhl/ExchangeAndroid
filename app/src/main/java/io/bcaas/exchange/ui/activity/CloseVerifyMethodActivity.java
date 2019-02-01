@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「关闭某个验证方式」
+ * Activity：「关闭某个验证方式」
  * <p>
  * 1：进入界面获取当前的用户资讯，根据用户打开的验证方式来判断界面具体显示情况
  */

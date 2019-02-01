@@ -10,7 +10,7 @@ import okhttp3.ResponseBody;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 用户登录相关的网络连接器
+ * 数据与请求相互作用类：登录与注册
  */
 public class LoginInteractor {
 

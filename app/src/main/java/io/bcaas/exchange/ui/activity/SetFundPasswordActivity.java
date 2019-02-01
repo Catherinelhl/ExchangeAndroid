@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 「设置资金密码」
+ * Activity：「设置资金密码」
  */
 public class SetFundPasswordActivity extends BaseActivity implements SetFundPasswordContract.View {
 

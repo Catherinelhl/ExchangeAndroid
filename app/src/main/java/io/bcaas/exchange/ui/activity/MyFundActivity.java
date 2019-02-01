@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2018/12/27
  * <p>
  * <p>
- * 「我的资产」
+ * Activity：「我的资产」
  */
 public class MyFundActivity extends BaseActivity
         implements GetAllBalanceContract.View {

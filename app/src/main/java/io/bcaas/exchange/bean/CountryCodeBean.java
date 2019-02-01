@@ -7,7 +7,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2019/1/9
  *
- * 获取本地地区号码资源
+ * 实体类：获取本地地区号码资源
  */
 public class CountryCodeBean implements Serializable {
     public List<CountryCode> data;

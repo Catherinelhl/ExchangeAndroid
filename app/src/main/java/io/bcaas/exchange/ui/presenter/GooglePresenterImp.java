@@ -25,7 +25,7 @@ import okhttp3.ResponseBody;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/9
- * Google 验证相关
+ * 数据交互实现类：Google 验证相关
  */
 public class GooglePresenterImp extends BasePresenterImp implements GoogleContract.Presenter {
 

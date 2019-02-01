@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 订单页面的充值
+ * 「充值」：数据适配器
  */
 public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdapter.ViewHolder> {
 

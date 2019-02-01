@@ -9,14 +9,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.base.BaseApplication;
-import io.bcaas.exchange.bean.CountryCodeBean;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.tools.TextTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
@@ -27,7 +23,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/8/15
  * <p>
- * 用於顯示已經數據填充在PopWindow裡的適配器
+ * 「PopWindow 列表」：用於顯示需要显示在PopWindow裡的適配器
  */
 public class PopListAdapter extends
         RecyclerView.Adapter<PopListAdapter.viewHolder> {
@@ -58,11 +54,11 @@ public class PopListAdapter extends
         if (memberKeyVOS == null) {
             return;
         }
-        MemberKeyVO memberKeyVO=memberKeyVOS.get(i);
+        MemberKeyVO memberKeyVO = memberKeyVOS.get(i);
         if (memberKeyVO != null) {
-            CurrencyListVO currencyListVO=memberKeyVO.getCurrencyListVO();
-            if (currencyListVO!=null){
-                String enName=currencyListVO.getEnName();
+            CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+            if (currencyListVO != null) {
+                String enName = currencyListVO.getEnName();
                 if (StringTool.isEmpty(enName)) {
                     return;
                 }
@@ -71,7 +67,7 @@ public class PopListAdapter extends
                 viewHolder.llAddress.setOnClickListener(view -> onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SELL_SELECTED_CURRENCY));
 
             }
-              }
+        }
 
 
     }

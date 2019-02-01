@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
  * @author catherine.brainwilliam
  * @since 2019/1/11
  * <p>
- * 取得幣種的手續費
+ * 数据交互实现类：取得幣種的手續費
  */
 public class GetCurrencyChargePresenterImp extends BasePresenterImp
         implements GetCurrencyChargeContract.Presenter {

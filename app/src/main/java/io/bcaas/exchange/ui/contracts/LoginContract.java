@@ -4,6 +4,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
+ *  界面与数据相互作用的协议类：登录
  */
 public interface LoginContract {
     interface View extends BaseContract.View {

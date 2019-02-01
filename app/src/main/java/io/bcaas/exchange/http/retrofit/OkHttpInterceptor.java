@@ -1,10 +1,11 @@
 package io.bcaas.exchange.http.retrofit;
 
 
-import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.device.NetWorkTool;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
@@ -32,7 +33,7 @@ public class OkHttpInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
 
         Request request = chain.request().newBuilder()
-                .addHeader("cookie", BaseApplication.getStringFromSP("cookie"))
+                .addHeader(Constants.HEADER_NAME_KEY, PreferenceTool.getInstance().getString(Constants.Preference.COOKIE))
                 .build();
         RequestBody requestBody = request.body();
 
@@ -87,7 +88,7 @@ public class OkHttpInterceptor implements Interceptor {
                         }
                     });
 
-            BaseApplication.setStringToSP("cookie", cookieBuffer.toString());
+            PreferenceTool.getInstance().saveString("cookie", cookieBuffer.toString());
             LogTool.d(TAG, "获取到的cookies是：" + cookieBuffer.toString());
         }
         //-------------获取Response响应的数据然后获取cookies-------------

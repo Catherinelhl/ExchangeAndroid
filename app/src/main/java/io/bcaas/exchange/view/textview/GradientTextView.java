@@ -10,7 +10,7 @@ import io.bcaas.exchange.R;
  * @author catherine.brainwilliam
  * @since 2018/12/18
  * <p>
- * 实现渐变的TextView
+ * 自定义视图：实现渐变的TextView
  */
 public class GradientTextView extends TextView {
     private Context context;

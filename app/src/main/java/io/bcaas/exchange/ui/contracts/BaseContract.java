@@ -5,6 +5,7 @@ import io.bcaas.exchange.vo.ResponseJson;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
+ * 界面与数据相互作用的协议类：所有协议类的基类
  */
 public interface BaseContract {
     interface View {

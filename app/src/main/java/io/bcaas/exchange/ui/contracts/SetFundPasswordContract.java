@@ -3,7 +3,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/2
- * 「设置资金密码」
+ *  界面与数据相互作用的协议类：「设置资金密码」
  */
 public interface SetFundPasswordContract {
 

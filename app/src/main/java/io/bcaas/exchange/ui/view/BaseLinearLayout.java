@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import butterknife.ButterKnife;
@@ -22,6 +21,8 @@ import io.bcaas.exchange.vo.ResponseJson;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/16
+ * <p>
+ * 继承LinearLayout的View的基类
  */
 public abstract class BaseLinearLayout extends LinearLayout implements BaseContract.View {
 

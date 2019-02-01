@@ -40,9 +40,9 @@ import java.util.concurrent.TimeUnit;
  * @author catherine.brainwilliam
  * @since 2018/12/28
  * <p>
- * 「充值」
+ * Activity：「充值」
  * <p>
- * 此页面有两种展现形式，如果当前还没有设置资金密码，那么就需要展现设置资金密码的页面，如果当前已经设置了，那么就直接展现用户的账户页面
+ * Notice：此页面有两种展现形式，如果当前还没有设置资金密码，那么就需要展现设置资金密码的页面，如果当前已经设置了，那么就直接展现用户的账户页面
  */
 public class RechargeActivity extends BaseActivity implements AccountSecurityContract.View {
 

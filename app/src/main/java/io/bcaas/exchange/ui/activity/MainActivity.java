@@ -45,7 +45,7 @@ import java.util.concurrent.TimeUnit;
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * 首頁主Activity
+ * Activity： 首頁
  */
 public class MainActivity extends BaseActivity
         implements AccountSecurityContract.View, GetAllBalanceContract.View, GetCoinNameListContract.View {

@@ -5,7 +5,7 @@ import io.bcaas.exchange.vo.MemberVO;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 「获取账户信息」
+ * 界面与数据相互作用的协议类：「获取账户信息」
  */
 public interface AccountSecurityContract {
     interface View extends BaseContract.View{

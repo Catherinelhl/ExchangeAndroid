@@ -6,39 +6,26 @@ import static io.bcaas.exchange.constants.Constants.Http.HTTP_PREFIX;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/3
+ * 常量类：APP里会用到的常量字符数据
  */
 public class Constants {
 
-
-    /**
-     * 定时器类型
-     */
+    /* 定时器类型*/
     public enum TimerType {
         BrandTimer
     }
 
-    /**
-     * 时间
-     */
+    /* 时间*/
     public class Time {
-        public static final int sleep100 = 100;
-        public static final int sleep200 = 200;
-        public static final int sleep300 = 300;
-        public static final int sleep400 = 400;
-        public static final int sleep500 = 500;
         public static final int sleep800 = 800;
         public static final int sleep1000 = 1000;
-        public static final int sleep1500 = 1500;
         public static final int sleep2000 = 2000;
-        public static final int sleep3000 = 3000;
-        public static final int sleep4000 = 4000;
-        public static final int sleep5000 = 5000;
         public static final int sleep10000 = 10000;
-        public static final int sleep20000 = 20000;
-        public static final int sleep30000 = 30000;
-        public static final int sleep50000 = 50000;
-        public static final int sleep500000 = 500000;
         public static final int sleep60 = 60;//60s
+        public static final int LONG_TIME_OUT = 30;//设置超时时间
+        public static final int STAY_BRAND_ACTIVITY = 1;//如果当前不用编辑页面，停留在页面的时间1s
+
+
     }
 
     public class Color {
@@ -49,13 +36,8 @@ public class Constants {
     }
 
     public class ValueMaps {
-
-        public static final int TIME_OUT_TIME_LONG = 30;//设置超时时间
         public static final int PASSWORD_MIN_LENGTH = 8;// 输入密码的最小长度
-        public static final int STAY_BRAND_ACTIVITY_TIME = 1;//如果当前不用编辑页面，停留在页面的时间1s
-
         public static final String THREE_STAR = "***";
-
         public static final String SC = "SC";//中文（简体）
         public static final String CN = "CN";//中文
         public static final String TC = "TC";//中文（繁體）
@@ -64,10 +46,7 @@ public class Constants {
         public static final String ZH_CN = "zh-cn";//中文（简体）
         public static final String ZH_TW = "zh-tw";//繁中
         public static final String EN_US = "zh-cn";//英文
-
         public static final String LOCAL_DEFAULT_IP = "";
-
-
         public static final String ALL_FOR_SALE_ORDER_LIST = "-1";//查询所有的订单信息
         public static final String DEFAULT_BALANCE = "0.0000000000";//设置默认金额显示
     }
@@ -138,6 +117,7 @@ public class Constants {
         public static final String ACCESS_TOKEN = "accessToken";//token 信息
         public static final String LANGUAGE_TYPE = "languageType";//當前的語言環境
         public static final String MEMBER_ID = "memberId";//当前的账户信息
+        public static final String COOKIE = "cookie";//缓存
     }
 
     public class From {
@@ -151,14 +131,11 @@ public class Constants {
         public static final String SIDE_SLIP_RESET = "sideSlipReset";//侧滑栏重置数据
         public static final String WITHDRAW_SURE = "withDrawSure";//提现点击确定
         public static final String COUNTRY_CODE = "countryCode";//城市区号
-        public static final String FUND_ITEM = "fundItem";//资金列表
         public static final String RECHARGE = "recharge";//充值
         public static final String WITHDRAW = "withDraw";// 提现
         public static final String BUY = "buy";// 购买
-        public static final String COIN_NAME = "coinName";//币种名字
         public static final String LOGIN_PASSWORD = "loginPassword";//登录密码
         public static final String FUND_PASSWORD = "fundPassword";//资金密码
-        public static final String RETRACT_CHART = "retractChart";//收起chart图
     }
 
     /**
@@ -303,5 +280,8 @@ public class Constants {
         public static final int LIMIT_EIGHT = 8;//BCC\BTC 的输入位数限制
         public static final int LIMIT_TEN = 10;//ETH的输入位数限制
     }
+
+    public static final String HEADER_NAME_KEY = "cookie";
+
 
 }

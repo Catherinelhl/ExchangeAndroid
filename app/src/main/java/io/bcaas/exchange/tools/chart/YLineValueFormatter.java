@@ -6,7 +6,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
 
 /**
- * Y轴Label定制
+ * 「Chart图」：Y轴Label定制
  */
 public class YLineValueFormatter extends ValueFormatter {
     private String TAG = YLineValueFormatter.class.getSimpleName();

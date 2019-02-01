@@ -7,7 +7,7 @@ import io.bcaas.exchange.vo.PaginationVO;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- * 订单记录
+ *  界面与数据相互作用的协议类：订单记录
  */
 public interface OrderRecordContract {
 

@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/17
+ * 数据交互实现类：获取账户所有的余额信息
  */
 public class GetAllBalancePresenterImp extends BasePresenterImp
         implements GetAllBalanceContract.Presenter {

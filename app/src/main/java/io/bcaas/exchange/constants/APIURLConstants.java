@@ -4,7 +4,7 @@ package io.bcaas.exchange.constants;
  * @author catherine.brainwilliam
  * @since 2018/12/3
  * <p>
- * 所有API URL
+ * 常量类：所有API URL
  */
 public class APIURLConstants {
 
@@ -20,25 +20,6 @@ public class APIURLConstants {
     public static final String API_FORGET_PASSWORD = "member/forgotPassword";
     /*重设密码*/
     public static final String API_RESET_PASSWORD = "member/resetPassword";
-
-
-//    /*BTC 取得餘額*/
-//    public static final String API_BTC_GETBALANCE = "btc/getBalance";
-//    /*BTC 取得交易的hash*/
-//    public static final String API_BTC_GET_TX_HASH = "btc/getTxHash";
-//    /*BTC 發送交易*/
-//    public static final String API_BTC_PUSH_TX = "btc/pushTx";
-//    /*BTC 取得交易狀態*/
-//    public static final String API_BTC_GET_TX_STATUS = "btc/getTxStatus";
-//
-//
-//    /*ETH 取得餘額*/
-//    public static final String API_ETH_GETBALANCE = "eth/getBalance";
-//    /*ETH 發送交易*/
-//    public static final String API_ETH_PUSH_TX = "btc/pushTx";
-//    /*ETH 取得交易狀態*/
-//    public static final String API_ETH_GET_TX_STATUS = "btc/getTxStatus";
-
 
     /*取得虛擬貨幣美元現值*/
     public static final String API_CURRENCY_GET_USD_PRICE = "currencyList/getUSDPrice";

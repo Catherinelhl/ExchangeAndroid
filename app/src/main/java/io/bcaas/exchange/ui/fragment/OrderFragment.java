@@ -33,8 +33,8 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/12/10
  * <p>
- * 訂單
- * 点击此页面，展现第一个页面的交易信息；然后点击tapTitle，进行网络的请求
+ * Fragment：「訂單」
+ * Notice：点击此页面，展现第一个页面的交易信息；然后点击tapTitle，进行网络的请求
  */
 public class OrderFragment extends BaseFragment implements OrderRecordContract.View {
 

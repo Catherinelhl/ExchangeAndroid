@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author catherine.brainwilliam
  * @since 2018/8/16
  *
- * 用於顯示首頁「Setting」頁面所需要展示的所有類別數據類
+ * 实体类：用於顯示首頁「Setting」頁面所需要展示的所有類別數據類
  */
 public class SettingsBean implements Serializable {
 

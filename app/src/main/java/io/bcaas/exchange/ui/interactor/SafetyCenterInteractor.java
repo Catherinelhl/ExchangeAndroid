@@ -10,7 +10,7 @@ import okhttp3.ResponseBody;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 「安全中心」
+ * 数据与请求相互作用类：「安全中心」
  */
 public class SafetyCenterInteractor {
 

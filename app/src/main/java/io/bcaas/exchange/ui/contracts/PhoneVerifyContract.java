@@ -3,7 +3,7 @@ package io.bcaas.exchange.ui.contracts;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
- * 手机验证
+ *  界面与数据相互作用的协议类：手机验证
  */
 public interface PhoneVerifyContract {
 

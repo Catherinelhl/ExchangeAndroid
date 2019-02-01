@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/17
- * 注册页面
+ * Activity：注册页面
  */
 public class RegisterActivity extends BaseActivity
         implements RegisterContract.View {

@@ -24,7 +24,7 @@ import java.util.List;
  * @author catherine.brainwilliam
  * @since 2018/8/15
  * <p>
- * 「設置」頁面所有的選項數據填充顯示的適配器
+ * 「設置」：頁面所有的選項數據填充顯示的適配器
  */
 public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.viewHolder> {
 

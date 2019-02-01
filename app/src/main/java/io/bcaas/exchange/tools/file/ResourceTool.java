@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
  * @author catherine.brainwilliam
  * @since 2019/1/9
  * <p>
- * 资源管理
+ * 工具类：资源管理
  */
 public class ResourceTool {
 

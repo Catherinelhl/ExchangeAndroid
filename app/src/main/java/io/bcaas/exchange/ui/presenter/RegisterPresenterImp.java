@@ -7,6 +7,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.RegisterContract;
 import io.bcaas.exchange.ui.interactor.LoginInteractor;
@@ -23,7 +24,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/21
- * 注册
+ * 数据交互实现类：注册
  */
 public class RegisterPresenterImp extends BasePresenterImp implements RegisterContract.Presenter {
     private String TAG = RegisterPresenterImp.class.getSimpleName();
@@ -83,7 +84,7 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
                             //存储当前的账号信息
-                            BaseApplication.setStringToSP(Constants.Preference.MEMBER_ID, memberId);
+                           PreferenceTool.getInstance().saveString(Constants.Preference.MEMBER_ID, memberId);
                             view.registerSuccess(responseJson.getMessage());
                         } else {
                             int code = responseJson.getCode();
