@@ -106,7 +106,7 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
 
     public void requestInfo(String coinName) {
         if (StringTool.isEmpty(coinName)) {
-            LogTool.d(TAG, "coinName is Null");
+            LogTool.i(TAG, "coinName is Null");
             return;
         }
         //默认获取所有的数据信息,默认显示前一天

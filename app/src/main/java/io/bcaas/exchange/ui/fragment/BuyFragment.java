@@ -84,6 +84,8 @@ public class BuyFragment extends BaseFragment
                 R.color.button_color
 
         );
+        //设置下拉进度条的背景颜色，默认白色
+        srlData.setProgressBackgroundColorSchemeResource(R.color.transparent);
         srlData.setSize(SwipeRefreshLayout.DEFAULT);
         refreshView();
     }
