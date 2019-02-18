@@ -116,7 +116,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
                 memberOrderVOList.clear();
-                refreshView(false);
+                refreshView(1);
             }
 
             @Override
@@ -135,9 +135,9 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     /**
      * 刷新当前视图
      *
-     * @param isRefresh 是否是刷新数据，相对应的是加载数据
+     * @param refreshType 刷新的类型，共有三种；1：下拉刷新；2：上拉加载；3：刷新上一次的记录
      */
-    private void refreshView(boolean isRefresh) {
+    private void refreshView(int refreshType) {
         LogTool.d(TAG, "refreshView:" + currentPosition);
         //1：替换当前界面的当前数据
         if (ListTool.noEmpty(views) && currentPosition < views.size()) {
@@ -147,17 +147,71 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         switch (currentPosition) {
             case 0:
                 if (presenter != null) {
-                    presenter.getRecord(Constants.OrderType.TX, isRefresh ? MessageConstants.DEFAULT_NEXT_OBJECT_ID : nextObjectIdTx);
+                    String currentNextObjectID = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+                    switch (refreshType) {
+                        case 1://下拉刷新
+                            // MessageConstants.DEFAULT_NEXT_OBJECT_ID
+                            break;
+                        case 2://上拉加载
+                            currentNextObjectID = nextObjectIdTx;
+                            break;
+                        case 3://撤销当前订单
+                            int nextObjectIdInt = Integer.valueOf(nextObjectIdTx);
+                            if (nextObjectIdInt > 0) {
+                                nextObjectIdInt--;
+                                currentNextObjectID = String.valueOf(nextObjectIdInt);
+                            } else {
+                                currentNextObjectID = nextObjectIdTx;
+                            }
+                            break;
+                    }
+                    presenter.getRecord(Constants.OrderType.TX, currentNextObjectID);
                 }
                 break;
             case 1:
                 if (presenter != null) {
-                    presenter.getRecord(Constants.OrderType.RECHARGE, isRefresh ? MessageConstants.DEFAULT_NEXT_OBJECT_ID : nextObjectIdRecharge);
+                    String currentNextObjectID = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+                    switch (refreshType) {
+                        case 1://下拉刷新
+                            // MessageConstants.DEFAULT_NEXT_OBJECT_ID
+                            break;
+                        case 2://上拉加载
+                            currentNextObjectID = nextObjectIdRecharge;
+                            break;
+                        case 3://撤销当前订单
+                            int nextObjectIdInt = Integer.valueOf(nextObjectIdRecharge);
+                            if (nextObjectIdInt > 0) {
+                                nextObjectIdInt--;
+                                currentNextObjectID = String.valueOf(nextObjectIdInt);
+                            } else {
+                                currentNextObjectID = nextObjectIdRecharge;
+                            }
+                            break;
+                    }
+                    presenter.getRecord(Constants.OrderType.RECHARGE, currentNextObjectID);
                 }
                 break;
             case 2:
                 if (presenter != null) {
-                    presenter.getRecord(Constants.OrderType.WITHDRAW, isRefresh ? MessageConstants.DEFAULT_NEXT_OBJECT_ID : nextObjectIdWithDraw);
+                    String currentNextObjectID = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+                    switch (refreshType) {
+                        case 1://下拉刷新
+                            // MessageConstants.DEFAULT_NEXT_OBJECT_ID
+                            break;
+                        case 2://上拉加载
+                            currentNextObjectID = nextObjectIdWithDraw;
+                            break;
+                        case 3://撤销当前订单
+                            int nextObjectIdInt = Integer.valueOf(nextObjectIdWithDraw);
+                            if (nextObjectIdInt > 0) {
+                                nextObjectIdInt--;
+                                currentNextObjectID = String.valueOf(nextObjectIdInt);
+                            } else {
+                                currentNextObjectID = nextObjectIdWithDraw;
+                            }
+                            break;
+                    }
+                    presenter.getRecord(Constants.OrderType.WITHDRAW,currentNextObjectID);
                 }
                 break;
         }
@@ -214,7 +268,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     public void initListener() {
         srlData.setOnRefreshListener(() -> {
             srlData.setRefreshing(false);
-            refreshView(true);
+            refreshView(1);
         });
     }
 
@@ -292,7 +346,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     break;
                 case Constants.OrderType.WITHDRAW:
                     nextObjectIdWithDraw = paginationVO.getNextObjectId();
-                     currentNextObjectId = Integer.valueOf(nextObjectIdWithDraw);
+                    currentNextObjectId = Integer.valueOf(nextObjectIdWithDraw);
                     if (currentNextObjectId < totalPageNumber) {
                         canLoadingMore = true;
                         currentNextObjectId++;
@@ -338,13 +392,13 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void cancelOrderSuccess(MemberOrderVO memberOrderVO) {
-        refreshView(false);
+        refreshView(3);
     }
 
     private LoadingDataListener loadingDataListener = new LoadingDataListener() {
         @Override
         public void onLoadingData() {
-            refreshView(false);
+            refreshView(2);
         }
     };
 }
