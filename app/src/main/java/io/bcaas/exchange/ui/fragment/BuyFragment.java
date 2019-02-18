@@ -311,10 +311,6 @@ public class BuyFragment extends BaseFragment
             if (srlData != null) {
                 srlData.setRefreshing(false);
             }
-        } else {
-            if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                ((BuyView) views.get(currentPosition)).hideLoadingMoreView();
-            }
         }
     }
 

@@ -285,11 +285,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             if (srlData != null) {
                 srlData.setRefreshing(false);
             }
-        } else {
-            //判断当前的选中position，隐藏加载
-            if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                ((OrderView) views.get(currentPosition)).hideLoadingMoreView();
-            }
         }
         showToast(info);
 

@@ -3,20 +3,16 @@ package io.bcaas.exchange.ui.view;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.BuyDataAdapter;
 import io.bcaas.exchange.base.BaseLinearLayout;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -35,8 +31,6 @@ public class BuyView extends BaseLinearLayout {
     TextView tvContent;
     @BindView(R.id.rl_no_data)
     RelativeLayout rlNoData;
-    @BindView(R.id.pb_loading_more)
-    ProgressBar pbLoadingMore;
     private BuyDataAdapter buyDataAdapter;
     private OnItemSelectListener onItemSelectListenerTemp;
     private boolean canLoadingMore;//得到当前的是否可以加载更多
@@ -87,16 +81,8 @@ public class BuyView extends BaseLinearLayout {
             //显示没有信息页面
             rlNoData.setVisibility(VISIBLE);
         }
-        hideLoadingMoreView();
 
     }
-
-    public void hideLoadingMoreView() {
-        if (pbLoadingMore != null) {
-            pbLoadingMore.setVisibility(View.GONE);
-        }
-    }
-
 
     private int mLastVisibleItemPosition;
     private RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
@@ -113,10 +99,6 @@ public class BuyView extends BaseLinearLayout {
                     LogTool.d(TAG, "canLoadingMore is:" + canLoadingMore);
                     //发送网络请求获取更多数据
                     if (canLoadingMore) {
-                        //显示当前加载的图片
-                        if (pbLoadingMore != null) {
-                            pbLoadingMore.setVisibility(View.VISIBLE);
-                        }
                         //通知「购买」的主界面还是继续加载数据
                         if (loadingDataListener != null) {
                             loadingDataListener.onLoadingData();
