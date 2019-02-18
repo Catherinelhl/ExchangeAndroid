@@ -6,6 +6,7 @@ import io.bcaas.exchange.base.BasePresenterImp;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
 import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
@@ -65,6 +66,7 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
+        boolean isRefresh = StringTool.equals(MessageConstants.DEFAULT_NEXT_OBJECT_ID, nextObjectId);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getOrderList", requestJson);
         txInteractor.getOrderList(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
@@ -86,21 +88,21 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
                         if (isSuccess) {
                             PaginationVO paginationVOResponse = responseJson.getPaginationVO();
                             if (paginationVOResponse != null) {
-                                view.getOrderListSuccess(paginationVOResponse);
+                                view.getOrderListSuccess(paginationVOResponse, isRefresh);
                             } else {
-                                view.getOrderListFailure(MessageConstants.EMPTY);
+                                view.getOrderListFailure(MessageConstants.EMPTY, isRefresh);
                             }
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2004) {
-                                    view.getOrderListFailure(getString(R.string.no_more_info));
+                                    view.getOrderListFailure(getString(R.string.no_more_info), isRefresh);
                                 } else if (code == MessageConstants.CODE_2027) {
-                                    view.getOrderListFailure(getString(R.string.data_format_exception));
-                                } else if(code == MessageConstants.CODE_2041){
-                                    view.getOrderListFailure(getString(R.string.data_format_exception));
-                                }else {
-                                    view.getOrderListFailure(getString(R.string.get_data_failure));
+                                    view.getOrderListFailure(getString(R.string.data_format_exception), isRefresh);
+                                } else if (code == MessageConstants.CODE_2041) {
+                                    view.getOrderListFailure(getString(R.string.data_format_exception), isRefresh);
+                                } else {
+                                    view.getOrderListFailure(getString(R.string.get_data_failure), isRefresh);
                                 }
                             }
                         }
@@ -110,7 +112,7 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
                     public void onError(Throwable e) {
                         LogTool.e(TAG, e.getMessage());
                         view.hideLoading();
-                        view.getOrderListFailure(getString(R.string.get_data_failure));
+                        view.getOrderListFailure(getString(R.string.get_data_failure), isRefresh);
                         disposeDisposable(disposableGetOrderList);
                     }
 

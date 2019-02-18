@@ -13,5 +13,16 @@
             android:background="@color/white"
             android:scrollbars="vertical"
             tools:listitem="@layout/item_buy_recycler"/>
+    <ProgressBar
+            android:id="@+id/pb_loading_more"
+            android:layout_width="@dimen/d20"
+            android:layout_height="@dimen/d20"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/d5"
+            android:gravity="center"
+            android:indeterminateTint="@color/red"
+            android:visibility="gone"/>
+
     <include layout="@layout/include_no_data"/>
 </RelativeLayout>

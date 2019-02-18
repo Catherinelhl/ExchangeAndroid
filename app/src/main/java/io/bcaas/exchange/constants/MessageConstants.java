@@ -180,4 +180,7 @@ public class MessageConstants {
         public static final String REQUEST_JSON = "【RequestJson】";
         public static final String RESPONSE_JSON = "【ResponseJson】";
     }
+
+    public static final String NEXT_PAGE_IS_EMPTY = "NextPageIsEmpty";
+
 }

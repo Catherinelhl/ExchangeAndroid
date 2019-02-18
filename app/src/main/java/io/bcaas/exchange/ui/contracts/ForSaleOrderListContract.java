@@ -11,9 +11,9 @@ import io.bcaas.exchange.vo.PaginationVO;
 public interface ForSaleOrderListContract {
 
     interface View extends BaseContract.View {
-        void getOrderListSuccess(PaginationVO paginationVO);
+        void getOrderListSuccess(PaginationVO paginationVO,boolean isRefresh);
 
-        void getOrderListFailure(String info);
+        void getOrderListFailure(String info,boolean isRefresh);
     }
 
     interface Presenter {

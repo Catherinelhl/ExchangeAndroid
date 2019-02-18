@@ -16,6 +16,7 @@ import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
+import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -61,7 +62,7 @@ public class BuyFragment extends BaseFragment
     private int currentPosition = 0;
 
     //得到当前各页面的nextObjectId,默认是1
-    private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;//"1";
     private List<MemberOrderVO> memberOrderVOS;
     private List<MemberKeyVO> memberKeyVOListTitle;
 
@@ -99,11 +100,14 @@ public class BuyFragment extends BaseFragment
     public void initListener() {
         srlData.setOnRefreshListener(() -> {
             srlData.setRefreshing(false);
-            requestOrderList();
+            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
         });
     }
 
-    private void requestOrderList() {
+    /**
+     * 请求订单列表
+     */
+    private void requestOrderList(String nextObjectId) {
         // 1：刷新当前购买页面的待出售数据
         if (presenter != null && ListTool.noEmpty(memberKeyVOListTitle)) {
             // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
@@ -122,7 +126,7 @@ public class BuyFragment extends BaseFragment
                     if (data != null) {
                         boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                         if (!isBack) {
-                            requestOrderList();
+                            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
                             //2：刷新账户的GetAllBalance
                             if (getAllBalancePresenter != null) {
                                 getAllBalancePresenter.getAllBalance();
@@ -165,7 +169,7 @@ public class BuyFragment extends BaseFragment
      * 刷新所有界面
      */
     public void refreshView() {
-        if (tabLayout == null&&viewPager ==null) {
+        if (tabLayout == null && viewPager == null) {
             return;
         }
         tabLayout.removeTabLayout();
@@ -186,9 +190,10 @@ public class BuyFragment extends BaseFragment
                         tabLayout.addTab(name, i);
                     }
                 }
-                BuyView buyView = new BuyView(BaseApplication.context());
-                buyView.refreshData(memberOrderVOS);
+                BuyView buyView = new BuyView(activity);
+                buyView.refreshData(memberOrderVOS, true);
                 buyView.setOnItemSelectListener(onItemSelectListener);
+                buyView.setLoadingDataListener(loadingDataListener);
                 views.add(buyView);
             }
 
@@ -214,10 +219,10 @@ public class BuyFragment extends BaseFragment
                     memberOrderVOS.clear();
                     // 刷新界面信息
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                        ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
+                        ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, true);
                     }
                     //重新请求数据
-                    requestOrderList();
+                    requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
                 }
 
                 @Override
@@ -231,7 +236,7 @@ public class BuyFragment extends BaseFragment
                 }
             });
             tabLayout.resetSelectedTab(0);
-            requestOrderList();
+            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
         }
     }
 
@@ -253,36 +258,64 @@ public class BuyFragment extends BaseFragment
 
 
     @Override
-    public void getOrderListSuccess(PaginationVO paginationVO) {
-        if (srlData != null) {
-            srlData.setRefreshing(false);
+    public void getOrderListSuccess(PaginationVO paginationVO, boolean isRefresh) {
+        if (isRefresh) {
+            //停止下拉刷新的视图
+            if (srlData != null) {
+                srlData.setRefreshing(false);
+            }
         }
+
         if (paginationVO != null) {
             //得到当前接口的页面信息
-             nextObjectId = paginationVO.getNextObjectId();
+            nextObjectId = paginationVO.getNextObjectId();
             Integer totalPageNumber = paginationVO.getTotalPageNumber();
+            int currentNextObjectId = Integer.valueOf(nextObjectId);
+            boolean canLoadingMore = false;
+            //判断当前是否需要继续加载
+            if (currentNextObjectId < totalPageNumber) {
+                canLoadingMore = true;
+                currentNextObjectId++;
+                nextObjectId = String.valueOf(currentNextObjectId);
+            }
             Long totalObjectNumber = paginationVO.getTotalObjectNumber();
             List<Object> objects = paginationVO.getObjectList();
-            LogTool.d(TAG, objects);
-            if (ListTool.isEmpty(objects)) {
-                memberOrderVOS.clear();
+            GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getOrderListSuccess:", objects);
+            if (isRefresh) {
+                if (ListTool.isEmpty(objects)) {
+                    memberOrderVOS.clear();
+                } else {
+                    memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                    }.getType());
+                }
             } else {
-                memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                }.getType());
+                if (ListTool.noEmpty(objects)) {
+                    List<MemberOrderVO> memberOrderVOSTemp = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                    }.getType());
+                    memberOrderVOS.addAll(memberOrderVOSTemp);
+                }
             }
+
             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS);
+                ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, canLoadingMore);
             }
         }
     }
 
     @Override
-    public void getOrderListFailure(String info) {
-
-        if (srlData != null) {
-            srlData.setRefreshing(false);
-        }
+    public void getOrderListFailure(String info, boolean isRefresh) {
+        //提示其信息
         showToast(info);
+        if (isRefresh) {
+            //停止下拉刷新的视图
+            if (srlData != null) {
+                srlData.setRefreshing(false);
+            }
+        } else {
+            if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                ((BuyView) views.get(currentPosition)).hideLoadingMoreView();
+            }
+        }
     }
 
     @Override
@@ -294,4 +327,11 @@ public class BuyFragment extends BaseFragment
     public void getAllBalanceFailure(String info) {
         LogTool.e(TAG, info);
     }
+
+    private LoadingDataListener loadingDataListener = new LoadingDataListener() {
+        @Override
+        public void onLoadingData() {
+            requestOrderList(nextObjectId);
+        }
+    };
 }

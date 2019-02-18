@@ -15,6 +15,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.gson.JsonTool;
+import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -83,12 +84,12 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
      * 初始化顶部tab的数据以及相对应的界面信息
      */
     private void initTopTabData() {
-        if (tabLayout == null&& viewPager==null) {
+        if (tabLayout == null && viewPager == null) {
             return;
         }
         // 获取「交易」页面的内容
         if (presenter != null) {
-            presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
+            presenter.getRecord(Constants.OrderType.TX, MessageConstants.DEFAULT_NEXT_OBJECT_ID);
         }
         // 移除所有的view
         tabLayout.removeTabLayout();
@@ -97,9 +98,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         for (int i = 0; i < 3; i++) {
             //显示标题
             tabLayout.addTab(dataGenerationManager.getOrderTopTitles(i), i);
-            OrderView orderView = new OrderView(getContext());
+            OrderView orderView = new OrderView(activity);
             orderView.setAdapter(memberOrderVOList, currentPosition);
+            orderView.setCanLoadingMore(false);
             orderView.setOnItemSelectListener(onItemSelectListener);
+            orderView.setLoadingDataListener(loadingDataListener);
             views.add(orderView);
         }
 
@@ -113,7 +116,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
                 memberOrderVOList.clear();
-                refreshView();
+                refreshView(false);
             }
 
             @Override
@@ -129,25 +132,32 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         tabLayout.resetSelectedTab(0);
     }
 
-    private void refreshView() {
+    /**
+     * 刷新当前视图
+     *
+     * @param isRefresh 是否是刷新数据，相对应的是加载数据
+     */
+    private void refreshView(boolean isRefresh) {
         LogTool.d(TAG, "refreshView:" + currentPosition);
+        //1：替换当前界面的当前数据
         if (ListTool.noEmpty(views) && currentPosition < views.size()) {
             ((OrderView) views.get(currentPosition)).setAdapter(memberOrderVOList, currentPosition);
         }
+        //2：开始重新请求当前界面需要的数据
         switch (currentPosition) {
             case 0:
                 if (presenter != null) {
-                    presenter.getRecord(Constants.OrderType.TX, nextObjectIdTx);
+                    presenter.getRecord(Constants.OrderType.TX, isRefresh ? MessageConstants.DEFAULT_NEXT_OBJECT_ID : nextObjectIdTx);
                 }
                 break;
             case 1:
                 if (presenter != null) {
-                    presenter.getRecord(Constants.OrderType.RECHARGE, nextObjectIdRecharge);
+                    presenter.getRecord(Constants.OrderType.RECHARGE, isRefresh ? MessageConstants.DEFAULT_NEXT_OBJECT_ID : nextObjectIdRecharge);
                 }
                 break;
             case 2:
                 if (presenter != null) {
-                    presenter.getRecord(Constants.OrderType.WITHDRAW, nextObjectIdWithDraw);
+                    presenter.getRecord(Constants.OrderType.WITHDRAW, isRefresh ? MessageConstants.DEFAULT_NEXT_OBJECT_ID : nextObjectIdWithDraw);
                 }
                 break;
         }
@@ -204,7 +214,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     public void initListener() {
         srlData.setOnRefreshListener(() -> {
             srlData.setRefreshing(false);
-            refreshView();
+            refreshView(true);
         });
     }
 
@@ -216,50 +226,97 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     }
 
     @Override
-    public void getRecordFailure(String info) {
-        if (srlData != null) {
-            srlData.setRefreshing(false);
+    public void getRecordFailure(String info, boolean isRefresh) {
+        if (isRefresh) {
+            if (srlData != null) {
+                srlData.setRefreshing(false);
+            }
+        } else {
+            //判断当前的选中position，隐藏加载
+            if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                ((OrderView) views.get(currentPosition)).hideLoadingMoreView();
+            }
         }
         showToast(info);
+
     }
 
     @Override
-    public void getRecordSuccess(PaginationVO paginationVO) {
-        if (srlData != null) {
-            srlData.setRefreshing(false);
-        }
+    public void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh) {
         GsonTool.logInfo(TAG, "PaginationVO:", paginationVO);
+        if (isRefresh) {
+            if (srlData != null) {
+                srlData.setRefreshing(false);
+            }
+        }
         if (paginationVO != null) {
             this.paginationVO = paginationVO;
+            Integer totalPageNumber = paginationVO.getTotalPageNumber();
+            boolean canLoadingMore = false;
+            //判断当前是否需要继续加载
             List<Object> objects = paginationVO.getObjectList();
-
-            if (ListTool.isEmpty(objects)) {
-                memberOrderVOList.clear();
+            //如果当前是刷新请求的接口回来，那么就需要清空当前的数据
+            if (isRefresh) {
+                if (ListTool.isEmpty(objects)) {
+                    memberOrderVOList.clear();
+                } else {
+                    memberOrderVOList = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                    }.getType());
+                }
             } else {
-                memberOrderVOList = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
-                }.getType());
+                if (ListTool.noEmpty(objects)) {
+                    //否则就是加载数据返回的，就是追加数据
+                    List<MemberOrderVO> memberOrderVOListTemp = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
+                    }.getType());
+                    memberOrderVOList.addAll(memberOrderVOListTemp);
+                }
+
             }
             int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
             GsonTool.logInfo(TAG, "当前的Type为:", type);
             GsonTool.logInfo(TAG, "memberOrderVOList:", memberOrderVOList);
+            int currentNextObjectId;
             switch (type) {
                 case Constants.OrderType.RECHARGE:
+                    nextObjectIdRecharge = paginationVO.getNextObjectId();
+                    currentNextObjectId = Integer.valueOf(nextObjectIdRecharge);
+                    if (currentNextObjectId < totalPageNumber) {
+                        canLoadingMore = true;
+                        currentNextObjectId++;
+                        nextObjectIdRecharge = String.valueOf(currentNextObjectId);
+                    }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(1)).setAdapter(memberOrderVOList, 1);
+                        ((OrderView) views.get(1)).setCanLoadingMore(canLoadingMore);
                     }
-                    nextObjectIdRecharge = paginationVO.getNextObjectId();
                     break;
                 case Constants.OrderType.WITHDRAW:
+                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
+                     currentNextObjectId = Integer.valueOf(nextObjectIdWithDraw);
+                    if (currentNextObjectId < totalPageNumber) {
+                        canLoadingMore = true;
+                        currentNextObjectId++;
+                        nextObjectIdWithDraw = String.valueOf(currentNextObjectId);
+                    }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(2)).setAdapter(memberOrderVOList, 2);
+                        ((OrderView) views.get(2)).setCanLoadingMore(canLoadingMore);
+
                     }
-                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
                     break;
                 default:
+                    nextObjectIdTx = paginationVO.getNextObjectId();
+                    currentNextObjectId = Integer.valueOf(nextObjectIdTx);
+                    if (currentNextObjectId < totalPageNumber) {
+                        canLoadingMore = true;
+                        currentNextObjectId++;
+                        nextObjectIdTx = String.valueOf(currentNextObjectId);
+                    }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(0)).setAdapter(memberOrderVOList, 0);
+                        ((OrderView) views.get(0)).setCanLoadingMore(canLoadingMore);
+
                     }
-                    nextObjectIdTx = paginationVO.getNextObjectId();
                     break;
             }
         } else {
@@ -268,6 +325,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             //判断当前的选中position，然后更新当前页面
             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                 ((OrderView) views.get(currentPosition)).setAdapter(memberOrderVOList, currentPosition);
+                ((OrderView) views.get(currentPosition)).setCanLoadingMore(false);
+
             }
         }
     }
@@ -279,6 +338,13 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void cancelOrderSuccess(MemberOrderVO memberOrderVO) {
-        refreshView();
+        refreshView(false);
     }
+
+    private LoadingDataListener loadingDataListener = new LoadingDataListener() {
+        @Override
+        public void onLoadingData() {
+            refreshView(false);
+        }
+    };
 }

@@ -6,6 +6,7 @@ import io.bcaas.exchange.base.BasePresenterImp;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
@@ -61,6 +62,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
         PaginationVO paginationVO = new PaginationVO();
         paginationVO.setNextObjectId(nextObjectId);
         requestJson.setPaginationVO(paginationVO);
+        boolean isRefresh = StringTool.equals(nextObjectId, MessageConstants.DEFAULT_NEXT_OBJECT_ID);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getRecord", requestJson);
 
         txInteractor.getRecord(GsonTool.beanToRequestBody(requestJson))
@@ -83,20 +85,20 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                         if (isSuccess) {
                             PaginationVO paginationVOResponse = responseJson.getPaginationVO();
                             if (paginationVOResponse != null) {
-                                view.getRecordSuccess(paginationVOResponse);
+                                view.getRecordSuccess(paginationVOResponse, isRefresh);
                             } else {
-                                view.getRecordFailure(getString(R.string.no_data_info));
+                                view.getRecordFailure(getString(R.string.no_data_info), isRefresh);
                             }
 
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2004) {
-                                    view.getRecordFailure(getString(R.string.no_more_info));
-                                } else if(code==MessageConstants.CODE_2027){
-                                    view.getRecordFailure(getString(R.string.data_format_exception));
-                                }else {
-                                    view.getRecordFailure(getString(R.string.get_data_failure));
+                                    view.getRecordFailure(getString(R.string.no_more_info), isRefresh);
+                                } else if (code == MessageConstants.CODE_2027) {
+                                    view.getRecordFailure(getString(R.string.data_format_exception), isRefresh);
+                                } else {
+                                    view.getRecordFailure(getString(R.string.get_data_failure), isRefresh);
 
                                 }
                             }
@@ -107,7 +109,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                     public void onError(Throwable e) {
                         view.hideLoading();
                         LogTool.e(TAG, e.getMessage());
-                        view.getRecordFailure(getString(R.string.get_data_failure));
+                        view.getRecordFailure(getString(R.string.get_data_failure), isRefresh);
                         disposeDisposable(disposableGetRecord);
 
                     }
@@ -152,7 +154,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableCancelOrder=d;
                     }
 
                     @Override

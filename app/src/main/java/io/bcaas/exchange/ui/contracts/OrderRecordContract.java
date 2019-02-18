@@ -8,16 +8,17 @@ import io.bcaas.exchange.vo.PaginationVO;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- *  界面与数据相互作用的协议类：订单记录
+ * 界面与数据相互作用的协议类：订单记录
  */
 public interface OrderRecordContract {
 
     interface View extends BaseContract.View {
-        void getRecordFailure(String info);
+        void getRecordFailure(String info, boolean isRefresh);
 
-        void getRecordSuccess(PaginationVO paginationVO);
+        void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh);
 
         void cancelOrderFailure(String info);
+
         void cancelOrderSuccess(MemberOrderVO memberOrderVO);
     }
 

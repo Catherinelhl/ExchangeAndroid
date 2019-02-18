@@ -3,6 +3,8 @@ package io.bcaas.exchange.ui.view;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -11,8 +13,12 @@ import io.bcaas.exchange.adapter.OrderRechargeAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
 import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
 import io.bcaas.exchange.base.BaseLinearLayout;
+import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.vo.MemberOrderVO;
 
 import java.util.List;
@@ -31,6 +37,9 @@ public class OrderView extends BaseLinearLayout {
     RelativeLayout rlNoData;
     @BindView(R.id.rv_order_data)
     RecyclerView rvOrderData;
+    @BindView(R.id.pb_loading_more)
+    ProgressBar pbLoadingMore;
+    private boolean canLoadingMore;//得到当前是否可以继续加载数据
 
     private OnItemSelectListener onItemSelectListenerTemp;
 
@@ -40,6 +49,10 @@ public class OrderView extends BaseLinearLayout {
     private OrderRechargeAdapter orderRechargeAdapter;
     //订单页面「提现」数据显示的适配器
     private OrderWithdrawAdapter orderWithdrawAdapter;
+    //上拉加载的回调
+    private LoadingDataListener loadingDataListener;
+    //记录当前显示的页面
+    private int currentPosition;
 
     public OrderView(Context context) {
         super(context);
@@ -65,6 +78,9 @@ public class OrderView extends BaseLinearLayout {
         this.onItemSelectListenerTemp = onItemSelectListener;
     }
 
+    public void setLoadingDataListener(LoadingDataListener loadingDataListener) {
+        this.loadingDataListener = loadingDataListener;
+    }
 
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
@@ -73,7 +89,12 @@ public class OrderView extends BaseLinearLayout {
         }
     };
 
+    public void setCanLoadingMore(boolean canLoadingMore){
+        this.canLoadingMore = canLoadingMore;
+    }
+
     public void setAdapter(List<MemberOrderVO> memberOrderVOS, int currentPosition) {
+        this.currentPosition = currentPosition;
         switch (currentPosition) {
             case 0://交易
                 if (ListTool.isEmpty(memberOrderVOS)) {
@@ -91,6 +112,7 @@ public class OrderView extends BaseLinearLayout {
                         orderTransactionAdapter.addList(memberOrderVOS);
                     }
                     rvOrderData.setAdapter(orderTransactionAdapter);
+                    rvOrderData.addOnScrollListener(scrollListener);
                 }
 
                 break;
@@ -109,6 +131,7 @@ public class OrderView extends BaseLinearLayout {
                         orderRechargeAdapter.addList(memberOrderVOS);
                     }
                     rvOrderData.setAdapter(orderRechargeAdapter);
+                    rvOrderData.addOnScrollListener(scrollListener);
                 }
                 break;
             case 2:// 提現
@@ -126,9 +149,90 @@ public class OrderView extends BaseLinearLayout {
                         orderWithdrawAdapter.addList(memberOrderVOS);
                     }
                     rvOrderData.setAdapter(orderWithdrawAdapter);
+                    rvOrderData.addOnScrollListener(scrollListener);
                 }
                 break;
 
         }
+        hideLoadingMoreView();
     }
+
+    public void hideLoadingMoreView() {
+        if (pbLoadingMore != null) {
+            pbLoadingMore.setVisibility(View.GONE);
+        }
+    }
+
+    private int mLastVisibleItemPosition;
+    private RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
+
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+            if (layoutManager instanceof LinearLayoutManager) {
+                mLastVisibleItemPosition = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
+            }
+            switch (currentPosition) {
+                case 0://交易
+                    if (orderTransactionAdapter != null) {
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE
+                                && mLastVisibleItemPosition + 1 == orderTransactionAdapter.getItemCount()) {
+                            LogTool.d(TAG, "canLoadingMore is:" + canLoadingMore);
+                            //发送网络请求获取更多数据
+                            if (canLoadingMore) {
+                                //显示当前加载的图片
+                                if (pbLoadingMore != null) {
+                                    pbLoadingMore.setVisibility(View.VISIBLE);
+                                }
+                                //通知「购买」的主界面还是继续加载数据
+                                if (loadingDataListener != null) {
+                                    loadingDataListener.onLoadingData();
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 1://充值
+                    if (orderRechargeAdapter != null) {
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE
+                                && mLastVisibleItemPosition + 1 == orderRechargeAdapter.getItemCount()) {
+                            LogTool.d(TAG, "canLoadingMore is:" + canLoadingMore);
+                            //发送网络请求获取更多数据
+                            if (canLoadingMore) {
+                                //显示当前加载的图片
+                                if (pbLoadingMore != null) {
+                                    pbLoadingMore.setVisibility(View.VISIBLE);
+                                }
+                                //通知「购买」的主界面还是继续加载数据
+                                if (loadingDataListener != null) {
+                                    loadingDataListener.onLoadingData();
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 2:// 提現
+                    if (orderWithdrawAdapter != null) {
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE
+                                && mLastVisibleItemPosition + 1 == orderWithdrawAdapter.getItemCount()) {
+                            LogTool.d(TAG, "canLoadingMore is:" + canLoadingMore);
+                            //发送网络请求获取更多数据
+                            if (canLoadingMore) {
+                                //显示当前加载的图片
+                                if (pbLoadingMore != null) {
+                                    pbLoadingMore.setVisibility(View.VISIBLE);
+                                }
+                                //通知「购买」的主界面还是继续加载数据
+                                if (loadingDataListener != null) {
+                                    loadingDataListener.onLoadingData();
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+            }
+        }
+
+    };
 }
