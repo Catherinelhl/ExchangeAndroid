@@ -49,15 +49,14 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
-        isPrepared = true;
         tvAccountName.setText(BaseApplication.getMemberID());
         initAdapter();
     }
 
     private void initAdapter() {
         List<SettingsBean> settingTypes = initSettingTypes();//得到设置页面需要显示的所有设置选项
-        settingTypesAdapter = new SettingsAdapter(context, settingTypes);
-        rvSetting.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        settingTypesAdapter = new SettingsAdapter(getContext(), settingTypes);
+        rvSetting.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvSetting.setAdapter(settingTypesAdapter);
     }
 

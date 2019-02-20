@@ -62,7 +62,6 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
     @Override
     public void initViews(View view) {
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
-        isPrepared = true;
         views = new ArrayList<>();
         srlData.setEnabled(false);
         refreshView();
@@ -134,7 +133,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
                         Intent intent = new Intent();
                         //直接将SellDataBean数据类传递到下一个页面
                         intent.putExtra(Constants.KeyMaps.SELL_DATA_BEAN, sellDataBean);
-                        intent.setClass(context, SellDetailActivity.class);
+                        intent.setClass(getContext(), SellDetailActivity.class);
                         startActivityForResult(intent, Constants.RequestCode.SELL_DETAIL_CODE);
                         break;
 

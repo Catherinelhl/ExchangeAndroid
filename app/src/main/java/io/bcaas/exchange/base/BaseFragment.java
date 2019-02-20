@@ -28,12 +28,10 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
 
     private String TAG = BaseFragment.class.getSimpleName();
     private View rootView;
-    protected Context context;
     protected Activity activity;
     private Unbinder unbinder;
     protected SoftKeyBroadManager softKeyBroadManager;
     /*监管当前fragment的状态：是否准备好；是否第一次可见；是否第一次不可见*/
-    protected boolean isPrepared, isFirstVisible, isFirstInvisible;
     protected DataGenerationManager dataGenerationManager;
 
     @Nullable
@@ -50,7 +48,6 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         OttoTool.getInstance().register(this);
-        context = getContext();
         activity = getActivity();
         if (activity != null) {
             getArgs(activity.getIntent().getExtras());
@@ -59,24 +56,6 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         initViews(view);
         initListener();
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initPrepare();
-    }
-
-    private synchronized void initPrepare() {
-        if (!isPrepared) {
-            isPrepared = true;
-        }
-    }
-
-    public View getView() {
-        return rootView;
-    }
-
-
     public abstract int getLayoutRes();//得到当前的layoutRes
 
     public abstract void initViews(View view);

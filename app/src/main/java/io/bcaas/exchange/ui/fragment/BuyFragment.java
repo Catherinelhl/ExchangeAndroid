@@ -157,7 +157,7 @@ public class BuyFragment extends BaseFragment
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(Constants.KeyMaps.BUY_DETAIL, memberOrderVO);
                     intent.putExtras(bundle);
-                    intent.setClass(context, BuyDetailActivity.class);
+                    intent.setClass(getContext(), BuyDetailActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.BUY_DETAIL_CODE);
                     break;
             }
