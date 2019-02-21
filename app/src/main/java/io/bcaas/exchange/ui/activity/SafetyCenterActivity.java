@@ -17,6 +17,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
@@ -211,27 +212,21 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
-            //1:判断twoFactorAuthSecret是否是空，如果是，那么是未设定状态，那么也需要跳转google绑定的页面
-            String twoFactorAuthSecret = memberVO.getTwoFactorAuthSecret();
-            if (StringTool.isEmpty(twoFactorAuthSecret)) {
-                intentToGoogleVerifyActivity(SafetyCenterActivity.this);
+            //判断当前的双因素认证的状态
+            int googleVerify = memberVO.getTwoFactorAuthVerify();
+            if (googleVerify == Constants.Status.CLOSE) {
+                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
+                presenter.securityGoogle(MessageConstants.EMPTY);
+            } else if (googleVerify == Constants.Status.OPEN) {
+                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
+                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
             } else {
-                //2:判断当前的双因素认证的状态
-                int googleVerify = memberVO.getTwoFactorAuthVerify();
-                if (googleVerify == Constants.Status.CLOSE) {
-                    //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
-                    presenter.securityGoogle(MessageConstants.EMPTY, twoFactorAuthSecret);
-                } else if (googleVerify == Constants.Status.OPEN) {
-                    //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
-                    intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-                    bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
-                    intent.putExtras(bundle);
-                    startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-                } else {
-                    //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
-                    intentToGoogleVerifyActivity(SafetyCenterActivity.this);
+                //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
+                intentToGoogleVerifyActivity(SafetyCenterActivity.this);
 
-                }
             }
 
         }
@@ -291,6 +286,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
             scivEmailVerify.setTabStatusByText(true, getString(R.string.close));
         }
         String phone = memberVO.getPhone();
+
         if (StringTool.notEmpty(phone)) {
             if (scivPhoneVerify != null) {
                 scivPhoneVerify.setTabInfo(phone);
@@ -298,12 +294,11 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
             //判断是否开启「手机验证」
             if (phoneVerify == Constants.Status.CLOSE) {
                 scivPhoneVerify.setTabStatusByText(false, getString(R.string.open));
-            } else if (twoFactorAuthVerify == Constants.Status.OPEN) {
+            } else if (phoneVerify == Constants.Status.OPEN) {
                 scivPhoneVerify.setTabStatusByText(true, getString(R.string.close));
             }
         } else {
             scivPhoneVerify.setTabStatusByText(false, getString(R.string.bind));
-
         }
         //判断是否开启「google验证」
         if (twoFactorAuthVerify == Constants.Status.CLOSE) {

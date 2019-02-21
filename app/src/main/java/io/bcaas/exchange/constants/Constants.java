@@ -23,7 +23,7 @@ public class Constants {
         public static final int sleep10000 = 10000;
         public static final int sleep60 = 60;//60s
         public static final int LONG_TIME_OUT = 30;//设置超时时间
-        public static final int STAY_BRAND_ACTIVITY = 1;//如果当前不用编辑页面，停留在页面的时间1s
+        public static final int STAY_BRAND_ACTIVITY = 2;//如果当前不用编辑页面，停留在页面的时间1s
 
 
     }

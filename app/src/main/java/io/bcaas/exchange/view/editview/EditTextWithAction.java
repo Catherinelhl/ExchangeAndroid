@@ -554,7 +554,8 @@ public class EditTextWithAction extends LinearLayout
     public void requestEmail() {
         //开始请求验证码数据
         if (presenter != null) {
-            presenter.emailVerify(BaseApplication.getMemberID(), BaseApplication.getCurrentLanguage(), BaseApplication.getMemberID());
+            presenter.emailVerify(BaseApplication.getMemberID(),
+                    BaseApplication.getCurrentLanguage(), BaseApplication.getMemberID());
         }
         //开始倒计时
         startCountDownInterval();

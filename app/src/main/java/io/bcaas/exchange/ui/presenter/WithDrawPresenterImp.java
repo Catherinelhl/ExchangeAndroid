@@ -48,7 +48,6 @@ public class WithDrawPresenterImp extends AccountSecurityPresenterImp
         view.showLoading();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
-        memberVO.setTwoFactorAuthSecret(BaseApplication.getTwoFactorAuthSecret());
         try {
             memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
         } catch (NoSuchAlgorithmException e) {

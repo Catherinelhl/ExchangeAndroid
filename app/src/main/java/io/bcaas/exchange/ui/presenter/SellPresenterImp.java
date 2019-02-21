@@ -60,7 +60,6 @@ public class SellPresenterImp extends AccountSecurityPresenterImp
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
-        memberVO.setTwoFactorAuthSecret(BaseApplication.getTwoFactorAuthSecret());
         try {
             memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
         } catch (NoSuchAlgorithmException e) {

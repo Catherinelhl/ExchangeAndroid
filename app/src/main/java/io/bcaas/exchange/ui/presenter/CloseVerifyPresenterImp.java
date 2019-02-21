@@ -68,7 +68,6 @@ public class CloseVerifyPresenterImp
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
-        memberVO.setTwoFactorAuthSecret(BaseApplication.getTwoFactorAuthSecret());
         requestJson.setMemberVO(memberVO);
 
 
@@ -97,9 +96,11 @@ public class CloseVerifyPresenterImp
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
                             MemberVO memberVOResponse = responseJson.getMemberVO();
-                            if (memberVOResponse.getEmailVerify() == 0) {
+                            Integer emailVerify = memberVOResponse.getEmailVerify();
+                            Integer phoneVerify = memberVOResponse.getPhoneVerify();
+                            if (emailVerify != null && emailVerify == 0) {
                                 view.closeVerifyCodeSuccess(getString(R.string.success_close_email));
-                            } else if (memberVOResponse.getPhoneVerify() == 0) {
+                            } else if (phoneVerify != null && phoneVerify == 0) {
                                 view.closeVerifyCodeSuccess(getString(R.string.success_close_phone));
                             }
                         } else {

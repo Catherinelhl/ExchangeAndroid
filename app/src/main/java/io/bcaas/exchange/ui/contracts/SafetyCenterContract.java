@@ -24,7 +24,7 @@ public interface SafetyCenterContract {
         void securityEmail(String verifyCode);
 
         //更改Google验证的状态
-        void securityGoogle(String verifyCode, String twoFactorAuthSecret);
+        void securityGoogle(String verifyCode);
 
     }
 }
