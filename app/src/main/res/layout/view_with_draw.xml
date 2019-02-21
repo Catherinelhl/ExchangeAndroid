@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bcaas="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@color/theme_grey"
+        android:id="@+id/rl_withdraw"
+        android:layout_height="match_parent">
+    <LinearLayout
+            android:id="@+id/ll_with_draw_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+        <TextView
+                android:id="@+id/tv_cashable_balance"
+                android:background="@color/button_color"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="@dimen/d40"
+                android:paddingLeft="@dimen/d20"
+                android:paddingRight="@dimen/d20"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="@color/white"
+                android:text="@string/cash_able_balance"/>
+        <io.bcaas.exchange.view.editview.EditTextWithAction
+                android:id="@+id/etwa_receive_address"
+                bcaas:behaviour="scan"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/d24"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d48"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:background="@color/white"
+                      android:layout_marginTop="@dimen/d24"
+                      android:layout_height="@dimen/d96">
+            <io.bcaas.exchange.view.editview.EditTextWithAction
+                    android:id="@+id/etwa_withdraw_amount"
+                    bcaas:hint="@string/input_amount_to_withdraw"
+                    bcaas:behaviour="amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d48"/>
+            <View style="@style/small_line_style"/>
+            <TextView
+                    android:id="@+id/tv_fee_tips"
+                    android:layout_width="wrap_content"
+                    android:text="@string/withdraw_need_fee"
+                    android:textColor="@color/blue_5B88FF"
+                    android:layout_marginLeft="@dimen/d20"
+                    android:textSize="@dimen/text_size_14"
+                    android:layout_marginTop="@dimen/d14"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+        </LinearLayout>
+        <io.bcaas.exchange.view.editview.EditTextWithAction
+                android:id="@+id/etwa_remarks"
+                bcaas:hint="@string/remarks"
+                bcaas:behaviour="normal"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/d24"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d48"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_marginTop="@dimen/d24"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_marginRight="@dimen/d20"
+                  android:text="@string/withdraw_tips"
+                  android:textSize="@dimen/text_size_14"
+                  android:id="@+id/tv_info"
+                  android:textColor="@color/grey_999999"
+                  android:layout_height="wrap_content"/>
+        <Button
+                android:id="@+id/btn_send"
+                style="@style/button_style"
+                android:layout_marginTop="@dimen/d36"
+                android:text="@string/send"/>
+        <View android:layout_width="match_parent"
+              android:layout_height="@dimen/d20"
+              android:background="@color/transparent"/>
+    </LinearLayout>
+</RelativeLayout>

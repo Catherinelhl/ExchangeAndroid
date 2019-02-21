@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RichText -->
+    <declare-styleable name="RichTextView">
+        <attr name="drawable_src" format="reference"/>
+        <attr name="drawable_height" format="dimension"/>
+        <attr name="drawable_width" format="dimension"/>
+        <attr name="drawable_location">
+            <enum name="left" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="right" value="3"/>
+            <enum name="bottom" value="4"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BcaasTabLayout">
+        <attr name="tab_Mode" format="enum">
+            <enum name="mode_fixed" value="1"/>
+            <enum name="mode_scrollable" value="2"/>
+        </attr>
+        <attr name="tabIndicatorColor" format="color"/>
+        <attr name="tabSelectTextColor" format="color"/>
+        <attr name="tabTextColor" format="color"/>
+        <attr name="tabIndicatorHeight" format="dimension"/>
+        <attr name="tabIndicatorWidth" format="dimension"/>
+        <attr name="tabTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <!--密码框/验证码输入-->
+    <declare-styleable name="editViewWithAction">
+        <attr name="hint" format="string"/>
+        <attr name="showLine" format="boolean"/>
+        <attr name="singleLine" format="boolean"/>
+        <attr name="behaviour">
+            <enum name="normal" value="0"/>
+            <enum name="checkBox" value="1"/>
+            <enum name="text" value="2"/>
+            <enum name="image" value="3"/>
+            <enum name="scan" value="4"/>
+            <enum name="phone" value="5"/>
+            <enum name="google" value="6"/>
+            <enum name="amount" value="7"/>
+        </attr>
+        <attr name="hintColor" format="integer"/>
+        <attr name="textColor" format="integer"/>
+        <attr name="textSize" format="float"/>
+
+    </declare-styleable>
+
+
+    <!--文字追加-->
+    <declare-styleable name="appendStringStyle">
+        <attr name="content" format="string"/>
+        <attr name="action_text" format="string"/>
+        <attr name="content_color" format="integer"/>
+        <attr name="action_color" format="integer"/>
+        <attr name="text_size" format="float"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="safetyCenterItem">
+        <attr name="tabText" format="string"/>
+    </declare-styleable>
+</resources>

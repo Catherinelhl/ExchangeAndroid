@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="io.bcaas.exchange">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <application
+            android:name=".base.BaseApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:hardwareAccelerated="false"
+            android:label="@string/app_name"
+            android:usesCleartextTraffic="true"
+            android:largeHeap="true"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:replace="android:appComponentFactory"
+            android:appComponentFactory="whateverString"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.activity.BrandActivity"
+                  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.LoginActivity"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name=".ui.activity.ForgetToResetPasswordActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.RegisterActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.BuyDetailActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.SellDetailActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.MyFundActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.WithDrawActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.RechargeActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.SafetyCenterActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+
+        <activity android:name=".ui.activity.ModifyPasswordActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.SetFundPasswordActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.CloseVerifyMethodActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.BindPhoneActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.GoogleVerifyActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+
+        <activity android:name=".ui.activity.WithDrawDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.CountryCodeActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity android:name=".ui.activity.MainActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+        />
+
+        <!-- 解决Android 7.0文件共享的问题-->
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="io.bcaas.exchange.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths"/>
+        </provider>
+    </application>
+
+</manifest>

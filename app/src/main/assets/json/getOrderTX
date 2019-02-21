@@ -1,0 +1,91 @@
+{
+  "paginationVO": {
+    "objectList": [
+      {
+        "memberOrderUid": 8,
+        "memberVO": {
+          "memberId": "finnfan@orangeblock.tech"
+        },
+        "currencyListVO": {
+          "currencyUid": "2",
+          "enName": "ETH",
+          "cnName": "以太坊"
+        },
+        "sellerOrderUid": 7,
+        "paymentCurrencyUid": {
+          "currencyUid": "0",
+          "enName": "BCC",
+          "cnName": "橙塊"
+        },
+        "type": 2,
+        "status": 1,
+        "amount": "697.1400000000",
+        "unitPrice": "1.0000000000",
+        "handlingFee": "0.0080000000",
+        "price": "697.1480000000",
+        "expenditure": "697.1480000000",
+        "income": "697.1400000000",
+        "updateTime": "2019-01-11 01:46:38.0",
+        "createTime": "2019-01-11 01:46:38.0"
+      },
+      {
+        "memberOrderUid": 2,
+        "memberVO": {
+          "memberId": "finnfan@orangeblock.tech"
+        },
+        "currencyListVO": {
+          "currencyUid": "1",
+          "enName": "BTC",
+          "cnName": "比特幣"
+        },
+        "paymentCurrencyUid": {
+          "currencyUid": "2",
+          "enName": "ETH",
+          "cnName": "以太坊"
+        },
+        "type": 3,
+        "status": 2,
+        "amount": "11.4600000000",
+        "unitPrice": "20.2300000000",
+        "handlingFee": "0.8600000000",
+        "price": "231.8358000000",
+        "expenditure": "13.1800000000",
+        "income": "231.8358000000",
+        "updateTime": "2019-01-11 01:16:14.0",
+        "createTime": "2019-01-11 01:16:14.0"
+      },
+      {
+        "memberOrderUid": 1,
+        "memberVO": {
+          "memberId": "finnfan@orangeblock.tech"
+        },
+        "currencyListVO": {
+          "currencyUid": "1",
+          "enName": "BTC",
+          "cnName": "比特幣"
+        },
+        "paymentCurrencyUid": {
+          "currencyUid": "2",
+          "enName": "ETH",
+          "cnName": "以太坊"
+        },
+        "type": 3,
+        "status": 0,
+        "amount": "1.1400000000",
+        "unitPrice": "12.0000000000",
+        "handlingFee": "0.8600000000",
+        "price": "13.6800000000",
+        "expenditure": "2.8600000000",
+        "income": "13.6800000000",
+        "updateTime": "2019-01-10 13:54:33.0",
+        "createTime": "2019-01-10 13:34:36.0"
+      }
+    ],
+    "nextObjectId": "0",
+    "totalPageNumber": 1,
+    "totalObjectNumber": 3
+  },
+  "success": true,
+  "code": 200,
+  "message": "Member get record success."
+}
