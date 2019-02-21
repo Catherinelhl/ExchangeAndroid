@@ -35,11 +35,6 @@ public class VerificationBean implements Serializable {
      */
     private String authenticatorUrl;
     /**
-     * 双因素认证的secret
-     * 回傳空字串代表尚未設定
-     */
-    private String twoFactorAuthSecret;
-    /**
      * 帳號
      */
     private String account;
@@ -144,14 +139,5 @@ public class VerificationBean implements Serializable {
     public void setCloseType(String closeType) {
         this.closeType = closeType;
     }
-
-    public String getTwoFactorAuthSecret() {
-        return twoFactorAuthSecret;
-    }
-
-    public void setTwoFactorAuthSecret(String twoFactorAuthSecret) {
-        this.twoFactorAuthSecret = twoFactorAuthSecret;
-    }
-
 
 }
