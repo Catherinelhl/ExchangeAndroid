@@ -75,7 +75,6 @@ public class BuyFragment extends BaseFragment
     public void initViews(View view) {
         presenter = new ForSaleOrderListPresenterImp(this);
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
-        isPrepared = true;
         views = new ArrayList<>();
         memberOrderVOS = new ArrayList<>();
         memberKeyVOListTitle = new ArrayList<>();

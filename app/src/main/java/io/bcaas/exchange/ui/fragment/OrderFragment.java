@@ -66,7 +66,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void initViews(View view) {
-        isPrepared = true;
         views = new ArrayList<>();
         memberOrderVOList = new ArrayList<>();
         presenter = new OrderRecordPresenterImp(this);
