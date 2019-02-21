@@ -101,7 +101,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
      * APP当前的版本信息
      */
     private void setAppVersion() {
-        tvVersion.setText(String.format(getString(R.string.format_ssd), getString(R.string.version), VersionTool.getVersionName(this), VersionTool.getVersionCode(this)));
+        LogTool.d(TAG, "当前Build ：" + VersionTool.getVersionCode(this));
+        tvVersion.setText(String.format(getString(R.string.format_ssd), getString(R.string.version), VersionTool.getVersionName(this)));
     }
 
     @Override

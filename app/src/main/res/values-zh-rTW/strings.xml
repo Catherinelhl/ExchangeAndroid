@@ -124,7 +124,7 @@
     <string name="please_input_message_code">请输入短信验证码！</string>
     <string name="close_verify">关闭验证</string>
     <string name="version">Version:</string>
-    <string name="format_ssd" formatted="false">%s%s(%d)</string>
+    <string name="format_ssd" formatted="false">%s%s</string>
     <string name="bind_success">绑定成功！</string>
     <string name="modify">修改</string>
     <string name="private_key_str">密钥:</string>
