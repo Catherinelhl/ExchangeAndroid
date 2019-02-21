@@ -211,21 +211,29 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
 
 
         } else if (StringTool.equals(from, getString(R.string.google_verify))) {
-            int googleVerify = memberVO.getTwoFactorAuthVerify();
-            if (googleVerify == Constants.Status.CLOSE) {
-                //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
-                presenter.securityGoogle(MessageConstants.EMPTY);
-            } else if (googleVerify == Constants.Status.OPEN) {
-                //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
-                intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
-                bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
-                intent.putExtras(bundle);
-                startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
-            } else {
-                //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
+            //1:判断twoFactorAuthSecret是否是空，如果是，那么是未设定状态，那么也需要跳转google绑定的页面
+            String twoFactorAuthSecret = memberVO.getTwoFactorAuthSecret();
+            if (StringTool.isEmpty(twoFactorAuthSecret)) {
                 intentToGoogleVerifyActivity(SafetyCenterActivity.this);
+            } else {
+                //2:判断当前的双因素认证的状态
+                int googleVerify = memberVO.getTwoFactorAuthVerify();
+                if (googleVerify == Constants.Status.CLOSE) {
+                    //如果当前Google验证是关闭的状态，那么直接调用更改Google验证的状态即可
+                    presenter.securityGoogle(MessageConstants.EMPTY, twoFactorAuthSecret);
+                } else if (googleVerify == Constants.Status.OPEN) {
+                    //如果当前Google验证是开启的状态，那么点击需要跳转到关闭验证的页面
+                    intent.setClass(SafetyCenterActivity.this, CloseVerifyMethodActivity.class);
+                    bundle.putString(Constants.KeyMaps.From, Constants.VerifyType.GOOGLE);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, Constants.RequestCode.GOOGLE_VERIFY);
+                } else {
+                    //如果当前Google验证是未绑定的状态，那么点击跳转到获取google Url绑定的状态
+                    intentToGoogleVerifyActivity(SafetyCenterActivity.this);
 
+                }
             }
+
         }
     }
 

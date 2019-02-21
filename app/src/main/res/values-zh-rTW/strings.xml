@@ -247,4 +247,6 @@
     <string name="withdraw_config_private_failure">提现配置私钥失败。</string>
     <string name="verify_code_format_invalid">验证码格式无效。</string>
     <string name="withdraw_price_less_than_fee">提现金额不能低于手续费。</string>
+    <string name="success_close_email">成功关闭邮箱验证！</string>
+    <string name="success_close_phone">成功关闭手机验证！</string>
 </resources>

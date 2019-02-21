@@ -230,10 +230,11 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     }
 
     @Override
-    public void securityGoogle(String verifyCode) {
+    public void securityGoogle(String verifyCode, String twoFactorAuthSecret) {
         disposeDisposable(disposableSecurityGoogle);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
+        memberVO.setTwoFactorAuthSecret(twoFactorAuthSecret);
         memberVO.setMemberId(BaseApplication.getMemberID());
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);

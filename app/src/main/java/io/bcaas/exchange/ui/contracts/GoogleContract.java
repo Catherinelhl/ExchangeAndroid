@@ -7,7 +7,7 @@ import io.bcaas.exchange.bean.VerificationBean;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/9
- *  界面与数据相互作用的协议类：Google验证获取URL
+ * 界面与数据相互作用的协议类：Google验证获取URL
  */
 public interface GoogleContract {
     interface View extends BaseContract.View {
@@ -27,7 +27,7 @@ public interface GoogleContract {
     interface Presenter {
         void getAuthenticatorUrl();
 
-        void securityGoogleAuthenticator(String verifyCode);
+        void securityGoogleAuthenticator(String verifyCode,String secret);
 
         void getAuthenticatorUrlCreateImage(String url);
     }

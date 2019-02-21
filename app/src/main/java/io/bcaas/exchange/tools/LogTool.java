@@ -63,7 +63,6 @@ public class LogTool {
             }
             value.append(", ");
         }
-        System.out.println("values:" + value);
         String valueStr = value.toString();
         // 打印
         switch (mark) {

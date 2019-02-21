@@ -213,7 +213,7 @@
     <string name="double_click_for_exit">Press the return button again to exit the program</string>
     <string name="email_not_register">Email not register</string>
     <string name="verify_mail_code_fail">邮箱验证码错误</string>
-    <string name="amount_must_be_more_than_fee">The amount must  be more than the handling fee</string>
+    <string name="amount_must_be_more_than_fee">The amount must be more than the handling fee</string>
     <string name="phone_number_had_bind">当前手机号已被他人绑定，请更换手机号</string>
     <string name="please_register_email_first">邮箱未注册，请先注册。</string>
     <string name="account_address">出账地址</string>
@@ -240,6 +240,6 @@
     <string name="withdraw_config_private_failure">提现配置私钥失败。</string>
     <string name="verify_code_format_invalid">验证码格式无效。</string>
     <string name="withdraw_price_less_than_fee">提现金额不能低于手续费。</string>
-
-
+    <string name="success_close_email">Member security email setting success.</string>
+    <string name="success_close_phone">Member security phone setting success.</string>
 </resources>

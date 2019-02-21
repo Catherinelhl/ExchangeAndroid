@@ -63,7 +63,9 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
 
     @Override
     public void getArgs(Bundle bundle) {
-
+        if (bundle == null) {
+            return;
+        }
     }
 
     @Override
@@ -125,7 +127,8 @@ public class GoogleVerifyActivity extends BaseActivity implements GoogleContract
                             showToast(getString(R.string.please_input_verify_code));
                             return;
                         }
-                        presenter.securityGoogleAuthenticator(verifyCode);
+                        String secret = tvSecret.getText().toString();
+                        presenter.securityGoogleAuthenticator(verifyCode,secret );
 
                     }
 

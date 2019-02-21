@@ -116,7 +116,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
     }
 
     @Override
-    public void securityGoogleAuthenticator(String verifyCode) {
+    public void securityGoogleAuthenticator(String verifyCode,String secret) {
         //判断当前是否有网路
         if (!BaseApplication.isRealNet()) {
             view.noNetWork();
@@ -128,6 +128,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
+        memberVO.setTwoFactorAuthSecret(secret);
         VerificationBean verificationBean = new VerificationBean();
         verificationBean.setVerifyCode(verifyCode);
         LoginInfoVO loginInfoVO = new LoginInfoVO();
@@ -136,7 +137,6 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
         requestJson.setLoginInfoVO(loginInfoVO);
         requestJson.setVerificationBean(verificationBean);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "securityGoogleAuthenticator:", requestJson);
-        LogTool.d(TAG, requestJson);
         safetyCenterInteractor.securityTwoFactorVerify(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

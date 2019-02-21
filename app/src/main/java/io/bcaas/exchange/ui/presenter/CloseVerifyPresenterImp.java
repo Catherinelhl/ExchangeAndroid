@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/8
- *
+ * <p>
  * 数据交互实现类：关闭安全验证
  */
 public class CloseVerifyPresenterImp
@@ -68,6 +68,7 @@ public class CloseVerifyPresenterImp
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
+        memberVO.setTwoFactorAuthSecret(BaseApplication.getTwoFactorAuthSecret());
         requestJson.setMemberVO(memberVO);
 
 
@@ -95,7 +96,12 @@ public class CloseVerifyPresenterImp
                         }
                         boolean isSuccess = responseJson.isSuccess();
                         if (isSuccess) {
-                            view.closeVerifyCodeSuccess(responseJson.getMessage());
+                            MemberVO memberVOResponse = responseJson.getMemberVO();
+                            if (memberVOResponse.getEmailVerify() == 0) {
+                                view.closeVerifyCodeSuccess(getString(R.string.success_close_email));
+                            } else if (memberVOResponse.getPhoneVerify() == 0) {
+                                view.closeVerifyCodeSuccess(getString(R.string.success_close_phone));
+                            }
                         } else {
 
                             if (!view.httpExceptionDisposed(responseJson)) {
@@ -117,7 +123,7 @@ public class CloseVerifyPresenterImp
                                     view.closeVerifyCodeFailure(getString(R.string.verify_type_error));
                                 } else if (code == MessageConstants.CODE_2067) {
                                     view.closeVerifyCodeFailure(getString(R.string.verify_code_format_invalid));
-                                }else {
+                                } else {
                                     view.closeVerifyCodeFailure(getString(R.string.failure_to_close_verify_please_try_again));
                                 }
                             }

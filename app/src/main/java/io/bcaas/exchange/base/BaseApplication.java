@@ -195,6 +195,18 @@ public class BaseApplication extends MultiDexApplication {
         return memberVO;
     }
 
+    /**
+     * 取得当前双因素认证的动态密钥
+     *
+     * @return
+     */
+    public static String getTwoFactorAuthSecret() {
+        if (getMemberVO() != null) {
+            return getMemberVO().getTwoFactorAuthSecret();
+        }
+        return MessageConstants.EMPTY;
+    }
+
     public static void setMemberVO(MemberVO memberVO) {
         LogTool.d(TAG, "存储当前的MemberVo信息：" + memberVO);
         BaseApplication.memberVO = memberVO;

@@ -164,8 +164,6 @@ public class CloseVerifyMethodActivity extends BaseActivity
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
-
                     }
 
                     @Override
@@ -219,6 +217,8 @@ public class CloseVerifyMethodActivity extends BaseActivity
                                 verificationBean.setCloseType(getCloseType(from, Constants.VerifyType.GOOGLE));
                                 verificationBean.setType(Constants.VerifyType.GOOGLE);
                                 verificationBean.setVerifyCode(googleVerify);
+//                                //取得当前的twoFactorAuthSecret
+//                                verificationBean.setTwoFactorAuthSecret(BaseApplication.getTwoFactorAuthSecret());
                                 verificationBeans.add(verificationBean);
                             }
                         }
