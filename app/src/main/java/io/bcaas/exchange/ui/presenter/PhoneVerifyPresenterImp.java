@@ -75,13 +75,14 @@ public class PhoneVerifyPresenterImp extends BasePresenterImp implements PhoneVe
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
                                 int code = responseJson.getCode();
-                                if (code == MessageConstants.CODE_2009) {
+                                if (code == MessageConstants.CODE_2009
+                                        || code == MessageConstants.CODE_400) {
                                     view.getPhoneCodeFailure(getString(R.string.send_phone_message_fail));
                                 } else if (code == MessageConstants.CODE_2010) {
                                     view.getPhoneCodeFailure(getString(R.string.verify_code_fail));
                                 } else if (code == MessageConstants.CODE_2067) {
                                     view.getPhoneCodeFailure(getString(R.string.verify_code_format_invalid));
-                                }else {
+                                } else {
                                     view.getPhoneCodeFailure(getString(R.string.failure_get_phone_verify_code));
                                 }
                             }

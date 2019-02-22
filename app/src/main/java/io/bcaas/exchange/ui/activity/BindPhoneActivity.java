@@ -242,8 +242,11 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
     @Override
     public void getPhoneCodeFailure(String info) {
         showToast(info);
+        //重置倒计时，设置为可重新点击「发送」
+        etMessageCode.resetRightText();
         // 设置「确定」按钮可以点击
         btnSure.setEnabled(true);
+
     }
 
     @Override

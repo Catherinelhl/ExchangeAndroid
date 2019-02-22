@@ -308,6 +308,8 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     @Override
     public void getPhoneCodeFailure(String info) {
+        //重置倒计时，设置为可重新点击「发送」
+        etMessageVerifyCode.resetRightText();
         showToast(info);
     }
 

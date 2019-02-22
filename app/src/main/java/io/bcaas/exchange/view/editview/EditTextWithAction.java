@@ -404,6 +404,13 @@ public class EditTextWithAction extends LinearLayout
     }
 
     /**
+     * 重置输入框右边文本信息
+     */
+    public void resetRightText(){
+        tvAction.setText(getResources().getString(R.string.send));
+        disposeRequest(disposableCountDownTimer);
+    }
+    /**
      * 获取内容
      */
     public String getContent() {

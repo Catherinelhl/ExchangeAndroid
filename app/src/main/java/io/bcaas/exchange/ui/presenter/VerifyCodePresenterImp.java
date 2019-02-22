@@ -124,7 +124,6 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                     public void onNext(Bitmap bitmap) {
                         if (bitmap == null) {
                             view.getImageVerifyCodeFailure(MessageConstants.EMPTY);
-
                             return;
                         }
                         view.getImageVerifyCodeSuccess(bitmap);
