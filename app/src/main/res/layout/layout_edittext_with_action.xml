@@ -63,7 +63,7 @@
                 android:visibility="visible"
                 android:orientation="horizontal"
                 android:layout_centerVertical="true"
-                android:minWidth="@dimen/d70"
+                android:minWidth="@dimen/d60"
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
                 android:layout_height="@dimen/d32">
