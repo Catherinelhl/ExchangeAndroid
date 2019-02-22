@@ -205,7 +205,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, toastInfo, Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(activity, "",  Toast.LENGTH_LONG);
+                /*解决小米手机toast自带包名的问题*/
+                toast.setText(toastInfo);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
         });
     }

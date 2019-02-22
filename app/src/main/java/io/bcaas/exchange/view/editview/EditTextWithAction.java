@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.text.*;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -406,10 +407,11 @@ public class EditTextWithAction extends LinearLayout
     /**
      * 重置输入框右边文本信息
      */
-    public void resetRightText(){
+    public void resetRightText() {
         tvAction.setText(getResources().getString(R.string.send));
         disposeRequest(disposableCountDownTimer);
     }
+
     /**
      * 获取内容
      */
@@ -533,10 +535,18 @@ public class EditTextWithAction extends LinearLayout
     @Override
     public void getEmailVerifyFailure(String info) {
         LogTool.e(TAG, info);
-        Toast.makeText(context, info, Toast.LENGTH_SHORT).show();
+        showToast(info);
         // 停止计时
         tvAction.setText(getResources().getString(R.string.send));
         disposeRequest(disposableCountDownTimer);
+    }
+
+    private void showToast(String toastInfo) {
+        Toast toast = Toast.makeText(context, "", Toast.LENGTH_LONG);
+        /*解决小米手机toast自带包名的问题*/
+        toast.setText(toastInfo);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
     public void setRightText(String info) {
@@ -600,7 +610,7 @@ public class EditTextWithAction extends LinearLayout
 
     @Override
     public void noNetWork() {
-        Toast.makeText(context, getResources().getString(R.string.network_not_reachable), Toast.LENGTH_SHORT).show();
+        showToast(getResources().getString(R.string.network_not_reachable));
 
     }
 

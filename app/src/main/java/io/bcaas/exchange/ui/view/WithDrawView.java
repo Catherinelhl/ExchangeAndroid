@@ -152,19 +152,19 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                         //1：判断当前地址是否输入
                         String address = etReceiveAddress.getContent();
                         if (StringTool.isEmpty(address)) {
-                            Toast.makeText(context, R.string.please_input_receive_address, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString(R.string.please_input_receive_address));
                             return;
                         }
                         //2：判断当前想要提现的金额是否输入
                         String withDrawAmount = etWithdrawAmount.getContent();
                         if (StringTool.isEmpty(withDrawAmount)) {
-                            Toast.makeText(context, R.string.please_input_amount_withdraw, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString(R.string.please_input_amount_withdraw));
                             return;
                         }
                         //3：输入的金额必须大于手续费
                         if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(withDrawAmount, transactionFee, false),
                                 MessageConstants.NO_ENOUGH_BALANCE)) {
-                            Toast.makeText(context, R.string.amount_must_be_more_than_fee, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString( R.string.amount_must_be_more_than_fee));
                             return;
                         }
                         MemberOrderVO memberOrderVO = new MemberOrderVO();

@@ -1,6 +1,7 @@
 package io.bcaas.exchange.base;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -134,5 +135,12 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
 
 
     }
+    public void showToast(String toastInfo) {
+                Toast toast = Toast.makeText(context, "",  Toast.LENGTH_LONG);
+                /*解决小米手机toast自带包名的问题*/
+                toast.setText(toastInfo);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
 
 }

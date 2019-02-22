@@ -83,7 +83,7 @@ public class RechargeView extends BaseLinearLayout {
                         // 将ClipData内容放到系统剪贴板里。
                         if (cm != null) {
                             cm.setPrimaryClip(mClipData);
-                            Toast.makeText(context, context.getResources().getString(R.string.successfully_copied), Toast.LENGTH_LONG).show();
+                            showToast(context.getResources().getString(R.string.successfully_copied));
                         }
                     }
 

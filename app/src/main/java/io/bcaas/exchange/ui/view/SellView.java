@@ -214,25 +214,25 @@ public class SellView extends BaseLinearLayout
                         //1：判断当前卖出价是否输入
                         String unitPrice = etRate.getText().toString();
                         if (StringTool.isEmpty(unitPrice)) {
-                            Toast.makeText(context, R.string.please_input_sell_price, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString(R.string.please_input_sell_price));
                             return;
                         }
                         //2：判断当前卖出量是否输入
                         String sellAmount = etSellVolume.getText().toString();
                         if (StringTool.isEmpty(sellAmount) || StringTool.equals(sellAmount, "0.0")) {
-                            Toast.makeText(context, R.string.please_input_sell_volume, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString(R.string.please_input_sell_volume));
                             return;
                         }
                         //3：比对当前输入的卖出量《可售余额
                         if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, sellAmount, true), MessageConstants.NO_ENOUGH_BALANCE)) {
-                            Toast.makeText(context, R.string.no_enough_balance, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString( R.string.no_enough_balance));
                             return;
                         }
                         //4：判断当前的扣除手续费的交易额不能小于当前币种的最小单位，否则提示不能通过
                         if (StringTool.notEmpty(txAmount) &&
                                 StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(txAmount, StringTool.getMinValuesByUid(currencyListVO.getCurrencyUid()), false),
                                         MessageConstants.NO_ENOUGH_BALANCE)) {
-                            Toast.makeText(context, R.string.invalid_tx_amount, Toast.LENGTH_SHORT).show();
+                            showToast(context.getResources().getString(R.string.invalid_tx_amount, Toast.LENGTH_SHORT));
                             return;
                         }
                         //5:判断当前的回调以及会员信息不为空；得到所有需要的数据，然后返回
