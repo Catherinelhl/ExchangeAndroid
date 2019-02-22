@@ -337,6 +337,7 @@ public class EditTextWithAction extends LinearLayout
                                 if (etContent != null) {
                                     etContent.setText(MessageConstants.EMPTY);
                                 }
+                                imageViewWithLoading.showLoading();
                                 //当前是验证码，点击重新请求验证码
                                 presenter.getImageVerifyCode();
                                 break;
