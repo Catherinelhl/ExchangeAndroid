@@ -163,6 +163,6 @@ gradle-app.setting
 app/src/main/assets/
 app/src/main/res/values-en/
 #libs/
-src/main/assets/
-src/main/res/values-en/
+#src/main/assets/
+#src/main/res/values-en/
 app/release/output.json
