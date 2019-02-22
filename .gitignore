@@ -160,7 +160,7 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-app/src/main/assets/
+#app/src/main/assets/
 app/src/main/res/values-en/
 #libs/
 #src/main/assets/
