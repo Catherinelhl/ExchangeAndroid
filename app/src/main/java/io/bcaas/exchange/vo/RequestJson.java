@@ -2,6 +2,7 @@ package io.bcaas.exchange.vo;
 
 import io.bcaas.exchange.bean.CoinMarketCapBean;
 import io.bcaas.exchange.bean.ExchangeBean;
+import io.bcaas.exchange.bean.MemberBean;
 import io.bcaas.exchange.bean.VerificationBean;
 
 import java.io.Serializable;
@@ -45,6 +46,8 @@ public class RequestJson implements Serializable {
     private PaginationVO paginationVO;
 
     private CoinMarketCapBean coinMarketCapBean;
+
+    private MemberBean memberBean;
 
     public CoinMarketCapBean getCoinMarketCapBean() {
         return coinMarketCapBean;
@@ -174,6 +177,14 @@ public class RequestJson implements Serializable {
 
     public void setMemberVO(MemberVO memberVO) {
         this.memberVO = memberVO;
+    }
+
+    public MemberBean getMemberBean() {
+        return memberBean;
+    }
+
+    public void setMemberBean(MemberBean memberBean) {
+        this.memberBean = memberBean;
     }
 
     public List<MemberVO> getMemberVOList() {

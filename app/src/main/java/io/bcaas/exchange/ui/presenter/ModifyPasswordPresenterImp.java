@@ -3,6 +3,7 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BasePresenterImp;
+import io.bcaas.exchange.bean.MemberBean;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -56,13 +57,18 @@ public class ModifyPasswordPresenterImp extends BasePresenterImp
         memberVO.setMemberId(BaseApplication.getMemberID());
         try {
             memberVO.setPassword(Sha256Tool.doubleSha256ToString(password));
-            memberVO.setNewPassword(Sha256Tool.doubleSha256ToString(newPassword));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         requestJson.setMemberVO(memberVO);
 
-
+        MemberBean memberBean=new MemberBean();
+        try {
+            memberBean.setNewPassword(Sha256Tool.doubleSha256ToString(newPassword));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        requestJson.setMemberBean(memberBean);
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
