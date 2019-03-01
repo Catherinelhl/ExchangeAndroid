@@ -49,8 +49,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class MainActivity extends BaseActivity
         implements AccountSecurityContract.View, GetAllBalanceContract.View, GetCoinNameListContract.View {
-    @BindView(R.id.home_container)
-    FrameLayout homeContainer;
     @BindView(R.id.bottom_tab_layout)
     TabLayout bottomTabLayout;
     @BindView(R.id.ib_back)

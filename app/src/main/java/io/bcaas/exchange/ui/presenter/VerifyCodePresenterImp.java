@@ -11,6 +11,7 @@ import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.device.NetWorkTool;
 import io.bcaas.exchange.ui.contracts.VerifyCodeContract;
 import io.bcaas.exchange.ui.interactor.SafetyCenterInteractor;
 import io.bcaas.exchange.vo.MemberVO;
@@ -131,8 +132,13 @@ public class VerifyCodePresenterImp extends BasePresenterImp
 
                     @Override
                     public void onError(Throwable e) {
-                        view.getImageVerifyCodeFailure(e.getMessage());
-                        disposeDisposable(disposableImageVerifyCode);
+                        //如果当前是属于请求超时的状态
+                        if (NetWorkTool.connectTimeOut(e)) {
+                            getImageVerifyCode();
+                        } else {
+                            view.getImageVerifyCodeFailure(e.getMessage());
+                            disposeDisposable(disposableImageVerifyCode);
+                        }
                     }
 
                     @Override
