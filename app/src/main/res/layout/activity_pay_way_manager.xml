@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <Button
+            android:text="addPayWay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_pay_way"/>
+    <Button
+            android:text="modifyPayWay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/modify_pay_way"/>
+    <Button
+            android:text="removePayWay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/remove_pay_way"/>
+    <Button
+            android:text="getPayWay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/get_pay_way"/>
+    <Button
+            android:text="getBankInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/get_bank_info"/>
+    <Button
+            android:text="rechargeVirtualCoin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recharge_virtual_coin"/>
+    <Button
+            android:text="convertCoin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/convertCoin"/>
+
+
+</LinearLayout>

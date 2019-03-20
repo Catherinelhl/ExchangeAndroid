@@ -53,4 +53,6 @@ public class MainInteractor {
         return httpApi.getCoinMarketCap(body);
     }
 
+
+
 }

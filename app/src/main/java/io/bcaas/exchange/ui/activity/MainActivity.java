@@ -16,6 +16,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.event.LogoutEvent;
+import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -171,7 +172,10 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
-                        getAllBalance();
+                        //获取当前的账户所有信息
+//                        getAllBalance();
+                        //跳转到支付管理
+                        intentToActivity(PayWayManagerActivity.class);
                     }
 
                     @Override
@@ -400,7 +404,7 @@ public class MainActivity extends BaseActivity
      */
     public void setCurrentDisplayType(MemberKeyVO memberKeyVO) {
         this.currentDisplayType = memberKeyVO;
-        LogTool.d(TAG, "setCurrentDisplayType:" + memberKeyVO);
+        GsonTool.logInfo(TAG, "setCurrentDisplayType:", memberKeyVO);
     }
 
     @Override

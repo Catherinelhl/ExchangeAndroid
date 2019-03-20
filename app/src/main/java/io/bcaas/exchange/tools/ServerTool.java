@@ -35,18 +35,13 @@ public class ServerTool {
      * 添加国际版SIT服务器（开发）
      */
     public static List<ServerBean> addInternationalSTIServers() {
-        List<ServerBean> SFNServerBeanDefaultList = new ArrayList<>();
+        List<ServerBean> serverBeans = new ArrayList<>();
 
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_SIT_SGPAWS,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_SIT,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_SIT));
+        serverBeans.add(getServerBean(serverBeans.size(),
+                SystemConstants.EXCHANGE_APP_SIT,
+                SystemConstants.EXCHANGE_APP_SIT));
+        return serverBeans;
 
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_SIT_JPGOOGLE,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_SIT,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_SIT));
-        return SFNServerBeanDefaultList;
     }
 
 
@@ -55,22 +50,6 @@ public class ServerTool {
      */
     public static List<ServerBean> addInternationalUATServers() {
         List<ServerBean> SFNServerBeanDefaultList = new ArrayList<>();
-
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_UAT,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_UAT,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_UAT));
-
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_UAT_SN_ALI,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_UAT,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_UAT));
-
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_UAT_SN_GOOGLE,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_UAT,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_UAT));
-
         return SFNServerBeanDefaultList;
     }
 
@@ -79,47 +58,22 @@ public class ServerTool {
      */
     public static List<ServerBean> addInternationalPRDServers() {
         List<ServerBean> SFNServerBeanDefaultList = new ArrayList<>();
-
-        //国际PRD AWSJP
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_PRD_AWSJP,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_PRO,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_PRO));
-
-        //国际PRD ALIJP
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_PRD_ALIJP,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_PRO,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_PRO));
-
-        //国际PRD GOOGLEJP
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_PRD_GOOGLEJP,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_PRO,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_PRO));
-
-        //国际PRD GOOGLESGP
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_PRD_GOOGLESGP,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_PRO,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_PRO));
-
-        //国际PRD GOOGLESDN
-        SFNServerBeanDefaultList.add(getServerBean(SFNServerBeanDefaultList.size(),
-                SystemConstants.SFN_URL_INTERNATIONAL_PRD_GOOGLESDN,
-                SystemConstants.APPLICATION_URL_INTERNATIONAL_PRO,
-                SystemConstants.UPDATE_URL_INTERNATIONAL_PRO));
-
         return SFNServerBeanDefaultList;
 
     }
 
 
-    private static ServerBean getServerBean(int id, String sfn, String api, String update) {
+    private static ServerBean getServerBean(int id, String api, String update) {
         ServerBean serverBean = new ServerBean();
-        serverBean.setSfnServer(sfn);
         serverBean.setApiServer(api);
         serverBean.setUpdateServer(update);
+        serverBean.setId(id);
+        return serverBean;
+    }
+
+    private static ServerBean getServerBean(int id, String api) {
+        ServerBean serverBean = new ServerBean();
+        serverBean.setApiServer(api);
         serverBean.setId(id);
         return serverBean;
     }
@@ -135,12 +89,6 @@ public class ServerTool {
             //3：添加所有的服务器至全局通用的服务器遍历数组里面进行stand by
             case Constants.ServerType.INTERNATIONAL_SIT:
                 SFNServerBeanList.addAll(addInternationalSTIServers());
-                break;
-            case Constants.ServerType.INTERNATIONAL_UAT:
-                SFNServerBeanList.addAll(addInternationalUATServers());
-                break;
-            case Constants.ServerType.INTERNATIONAL_PRD:
-                SFNServerBeanList.addAll(addInternationalPRDServers());
                 break;
             default:
                 break;
@@ -169,13 +117,13 @@ public class ServerTool {
                 //4:与本地默认的作比较
                 for (ServerBean serverBeanLocal : SFNServerBeanList) {
                     //5:得到服务端传回的单条数据
-                    String SFN_URL = Constants.SPLICE_CONVERTER(seedFullNodeBeanListFromServer.get(position).getIp(), seedFullNodeBeanListFromServer.get(position).getPort());
-                    if (StringTool.equals(SFN_URL, serverBeanLocal.getSfnServer())) {
+                    String apiURL = Constants.SPLICE_CONVERTER(seedFullNodeBeanListFromServer.get(position).getIp(), seedFullNodeBeanListFromServer.get(position).getPort());
+                    if (StringTool.equals(apiURL, serverBeanLocal.getApiServer())) {
                         //如果遇到相同的url,则直接break当前循环，开始下一条判断
                         break;
                     }
                     //6:否则添加至当前所有的可请求的服务器存档
-                    ServerBean serverBeanNew = new ServerBean(SFNServerBeanList.size(), SFN_URL, false);
+                    ServerBean serverBeanNew = new ServerBean(SFNServerBeanList.size(), apiURL, false);
                     //7：通过接口返回的数据没有API和Update接口的domain，所以直接添加当前默认的接口
                     ServerBean serverBean = getDefaultServerBean();
                     if (serverBean != null) {

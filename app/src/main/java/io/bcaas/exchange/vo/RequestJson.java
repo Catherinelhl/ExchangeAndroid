@@ -49,6 +49,16 @@ public class RequestJson implements Serializable {
 
     private MemberBean memberBean;
 
+    private MemberPayInfoVO memberPayInfoVO;
+
+    public MemberPayInfoVO getMemberPayInfoVO() {
+        return memberPayInfoVO;
+    }
+
+    public void setMemberPayInfoVO(MemberPayInfoVO memberPayInfoVO) {
+        this.memberPayInfoVO = memberPayInfoVO;
+    }
+
     public CoinMarketCapBean getCoinMarketCapBean() {
         return coinMarketCapBean;
     }
@@ -313,6 +323,8 @@ public class RequestJson implements Serializable {
                 ", verificationBeanList=" + verificationBeanList +
                 ", paginationVO=" + paginationVO +
                 ", coinMarketCapBean=" + coinMarketCapBean +
+                ", memberBean=" + memberBean +
+                ", memberPayInfoVO=" + memberPayInfoVO +
                 '}';
     }
 }

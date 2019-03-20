@@ -47,14 +47,60 @@ public class ResponseJson extends ServerResponseJson {
 
     private PaginationVO paginationVO;
 
+    private MemberPayInfoVO memberPayInfoVO;
+    private List<MemberPayInfoVO> memberPayInfoVOList;
+
     private CoinMarketCapBean coinMarketCapBean;
 
     public CoinMarketCapBean getCoinMarketCapBean() {
         return coinMarketCapBean;
     }
 
+    public MemberPayInfoVO getMemberPayInfoVO() {
+        return memberPayInfoVO;
+    }
+
+    public void setMemberPayInfoVO(MemberPayInfoVO memberPayInfoVO) {
+        this.memberPayInfoVO = memberPayInfoVO;
+    }
+
+    public List<MemberPayInfoVO> getMemberPayInfoVOList() {
+        return memberPayInfoVOList;
+    }
+
+    public void setMemberPayInfoVOList(List<MemberPayInfoVO> memberPayInfoVOList) {
+        this.memberPayInfoVOList = memberPayInfoVOList;
+    }
+
     public void setCoinMarketCapBean(CoinMarketCapBean coinMarketCapBean) {
         this.coinMarketCapBean = coinMarketCapBean;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseJson{" +
+                "versionVO=" + versionVO +
+                ", versionList=" + versionList +
+                ", memberVO=" + memberVO +
+                ", memberVOList=" + memberVOList +
+                ", loginInfoVO=" + loginInfoVO +
+                ", loginInfoVOList=" + loginInfoVOList +
+                ", currencyListVO=" + currencyListVO +
+                ", currencyListVOList=" + currencyListVOList +
+                ", currencyServiceChargeVO=" + currencyServiceChargeVO +
+                ", currencyServiceChargeVOList=" + currencyServiceChargeVOList +
+                ", memberKeyVO=" + memberKeyVO +
+                ", memberKeyVOList=" + memberKeyVOList +
+                ", memberOrderVO=" + memberOrderVO +
+                ", memberOrderVOList=" + memberOrderVOList +
+                ", exchangeBean=" + exchangeBean +
+                ", verificationBean=" + verificationBean +
+                ", verificationBeanList=" + verificationBeanList +
+                ", paginationVO=" + paginationVO +
+                ", memberPayInfoVO=" + memberPayInfoVO +
+                ", memberPayInfoVOList=" + memberPayInfoVOList +
+                ", coinMarketCapBean=" + coinMarketCapBean +
+                '}';
     }
 
     public PaginationVO getPaginationVO() {
@@ -299,28 +345,4 @@ public class ResponseJson extends ServerResponseJson {
         this.memberOrderVOList = memberOrderVOList;
     }
 
-    @Override
-    public String toString() {
-        return "ResponseJson{" +
-                "versionVO=" + versionVO +
-                ", versionList=" + versionList +
-                ", memberVO=" + memberVO +
-                ", memberVOList=" + memberVOList +
-                ", loginInfoVO=" + loginInfoVO +
-                ", loginInfoVOList=" + loginInfoVOList +
-                ", currencyListVO=" + currencyListVO +
-                ", currencyListVOList=" + currencyListVOList +
-                ", currencyServiceChargeVO=" + currencyServiceChargeVO +
-                ", currencyServiceChargeVOList=" + currencyServiceChargeVOList +
-                ", memberKeyVO=" + memberKeyVO +
-                ", memberKeyVOList=" + memberKeyVOList +
-                ", memberOrderVO=" + memberOrderVO +
-                ", memberOrderVOList=" + memberOrderVOList +
-                ", exchangeBean=" + exchangeBean +
-                ", verificationBean=" + verificationBean +
-                ", verificationBeanList=" + verificationBeanList +
-                ", paginationVO=" + paginationVO +
-                ", coinMarketCapBean=" + coinMarketCapBean +
-                '}';
-    }
 }

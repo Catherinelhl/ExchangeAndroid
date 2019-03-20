@@ -199,4 +199,78 @@ public interface HttpApi {
     @POST(APIURLConstants.API_GET_COIN_MARKET_CAP)
     Observable<ResponseJson> getCoinMarketCap(@Body RequestBody requestBody);
 
+
+    /**
+     * 获取Android版本信息
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_GET_ANDROID_VERSION_INFO)
+    Observable<ResponseJson> getAndroidInfo(@Body RequestBody requestBody);
+
+
+    /**
+     * 新增會員支付方式
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_ADD_PAY_WAY)
+    Observable<ResponseJson> addPayWay(@Body RequestBody requestBody);
+
+    /**
+     * 修改會員支付信息
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_MODIFY_PAY_WAY)
+    Observable<ResponseJson> modifyPayWay(@Body RequestBody requestBody);
+
+    /**
+     * 移除會員支付方式
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_REMOVE_PAY_WAY)
+    Observable<ResponseJson> removePayWay(@Body RequestBody requestBody);
+
+    /**
+     * 取得會員支付方式
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_GET_PAY_WAY)
+    Observable<ResponseJson> getPayWay(@Body RequestBody requestBody);
+
+    /**
+     * 取得平台收款帳戶資訊
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_GET_BANK_INFO)
+    Observable<ResponseJson> getBankInfo(@Body RequestBody requestBody);
+
+    /**
+     * 充值虛擬幣
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_RECHARGE_VIRTUAL_COIN)
+    Observable<ResponseJson> rechargeVirtual(@Body RequestBody requestBody);
+
+    /**
+     * 回購虛擬幣
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_CONVERT_COIN)
+    Observable<ResponseJson> convertCoin(@Body RequestBody requestBody);
+
 }

@@ -107,8 +107,6 @@ public class Constants {
      */
     public static class ServerType {
         public static final String INTERNATIONAL_SIT = "internationalSIT";
-        public static final String INTERNATIONAL_UAT = "internationalUAT";
-        public static final String INTERNATIONAL_PRD = "internationalPRD";
 
     }
 

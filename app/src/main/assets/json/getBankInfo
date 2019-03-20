@@ -1,0 +1,12 @@
+{
+  "centerInfoVO": {
+    "centerInfoUid": 1,
+    "bankPersonalName": "怡鹿発",
+    "bankName": "工商銀行",
+    "bankBranchName": "上海分行",
+    "bankAccount": "1688 8888 9527 9453"
+  },
+  "success": true,
+  "code": 200,
+  "message": "Get bank info success."
+}

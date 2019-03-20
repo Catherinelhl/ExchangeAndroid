@@ -21,6 +21,7 @@ public class APIURLConstants {
     /*重设密码*/
     public static final String API_RESET_PASSWORD = "member/resetPassword";
 
+
     /*取得虛擬貨幣美元現值*/
     public static final String API_CURRENCY_GET_USD_PRICE = "currencyList/getUSDPrice";
     /*取得帳戶所有幣種餘額*/
@@ -70,9 +71,31 @@ public class APIURLConstants {
     /*設置資金密碼*/
     public static final String API_SECURITY_TX_PASSWORD = "member/securityTxPassword";
 
+
     /*取得幣種名稱資訊*/
     public static final String API_GET_COIN_NAME_LIST = "currencyList/getCoinNameList";
     /*取得幣種市值資訊*/
     public static final String API_GET_COIN_MARKET_CAP = "currencyList/getCoinMarketCap";
+
+
+    /*取得Android版本信息*/
+    public static final String API_GET_ANDROID_VERSION_INFO = "version/getAndroidVersionInfo";
+
+
+    /*新增會員支付方式*/
+    public static final String API_ADD_PAY_WAY = "memberPayInfo/addPayWay";
+    /*修改會員支付信息*/
+    public static final String API_MODIFY_PAY_WAY = "memberPayInfo/modifyPayWay";
+    /*移除會員支付方式*/
+    public static final String API_REMOVE_PAY_WAY = "memberPayInfo/removePayWay";
+    /*取得會員支付方式*/
+    public static final String API_GET_PAY_WAY = "memberPayInfo/getPayWay";
+    /*取得平台收款帳戶資訊*/
+    public static final String API_GET_BANK_INFO = "centerInfo/getBankInfo";
+    /*充值虛擬幣*/
+    public static final String API_RECHARGE_VIRTUAL_COIN = "memberOrder/rechargeVirtualCoin";
+    /*回購虛擬幣*/
+    public static final String API_CONVERT_COIN = "memberOrder/convertCoin";
+
 
 }

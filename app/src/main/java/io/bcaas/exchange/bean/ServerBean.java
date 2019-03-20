@@ -11,8 +11,6 @@ import java.io.Serializable;
 public class ServerBean implements Serializable {
     /*id，增序,默认为-1*/
     private int id = -1;
-    /*服务器sfn_url*/
-    private String sfnServer;
     /*服务器 api_url*/
     private String apiServer;
     /*服务器 update_url*/
@@ -32,28 +30,23 @@ public class ServerBean implements Serializable {
         this.id = id;
     }
 
-    public ServerBean(int id, String sfnServer, boolean isChoose) {
+    public ServerBean(int id, boolean isChoose) {
         super();
         this.id = id;
-        this.sfnServer = sfnServer;
     }
 
-    public ServerBean(int id, String sfnServer, String apiServer, String updateServer, boolean isChoose) {
+    public ServerBean(int id, String apiServer,boolean isChoose) {
         super();
         this.id = id;
-        this.sfnServer = sfnServer;
+        this.apiServer=apiServer;
+    }
+
+    public ServerBean(int id, String apiServer, String updateServer, boolean isChoose) {
+        super();
+        this.id = id;
         this.apiServer = apiServer;
         this.updateServer = updateServer;
     }
-
-    public String getSfnServer() {
-        return sfnServer;
-    }
-
-    public void setSfnServer(String sfnServer) {
-        this.sfnServer = sfnServer;
-    }
-
     public String getApiServer() {
         return apiServer;
     }
@@ -83,7 +76,6 @@ public class ServerBean implements Serializable {
     public String toString() {
         return "ServerBean{" +
                 "id=" + id +
-                ", sfnServer='" + sfnServer + '\'' +
                 ", apiServer='" + apiServer + '\'' +
                 ", updateServer='" + updateServer + '\'' +
                 ", isUnAvailable=" + isUnAvailable +
