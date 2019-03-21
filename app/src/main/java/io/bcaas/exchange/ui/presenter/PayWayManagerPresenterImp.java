@@ -44,10 +44,16 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
     }
 
     @Override
-    public void addPayWay(MemberPayInfoVO memberPayInfoVO) {
+    public void addPayWay(MemberPayInfoVO memberPayInfoVO, String txPassword) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
+        try {
+            memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            LogTool.e(TAG, e.getMessage());
+        }
         requestJson.setMemberVO(memberVO);
 
 
@@ -69,7 +75,18 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "addPayWay:", responseJson);
+                        if (responseJson != null) {
+                            GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "addPayWay:", responseJson);
+                            if (responseJson.isSuccess()) {
+                            } else {
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2015) {
+//    {"success":false,"code":2015,"message":"Current password is wrong."}
+                                }
+                            }
+
+                        }
+
                     }
 
                     @Override

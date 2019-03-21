@@ -86,7 +86,7 @@ public class PayWayManagerActivity extends BaseActivity implements PayWayManager
                         memberPayInfoVO.setBankName("中国招商银行");
                         memberPayInfoVO.setBankBranchName("北京分行建国路支行");
                         memberPayInfoVO.setBankAccount("6214830105268279");
-                        presenter.addPayWay(memberPayInfoVO);
+                        presenter.addPayWay(memberPayInfoVO,"aaaaaaaa1");
 
                     }
 
@@ -228,7 +228,7 @@ public class PayWayManagerActivity extends BaseActivity implements PayWayManager
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.convertCoin(Constants.CURRENCY_TYPE_SCS, "1000", "123456");
+                        presenter.convertCoin(Constants.CURRENCY_TYPE_SCS, "1000", "aaaaaaaa1");
                     }
 
                     @Override

@@ -53,7 +53,7 @@ public interface PayWayManagerConstract {
     }
 
     interface Presenter extends BaseContract.Presenter {
-        void addPayWay(MemberPayInfoVO memberPayInfoVO);
+        void addPayWay(MemberPayInfoVO memberPayInfoVO,String txPassword);
 
         void modifyPayWay(MemberPayInfoVO memberPayInfoVO);
 
