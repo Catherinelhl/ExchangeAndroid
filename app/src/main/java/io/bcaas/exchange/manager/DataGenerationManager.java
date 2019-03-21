@@ -44,8 +44,8 @@ public class DataGenerationManager {
 
         //初始化Order界面top标题集合
         tabOrderTopTitles.add("交易");
-        tabOrderTopTitles.add("充值");
-        tabOrderTopTitles.add("提现");
+        tabOrderTopTitles.add("转入");
+        tabOrderTopTitles.add("转出");
         tabOrderTopTitleCount = tabOrderTopTitles.size();
 
         //初始化底部栏图标数据

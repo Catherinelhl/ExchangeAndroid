@@ -22,14 +22,12 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
-import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
-import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
-import io.bcaas.exchange.ui.view.WithDrawView;
+import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
+import io.bcaas.exchange.ui.view.TurnInView;
 import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
-import io.bcaas.exchange.vo.RequestJson;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -41,10 +39,11 @@ import java.util.concurrent.TimeUnit;
  * @author catherine.brainwilliam
  * @since 2018/12/28
  * <p>
- * Activity：「提现」
+ * Activity：「转入」
+ * <p>
+ * Notice：此页面有两种展现形式，如果当前还没有设置资金密码，那么就需要展现设置资金密码的页面，如果当前已经设置了，那么就直接展现用户的账户页面
  */
-public class WithDrawActivity extends BaseActivity
-        implements AccountSecurityContract.View, GetAllBalanceContract.View {
+public class TurnInActivity extends BaseActivity implements AccountSecurityContract.View {
 
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -58,17 +57,19 @@ public class WithDrawActivity extends BaseActivity
     ViewPager viewPager;
 
     private List<View> views;
-    private TabViewAdapter tabViewAdapter;
 
-    private GetAllBalanceContract.Presenter getAllBalancePresenter;
-    private int currentPosition;
+    private TabViewAdapter tabViewAdapter;
+    private AccountSecurityContract.Presenter presenter;
+
     private List<MemberKeyVO> memberKeyVOList;
+    private int currentPosition;
     //用来接收当前界面传输过来的值
     private String uIDFrom;
 
+
     @Override
     public int getContentView() {
-        return R.layout.activity_withdraw;
+        return R.layout.activity_recharge;
     }
 
     @Override
@@ -81,17 +82,16 @@ public class WithDrawActivity extends BaseActivity
 
     @Override
     public void initView() {
-        views = new ArrayList<>();
         ibBack.setVisibility(View.VISIBLE);
-        tvTitle.setText(R.string.with_draw);
+        tvTitle.setText(R.string.turn_in);
+        views = new ArrayList<>();
         memberKeyVOList = new ArrayList<>();
     }
 
     @Override
     public void initData() {
         int selectItem = 0;
-
-        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
+        presenter = new AccountSecurityPresenterImp(this);
         //刷新界面
         memberKeyVOList = BaseApplication.getMemberKeyVOList();
         if (ListTool.noEmpty(memberKeyVOList)) {
@@ -111,22 +111,19 @@ public class WithDrawActivity extends BaseActivity
                         String name = currencyListVO.getEnName();
                         tabLayout.addTab(name, i);
                         //初始化数据
-                        WithDrawView withDrawView = new WithDrawView(this);
-                        withDrawView.setHideSoftKeyBoardListener(hideSoftKeyBoardListener);
-                        withDrawView.refreshData(memberKeyVO);
-                        withDrawView.setOnItemSelectListener(onItemSelectListener);
-                        views.add(withDrawView);
+                        TurnInView turnInView = new TurnInView(this);
+                        turnInView.refreshData(memberKeyVO);
+                        turnInView.setOnItemSelectListener(onItemSelectListener);
+                        views.add(turnInView);
 
                     }
                 }
             }
         }
-
         //初始化顶部tab的数据以及相对应的界面信息
         if (tabLayout == null) {
             return;
         }
-
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         tabLayout.selectTab(selectItem);
@@ -136,10 +133,8 @@ public class WithDrawActivity extends BaseActivity
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                hideSoftKeyboard();
-                currentPosition = tab.getPosition();
-                refreshView();
 
+                currentPosition = tab.getPosition();
             }
 
             @Override
@@ -164,6 +159,29 @@ public class WithDrawActivity extends BaseActivity
                         setResult(true);
                     }
                 });
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                currentPosition = tab.getPosition();
+                if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                    if (ListTool.noEmpty(memberKeyVOList)) {
+                        ((TurnInView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
+
+                    }
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
@@ -175,59 +193,26 @@ public class WithDrawActivity extends BaseActivity
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
+            //跳转界面
             Intent intent = new Intent();
-
-            switch (from) {
-                case Constants.EditTextFrom.WITHDRAW_SCAN:
-                    //跳转扫描，同时也应该记录下当前返回此动作是第几个页面，方便刷新界面
-                    requestCameraPermission();
-                    break;
-                case Constants.From.WITHDRAW_SURE:
-                    if (type == null) {
-                        return;
-                    }
-                    RequestJson requestJson = (RequestJson) type;
-                    if (requestJson == null) {
-                        return;
-                    }
-                    intent.setClass(WithDrawActivity.this, WithDrawDetailActivity.class);
-                    intent.putExtra(Constants.KeyMaps.WITHDRAW_REQUEST_JSON, requestJson);
-                    startActivityForResult(intent, Constants.RequestCode.WIDTH_DRAW_DETAIL);
-                    break;
-            }
+            intent.setClass(context, SetFundPasswordActivity.class);
+            startActivityForResult(intent, Constants.RequestCode.FUND_PASSWORD);
         }
     };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (data == null) {
-                return;
-            }
-            switch (requestCode) {
-                case Constants.RequestCode.REQUEST_CODE_CAMERA_SCAN:
-                    // 如果当前是照相机扫描回来
-                    Bundle bundle = data.getExtras();
-                    if (bundle != null) {
-                        String scanInfo = bundle.getString(Constants.KeyMaps.RESULT);
-                        LogTool.d(TAG, "scanInfo:" + scanInfo);
-                        LogTool.d(TAG, "currentPosition:" + currentPosition);
-                        //刷新当前界面
-                        if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                            if (ListTool.noEmpty(memberKeyVOList)) {
-                                ((WithDrawView) views.get(currentPosition)).setScanInfo(scanInfo);
-                            }
-                        }
-                    }
-                    break;
-                case Constants.RequestCode.WIDTH_DRAW_DETAIL:
-                    //刷新當前界面，重新請求餘額
-                    getAllBalancePresenter.getAllBalance();
-                    break;
-            }
+        if (resultCode != Activity.RESULT_OK) {
+            return;
         }
 
+        switch (requestCode) {
+            case Constants.RequestCode.FUND_PASSWORD:
+                //如果从「设置资金密码」页面跳转回来，那么需要重新请求账户资讯
+                presenter.getAccountSecurity();
+                break;
+        }
     }
 
     @Override
@@ -236,7 +221,7 @@ public class WithDrawActivity extends BaseActivity
             if (ListTool.noEmpty(views)) {
                 for (int i = 0; i < views.size(); i++) {
                     if (ListTool.noEmpty(memberKeyVOList)) {
-                        ((WithDrawView) views.get(i)).refreshData(memberKeyVOList.get(i));
+                        ((TurnInView) views.get(i)).refreshData(memberKeyVOList.get(i));
 
                     }
                 }
@@ -247,30 +232,5 @@ public class WithDrawActivity extends BaseActivity
     @Override
     public void getAccountSecurityFailure(String info) {
         showToast(info);
-    }
-
-    @Override
-    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        //刷新当前的界面数据信息
-        this.memberKeyVOList.clear();
-        this.memberKeyVOList = memberKeyVOList;
-        refreshView();
-    }
-
-    @Override
-    public void getAllBalanceFailure(String info) {
-        LogTool.e(TAG, info);
-    }
-
-    /**
-     * 更新当前的界面数据信息
-     */
-    private void refreshView() {
-        if (ListTool.noEmpty(views)
-                && currentPosition < views.size()
-                && ListTool.noEmpty(memberKeyVOList)
-                && currentPosition < memberKeyVOList.size()) {
-            ((WithDrawView) views.get(currentPosition)).refreshData(memberKeyVOList.get(currentPosition));
-        }
     }
 }

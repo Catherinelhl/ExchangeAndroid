@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.time.DateFormatTool;
@@ -21,17 +19,17 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 數據適配器：「充值」：数据适配器
+ * 數據適配器：「转入」：数据适配器
  */
-public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdapter.ViewHolder> {
+public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.ViewHolder> {
 
-    private String TAG = OrderRechargeAdapter.class.getSimpleName();
+    private String TAG = OrderTurnInAdapter.class.getSimpleName();
 
 
     private Context context;
     private List<MemberOrderVO> memberOrderVOS;
 
-    public OrderRechargeAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
+    public OrderTurnInAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
         this.memberOrderVOS = memberOrderVOS;
@@ -59,7 +57,7 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         }
         String enName = currencyListVO.getEnName();
         String uid = currencyListVO.getCurrencyUid();
-        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.recharge) + "  " + enName);
+        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.turn_in) + "  " + enName);
         viewHolder.tvRechargeTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvRechargeStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);

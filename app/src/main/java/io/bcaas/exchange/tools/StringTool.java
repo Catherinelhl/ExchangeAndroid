@@ -65,35 +65,35 @@ public class StringTool {
 
     /**
      * 根据传入的订单类型。返回可以显示的文本信息
-     * (0:充值, 1:提現, 2:買, 3:賣)
+     * (0:转入, 1:提現, 2:買, 3:賣)
      *
      * @param type
      * @return
      */
     public static String getDisplayOrderTypeText(int type) {
         if (type == 0) {
-            return "充值";
+            return "转入";
         } else if (type == 1) {
-            return "提现";
+            return "转出";
 
         } else if (type == 2) {
             return "购买";
         } else if (type == 3) {
             return "出售";
         }
-        return "充值";
+        return "转入";
     }
 
     /**
      * 訂單種類對應的狀態<br>
-     * 0:充值 ---> (0:失敗, 1:已完成)<br>
+     * 0:转入 ---> (0:失敗, 1:已完成)<br>
      * 1:提現 ---> (0:失敗, 1:已完成, 2:待驗證)<br>
      * 2:買 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
      * 3:賣 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
      */
     public static String getDisplayOrderStatusText(int type, int status) {
         switch (type) {
-            case 0://充值
+            case 0://转入
                 if (status == 0) {
                     return "失敗";
                 } else if (status == 1) {
@@ -102,7 +102,7 @@ public class StringTool {
                     return "待验证";
                 }
                 break;
-            case 1://提现
+            case 1://转出
                 if (status == 0) {
                     return "失敗";
                 } else if (status == 1) {
@@ -137,21 +137,21 @@ public class StringTool {
 
     /**
      * 訂單種類對應的狀態<br>
-     * 0:充值 ---> (0:失敗, 1:已完成)<br>
+     * 0:转入 ---> (0:失敗, 1:已完成)<br>
      * 1:提現 ---> (0:失敗, 1:已完成, 2:待驗證)<br>
      * 2:買 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
      * 3:賣 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
      */
     public static boolean getDisplayOrderStatus(int type, int status) {
         switch (type) {
-            case 0://充值
+            case 0://转入
                 if (status == 0) {
                     return false;
                 } else if (status == 1) {
                     return false;
                 }
                 break;
-            case 1://提现
+            case 1://转出
                 if (status == 0) {
                     return false;
                 } else if (status == 1) {

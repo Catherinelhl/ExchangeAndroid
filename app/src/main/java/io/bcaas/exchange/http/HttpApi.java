@@ -181,7 +181,7 @@ public interface HttpApi {
 
 
     /**
-     * 提现
+     * 转出
      */
     @POST(APIURLConstants.API_WITH_DRAW)
     Observable<ResponseJson> withDraw(@Body RequestBody requestBody);
@@ -256,7 +256,7 @@ public interface HttpApi {
     Observable<ResponseJson> getBankInfo(@Body RequestBody requestBody);
 
     /**
-     * 充值虛擬幣
+     * 转入虛擬幣
      *
      * @param requestBody
      * @return

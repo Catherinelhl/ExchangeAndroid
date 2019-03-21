@@ -27,7 +27,7 @@ public class CurrencyServiceChargeVO implements Serializable {
 	 */
 	private CurrencyListVO currencyListVO;
 	/**
-	 * 充值
+	 * 转入
 	 */
 	private BigDecimal recharge;
 	/**

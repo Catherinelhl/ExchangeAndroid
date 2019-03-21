@@ -73,7 +73,7 @@ public class TxInteractor {
     }
 
     /**
-     * 提现
+     * 转出
      *
      * @param body
      */

@@ -20,17 +20,17 @@ import java.security.NoSuchAlgorithmException;
  * @author catherine.brainwilliam
  * @since 2019/1/10
  * <p>
- * 数据交互实现类：提现
+ * 数据交互实现类：转出
  */
-public class WithDrawPresenterImp extends AccountSecurityPresenterImp
+public class TurnOutPresenterImp extends AccountSecurityPresenterImp
         implements WithDrawContract.Presenter {
 
-    private String TAG = WithDrawPresenterImp.class.getSimpleName();
+    private String TAG = TurnOutPresenterImp.class.getSimpleName();
     private WithDrawContract.View view;
     private TxInteractor txInteractor;
     private Disposable disposableWithDraw;
 
-    public WithDrawPresenterImp(WithDrawContract.View view) {
+    public TurnOutPresenterImp(WithDrawContract.View view) {
         super(view);
         this.view = view;
         txInteractor = new TxInteractor();

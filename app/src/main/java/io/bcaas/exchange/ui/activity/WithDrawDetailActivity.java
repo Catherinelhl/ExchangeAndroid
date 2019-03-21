@@ -18,7 +18,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.PhoneVerifyContract;
 import io.bcaas.exchange.ui.contracts.WithDrawContract;
 import io.bcaas.exchange.ui.presenter.PhoneVerifyPresenterImp;
-import io.bcaas.exchange.ui.presenter.WithDrawPresenterImp;
+import io.bcaas.exchange.ui.presenter.TurnOutPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.bcaas.exchange.view.textview.AppendStringLayout;
@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/4
- * Activity：「提现详情，输入密码」
+ * Activity：「转出详情，输入密码」
  */
 public class WithDrawDetailActivity extends BaseActivity implements WithDrawContract.View, PhoneVerifyContract.View {
     @BindView(R.id.ib_back)
@@ -99,7 +99,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     @Override
     public void initView() {
         tvTitle.setVisibility(View.VISIBLE);
-        tvTitle.setText(R.string.with_draw);
+        tvTitle.setText(R.string.turn_out);
         ibBack.setVisibility(View.VISIBLE);
 
         MemberVO memberVO = BaseApplication.getMemberVO();
@@ -111,7 +111,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     @Override
     public void initData() {
-        presenter = new WithDrawPresenterImp(this);
+        presenter = new TurnOutPresenterImp(this);
         phoneVerifyPresenter = new PhoneVerifyPresenterImp(this);
         // 获取账户资讯
         presenter.getAccountSecurity();
@@ -222,7 +222,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
                         if (presenter != null) {
                             btnSure.setEnabled(false);
                             requestJson.setVerificationBeanList(verificationBeanList);
-                            //4：请求接口提现
+                            //4：请求接口转出
                             presenter.withDraw(txPassword, requestJson);
                         }
                     }
@@ -232,7 +232,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     @Override
     public void withDrawFailure(String info) {
         btnSure.setEnabled(true);
-        // 弹框提示用户 提现 失败
+        // 弹框提示用户 转出 失败
         showSingleDialog(info, new SingleButtonDialog.ConfirmClickListener() {
             @Override
             public void sure() {
@@ -243,7 +243,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
     @Override
     public void withDrawSuccess(String info) {
         btnSure.setEnabled(true);
-        // 弹框提示用户 提现成功
+        // 弹框提示用户 转出成功
         showSingleDialog(getString(R.string.congratulations_to_withdraw_success), new SingleButtonDialog.ConfirmClickListener() {
             @Override
             public void sure() {

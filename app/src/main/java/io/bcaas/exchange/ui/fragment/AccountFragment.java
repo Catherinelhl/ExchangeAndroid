@@ -17,9 +17,9 @@ import io.bcaas.exchange.bean.SettingsBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.ui.activity.MyFundActivity;
-import io.bcaas.exchange.ui.activity.RechargeActivity;
+import io.bcaas.exchange.ui.activity.TurnInActivity;
 import io.bcaas.exchange.ui.activity.SafetyCenterActivity;
-import io.bcaas.exchange.ui.activity.WithDrawActivity;
+import io.bcaas.exchange.ui.activity.TurnOutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +68,8 @@ public class AccountFragment extends BaseFragment {
     private List<SettingsBean> initSettingTypes() {
         List<SettingsBean> settingTypes = new ArrayList<>();
         SettingsBean settingTypeBean = new SettingsBean(getString(R.string.my_all_fund), Constants.SettingType.MY_ALL_FUND);
-        SettingsBean settingTypeBean3 = new SettingsBean(getString(R.string.recharge), Constants.SettingType.RECHARGE);
-        SettingsBean settingTypeBean4 = new SettingsBean(getString(R.string.with_draw), Constants.SettingType.WITH_DRAW);
+        SettingsBean settingTypeBean3 = new SettingsBean(getString(R.string.turn_in), Constants.SettingType.RECHARGE);
+        SettingsBean settingTypeBean4 = new SettingsBean(getString(R.string.turn_out), Constants.SettingType.WITH_DRAW);
         SettingsBean settingTypeBean5 = new SettingsBean(getString(R.string.safety_center), Constants.SettingType.SAFETY_CENTER);
         settingTypes.add(settingTypeBean);
         settingTypes.add(settingTypeBean3);
@@ -101,11 +101,11 @@ public class AccountFragment extends BaseFragment {
                             startActivityForResult(intent, Constants.RequestCode.ALL_FUND_CODE);
                             break;
                         case RECHARGE:
-                            intent.setClass(getContext(), RechargeActivity.class);
+                            intent.setClass(getContext(), TurnInActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.RECHARGE);
                             break;
                         case WITH_DRAW:
-                            intent.setClass(getContext(), WithDrawActivity.class);
+                            intent.setClass(getContext(), TurnOutActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
                             break;
                         case SAFETY_CENTER:

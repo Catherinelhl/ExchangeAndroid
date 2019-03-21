@@ -40,7 +40,7 @@ public class APIURLConstants {
     public static final String API_GET_RECORD_LIST = "memberOrder/getOrderList";
     /*購買*/
     public static final String API_BUY = "memberOrder/buy";
-    /*提现*/
+    /*转出*/
     public static final String API_WITH_DRAW = "memberKey/withdraw";
 
 

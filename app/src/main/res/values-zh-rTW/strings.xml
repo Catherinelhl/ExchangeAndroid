@@ -36,8 +36,8 @@
     <string name="sell_number">卖出量</string>
 
     <string name="my_all_fund">我的资产</string>
-    <string name="recharge">充值</string>
-    <string name="with_draw">提现</string>
+    <string name="turn_in">转入</string>
+    <string name="turn_out">转出</string>
     <string name="safety_center">安全中心</string>
     <string name="graphic_verify_code">图形验证码</string>
 
@@ -73,10 +73,10 @@
     <string name="message_verify_code">短信验证码</string>
     <string name="six_google_verify_code">6位验证码</string>
     <string name="set_immediately">立即设置</string>
-    <string name="cash_able_balance">可提现余额:</string>
+    <string name="cash_able_balance">可转出余额:</string>
     <string name="sell">出售</string>
     <string name="remarks">备注</string>
-    <string name="no_fund_password_tips">您还没有设置资金密码,该密码将用于交易和提现的验证。为保证账户安全,请先设置资金密码。</string>
+    <string name="no_fund_password_tips">您还没有设置资金密码,该密码将用于交易和转出的验证。为保证账户安全,请先设置资金密码。</string>
     <string name="all_in">全部发送</string>
 
     <string name="buy_in">买进</string>
@@ -132,7 +132,7 @@
     <string name="please_input_verify_code">请输入验证码</string>
     <string name="format_sss" formatted="false">%s%s %s</string>
     <string name="sell_detail">售出详情</string>
-    <string name="withdraw_need_fee">提现需支付手续费,手续费为:</string>
+    <string name="withdraw_need_fee">转出需支付手续费,手续费为:</string>
     <string name="get_data_failure">获取数据失败</string>
     <string name="plus_sign">+</string>
     <string name="please_select_country_or_region">请选择国家或地区</string>
@@ -152,9 +152,9 @@
     <string name="google_verify_six_verify_code">2.请输入Google验证器应用产生的6位验证码</string>
     <string name="google_account">账号:</string>
     <string name="invalid_tx_amount">无效的交易额</string>
-    <string name="input_amount_to_withdraw">输入提现的金额</string>
+    <string name="input_amount_to_withdraw">输入转出的金额</string>
     <string name="please_input_receive_address">请输入接收地址</string>
-    <string name="please_input_amount_withdraw">请输入提现金额</string>
+    <string name="please_input_amount_withdraw">请输入转出金额</string>
     <string name="withdraw_address">提币地址</string>
     <string name="please_input_account_info">请输入账号信息！</string>
     <string name="congratulations_to_register_success">恭喜您，注册成功！</string>
@@ -242,11 +242,11 @@
     <string name="order_type_error">订单状态异常。</string>
     <string name="verify_type_error">验证类型异常。</string>
     <string name="balance_and_account_compare_failure">用户余额与账户匹配失败。</string>
-    <string name="withdraw_mark_format_invalid">提现备注无效。</string>
-    <string name="withdraw_config_address_failure">提现地址失败。</string>
-    <string name="withdraw_config_private_failure">提现配置私钥失败。</string>
+    <string name="withdraw_mark_format_invalid">转出备注无效。</string>
+    <string name="withdraw_config_address_failure">转出地址失败。</string>
+    <string name="withdraw_config_private_failure">转出配置私钥失败。</string>
     <string name="verify_code_format_invalid">验证码格式无效。</string>
-    <string name="withdraw_price_less_than_fee">提现金额不能低于手续费。</string>
+    <string name="withdraw_price_less_than_fee">转出金额不能低于手续费。</string>
     <string name="success_close_email">成功关闭邮箱验证！</string>
     <string name="success_close_phone">成功关闭手机验证！</string>
 </resources>

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.obt.qrcode.encoding.EncodingUtils;
@@ -27,9 +26,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/27
- * 「充值」页面视图
+ * 「转入」页面视图
  */
-public class RechargeView extends BaseLinearLayout {
+public class TurnInView extends BaseLinearLayout {
     @BindView(R.id.tv_info)
     TextView tvInfo;
     @BindView(R.id.tv_set_immediately)
@@ -48,7 +47,7 @@ public class RechargeView extends BaseLinearLayout {
         this.onItemSelectListener = onItemSelectListener;
     }
 
-    public RechargeView(Context context) {
+    public TurnInView(Context context) {
         super(context);
         this.context = context;
         initView();

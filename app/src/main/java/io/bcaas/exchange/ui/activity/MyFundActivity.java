@@ -18,10 +18,8 @@ import io.bcaas.exchange.adapter.MyFundDataAdapter;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
@@ -30,7 +28,6 @@ import io.bcaas.exchange.vo.MemberKeyVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -156,14 +153,14 @@ public class MyFundActivity extends BaseActivity
             intent.putExtra(Constants.KeyMaps.From, uid);
             switch (from) {
                 case Constants.From.RECHARGE:
-                    intent.setClass(MyFundActivity.this, RechargeActivity.class);
+                    intent.setClass(MyFundActivity.this, TurnInActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.RECHARGE);
-                    // 充值
+                    // 转入
                     break;
                 case Constants.From.WITHDRAW:
-                    intent.setClass(MyFundActivity.this, WithDrawActivity.class);
+                    intent.setClass(MyFundActivity.this, TurnOutActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
-                    //提现
+                    //转出
                     break;
             }
         }

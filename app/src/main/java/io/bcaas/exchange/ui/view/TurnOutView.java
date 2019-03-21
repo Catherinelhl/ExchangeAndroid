@@ -29,10 +29,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/27
- * 「提现」页面视图
+ * 「转出」页面视图
  */
-public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
-    private String TAG = WithDrawView.class.getSimpleName();
+public class TurnOutView extends BaseLinearLayout implements GetCurrencyChargeContract.View {
+    private String TAG = TurnOutView.class.getSimpleName();
 
     @BindView(R.id.tv_cashable_balance)
     TextView tvCashAbleBalance;
@@ -57,7 +57,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     private String transactionFee;
     private CurrencyListVO currencyListVO;
     private MemberKeyVO memberKeyVO;
-    //得到可提现余额
+    //得到可转出余额
     private String balanceAvailable;
 
     private GetCurrencyChargeContract.Presenter presenter;
@@ -68,7 +68,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
     }
 
 
-    public WithDrawView(Context context) {
+    public TurnOutView(Context context) {
         super(context);
         presenter = new GetCurrencyChargePresenterImp(this);
     }
@@ -155,7 +155,7 @@ public class WithDrawView extends BaseLinearLayout implements GetCurrencyChargeC
                             showToast(context.getResources().getString(R.string.please_input_receive_address));
                             return;
                         }
-                        //2：判断当前想要提现的金额是否输入
+                        //2：判断当前想要转出的金额是否输入
                         String withDrawAmount = etWithdrawAmount.getContent();
                         if (StringTool.isEmpty(withDrawAmount)) {
                             showToast(context.getResources().getString(R.string.please_input_amount_withdraw));

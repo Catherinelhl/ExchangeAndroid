@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--订单页面的提现item-->
+<!--订单页面的转出item-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tool="http://schemas.android.com/tools"
               android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         <TextView android:layout_width="wrap_content"
                   android:id="@+id/tv_withdraw_type"
                   style="@style/black_16_text_style"
-                  tool:text="提现 BTC"
+                  tool:text="转出 BTC"
                   android:fontFamily="sans-serif-medium"
                   android:gravity="center_vertical"
                   android:layout_gravity="center"

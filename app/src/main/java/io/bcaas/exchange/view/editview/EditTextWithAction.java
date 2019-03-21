@@ -261,7 +261,7 @@ public class EditTextWithAction extends LinearLayout
                             } else if (StringTool.equals(tvActionString, getResources().getString(R.string.all_in))) {
                                 switch (from) {
                                     case Constants.EditTextFrom.WITHDRAW_AMOUNT:
-                                        //提现界面的「全部发送」
+                                        //转出界面的「全部发送」
                                         break;
                                 }
                             }

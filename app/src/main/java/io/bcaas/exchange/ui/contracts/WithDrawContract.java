@@ -5,7 +5,7 @@ import io.bcaas.exchange.vo.RequestJson;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/10
- *  界面与数据相互作用的协议类：提现
+ *  界面与数据相互作用的协议类：转出
  */
 public interface WithDrawContract {
     interface View extends AccountSecurityContract.View {
@@ -16,7 +16,7 @@ public interface WithDrawContract {
 
     interface Presenter extends AccountSecurityContract.Presenter{
         /**
-         * 提现
+         * 转出
          *
          * @param txPassword    交易密码
          */

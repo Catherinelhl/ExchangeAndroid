@@ -3,7 +3,7 @@ package io.bcaas.exchange.vo;
 import java.io.Serializable;
 
 /**
- * 會員訂單 type : (0:充值, 1:提現, 2:買, 3:賣)
+ * 會員訂單 type : (0:转入, 1:提現, 2:買, 3:賣)
  *
  * @author Costa
  * @version 1.0.0
@@ -39,12 +39,12 @@ public class MemberOrderVO implements Serializable {
     private CurrencyListVO paymentCurrencyUid;
     /**
      * 訂單種類<br>
-     * (0:充值, 1:提現, 2:買, 3:賣)
+     * (0:转入, 1:提現, 2:買, 3:賣)
      */
     private Integer type;
     /**
      * 訂單種類對應的狀態<br>
-     * 0:充值 ---> (0:失敗, 1:已完成)<br>
+     * 0:转入 ---> (0:失敗, 1:已完成)<br>
      * 1:提現 ---> (0:失敗, 1:已完成, 2:待驗證)<br>
      * 2:買 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
      * 3:賣 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>

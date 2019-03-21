@@ -7,9 +7,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.OrderRechargeAdapter;
+import io.bcaas.exchange.adapter.OrderTurnInAdapter;
 import io.bcaas.exchange.adapter.OrderTransactionAdapter;
-import io.bcaas.exchange.adapter.OrderWithdrawAdapter;
+import io.bcaas.exchange.adapter.OrderTurnOutAdapter;
 import io.bcaas.exchange.base.BaseLinearLayout;
 import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
@@ -39,10 +39,10 @@ public class OrderView extends BaseLinearLayout {
 
     //订单页面「交易」数据显示的适配器
     private OrderTransactionAdapter orderTransactionAdapter;
-    //订单页面「充值」数据显示的适配器
-    private OrderRechargeAdapter orderRechargeAdapter;
-    //订单页面「提现」数据显示的适配器
-    private OrderWithdrawAdapter orderWithdrawAdapter;
+    //订单页面「转入」数据显示的适配器
+    private OrderTurnInAdapter orderTurnInAdapter;
+    //订单页面「转出」数据显示的适配器
+    private OrderTurnOutAdapter orderTurnOutAdapter;
     //上拉加载的回调
     private LoadingDataListener loadingDataListener;
     //记录当前显示的页面
@@ -110,21 +110,21 @@ public class OrderView extends BaseLinearLayout {
                 }
 
                 break;
-            case 1://充值
+            case 1://转入
                 if (ListTool.isEmpty(memberOrderVOS)) {
                     //显示没有信息页面
                     rlNoData.setVisibility(VISIBLE);
                 } else {
                     rlNoData.setVisibility(GONE);
-                    if (orderRechargeAdapter == null) {
-                        orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
+                    if (orderTurnInAdapter == null) {
+                        orderTurnInAdapter = new OrderTurnInAdapter(getContext(), memberOrderVOS);
                         rvOrderData.setHasFixedSize(true);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
                         rvOrderData.setLayoutManager(linearLayoutManager);
                     } else {
-                        orderRechargeAdapter.addList(memberOrderVOS);
+                        orderTurnInAdapter.addList(memberOrderVOS);
                     }
-                    rvOrderData.setAdapter(orderRechargeAdapter);
+                    rvOrderData.setAdapter(orderTurnInAdapter);
                     rvOrderData.addOnScrollListener(scrollListener);
                 }
                 break;
@@ -134,15 +134,15 @@ public class OrderView extends BaseLinearLayout {
                     rlNoData.setVisibility(VISIBLE);
                 } else {
                     rlNoData.setVisibility(GONE);
-                    if (orderWithdrawAdapter == null) {
-                        orderWithdrawAdapter = new OrderWithdrawAdapter(getContext(), memberOrderVOS);
+                    if (orderTurnOutAdapter == null) {
+                        orderTurnOutAdapter = new OrderTurnOutAdapter(getContext(), memberOrderVOS);
                         rvOrderData.setHasFixedSize(true);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
                         rvOrderData.setLayoutManager(linearLayoutManager);
                     } else {
-                        orderWithdrawAdapter.addList(memberOrderVOS);
+                        orderTurnOutAdapter.addList(memberOrderVOS);
                     }
-                    rvOrderData.setAdapter(orderWithdrawAdapter);
+                    rvOrderData.setAdapter(orderTurnOutAdapter);
                     rvOrderData.addOnScrollListener(scrollListener);
                 }
                 break;
@@ -176,10 +176,10 @@ public class OrderView extends BaseLinearLayout {
                         }
                     }
                     break;
-                case 1://充值
-                    if (orderRechargeAdapter != null) {
+                case 1://转入
+                    if (orderTurnInAdapter != null) {
                         if (newState == RecyclerView.SCROLL_STATE_IDLE
-                                && mLastVisibleItemPosition + 1 == orderRechargeAdapter.getItemCount()) {
+                                && mLastVisibleItemPosition + 1 == orderTurnInAdapter.getItemCount()) {
                             LogTool.d(TAG, "canLoadingMore is:" + canLoadingMore);
                             //发送网络请求获取更多数据
                             if (canLoadingMore) {
@@ -192,9 +192,9 @@ public class OrderView extends BaseLinearLayout {
                     }
                     break;
                 case 2:// 提現
-                    if (orderWithdrawAdapter != null) {
+                    if (orderTurnOutAdapter != null) {
                         if (newState == RecyclerView.SCROLL_STATE_IDLE
-                                && mLastVisibleItemPosition + 1 == orderWithdrawAdapter.getItemCount()) {
+                                && mLastVisibleItemPosition + 1 == orderTurnOutAdapter.getItemCount()) {
                             LogTool.d(TAG, "canLoadingMore is:" + canLoadingMore);
                             //发送网络请求获取更多数据
                             if (canLoadingMore) {

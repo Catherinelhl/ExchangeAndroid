@@ -58,8 +58,8 @@ public class Constants {
         public static final int BUY_DETAIL_CODE = 0x3;//跳转购买详情页面的code码
         public static final int SELL_DETAIL_CODE = 0x4;//跳转售出详情页面的code码
         public static final int ALL_FUND_CODE = 0x5;//跳转到我的资产页面的code码
-        public static final int WITH_DRAW = 0x6;//跳转到我的提现页面的code码
-        public static final int RECHARGE = 0x7;//跳转到我的充值页面的code码
+        public static final int WITH_DRAW = 0x6;//跳转到我的转出页面的code码
+        public static final int RECHARGE = 0x7;//跳转到我的转入页面的code码
         public static final int SAFETY_CENTER = 0x8;//跳转到安全中心页面的code码
         public static final int MODIFY_LOGIN_PASSWORD = 0x9;//跳转到「修改登录密码」页面的code码
         public static final int MODIFY_FUND_PASSWORD = 0x10;//跳转到「修改登录密码」页面的code码
@@ -69,7 +69,7 @@ public class Constants {
         public static final int GOOGLE_VERIFY = 0x14;//跳转到「google验证」页面的code码
         public static final int REQUEST_CODE_CAMERA_SCAN = 0x15;//跳转到「调用扫描」的界面
         public static final int REQUEST_CODE_CAMERA_OK = 0x16;//跳转到「调用扫描」的界面
-        public static final int WIDTH_DRAW_DETAIL = 0x17;//跳转到「提现详情」的界面
+        public static final int WIDTH_DRAW_DETAIL = 0x17;//跳转到「转出详情」的界面
         public static final int COUNTRY_CODE = 0x18;//跳转到「选择城市区号」的界面
 
     }
@@ -99,7 +99,7 @@ public class Constants {
         public static final String SELECT_COUNTRY_CODE = "selectCountryCode";//选择的城市号码
 
         public static final String SELL_DATA_BEAN = "sellDataBean";//卖出的数据类
-        public static final String WITHDRAW_REQUEST_JSON = "withDrawRequestJson";//提现的数据类
+        public static final String WITHDRAW_REQUEST_JSON = "withDrawRequestJson";//转出的数据类
     }
 
     /**
@@ -120,17 +120,17 @@ public class Constants {
 
     public class From {
         public static final String ORDER_CANCEL_TRANSACTION = "orderCancelTransaction";//撤销订单
-        public static final String ORDER_RECHARGE = "orderRecharge";//订单中的充值模块
-        public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的提现模块
+        public static final String ORDER_RECHARGE = "orderRecharge";//订单中的转入模块
+        public static final String ORDER_WITHDRAW = "orderWithDraw";//订单中的转出模块
         public static final String SELL_VIEW = "sellView";//售出
         public static final String SELL_SELECT_CURRENCY = "sellSelectCurrency";//售出页面选择币种
         public static final String SELL_SELECTED_CURRENCY = "sellSelectedCurrency";//售出页面选择了币种
         public static final String SIDE_SLIP = "sideSlip";//侧滑栏
         public static final String SIDE_SLIP_RESET = "sideSlipReset";//侧滑栏重置数据
-        public static final String WITHDRAW_SURE = "withDrawSure";//提现点击确定
+        public static final String WITHDRAW_SURE = "withDrawSure";//转出点击确定
         public static final String COUNTRY_CODE = "countryCode";//城市区号
-        public static final String RECHARGE = "recharge";//充值
-        public static final String WITHDRAW = "withDraw";// 提现
+        public static final String RECHARGE = "recharge";//转入
+        public static final String WITHDRAW = "withDraw";// 转出
         public static final String BUY = "buy";// 购买
         public static final String LOGIN_PASSWORD = "loginPassword";//登录密码
         public static final String FUND_PASSWORD = "fundPassword";//资金密码
@@ -145,9 +145,9 @@ public class Constants {
         public static final String EMAIL_CODE = "emailCode";//邮箱验证码
         public static final String REGISTER_VERIFY_EMAIL = "registerVerifyEmail";//注册页面验证邮箱然后发送邮箱验证码
         public static final String FORGET_VERIFY_EMAIL = "forgetVerifyEmail";//忘记密码页面验证邮箱然后发送邮箱验证码
-        public static final String WITHDRAW_SCAN = "withDrawScan";//提现页面的扫描二维码
+        public static final String WITHDRAW_SCAN = "withDrawScan";//转出页面的扫描二维码
         public static final String PHONE_CODE = "phoneCode";//phone verify
-        public static final String WITHDRAW_AMOUNT = "withDrawAmount";//提现金额
+        public static final String WITHDRAW_AMOUNT = "withDrawAmount";//转出金额
     }
 
     /**
@@ -164,8 +164,8 @@ public class Constants {
      */
     public enum SettingType {
         MY_ALL_FUND,//我的资产
-        RECHARGE,//充值
-        WITH_DRAW,//提现
+        RECHARGE,//转入
+        WITH_DRAW,//转出
         SAFETY_CENTER//安全中心
     }
 
@@ -221,8 +221,8 @@ public class Constants {
      * 订单类型
      */
     public class OrderType {
-        public static final int RECHARGE = 0;//充值
-        public static final int WITHDRAW = 1;//提现
+        public static final int RECHARGE = 0;//转入
+        public static final int WITHDRAW = 1;//转出
         public static final int TX = 2;//交易
         public static final int BUY = 2;// 买
         public static final int SELL = 3;// 卖
