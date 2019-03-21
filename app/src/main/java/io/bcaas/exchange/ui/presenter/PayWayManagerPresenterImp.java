@@ -317,7 +317,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
         try {
-            memberVO.setPassword(Sha256Tool.doubleSha256ToString(txPassword));
+            memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             LogTool.e(TAG, e.getMessage());

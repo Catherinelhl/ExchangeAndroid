@@ -281,5 +281,6 @@ public class Constants {
 
     public static final String HEADER_NAME_KEY = "cookie";
 
-
+   // 只能充值SCS,currencyUid帶入“3"
+    public static final String CURRENCY_TYPE_SCS = "3";
 }

@@ -372,7 +372,8 @@ public class SellView extends BaseLinearLayout
             }
             String enName = currencyListVO.getEnName();
             String uid = currencyListVO.getCurrencyUid();
-            sccrlLayout.ExpendChart(false);
+            //默认状态为打开
+            sccrlLayout.ExpendChart(true);
             sccrlLayout.setCurveName(enName);
             if (tvSalableBalance != null) {
                 tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance),

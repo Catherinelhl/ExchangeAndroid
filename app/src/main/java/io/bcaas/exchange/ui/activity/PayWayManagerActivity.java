@@ -206,7 +206,7 @@ public class PayWayManagerActivity extends BaseActivity implements PayWayManager
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.rechargeVirtualCoin("1", "1000", "I'm mark1");
+                        presenter.rechargeVirtualCoin(Constants.CURRENCY_TYPE_SCS, "1000", "123456");
                     }
 
                     @Override
@@ -228,10 +228,11 @@ public class PayWayManagerActivity extends BaseActivity implements PayWayManager
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.convertCoin("1", "1000", "I'm mark1");
+                        presenter.convertCoin(Constants.CURRENCY_TYPE_SCS, "1000", "123456");
                     }
 
                     @Override
+
                     public void onError(Throwable e) {
 
                     }

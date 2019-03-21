@@ -8,7 +8,7 @@
         <![CDATA[0123456789abcdefghigklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM!@#¥%^&*-_]]></string>
     <string name="enter_password">Please enter password</string>
     <string name="login">Login</string>
-    <string name="forget_password">Forget password</string>
+    <string name="forget_password">Forget password?</string>
     <string name="register_now">Register now</string>
     <string name="send">Send</string>
     <string name="sure">Sure</string>
