@@ -100,7 +100,7 @@
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
 
 
-        <activity android:name=".ui.activity.WithDrawDetailActivity"
+        <activity android:name=".ui.activity.TurnOutDetailActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustResize|stateHidden"/>
@@ -115,11 +115,23 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustPan|stateHidden"
         />
-        <activity android:name=".ui.activity.PayWayManagerActivity"
+        <activity android:name=".ui.activity.PaymentManagerActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustPan|stateHidden"
         />
+        <activity android:name=".ui.activity.RechargeActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+        />
+
+        <activity android:name=".ui.activity.IdentityAuthenticationActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+        />
+
 
         <!-- 解决Android 7.0文件共享的问题-->
         <provider

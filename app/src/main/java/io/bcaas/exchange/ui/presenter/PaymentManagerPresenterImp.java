@@ -22,7 +22,7 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
 import io.bcaas.exchange.ui.contracts.PayWayManagerConstract;
-import io.bcaas.exchange.ui.interactor.PayWayManagerInteractor;
+import io.bcaas.exchange.ui.interactor.PaymentManagerInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -32,15 +32,15 @@ import io.reactivex.schedulers.Schedulers;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-public class PayWayManagerPresenterImp implements PayWayManagerConstract.Presenter {
-    private String TAG = PayWayManagerPresenterImp.class.getSimpleName();
+public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presenter {
+    private String TAG = PaymentManagerPresenterImp.class.getSimpleName();
     private PayWayManagerConstract.View view;
-    private PayWayManagerInteractor payWayManagerInteractor;
+    private PaymentManagerInteractor paymentManagerInteractor;
 
-    public PayWayManagerPresenterImp(PayWayManagerConstract.View view) {
+    public PaymentManagerPresenterImp(PayWayManagerConstract.View view) {
         super();
         this.view = view;
-        this.payWayManagerInteractor = new PayWayManagerInteractor();
+        this.paymentManagerInteractor = new PaymentManagerInteractor();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
         requestJson.setMemberPayInfoVO(memberPayInfoVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "addPayWay:", requestJson);
 
-        payWayManagerInteractor.addPayWay(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.addPayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -116,7 +116,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
         requestJson.setMemberPayInfoVO(memberPayInfoVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "modifyPayWay:", requestJson);
 
-        payWayManagerInteractor.modifyPayWay(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.modifyPayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -158,7 +158,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
 
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "removePayWay:", requestJson);
 
-        payWayManagerInteractor.removePayWay(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.removePayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -198,7 +198,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
         requestJson.setLoginInfoVO(loginInfoVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getBankInfo:", requestJson);
 
-        payWayManagerInteractor.getBankInfo(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.getBankInfo(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -239,7 +239,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
 
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getPayWay:", requestJson);
 
-        payWayManagerInteractor.getPayWay(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.getPayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -301,7 +301,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
         requestJson.setMemberOrderVO(memberOrderVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "rechargeVirtualCoin:", requestJson);
 
-        payWayManagerInteractor.rechargeVirtual(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.rechargeVirtual(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
@@ -354,7 +354,7 @@ public class PayWayManagerPresenterImp implements PayWayManagerConstract.Present
         requestJson.setMemberOrderVO(memberOrderVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "convertCoin:", requestJson);
 
-        payWayManagerInteractor.convertCoin(GsonTool.beanToRequestBody(requestJson))
+        paymentManagerInteractor.convertCoin(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {

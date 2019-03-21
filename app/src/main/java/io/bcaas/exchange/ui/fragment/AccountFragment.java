@@ -16,10 +16,7 @@ import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.SettingsBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.ui.activity.MyFundActivity;
-import io.bcaas.exchange.ui.activity.TurnInActivity;
-import io.bcaas.exchange.ui.activity.SafetyCenterActivity;
-import io.bcaas.exchange.ui.activity.TurnOutActivity;
+import io.bcaas.exchange.ui.activity.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,13 +65,19 @@ public class AccountFragment extends BaseFragment {
     private List<SettingsBean> initSettingTypes() {
         List<SettingsBean> settingTypes = new ArrayList<>();
         SettingsBean settingTypeBean = new SettingsBean(getString(R.string.my_all_fund), Constants.SettingType.MY_ALL_FUND);
-        SettingsBean settingTypeBean3 = new SettingsBean(getString(R.string.turn_in), Constants.SettingType.RECHARGE);
-        SettingsBean settingTypeBean4 = new SettingsBean(getString(R.string.turn_out), Constants.SettingType.WITH_DRAW);
-        SettingsBean settingTypeBean5 = new SettingsBean(getString(R.string.safety_center), Constants.SettingType.SAFETY_CENTER);
+        SettingsBean settingTypeBean3 = new SettingsBean(getString(R.string.turn_in), Constants.SettingType.TURN_IN);
+        SettingsBean settingTypeBean4 = new SettingsBean(getString(R.string.turn_out), Constants.SettingType.TURN_OUT);
+        SettingsBean settingTypeBean5 = new SettingsBean(getString(R.string.recharge), Constants.SettingType.RECHARGE);
+        SettingsBean settingTypeBean6 = new SettingsBean(getString(R.string.safety), Constants.SettingType.SAFETY);
+        SettingsBean settingTypeBean7 = new SettingsBean(getString(R.string.payment_management), Constants.SettingType.PAYMENT_MANAGEMENT);
+        SettingsBean settingTypeBean8 = new SettingsBean(getString(R.string.identity_authentication), Constants.SettingType.IDENTITY_AUTHENTICATION);
         settingTypes.add(settingTypeBean);
         settingTypes.add(settingTypeBean3);
         settingTypes.add(settingTypeBean4);
         settingTypes.add(settingTypeBean5);
+        settingTypes.add(settingTypeBean6);
+        settingTypes.add(settingTypeBean7);
+        settingTypes.add(settingTypeBean8);
         return settingTypes;
 
     }
@@ -100,17 +103,29 @@ public class AccountFragment extends BaseFragment {
                             intent.setClass(getContext(), MyFundActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.ALL_FUND_CODE);
                             break;
-                        case RECHARGE:
+                        case TURN_IN:
                             intent.setClass(getContext(), TurnInActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.TURN_IN);
+                            break;
+                        case TURN_OUT:
+                            intent.setClass(getContext(), TurnOutActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.TURN_OUT);
+                            break;
+                        case RECHARGE:
+                            intent.setClass(getContext(), RechargeActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.RECHARGE);
                             break;
-                        case WITH_DRAW:
-                            intent.setClass(getContext(), TurnOutActivity.class);
-                            startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
-                            break;
-                        case SAFETY_CENTER:
+                        case SAFETY:
                             intent.setClass(getContext(), SafetyCenterActivity.class);
-                            startActivityForResult(intent, Constants.RequestCode.SAFETY_CENTER);
+                            startActivityForResult(intent, Constants.RequestCode.SAFETY);
+                            break;
+                        case PAYMENT_MANAGEMENT:
+                            intent.setClass(getContext(), PaymentManagerActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.PAYMENT_MANAGEMENT);
+                            break;
+                        case IDENTITY_AUTHENTICATION:
+                            intent.setClass(getContext(), IdentityAuthenticationActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.IDENTITY_AUTHENTICATION);
                             break;
 
                     }

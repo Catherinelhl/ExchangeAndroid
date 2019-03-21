@@ -17,7 +17,6 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.SafetyCenterContract;
 import io.bcaas.exchange.ui.presenter.SafetyCenterPresenterImp;
@@ -69,7 +68,7 @@ public class SafetyCenterActivity extends BaseActivity implements SafetyCenterCo
     @Override
     public void initView() {
         ibBack.setVisibility(View.VISIBLE);
-        tvTitle.setText(R.string.safety_center);
+        tvTitle.setText(R.string.safety);
         //判断当前memberVO是否为空，如果为空，那么就显示默认值
         MemberVO memberVO = BaseApplication.getMemberVO();
         //登录密码

@@ -8,7 +8,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.ui.contracts.PayWayManagerConstract;
-import io.bcaas.exchange.ui.presenter.PayWayManagerPresenterImp;
+import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 +--------------+---------------------------------
 */
 
-public class PayWayManagerActivity extends BaseActivity implements PayWayManagerConstract.View {
+public class PaymentManagerActivity extends BaseActivity implements PayWayManagerConstract.View {
     @BindView(R.id.add_pay_way)
     Button addPayWay;
     @BindView(R.id.modify_pay_way)
@@ -61,7 +61,7 @@ public class PayWayManagerActivity extends BaseActivity implements PayWayManager
 
     @Override
     public void initView() {
-        presenter = new PayWayManagerPresenterImp(this);
+        presenter = new PaymentManagerPresenterImp(this);
     }
 
     @Override

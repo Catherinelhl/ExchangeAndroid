@@ -58,9 +58,12 @@ public class Constants {
         public static final int BUY_DETAIL_CODE = 0x3;//跳转购买详情页面的code码
         public static final int SELL_DETAIL_CODE = 0x4;//跳转售出详情页面的code码
         public static final int ALL_FUND_CODE = 0x5;//跳转到我的资产页面的code码
-        public static final int WITH_DRAW = 0x6;//跳转到我的转出页面的code码
-        public static final int RECHARGE = 0x7;//跳转到我的转入页面的code码
-        public static final int SAFETY_CENTER = 0x8;//跳转到安全中心页面的code码
+        public static final int TURN_OUT = 0x6;//跳转到我的转出页面的code码
+        public static final int TURN_IN = 0x7;//跳转到我的转入页面的code码
+        public static final int RECHARGE = 0x19;//跳转到我的充值页面的code码
+        public static final int PAYMENT_MANAGEMENT = 0x20;//跳转到我的支付管理页面的code码
+        public static final int IDENTITY_AUTHENTICATION = 0x21;//跳转到我的身份认证页面的code码
+        public static final int SAFETY = 0x8;//跳转到安全中心页面的code码
         public static final int MODIFY_LOGIN_PASSWORD = 0x9;//跳转到「修改登录密码」页面的code码
         public static final int MODIFY_FUND_PASSWORD = 0x10;//跳转到「修改登录密码」页面的code码
         public static final int FUND_PASSWORD = 0x11;//跳转到资金密码页面的code码
@@ -164,9 +167,14 @@ public class Constants {
      */
     public enum SettingType {
         MY_ALL_FUND,//我的资产
-        RECHARGE,//转入
-        WITH_DRAW,//转出
-        SAFETY_CENTER//安全中心
+        TURN_IN,//转入
+        TURN_OUT,//转出
+        RECHARGE,
+        SAFETY,//安全
+        PAYMENT_MANAGEMENT,//支付管理
+        IDENTITY_AUTHENTICATION //  身份认证
+
+
     }
 
     /**
@@ -281,6 +289,6 @@ public class Constants {
 
     public static final String HEADER_NAME_KEY = "cookie";
 
-   // 只能充值SCS,currencyUid帶入“3"
+    // 只能充值SCS,currencyUid帶入“3"
     public static final String CURRENCY_TYPE_SCS = "3";
 }

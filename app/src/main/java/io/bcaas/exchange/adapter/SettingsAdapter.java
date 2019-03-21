@@ -65,16 +65,26 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.viewHo
             case MY_ALL_FUND:
                 viewHolder.ivIcon.setImageResource(R.mipmap.icon_my_fund);
                 break;
+            case TURN_IN:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_turn_in);
+                break;
+            case TURN_OUT:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_turn_out);
+                break;
             case RECHARGE:
                 viewHolder.ivIcon.setImageResource(R.mipmap.icon_recharge);
                 break;
-            case WITH_DRAW:
-                viewHolder.ivIcon.setImageResource(R.mipmap.icon_withdraw);
-                break;
-            case SAFETY_CENTER:
+            case SAFETY:
                 viewHolder.ivIcon.setImageResource(R.mipmap.icon_safety_center);
+                break;
+            case PAYMENT_MANAGEMENT:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_payment);
+                break;
+            case IDENTITY_AUTHENTICATION:
+                viewHolder.ivIcon.setImageResource(R.mipmap.icon_identity);
                 viewHolder.vLine.setVisibility(View.INVISIBLE);
                 break;
+
         }
         viewHolder.tvSettingType.setText(type);
         viewHolder.itemView.setOnClickListener(v -> settingItemSelectListener.onItemSelect(types, MessageConstants.EMPTY));

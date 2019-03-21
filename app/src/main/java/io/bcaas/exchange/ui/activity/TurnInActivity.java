@@ -69,7 +69,7 @@ public class TurnInActivity extends BaseActivity implements AccountSecurityContr
 
     @Override
     public int getContentView() {
-        return R.layout.activity_recharge;
+        return R.layout.activity_turn_in;
     }
 
     @Override

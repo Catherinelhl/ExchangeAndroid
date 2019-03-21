@@ -68,7 +68,7 @@ public class TurnOutActivity extends BaseActivity
 
     @Override
     public int getContentView() {
-        return R.layout.activity_withdraw;
+        return R.layout.activity_turn_out;
     }
 
     @Override
@@ -190,7 +190,7 @@ public class TurnOutActivity extends BaseActivity
                     if (requestJson == null) {
                         return;
                     }
-                    intent.setClass(TurnOutActivity.this, WithDrawDetailActivity.class);
+                    intent.setClass(TurnOutActivity.this, TurnOutDetailActivity.class);
                     intent.putExtra(Constants.KeyMaps.WITHDRAW_REQUEST_JSON, requestJson);
                     startActivityForResult(intent, Constants.RequestCode.WIDTH_DRAW_DETAIL);
                     break;

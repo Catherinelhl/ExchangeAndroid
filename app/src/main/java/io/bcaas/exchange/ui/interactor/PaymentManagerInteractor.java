@@ -21,7 +21,7 @@ import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 
-public class PayWayManagerInteractor {
+public class PaymentManagerInteractor {
 
     /**
      * 新增會員支付方式

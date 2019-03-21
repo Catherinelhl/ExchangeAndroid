@@ -34,7 +34,11 @@
     <string name="my_all_fund">All fund</string>
     <string name="turn_in">Turn in</string>
     <string name="turn_out">Turn out</string>
-    <string name="safety_center">Safety center</string>
+    <string name="safety">Safety</string>
+    <string name="recharge">Recharge</string>
+    <string name="identity_authentication">Identity authentication </string>
+    <string name="payment_management">Payment management</string>        身份认证，支付管理
+
     <string name="graphic_verify_code">Graphic Verification Code</string>
     <string name="input_account">Please input account</string>
     <string name="input_password">Please input password</string>

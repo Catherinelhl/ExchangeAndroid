@@ -36,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2019/1/4
  * Activity：「转出详情，输入密码」
  */
-public class WithDrawDetailActivity extends BaseActivity implements WithDrawContract.View, PhoneVerifyContract.View {
+public class TurnOutDetailActivity extends BaseActivity implements WithDrawContract.View, PhoneVerifyContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -84,7 +84,7 @@ public class WithDrawDetailActivity extends BaseActivity implements WithDrawCont
 
     @Override
     public int getContentView() {
-        return R.layout.activity_withdraw_detail;
+        return R.layout.activity_turn_out_detail;
     }
 
     @Override

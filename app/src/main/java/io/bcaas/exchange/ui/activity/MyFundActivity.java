@@ -154,12 +154,12 @@ public class MyFundActivity extends BaseActivity
             switch (from) {
                 case Constants.From.RECHARGE:
                     intent.setClass(MyFundActivity.this, TurnInActivity.class);
-                    startActivityForResult(intent, Constants.RequestCode.RECHARGE);
+                    startActivityForResult(intent, Constants.RequestCode.TURN_IN);
                     // 转入
                     break;
                 case Constants.From.WITHDRAW:
                     intent.setClass(MyFundActivity.this, TurnOutActivity.class);
-                    startActivityForResult(intent, Constants.RequestCode.WITH_DRAW);
+                    startActivityForResult(intent, Constants.RequestCode.TURN_OUT);
                     //转出
                     break;
             }
@@ -191,8 +191,8 @@ public class MyFundActivity extends BaseActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                case Constants.RequestCode.RECHARGE:
-                case Constants.RequestCode.WITH_DRAW:
+                case Constants.RequestCode.TURN_IN:
+                case Constants.RequestCode.TURN_OUT:
                     if (getAllBalancePresenter != null) {
                         getAllBalancePresenter.getAllBalance();
                     }
