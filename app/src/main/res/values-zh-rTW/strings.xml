@@ -40,6 +40,7 @@
     <string name="turn_out">转出</string>
     <string name="safety">安全</string>
     <string name="recharge">充值</string>
+    <string name="buy_back">回购</string>
     <string name="identity_authentication">身份认证</string>
     <string name="payment_management">支付管理</string>
 

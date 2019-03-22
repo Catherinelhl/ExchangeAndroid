@@ -7,12 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -115,8 +112,8 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFundType = itemView.findViewById(R.id.tv_fund_type);
-            btnWithdraw = itemView.findViewById(R.id.btn_withdraw);
-            btnRecharge = itemView.findViewById(R.id.btn_recharge);
+            btnWithdraw = itemView.findViewById(R.id.btn_turn_out);
+            btnRecharge = itemView.findViewById(R.id.btn_turn_in);
             tvAvailable = itemView.findViewById(R.id.tv_available);
             tvFreeze = itemView.findViewById(R.id.tv_freeze);
         }

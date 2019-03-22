@@ -25,11 +25,11 @@
                   android:layout_height="wrap_content"/>
 
         <Button android:layout_width="@dimen/d68"
-                android:id="@+id/btn_withdraw"
+                android:id="@+id/btn_turn_out"
                 android:textSize="@dimen/text_size_12"
                 android:button="@null"
                 android:text="@string/turn_out"
-                android:layout_toLeftOf="@+id/btn_recharge"
+                android:layout_toLeftOf="@+id/btn_turn_in"
                 android:textColor="@color/yellow_FFA73B"
                 android:gravity="center"
                 android:background="@drawable/stroke_border_yellow"
@@ -39,7 +39,7 @@
                 android:layout_height="@dimen/d30"/>
         <Button
                 android:gravity="center"
-                android:id="@+id/btn_recharge"
+                android:id="@+id/btn_turn_in"
                 android:textColor="@color/white"
                 android:background="@drawable/solid_border_yellow"
                 android:layout_width="@dimen/d68"

@@ -131,7 +131,16 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustPan|stateHidden"
         />
-
+        <activity android:name=".ui.activity.RechargeDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+        />
+        <activity android:name=".ui.activity.BuyBackActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+        />
 
         <!-- 解决Android 7.0文件共享的问题-->
         <provider
