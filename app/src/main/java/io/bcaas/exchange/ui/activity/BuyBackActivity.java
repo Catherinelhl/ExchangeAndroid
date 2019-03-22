@@ -28,6 +28,11 @@ public class BuyBackActivity extends BaseActivity {
 
     @Override
     public void getArgs(Bundle bundle) {
+        if (bundle == null) {
+            return;
+        }
+
+
 
     }
 

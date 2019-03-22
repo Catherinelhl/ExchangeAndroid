@@ -137,6 +137,7 @@ public class Constants {
         public static final String BUY = "buy";// 购买
         public static final String LOGIN_PASSWORD = "loginPassword";//登录密码
         public static final String FUND_PASSWORD = "fundPassword";//资金密码
+        public static final String MEMBER_PAY_INFO = "memberPayInfo";//会员支付信息
     }
 
     /**

@@ -250,4 +250,15 @@
     <string name="recharge_intro">七彩贝是BCAAS社区内部流通的虚拟道具，可用于话费充值、商品兑换、Token购买等增值服务。通过充值可获得七彩贝：1七彩贝=1元
         充值后未用完的七彩贝可申请向平台回购。申请回购条件：充值完成后的第7个工作日开始，回购手续费为1个七彩贝。
     </string>
+    <string name="recharge_amount">充值数值</string>
+    <string name="receive_account">收款账户</string>
+    <string name="receive_bank">收款银行</string>
+    <string name="receive_username">收款账户名</string>
+    <string name="pay_amount">支付金额</string>
+    <string name="payment_note_number">付款备注号</string>
+    <string name="payment_note_number_tips">请务必在转账时备注该付款号</string>
+    <string name="recharge_detail_tips">1.请使用本人在平台绑定的支付方式进行汇款，其他任何方式汇款都会退款；
+        2.平台处理时间为工作日9:00～18:00，非处理时间的订单会在第二天处理。一般在打款后2小时内完成审核。
+    </string>
+    <string name="please_finish_payment_bind">请先完成支付方式绑定。</string>
 </resources>

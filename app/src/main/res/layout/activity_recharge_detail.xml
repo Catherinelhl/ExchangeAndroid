@@ -1,7 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tool="http://schemas.android.com/tools"
+              xmlns:exchange="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <include
+            layout="@layout/include_header"
+    />
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:background="@color/theme_grey"
+                      android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="vertical"
+                          android:paddingTop="@dimen/d16"
+                          android:background="@color/white"
+                          android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_email_key"
+                            style="@style/black_16_text_style"
+                            android:minWidth="@dimen/d60"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d20"
+                            android:text="@string/email"
+                            android:gravity="center_vertical"/>
+                    <TextView
+                            android:id="@+id/tv_email_value"
+                            style="@style/black_16_text_style"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d16"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/email"
+                            android:gravity="center_vertical"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:background="@color/white"
+                              android:layout_marginTop="@dimen/d16"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_recharge_amount_key"
+                            style="@style/black_16_text_style"
+                            android:layout_marginTop="@dimen/d16"
+                            android:minWidth="@dimen/d60"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d16"
+                            android:text="@string/recharge_amount"
+                            android:gravity="center_vertical"/>
+                    <RelativeLayout android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                        <RadioButton android:layout_width="wrap_content"
+                                     android:text="100个贝"
+                                     android:textSize="@dimen/text_size_14"
+                                     android:id="@+id/rb_one"
+                                     android:textColor="@color/black_333333"
+                                     android:layout_height="wrap_content"/>
+                        <RadioButton android:layout_width="wrap_content"
+                                     android:text="500个贝"
+                                     android:textSize="@dimen/text_size_14"
+                                     android:id="@+id/rb_two"
+                                     android:textColor="@color/black_333333"
+                                     android:layout_toRightOf="@+id/rb_one"
+                                     android:layout_height="wrap_content"/>
+                        <RadioButton android:layout_width="wrap_content"
+                                     android:text="1000个贝"
+                                     android:textSize="@dimen/text_size_14"
+                                     android:id="@+id/rb_three"
+                                     android:textColor="@color/black_333333"
+                                     android:layout_toRightOf="@+id/rb_two"
+
+                                     android:layout_height="wrap_content"/>
+                        <RadioButton android:layout_width="wrap_content"
+                                     android:layout_below="@+id/rb_one"
+                                     android:textColor="@color/black_333333"
+                                     android:textSize="@dimen/text_size_14"
+                                     android:text="自定义 100个贝"
+                                     android:id="@+id/rb_four"
+
+                                     android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="vertical"
+                              android:background="@color/white"
+                              android:layout_height="wrap_content">
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:orientation="vertical"
+                                  android:background="@color/theme_grey"
+                                  android:layout_marginTop="@dimen/d24"
+                                  android:layout_marginBottom="@dimen/d13"
+                                  android:layout_marginRight="@dimen/d20"
+                                  android:layout_marginLeft="@dimen/d20"
+                                  android:layout_height="wrap_content">
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginBottom="@dimen/d12"
+                                      android:layout_marginTop="@dimen/d16"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/pay_amount"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:id="@+id/tv_pay_amount"
+                                    android:layout_width="@dimen/d0"
+                                    android:layout_weight="1"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="500.00元"
+                                    android:gravity="right"/>
+                        </LinearLayout>
+                        <View style="@style/small_line_style"/>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_marginTop="@dimen/d12"
+                                      android:layout_marginBottom="@dimen/d12"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/receive_username"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:gravity="right"
+                                    android:id="@+id/tv_receive_username"
+                                    android:layout_weight="1"
+                                    android:layout_width="@dimen/d0"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="张三"/>
+                        </LinearLayout>
+                        <View style="@style/small_line_style"/>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_marginBottom="@dimen/d16"
+                                      android:layout_marginTop="@dimen/d12"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/receive_bank"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:gravity="right"
+                                    android:layout_width="@dimen/d0"
+                                    android:layout_weight="1"
+                                    android:id="@+id/tv_receive_bank"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="建设银行"/>
+                        </LinearLayout>
+                        <View style="@style/small_line_style"/>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_marginBottom="@dimen/d16"
+                                      android:layout_marginTop="@dimen/d12"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/receive_account"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:gravity="right"
+                                    android:layout_width="@dimen/d0"
+                                    android:layout_weight="1"
+                                    android:id="@+id/tv_receive_account"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="6225 8913 82179 5233"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RelativeLayout android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                        <TextView
+                                android:id="@+id/tv_payment_note_number_key"
+                                style="@style/black_14_text_style"
+                                android:text="@string/payment_note_number"
+                                android:gravity="center_vertical"
+                                android:layout_marginTop="@dimen/d16"
+                                android:layout_marginLeft="@dimen/d20"
+                        />
+
+                        <TextView
+                                android:id="@+id/tv_payment_note"
+                                android:layout_width="match_parent"
+                                android:layout_marginRight="@dimen/d20"
+                                android:gravity="bottom"
+                                android:layout_marginLeft="@dimen/d16"
+                                android:layout_alignBaseline="@+id/tv_payment_note_number_key"
+                                android:layout_toRightOf="@+id/tv_payment_note_number_key"
+                                android:text="987 657"
+                                android:layout_height="wrap_content"
+                        />
+                        <View style="@style/small_line_style"
+                              android:layout_marginTop="@dimen/d5"
+                              android:layout_marginLeft="@dimen/d8"
+                              android:layout_below="@+id/tv_payment_note"
+                              android:layout_toRightOf="@+id/tv_payment_note_number_key"
+
+                        />
+                        <TextView
+                                style="@style/black_14_text_style"
+                                android:text="@string/payment_note_number_tips"
+                                android:gravity="center_vertical"
+                                android:layout_toRightOf="@+id/tv_payment_note_number_key"
+                                android:layout_below="@+id/tv_payment_note"
+                                android:textColor="@color/red_e53737"
+                                android:layout_marginTop="@dimen/d14"
+                                android:layout_marginRight="@dimen/d20"
+                                android:layout_marginLeft="@dimen/d16"
+                        />
+                    </RelativeLayout>
+
+                    <io.bcaas.exchange.view.editview.EditTextWithAction
+                            android:id="@+id/etwa_image_code"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/d20"
+                            android:layout_marginBottom="@dimen/d20"
+                            android:layout_height="wrap_content"
+                            exchange:hint="@string/graphic_verify_code"
+                            exchange:behaviour="image"
+
+                    />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                    android:textColor="@color/grey_999999"
+                    android:textSize="@dimen/text_size_12"
+                    android:text="@string/recharge_detail_tips"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d16"
+                    android:layout_marginRight="@dimen/d20"
+                    android:layout_marginLeft="@dimen/d20"
+            />
+            <Button
+                    android:id="@+id/btn_sure"
+                    style="@style/button_style"
+                    android:layout_margin="@dimen/d35"
+                    android:text="@string/sure"
+                    android:gravity="center"
+            />
+            <View android:layout_width="match_parent"
+                  android:layout_height="@dimen/d20"
+                  android:background="@color/transparent"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
