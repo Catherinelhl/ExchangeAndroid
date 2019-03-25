@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:exchange="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/include_header"/>
+
+    <io.bcaas.exchange.view.viewGroup.AddPayWayItemView
+            android:id="@+id/apwv_payment"
+            android:layout_width="match_parent"
+            exchange:addPaymentText="支付方式"
+            exchange:enableInput="false"
+            exchange:showMiddle="true"
+            android:layout_height="wrap_content"/>
+
+    <io.bcaas.exchange.view.viewGroup.AddPayWayItemView
+            android:id="@+id/apwv_bank_person_name"
+            android:layout_width="match_parent"
+            exchange:addPaymentText="姓名"
+            exchange:showMiddle="false"
+            android:layout_height="wrap_content"/>
+
+    <io.bcaas.exchange.view.viewGroup.AddPayWayItemView
+            android:id="@+id/apwv_bank_name"
+            android:layout_width="match_parent"
+            exchange:addPaymentText="开户银行"
+            exchange:showMiddle="false"
+            android:layout_height="wrap_content"/>
+
+    <io.bcaas.exchange.view.viewGroup.AddPayWayItemView
+            android:id="@+id/apwv_bank_branch_name"
+            android:layout_width="match_parent"
+            exchange:addPaymentText="开户支行(选填)"
+            exchange:showMiddle="false"
+            android:layout_height="wrap_content"/>
+
+    <io.bcaas.exchange.view.viewGroup.AddPayWayItemView
+            android:id="@+id/apwv_bank_account"
+            android:layout_width="match_parent"
+            exchange:showMiddle="false"
+            exchange:addPaymentText="银行卡账号"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/btn_sure"
+            style="@style/button_style"
+            android:layout_marginTop="@dimen/d35"
+            android:text="@string/sure"/>
+
+
+</LinearLayout>

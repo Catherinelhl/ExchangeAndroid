@@ -141,6 +141,11 @@
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="adjustPan|stateHidden"
         />
+        <activity android:name=".ui.activity.AddPaymentActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+        />
 
         <!-- 解决Android 7.0文件共享的问题-->
         <provider

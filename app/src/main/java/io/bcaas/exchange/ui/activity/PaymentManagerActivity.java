@@ -86,7 +86,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
                         memberPayInfoVO.setBankName("中国招商银行");
                         memberPayInfoVO.setBankBranchName("北京分行建国路支行");
                         memberPayInfoVO.setBankAccount("6214830105268279");
-                        presenter.addPayWay(memberPayInfoVO,"aaaaaaaa1");
+                        presenter.addPayWay(memberPayInfoVO, "aaaaaaaa1");
 
                     }
 

@@ -16,6 +16,7 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.RechargeContract;
 import io.bcaas.exchange.ui.presenter.RechargePresenterImp;
+import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
@@ -203,7 +204,20 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
 
     @Override
     public void noData() {
-        //如果当前查询没有数据结构返回，那么进行提示拦截
-        showToast(getString(R.string.please_finish_payment_bind));
+        //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
+        showDoubleButtonDialog(getString(R.string.cancel),
+                getString(R.string.go_to_bind),
+                getString(R.string.please_finish_payment_bind),
+                new DoubleButtonDialog.ConfirmClickListener() {
+                    @Override
+                    public void sure() {
+                        intentToActivity(AddPaymentActivity.class);
+                    }
+
+                    @Override
+                    public void cancel() {
+
+                    }
+                });
     }
 }

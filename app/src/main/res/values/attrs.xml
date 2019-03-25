@@ -59,6 +59,12 @@
 
 
     <declare-styleable name="safetyCenterItem">
-        <attr name="tabText" format="string"/>
+        <attr name="safeCenterText" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="addPayWayItem">
+        <attr name="addPaymentText" format="string"/>
+        <attr name="enableInput" format="boolean"/>
+        <attr name="showMiddle" format="boolean"/>
     </declare-styleable>
 </resources>

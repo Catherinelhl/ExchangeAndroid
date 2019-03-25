@@ -15,30 +15,30 @@
             <io.bcaas.exchange.view.viewGroup.SafetyCenterItemView
                     android:id="@+id/sciv_login_password"
                     android:layout_width="match_parent"
-                    exchange:tabText="@string/login_password"
+                    exchange:safeCenterText="@string/login_password"
                     android:layout_height="wrap_content"/>
             <io.bcaas.exchange.view.viewGroup.SafetyCenterItemView
                     android:id="@+id/sciv_fund_password"
                     android:layout_width="match_parent"
-                    exchange:tabText="@string/fund_password"
+                    exchange:safeCenterText="@string/fund_password"
                     android:layout_height="wrap_content"/>
 
             <io.bcaas.exchange.view.viewGroup.SafetyCenterItemView
                     android:id="@+id/sciv_email_verify"
                     android:layout_width="match_parent"
-                    exchange:tabText="@string/email_verify"
+                    exchange:safeCenterText="@string/email_verify"
                     android:layout_height="wrap_content"/>
 
             <io.bcaas.exchange.view.viewGroup.SafetyCenterItemView
                     android:id="@+id/sciv_phone_verify"
                     android:layout_width="match_parent"
-                    exchange:tabText="@string/phone_verify"
+                    exchange:safeCenterText="@string/phone_verify"
                     android:layout_height="wrap_content"/>
 
             <io.bcaas.exchange.view.viewGroup.SafetyCenterItemView
                     android:id="@+id/sciv_google_verify"
                     android:layout_width="match_parent"
-                    exchange:tabText="@string/google_verify"
+                    exchange:safeCenterText="@string/google_verify"
                     android:layout_height="wrap_content"/>
             <Button
                     android:id="@+id/btnLogout"

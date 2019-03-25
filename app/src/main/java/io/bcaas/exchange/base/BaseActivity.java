@@ -205,7 +205,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast toast = Toast.makeText(activity, "",  Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(activity, "", Toast.LENGTH_LONG);
                 /*解决小米手机toast自带包名的问题*/
                 toast.setText(toastInfo);
                 toast.setGravity(Gravity.CENTER, 0, 0);
@@ -433,8 +433,24 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     }
 
+    /**
+     * 显示双按钮对话框
+     * @param message
+     * @param listener
+     */
     public void showDoubleButtonDialog(String message, DoubleButtonDialog.ConfirmClickListener listener) {
         this.showDoubleButtonDialog(getString(R.string.warning), getString(R.string.cancel), getString(R.string.confirm), message, listener);
+    }
+
+    /**
+     * 显示双按钮对话框
+     * @param left
+     * @param right
+     * @param message
+     * @param listener
+     */
+    public void showDoubleButtonDialog(String left, String right, String message, DoubleButtonDialog.ConfirmClickListener listener) {
+        this.showDoubleButtonDialog(getString(R.string.warning), left, right, message, listener);
     }
 
     /**

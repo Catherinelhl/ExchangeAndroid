@@ -87,10 +87,11 @@ public class DoubleButtonDialog extends Dialog {
 
     private void judgeBtnRightContentToCallBack() {
 
-        if (StringTool.equals(btnRight.getText().toString(), context.getResources().getString(R.string.confirm))) {
-            confirmClickListener.sure();
-        } else {
+        if (StringTool.equals(btnRight.getText().toString(),
+                context.getResources().getString(R.string.cancel))) {
             confirmClickListener.cancel();
+        } else {
+            confirmClickListener.sure();
         }
     }
 

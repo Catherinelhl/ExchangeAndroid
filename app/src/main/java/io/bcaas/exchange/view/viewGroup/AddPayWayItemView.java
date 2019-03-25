@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -22,42 +23,48 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/28
- * 自定义视图：一个显示「安全中心」的View
+ * 自定义视图：一个显示「添加支付方式」item的View
  */
-public class SafetyCenterItemView extends LinearLayout {
-    @BindView(R.id.tv_name)
-    TextView tvName;
+public class AddPayWayItemView extends LinearLayout {
+    @BindView(R.id.et_name)
+    EditText etName;
     @BindView(R.id.tv_middle_info)
     TextView tvMiddleInfo;
-    @BindView(R.id.tv_safety_center_action)
-    TextView tvSafetyCenterAction;
+    @BindView(R.id.tv_payment_action)
+    TextView tvPaymentAction;
     private Context context;
     //标注当前item的类型，区分点击事件
     private String tabType;
 
     private OnItemSelectListener onItemSelectListener;
 
-    public SafetyCenterItemView(Context context) {
+    public AddPayWayItemView(Context context) {
         this(context, null);
     }
 
-    public SafetyCenterItemView(Context context, AttributeSet attrs) {
+    public AddPayWayItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        View view = LayoutInflater.from(context).inflate(R.layout.item_safety_center, this, true);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_add_payment, this, true);
         ButterKnife.bind(view);
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
-                R.styleable.safetyCenterItem);
-        String tabText = typedArray.getString(R.styleable.safetyCenterItem_safeCenterText);
+                R.styleable.addPayWayItem);
+        String tabText = typedArray.getString(R.styleable.addPayWayItem_addPaymentText);
+        boolean enableInput = typedArray.getBoolean(R.styleable.addPayWayItem_enableInput, true);
+        boolean showMiddle = typedArray.getBoolean(R.styleable.addPayWayItem_showMiddle, false);
         if (StringTool.notEmpty(tabText)) {
             this.tabType = tabText;
-            tvName.setText(tabText);
+            etName.setHint(tabText);
+        }
+        tvMiddleInfo.setVisibility(showMiddle ? VISIBLE : GONE);
+        if (!enableInput) {
+            etName.setEnabled(false);
         }
         initListener();
     }
 
     private void initListener() {
-        RxView.clicks(tvSafetyCenterAction).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+        RxView.clicks(tvPaymentAction).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -94,25 +101,37 @@ public class SafetyCenterItemView extends LinearLayout {
      * @param text   需要显示的文字
      */
     public void setTabStatusByText(boolean isHave, String text) {
-        if (tvSafetyCenterAction != null) {
+        if (tvPaymentAction != null) {
             //判断当前的text是否为空。如果为空，那么就不显示点击动作文本
             if (StringTool.isEmpty(text)) {
-                tvSafetyCenterAction.setVisibility(INVISIBLE);
+                tvPaymentAction.setVisibility(INVISIBLE);
                 return;
             }
-            tvSafetyCenterAction.setText(text);
+            tvPaymentAction.setText(text);
         }
     }
 
     /**
-     * 设置条目的含义
-     *
-     * @param info
+     * 显示最后文本右边的图片
      */
-    public void setTabInfo(String info) {
-        if (tvMiddleInfo != null) {
-            tvMiddleInfo.setText(info);
+    public void showRightDrawable(boolean isShow) {
+        if (tvPaymentAction != null) {
+            tvPaymentAction.setVisibility(isShow ? VISIBLE : INVISIBLE);
+            tvPaymentAction.setCompoundDrawablePadding(isShow ? context.getResources().getDimensionPixelOffset(R.dimen.d8) : 0);
+            tvPaymentAction.setCompoundDrawablesWithIntrinsicBounds(null, null, isShow ? context.getResources().getDrawable(R.mipmap.icon_drop_down) : null, null);
+
         }
+    }
+
+    public void setMiddleInfo(String message) {
+        if (StringTool.isEmpty(message)) {
+            return;
+        }
+        if (tvMiddleInfo != null) {
+            tvPaymentAction.setVisibility(VISIBLE);
+            tvMiddleInfo.setText(message);
+        }
+
     }
 
 }

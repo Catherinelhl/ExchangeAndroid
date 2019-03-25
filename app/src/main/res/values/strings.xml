@@ -261,4 +261,7 @@
         2.平台处理时间为工作日9:00～18:00，非处理时间的订单会在第二天处理。一般在打款后2小时内完成审核。
     </string>
     <string name="please_finish_payment_bind">请先完成支付方式绑定。</string>
+    <string name="go_to_bind">前去绑定</string>
+    <string name="add_payment_way">添加支付方式</string>
+    <string name="please_choose_a_payment">请选择一种支付方式</string>
 </resources>
