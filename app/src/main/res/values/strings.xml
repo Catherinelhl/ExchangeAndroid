@@ -264,4 +264,6 @@
     <string name="go_to_bind">前去绑定</string>
     <string name="add_payment_way">添加支付方式</string>
     <string name="please_choose_a_payment">请选择一种支付方式</string>
+    <string name="paymant_bank">银行卡</string>
+    <string name="set_payment_way_success">成功设置支付方式</string>
 </resources>

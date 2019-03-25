@@ -1,6 +1,9 @@
 package io.bcaas.exchange.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,8 +17,8 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
-import io.bcaas.exchange.ui.contracts.RechargeContract;
-import io.bcaas.exchange.ui.presenter.RechargePresenterImp;
+import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
+import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
@@ -41,7 +44,7 @@ import java.util.concurrent.TimeUnit;
 +--------------+---------------------------------
 */
 
-public class RechargeActivity extends BaseActivity implements RechargeContract.View {
+public class RechargeActivity extends BaseActivity implements PayWayManagerContract.View {
 
     private String TAG = RechargeActivity.class.getSimpleName();
     @BindView(R.id.ib_back)
@@ -61,7 +64,7 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
     @BindView(R.id.tv_recharge_intro)
     TextView tvRechargeIntro;
 
-    private RechargeContract.Presenter presenter;
+    private PayWayManagerContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -83,7 +86,7 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
 
     @Override
     public void initData() {
-        presenter = new RechargePresenterImp(this);
+        presenter = new PaymentManagerPresenterImp(this);
 
     }
 
@@ -169,7 +172,7 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
                         }
                         /*step 2:判断当前是否完成实名认证*/
                         /*step 3:判断当前是否完成支付方式绑定*/
-                        presenter.getPayWay();
+                        presenter.getPayWay(Constants.Payment.GET_PAY_WAY);
                     }
 
                     @Override
@@ -185,24 +188,6 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
     }
 
     @Override
-    public void getPayWaySuccess(List<MemberPayInfoVO> memberPayInfoVOList) {
-        //取出当前第一条数据，然后传入下一个界面
-        if (ListTool.noEmpty(memberPayInfoVOList)) {
-            MemberPayInfoVO memberPayInfoVO = memberPayInfoVOList.get(0);
-            if (memberPayInfoVO != null) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(Constants.From.MEMBER_PAY_INFO, memberPayInfoVO);
-                intentToActivity(bundle, RechargeDetailActivity.class);
-            }
-        }
-    }
-
-    @Override
-    public void getPayWayFailed(String message) {
-        showToast(message);
-    }
-
-    @Override
     public void noData() {
         //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
         showDoubleButtonDialog(getString(R.string.cancel),
@@ -211,7 +196,9 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
                 new DoubleButtonDialog.ConfirmClickListener() {
                     @Override
                     public void sure() {
-                        intentToActivity(AddPaymentActivity.class);
+                        Intent intent=new Intent();
+                        intent.setClass(RechargeActivity.this,AddPaymentActivity.class);
+                        startActivityForResult(intent,Constants.RequestCode.ADD_PAYMENT_CODE);
                     }
 
                     @Override
@@ -219,5 +206,48 @@ public class RechargeActivity extends BaseActivity implements RechargeContract.V
 
                     }
                 });
+    }
+
+    @Override
+    public <T> void responseSuccess(T message, String type) {
+        switch (type) {
+            case Constants.Payment.GET_PAY_WAY:
+                List<MemberPayInfoVO> memberPayInfoVOList = ((List<MemberPayInfoVO>) message);
+                //取出当前第一条数据，然后传入下一个界面
+                if (ListTool.noEmpty(memberPayInfoVOList)) {
+                    MemberPayInfoVO memberPayInfoVO = memberPayInfoVOList.get(0);
+                    if (memberPayInfoVO != null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable(Constants.From.MEMBER_PAY_INFO, memberPayInfoVO);
+                        intentToActivity(bundle, RechargeDetailActivity.class);
+                    }
+                }
+                break;
+            case Constants.Payment.REFRESH_GET_PAY_WAY:
+                break;
+        }
+
+    }
+
+
+    @Override
+    public void responseFailed(String message, String type) {
+        showToast(message);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case Constants.RequestCode.ADD_PAYMENT_CODE:
+                    boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
+                    if (!isBack) {
+                        //更新当前信息
+                        presenter.getPayWay(Constants.Payment.REFRESH_GET_PAY_WAY);
+                    }
+                    break;
+            }
+        }
     }
 }

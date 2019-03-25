@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.reactivex.Observer;
@@ -132,6 +133,27 @@ public class AddPayWayItemView extends LinearLayout {
             tvMiddleInfo.setText(message);
         }
 
+    }
+
+    /**
+     * 给内容赋值
+     *
+     * @param message
+     */
+    public void setContent(String message) {
+        if (etName != null && StringTool.notEmpty(message)) {
+            etName.setText(message);
+        }
+    }
+
+    /**
+     * 获取当前输入框的内容信息
+     */
+    public String getContent() {
+        if (etName != null) {
+            return etName.getText().toString();
+        }
+        return MessageConstants.EMPTY;
     }
 
 }

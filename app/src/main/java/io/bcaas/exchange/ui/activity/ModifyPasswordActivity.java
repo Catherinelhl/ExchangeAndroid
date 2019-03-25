@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
@@ -17,6 +18,7 @@ import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.contracts.ModifyPasswordContract;
 import io.bcaas.exchange.ui.presenter.ModifyPasswordPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.textview.AppendStringLayout;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -44,10 +46,12 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
     Button btnSure;
     @BindView(R.id.tv_start_immediate)
     TextView tvStartImmediate;
-    @BindView(R.id.ll_immediate_action)
-    LinearLayout llImmediateAction;
     @BindView(R.id.ll_modify_password)
     LinearLayout llModifyPassword;
+    @BindView(R.id.ib_right)
+    ImageButton ibRight;
+    @BindView(R.id.asp_fund)
+    AppendStringLayout aspFund;
 
     private ModifyPasswordContract.Presenter presenter;
 
@@ -75,7 +79,7 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
             tvTitle.setText(R.string.modify_login_password);
         } else {
             tvTitle.setText(R.string.modify_fund_password);
-            llImmediateAction.setVisibility(View.VISIBLE);
+            aspFund.setVisibility(View.VISIBLE);
             etNewPassword.setHint(getString(R.string.fun_password_not_same_as_login_password));
             etOriginalPassword.setHint(getString(R.string.orignal_password));
 
@@ -228,5 +232,12 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
                     break;
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

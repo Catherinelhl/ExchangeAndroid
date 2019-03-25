@@ -3,13 +3,13 @@ package io.bcaas.exchange.ui.contracts;
 +--------------+---------------------------------
 + author       +   Catherine Liu
 +--------------+---------------------------------
-+ since        +   2019/3/22 16:42
++ since        +   2019/3/20 11:31
 +--------------+---------------------------------
 + projectName  +   ExchangeAndroid
 +--------------+---------------------------------
 + packageName  +   io.bcaas.exchange.ui.contracts
 +--------------+---------------------------------
-+ description  +  充值
++ description  +  支付管理
 +--------------+---------------------------------
 + version      +  
 +--------------+---------------------------------
@@ -18,17 +18,30 @@ package io.bcaas.exchange.ui.contracts;
 import io.bcaas.exchange.base.BaseContract;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 
-import java.util.List;
+public interface PayWayManagerContract {
 
-public interface RechargeContract {
 
     interface View extends BaseContract.View {
-        void getPayWaySuccess(List<MemberPayInfoVO> memberPayInfoVOList);
+        <T> void responseSuccess(T message, String type);
 
-        void getPayWayFailed(String message);
+        void responseFailed(String message, String type);
     }
 
     interface Presenter extends BaseContract.Presenter {
-        void getPayWay();
+        void addPayWay(String type, MemberPayInfoVO memberPayInfoVO, String txPassword);
+
+        void modifyPayWay(String type, MemberPayInfoVO memberPayInfoVO);
+
+        void removePayWay(String type, MemberPayInfoVO memberPayInfoVO);
+
+        void getBankInfo(String type);
+
+        void getPayWay(String type);
+
+        void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark);
+
+        void convertCoin(String type, String currencyUID, String amount, String txPassword);
+
+
     }
 }

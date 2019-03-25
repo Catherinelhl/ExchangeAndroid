@@ -7,7 +7,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.ui.contracts.PayWayManagerConstract;
+import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.reactivex.Observer;
@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 +--------------+---------------------------------
 */
 
-public class PaymentManagerActivity extends BaseActivity implements PayWayManagerConstract.View {
+public class PaymentManagerActivity extends BaseActivity implements PayWayManagerContract.View {
     @BindView(R.id.add_pay_way)
     Button addPayWay;
     @BindView(R.id.modify_pay_way)
@@ -47,7 +47,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
     @BindView(R.id.convertCoin)
     Button convertCoin;
 
-    private PayWayManagerConstract.Presenter presenter;
+    private PayWayManagerContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -86,7 +86,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
                         memberPayInfoVO.setBankName("中国招商银行");
                         memberPayInfoVO.setBankBranchName("北京分行建国路支行");
                         memberPayInfoVO.setBankAccount("6214830105268279");
-                        presenter.addPayWay(memberPayInfoVO, "aaaaaaaa1");
+                        presenter.addPayWay(Constants.Payment.ADD_PAY_WAY, memberPayInfoVO, "aaaaaaaa1");
 
                     }
 
@@ -116,7 +116,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
                         memberPayInfoVO.setBankName("中国招商银行");
                         memberPayInfoVO.setBankBranchName("北京分行建国路支行");
                         memberPayInfoVO.setBankAccount("6214830105268279");
-                        presenter.modifyPayWay(memberPayInfoVO);
+                        presenter.modifyPayWay(Constants.Payment.MODIFY_PAY_WAY, memberPayInfoVO);
                     }
 
                     @Override
@@ -140,7 +140,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
                     public void onNext(Object o) {
                         MemberPayInfoVO memberPayInfoVO = new MemberPayInfoVO();
                         memberPayInfoVO.setPayWayUid(0);
-                        presenter.removePayWay(memberPayInfoVO);
+                        presenter.removePayWay(Constants.Payment.REMOVE_PAY_WAY, memberPayInfoVO);
                     }
 
                     @Override
@@ -162,7 +162,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.getPayWay();
+                        presenter.getPayWay(Constants.Payment.GET_PAY_WAY);
                     }
 
                     @Override
@@ -184,7 +184,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.getBankInfo();
+                        presenter.getBankInfo(Constants.Payment.GET_BANK_INFO);
                     }
 
                     @Override
@@ -206,7 +206,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.rechargeVirtualCoin(Constants.CURRENCY_TYPE_SCS, "1000", "123456");
+                        presenter.rechargeVirtualCoin(Constants.Payment.RECHARGE_VIRTUAL_COIN, Constants.CURRENCY_TYPE_SCS, "1000", "123456");
                     }
 
                     @Override
@@ -228,7 +228,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.convertCoin(Constants.CURRENCY_TYPE_SCS, "1000", "aaaaaaaa1");
+                        presenter.convertCoin(Constants.Payment.CONVERT_COIN, Constants.CURRENCY_TYPE_SCS, "1000", "aaaaaaaa1");
                     }
 
                     @Override
@@ -245,72 +245,12 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
     }
 
     @Override
-    public void addPayWaySuccess(String message) {
+    public void responseFailed(String message, String type) {
 
     }
 
     @Override
-    public void addPayWayFailed(String message) {
-
-    }
-
-    @Override
-    public void modifyPayWaySuccess(String message) {
-
-    }
-
-    @Override
-    public void modifyPayWayFailed(String message) {
-
-    }
-
-    @Override
-    public void removePayWaySuccess(String message) {
-
-    }
-
-    @Override
-    public void removePayWayFailed(String message) {
-
-    }
-
-    @Override
-    public void getPayWaySuccess(String message) {
-
-    }
-
-    @Override
-    public void getPayWayFailed(String message) {
-
-    }
-
-    @Override
-    public void getBankInfoSuccess(String message) {
-
-    }
-
-    @Override
-    public void getBankInfoFailed(String message) {
-
-    }
-
-    @Override
-    public void rechargeVirtualCoinSuccess(String message) {
-
-    }
-
-    @Override
-    public void rechargeVirtualCoinFailed(String message) {
-
-    }
-
-    @Override
-    public void convertCoinSuccess(String message) {
-
-    }
-
-    @Override
-    public void convertCoinFailed(String message) {
+    public <T> void responseSuccess(T message, String type) {
 
     }
 }

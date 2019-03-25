@@ -15,13 +15,15 @@ package io.bcaas.exchange.ui.presenter;
 +--------------+---------------------------------
 */
 
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.base.BasePresenterImp;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ecc.Sha256Tool;
-import io.bcaas.exchange.ui.contracts.PayWayManagerConstract;
+import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.interactor.PaymentManagerInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
@@ -32,19 +34,20 @@ import io.reactivex.schedulers.Schedulers;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presenter {
+public class PaymentManagerPresenterImp extends BasePresenterImp implements PayWayManagerContract.Presenter {
     private String TAG = PaymentManagerPresenterImp.class.getSimpleName();
-    private PayWayManagerConstract.View view;
+    private PayWayManagerContract.View view;
     private PaymentManagerInteractor paymentManagerInteractor;
+    private Disposable disposable;
 
-    public PaymentManagerPresenterImp(PayWayManagerConstract.View view) {
+    public PaymentManagerPresenterImp(PayWayManagerContract.View view) {
         super();
         this.view = view;
         this.paymentManagerInteractor = new PaymentManagerInteractor();
     }
 
     @Override
-    public void addPayWay(MemberPayInfoVO memberPayInfoVO, String txPassword) {
+    public void addPayWay(String type, MemberPayInfoVO memberPayInfoVO, String txPassword) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -78,10 +81,11 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
                         if (responseJson != null) {
                             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "addPayWay:", responseJson);
                             if (responseJson.isSuccess()) {
+                                view.responseSuccess(responseJson.getMessage(),type);
                             } else {
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2015) {
-//    {"success":false,"code":2015,"message":"Current password is wrong."}
+                                    view.responseFailed(getString(R.string.fund_password_is_wrong), type);
                                 }
                             }
 
@@ -102,7 +106,7 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
     }
 
     @Override
-    public void modifyPayWay(MemberPayInfoVO memberPayInfoVO) {
+    public void modifyPayWay(String type, MemberPayInfoVO memberPayInfoVO) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -144,7 +148,7 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
     }
 
     @Override
-    public void removePayWay(MemberPayInfoVO memberPayInfoVO) {
+    public void removePayWay(String type, MemberPayInfoVO memberPayInfoVO) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -186,7 +190,7 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
     }
 
     @Override
-    public void getBankInfo() {
+    public void getBankInfo(String type) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -226,7 +230,7 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
     }
 
     @Override
-    public void getPayWay() {
+    public void getPayWay(String type) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -238,14 +242,14 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
         requestJson.setLoginInfoVO(loginInfoVO);
 
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getPayWay:", requestJson);
-
+        disposeDisposable(disposable);
         paymentManagerInteractor.getPayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposable = d;
                     }
 
                     @Override
@@ -255,33 +259,38 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
                             if (responseJson.isSuccess()) {
                                 List<MemberPayInfoVO> memberPayInfoVOList = responseJson.getMemberPayInfoVOList();
                                 if (ListTool.isEmpty(memberPayInfoVOList)) {
-
+                                    view.noData();
                                 } else {
+                                    view.responseSuccess(memberPayInfoVOList, type);
 
                                 }
                             } else {
                                 int code = responseJson.getCode();
+                                view.responseFailed(responseJson.getMessage(), type);
                             }
 
                         } else {
-
+                            view.noData();
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
+                        view.responseFailed(e.getMessage(), type);
+                        disposeDisposable(disposable);
 
                     }
 
                     @Override
                     public void onComplete() {
-
+                        disposeDisposable(disposable);
                     }
                 });
     }
 
     @Override
-    public void rechargeVirtualCoin(String currencyUID, String amount, String mark) {
+    public void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -329,7 +338,7 @@ public class PaymentManagerPresenterImp implements PayWayManagerConstract.Presen
     }
 
     @Override
-    public void convertCoin(String currencyUID, String amount, String txPassword) {
+    public void convertCoin(String type, String currencyUID, String amount, String txPassword) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());

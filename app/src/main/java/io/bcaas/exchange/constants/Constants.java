@@ -74,6 +74,8 @@ public class Constants {
         public static final int REQUEST_CODE_CAMERA_OK = 0x16;//跳转到「调用扫描」的界面
         public static final int WIDTH_DRAW_DETAIL = 0x17;//跳转到「转出详情」的界面
         public static final int COUNTRY_CODE = 0x18;//跳转到「选择城市区号」的界面
+        public static final int INPUT_PASSWORD_CODE = 0x22;//跳转到「输入密码」的界面
+        public static final int ADD_PAYMENT_CODE = 0x23;//跳转到「添加支付方式」的界面
 
     }
 
@@ -292,4 +294,16 @@ public class Constants {
 
     // 只能充值SCS,currencyUid帶入“3"
     public static final String CURRENCY_TYPE_SCS = "3";
+    public static final int PAY_WAY_UID_BANK = 0;//银行卡支付的UID
+
+    public class Payment {
+        public static final String ADD_PAY_WAY = "addPayWay";
+        public static final String GET_PAY_WAY = "getPayWay";
+        public static final String REFRESH_GET_PAY_WAY = "refreshGetPayWay";
+        public static final String MODIFY_PAY_WAY = "modifyPayWay";
+        public static final String REMOVE_PAY_WAY = "removePayWay";
+        public static final String CONVERT_COIN = "convertCoin";
+        public static final String RECHARGE_VIRTUAL_COIN = "rechargeVirtualCoin";
+        public static final String GET_BANK_INFO = "getBankInfo";
+    }
 }
