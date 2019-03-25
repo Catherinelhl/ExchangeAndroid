@@ -206,7 +206,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 
                     @Override
                     public void onNext(Object o) {
-                        presenter.rechargeVirtualCoin(Constants.Payment.RECHARGE_VIRTUAL_COIN, Constants.CURRENCY_TYPE_SCS, "1000", "123456");
+                        presenter.rechargeVirtualCoin(Constants.Payment.RECHARGE_VIRTUAL_COIN, Constants.CURRENCY_TYPE_SCS, "1000", "123456","123456");
                     }
 
                     @Override

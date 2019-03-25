@@ -4,12 +4,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
-import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.EditTextWatcherListener;
+import io.bcaas.exchange.listener.RadioButtonCheckListener;
+import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
+import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
+import io.bcaas.exchange.view.viewGroup.CustomRechargeAmount;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -32,7 +39,8 @@ import java.util.concurrent.TimeUnit;
 +--------------+---------------------------------
 */
 
-public class RechargeDetailActivity extends BaseActivity {
+public class RechargeDetailActivity extends BaseActivity
+        implements PayWayManagerContract.View {
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -53,8 +61,6 @@ public class RechargeDetailActivity extends BaseActivity {
     RadioButton rbTwo;
     @BindView(R.id.rb_three)
     RadioButton rbThree;
-    @BindView(R.id.rb_four)
-    RadioButton rbFour;
     @BindView(R.id.tv_pay_amount)
     TextView tvPayAmount;
     @BindView(R.id.tv_receive_username)
@@ -71,6 +77,13 @@ public class RechargeDetailActivity extends BaseActivity {
     EditTextWithAction etwaImageCode;
     @BindView(R.id.btn_sure)
     Button btnSure;
+    @BindView(R.id.custom_recharge_amount)
+    CustomRechargeAmount customRechargeAmount;
+    @BindView(R.id.rg)
+    RadioGroup rg;
+
+
+    private PayWayManagerContract.Presenter presenter;
 
     private MemberPayInfoVO memberPayInfoVO;
 
@@ -97,22 +110,58 @@ public class RechargeDetailActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        presenter = new PaymentManagerPresenterImp(this);
         if (memberPayInfoVO != null) {
             tvEmailValue.setText(memberPayInfoVO.getMemberId());
-            tvPayAmount.setText("500.00元");
+            tvPayAmount.setText(R.string.zero_yuan);
             tvReceiveUsername.setText(memberPayInfoVO.getBankPersonalName());
             tvReceiveAccount.setText(memberPayInfoVO.getBankName());
             tvReceiveBank.setText(memberPayInfoVO.getBankAccount());
-            tvPaymentNote.setText("987 657");
+            tvPaymentNote.setText("987657");
         }
 
     }
 
     @Override
     public void initListener() {
-        tvTitle.setOnClickListener(new View.OnClickListener() {
+        customRechargeAmount.setRadioButtonCheckListener(new RadioButtonCheckListener() {
             @Override
-            public void onClick(View v) {
+            public void onChange(boolean isCheck) {
+                if (isCheck) {
+                    LogTool.d(TAG, isCheck);
+                    //清空其它的选择
+                    rbOne.setChecked(false);
+                    rbThree.setChecked(false);
+                    rbTwo.setChecked(false);
+                }
+            }
+        });
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                customRechargeAmount.resetContent(true);
+                switch (checkedId) {
+                    case R.id.rb_one:
+                        break;
+                    case R.id.rb_two:
+                        break;
+                    case R.id.rb_three:
+                        break;
+                }
+            }
+        });
+
+        customRechargeAmount.setEditTextWatcherListener(new EditTextWatcherListener() {
+            @Override
+            public void onComplete(String content) {
+                if (tvPayAmount != null) {
+                    tvPayAmount.setText(content + getString(R.string.yuan));
+                }
+            }
+
+            @Override
+            public void onAction(String from) {
+
             }
         });
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
@@ -146,7 +195,37 @@ public class RechargeDetailActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Object o) {
-                        setResult(true);
+                        //step 1:判断当前输入不能为空
+                        String rechargeAmount = customRechargeAmount.getContent();
+                        if (StringTool.isEmpty(rechargeAmount)) {
+                            //如果当前不是自定义，那么判断是否选择了其它
+                            if (!rbOne.isChecked()) {
+                                if (!rbTwo.isChecked()) {
+                                    if (!rbThree.isChecked()) {
+                                        showToast(getString(R.string.please_input_recharge_amount));
+                                        return;
+
+                                    } else {
+                                        rechargeAmount = "1000";
+                                    }
+                                } else {
+                                    rechargeAmount = "500";
+                                }
+                            } else {
+                                rechargeAmount = "100";
+                            }
+                        }
+
+                        String imageCode = etwaImageCode.getContent();
+                        if (StringTool.isEmpty(imageCode)) {
+                            showToast(getString(R.string.please_input_verify_code_first));
+                            return;
+                        }
+                        String mark = tvPaymentNote.getText().toString();
+
+                        //Step 2:根据用户输入的内容请求数据
+                        presenter.rechargeVirtualCoin(Constants.Payment.RECHARGE_VIRTUAL_COIN, Constants.CURRENCY_TYPE_SCS, rechargeAmount, mark, imageCode);
+
                     }
 
                     @Override
@@ -162,4 +241,22 @@ public class RechargeDetailActivity extends BaseActivity {
 
 
     }
+
+    @Override
+    public <T> void responseSuccess(T message, String type) {
+        switch (type) {
+            case Constants.Payment.RECHARGE_VIRTUAL_COIN:
+                //充值申请点击后的提示：您的充值申请已提交，请尽快使用已绑定的银行账号进行转账！
+                showToast(getString(R.string.recharge_success_tips));
+                break;
+        }
+
+    }
+
+    @Override
+    public void responseFailed(String message, String type) {
+        showToast(message);
+    }
+
+
 }

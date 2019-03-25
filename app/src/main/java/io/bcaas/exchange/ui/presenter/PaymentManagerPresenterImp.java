@@ -18,6 +18,7 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BasePresenterImp;
+import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.tools.ListTool;
@@ -81,7 +82,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                         if (responseJson != null) {
                             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "addPayWay:", responseJson);
                             if (responseJson.isSuccess()) {
-                                view.responseSuccess(responseJson.getMessage(),type);
+                                view.responseSuccess(responseJson.getMessage(), type);
                             } else {
                                 int code = responseJson.getCode();
                                 if (code == MessageConstants.CODE_2015) {
@@ -289,8 +290,17 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                 });
     }
 
+    /**
+     * 充值
+     *
+     * @param type
+     * @param currencyUID
+     * @param amount
+     * @param mark
+     * @param imageCode
+     */
     @Override
-    public void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark) {
+    public void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark, String imageCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -308,6 +318,11 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         memberOrderVO.setAmount(amount);
         memberOrderVO.setMark(mark);
         requestJson.setMemberOrderVO(memberOrderVO);
+
+
+        MemberPayInfoVO memberPayInfoVO = new MemberPayInfoVO();
+        memberPayInfoVO.setPayWayUid(Constants.PayWayUid.BANK);
+        requestJson.setMemberPayInfoVO(memberPayInfoVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "rechargeVirtualCoin:", requestJson);
 
         paymentManagerInteractor.rechargeVirtual(GsonTool.beanToRequestBody(requestJson))
@@ -321,13 +336,23 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
+                        if (responseJson != null) {
+                            if (responseJson.isSuccess()) {
+                                view.responseSuccess(responseJson.getMessage(), type);
+                            } else {
+                                int code = responseJson.getCode();
+                                //    {"success":false,"code":2000,"message":"VO is null or type error."}
+                                view.responseFailed(responseJson.getMessage(), type);
+                            }
+                        }
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "rechargeVirtualCoin:", responseJson);
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
+                        view.responseFailed(e.getMessage().toString(), type);
                     }
 
                     @Override

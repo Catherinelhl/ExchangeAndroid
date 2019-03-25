@@ -38,7 +38,7 @@ public interface PayWayManagerContract {
 
         void getPayWay(String type);
 
-        void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark);
+        void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark,String imageCode);
 
         void convertCoin(String type, String currencyUID, String amount, String txPassword);
 

@@ -266,4 +266,11 @@
     <string name="please_choose_a_payment">请选择一种支付方式</string>
     <string name="paymant_bank">银行卡</string>
     <string name="set_payment_way_success">成功设置支付方式</string>
+    <string name="please_input_recharge_amount">请先选择充值数量</string>
+    <string name="recharge_success_tips">您的充值申请已提交，请尽快使用已绑定的银行账号进行转账！</string>
+    <string name="recharge_unit">个贝</string>
+    <string name="custom">自定义</string>
+    <string name="yuan">元</string>
+    <string name="zero_yuan">0.00元</string>
+    <string name="amount_edit_digits">1234567890.</string>
 </resources>

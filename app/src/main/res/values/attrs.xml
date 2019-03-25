@@ -62,6 +62,9 @@
         <attr name="safeCenterText" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="customRechargeAmount">
+    </declare-styleable>
+
     <declare-styleable name="addPayWayItem">
         <attr name="addPaymentText" format="string"/>
         <attr name="enableInput" format="boolean"/>

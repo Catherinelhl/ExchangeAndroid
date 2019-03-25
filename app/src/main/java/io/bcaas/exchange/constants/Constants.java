@@ -294,7 +294,11 @@ public class Constants {
 
     // 只能充值SCS,currencyUid帶入“3"
     public static final String CURRENCY_TYPE_SCS = "3";
-    public static final int PAY_WAY_UID_BANK = 0;//银行卡支付的UID
+
+    public class PayWayUid {
+        public static final int BANK = 0;//银行卡支付的UID
+
+    }
 
     public class Payment {
         public static final String ADD_PAY_WAY = "addPayWay";

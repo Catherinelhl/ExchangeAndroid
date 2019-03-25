@@ -172,7 +172,7 @@ public class AddPaymentActivity extends BaseActivity {
                         }
                         //step 2:将当前内容添加到数据类里面
                         MemberPayInfoVO memberPayInfoVO = new MemberPayInfoVO();
-                        memberPayInfoVO.setPayWayUid(Constants.PAY_WAY_UID_BANK);
+                        memberPayInfoVO.setPayWayUid(Constants.PayWayUid.BANK);
                         memberPayInfoVO.setBankPersonalName(bankPersonName);
                         memberPayInfoVO.setBankName(bankName);
                         if (StringTool.notEmpty(bankBranchName)) {

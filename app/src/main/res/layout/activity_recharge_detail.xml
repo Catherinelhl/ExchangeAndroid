@@ -56,38 +56,46 @@
                             android:layout_marginLeft="@dimen/d16"
                             android:text="@string/recharge_amount"
                             android:gravity="center_vertical"/>
-                    <RelativeLayout android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-                        <RadioButton android:layout_width="wrap_content"
-                                     android:text="100个贝"
-                                     android:textSize="@dimen/text_size_14"
-                                     android:id="@+id/rb_one"
-                                     android:textColor="@color/black_333333"
-                                     android:layout_height="wrap_content"/>
-                        <RadioButton android:layout_width="wrap_content"
-                                     android:text="500个贝"
-                                     android:textSize="@dimen/text_size_14"
-                                     android:id="@+id/rb_two"
-                                     android:textColor="@color/black_333333"
-                                     android:layout_toRightOf="@+id/rb_one"
-                                     android:layout_height="wrap_content"/>
-                        <RadioButton android:layout_width="wrap_content"
-                                     android:text="1000个贝"
-                                     android:textSize="@dimen/text_size_14"
-                                     android:id="@+id/rb_three"
-                                     android:textColor="@color/black_333333"
-                                     android:layout_toRightOf="@+id/rb_two"
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:orientation="vertical"
+                                  android:background="@color/white"
+                                  android:layout_marginRight="@dimen/d20"
+                                  android:layout_marginTop="@dimen/d16"
+                                  android:layout_height="wrap_content">
+                        <RadioGroup
+                                android:id="@+id/rg"
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_height="wrap_content">
+                            <RadioButton android:layout_width="@dimen/d0"
+                                         android:layout_weight="1"
+                                         android:text="100个贝"
+                                         android:textSize="@dimen/text_size_14"
+                                         android:id="@+id/rb_one"
+                                         android:textColor="@color/black_333333"
+                                         android:layout_height="wrap_content"/>
+                            <RadioButton android:layout_width="@dimen/d0"
+                                         android:layout_weight="1"
+                                         android:text="500个贝"
+                                         android:textSize="@dimen/text_size_14"
+                                         android:id="@+id/rb_two"
+                                         android:textColor="@color/black_333333"
+                                         android:layout_height="wrap_content"/>
+                            <RadioButton android:layout_width="@dimen/d0"
+                                         android:layout_weight="1"
+                                         android:text="1000个贝"
+                                         android:textSize="@dimen/text_size_14"
+                                         android:id="@+id/rb_three"
+                                         android:textColor="@color/black_333333"
 
-                                     android:layout_height="wrap_content"/>
-                        <RadioButton android:layout_width="wrap_content"
-                                     android:layout_below="@+id/rb_one"
-                                     android:textColor="@color/black_333333"
-                                     android:textSize="@dimen/text_size_14"
-                                     android:text="自定义 100个贝"
-                                     android:id="@+id/rb_four"
+                                         android:layout_height="wrap_content"/>
 
-                                     android:layout_height="wrap_content"/>
-                    </RelativeLayout>
+                        </RadioGroup>
+                        <io.bcaas.exchange.view.viewGroup.CustomRechargeAmount
+                                android:id="@+id/custom_recharge_amount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="vertical"
