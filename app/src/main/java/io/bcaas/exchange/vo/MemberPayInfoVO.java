@@ -13,9 +13,12 @@ import java.io.Serializable;
  * 
  */
 public class MemberPayInfoVO implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 會員付費資訊Uid
+	 */
+	private Long memberPayInfoUid;
 	/**
 	 * 會員帳號 (Email format)
 	 */
@@ -122,4 +125,18 @@ public class MemberPayInfoVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberPayInfoVO{" +
+				"memberPayInfoUid=" + memberPayInfoUid +
+				", memberId='" + memberId + '\'' +
+				", payWayUid=" + payWayUid +
+				", bankPersonalName='" + bankPersonalName + '\'' +
+				", bankName='" + bankName + '\'' +
+				", bankBranchName='" + bankBranchName + '\'' +
+				", bankAccount='" + bankAccount + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				", createTime='" + createTime + '\'' +
+				'}';
+	}
 }

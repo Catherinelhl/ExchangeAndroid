@@ -17,7 +17,9 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
+import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
@@ -44,7 +46,7 @@ import java.util.concurrent.TimeUnit;
 +--------------+---------------------------------
 */
 
-public class RechargeActivity extends BaseActivity implements PayWayManagerContract.View {
+public class RechargeActivity extends BaseActivity implements AccountSecurityContract.View {
 
     private String TAG = RechargeActivity.class.getSimpleName();
     @BindView(R.id.ib_back)
@@ -64,7 +66,7 @@ public class RechargeActivity extends BaseActivity implements PayWayManagerContr
     @BindView(R.id.tv_recharge_intro)
     TextView tvRechargeIntro;
 
-    private PayWayManagerContract.Presenter presenter;
+    private AccountSecurityContract.Presenter presenter;
 
     @Override
     public int getContentView() {
@@ -86,7 +88,7 @@ public class RechargeActivity extends BaseActivity implements PayWayManagerContr
 
     @Override
     public void initData() {
-        presenter = new PaymentManagerPresenterImp(this);
+        presenter = new AccountSecurityPresenterImp(this);
 
     }
 
@@ -172,7 +174,7 @@ public class RechargeActivity extends BaseActivity implements PayWayManagerContr
                         }
                         /*step 2:判断当前是否完成实名认证*/
                         /*step 3:判断当前是否完成支付方式绑定*/
-                        presenter.getPayWay(Constants.Payment.GET_PAY_WAY);
+                        presenter.getAccountSecurity();
                     }
 
                     @Override
@@ -188,54 +190,6 @@ public class RechargeActivity extends BaseActivity implements PayWayManagerContr
     }
 
     @Override
-    public void noData() {
-        //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
-        showDoubleButtonDialog(getString(R.string.cancel),
-                getString(R.string.go_to_bind),
-                getString(R.string.please_finish_payment_bind),
-                new DoubleButtonDialog.ConfirmClickListener() {
-                    @Override
-                    public void sure() {
-                        Intent intent=new Intent();
-                        intent.setClass(RechargeActivity.this,AddPaymentActivity.class);
-                        startActivityForResult(intent,Constants.RequestCode.ADD_PAYMENT_CODE);
-                    }
-
-                    @Override
-                    public void cancel() {
-
-                    }
-                });
-    }
-
-    @Override
-    public <T> void responseSuccess(T message, String type) {
-        switch (type) {
-            case Constants.Payment.GET_PAY_WAY:
-                List<MemberPayInfoVO> memberPayInfoVOList = ((List<MemberPayInfoVO>) message);
-                //取出当前第一条数据，然后传入下一个界面
-                if (ListTool.noEmpty(memberPayInfoVOList)) {
-                    MemberPayInfoVO memberPayInfoVO = memberPayInfoVOList.get(0);
-                    if (memberPayInfoVO != null) {
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable(Constants.From.MEMBER_PAY_INFO, memberPayInfoVO);
-                        intentToActivity(bundle, RechargeDetailActivity.class);
-                    }
-                }
-                break;
-            case Constants.Payment.REFRESH_GET_PAY_WAY:
-                break;
-        }
-
-    }
-
-
-    @Override
-    public void responseFailed(String message, String type) {
-        showToast(message);
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
@@ -244,10 +198,44 @@ public class RechargeActivity extends BaseActivity implements PayWayManagerContr
                     boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                     if (!isBack) {
                         //更新当前信息
-                        presenter.getPayWay(Constants.Payment.REFRESH_GET_PAY_WAY);
                     }
                     break;
             }
         }
+    }
+
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+        //判断当前是否已经绑定了支付方式
+        int isPayWayBind = memberVO.getIsPayWayBind();
+        if (isPayWayBind == 0) {
+            // 未绑定
+            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
+            showDoubleButtonDialog(getString(R.string.cancel),
+                    getString(R.string.go_to_bind),
+                    getString(R.string.please_finish_payment_bind),
+                    new DoubleButtonDialog.ConfirmClickListener() {
+                        @Override
+                        public void sure() {
+                            Intent intent = new Intent();
+                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
+                        }
+
+                        @Override
+                        public void cancel() {
+
+                        }
+                    });
+        } else {
+            //已经绑定
+            intentToActivity(RechargeDetailActivity.class);
+        }
+
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+        showToast(info);
     }
 }

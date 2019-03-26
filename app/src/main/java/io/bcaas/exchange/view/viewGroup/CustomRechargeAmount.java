@@ -22,10 +22,9 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.bcaas.exchange.R;
@@ -38,12 +37,14 @@ import io.bcaas.exchange.tools.StringTool;
 
 public class CustomRechargeAmount extends LinearLayout {
 
-    @BindView(R.id.rb_custom)
-    RadioButton rbCustom;
+    private String TAG = CustomRechargeAmount.class.getSimpleName();
+    @BindView(R.id.tv_custom)
+    TextView tvCustom;
     @BindView(R.id.et_amount)
     EditText etAmount;
     private View view;
     private Context context;
+    private boolean isChecked = false;
 
 
     private EditTextWatcherListener editTextWatcherListener;
@@ -72,11 +73,15 @@ public class CustomRechargeAmount extends LinearLayout {
 
     private void initListener() {
         etAmount.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_EIGHT)});
-        rbCustom.setOnClickListener(new OnClickListener() {
+        tvCustom.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                tvCustom.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d5));
+                tvCustom.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(isChecked ? R.mipmap.icon_choose : R.mipmap.icon_choose_f
+                ), null, null, null);
+                isChecked = !isChecked;
                 if (radioButtonCheckListener != null) {
-                    radioButtonCheckListener.onChange(rbCustom.isChecked());
+                    radioButtonCheckListener.onChange(isChecked);
                 }
             }
         });
@@ -124,8 +129,11 @@ public class CustomRechargeAmount extends LinearLayout {
      */
     public void resetContent(boolean isClear) {
         if (etAmount != null && isClear) {
+            isChecked = false;
             etAmount.setText(MessageConstants.EMPTY);
-            rbCustom.setChecked(false);
+            tvCustom.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d5));
+            tvCustom.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.mipmap.icon_choose), null, null, null);
+
         }
     }
 

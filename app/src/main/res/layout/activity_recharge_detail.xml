@@ -42,60 +42,60 @@
                             android:text="@string/email"
                             android:gravity="center_vertical"/>
                 </LinearLayout>
+
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="horizontal"
                               android:background="@color/white"
                               android:layout_marginTop="@dimen/d16"
+                              android:gravity="center_vertical"
+                              android:layout_gravity="center_vertical"
                               android:layout_height="wrap_content">
                     <TextView
                             android:id="@+id/tv_recharge_amount_key"
                             style="@style/black_16_text_style"
-                            android:layout_marginTop="@dimen/d16"
                             android:minWidth="@dimen/d60"
                             android:layout_marginRight="@dimen/d20"
                             android:layout_marginLeft="@dimen/d16"
                             android:text="@string/recharge_amount"
                             android:gravity="center_vertical"/>
-                    <LinearLayout android:layout_width="match_parent"
-                                  android:orientation="vertical"
-                                  android:background="@color/white"
-                                  android:layout_marginRight="@dimen/d20"
-                                  android:layout_marginTop="@dimen/d16"
-                                  android:layout_height="wrap_content">
-                        <RadioGroup
-                                android:id="@+id/rg"
-                                android:layout_width="match_parent"
-                                android:orientation="horizontal"
-                                android:layout_height="wrap_content">
-                            <RadioButton android:layout_width="@dimen/d0"
-                                         android:layout_weight="1"
-                                         android:text="100个贝"
-                                         android:textSize="@dimen/text_size_14"
-                                         android:id="@+id/rb_one"
-                                         android:textColor="@color/black_333333"
-                                         android:layout_height="wrap_content"/>
-                            <RadioButton android:layout_width="@dimen/d0"
-                                         android:layout_weight="1"
-                                         android:text="500个贝"
-                                         android:textSize="@dimen/text_size_14"
-                                         android:id="@+id/rb_two"
-                                         android:textColor="@color/black_333333"
-                                         android:layout_height="wrap_content"/>
-                            <RadioButton android:layout_width="@dimen/d0"
-                                         android:layout_weight="1"
-                                         android:text="1000个贝"
-                                         android:textSize="@dimen/text_size_14"
-                                         android:id="@+id/rb_three"
-                                         android:textColor="@color/black_333333"
-
-                                         android:layout_height="wrap_content"/>
-
-                        </RadioGroup>
+                    <io.bcaas.exchange.view.viewGroup.FlowViewGroup
+                            android:id="@+id/fvg"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_width="wrap_content"
+                            android:background="@color/transparent"
+                            android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content"
+                                  android:text="@string/one_hundred_numbers"
+                                  android:id="@+id/tv_one"
+                                  android:textSize="@dimen/text_size_14"
+                                  android:layout_marginRight="@dimen/d15"
+                                  android:drawableLeft="@mipmap/icon_choose"
+                                  android:textColor="@color/black_333333"
+                                  android:drawablePadding="@dimen/d5"
+                                  android:layout_height="wrap_content"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:text="@string/five_hundred_numbers"
+                                  android:id="@+id/tv_two"
+                                  android:layout_marginRight="@dimen/d15"
+                                  android:textSize="@dimen/text_size_14"
+                                  android:drawableLeft="@mipmap/icon_choose"
+                                  android:textColor="@color/black_333333"
+                                  android:drawablePadding="@dimen/d5"
+                                  android:layout_height="wrap_content"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:text="@string/one_thousand_numbers"
+                                  android:id="@+id/tv_three"
+                                  android:drawablePadding="@dimen/d5"
+                                  android:layout_marginRight="@dimen/d31"
+                                  android:drawableLeft="@mipmap/icon_choose"
+                                  android:textSize="@dimen/text_size_14"
+                                  android:textColor="@color/black_333333"
+                                  android:layout_height="wrap_content"/>
                         <io.bcaas.exchange.view.viewGroup.CustomRechargeAmount
                                 android:id="@+id/custom_recharge_amount"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                    </io.bcaas.exchange.view.viewGroup.FlowViewGroup>
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent"
                               android:orientation="vertical"

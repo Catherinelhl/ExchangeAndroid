@@ -310,4 +310,56 @@ public class Constants {
         public static final String RECHARGE_VIRTUAL_COIN = "rechargeVirtualCoin";
         public static final String GET_BANK_INFO = "getBankInfo";
     }
+
+    /**
+     * 表示当前的充值数量
+     */
+    public enum RechargeNumber {
+        ONE_HUNDRED("100", false, 1),
+        FIVE_HUNDRED("500", false, 2),
+        ONE_THOUSAND("1000", false, 3),
+        CUSTOM_NUMBER("0", false, 4);
+        private boolean isCheck;
+        private int index;
+        private String number;
+
+        RechargeNumber(String number, boolean isCheck, int index) {
+            this.isCheck = isCheck;
+            this.index = index;
+            this.number = number;
+        }
+
+        public boolean getIsCheck(int index) {
+            for (RechargeNumber rechargeNumber : RechargeNumber.values()) {
+                if (rechargeNumber.index == index) {
+                    return rechargeNumber.isCheck;
+                }
+            }
+            return false;
+        }
+
+        public boolean isCheck() {
+            return isCheck;
+        }
+
+        public void setCheck(boolean check) {
+            isCheck = check;
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public void setIndex(int index) {
+            this.index = index;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+    }
 }

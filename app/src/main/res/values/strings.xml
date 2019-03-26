@@ -273,4 +273,7 @@
     <string name="yuan">元</string>
     <string name="zero_yuan">0.00元</string>
     <string name="amount_edit_digits">1234567890.</string>
+    <string name="one_hundred_numbers">100个贝</string>
+    <string name="five_hundred_numbers">500个贝</string>
+    <string name="one_thousand_numbers">1000个贝</string>
 </resources>

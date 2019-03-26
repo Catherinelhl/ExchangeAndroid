@@ -82,11 +82,11 @@ android {
 
 repositories {
     flatDir {
-        dirs'libs'
+        dirs 'libs'
     }
 }
 dependencies {
-    implementation(name:'qrcode', ext:'aar')
+    implementation(name: 'qrcode', ext: 'aar')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'

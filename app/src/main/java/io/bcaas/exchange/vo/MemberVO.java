@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 public class MemberVO implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -18,42 +19,53 @@ public class MemberVO implements Serializable {
      */
     private String memberId;
     /**
-     * 會員密碼 (Double-sha256)
+     * 會員密碼 (Double-SHA256)
      */
     private String password;
     /**
-     * 會員交易密碼 (Double-sha256)
+     * 會員資金密碼 (Double-SHA256)
      */
     private String txPassword;
     /**
-     * 使用者真實IP位置
+     * 會員真實IP位置
      */
     private String realIP;
     /**
-     * 使用者電話
+     * 會員電話
      */
     private String phone;
     /**
-     * 双因素认证的secret
-     * 回傳空字串代表尚未設定
+     * 雙因素驗證密鑰(Google)
      */
     private String twoFactorAuthSecret;
     /**
-     * 郵箱驗證 (0:CLOSE, 1:open)
+     * 郵箱驗證 (0:close, 1:open, 2:not yet bind)
      */
     private Integer emailVerify;
     /**
-     * 電話驗證 (0:CLOSE, 1:open)
+     * 電話驗證 (0:close, 1:open, 2:not yet bind)
      */
     private Integer phoneVerify;
     /**
-     * 雙因素驗證(Google) (0:CLOSE, 1:open)
+     * 雙因素驗證(Google) (0:close, 1:open, 2:not yet bind)
      */
     private Integer twoFactorAuthVerify;
     /**
-     * 使用者狀態(0:停權, 1:激活)
+     * 會員狀態 (0:停權, 1:激活)
      */
     private Integer isActivation;
+    /**
+     * 自動匹配交易狀態 (0:手動, 1:自動)
+     */
+    private Integer isAutoMatchTx;
+    /**
+     * 支付方式綁定 (0:未綁定, 1:已綁定)
+     */
+    private Integer isPayWayBind;
+    /**
+     * 實名認證 (0:未認證, 1:已認證)
+     */
+    private Integer isPersonalVerify;
     /**
      * 更新時間
      */
@@ -62,10 +74,6 @@ public class MemberVO implements Serializable {
      * 建立時間
      */
     private String createTime;
-    /**
-     * 新密碼 (Double-sha256)
-     */
-    private String newPassword;
 
     public MemberVO() {
         super();
@@ -111,11 +119,23 @@ public class MemberVO implements Serializable {
         this.phone = phone;
     }
 
+    public String getTwoFactorAuthSecret() {
+        return twoFactorAuthSecret;
+    }
+
+    public void setTwoFactorAuthSecret(String twoFactorAuthSecret) {
+        this.twoFactorAuthSecret = twoFactorAuthSecret;
+    }
+
     public Integer getEmailVerify() {
         return emailVerify;
     }
 
     public void setEmailVerify(Integer emailVerify) {
+        this.emailVerify = emailVerify;
+    }
+
+    public void setEmailVerify(int emailVerify) {
         this.emailVerify = emailVerify;
     }
 
@@ -127,8 +147,16 @@ public class MemberVO implements Serializable {
         this.phoneVerify = phoneVerify;
     }
 
+    public void setPhoneVerify(int phoneVerify) {
+        this.phoneVerify = phoneVerify;
+    }
+
     public Integer getTwoFactorAuthVerify() {
         return twoFactorAuthVerify;
+    }
+
+    public void setTwoFactorAuthVerify(int twoFactorAuthVerify) {
+        this.twoFactorAuthVerify = twoFactorAuthVerify;
     }
 
     public void setTwoFactorAuthVerify(Integer twoFactorAuthVerify) {
@@ -143,16 +171,32 @@ public class MemberVO implements Serializable {
         this.isActivation = isActivation;
     }
 
-    public void setEmailVerify(int emailVerify) {
-        this.emailVerify = emailVerify;
-    }
-
-    public void setPhoneVerify(int phoneVerify) {
-        this.phoneVerify = phoneVerify;
-    }
-
     public void setIsActivation(int isActivation) {
         this.isActivation = isActivation;
+    }
+
+    public Integer getIsAutoMatchTx() {
+        return isAutoMatchTx;
+    }
+
+    public void setIsAutoMatchTx(Integer isAutoMatchTx) {
+        this.isAutoMatchTx = isAutoMatchTx;
+    }
+
+    public Integer getIsPayWayBind() {
+        return isPayWayBind;
+    }
+
+    public void setIsPayWayBind(Integer isPayWayBind) {
+        this.isPayWayBind = isPayWayBind;
+    }
+
+    public Integer getIsPersonalVerify() {
+        return isPersonalVerify;
+    }
+
+    public void setIsPersonalVerify(Integer isPersonalVerify) {
+        this.isPersonalVerify = isPersonalVerify;
     }
 
     public String getUpdateTime() {
@@ -171,24 +215,8 @@ public class MemberVO implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
-
     public static long getSerialversionuid() {
         return serialVersionUID;
-    }
-
-    public String getTwoFactorAuthSecret() {
-        return twoFactorAuthSecret;
-    }
-
-    public void setTwoFactorAuthSecret(String twoFactorAuthSecret) {
-        this.twoFactorAuthSecret = twoFactorAuthSecret;
     }
 
     @Override
@@ -204,9 +232,11 @@ public class MemberVO implements Serializable {
                 ", phoneVerify=" + phoneVerify +
                 ", twoFactorAuthVerify=" + twoFactorAuthVerify +
                 ", isActivation=" + isActivation +
+                ", isAutoMatchTx=" + isAutoMatchTx +
+                ", isPayWayBind=" + isPayWayBind +
+                ", isPersonalVerify=" + isPersonalVerify +
                 ", updateTime='" + updateTime + '\'' +
                 ", createTime='" + createTime + '\'' +
-                ", newPassword='" + newPassword + '\'' +
                 '}';
     }
 }

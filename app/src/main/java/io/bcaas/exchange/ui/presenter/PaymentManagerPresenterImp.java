@@ -49,9 +49,11 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
     @Override
     public void addPayWay(String type, MemberPayInfoVO memberPayInfoVO, String txPassword) {
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
+        memberVO.setIsPayWayBind(1);
         try {
             memberVO.setTxPassword(Sha256Tool.doubleSha256ToString(txPassword));
         } catch (NoSuchAlgorithmException e) {
@@ -79,6 +81,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
+                        view.hideLoading();
                         if (responseJson != null) {
                             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "addPayWay:", responseJson);
                             if (responseJson.isSuccess()) {
@@ -96,12 +99,14 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onError(Throwable e) {
+                        view.hideLoading();
                         e.printStackTrace();
+                        view.responseFailed(e.getMessage(), type);
                     }
 
                     @Override
                     public void onComplete() {
-
+                        view.hideLoading();
                     }
                 });
     }
@@ -153,6 +158,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
+        memberVO.setIsPayWayBind(0);
         requestJson.setMemberVO(memberVO);
 
 
@@ -337,6 +343,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         if (responseJson != null) {
+                            GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "rechargeVirtualCoin:", responseJson);
                             if (responseJson.isSuccess()) {
                                 view.responseSuccess(responseJson.getMessage(), type);
                             } else {
@@ -345,7 +352,6 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 view.responseFailed(responseJson.getMessage(), type);
                             }
                         }
-                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "rechargeVirtualCoin:", responseJson);
 
                     }
 
