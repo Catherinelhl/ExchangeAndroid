@@ -282,4 +282,9 @@
         3.平台处理时间为工作日9:00～18:00，非处理时间的订单会在第二天处理。一般在申请后24小时内完成审核。
     </string>
     <string name="please_input_buy_back_number">请输入回购数量</string>
+    <string name="real_name_authentication">实名认证</string>
+    <string name="identity_authentication_tips">请如实填写您的身份信息,一经认证不可修改。</string>
+    <string name="Immediate_authentication">立即认证</string>
+    <string name="authentication_success">认证成功</string>
+    <string name="identity_verification">身份验证</string>
 </resources>
