@@ -370,6 +370,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
     @Override
     public void convertCoin(String type, String currencyUID, String amount, String txPassword) {
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -405,13 +406,28 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "convertCoin:", responseJson);
+                        view.hideLoading();
+                        if (responseJson != null) {
+                            GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "convertCoin:", responseJson);
+                            if (responseJson.isSuccess()) {
+                                view.responseSuccess(responseJson.getMessage(), type);
+                            } else {
+                                int code = responseJson.getCode();
+                                // {"success":false,"code":2015,"message":"Current password is wrong."}
+                                //    {"success":false,"code":2000,"message":"VO is null or type error."}
+                                view.responseFailed(responseJson.getMessage(), type);
+                            }
+                        }
+
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        view.hideLoading();
+                        e.printStackTrace();
+                        LogTool.e(TAG,e.getMessage());
+                        view.responseFailed(e.getMessage(),type);
                     }
 
                     @Override

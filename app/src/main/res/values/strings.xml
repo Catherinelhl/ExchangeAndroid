@@ -276,4 +276,10 @@
     <string name="one_hundred_numbers">100个贝</string>
     <string name="five_hundred_numbers">500个贝</string>
     <string name="one_thousand_numbers">1000个贝</string>
+    <string name="buy_back_number">回购数量</string>
+    <string name="buy_back_amount">回购金额</string>
+    <string name="buy_back_tips">1.仅能使用本人在平台绑定的银行卡进行收款； 2.申请回购处理时效为 T+1 工作日；
+        3.平台处理时间为工作日9:00～18:00，非处理时间的订单会在第二天处理。一般在申请后24小时内完成审核。
+    </string>
+    <string name="please_input_buy_back_number">请输入回购数量</string>
 </resources>

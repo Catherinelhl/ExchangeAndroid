@@ -1,10 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:exchange="http://schemas.android.com/apk/res-auto"
+              xmlns:tool="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <include
-            layout="@layout/include_header"
-    />
+            layout="@layout/include_header"/>
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:background="@color/theme_grey"
+                      android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="vertical"
+                          android:paddingTop="@dimen/d16"
+                          android:background="@color/white"
+                          android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_email_key"
+                            style="@style/black_16_text_style"
+                            android:minWidth="@dimen/d60"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d20"
+                            android:text="@string/email"
+                            android:gravity="center_vertical"/>
+                    <TextView
+                            android:id="@+id/tv_email_value"
+                            style="@style/black_16_text_style"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d16"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/email"
+                            android:gravity="center_vertical"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:background="@color/white"
+                              android:layout_marginTop="@dimen/d16"
+                              android:gravity="center_vertical"
+                              android:layout_gravity="center_vertical"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tv_recharge_amount_key"
+                            style="@style/black_16_text_style"
+                            android:minWidth="@dimen/d60"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d16"
+                            android:text="@string/buy_back_number"
+                            android:gravity="center_vertical"/>
+                    <EditText android:layout_width="wrap_content"
+                              android:minWidth="@dimen/d80"
+                              android:id="@+id/et_amount"
+                              android:digits="@string/amount_edit_digits"
+                              android:inputType="numberDecimal"
+                              android:layout_marginLeft="@dimen/d15"
+                              android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:text="@string/recharge_unit"
+                              android:textSize="@dimen/text_size_14"
+                              android:layout_marginLeft="@dimen/d15"
+                              android:textColor="@color/black_333333"
+                              android:drawablePadding="@dimen/d5"
+                              android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="vertical"
+                              android:background="@color/white"
+                              android:layout_height="wrap_content">
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:orientation="vertical"
+                                  android:background="@color/theme_grey"
+                                  android:layout_marginTop="@dimen/d24"
+                                  android:layout_marginBottom="@dimen/d13"
+                                  android:layout_marginRight="@dimen/d20"
+                                  android:layout_marginLeft="@dimen/d20"
+                                  android:layout_height="wrap_content">
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginBottom="@dimen/d12"
+                                      android:layout_marginTop="@dimen/d16"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/buy_back_amount"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:id="@+id/tv_buy_back_amount"
+                                    android:layout_width="@dimen/d0"
+                                    android:layout_weight="1"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="500.00元"
+                                    android:gravity="right"/>
+                        </LinearLayout>
+                        <View style="@style/small_line_style"/>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_marginTop="@dimen/d12"
+                                      android:layout_marginBottom="@dimen/d12"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/receive_username"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:gravity="right"
+                                    android:id="@+id/tv_receive_username"
+                                    android:layout_weight="1"
+                                    android:layout_width="@dimen/d0"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="张三"/>
+                        </LinearLayout>
+                        <View style="@style/small_line_style"/>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_marginBottom="@dimen/d16"
+                                      android:layout_marginTop="@dimen/d12"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/receive_bank"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:gravity="right"
+                                    android:layout_width="@dimen/d0"
+                                    android:layout_weight="1"
+                                    android:id="@+id/tv_receive_bank"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="建设银行"/>
+                        </LinearLayout>
+                        <View style="@style/small_line_style"/>
+                        <LinearLayout android:layout_width="match_parent"
+                                      android:orientation="horizontal"
+                                      android:layout_gravity="center"
+                                      android:gravity="center_vertical"
+                                      android:layout_marginRight="@dimen/d16"
+                                      android:layout_marginLeft="@dimen/d16"
+                                      android:layout_marginBottom="@dimen/d16"
+                                      android:layout_marginTop="@dimen/d12"
+                                      android:layout_height="wrap_content">
+                            <TextView
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/receive_account"
+                                    android:gravity="center_vertical"
+                                    android:layout_gravity="center"
+                            />
+                            <TextView
+                                    android:gravity="right"
+                                    android:layout_width="@dimen/d0"
+                                    android:layout_weight="1"
+                                    android:id="@+id/tv_receive_account"
+                                    style="@style/black_666_14_text_style"
+                                    tool:text="6225 8913 82179 5233"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <io.bcaas.exchange.view.editview.EditTextWithAction
+                            android:id="@+id/etwa_fund_password"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/d16"
+                            exchange:hint="@string/fund_password"
+                            exchange:behaviour="checkBox"
+                            android:layout_marginBottom="@dimen/d16"
+                            android:layout_height="wrap_content"
+                    />
+
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                    android:textColor="@color/grey_999999"
+                    android:textSize="@dimen/text_size_12"
+                    android:text="@string/buy_back_tips"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d16"
+                    android:layout_marginRight="@dimen/d20"
+                    android:layout_marginLeft="@dimen/d20"
+            />
+            <Button
+                    android:id="@+id/btn_sure"
+                    style="@style/button_style"
+                    android:layout_margin="@dimen/d35"
+                    android:text="@string/sure"
+                    android:gravity="center"
+            />
+            <View android:layout_width="match_parent"
+                  android:layout_height="@dimen/d20"
+                  android:background="@color/transparent"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
