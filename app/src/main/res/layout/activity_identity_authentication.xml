@@ -25,7 +25,6 @@
     <io.bcaas.exchange.view.viewGroup.SafetyCenterItemView
             android:id="@+id/sciv_authentication"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/d23"
             exchange:safeCenterText="@string/real_name_authentication"
             android:layout_height="wrap_content"/>
 

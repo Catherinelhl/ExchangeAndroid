@@ -43,6 +43,8 @@ public class BcaasTabLayout extends FrameLayout {
     private int mTabMode;
     private int mTabTextSize;
     private Context context;
+    private int tabSize=3;
+
 
     public BcaasTabLayout(@NonNull Context context) {
         super(context);
@@ -145,7 +147,7 @@ public class BcaasTabLayout extends FrameLayout {
         mTabLayout.addOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager, this, onTabSelectedListener));
         Class<?> tabLayout = mTabLayout.getClass();
 //        int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        int widthTemp = BaseApplication.getScreenWidth() / 3;
+        int widthTemp = BaseApplication.getScreenWidth() / tabSize;
         Field tabStrip = null;
         try {
 //            Field[] fields = tabLayout.getDeclaredFields();
@@ -189,7 +191,7 @@ public class BcaasTabLayout extends FrameLayout {
         mCustomViewList.add(customView);
         mTabLayout.addTab(mTabLayout.newTab().setCustomView(customView), index == 0);
         // 根据当前显示的个数来判断是否需要滚动
-        mTabLayout.setTabMode(mTabList.size() <= 3 ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
+        mTabLayout.setTabMode(mTabList.size() <= tabSize ? TabLayout.MODE_FIXED : TabLayout.MODE_SCROLLABLE);
     }
 
     /**
@@ -301,5 +303,9 @@ public class BcaasTabLayout extends FrameLayout {
         if (mTabLayout != null) {
             mTabLayout.getTabAt(position).select();
         }
+    }
+
+    public void setTabSize(int tabSize) {
+        this.tabSize = tabSize;
     }
 }

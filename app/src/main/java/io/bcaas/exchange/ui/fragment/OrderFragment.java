@@ -94,7 +94,10 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         tabLayout.removeTabLayout();
         viewPager.removeAllViews();
         views.clear();
-        for (int i = 0; i < 3; i++) {
+        int size = dataGenerationManager.getTabOrderTopTitleCount();
+        tabLayout.setTabSize(size);
+
+        for (int i = 0; i < size; i++) {
             //显示标题
             tabLayout.addTab(dataGenerationManager.getOrderTopTitles(i), i);
             OrderView orderView = new OrderView(activity);
@@ -108,7 +111,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         tabViewAdapter = new TabViewAdapter(views);
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(size);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
         tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
             @Override
@@ -210,7 +213,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                             }
                             break;
                     }
-                    presenter.getRecord(Constants.OrderType.WITHDRAW,currentNextObjectID);
+                    presenter.getRecord(Constants.OrderType.WITHDRAW, currentNextObjectID);
                 }
                 break;
         }

@@ -29,6 +29,10 @@ public class DataGenerationManager {
     //顶部tab 订单页面的标题数量
     private int tabOrderTopTitleCount;
 
+    public int getTabOrderTopTitleCount() {
+        return tabOrderTopTitleCount;
+    }
+
     public DataGenerationManager() {
         super();
         initData();
@@ -46,6 +50,8 @@ public class DataGenerationManager {
         tabOrderTopTitles.add("交易");
         tabOrderTopTitles.add("转入");
         tabOrderTopTitles.add("转出");
+        tabOrderTopTitles.add("充值");
+        tabOrderTopTitles.add("回购");
         tabOrderTopTitleCount = tabOrderTopTitles.size();
 
         //初始化底部栏图标数据
