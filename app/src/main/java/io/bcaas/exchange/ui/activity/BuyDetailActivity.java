@@ -64,8 +64,6 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     EditTextWithAction etRandomVerifyCode;
     @BindView(R.id.btn_buy)
     Button btnBuy;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.tv_salable_balance)
     TextView tvSalableBalance;
     @BindView(R.id.asp_fund)

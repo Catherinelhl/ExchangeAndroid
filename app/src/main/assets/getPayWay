@@ -1,0 +1,19 @@
+{
+  "memberPayInfoVOList": [
+    {
+      "bankAccount": "6214830105268279",
+      "bankBranchName": "北京分行建国路支行",
+      "bankName": "中国招商银行",
+      "bankPersonalName": "刘红玲",
+      "createTime": "2019-03-27 06:06:27.0",
+      "memberId": "Catherineliu@Bcaas.io",
+      "memberPayInfoUid": 10,
+      "payWayUid": 0,
+      "updateTime": "2019-03-27 06:06:27.0"
+    }
+  ],
+  "code": 200,
+  "message": "Member get pay way success.",
+  "size": 0,
+  "success": true
+}

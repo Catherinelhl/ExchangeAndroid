@@ -48,8 +48,6 @@ public class ModifyPasswordActivity extends BaseActivity implements ModifyPasswo
     TextView tvStartImmediate;
     @BindView(R.id.ll_modify_password)
     LinearLayout llModifyPassword;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.asp_fund)
     AppendStringLayout aspFund;
 

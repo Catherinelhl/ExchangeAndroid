@@ -290,4 +290,13 @@
     <string name="pay_account">支付账户</string>
     <string name="pending">待审核</string>
     <string name="four_star">****</string>
+    <string name="payment_method_tips">请务必使用您本人的实名账户,支付方式的信息将在交易时向对方展示。除银行卡以外的更多方式后续会逐一开通。</string>
+    <string name="bank_card">银行卡</string>
+    <string name="delete">删除</string>
+    <string name="bank_account_number">卡号</string>
+    <string name="card_holder">持卡人</string>
+    <string name="bank">银行</string>
+    <string name="delete_pay_way_success">支付方式删除成功！</string>
+    <string name="sure_to_delete_current_pay_way">确定删除当前支付方式？</string>
+    <string name="add_pay_way_method">添加支付方式</string>
 </resources>

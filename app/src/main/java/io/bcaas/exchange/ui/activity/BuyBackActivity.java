@@ -43,8 +43,6 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tv_email_key)
@@ -93,7 +91,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
     @Override
     public void initData() {
         presenter = new PaymentManagerPresenterImp(this);
-        presenter.getPayWay(Constants.Payment.ADD_PAY_WAY);
+        presenter.getPayWay(Constants.Payment.GET_PAY_WAY);
 
 
     }
@@ -189,7 +187,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
     @Override
     public <T> void responseSuccess(T message, String type) {
         switch (type) {
-            case Constants.Payment.ADD_PAY_WAY:
+            case Constants.Payment.GET_PAY_WAY:
                 List<MemberPayInfoVO> memberPayInfoVOList = ((List<MemberPayInfoVO>) message);
                 //取出当前第一条数据，然后传入下一个界面
                 if (ListTool.noEmpty(memberPayInfoVOList)) {

@@ -138,12 +138,18 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "modifyPayWay:", responseJson);
-
+                        if (responseJson.isSuccess()) {
+                            view.responseSuccess(responseJson.getMessage(), type);
+                        } else {
+                            int code = responseJson.getCode();
+                            view.responseFailed(responseJson.getMessage(), type);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
+                        view.responseFailed(e.getMessage(), type);
                     }
 
                     @Override
@@ -181,12 +187,18 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "removePayWay:", responseJson);
-
+                        if (responseJson.isSuccess()) {
+                            view.responseSuccess(responseJson.getMessage(), type);
+                        } else {
+                            int code = responseJson.getCode();
+                            view.responseFailed(responseJson.getMessage(), type);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
+                        view.responseFailed(e.getMessage(), type);
                     }
 
                     @Override
@@ -221,12 +233,18 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getBankInfo:", responseJson);
-
+                        if (responseJson.isSuccess()) {
+                            view.responseSuccess(responseJson.getMessage(), type);
+                        } else {
+                            int code = responseJson.getCode();
+                            view.responseFailed(responseJson.getMessage(), type);
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
+                        view.responseFailed(e.getMessage(), type);
                     }
 
                     @Override
@@ -238,6 +256,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
     @Override
     public void getPayWay(String type) {
+        view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -261,6 +280,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
+                        view.hideLoading();
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getPayWay:", responseJson);
                         if (responseJson != null) {
                             if (responseJson.isSuccess()) {
@@ -273,7 +293,10 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 }
                             } else {
                                 int code = responseJson.getCode();
-                                view.responseFailed(responseJson.getMessage(), type);
+                                //{"success":false,"code":2016,"message":"Account not yet login."}
+                                if (!view.httpExceptionDisposed(responseJson)) {
+                                    view.responseFailed(responseJson.getMessage(), type);
+                                }
                             }
 
                         } else {
@@ -283,6 +306,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onError(Throwable e) {
+                        view.hideLoading();
                         e.printStackTrace();
                         view.responseFailed(e.getMessage(), type);
                         disposeDisposable(disposable);
@@ -292,6 +316,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onComplete() {
                         disposeDisposable(disposable);
+                        view.hideLoading();
                     }
                 });
     }
@@ -426,8 +451,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     public void onError(Throwable e) {
                         view.hideLoading();
                         e.printStackTrace();
-                        LogTool.e(TAG,e.getMessage());
-                        view.responseFailed(e.getMessage(),type);
+                        LogTool.e(TAG, e.getMessage());
+                        view.responseFailed(e.getMessage(), type);
                     }
 
                     @Override

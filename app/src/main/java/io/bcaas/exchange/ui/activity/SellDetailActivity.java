@@ -52,8 +52,6 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
     EditTextWithAction etGoogleVerifyCode;
     @BindView(R.id.btn_sell)
     Button btnSell;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.tv_salable_balance)
     TextView tvSalableBalance;
     @BindView(R.id.tv_transaction_amount)
