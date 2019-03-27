@@ -4,139 +4,144 @@ import java.io.Serializable;
 
 /**
  * 會員付費資訊
- * 
- * @since 2019/03/15
- * 
+ *
  * @author Costa
- * 
  * @version 1.0.0
- * 
+ * @since 2019/03/15
  */
 public class MemberPayInfoVO implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 會員付費資訊Uid
-	 */
-	private Long memberPayInfoUid;
-	/**
-	 * 會員帳號 (Email format)
-	 */
-	private String memberId;
-	/**
-	 * 付費方式<br>
-	 * (0:銀行卡, 1:)
-	 */
-	private Integer payWayUid;
-	/**
-	 * 收款銀行戶名
-	 */
-	private String bankPersonalName;
-	/**
-	 * 銀行名稱
-	 */
-	private String bankName;
-	/**
-	 * 銀行支行名稱
-	 */
-	private String bankBranchName;
-	/**
-	 * 銀行帳戶
-	 */
-	private String bankAccount;
-	/**
-	 * 更新時間
-	 */
-	private String updateTime;
-	/**
-	 * 建立時間
-	 */
-	private String createTime;
+    /**
+     * 會員付費資訊Uid
+     */
+    private Long memberPayInfoUid;
+    /**
+     * 會員帳號 (Email format)
+     */
+    private String memberId;
+    /**
+     * 付費方式<br>
+     * (0:銀行卡, 1:)
+     */
+    private Integer payWayUid;
+    /**
+     * 收款銀行戶名
+     */
+    private String bankPersonalName;
+    /**
+     * 銀行名稱
+     */
+    private String bankName;
+    /**
+     * 銀行支行名稱
+     */
+    private String bankBranchName;
+    /**
+     * 銀行帳戶
+     */
+    private String bankAccount;
+    /**
+     * 更新時間
+     */
+    private String updateTime;
+    /**
+     * 建立時間
+     */
+    private String createTime;
 
-	public MemberPayInfoVO() {
-		super();
-	}
+    public MemberPayInfoVO() {
+        super();
+    }
 
-	public String getMemberId() {
-		return memberId;
-	}
+    public Long getMemberPayInfoUid() {
+        return memberPayInfoUid;
+    }
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
+    public void setMemberPayInfoUid(Long memberPayInfoUid) {
+        this.memberPayInfoUid = memberPayInfoUid;
+    }
 
-	public Integer getPayWayUid() {
-		return payWayUid;
-	}
+    public String getMemberId() {
+        return memberId;
+    }
 
-	public void setPayWayUid(Integer payWayUid) {
-		this.payWayUid = payWayUid;
-	}
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
 
-	public String getBankPersonalName() {
-		return bankPersonalName;
-	}
+    public Integer getPayWayUid() {
+        return payWayUid;
+    }
 
-	public void setBankPersonalName(String bankPersonalName) {
-		this.bankPersonalName = bankPersonalName;
-	}
+    public void setPayWayUid(Integer payWayUid) {
+        this.payWayUid = payWayUid;
+    }
 
-	public String getBankName() {
-		return bankName;
-	}
+    public String getBankPersonalName() {
+        return bankPersonalName;
+    }
 
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
+    public void setBankPersonalName(String bankPersonalName) {
+        this.bankPersonalName = bankPersonalName;
+    }
 
-	public String getBankBranchName() {
-		return bankBranchName;
-	}
+    public String getBankName() {
+        return bankName;
+    }
 
-	public void setBankBranchName(String bankBranchName) {
-		this.bankBranchName = bankBranchName;
-	}
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
 
-	public String getBankAccount() {
-		return bankAccount;
-	}
+    public String getBankBranchName() {
+        return bankBranchName;
+    }
 
-	public void setBankAccount(String bankAccount) {
-		this.bankAccount = bankAccount;
-	}
+    public void setBankBranchName(String bankBranchName) {
+        this.bankBranchName = bankBranchName;
+    }
 
-	public String getUpdateTime() {
-		return updateTime;
-	}
+    public String getBankAccount() {
+        return bankAccount;
+    }
 
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
-	}
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public String getUpdateTime() {
+        return updateTime;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	@Override
-	public String toString() {
-		return "MemberPayInfoVO{" +
-				"memberPayInfoUid=" + memberPayInfoUid +
-				", memberId='" + memberId + '\'' +
-				", payWayUid=" + payWayUid +
-				", bankPersonalName='" + bankPersonalName + '\'' +
-				", bankName='" + bankName + '\'' +
-				", bankBranchName='" + bankBranchName + '\'' +
-				", bankAccount='" + bankAccount + '\'' +
-				", updateTime='" + updateTime + '\'' +
-				", createTime='" + createTime + '\'' +
-				'}';
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "MemberPayInfoVO{" +
+                "memberPayInfoUid=" + memberPayInfoUid +
+                ", memberId='" + memberId + '\'' +
+                ", payWayUid=" + payWayUid +
+                ", bankPersonalName='" + bankPersonalName + '\'' +
+                ", bankName='" + bankName + '\'' +
+                ", bankBranchName='" + bankBranchName + '\'' +
+                ", bankAccount='" + bankAccount + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                ", createTime='" + createTime + '\'' +
+                '}';
+    }
 }

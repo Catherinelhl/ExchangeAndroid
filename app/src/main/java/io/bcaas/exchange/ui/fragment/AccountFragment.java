@@ -17,6 +17,9 @@ import io.bcaas.exchange.bean.SettingsBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.ui.activity.*;
+import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
+import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
+import io.bcaas.exchange.vo.MemberVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,7 @@ import java.util.List;
  * <p>
  * Fragment：「帳戶」
  */
-public class AccountFragment extends BaseFragment {
+public class AccountFragment extends BaseFragment implements AccountSecurityContract.View {
     private String TAG = AccountFragment.class.getSimpleName();
 
 
@@ -39,6 +42,8 @@ public class AccountFragment extends BaseFragment {
     RecyclerView rvSetting;
     private SettingsAdapter settingTypesAdapter;
 
+    private AccountSecurityContract.Presenter presenter;
+
     @Override
     public int getLayoutRes() {
         return R.layout.fragment_account;
@@ -46,6 +51,7 @@ public class AccountFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
+        presenter = new AccountSecurityPresenterImp(this);
         tvAccountName.setText(BaseApplication.getMemberID());
         initAdapter();
     }
@@ -124,6 +130,17 @@ public class AccountFragment extends BaseFragment {
                             startActivityForResult(intent, Constants.RequestCode.PAYMENT_MANAGEMENT);
                             break;
                         case IDENTITY_AUTHENTICATION:
+                            //判断当前是否已经实名认证过了
+                            MemberVO memberVO = BaseApplication.getMemberVO();
+                            if (memberVO != null) {
+                                int isIdentityVerify = memberVO.getIsIdentityVerify();
+                                if (isIdentityVerify == 1) {
+                                    //已认证
+                                    showToast(getString(R.string.had_identity_verification));
+                                    return;
+                                }
+                            }
+                            //否则跳转界面
                             intent.setClass(getContext(), IdentityAuthenticationActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.IDENTITY_AUTHENTICATION);
                             break;
@@ -139,9 +156,27 @@ public class AccountFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == Constants.RequestCode.ALL_FUND_CODE) {
-                //我的资产页面返回
+            switch (requestCode) {
+                case Constants.RequestCode.IDENTITY_AUTHENTICATION:
+                    //从实名认证界面返回，刷新当前认证信息
+                    presenter.getAccountSecurity();
+
+                    break;
+                case Constants.RequestCode.ALL_FUND_CODE:
+                    //我的资产页面返回
+
+                    break;
             }
         }
+    }
+
+    @Override
+    public void getAccountSecuritySuccess(MemberVO memberVO) {
+
+    }
+
+    @Override
+    public void getAccountSecurityFailure(String info) {
+
     }
 }

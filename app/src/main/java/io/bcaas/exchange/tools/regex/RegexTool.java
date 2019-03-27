@@ -18,8 +18,11 @@ public class RegexTool {
     public static final String REPLACE_BLANK = "\t|\r|\n|\\s*";
     public static final String IS_CHINESE = "[\u4e00-\u9fa5]+";
     private static final String VERSION = "^-?[\\d.]+(?:e-?\\d+)?$";
+    //验证当前用户名
+    private static final String IDENTITY_NAME = "[\\u4e00-\\u9fa5a-zA-Z0-9\\.]{1,10}";
 
-    private static final String AUTHNODE_AUTHORIZE_KEY = "OrAanUgeTBlHocNkBOcaDasE";
+
+    private static final String AUTH_NODE_AUTHORIZE_KEY = "OrAanUgeTBlHocNkBOcaDasE";
     private static final String PC_AUTHORIZE_KEY = "OranPgeBlockBCcaas";
     private static final String MAC_AUTHORIZE_KEY = "OraMngeBAlockBCcaas";
     private static final String IOS_AUTHORIZE_KEY = "OrangeiBlockOBcaasS";
@@ -50,6 +53,14 @@ public class RegexTool {
 
         return matcher.matches();
     }
+    public static boolean isIdentityName(String identityName) {
+
+        Pattern pattern = getPattern(IDENTITY_NAME);
+
+        Matcher matcher = pattern.matcher(identityName);
+
+        return matcher.matches();
+    }
 
     public static boolean isValidateVersion(String version) {
 
@@ -61,7 +72,7 @@ public class RegexTool {
     }
 
     public static boolean isValidateAuthNodeKey(String authKey) {
-        return authKey.equals(AUTHNODE_AUTHORIZE_KEY) ? true : false;
+        return authKey.equals(AUTH_NODE_AUTHORIZE_KEY) ? true : false;
     }
 
     public static boolean isValidatePCKey(String authKey) {

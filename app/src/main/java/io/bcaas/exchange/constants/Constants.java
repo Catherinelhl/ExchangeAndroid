@@ -311,6 +311,7 @@ public class Constants {
         public static final String CONVERT_COIN = "convertCoin";
         public static final String RECHARGE_VIRTUAL_COIN = "rechargeVirtualCoin";
         public static final String GET_BANK_INFO = "getBankInfo";
+        public static final String IDENTITY_NAME_VERIFICATION = "identityNameVerification";
     }
 
     /**

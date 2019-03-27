@@ -93,4 +93,14 @@ public class PaymentManagerInteractor {
         HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
         return httpApi.convertCoin(body);
     }
+
+    /**
+     * 實名認證
+     *
+     * @param body
+     */
+    public Observable<ResponseJson> identityNameVerification(RequestBody body) {
+        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
+        return httpApi.identityNameVerification(body);
+    }
 }

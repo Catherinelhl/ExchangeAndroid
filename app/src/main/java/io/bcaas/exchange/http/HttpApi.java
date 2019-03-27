@@ -273,4 +273,14 @@ public interface HttpApi {
     @POST(APIURLConstants.API_CONVERT_COIN)
     Observable<ResponseJson> convertCoin(@Body RequestBody requestBody);
 
+
+    /**
+     * 實名認證
+     *
+     * @param requestBody
+     * @return
+     */
+    @POST(APIURLConstants.API_IDENTITY_NAME_VERIFYCATION)
+    Observable<ResponseJson> identityNameVerification(@Body RequestBody requestBody);
+
 }

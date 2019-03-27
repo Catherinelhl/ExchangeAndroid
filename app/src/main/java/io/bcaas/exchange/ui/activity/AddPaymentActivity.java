@@ -13,11 +13,13 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.view.viewGroup.AddPayWayItemView;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
+import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -78,11 +80,19 @@ public class AddPaymentActivity extends BaseActivity {
         tvTitle.setText(R.string.add_payment_way);
         apwvPayment.setMiddleInfo(getString(R.string.please_choose_a_payment));
         apwvPayment.showRightDrawable(true);
+
     }
 
     @Override
     public void initData() {
-
+//取得当前的用户名
+        MemberVO memberVO = BaseApplication.getMemberVO();
+        if (memberVO != null) {
+            String identityName = memberVO.getIdentityName();
+            if (StringTool.notEmpty(identityName)) {
+                apwvBankPersonName.setContent(identityName);
+            }
+        }
     }
 
     @Override

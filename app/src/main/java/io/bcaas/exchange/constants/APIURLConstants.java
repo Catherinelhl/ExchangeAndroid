@@ -96,6 +96,7 @@ public class APIURLConstants {
     public static final String API_RECHARGE_VIRTUAL_COIN = "memberOrder/rechargeVirtualCoin";
     /*回購虛擬幣*/
     public static final String API_CONVERT_COIN = "memberOrder/convertCoin";
-
+    /*實名認證*/
+    public static final String API_IDENTITY_NAME_VERIFYCATION = "member/identityNameVerification";
 
 }

@@ -28,6 +28,7 @@
             android:id="@+id/ll_bank_info"
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:visibility="invisible"
             android:background="@color/white"
             android:layout_marginTop="@dimen/d23"
             android:layout_height="wrap_content">

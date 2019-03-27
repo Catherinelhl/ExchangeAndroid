@@ -299,4 +299,7 @@
     <string name="delete_pay_way_success">支付方式删除成功！</string>
     <string name="sure_to_delete_current_pay_way">确定删除当前支付方式？</string>
     <string name="add_pay_way_method">添加支付方式</string>
+    <string name="please_input_identity_name">请输入实名认证</string>
+    <string name="identity_name_wrong_regex">实名认真格式不正确</string>
+    <string name="had_identity_verification">您已认证</string>
 </resources>

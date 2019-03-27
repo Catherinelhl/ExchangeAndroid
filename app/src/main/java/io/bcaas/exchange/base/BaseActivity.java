@@ -37,10 +37,12 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.app.ActivityTool;
 import io.bcaas.exchange.tools.app.PreferenceTool;
 import io.bcaas.exchange.tools.otto.OttoTool;
+import io.bcaas.exchange.tools.regex.RegexTool;
 import io.bcaas.exchange.ui.activity.GoogleVerifyActivity;
 import io.bcaas.exchange.ui.activity.LoginActivity;
 import io.bcaas.exchange.ui.activity.SetFundPasswordActivity;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
+import io.bcaas.exchange.view.dialog.EditTextDialog;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.pop.ListPop;
@@ -64,6 +66,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     protected Activity activity;
     /*双按钮弹框*/
     private DoubleButtonDialog doubleButtonDialog;
+    /*双按钮带输入框的弹框*/
+    private EditTextDialog editTextDialog;
     /*单按钮弹框*/
     private SingleButtonDialog singleDialog;
     private LoadingDialog loadingDialog;
@@ -435,6 +439,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     /**
      * 显示双按钮对话框
+     *
      * @param message
      * @param listener
      */
@@ -444,6 +449,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     /**
      * 显示双按钮对话框
+     *
      * @param left
      * @param right
      * @param message
@@ -485,6 +491,49 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
                     public void cancel() {
                         listener.cancel();
                         doubleButtonDialog.dismiss();
+                    }
+                }).show();
+    }
+
+    /**
+     * 显示带输入框的双按钮对话框
+     *
+     * @param message
+     * @param listener
+     */
+    public void showEditTextDialog(String title, String message, EditTextDialog.ConfirmClickListener listener) {
+        if (editTextDialog == null) {
+            editTextDialog = new EditTextDialog(this);
+        }
+        /*设置弹框点击周围不予消失*/
+        editTextDialog.setCanceledOnTouchOutside(false);
+        /*设置弹框背景*/
+        editTextDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_white));
+        editTextDialog.setLeftText(getString(R.string.cancel))
+                .setRightText(getString(R.string.sure))
+                .setContent(message)
+                .setTitle(title)
+                .setOnConfirmClickListener(new EditTextDialog.ConfirmClickListener() {
+                    @Override
+                    public void sure(String name) {
+                        //step 1:判断当前是否输入内容
+                        if (StringTool.isEmpty(name)) {
+                            showToast(getString(R.string.please_input_identity_name));
+                            return;
+                        }
+                        //step 2：判断当前输入的内容是否满足用户名需求
+                        if (!RegexTool.isIdentityName(name)) {
+                            showToast(getString(R.string.identity_name_wrong_regex));
+                            return;
+                        }
+                        listener.sure(name);
+                        editTextDialog.dismiss();
+                    }
+
+                    @Override
+                    public void cancel() {
+                        listener.cancel();
+                        editTextDialog.dismiss();
                     }
                 }).show();
     }

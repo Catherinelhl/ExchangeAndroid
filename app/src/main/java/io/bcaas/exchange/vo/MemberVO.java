@@ -35,6 +35,14 @@ public class MemberVO implements Serializable {
      */
     private String phone;
     /**
+     * 會員身份字號
+     */
+    private String identityNumber;
+    /**
+     * 會員實名
+     */
+    private String identityName;
+    /**
      * 雙因素驗證密鑰(Google)
      */
     private String twoFactorAuthSecret;
@@ -65,7 +73,7 @@ public class MemberVO implements Serializable {
     /**
      * 實名認證 (0:未認證, 1:已認證)
      */
-    private Integer isPersonalVerify;
+    private Integer isIdentityVerify;
     /**
      * 更新時間
      */
@@ -117,6 +125,22 @@ public class MemberVO implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getIdentityNumber() {
+        return identityNumber;
+    }
+
+    public void setIdentityNumber(String identityNumber) {
+        this.identityNumber = identityNumber;
+    }
+
+    public String getIdentityName() {
+        return identityName;
+    }
+
+    public void setIdentityName(String identityName) {
+        this.identityName = identityName;
     }
 
     public String getTwoFactorAuthSecret() {
@@ -191,12 +215,12 @@ public class MemberVO implements Serializable {
         this.isPayWayBind = isPayWayBind;
     }
 
-    public Integer getIsPersonalVerify() {
-        return isPersonalVerify;
+    public Integer getIsIdentityVerify() {
+        return isIdentityVerify;
     }
 
-    public void setIsPersonalVerify(Integer isPersonalVerify) {
-        this.isPersonalVerify = isPersonalVerify;
+    public void setIsIdentityVerify(Integer isIdentityVerify) {
+        this.isIdentityVerify = isIdentityVerify;
     }
 
     public String getUpdateTime() {
@@ -227,6 +251,8 @@ public class MemberVO implements Serializable {
                 ", txPassword='" + txPassword + '\'' +
                 ", realIP='" + realIP + '\'' +
                 ", phone='" + phone + '\'' +
+                ", identityNumber='" + identityNumber + '\'' +
+                ", identityName='" + identityName + '\'' +
                 ", twoFactorAuthSecret='" + twoFactorAuthSecret + '\'' +
                 ", emailVerify=" + emailVerify +
                 ", phoneVerify=" + phoneVerify +
@@ -234,7 +260,7 @@ public class MemberVO implements Serializable {
                 ", isActivation=" + isActivation +
                 ", isAutoMatchTx=" + isAutoMatchTx +
                 ", isPayWayBind=" + isPayWayBind +
-                ", isPersonalVerify=" + isPersonalVerify +
+                ", isIdentityVerify=" + isIdentityVerify +
                 ", updateTime='" + updateTime + '\'' +
                 ", createTime='" + createTime + '\'' +
                 '}';

@@ -461,4 +461,62 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     }
                 });
     }
+
+    @Override
+    public void identityNameVerification(String identityName,String type) {
+        view.showLoading();
+        RequestJson requestJson = new RequestJson();
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberId(BaseApplication.getMemberID());
+        memberVO.setIdentityName(identityName);
+        requestJson.setMemberVO(memberVO);
+
+        LoginInfoVO loginInfoVO = new LoginInfoVO();
+        loginInfoVO.setAccessToken(BaseApplication.getToken());
+        requestJson.setLoginInfoVO(loginInfoVO);
+
+        GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "identityNameVerification:", requestJson);
+
+        paymentManagerInteractor.identityNameVerification(GsonTool.beanToRequestBody(requestJson))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseJson>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseJson responseJson) {
+                        view.hideLoading();
+                        if (responseJson != null) {
+                            GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "identityNameVerification:", responseJson);
+                            if (responseJson.isSuccess()) {
+                                view.responseSuccess(responseJson.getMessage(), type);
+                            } else {
+                                int code = responseJson.getCode();
+                                //    {"success":false,"code":2097,"message":"Identity name verify has been done."}
+                                // {"success":false,"code":2015,"message":"Current password is wrong."}
+                                //    {"success":false,"code":2000,"message":"VO is null or type error."}
+                                view.responseFailed(responseJson.getMessage(), type);
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        view.hideLoading();
+                        e.printStackTrace();
+                        LogTool.e(TAG, e.getMessage());
+                        view.responseFailed(e.getMessage(), type);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

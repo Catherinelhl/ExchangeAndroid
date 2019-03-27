@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             exchange:addPaymentText="姓名"
             exchange:showMiddle="false"
+            exchange:enableInput="false"
             android:layout_height="wrap_content"/>
 
     <io.bcaas.exchange.view.viewGroup.AddPayWayItemView
