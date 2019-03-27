@@ -22,6 +22,8 @@ import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
+import io.bcaas.exchange.vo.CurrencyListVO;
+import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
@@ -81,7 +83,39 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.recharge));
+        List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            /**
+             * {
+             * "memberKeyUid": 48,
+             * "address": "0",
+             * "balanceBlocked": "1.0000000000",
+             * "balanceAvailable": "1999.0000000000",
+             * "currencyListVO": {
+             * "currencyUid": "3",
+             * "enName": "CNYC",
+             * "cnName": "七彩貝"
+             * }
+             * }
+             */
+            for (MemberKeyVO memberKeyVO : memberKeyVOList) {
+                if (memberKeyVO == null) {
+                    tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
 
+                    return;
+                }
+                int memberKeyUid = memberKeyVO.getMemberKeyUid();
+                if (memberKeyUid == 48) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO == null) {
+                        tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
+                        return;
+                    }
+                    tvRechargeName.setText(currencyListVO.getCnName() + ":" + memberKeyVO.getBalanceAvailable() + " " + currencyListVO.getEnName());
+
+                }
+            }
+        }
     }
 
     @Override
@@ -129,54 +163,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
                     @Override
                     public void onNext(Object o) {
-                        /*step 1:判断当前是否设置资金密码*/
-                        MemberVO memberVO = BaseApplication.getMemberVO();
-                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
-                        if (memberVO != null) {
-                            //判断是否设置「资金密码」
-                            String txPasswordAttribute = memberVO.getTxPassword();
-                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
-                                showToast(getString(R.string.no_fund_password_please_set_first));
-                                return;
-                            }
-                            //4：判断当前是否设置google验证码
-                            int googleVerifyAttribute = memberVO.getTwoFactorAuthVerify();
-                            if (googleVerifyAttribute == Constants.Status.UN_BOUND) {
-                                showToast(getString(R.string.no_google_verify_please_set_first));
-                                return;
-                            }
+                        if (isCanIntent()) {
+                            //已经绑定
+                            intentToActivity(BuyBackActivity.class);
                         }
-                        /*step 2:判断当前是否完成实名认证*/
-                        int identityVerify = memberVO.getIsIdentityVerify();
-                        if (identityVerify == 0) {
-                            showToast(getString(R.string.please_identity));
-                            return;
-                        }
-                        /*step 3:判断当前是否完成支付方式绑定*/
-                        int isPayWayBind = memberVO.getIsPayWayBind();
-                        if (isPayWayBind == 0) {
-                            // 未绑定
-                            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
-                            showDoubleButtonDialog(getString(R.string.cancel),
-                                    getString(R.string.go_to_bind),
-                                    getString(R.string.please_finish_payment_bind),
-                                    new DoubleButtonDialog.ConfirmClickListener() {
-                                        @Override
-                                        public void sure() {
-                                            Intent intent = new Intent();
-                                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
-                                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
-                                        }
-
-                                        @Override
-                                        public void cancel() {
-
-                                        }
-                                    });
-                            return;
-                        }
-                        //已经绑定
-                        intentToActivity(BuyBackActivity.class);
 
                     }
 
@@ -199,67 +189,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
                     @Override
                     public void onNext(Object o) {
-                        /*step 1:判断当前是否设置资金密码*/
-                        MemberVO memberVO = BaseApplication.getMemberVO();
-                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
-                        if (memberVO != null) {
-                            //判断是否设置「资金密码」
-                            String txPasswordAttribute = memberVO.getTxPassword();
-                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
-                                showToast(getString(R.string.no_fund_password_please_set_first));
-                                return;
-                            }
-                            //4：判断当前是否设置google验证码
-                            int googleVerifyAttribute = memberVO.getTwoFactorAuthVerify();
-                            if (googleVerifyAttribute == Constants.Status.UN_BOUND) {
-                                showToast(getString(R.string.no_google_verify_please_set_first));
-                                return;
-                            }
+                        if (isCanIntent()) {
+                            //已经绑定
+                            intentToActivity(RechargeDetailActivity.class);
                         }
-                        /*step 2:判断当前是否完成实名认证*/
-                        int identityVerify = memberVO.getIsIdentityVerify();
-                        if (identityVerify == 0) {
-                            showDoubleButtonDialog(getString(R.string.please_identity), new DoubleButtonDialog.ConfirmClickListener() {
-                                @Override
-                                public void sure() {
-                                    // 跳转到实名认证的界面
-                                    Intent intent = new Intent();
-                                    intent.setClass(RechargeActivity.this, IdentityAuthenticationActivity.class);
-                                    startActivityForResult(intent, Constants.RequestCode.IDENTITY_AUTHENTICATION);
-                                }
-
-                                @Override
-                                public void cancel() {
-
-                                }
-                            });
-                            return;
-                        }
-                        /*step 3:判断当前是否完成支付方式绑定*/
-                        int isPayWayBind = memberVO.getIsPayWayBind();
-                        if (isPayWayBind == 0) {
-                            // 未绑定
-                            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
-                            showDoubleButtonDialog(getString(R.string.cancel),
-                                    getString(R.string.go_to_bind),
-                                    getString(R.string.please_finish_payment_bind),
-                                    new DoubleButtonDialog.ConfirmClickListener() {
-                                        @Override
-                                        public void sure() {
-                                            Intent intent = new Intent();
-                                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
-                                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
-                                        }
-
-                                        @Override
-                                        public void cancel() {
-
-                                        }
-                                    });
-                            return;
-                        }
-                        //已经绑定
-                        intentToActivity(RechargeDetailActivity.class);
                     }
 
                     @Override
@@ -302,5 +235,68 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
     @Override
     public void getAccountSecurityFailure(String info) {
         showToast(info);
+    }
+
+    private boolean isCanIntent() {
+        /*step 1:判断当前是否设置资金密码*/
+        MemberVO memberVO = BaseApplication.getMemberVO();
+        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+        if (memberVO != null) {
+            //判断是否设置「资金密码」
+            String txPasswordAttribute = memberVO.getTxPassword();
+            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                showToast(getString(R.string.no_fund_password_please_set_first));
+                return false;
+            }
+            //4：判断当前是否设置google验证码
+            int googleVerifyAttribute = memberVO.getTwoFactorAuthVerify();
+            if (googleVerifyAttribute == Constants.Status.UN_BOUND) {
+                showToast(getString(R.string.no_google_verify_please_set_first));
+                return false;
+            }
+        }
+        /*step 2:判断当前是否完成实名认证*/
+        int identityVerify = memberVO.getIsIdentityVerify();
+        if (identityVerify == 0) {
+            showDoubleButtonDialog(getString(R.string.please_identity), new DoubleButtonDialog.ConfirmClickListener() {
+                @Override
+                public void sure() {
+                    // 跳转到实名认证的界面
+                    Intent intent = new Intent();
+                    intent.setClass(RechargeActivity.this, IdentityAuthenticationActivity.class);
+                    startActivityForResult(intent, Constants.RequestCode.IDENTITY_AUTHENTICATION);
+                }
+
+                @Override
+                public void cancel() {
+
+                }
+            });
+            return false;
+        }
+        /*step 3:判断当前是否完成支付方式绑定*/
+        int isPayWayBind = memberVO.getIsPayWayBind();
+        if (isPayWayBind == 0) {
+            // 未绑定
+            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
+            showDoubleButtonDialog(getString(R.string.cancel),
+                    getString(R.string.go_to_bind),
+                    getString(R.string.please_finish_payment_bind),
+                    new DoubleButtonDialog.ConfirmClickListener() {
+                        @Override
+                        public void sure() {
+                            Intent intent = new Intent();
+                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
+                        }
+
+                        @Override
+                        public void cancel() {
+
+                        }
+                    });
+            return false;
+        }
+        return true;
     }
 }
