@@ -156,6 +156,6 @@ public class InputPasswordActivity extends BaseActivity
 
     @Override
     public void responseFailed(String message, String type) {
-
+        showToast(message);
     }
 }
