@@ -18,6 +18,8 @@
                   android:id="@+id/tv_person_name"
                   style="@style/black_16_text_style"
                   tool:text="zhangsan"
+                  android:drawablePadding="@dimen/d5"
+                  android:drawableLeft="@mipmap/icon_avator"
                   android:gravity="center_vertical"
                   android:layout_gravity="center"
                   android:layout_height="wrap_content"

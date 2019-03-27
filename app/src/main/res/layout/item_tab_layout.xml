@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <TextView
-            android:id="@+id/tab_item_text"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:id="@+id/ll"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_16"
-            android:text="BTC"
-            android:textColor="@color/black_333333"
-    />
-    <View
-            android:id="@+id/tab_item_indicator"
-            android:layout_width="@dimen/d16"
-            android:layout_height="@dimen/d2"
-            android:layout_marginTop="@dimen/d5"
-            android:background="@color/button_color"
-            android:visibility="invisible"
-    />
-</LinearLayout>
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/tab_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_16"
+                android:text="BTC"
+                android:textColor="@color/black_333333"
+        />
+        <View
+                android:id="@+id/tab_item_indicator"
+                android:layout_width="@dimen/d16"
+                android:layout_height="@dimen/d2"
+                android:layout_marginTop="@dimen/d5"
+                android:background="@color/button_color"
+                android:visibility="invisible"
+        />
+    </LinearLayout>
+    <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/d20"
+            android:background="@color/transparent"
+            android:src="@mipmap/icon_coin_btc"
+            android:layout_toLeftOf="@+id/ll"
+            android:visibility="visible"
+            android:layout_marginRight="@dimen/d5"
+            android:layout_alignTop="@+id/ll"
+            android:layout_height="@dimen/d20"/>
+
+</RelativeLayout>

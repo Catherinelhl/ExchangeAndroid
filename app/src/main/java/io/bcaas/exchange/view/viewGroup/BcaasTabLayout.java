@@ -13,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -43,7 +45,7 @@ public class BcaasTabLayout extends FrameLayout {
     private int mTabMode;
     private int mTabTextSize;
     private Context context;
-    private int tabSize=3;
+    private int tabSize = 3;
 
 
     public BcaasTabLayout(@NonNull Context context) {
@@ -282,6 +284,7 @@ public class BcaasTabLayout extends FrameLayout {
     public static View getTabView(Context context, String text, int indicatorWidth, int indicatorHeight, int textSize) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_tab_layout, null);
         TextView tabText = (TextView) view.findViewById(R.id.tab_item_text);
+        ImageView imageView = (ImageView) view.findViewById(R.id.iv_icon);
         if (indicatorWidth > 0) {
             View indicator = view.findViewById(R.id.tab_item_indicator);
             ViewGroup.LayoutParams layoutParams = indicator.getLayoutParams();
@@ -291,6 +294,26 @@ public class BcaasTabLayout extends FrameLayout {
         }
         tabText.setTextSize(textSize);
         tabText.setText(text);
+        if (StringTool.notEmpty(text)) {
+            imageView.setVisibility(VISIBLE);
+            switch (text) {
+                case "BTC":
+                    imageView.setImageResource(R.mipmap.icon_coin_btc);
+                    break;
+                case "ETH":
+                    imageView.setImageResource(R.mipmap.icon_coin_eth);
+                    break;
+                case "ZBB":
+                    imageView.setImageResource(R.mipmap.icon_coin_zbb);
+                    break;
+                case "BCC":
+                    imageView.setImageResource(R.mipmap.icon_coin_bcc);
+                    break;
+                default:
+                    imageView.setVisibility(GONE);
+                    break;
+            }
+        }
         return view;
     }
 
