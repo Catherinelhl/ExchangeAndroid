@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.StringTool;
@@ -19,6 +20,7 @@ import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.view.dialog.EditTextDialog;
 import io.bcaas.exchange.view.viewGroup.SafetyCenterItemView;
+import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
@@ -52,6 +54,7 @@ public class IdentityAuthenticationActivity extends BaseActivity
     SafetyCenterItemView scivAuthentication;
 
     private PayWayManagerContract.Presenter presenter;
+    private boolean isAuthen = false;
 
     @Override
     public int getContentView() {
@@ -68,7 +71,21 @@ public class IdentityAuthenticationActivity extends BaseActivity
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.identity_verification));
-        scivAuthentication.setTabStatusByText(false, getString(R.string.Immediate_authentication));
+        //判断当前是否已经实名认证过了
+        MemberVO memberVO = BaseApplication.getMemberVO();
+        if (memberVO != null) {
+            int isIdentityVerify = memberVO.getIsIdentityVerify();
+            if (isIdentityVerify == 1) {
+                //取出当前用户名
+                String identityName = memberVO.getIdentityName();
+                scivAuthentication.setTabStatusByText(false, identityName);
+                isAuthen = true;
+
+            } else {
+                scivAuthentication.setTabStatusByText(false, getString(R.string.Immediate_authentication));
+
+            }
+        }
 
     }
 
@@ -90,7 +107,11 @@ public class IdentityAuthenticationActivity extends BaseActivity
         scivAuthentication.setOnItemSelectListener(new OnItemSelectListener() {
             @Override
             public <T> void onItemSelect(T type, String from) {
-                showEditTextDialog(getString(R.string.Immediate_authentication),null, new EditTextDialog.ConfirmClickListener() {
+                //判断当前是否可以点击
+                if (isAuthen) {
+                    return;
+                }
+                showEditTextDialog(getString(R.string.Immediate_authentication), null, new EditTextDialog.ConfirmClickListener() {
                     @Override
                     public void sure(String name) {
                         //step 3：开始请求数据

@@ -129,6 +129,30 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
                     @Override
                     public void onNext(Object o) {
+                        /*step 1:判断当前是否设置资金密码*/
+                        MemberVO memberVO = BaseApplication.getMemberVO();
+                        // 如果当前有账户信息，那么本地替用户进行密码设置的判断
+                        if (memberVO != null) {
+                            //判断是否设置「资金密码」
+                            String txPasswordAttribute = memberVO.getTxPassword();
+                            if (StringTool.equals(txPasswordAttribute, Constants.Status.NO_TX_PASSWORD)) {
+                                showToast(getString(R.string.no_fund_password_please_set_first));
+                                return;
+                            }
+                            //4：判断当前是否设置google验证码
+                            int googleVerifyAttribute = memberVO.getTwoFactorAuthVerify();
+                            if (googleVerifyAttribute == Constants.Status.UN_BOUND) {
+                                showToast(getString(R.string.no_google_verify_please_set_first));
+                                return;
+                            }
+                        }
+                        /*step 2:判断当前是否完成实名认证*/
+                        int identityVerify = memberVO.getIsIdentityVerify();
+                        if (identityVerify == 0) {
+                            showToast(getString(R.string.please_identity));
+                            return;
+                        }
+                        // step 3:开始跳转回购
                         intentToActivity(BuyBackActivity.class);
 
 
@@ -171,6 +195,11 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                             }
                         }
                         /*step 2:判断当前是否完成实名认证*/
+                        int identityVerify = memberVO.getIsIdentityVerify();
+                        if (identityVerify == 0) {
+                            showToast(getString(R.string.please_identity));
+                            return;
+                        }
                         /*step 3:判断当前是否完成支付方式绑定*/
                         presenter.getAccountSecurity();
                     }

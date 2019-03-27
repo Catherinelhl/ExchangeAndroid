@@ -75,6 +75,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 //    Button convertCoin;
 
     private PayWayManagerContract.Presenter presenter;
+    private MemberPayInfoVO memberPayInfoVO;
 
     @Override
     public int getContentView() {
@@ -122,7 +123,12 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
 
                     @Override
                     public void onNext(Object o) {
-                        //step 1: 跳转界面进行支付方式的添加
+                        //step 1:判断当前是否已经添加了支付方式
+                        if (memberPayInfoVO != null) {
+                            showToast(getString(R.string.delete_pay_way_to_add_pay_way));
+                            return;
+                        }
+                        //step 2: 跳转界面进行支付方式的添加
                         Intent intent = new Intent();
                         intent.setClass(PaymentManagerActivity.this, AddPaymentActivity.class);
                         startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
@@ -220,7 +226,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
                 //取出当前第一条数据，然后传入下一个界面
                 if (ListTool.noEmpty(memberPayInfoVOList)) {
                     llBankInfo.setVisibility(View.VISIBLE);
-                    MemberPayInfoVO memberPayInfoVO = memberPayInfoVOList.get(0);
+                    memberPayInfoVO = memberPayInfoVOList.get(0);
                     if (memberPayInfoVO != null) {
                         tvBankAccount.setText(memberPayInfoVO.getBankAccount());
                         tvCardHolder.setText(memberPayInfoVO.getBankPersonalName());
@@ -228,12 +234,14 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
                     }
                 } else {
                     llBankInfo.setVisibility(View.INVISIBLE);
+                    memberPayInfoVO=null;
                 }
                 break;
             case Constants.Payment.REMOVE_PAY_WAY:
                 showToast(getString(R.string.delete_pay_way_success));
                 //刷新当前界面
                 llBankInfo.setVisibility(View.INVISIBLE);
+                memberPayInfoVO=null;
                 break;
         }
     }
@@ -242,6 +250,7 @@ public class PaymentManagerActivity extends BaseActivity implements PayWayManage
     public void noData() {
         super.noData();
         llBankInfo.setVisibility(View.INVISIBLE);
+        memberPayInfoVO=null;
     }
 
     @Override

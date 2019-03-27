@@ -302,4 +302,6 @@
     <string name="please_input_identity_name">请输入实名认证</string>
     <string name="identity_name_wrong_regex">实名认真格式不正确</string>
     <string name="had_identity_verification">您已认证</string>
+    <string name="delete_pay_way_to_add_pay_way">当前已有支付方式，请先删除当前的支付方式再添加新的支付方式</string>
+    <string name="please_identity">请先实名认证</string>
 </resources>

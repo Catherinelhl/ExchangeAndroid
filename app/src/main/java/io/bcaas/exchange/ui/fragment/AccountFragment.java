@@ -75,8 +75,8 @@ public class AccountFragment extends BaseFragment implements AccountSecurityCont
         SettingsBean settingTypeBean4 = new SettingsBean(getString(R.string.turn_out), Constants.SettingType.TURN_OUT);
         SettingsBean settingTypeBean5 = new SettingsBean(getString(R.string.recharge), Constants.SettingType.RECHARGE);
         SettingsBean settingTypeBean6 = new SettingsBean(getString(R.string.safety), Constants.SettingType.SAFETY);
-        SettingsBean settingTypeBean7 = new SettingsBean(getString(R.string.payment_management), Constants.SettingType.PAYMENT_MANAGEMENT);
-        SettingsBean settingTypeBean8 = new SettingsBean(getString(R.string.identity_authentication), Constants.SettingType.IDENTITY_AUTHENTICATION);
+        SettingsBean settingTypeBean7 = new SettingsBean(getString(R.string.identity_authentication), Constants.SettingType.IDENTITY_AUTHENTICATION);
+        SettingsBean settingTypeBean8 = new SettingsBean(getString(R.string.payment_management), Constants.SettingType.PAYMENT_MANAGEMENT);
         settingTypes.add(settingTypeBean);
         settingTypes.add(settingTypeBean3);
         settingTypes.add(settingTypeBean4);
@@ -130,17 +130,6 @@ public class AccountFragment extends BaseFragment implements AccountSecurityCont
                             startActivityForResult(intent, Constants.RequestCode.PAYMENT_MANAGEMENT);
                             break;
                         case IDENTITY_AUTHENTICATION:
-                            //判断当前是否已经实名认证过了
-                            MemberVO memberVO = BaseApplication.getMemberVO();
-                            if (memberVO != null) {
-                                int isIdentityVerify = memberVO.getIsIdentityVerify();
-                                if (isIdentityVerify == 1) {
-                                    //已认证
-                                    showToast(getString(R.string.had_identity_verification));
-                                    return;
-                                }
-                            }
-                            //否则跳转界面
                             intent.setClass(getContext(), IdentityAuthenticationActivity.class);
                             startActivityForResult(intent, Constants.RequestCode.IDENTITY_AUTHENTICATION);
                             break;
