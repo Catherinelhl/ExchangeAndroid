@@ -145,10 +145,10 @@ public class AccountFragment extends BaseFragment implements AccountSecurityCont
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
+            presenter.getAccountSecurity();
             switch (requestCode) {
                 case Constants.RequestCode.IDENTITY_AUTHENTICATION:
                     //从实名认证界面返回，刷新当前认证信息
-                    presenter.getAccountSecurity();
 
                     break;
                 case Constants.RequestCode.ALL_FUND_CODE:

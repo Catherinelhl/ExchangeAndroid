@@ -63,7 +63,6 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
     Button btnRecharge;
     @BindView(R.id.tv_recharge_intro)
     TextView tvRechargeIntro;
-    private String action;
 
     private AccountSecurityContract.Presenter presenter;
 
@@ -88,7 +87,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
     @Override
     public void initData() {
         presenter = new AccountSecurityPresenterImp(this);
-
+        presenter.getAccountSecurity();
     }
 
     @Override
@@ -153,9 +152,31 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                             showToast(getString(R.string.please_identity));
                             return;
                         }
-                        action = "buyBack";
                         /*step 3:判断当前是否完成支付方式绑定*/
-                        presenter.getAccountSecurity();
+                        int isPayWayBind = memberVO.getIsPayWayBind();
+                        if (isPayWayBind == 0) {
+                            // 未绑定
+                            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
+                            showDoubleButtonDialog(getString(R.string.cancel),
+                                    getString(R.string.go_to_bind),
+                                    getString(R.string.please_finish_payment_bind),
+                                    new DoubleButtonDialog.ConfirmClickListener() {
+                                        @Override
+                                        public void sure() {
+                                            Intent intent = new Intent();
+                                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
+                                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
+                                        }
+
+                                        @Override
+                                        public void cancel() {
+
+                                        }
+                                    });
+                            return;
+                        }
+                        //已经绑定
+                        intentToActivity(BuyBackActivity.class);
 
                     }
 
@@ -198,12 +219,47 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                         /*step 2:判断当前是否完成实名认证*/
                         int identityVerify = memberVO.getIsIdentityVerify();
                         if (identityVerify == 0) {
-                            showToast(getString(R.string.please_identity));
+                            showDoubleButtonDialog(getString(R.string.please_identity), new DoubleButtonDialog.ConfirmClickListener() {
+                                @Override
+                                public void sure() {
+                                    // 跳转到实名认证的界面
+                                    Intent intent = new Intent();
+                                    intent.setClass(RechargeActivity.this, IdentityAuthenticationActivity.class);
+                                    startActivityForResult(intent, Constants.RequestCode.IDENTITY_AUTHENTICATION);
+                                }
+
+                                @Override
+                                public void cancel() {
+
+                                }
+                            });
                             return;
                         }
-                        action = "recharge";
                         /*step 3:判断当前是否完成支付方式绑定*/
-                        presenter.getAccountSecurity();
+                        int isPayWayBind = memberVO.getIsPayWayBind();
+                        if (isPayWayBind == 0) {
+                            // 未绑定
+                            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
+                            showDoubleButtonDialog(getString(R.string.cancel),
+                                    getString(R.string.go_to_bind),
+                                    getString(R.string.please_finish_payment_bind),
+                                    new DoubleButtonDialog.ConfirmClickListener() {
+                                        @Override
+                                        public void sure() {
+                                            Intent intent = new Intent();
+                                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
+                                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
+                                        }
+
+                                        @Override
+                                        public void cancel() {
+
+                                        }
+                                    });
+                            return;
+                        }
+                        //已经绑定
+                        intentToActivity(RechargeDetailActivity.class);
                     }
 
                     @Override
@@ -227,7 +283,12 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                     boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                     if (!isBack) {
                         //更新当前信息
+                        presenter.getAccountSecurity();
                     }
+                    break;
+                case Constants.RequestCode.IDENTITY_AUTHENTICATION:
+                    //更新当前的信息
+                    presenter.getAccountSecurity();
                     break;
             }
         }
@@ -235,36 +296,6 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
 
     @Override
     public void getAccountSecuritySuccess(MemberVO memberVO) {
-        //判断当前是否已经绑定了支付方式
-        int isPayWayBind = memberVO.getIsPayWayBind();
-        if (isPayWayBind == 0) {
-            // 未绑定
-            //如果当前查询当前的支付方式没有数据结构返回，那么进行提示拦截
-            showDoubleButtonDialog(getString(R.string.cancel),
-                    getString(R.string.go_to_bind),
-                    getString(R.string.please_finish_payment_bind),
-                    new DoubleButtonDialog.ConfirmClickListener() {
-                        @Override
-                        public void sure() {
-                            Intent intent = new Intent();
-                            intent.setClass(RechargeActivity.this, AddPaymentActivity.class);
-                            startActivityForResult(intent, Constants.RequestCode.ADD_PAYMENT_CODE);
-                        }
-
-                        @Override
-                        public void cancel() {
-
-                        }
-                    });
-        } else {
-            //已经绑定
-            //判读当前是哪一个动作
-            if (action == "recharge") {
-                intentToActivity(RechargeDetailActivity.class);
-            } else {
-                intentToActivity(BuyBackActivity.class);
-            }
-        }
 
     }
 
