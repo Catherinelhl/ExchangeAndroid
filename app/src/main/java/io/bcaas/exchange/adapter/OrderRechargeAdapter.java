@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.tools.ListTool;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.time.DateFormatTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -19,17 +20,13 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2018/12/19
- * 數據適配器：「转入」：数据适配器
+ * 數據適配器：「充值」：页面数据适配
  */
-public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.ViewHolder> {
-
-    private String TAG = OrderTurnInAdapter.class.getSimpleName();
-
-
+public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdapter.ViewHolder> {
     private Context context;
     private List<MemberOrderVO> memberOrderVOS;
 
-    public OrderTurnInAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
+    public OrderRechargeAdapter(Context context, List<MemberOrderVO> memberOrderVOS) {
         super();
         this.context = context;
         this.memberOrderVOS = memberOrderVOS;
@@ -38,7 +35,7 @@ public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_order_turn_in_recycler, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_order_recharge_recycler, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -57,11 +54,35 @@ public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.
         }
         String enName = currencyListVO.getEnName();
         String uid = currencyListVO.getCurrencyUid();
-        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.turn_in) + "  " + enName);
+        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.recharge) + "  " + enName);
         viewHolder.tvRechargeTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvRechargeStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);
-        viewHolder.tvRechargeAddress.setText(memberOrderVO.getAddress());
+        viewHolder.tvPayAmount.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + context.getResources().getString(R.string.yuan));
+        //取当下的支付银行账户名 银行名 银行账户
+        String bankAccount = memberOrderVO.getBankAccount();
+        String bankPersonalName = memberOrderVO.getBankPersonalName();
+        StringBuffer sb = new StringBuffer();
+        if (StringTool.notEmpty(bankPersonalName)) {
+            sb.append(bankPersonalName)
+                    .append(" ");
+        }
+        String bankName = memberOrderVO.getBankName();
+        if (StringTool.notEmpty(bankName)) {
+            sb.append(bankName)
+                    .append(" ");
+        }
+
+        if (StringTool.notEmpty(bankAccount)) {
+            int size = bankAccount.length();
+            //截取前四位和后四位，然后中间用****表示
+            String startFourString = bankAccount.substring(0, 4);
+            String endFourString = bankAccount.substring(size - 4, size);
+            sb.append(startFourString);
+            sb.append(context.getResources().getString(R.string.four_star));
+            sb.append(endFourString);
+        }
+        viewHolder.tvPayAccount.setText(sb);
     }
 
     @Override
@@ -79,7 +100,8 @@ public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.
         TextView tvRechargeTime;
         TextView tvRechargeStatus;
         TextView tvNumber;
-        TextView tvRechargeAddress;
+        TextView tvPayAmount;
+        TextView tvPayAccount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +109,8 @@ public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.
             tvRechargeTime = itemView.findViewById(R.id.tv_recharge_time);
             tvRechargeStatus = itemView.findViewById(R.id.tv_recharge_status);
             tvNumber = itemView.findViewById(R.id.tv_number);
-            tvRechargeAddress = itemView.findViewById(R.id.tv_recharge_address);
+            tvPayAmount = itemView.findViewById(R.id.tv_pay_amount);
+            tvPayAccount = itemView.findViewById(R.id.tv_pay_account);
         }
     }
 }

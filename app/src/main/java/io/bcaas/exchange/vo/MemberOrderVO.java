@@ -108,6 +108,22 @@ public class MemberOrderVO implements Serializable {
      * 建立時間
      */
     private String createTime;
+    /**
+     * 银行账户名字
+     */
+    private String bankPersonalName;
+    /**
+     * 银行名字
+     */
+    private String bankName;
+    /**
+     * 银行支行名字
+     */
+    private String bankBranchName;
+    /**
+     * 银行账号
+     */
+    private String bankAccount;
 
     public MemberOrderVO() {
         super();
@@ -293,6 +309,38 @@ public class MemberOrderVO implements Serializable {
         return serialVersionUID;
     }
 
+    public String getBankPersonalName() {
+        return bankPersonalName;
+    }
+
+    public void setBankPersonalName(String bankPersonalName) {
+        this.bankPersonalName = bankPersonalName;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getBankBranchName() {
+        return bankBranchName;
+    }
+
+    public void setBankBranchName(String bankBranchName) {
+        this.bankBranchName = bankBranchName;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
     @Override
     public String toString() {
         return "MemberOrderVO{" +
@@ -318,6 +366,10 @@ public class MemberOrderVO implements Serializable {
                 ", gasFeeCharge='" + gasFeeCharge + '\'' +
                 ", updateTime='" + updateTime + '\'' +
                 ", createTime='" + createTime + '\'' +
+                ", bankPersonalName='" + bankPersonalName + '\'' +
+                ", bankName='" + bankName + '\'' +
+                ", bankBranchName='" + bankBranchName + '\'' +
+                ", bankAccount='" + bankAccount + '\'' +
                 '}';
     }
 }

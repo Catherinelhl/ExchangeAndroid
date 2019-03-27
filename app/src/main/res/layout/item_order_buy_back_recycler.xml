@@ -18,7 +18,7 @@
         <TextView android:layout_width="wrap_content"
                   android:id="@+id/tv_recharge_type"
                   style="@style/black_16_text_style"
-                  tool:text="@string/recharge"
+                  tool:text="@string/buy_back"
                   android:fontFamily="sans-serif-medium"
                   android:gravity="center_vertical"
                   android:layout_gravity="center"
@@ -99,6 +99,26 @@
                 android:text="@string/pay_account"
                 android:gravity="center_vertical"
                 android:layout_gravity="center"/>
+        <!--<TextView-->
+                <!--android:gravity="right"-->
+                <!--android:layout_width="@dimen/d0"-->
+                <!--android:layout_weight="1"-->
+                <!--android:id="@+id/tv_bank_username"-->
+                <!--style="@style/black_666_12_text_style"-->
+                <!--android:layout_marginLeft="@dimen/d16"-->
+                <!--android:marqueeRepeatLimit="marquee_forever"-->
+                <!--android:ellipsize="middle"-->
+                <!--android:singleLine="true"/>-->
+        <!--<TextView-->
+                <!--android:gravity="right"-->
+                <!--android:layout_width="@dimen/d0"-->
+                <!--android:layout_weight="1"-->
+                <!--android:id="@+id/tv_bank_name"-->
+                <!--style="@style/black_666_12_text_style"-->
+                <!--android:layout_marginLeft="@dimen/d16"-->
+                <!--android:marqueeRepeatLimit="marquee_forever"-->
+                <!--android:ellipsize="middle"-->
+                <!--android:singleLine="true"/>-->
         <TextView
                 android:gravity="right"
                 android:layout_width="@dimen/d0"

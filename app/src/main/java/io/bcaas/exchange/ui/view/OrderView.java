@@ -7,9 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import io.bcaas.exchange.R;
-import io.bcaas.exchange.adapter.OrderTurnInAdapter;
-import io.bcaas.exchange.adapter.OrderTransactionAdapter;
-import io.bcaas.exchange.adapter.OrderTurnOutAdapter;
+import io.bcaas.exchange.adapter.*;
 import io.bcaas.exchange.base.BaseLinearLayout;
 import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
@@ -43,6 +41,10 @@ public class OrderView extends BaseLinearLayout {
     private OrderTurnInAdapter orderTurnInAdapter;
     //订单页面「转出」数据显示的适配器
     private OrderTurnOutAdapter orderTurnOutAdapter;
+    //订单页面「充值」数据显示的适配器
+    private OrderRechargeAdapter orderRechargeAdapter;
+    //订单页面「回购」数据显示的适配器
+    private OrderBuyBackAdapter orderBuyBackAdapter;
     //上拉加载的回调
     private LoadingDataListener loadingDataListener;
     //记录当前显示的页面
@@ -143,6 +145,42 @@ public class OrderView extends BaseLinearLayout {
                         orderTurnOutAdapter.addList(memberOrderVOS);
                     }
                     rvOrderData.setAdapter(orderTurnOutAdapter);
+                    rvOrderData.addOnScrollListener(scrollListener);
+                }
+                break;
+            case 3:// 充值
+                if (ListTool.isEmpty(memberOrderVOS)) {
+                    //显示没有信息页面
+                    rlNoData.setVisibility(VISIBLE);
+                } else {
+                    rlNoData.setVisibility(GONE);
+                    if (orderRechargeAdapter == null) {
+                        orderRechargeAdapter = new OrderRechargeAdapter(getContext(), memberOrderVOS);
+                        rvOrderData.setHasFixedSize(true);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                        rvOrderData.setLayoutManager(linearLayoutManager);
+                    } else {
+                        orderRechargeAdapter.addList(memberOrderVOS);
+                    }
+                    rvOrderData.setAdapter(orderRechargeAdapter);
+                    rvOrderData.addOnScrollListener(scrollListener);
+                }
+                break;
+            case 4:// 回购
+                if (ListTool.isEmpty(memberOrderVOS)) {
+                    //显示没有信息页面
+                    rlNoData.setVisibility(VISIBLE);
+                } else {
+                    rlNoData.setVisibility(GONE);
+                    if (orderBuyBackAdapter == null) {
+                        orderBuyBackAdapter = new OrderBuyBackAdapter(getContext(), memberOrderVOS);
+                        rvOrderData.setHasFixedSize(true);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false);
+                        rvOrderData.setLayoutManager(linearLayoutManager);
+                    } else {
+                        orderBuyBackAdapter.addList(memberOrderVOS);
+                    }
+                    rvOrderData.setAdapter(orderBuyBackAdapter);
                     rvOrderData.addOnScrollListener(scrollListener);
                 }
                 break;

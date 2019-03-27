@@ -287,4 +287,7 @@
     <string name="Immediate_authentication">立即认证</string>
     <string name="authentication_success">认证成功</string>
     <string name="identity_verification">身份验证</string>
+    <string name="pay_account">支付账户</string>
+    <string name="pending">待审核</string>
+    <string name="four_star">****</string>
 </resources>

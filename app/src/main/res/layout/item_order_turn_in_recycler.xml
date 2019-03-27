@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--订单页面的转出item-->
+<!--订单页面的转入item-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tool="http://schemas.android.com/tools"
               android:layout_width="match_parent"
@@ -14,11 +14,10 @@
                   android:gravity="center_vertical"
                   android:layout_marginRight="@dimen/d20"
                   android:layout_height="wrap_content">
-
         <TextView android:layout_width="wrap_content"
                   android:id="@+id/tv_recharge_type"
                   style="@style/black_16_text_style"
-                  tool:text="@string/recharge"
+                  tool:text="转入 BTC"
                   android:fontFamily="sans-serif-medium"
                   android:gravity="center_vertical"
                   android:layout_gravity="center"
@@ -34,20 +33,20 @@
                   android:layout_height="wrap_content"/>
         <TextView
                 android:gravity="center"
-                android:id="@+id/tv_recharge_status"
                 android:layout_marginLeft="@dimen/d16"
+                android:id="@+id/tv_recharge_status"
                 style="@style/ff6f61_14_text_style"
-                tool:text="@string/pending"/>
+                tool:text="失败"/>
     </LinearLayout>
 
     <View style="@style/line_style"/>
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
                   android:layout_marginTop="@dimen/d12"
+                  android:layout_marginBottom="@dimen/d12"
                   android:layout_marginLeft="@dimen/d20"
                   android:layout_gravity="center"
                   android:gravity="center_vertical"
-                  android:layout_marginBottom="@dimen/d12"
                   android:layout_marginRight="@dimen/d20"
                   android:layout_height="wrap_content">
         <TextView
@@ -64,7 +63,6 @@
                 style="@style/black_666_14_text_style"
                 tool:text="23.234523 BTC"/>
     </LinearLayout>
-
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
                   android:layout_marginBottom="@dimen/d12"
@@ -75,37 +73,17 @@
                   android:layout_height="wrap_content">
         <TextView
                 style="@style/black_666_14_text_style"
-                android:text="@string/pay_amount"
+                android:text="@string/account_address"
                 android:gravity="center_vertical"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                tool:ignore="InefficientWeight"/>
         <TextView
                 android:gravity="right"
                 android:layout_width="@dimen/d0"
                 android:layout_weight="1"
-                android:id="@+id/tv_pay_amount"
-                style="@style/black_666_14_text_style"
-                tool:text="0.001 ETH"/>
-    </LinearLayout>
-    <LinearLayout android:layout_width="match_parent"
-                  android:orientation="horizontal"
-                  android:layout_marginBottom="@dimen/d12"
-                  android:layout_marginLeft="@dimen/d20"
-                  android:layout_gravity="center"
-                  android:gravity="center_vertical"
-                  android:layout_marginRight="@dimen/d20"
-                  android:layout_height="wrap_content">
-        <TextView
-                style="@style/black_666_14_text_style"
-                android:text="@string/pay_account"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"/>
-        <TextView
-                android:gravity="right"
-                android:layout_width="@dimen/d0"
-                android:layout_weight="1"
-                android:id="@+id/tv_pay_account"
-                style="@style/black_666_12_text_style"
+                android:id="@+id/tv_recharge_address"
                 android:layout_marginLeft="@dimen/d16"
+                style="@style/black_666_12_text_style"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="middle"
                 android:singleLine="true"/>

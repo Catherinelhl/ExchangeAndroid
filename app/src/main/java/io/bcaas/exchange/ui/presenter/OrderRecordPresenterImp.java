@@ -76,7 +76,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
 
                     @Override
                     public void onNext(ResponseJson responseJson) {
-                        LogTool.d(TAG, responseJson);
+                        GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getRecord", responseJson);
                         if (responseJson == null) {
                             view.noData();
                             return;

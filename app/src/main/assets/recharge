@@ -1,0 +1,119 @@
+{
+  "nextObjectId": "0",
+  "objectList": [
+    {
+      "memberOrderUid": 1261,
+      "memberVO": {
+        "memberId": "Catherineliu@Bcaas.io",
+        "isPayWayBind": 1,
+        "isPersonalVerify": 0
+      },
+      "currencyListVO": {
+        "currencyUid": "3",
+        "enName": "CNYC",
+        "cnName": "七彩貝",
+        "coinName": "cnyc"
+      },
+      "type": 4,
+      "status": 2,
+      "amount": "3.0000000000",
+      "mark": "987657",
+      "bankPersonalName": "刘红玲",
+      "bankName": "中国招商银行",
+      "bankBranchName": "北京分行建国路支行",
+      "bankAccount": "6214830105268279",
+      "updateTime": "2019-03-26 09:30:04.0",
+      "createTime": "2019-03-26 09:30:04.0"
+    },
+    {
+      "memberOrderUid": 1260,
+      "memberVO": {
+        "memberId": "Catherineliu@Bcaas.io",
+        "isPayWayBind": 1,
+        "isPersonalVerify": 0
+      },
+      "currencyListVO": {
+        "currencyUid": "3",
+        "enName": "CNYC",
+        "cnName": "七彩貝",
+        "coinName": "cnyc"
+      },
+      "type": 4,
+      "status": 2,
+      "amount": "1000.0000000000",
+      "mark": "987657",
+      "bankPersonalName": "刘红玲",
+      "bankName": "中国招商银行",
+      "bankBranchName": "北京分行建国路支行",
+      "bankAccount": "6214830105268279",
+      "updateTime": "2019-03-26 09:26:05.0",
+      "createTime": "2019-03-26 09:26:05.0"
+    },
+    {
+      "memberOrderUid": 1244,
+      "memberVO": {
+        "memberId": "Catherineliu@Bcaas.io",
+        "isPayWayBind": 1,
+        "isPersonalVerify": 0
+      },
+      "currencyListVO": {
+        "currencyUid": "3",
+        "enName": "CNYC",
+        "cnName": "七彩貝",
+        "coinName": "cnyc"
+      },
+      "type": 4,
+      "status": 2,
+      "amount": "1000.0000000000",
+      "mark": "987657",
+      "bankPersonalName": "刘红玲",
+      "bankName": "中国招商银行",
+      "bankBranchName": "北京分行建国路支行",
+      "bankAccount": "6214830105268279",
+      "updateTime": "2019-03-25 10:47:47.0",
+      "createTime": "2019-03-25 10:47:47.0"
+    },
+    {
+      "memberOrderUid": 1202,
+      "memberVO": {
+        "memberId": "Catherineliu@Bcaas.io",
+        "isPayWayBind": 1,
+        "isPersonalVerify": 0
+      },
+      "currencyListVO": {
+        "currencyUid": "3",
+        "enName": "CNYC",
+        "cnName": "七彩貝",
+        "coinName": "cnyc"
+      },
+      "type": 4,
+      "status": 1,
+      "amount": "1000.0000000000",
+      "mark": "123456",
+      "updateTime": "2019-03-26 10:32:55.0",
+      "createTime": "2019-03-20 08:25:31.0"
+    },
+    {
+      "memberOrderUid": 1200,
+      "memberVO": {
+        "memberId": "Catherineliu@Bcaas.io",
+        "isPayWayBind": 1,
+        "isPersonalVerify": 0
+      },
+      "currencyListVO": {
+        "currencyUid": "3",
+        "enName": "CNYC",
+        "cnName": "七彩貝",
+        "coinName": "cnyc"
+      },
+      "type": 4,
+      "status": 0,
+      "amount": "1000.0000000000",
+      "mark": "123456",
+      "updateTime": "2019-03-26 10:32:22.0",
+      "createTime": "2019-03-20 08:21:40.0"
+    }
+  ],
+  "totalObjectNumber": 5,
+  "totalPageNumber": 1
+}

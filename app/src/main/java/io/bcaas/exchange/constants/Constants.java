@@ -232,9 +232,11 @@ public class Constants {
      * 订单类型
      */
     public class OrderType {
-        public static final int RECHARGE = 0;//转入
-        public static final int WITHDRAW = 1;//转出
+        public static final int TURN_IN = 0;//转入
+        public static final int TURN_OUT = 1;//转出
         public static final int TX = 2;//交易
+        public static final int RECHARGE = 4;//充值
+        public static final int BUY_BACK = 5;//回购
         public static final int BUY = 2;// 买
         public static final int SELL = 3;// 卖
     }

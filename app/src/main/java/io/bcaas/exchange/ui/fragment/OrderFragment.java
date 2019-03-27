@@ -190,7 +190,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                             }
                             break;
                     }
-                    presenter.getRecord(Constants.OrderType.RECHARGE, currentNextObjectID);
+                    presenter.getRecord(Constants.OrderType.TURN_IN, currentNextObjectID);
                 }
                 break;
             case 2:
@@ -213,7 +213,21 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                             }
                             break;
                     }
-                    presenter.getRecord(Constants.OrderType.WITHDRAW, currentNextObjectID);
+                    presenter.getRecord(Constants.OrderType.TURN_OUT, currentNextObjectID);
+                }
+                break;
+            case 3:
+                if (presenter != null) {
+                    String currentNextObjectID = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+                    presenter.getRecord(Constants.OrderType.RECHARGE, currentNextObjectID);
+
+                }
+                break;
+            case 4:
+                if (presenter != null) {
+                    String currentNextObjectID = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+                    presenter.getRecord(Constants.OrderType.BUY_BACK, currentNextObjectID);
+
                 }
                 break;
         }
@@ -328,7 +342,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
             GsonTool.logInfo(TAG, "memberOrderVOList:", memberOrderVOList);
             int currentNextObjectId;
             switch (type) {
-                case Constants.OrderType.RECHARGE:
+                case Constants.OrderType.TURN_IN:
                     nextObjectIdRecharge = paginationVO.getNextObjectId();
                     currentNextObjectId = Integer.valueOf(nextObjectIdRecharge);
                     if (currentNextObjectId < totalPageNumber) {
@@ -341,7 +355,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                         ((OrderView) views.get(1)).setCanLoadingMore(canLoadingMore);
                     }
                     break;
-                case Constants.OrderType.WITHDRAW:
+                case Constants.OrderType.TURN_OUT:
                     nextObjectIdWithDraw = paginationVO.getNextObjectId();
                     currentNextObjectId = Integer.valueOf(nextObjectIdWithDraw);
                     if (currentNextObjectId < totalPageNumber) {
@@ -355,7 +369,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
                     }
                     break;
-                default:
+                case Constants.OrderType.TX:
                     nextObjectIdTx = paginationVO.getNextObjectId();
                     currentNextObjectId = Integer.valueOf(nextObjectIdTx);
                     if (currentNextObjectId < totalPageNumber) {
@@ -368,6 +382,37 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                         ((OrderView) views.get(0)).setCanLoadingMore(canLoadingMore);
 
                     }
+                    break;
+                case Constants.OrderType.RECHARGE:
+                    nextObjectIdTx = paginationVO.getNextObjectId();
+                    currentNextObjectId = Integer.valueOf(nextObjectIdTx);
+                    if (currentNextObjectId < totalPageNumber) {
+                        canLoadingMore = true;
+                        currentNextObjectId++;
+                        nextObjectIdTx = String.valueOf(currentNextObjectId);
+                    }
+                    if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                        ((OrderView) views.get(3)).setAdapter(memberOrderVOList, 3);
+                        ((OrderView) views.get(3)).setCanLoadingMore(canLoadingMore);
+
+                    }
+                    break;
+                case Constants.OrderType.BUY_BACK:
+                    nextObjectIdTx = paginationVO.getNextObjectId();
+                    currentNextObjectId = Integer.valueOf(nextObjectIdTx);
+                    if (currentNextObjectId < totalPageNumber) {
+                        canLoadingMore = true;
+                        currentNextObjectId++;
+                        nextObjectIdTx = String.valueOf(currentNextObjectId);
+                    }
+                    if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                        ((OrderView) views.get(4)).setAdapter(memberOrderVOList, 4);
+                        ((OrderView) views.get(4)).setCanLoadingMore(canLoadingMore);
+
+                    }
+                    break;
+                default:
+
                     break;
             }
         } else {
