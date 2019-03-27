@@ -152,12 +152,12 @@ public class MyFundActivity extends BaseActivity
             Intent intent = new Intent();
             intent.putExtra(Constants.KeyMaps.From, uid);
             switch (from) {
-                case Constants.From.RECHARGE:
+                case Constants.From.TURN_IN:
                     intent.setClass(MyFundActivity.this, TurnInActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.TURN_IN);
                     // 转入
                     break;
-                case Constants.From.WITHDRAW:
+                case Constants.From.TURN_OUT:
                     intent.setClass(MyFundActivity.this, TurnOutActivity.class);
                     startActivityForResult(intent, Constants.RequestCode.TURN_OUT);
                     //转出

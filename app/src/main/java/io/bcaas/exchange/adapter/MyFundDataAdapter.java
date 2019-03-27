@@ -83,7 +83,7 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.RECHARGE);
+                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.TURN_IN);
                 }
             }
         });
@@ -91,7 +91,7 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
             @Override
             public void onClick(View v) {
                 if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.WITHDRAW);
+                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.TURN_OUT);
                 }
             }
         });

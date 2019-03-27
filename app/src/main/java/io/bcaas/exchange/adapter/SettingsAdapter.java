@@ -77,12 +77,13 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.viewHo
             case SAFETY:
                 viewHolder.ivIcon.setImageResource(R.mipmap.icon_safety_center);
                 break;
-            case PAYMENT_MANAGEMENT:
+            case IDENTITY_AUTHENTICATION:
                 viewHolder.ivIcon.setImageResource(R.mipmap.icon_payment);
                 break;
-            case IDENTITY_AUTHENTICATION:
+            case PAYMENT_MANAGEMENT:
                 viewHolder.ivIcon.setImageResource(R.mipmap.icon_identity);
                 viewHolder.vLine.setVisibility(View.INVISIBLE);
+
                 break;
 
         }

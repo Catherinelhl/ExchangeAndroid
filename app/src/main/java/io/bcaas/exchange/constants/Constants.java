@@ -134,8 +134,8 @@ public class Constants {
         public static final String SIDE_SLIP_RESET = "sideSlipReset";//侧滑栏重置数据
         public static final String WITHDRAW_SURE = "withDrawSure";//转出点击确定
         public static final String COUNTRY_CODE = "countryCode";//城市区号
-        public static final String RECHARGE = "recharge";//转入
-        public static final String WITHDRAW = "withDraw";// 转出
+        public static final String TURN_IN = "recharge";//转入
+        public static final String TURN_OUT = "withDraw";// 转出
         public static final String BUY = "buy";// 购买
         public static final String LOGIN_PASSWORD = "loginPassword";//登录密码
         public static final String FUND_PASSWORD = "fundPassword";//资金密码

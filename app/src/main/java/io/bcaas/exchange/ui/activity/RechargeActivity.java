@@ -63,6 +63,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
     Button btnRecharge;
     @BindView(R.id.tv_recharge_intro)
     TextView tvRechargeIntro;
+    private String action;
 
     private AccountSecurityContract.Presenter presenter;
 
@@ -152,9 +153,9 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                             showToast(getString(R.string.please_identity));
                             return;
                         }
-                        // step 3:开始跳转回购
-                        intentToActivity(BuyBackActivity.class);
-
+                        action = "buyBack";
+                        /*step 3:判断当前是否完成支付方式绑定*/
+                        presenter.getAccountSecurity();
 
                     }
 
@@ -200,6 +201,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                             showToast(getString(R.string.please_identity));
                             return;
                         }
+                        action = "recharge";
                         /*step 3:判断当前是否完成支付方式绑定*/
                         presenter.getAccountSecurity();
                     }
@@ -256,7 +258,12 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                     });
         } else {
             //已经绑定
-            intentToActivity(RechargeDetailActivity.class);
+            //判读当前是哪一个动作
+            if (action == "recharge") {
+                intentToActivity(RechargeDetailActivity.class);
+            } else {
+                intentToActivity(BuyBackActivity.class);
+            }
         }
 
     }
