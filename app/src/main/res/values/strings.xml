@@ -305,4 +305,5 @@
     <string name="delete_pay_way_to_add_pay_way">当前已有支付方式，请先删除当前的支付方式再添加新的支付方式</string>
     <string name="please_identity">请先实名认证</string>
     <string name="select">请选择</string>
+    <string name="price">价格</string>
 </resources>

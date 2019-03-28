@@ -13,9 +13,12 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.view.textview.AppendStringLayout;
+import io.bcaas.exchange.view.textview.VerticalMultiLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.MemberVO;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -68,22 +71,36 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
         if (paymentCurrencyList != null) {
             String enName = paymentCurrencyList.getEnName();
             String uid = paymentCurrencyList.getCurrencyUid();
-            viewHolder.tvPayMethod.setText(context.getResources().getString(R.string.pay_method_str) + "  " + enName);
-            viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(paymentCurrencyList.getBuyCharge(), uid) + "  " + enName);
-            viewHolder.tvPrice.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getUnitPrice(), uid) + "  " + enName);
-            viewHolder.tvTotalAccount.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getPrice(), uid) + "  " + enName);
+            /*支付方式*/
+            StringBuffer sbPayMethod = new StringBuffer();
+            sbPayMethod.append(context.getResources().getString(R.string.pay_method_str))
+                    .append(" ")
+                    .append(enName);
+            viewHolder.tvPayMethod.setText(sbPayMethod);
+            /*手续费*/
+            viewHolder.tvFee.setContent(StringTool.getDisplayAmountByUId(paymentCurrencyList.getBuyCharge(), uid));
+            viewHolder.tvFee.setUnitText(context.getResources().getString(R.string.fee), enName);
+            /*价格*/
+            viewHolder.tvPrice.setContent(StringTool.getDisplayAmountByUId(memberOrderVO.getUnitPrice(), uid));
+            viewHolder.tvPrice.setUnitText(context.getResources().getString(R.string.price), enName);
+            /*总额*/
+            StringBuffer sbTotalSumUnit = new StringBuffer(context.getResources().getString(R.string.total_account));
+            sbTotalSumUnit.append("(")
+                    .append(enName)
+                    .append("):");
+            viewHolder.tvTotalSumUnit.setText(sbTotalSumUnit);
+            viewHolder.tvTotalSumValue.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getPrice(), uid));
         }
         // 得到当前币种信息
         CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
         if (currencyListVO != null) {
-            viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), currencyListVO.getCurrencyUid()) + "  " + currencyListVO.getEnName());
+            /*数量*/
+            viewHolder.tvNumber.setContent(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), currencyListVO.getCurrencyUid()));
+            viewHolder.tvNumber.setUnitText(context.getResources().getString(R.string.number), currencyListVO.getEnName());
         }
-        viewHolder.btnBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberOrderVO, Constants.From.BUY);
-                }
+        viewHolder.btnBuy.setOnClickListener(v -> {
+            if (onItemSelectListener != null) {
+                onItemSelectListener.onItemSelect(memberOrderVO, Constants.From.BUY);
             }
         });
     }
@@ -101,21 +118,23 @@ public class BuyDataAdapter extends RecyclerView.Adapter<BuyDataAdapter.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvPersonName;
         TextView tvPayMethod;
-        TextView tvPrice;
-        TextView tvNumber;
-        TextView tvTotalAccount;
-        TextView tvFee;
+        VerticalMultiLayout tvPrice;
+        VerticalMultiLayout tvNumber;
+        VerticalMultiLayout tvFee;
+        TextView tvTotalSumUnit;
+        TextView tvTotalSumValue;
         Button btnBuy;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvPersonName = itemView.findViewById(R.id.tv_person_name);
             tvPayMethod = itemView.findViewById(R.id.tv_pay_method);
-            tvPrice = itemView.findViewById(R.id.tv_price);
-            tvNumber = itemView.findViewById(R.id.tv_number);
-            tvTotalAccount = itemView.findViewById(R.id.tv_total_account);
-            tvFee = itemView.findViewById(R.id.tv_fee);
+            tvPrice = itemView.findViewById(R.id.vml_price);
+            tvNumber = itemView.findViewById(R.id.vml_number);
+            tvFee = itemView.findViewById(R.id.vml_fee);
             btnBuy = itemView.findViewById(R.id.btn_buy);
+            tvTotalSumUnit = itemView.findViewById(R.id.tv_total_sum_unit);
+            tvTotalSumValue = itemView.findViewById(R.id.tv_total_sum_value);
         }
     }
 }

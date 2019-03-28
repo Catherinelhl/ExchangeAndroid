@@ -71,25 +71,16 @@ public class AppendStringLayout extends LinearLayout {
         this.from = from;
     }
 
-    public void setContent(String info) {
-        this.setContent(info, R.color.grey_666666);
-    }
 
-    public void setContent(String info, int color) {
+    public void setContent(String info) {
         if (tvContent != null) {
             tvContent.setText(info);
-            tvContent.setTextColor(color);
         }
     }
 
     public void setActionText(String info) {
-        this.setActionText(info, R.color.blue_5B88FF);
-    }
-
-    public void setActionText(String info, int color) {
         if (tvStartImmediate != null) {
             tvStartImmediate.setText(info);
-            tvStartImmediate.setTextColor(color);
         }
     }
 

@@ -57,7 +57,6 @@
         <attr name="text_size" format="float"/>
     </declare-styleable>
 
-
     <declare-styleable name="safetyCenterItem">
         <attr name="safeCenterText" format="string"/>
     </declare-styleable>
