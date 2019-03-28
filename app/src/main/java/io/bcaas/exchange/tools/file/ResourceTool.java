@@ -1,6 +1,8 @@
 package io.bcaas.exchange.tools.file;
 
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
+import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 
 import java.io.BufferedReader;
@@ -36,5 +38,27 @@ public class ResourceTool {
             e.printStackTrace();
         }
         return stringBuilder.toString();
+    }
+
+    public static int getDrawableByEnName(String enName) {
+        int res = 0;
+        switch (enName) {
+            case "BTC":
+                res = R.mipmap.icon_coin_btc;
+                break;
+            case "ETH":
+                res = R.mipmap.icon_coin_eth;
+                break;
+            case "ZBB":
+                res = R.mipmap.icon_coin_zbb;
+                break;
+            case "BCC":
+                res = R.mipmap.icon_coin_bcc;
+                break;
+            case "CNYC":
+                res=R.mipmap.icon_coin_bcc;
+                break;
+        }
+        return res;
     }
 }

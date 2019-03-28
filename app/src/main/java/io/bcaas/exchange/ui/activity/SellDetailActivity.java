@@ -15,6 +15,7 @@ import io.bcaas.exchange.bean.SellDataBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.SellContract;
 import io.bcaas.exchange.ui.presenter.SellPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
@@ -38,8 +39,8 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
     TextView tvTitle;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
-    @BindView(R.id.tv_purple_title)
-    TextView tvPurpleTitle;
+    @BindView(R.id.tv_sell_coin_type)
+    TextView tvSellCoinType;
     @BindView(R.id.tv_price)
     TextView tvPrice;
     @BindView(R.id.tv_number)
@@ -95,7 +96,10 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
             tvFee.setText(StringTool.getDisplayAmountByUId(sellDataBean.getGasFeeCharge(), uid) + "  " + enName);
             tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "  " + StringTool.getDisplayAmountByUId(sellDataBean.getBalanceAvailable(), uid) + "  " + enName);
             tvTransactionAmount.setText(sellDataBean.getTxAmountExceptFeeString());
-            tvPurpleTitle.setText(context.getResources().getString(R.string.sell) + "  " + sellDataBean.getEnName());
+            tvSellCoinType.setText(sellDataBean.getEnName());
+            tvSellCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d2));
+            tvSellCoinType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(sellDataBean.getEnName())), null, null, null);
+
         }
         aspFund.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.FUND_PASSWORD);
         aspGoogle.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.GOOGLE_VERIFY);

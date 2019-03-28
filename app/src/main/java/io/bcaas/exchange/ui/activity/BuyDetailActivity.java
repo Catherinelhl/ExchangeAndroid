@@ -14,6 +14,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.ui.contracts.BuyContract;
 import io.bcaas.exchange.ui.presenter.BuyPresenterImp;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
@@ -41,8 +42,8 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
     TextView tvTitle;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
-    @BindView(R.id.tv_purple_title)
-    TextView tvPurpleTitle;
+    @BindView(R.id.tv_buy_coin_type)
+    TextView tvBuyCoinType;
     @BindView(R.id.tv_person_name)
     TextView tvPersonName;
     @BindView(R.id.tv_pay_method)
@@ -128,7 +129,9 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
             CurrencyListVO currencyListVO = memberOrderVO.getCurrencyListVO();
             if (currencyListVO != null) {
                 String enName = currencyListVO.getEnName();
-                tvPurpleTitle.setText(getString(R.string.buy) + " " + enName);
+                tvBuyCoinType.setText(enName);
+                tvBuyCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d2));
+                tvBuyCoinType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(enName)), null, null, null);
                 tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
             }
         }

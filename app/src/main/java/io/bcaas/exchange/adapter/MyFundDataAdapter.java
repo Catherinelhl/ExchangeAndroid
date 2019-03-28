@@ -13,6 +13,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.file.ResourceTool;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
@@ -70,6 +71,9 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         }
         String uid = currencyListVO.getCurrencyUid();
         viewHolder.tvFundType.setText(currencyListVO.getEnName());
+        viewHolder.tvFundType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d2));
+        viewHolder.tvFundType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(currencyListVO.getEnName())), null, null, null);
+
         String balanceBlocked = memberKeyVO.getBalanceBlocked();
         viewHolder.tvFreeze.setText(StringTool.getDisplayAmountByUId(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked, uid));
         viewHolder.tvAvailable.setText(StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid));
