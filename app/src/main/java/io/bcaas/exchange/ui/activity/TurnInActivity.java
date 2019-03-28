@@ -93,7 +93,8 @@ public class TurnInActivity extends BaseActivity implements AccountSecurityContr
         int selectItem = 0;
         presenter = new AccountSecurityPresenterImp(this);
         //刷新界面
-        memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        memberKeyVOList = BaseApplication.getMemberKeyVOListExceptCNYC();
+        LogTool.d(TAG, memberKeyVOList);
         if (ListTool.noEmpty(memberKeyVOList)) {
             int size = memberKeyVOList.size();
             //加载数据

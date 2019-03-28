@@ -93,7 +93,7 @@ public class TurnOutActivity extends BaseActivity
 
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         //刷新界面
-        memberKeyVOList = BaseApplication.getMemberKeyVOList();
+        memberKeyVOList = BaseApplication.getMemberKeyVOListExceptCNYC();
         if (ListTool.noEmpty(memberKeyVOList)) {
             int size = memberKeyVOList.size();
             //加载数据

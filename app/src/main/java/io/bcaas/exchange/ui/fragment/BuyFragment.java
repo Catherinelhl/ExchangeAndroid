@@ -178,6 +178,7 @@ public class BuyFragment extends BaseFragment
         memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
         if (ListTool.noEmpty(memberKeyVOListTitle)) {
             int size = memberKeyVOListTitle.size();
+            tabLayout.setTabSize(size);
             //加载数据
             for (int i = 0; i < size; i++) {
                 //添加标题
@@ -203,9 +204,9 @@ public class BuyFragment extends BaseFragment
             if (activity != null) {
                 ((MainActivity) activity).setCurrentDisplayType(memberKeyVOListTitle.get(0));
             }
-            viewPager.setOffscreenPageLimit(size > 3 ? 3 : size);
+            viewPager.setOffscreenPageLimit(size > 3 ? 4 : size);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
-            tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
+            tabLayout.setupWithViewPager(true, viewPager, new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     // 得到当前的position

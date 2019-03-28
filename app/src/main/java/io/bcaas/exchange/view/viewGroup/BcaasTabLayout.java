@@ -149,11 +149,31 @@ public class BcaasTabLayout extends FrameLayout {
      * @param viewPager
      */
     public void setupWithViewPager(@Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
+        this.setupWithViewPager(false, viewPager, onTabSelectedListener);
+    }
+
+    /**
+     * 与TabLayout 联动
+     *
+     * @param viewPager
+     * @param fixThree  是否鎖定三個
+     */
+    public void setupWithViewPager(boolean fixThree, @Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
 //        this.onTabSelectedListener = onTabSelectedListener;
         mTabLayout.addOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager, this, onTabSelectedListener));
         Class<?> tabLayout = mTabLayout.getClass();
 //        int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        int widthTemp = BaseApplication.getScreenWidth() / tabSize;
+        int widthTemp;
+        if (fixThree) {
+            if (tabSize <= 3) {
+                widthTemp = BaseApplication.getScreenWidth() / tabSize;
+            } else {
+                widthTemp = (int) (BaseApplication.getScreenWidth() / 3.5);
+            }
+        } else {
+            widthTemp = BaseApplication.getScreenWidth() / tabSize;
+        }
+
         Field tabStrip = null;
         try {
 //            Field[] fields = tabLayout.getDeclaredFields();
@@ -166,7 +186,17 @@ public class BcaasTabLayout extends FrameLayout {
             LinearLayout ll_tab = (LinearLayout) tabStrip.get(mTabLayout);
             for (int i = 0; i < ll_tab.getChildCount(); i++) {
                 View child = ll_tab.getChildAt(i);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+                LinearLayout.LayoutParams params;
+                if (fixThree) {
+                    if (tabSize <= 3) {
+                        params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+                    } else {
+                        params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT);
+                    }
+                } else {
+                    params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+
+                }
                 child.setLayoutParams(params);
                 child.invalidate();
             }

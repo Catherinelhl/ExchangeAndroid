@@ -11,6 +11,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.NetStateChangeEvent;
 import io.bcaas.exchange.receiver.NetStateReceiver;
+import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.ServerTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -20,6 +21,7 @@ import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,6 +49,8 @@ public class BaseApplication extends MultiDexApplication {
     private static boolean isPhone;
     /*存储当前所有币种余额信息*/
     private static List<MemberKeyVO> memberKeyVOList;
+    /*存储当前所有币种余额信息除了七彩唄*/
+    private static List<MemberKeyVO> memberKeyVOListExcepteCNYC;
     /*存储当前的用户资讯*/
     private static MemberVO memberVO;
     /*存储当前用户的memberId*/
@@ -147,8 +151,31 @@ public class BaseApplication extends MultiDexApplication {
         return memberKeyVOList;
     }
 
+    /**
+     * 獲取幣種信息，除了七彩唄
+     *
+     * @return
+     */
+    public static List<MemberKeyVO> getMemberKeyVOListExceptCNYC() {
+        return memberKeyVOListExcepteCNYC;
+    }
+
     public static void setMemberKeyVOList(List<MemberKeyVO> memberKeyVOList) {
         BaseApplication.memberKeyVOList = memberKeyVOList;
+        if (memberKeyVOListExcepteCNYC == null) {
+            memberKeyVOListExcepteCNYC = new ArrayList<>();
+        }
+        if (ListTool.noEmpty(memberKeyVOList)) {
+            memberKeyVOListExcepteCNYC.clear();
+            for (MemberKeyVO memberKeyVO : memberKeyVOList) {
+                if (memberKeyVO.getMemberKeyUid() != 48) {
+                    //如果當前有七彩唄，那麼就排除
+                    memberKeyVOListExcepteCNYC.add(memberKeyVO);
+                }
+            }
+        } else {
+            memberKeyVOListExcepteCNYC.clear();
+        }
     }
 
     /*注册网络变化的监听*/
