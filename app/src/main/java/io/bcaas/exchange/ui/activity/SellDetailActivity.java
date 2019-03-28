@@ -97,7 +97,7 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
             tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "  " + StringTool.getDisplayAmountByUId(sellDataBean.getBalanceAvailable(), uid) + "  " + enName);
             tvTransactionAmount.setText(sellDataBean.getTxAmountExceptFeeString());
             tvSellCoinType.setText(sellDataBean.getEnName());
-            tvSellCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d2));
+            tvSellCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d1));
             tvSellCoinType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(sellDataBean.getEnName())), null, null, null);
 
         }

@@ -9,7 +9,7 @@
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/d16"
                     android:layout_marginBottom="@dimen/d16"
-                    android:layout_marginLeft="@dimen/d20"
+                    android:layout_marginLeft="@dimen/d18"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:layout_marginRight="@dimen/d20"

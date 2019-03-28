@@ -71,7 +71,7 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         }
         String uid = currencyListVO.getCurrencyUid();
         viewHolder.tvFundType.setText(currencyListVO.getEnName());
-        viewHolder.tvFundType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d2));
+        viewHolder.tvFundType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d1));
         viewHolder.tvFundType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(currencyListVO.getEnName())), null, null, null);
 
         String balanceBlocked = memberKeyVO.getBalanceBlocked();

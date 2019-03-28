@@ -130,7 +130,7 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
             if (currencyListVO != null) {
                 String enName = currencyListVO.getEnName();
                 tvBuyCoinType.setText(enName);
-                tvBuyCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d2));
+                tvBuyCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d1));
                 tvBuyCoinType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(enName)), null, null, null);
                 tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
             }
