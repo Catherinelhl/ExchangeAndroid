@@ -105,13 +105,17 @@ public class BcaasTabLayout extends FrameLayout {
                     }
                     TextView text = (TextView) view.findViewById(R.id.tab_item_text);
                     View indicator = view.findViewById(R.id.tab_item_indicator);
+                    ImageView imageView = view.findViewById(R.id.iv_icon);
                     if (i == tab.getPosition()) { // 选中状态
                         text.setTextColor(mSelectTextColor);
                         indicator.setBackgroundColor(mSelectIndicatorColor);
                         indicator.setVisibility(View.VISIBLE);
+                        imageView.setAlpha(1f);
                     } else {// 未选中状态
                         text.setTextColor(mUnSelectTextColor);
                         indicator.setVisibility(View.INVISIBLE);
+                        imageView.setAlpha(0.5f);
+
                     }
                 }
 
@@ -244,13 +248,17 @@ public class BcaasTabLayout extends FrameLayout {
                     }
                     TextView text = (TextView) view.findViewById(R.id.tab_item_text);
                     View indicator = view.findViewById(R.id.tab_item_indicator);
+                    ImageView imageView = view.findViewById(R.id.iv_icon);
                     if (i == tab.getPosition()) { // 选中状态
                         text.setTextColor(mTabLayout.mSelectTextColor);
                         indicator.setBackgroundColor(mTabLayout.mSelectIndicatorColor);
                         indicator.setVisibility(View.VISIBLE);
+                        imageView.setAlpha(1f);
                     } else {// 未选中状态
                         text.setTextColor(mTabLayout.mUnSelectTextColor);
                         indicator.setVisibility(View.INVISIBLE);
+                        imageView.setAlpha(0.5f);
+
                     }
                 }
             }

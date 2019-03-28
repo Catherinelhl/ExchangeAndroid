@@ -33,6 +33,7 @@
             android:src="@mipmap/icon_coin_btc"
             android:layout_toLeftOf="@+id/ll"
             android:visibility="visible"
+            android:alpha="0.5"
             android:layout_marginRight="@dimen/d5"
             android:layout_alignTop="@+id/ll"
             android:layout_height="@dimen/d20"/>
