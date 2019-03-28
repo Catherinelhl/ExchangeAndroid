@@ -110,7 +110,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
                             CurrencyListVO currencyListVO = (CurrencyListVO) type;
                             // 显示当前的所有币种信息
                             if (activity != null) {
-                                ((BaseActivity) activity).showListPopWindow(currencyListVO, onItemSelectListener);
+                                ((BaseActivity) activity).showCurrencyListPopWindow(currencyListVO, onItemSelectListener);
                             }
                         }
 

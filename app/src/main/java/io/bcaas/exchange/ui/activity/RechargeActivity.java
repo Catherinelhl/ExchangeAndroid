@@ -101,7 +101,6 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
             for (MemberKeyVO memberKeyVO : memberKeyVOList) {
                 if (memberKeyVO == null) {
                     tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
-
                     return;
                 }
                 int memberKeyUid = memberKeyVO.getMemberKeyUid();
@@ -112,9 +111,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                         return;
                     }
                     tvRechargeName.setText(currencyListVO.getCnName() + ":" + memberKeyVO.getBalanceAvailable() + " " + currencyListVO.getEnName());
-
                 }
             }
+        } else {
+            tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
         }
     }
 

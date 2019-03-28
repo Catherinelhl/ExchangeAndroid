@@ -102,7 +102,7 @@ public class CountryCodeAdapter extends
             super(view);
             tvName = view.findViewById(R.id.tv_name);
             tvContent = view.findViewById(R.id.tv_content);
-            llAddress = view.findViewById(R.id.ll_country_code);
+            llAddress = view.findViewById(R.id.ll_list);
         }
     }
 

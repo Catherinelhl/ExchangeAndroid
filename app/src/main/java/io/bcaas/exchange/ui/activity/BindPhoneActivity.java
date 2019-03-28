@@ -182,7 +182,7 @@ public class BindPhoneActivity extends BaseActivity implements BindPhoneContract
                         intent.putExtra(Constants.From.COUNTRY_CODE, GsonTool.string(countryCodes));
                         intent.setClass(BindPhoneActivity.this, CountryCodeActivity.class);
                         startActivityForResult(intent, Constants.RequestCode.COUNTRY_CODE);
-//                showListPopWindow(new OnItemSelectListener() {
+//                showCurrencyListPopWindow(new OnItemSelectListener() {
 //                    @Override
 //                    public <T> void onItemSelect(T type, String from) {
 //                        LogTool.d(TAG, "onItemSelect:" + type);

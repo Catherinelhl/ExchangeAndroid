@@ -23,6 +23,8 @@ import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /*
@@ -62,6 +64,8 @@ public class AddPaymentActivity extends BaseActivity {
     Button btnSure;
 
 
+    private List<String> cards;
+
     @Override
     public int getContentView() {
         return R.layout.activity_add_payment;
@@ -75,6 +79,8 @@ public class AddPaymentActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        cards = new ArrayList<>();
+        cards.add(getResources().getString(R.string.paymant_bank));
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(R.string.add_payment_way);
@@ -210,7 +216,19 @@ public class AddPaymentActivity extends BaseActivity {
         apwvPayment.setOnItemSelectListener(new OnItemSelectListener() {
             @Override
             public <T> void onItemSelect(T type, String from) {
-                apwvPayment.setContent(getString(R.string.paymant_bank));
+                //弹出弹框
+                showListPopWindow(cards, new OnItemSelectListener() {
+                    @Override
+                    public <T> void onItemSelect(T type, String from) {
+                        if (type != null) {
+                            if (type instanceof String) {
+                                apwvPayment.setContent((String) type);
+
+                            }
+                        }
+
+                    }
+                });
             }
         });
     }

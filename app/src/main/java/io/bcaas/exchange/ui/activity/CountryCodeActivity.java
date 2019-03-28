@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -23,7 +21,6 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.FilterListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
-import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -46,7 +43,7 @@ public class CountryCodeActivity extends BaseActivity {
     EditText etSelectContent;
     @BindView(R.id.tv_cancel)
     TextView tvCancel;
-    @BindView(R.id.ll_country_code)
+    @BindView(R.id.ll_list)
     LinearLayout llCountryCode;
     @BindView(R.id.rv_list)
     RecyclerView recyclerView;

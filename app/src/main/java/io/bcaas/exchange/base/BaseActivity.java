@@ -46,6 +46,7 @@ import io.bcaas.exchange.view.dialog.EditTextDialog;
 import io.bcaas.exchange.view.dialog.LoadingDialog;
 import io.bcaas.exchange.view.dialog.SingleButtonDialog;
 import io.bcaas.exchange.view.pop.ListPop;
+import io.bcaas.exchange.view.pop.StringListPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
@@ -81,6 +82,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     protected DataGenerationManager dataGenerationManager;
     /*显示地区号的Pop Window*/
     private ListPop listPop;
+    /*显示银行卡*/
+    private StringListPop stringListPop;
     /*字体*/
     protected Typeface tfRegular;
     protected Typeface tfLight;
@@ -351,7 +354,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
      *
      * @param onItemSelectListener 通過傳入的回調來得到選擇的值
      */
-    public void showListPopWindow(CurrencyListVO currencyListVOFilter, OnItemSelectListener onItemSelectListener) {
+    public void showCurrencyListPopWindow(CurrencyListVO currencyListVOFilter, OnItemSelectListener onItemSelectListener) {
         //1： 對當前pop window進行置空
         if (listPop != null) {
             listPop.dismiss();
@@ -391,6 +394,22 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         listPop.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         setBackgroundAlpha(0.7f);
     }
+
+    public void showListPopWindow(List<String> strings, OnItemSelectListener onItemSelectListener) {
+        //1： 對當前pop window進行置空
+        if (stringListPop != null) {
+            stringListPop.dismiss();
+            stringListPop = null;
+        }
+        //2：开始初始化pop
+        stringListPop = new StringListPop(context);
+        stringListPop.addList(onItemSelectListener, strings);
+        stringListPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
+        //设置layout在PopupWindow中显示的位置
+        stringListPop.showAtLocation(getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+        setBackgroundAlpha(0.7f);
+    }
+
 
     public boolean checkActivityState() {
         return activity != null && !activity.isFinishing();

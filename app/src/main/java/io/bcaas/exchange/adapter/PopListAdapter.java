@@ -84,7 +84,7 @@ public class PopListAdapter extends
         public viewHolder(View view) {
             super(view);
             tvName = view.findViewById(R.id.tv_name);
-            llAddress = view.findViewById(R.id.ll_country_code);
+            llAddress = view.findViewById(R.id.ll_list);
         }
     }
 
