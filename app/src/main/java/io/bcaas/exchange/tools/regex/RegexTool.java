@@ -18,8 +18,8 @@ public class RegexTool {
     public static final String REPLACE_BLANK = "\t|\r|\n|\\s*";
     public static final String IS_CHINESE = "[\u4e00-\u9fa5]+";
     private static final String VERSION = "^-?[\\d.]+(?:e-?\\d+)?$";
-    //验证当前用户名
-    private static final String IDENTITY_NAME = "[\\u4e00-\\u9fa5a-zA-Z0-9\\.]{1,10}";
+    //用于验证当前用户输入的实名认证
+    private static final String IDENTITY_NAME = "[\\u4e00-\\u9fa5a-zA-Z\\.]{1,10}";
 
 
     private static final String AUTH_NODE_AUTHORIZE_KEY = "OrAanUgeTBlHocNkBOcaDasE";
@@ -53,6 +53,7 @@ public class RegexTool {
 
         return matcher.matches();
     }
+
     public static boolean isIdentityName(String identityName) {
 
         Pattern pattern = getPattern(IDENTITY_NAME);

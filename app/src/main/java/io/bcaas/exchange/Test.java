@@ -52,9 +52,9 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        String realName = "/^[\u4e00-\u9fa5]{2,4}$/";
+        String realName = "/[a-zA-Z0-9\\x{4e00}-\\x{9fa5}\\s]/u";
         Pattern pattern = Pattern.compile(realName);
-        Matcher matcher = pattern.matcher("liuhongl");
+        Matcher matcher = pattern.matcher("Catherine");
         System.out.println(matcher.matches());
         if (RegexTool.isIdentityName("123")) {
             System.out.println("lllll");
