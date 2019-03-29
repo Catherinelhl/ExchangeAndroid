@@ -302,6 +302,15 @@ public class Constants {
 
     }
 
+    /**
+     * 当前币种的UID
+     */
+    public class MemberKeyUID {
+
+        public static final int CNYC = 48;//七彩贝 CNYC
+
+    }
+
     public class Payment {
         public static final String ADD_PAY_WAY = "addPayWay";
         public static final String GET_PAY_WAY = "getPayWay";

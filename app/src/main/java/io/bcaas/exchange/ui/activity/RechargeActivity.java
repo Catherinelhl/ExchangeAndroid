@@ -18,13 +18,10 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
-import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
-import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
-import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.bcaas.exchange.vo.MemberVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -100,21 +97,27 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
              */
             for (MemberKeyVO memberKeyVO : memberKeyVOList) {
                 if (memberKeyVO == null) {
-                    tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
+                    tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
                     return;
                 }
                 int memberKeyUid = memberKeyVO.getMemberKeyUid();
-                if (memberKeyUid == 48) {
+                //判断如果当前是七彩贝的话
+                if (memberKeyUid == Constants.MemberKeyUID.CNYC) {
                     CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
                     if (currencyListVO == null) {
-                        tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
+                        tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
                         return;
                     }
-                    tvRechargeName.setText(currencyListVO.getCnName() + ":" + memberKeyVO.getBalanceAvailable() + " " + currencyListVO.getEnName());
+                    StringBuffer sbRechargeName = new StringBuffer(currencyListVO.getCnName());
+                    sbRechargeName.append(":")
+                            .append(memberKeyVO.getBalanceAvailable())
+                            .append(" ")
+                            .append(currencyListVO.getEnName());
+                    tvRechargeName.setText(sbRechargeName);
                 }
             }
         } else {
-            tvRechargeName.setText(" 七彩貝: 0.00 CNYC");
+            tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
         }
     }
 

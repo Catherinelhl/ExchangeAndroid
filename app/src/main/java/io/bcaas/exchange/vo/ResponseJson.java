@@ -47,6 +47,16 @@ public class ResponseJson extends ServerResponseJson {
 
     private PaginationVO paginationVO;
 
+    private CenterInfoVO centerInfoVO;
+
+    public CenterInfoVO getCenterInfoVO() {
+        return centerInfoVO;
+    }
+
+    public void setCenterInfoVO(CenterInfoVO centerInfoVO) {
+        this.centerInfoVO = centerInfoVO;
+    }
+
     private MemberPayInfoVO memberPayInfoVO;
     private List<MemberPayInfoVO> memberPayInfoVOList;
 
@@ -97,6 +107,7 @@ public class ResponseJson extends ServerResponseJson {
                 ", verificationBean=" + verificationBean +
                 ", verificationBeanList=" + verificationBeanList +
                 ", paginationVO=" + paginationVO +
+                ", centerInfoVO=" + centerInfoVO +
                 ", memberPayInfoVO=" + memberPayInfoVO +
                 ", memberPayInfoVOList=" + memberPayInfoVOList +
                 ", coinMarketCapBean=" + coinMarketCapBean +

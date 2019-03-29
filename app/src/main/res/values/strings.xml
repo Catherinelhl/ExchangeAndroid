@@ -306,4 +306,5 @@
     <string name="please_identity">请先实名认证</string>
     <string name="select">请选择</string>
     <string name="price">价格</string>
+    <string name="default_cnyc_value">七彩贝：1.00(CNYC)</string>
 </resources>

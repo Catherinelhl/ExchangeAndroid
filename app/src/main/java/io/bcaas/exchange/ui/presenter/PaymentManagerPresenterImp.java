@@ -88,8 +88,12 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 view.responseSuccess(responseJson.getMessage(), type);
                             } else {
                                 int code = responseJson.getCode();
-                                if (code == MessageConstants.CODE_2015) {
-                                    view.responseFailed(getString(R.string.fund_password_is_wrong), type);
+                                if (!view.httpExceptionDisposed(responseJson)) {
+                                    if (code == MessageConstants.CODE_2015) {
+                                        view.responseFailed(getString(R.string.fund_password_is_wrong), type);
+                                    } else {
+                                        view.responseFailed(responseJson.getMessage(), type);
+                                    }
                                 }
                             }
 
@@ -142,7 +146,9 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                             view.responseSuccess(responseJson.getMessage(), type);
                         } else {
                             int code = responseJson.getCode();
-                            view.responseFailed(responseJson.getMessage(), type);
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.responseFailed(responseJson.getMessage(), type);
+                            }
                         }
                     }
 
@@ -191,7 +197,9 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                             view.responseSuccess(responseJson.getMessage(), type);
                         } else {
                             int code = responseJson.getCode();
-                            view.responseFailed(responseJson.getMessage(), type);
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.responseFailed(responseJson.getMessage(), type);
+                            }
                         }
                     }
 
@@ -234,10 +242,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     public void onNext(ResponseJson responseJson) {
                         GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getBankInfo:", responseJson);
                         if (responseJson.isSuccess()) {
-                            view.responseSuccess(responseJson.getMessage(), type);
+                            view.responseSuccess(responseJson.getCenterInfoVO(), type);
                         } else {
                             int code = responseJson.getCode();
-                            view.responseFailed(responseJson.getMessage(), type);
+                            if (!view.httpExceptionDisposed(responseJson)) {
+                                view.responseFailed(responseJson.getMessage(), type);
+                            }
+
                         }
                     }
 
@@ -374,7 +385,11 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                             } else {
                                 int code = responseJson.getCode();
                                 //    {"success":false,"code":2000,"message":"VO is null or type error."}
-                                view.responseFailed(responseJson.getMessage(), type);
+                                if (!view.httpExceptionDisposed(responseJson)) {
+                                    view.responseFailed(responseJson.getMessage(), type);
+                                }
+
+
                             }
                         }
 
@@ -440,7 +455,9 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 int code = responseJson.getCode();
                                 // {"success":false,"code":2015,"message":"Current password is wrong."}
                                 //    {"success":false,"code":2000,"message":"VO is null or type error."}
-                                view.responseFailed(responseJson.getMessage(), type);
+                                if (!view.httpExceptionDisposed(responseJson)) {
+                                    view.responseFailed(responseJson.getMessage(), type);
+                                }
                             }
                         }
 
@@ -463,7 +480,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
     }
 
     @Override
-    public void identityNameVerification(String identityName,String type) {
+    public void identityNameVerification(String identityName, String type) {
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
@@ -498,7 +515,9 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 //    {"success":false,"code":2097,"message":"Identity name verify has been done."}
                                 // {"success":false,"code":2015,"message":"Current password is wrong."}
                                 //    {"success":false,"code":2000,"message":"VO is null or type error."}
-                                view.responseFailed(responseJson.getMessage(), type);
+                                if (!view.httpExceptionDisposed(responseJson)) {
+                                    view.responseFailed(responseJson.getMessage(), type);
+                                }
                             }
                         }
 

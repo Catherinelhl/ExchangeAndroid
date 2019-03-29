@@ -173,9 +173,7 @@ public class MainActivity extends BaseActivity
                     @Override
                     public void onNext(Object o) {
                         //获取当前的账户所有信息
-//                        getAllBalance();
-                        //跳转到支付管理
-                        intentToActivity(PaymentManagerActivity.class);
+                        getAllBalance();
                     }
 
                     @Override

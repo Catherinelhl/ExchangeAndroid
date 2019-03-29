@@ -10,6 +10,7 @@ import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
+import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.RadioButtonCheckListener;
@@ -20,6 +21,7 @@ import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
 import io.bcaas.exchange.view.viewGroup.CustomRechargeAmount;
+import io.bcaas.exchange.vo.CenterInfoVO;
 import io.bcaas.exchange.vo.MemberPayInfoVO;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -85,7 +87,7 @@ public class RechargeDetailActivity extends BaseActivity
 
     private PayWayManagerContract.Presenter presenter;
 
-    private MemberPayInfoVO memberPayInfoVO;
+    private CenterInfoVO centerInfoVO;
     private Constants.RechargeNumber rechargeNumber;//记录当前的充值数量
 
     @Override
@@ -111,7 +113,8 @@ public class RechargeDetailActivity extends BaseActivity
     @Override
     public void initData() {
         presenter = new PaymentManagerPresenterImp(this);
-        presenter.getPayWay(Constants.Payment.ADD_PAY_WAY);
+        //获取当前的银行账户信息
+        presenter.getBankInfo(Constants.Payment.GET_BANK_INFO);
 
     }
 
@@ -291,19 +294,17 @@ public class RechargeDetailActivity extends BaseActivity
                 showToast(getString(R.string.recharge_success_tips));
                 finish();
                 break;
-            case Constants.Payment.ADD_PAY_WAY:
-                List<MemberPayInfoVO> memberPayInfoVOList = ((List<MemberPayInfoVO>) message);
+            case Constants.Payment.GET_BANK_INFO:
+                CenterInfoVO centerInfoVO = (CenterInfoVO) message;
                 //取出当前第一条数据，然后传入下一个界面
-                if (ListTool.noEmpty(memberPayInfoVOList)) {
-                    this.memberPayInfoVO = memberPayInfoVOList.get(0);
-                    if (memberPayInfoVO != null) {
-                        tvEmailValue.setText(memberPayInfoVO.getMemberId());
-                        tvPayAmount.setText(R.string.zero_yuan);
-                        tvReceiveUsername.setText(memberPayInfoVO.getBankPersonalName());
-                        tvReceiveAccount.setText(memberPayInfoVO.getBankName());
-                        tvReceiveBank.setText(memberPayInfoVO.getBankAccount());
-                        tvPaymentNote.setText("987657");
-                    }
+                if (centerInfoVO != null) {
+                    tvEmailValue.setText(BaseApplication.getMemberID());
+                    tvPayAmount.setText(R.string.zero_yuan);
+                    tvReceiveUsername.setText(centerInfoVO.getBankPersonalName());
+                    tvReceiveAccount.setText(centerInfoVO.getBankName());
+                    tvReceiveBank.setText(centerInfoVO.getBankAccount());
+                    // TODO: 2019/3/29 服务器生成随机数
+                    tvPaymentNote.setText("987657");
                 }
                 break;
         }
