@@ -56,7 +56,7 @@ public class ResourceTool {
                 res = R.mipmap.icon_coin_bcc;
                 break;
             case "CNYC":
-                res=R.mipmap.icon_coin_bcc;
+                res = R.mipmap.icon_coin_cnyc;
                 break;
         }
         return res;

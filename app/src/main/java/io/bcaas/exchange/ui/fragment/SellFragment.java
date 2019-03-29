@@ -56,7 +56,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_content;
+        return R.layout.include_fragment_content;
     }
 
     @Override

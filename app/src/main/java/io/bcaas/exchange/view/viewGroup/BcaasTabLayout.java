@@ -165,10 +165,11 @@ public class BcaasTabLayout extends FrameLayout {
 //        int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int widthTemp;
         if (fixThree) {
+            int width = BaseApplication.getScreenWidth() - context.getResources().getDimensionPixelOffset(R.dimen.d48);
             if (tabSize <= 3) {
-                widthTemp = BaseApplication.getScreenWidth() / tabSize;
+                widthTemp = width / tabSize;
             } else {
-                widthTemp = (int) (BaseApplication.getScreenWidth() / 3.5);
+                widthTemp = (int) (width / 3.5);
             }
         } else {
             widthTemp = BaseApplication.getScreenWidth() / tabSize;
@@ -346,6 +347,9 @@ public class BcaasTabLayout extends FrameLayout {
                     break;
                 case "BCC":
                     imageView.setImageResource(R.mipmap.icon_coin_bcc);
+                    break;
+                case "CNYC":
+                    imageView.setImageResource(R.mipmap.icon_coin_cnyc);
                     break;
                 default:
                     imageView.setVisibility(GONE);

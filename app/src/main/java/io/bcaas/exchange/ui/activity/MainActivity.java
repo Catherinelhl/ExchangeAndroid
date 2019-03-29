@@ -56,8 +56,6 @@ public class MainActivity extends BaseActivity
     ImageButton ibBack;
     @BindView(R.id.tv_title)
     TextView tvTitle;
-    @BindView(R.id.ib_right)
-    ImageButton ibRight;
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.ll_main)
@@ -74,8 +72,6 @@ public class MainActivity extends BaseActivity
     private GetCoinNameListContract.Presenter getCoinNamePresenter;
     //声明侧滑栏
     private SideSlipPop sideSlipPop;
-    //得到当前「买进」页面当前展示的token，用于过滤器过滤
-    private MemberKeyVO currentDisplayType;
 
 
     @Override
@@ -93,8 +89,6 @@ public class MainActivity extends BaseActivity
         fragments = new ArrayList<>();
         //显示标题
         tvTitle.setVisibility(View.VISIBLE);
-        //显示右边过滤器
-        ibRight.setVisibility(View.VISIBLE);
         //初始化侧滑栏
         sideSlipPop = new SideSlipPop(this);
         //设置侧滑栏的item点击时间监听回调
@@ -144,7 +138,7 @@ public class MainActivity extends BaseActivity
             if (i == 0) {
                 onTabItemSelected(i);
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
-                textView.setTextColor(context.getResources().getColor(R.color.button_color));
+                textView.setTextColor(context.getResources().getColor(R.color.blue_5B88FF));
                 //method 2
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(this, 0, true), null, null);
             }
@@ -194,7 +188,7 @@ public class MainActivity extends BaseActivity
                 //自定义:如果是自定义的tabItem，那么就需要调用这句来设置选中状态，虽然没有界面上的变化
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-                textView.setTextColor(context.getResources().getColor(R.color.button_color));
+                textView.setTextColor(context.getResources().getColor(R.color.blue_5B88FF));
                 //method 2：如果是直接就用一个TextView控件来表示了，那么就可以直接用下面这一句来表示
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
@@ -215,41 +209,13 @@ public class MainActivity extends BaseActivity
             public void onTabReselected(TabLayout.Tab tab) {
                 //自定义
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
-                textView.setTextColor(context.getResources().getColor(R.color.button_color));
+                textView.setTextColor(context.getResources().getColor(R.color.blue_5B88FF));
                 //method 2
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
             }
         });
-        RxView.clicks(ibRight).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Observer<Object>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
 
-                    }
-
-                    @Override
-                    public void onNext(Object o) {
-                        //刷新侧滑栏的值
-                        if (sideSlipPop != null) {
-                            sideSlipPop.setData(currentDisplayType);
-                            //弹出侧滑栏
-                            sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
-                            setBackgroundAlpha(0.7f);
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
         sideSlipPop.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -279,16 +245,12 @@ public class MainActivity extends BaseActivity
                     if (currentFragment instanceof BuyFragment) {
                         ((BuyFragment) currentFragment).refreshView();
                     }
-                    //显示右边过滤器
-                    ibRight.setVisibility(View.VISIBLE);
                     break;
                 case 1:
                     setTitle(getString(R.string.sell_title));
                     if (currentFragment instanceof SellFragment) {
                         ((SellFragment) currentFragment).refreshView();
                     }
-                    //隐藏顶部过滤器
-                    ibRight.setVisibility(View.GONE);
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
@@ -296,11 +258,9 @@ public class MainActivity extends BaseActivity
                     if (currentFragment instanceof OrderFragment) {
                         ((OrderFragment) currentFragment).resetView();
                     }
-                    ibRight.setVisibility(View.GONE);
                     break;
                 case 3:
                     setTitle(getString(R.string.amount_title));
-                    ibRight.setVisibility(View.GONE);
                     break;
             }
         }
@@ -395,15 +355,6 @@ public class MainActivity extends BaseActivity
         getCoinNamePresenter.getCoinNameList();
     }
 
-    /**
-     * 当前显示的Token type
-     *
-     * @param memberKeyVO
-     */
-    public void setCurrentDisplayType(MemberKeyVO memberKeyVO) {
-        this.currentDisplayType = memberKeyVO;
-        GsonTool.logInfo(TAG, "setCurrentDisplayType:", memberKeyVO);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -445,6 +396,20 @@ public class MainActivity extends BaseActivity
             super.onBackPressed();
         } else {
             showToast(getString(R.string.double_click_for_exit));
+        }
+    }
+
+    /**
+     * 弹出侧滑栏
+     *
+     * @param memberKeyVO
+     */
+    public void showSlidePop(MemberKeyVO memberKeyVO) {
+        if (sideSlipPop != null) {
+            sideSlipPop.setData(memberKeyVO);
+            //弹出侧滑栏
+            sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
+            setBackgroundAlpha(0.7f);
         }
     }
 }

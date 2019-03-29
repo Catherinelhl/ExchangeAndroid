@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tool="http://schemas.android.com/tools"
-              xmlns:exchange="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              android:layout_width="match_parent"
               android:orientation="vertical"
               android:layout_height="wrap_content">
     <LinearLayout android:layout_width="match_parent"
@@ -12,7 +12,7 @@
                   android:gravity="center_vertical"
                   android:layout_height="wrap_content">
         <View android:layout_width="@dimen/d6"
-              android:background="@color/blue_5B88FF"
+              android:background="@color/button_color"
               android:layout_height="@dimen/d24"/>
         <TextView android:layout_width="@dimen/d0"
                   android:layout_weight="1"
@@ -29,9 +29,11 @@
         <TextView
                 android:gravity="center"
                 android:id="@+id/tv_pay_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/d20"
-
-                style="@style/ff6f61_14_text_style"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/button_color"
                 tool:text="@string/buy_pay_method_text"/>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent"

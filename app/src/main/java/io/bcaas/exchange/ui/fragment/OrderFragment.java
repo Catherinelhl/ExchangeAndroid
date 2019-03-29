@@ -61,7 +61,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_content;
+        return R.layout.include_fragment_content;
     }
 
     @Override

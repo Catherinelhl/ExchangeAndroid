@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import butterknife.BindView;
 import com.google.gson.reflect.TypeToken;
+import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.adapter.TabViewAdapter;
 import io.bcaas.exchange.base.BaseApplication;
@@ -32,9 +37,12 @@ import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -53,7 +61,12 @@ public class BuyFragment extends BaseFragment
     ViewPager viewPager;
     @BindView(R.id.srl_data)
     SwipeRefreshLayout srlData;
-
+    @BindView(R.id.iv_bg_banner)
+    ImageView ivBgBanner;
+    @BindView(R.id.ib_right)
+    ImageButton ibRight;
+    @BindView(R.id.v_line)
+    View vLine;
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
     private ForSaleOrderListContract.Presenter presenter;
@@ -65,14 +78,19 @@ public class BuyFragment extends BaseFragment
     private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;//"1";
     private List<MemberOrderVO> memberOrderVOS;
     private List<MemberKeyVO> memberKeyVOListTitle;
+    //得到当前「买进」页面当前展示的token，用于过滤器过滤
+    private MemberKeyVO currentDisplayType;
 
     @Override
     public int getLayoutRes() {
-        return R.layout.fragment_content;
+        return R.layout.include_fragment_content;
     }
 
     @Override
     public void initViews(View view) {
+        //显示右边过滤器
+        ibRight.setVisibility(View.VISIBLE);
+        vLine.setVisibility(View.VISIBLE);
         presenter = new ForSaleOrderListPresenterImp(this);
         getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         views = new ArrayList<>();
@@ -82,12 +100,18 @@ public class BuyFragment extends BaseFragment
         srlData.setColorSchemeResources(
                 R.color.button_color,
                 R.color.button_color
-
         );
         //设置下拉进度条的背景颜色，默认白色
         srlData.setProgressBackgroundColorSchemeResource(R.color.transparent);
         srlData.setSize(SwipeRefreshLayout.DEFAULT);
         refreshView();
+        ivBgBanner.setVisibility(View.VISIBLE);
+        //获取到当前屏幕的宽度，然后重新设置banner的宽高
+        int width = BaseApplication.getScreenWidth();
+        int height = width / 375 * 130;
+        ViewGroup.LayoutParams layoutParams = ivBgBanner.getLayoutParams();
+        layoutParams.height = height;
+        ivBgBanner.setLayoutParams(layoutParams);
     }
 
     @Override
@@ -101,6 +125,32 @@ public class BuyFragment extends BaseFragment
             srlData.setRefreshing(false);
             requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
         });
+        RxView.clicks(ibRight).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        //刷新侧滑栏的值
+                        if (activity != null) {
+                            ((MainActivity) activity).showSlidePop(currentDisplayType);
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**
@@ -201,9 +251,7 @@ public class BuyFragment extends BaseFragment
             viewPager.setAdapter(tabViewAdapter);
             viewPager.setCurrentItem(0);
             //将当前选中的token type返回给MainActivity
-            if (activity != null) {
-                ((MainActivity) activity).setCurrentDisplayType(memberKeyVOListTitle.get(0));
-            }
+            setCurrentDisplayType(memberKeyVOListTitle.get(0));
             viewPager.setOffscreenPageLimit(size > 3 ? 4 : size);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
             tabLayout.setupWithViewPager(true, viewPager, new TabLayout.OnTabSelectedListener() {
@@ -212,8 +260,8 @@ public class BuyFragment extends BaseFragment
                     // 得到当前的position
                     currentPosition = tab.getPosition();
                     //将当前选中的token type返回给MainActivity
-                    if (activity != null && currentPosition < size) {
-                        ((MainActivity) activity).setCurrentDisplayType(memberKeyVOListTitle.get(currentPosition));
+                    if (currentPosition < size) {
+                        setCurrentDisplayType(memberKeyVOListTitle.get(currentPosition));
                     }
                     // 清空当前的界面信息
                     memberOrderVOS.clear();
@@ -330,4 +378,14 @@ public class BuyFragment extends BaseFragment
             requestOrderList(nextObjectId);
         }
     };
+
+    /**
+     * 当前显示的Token type
+     *
+     * @param memberKeyVO
+     */
+    public void setCurrentDisplayType(MemberKeyVO memberKeyVO) {
+        this.currentDisplayType = memberKeyVO;
+        GsonTool.logInfo(TAG, "setCurrentDisplayType:", memberKeyVO);
+    }
 }
