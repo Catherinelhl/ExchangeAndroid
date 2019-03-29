@@ -72,7 +72,7 @@ public class CustomRechargeAmount extends LinearLayout {
     }
 
     private void initListener() {
-        etAmount.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_EIGHT)});
+        etAmount.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_TWO)});
         tvCustom.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +97,14 @@ public class CustomRechargeAmount extends LinearLayout {
                 if (s != null) {
                     String content = s.toString();
                     if (StringTool.notEmpty(content)) {
+                        //一旦这个有值了，那么其它的就恢复默认
+                        if (radioButtonCheckListener != null) {
+                            isChecked=true;
+                            radioButtonCheckListener.onChange(isChecked);
+                            tvCustom.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d5));
+                            tvCustom.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.mipmap.icon_choose_f
+                            ), null, null, null);
+                        }
                         if (editTextWatcherListener != null) {
                             editTextWatcherListener.onComplete(content);
                         }

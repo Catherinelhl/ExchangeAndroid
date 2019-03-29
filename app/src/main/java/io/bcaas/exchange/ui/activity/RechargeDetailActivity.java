@@ -1,6 +1,7 @@
 package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,6 +18,7 @@ import io.bcaas.exchange.listener.RadioButtonCheckListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -107,7 +109,6 @@ public class RechargeDetailActivity extends BaseActivity
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.recharge));
-
     }
 
     @Override
@@ -141,7 +142,9 @@ public class RechargeDetailActivity extends BaseActivity
             @Override
             public void onComplete(String content) {
                 if (tvPayAmount != null) {
-                    tvPayAmount.setText(content + getString(R.string.yuan));
+                    StringBuffer sbRechargeAmount = new StringBuffer(DecimalTool.transferDisplay(2, content, Constants.Pattern.TWO_DISPLAY))
+                            .append(getString(R.string.yuan));
+                    tvPayAmount.setText(sbRechargeAmount);
                 }
             }
 

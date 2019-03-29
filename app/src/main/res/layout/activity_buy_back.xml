@@ -29,14 +29,13 @@
                             style="@style/black_16_text_style"
                             android:minWidth="@dimen/d60"
                             android:layout_marginRight="@dimen/d20"
-                            android:layout_marginLeft="@dimen/d20"
+                            android:layout_marginLeft="@dimen/d16"
                             android:text="@string/email"
                             android:gravity="center_vertical"/>
                     <TextView
                             android:id="@+id/tv_email_value"
                             style="@style/black_16_text_style"
                             android:layout_marginRight="@dimen/d20"
-                            android:layout_marginLeft="@dimen/d16"
                             android:fontFamily="sans-serif-medium"
                             android:text="@string/email"
                             android:gravity="center_vertical"/>
@@ -57,13 +56,21 @@
                             android:layout_marginLeft="@dimen/d16"
                             android:text="@string/buy_back_number"
                             android:gravity="center_vertical"/>
-                    <EditText android:layout_width="wrap_content"
-                              android:minWidth="@dimen/d80"
-                              android:id="@+id/et_amount"
-                              android:digits="@string/amount_edit_digits"
-                              android:inputType="numberDecimal"
-                              android:layout_marginLeft="@dimen/d15"
-                              android:layout_height="wrap_content"/>
+                    <RelativeLayout android:layout_width="@dimen/d80"
+                                    android:layout_height="wrap_content">
+                        <EditText
+                                android:minWidth="@dimen/d80"
+                                style="@style/black_14_edit_text_style"
+                                android:id="@+id/et_amount"
+                                android:digits="@string/amount_edit_digits"
+                                android:inputType="numberDecimal"
+                        />
+                        <View
+                                android:background="@color/black20_AEAEAE"
+                                android:layout_alignBottom="@+id/et_amount"
+                                android:layout_height="@dimen/d1"
+                                android:layout_width="wrap_content"/>
+                    </RelativeLayout>
                     <TextView android:layout_width="wrap_content"
                               android:text="@string/recharge_unit"
                               android:textSize="@dimen/text_size_14"

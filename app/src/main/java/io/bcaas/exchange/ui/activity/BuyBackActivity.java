@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.*;
@@ -10,8 +11,10 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.PayWayManagerContract;
 import io.bcaas.exchange.ui.presenter.PaymentManagerPresenterImp;
 import io.bcaas.exchange.view.editview.EditTextWithAction;
@@ -85,6 +88,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.buy_back));
+        etAmount.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_TWO)});
 
     }
 
@@ -92,8 +96,6 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
     public void initData() {
         presenter = new PaymentManagerPresenterImp(this);
         presenter.getPayWay(Constants.Payment.GET_PAY_WAY);
-
-
     }
 
     @Override
@@ -132,7 +134,9 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
                     String content = s.toString();
                     if (StringTool.notEmpty(content)) {
                         if (tvBuyBackAmount != null) {
-                            tvBuyBackAmount.setText(content + getString(R.string.yuan));
+                            StringBuffer sbBuyBackAmount = new StringBuffer(DecimalTool.transferDisplay(2, content, Constants.Pattern.TWO_DISPLAY))
+                                    .append(getString(R.string.yuan));
+                            tvBuyBackAmount.setText(sbBuyBackAmount);
                         }
                     }
                 }
