@@ -7,17 +7,28 @@
               android:text="@string/custom"
               android:drawableLeft="@mipmap/icon_choose"
               style="@style/black_14_text_style"
+              android:drawablePadding="@dimen/d5"
               android:id="@+id/tv_custom"
-
               android:layout_height="wrap_content"/>
-    <EditText android:layout_width="wrap_content"
-              android:minWidth="@dimen/d80"
-              android:id="@+id/et_amount"
-              android:digits="@string/amount_edit_digits"
-              android:inputType="numberDecimal"
-              android:layout_marginLeft="@dimen/d15"
-              android:layout_height="wrap_content"/>
+    <RelativeLayout android:layout_width="@dimen/d80"
+                    android:layout_marginLeft="@dimen/d15"
+                    android:layout_height="wrap_content">
+        <EditText
+                android:minWidth="@dimen/d80"
+                style="@style/black_14_edit_text_style"
+                android:id="@+id/et_amount"
+                android:digits="@string/amount_edit_digits"
+                android:inputType="numberDecimal"
+        />
+        <View
+                android:background="@color/black20_AEAEAE"
+                android:layout_alignBottom="@+id/et_amount"
+                android:layout_height="@dimen/d1"
+                android:layout_width="wrap_content"/>
+    </RelativeLayout>
     <TextView
             android:text="@string/recharge_unit"
+            android:layout_width="@dimen/d0"
+            android:layout_weight="1"
             style="@style/black_14_text_style"/>
 </LinearLayout>

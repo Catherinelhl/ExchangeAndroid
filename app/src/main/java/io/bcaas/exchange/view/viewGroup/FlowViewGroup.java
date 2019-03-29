@@ -11,7 +11,7 @@ import io.bcaas.exchange.tools.LogTool;
  * Created by zhangxutong on 2016/1/17.
  */
 public class FlowViewGroup extends ViewGroup {
-    private static final String TAG = "zxt/FlowViewGroup";
+    private static final String TAG = FlowViewGroup.class.getSimpleName();
 
     public FlowViewGroup(Context context) {
         this(context, null);
