@@ -17,6 +17,7 @@ import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
@@ -47,6 +48,8 @@ import java.util.concurrent.TimeUnit;
 
 public class RechargeActivity extends BaseActivity implements AccountSecurityContract.View {
 
+    @BindView(R.id.tv_recharge_balance)
+    TextView tvRechargeBalance;
     private String TAG = RechargeActivity.class.getSimpleName();
     @BindView(R.id.ib_back)
     ImageButton ibBack;
@@ -98,6 +101,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
             for (MemberKeyVO memberKeyVO : memberKeyVOList) {
                 if (memberKeyVO == null) {
                     tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
+                    tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
                     return;
                 }
                 int memberKeyUid = memberKeyVO.getMemberKeyUid();
@@ -106,18 +110,21 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                     CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
                     if (currencyListVO == null) {
                         tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
+                        tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
                         return;
                     }
                     StringBuffer sbRechargeName = new StringBuffer(currencyListVO.getCnName());
-                    sbRechargeName.append(":")
-                            .append(memberKeyVO.getBalanceAvailable())
-                            .append(" ")
-                            .append(currencyListVO.getEnName());
+                    sbRechargeName.append("(")
+                            .append(currencyListVO.getEnName())
+                            .append(")");
                     tvRechargeName.setText(sbRechargeName);
+                    tvRechargeBalance.setText(DecimalTool.transferDisplay(memberKeyVO.getBalanceAvailable()));
+
                 }
             }
         } else {
             tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
+            tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
         }
     }
 
@@ -302,4 +309,5 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         }
         return true;
     }
+
 }
