@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -130,8 +131,10 @@ public class BuyDetailActivity extends BaseActivity implements BuyContract.View 
             if (currencyListVO != null) {
                 String enName = currencyListVO.getEnName();
                 tvBuyCoinType.setText(enName);
-                tvBuyCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d1));
-                tvBuyCoinType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(enName)), null, null, null);
+                Drawable drawable = context.getResources().getDrawable(ResourceTool.getDrawableByEnName(enName));
+                int width = context.getResources().getDimensionPixelOffset(R.dimen.d16);
+                drawable.setBounds(0, 0, width, width);
+                tvBuyCoinType.setCompoundDrawables(drawable, null, null, null);
                 tvNumber.setText(memberOrderVO.getAmount() + "  " + enName);
             }
         }

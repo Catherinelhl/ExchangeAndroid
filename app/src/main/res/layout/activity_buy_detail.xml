@@ -31,6 +31,7 @@
                     <TextView
                             android:id="@+id/tv_buy_coin_type"
                             style="@style/black_16_text_style"
+                            android:drawablePadding="@dimen/d2"
                             android:layout_marginLeft="@dimen/d5"
                             android:gravity="center_vertical"/>
                 </LinearLayout>

@@ -19,6 +19,7 @@
                   android:id="@+id/tv_fund_type"
                   style="@style/black_16_text_style"
                   tool:text="BTC"
+                  android:drawablePadding="@dimen/d6"
                   android:fontFamily="sans-serif-medium"
                   android:gravity="center_vertical"
                   android:layout_gravity="center"

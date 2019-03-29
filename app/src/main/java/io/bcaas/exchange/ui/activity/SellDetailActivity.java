@@ -2,6 +2,7 @@ package io.bcaas.exchange.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -97,8 +98,10 @@ public class SellDetailActivity extends BaseActivity implements SellContract.Vie
             tvSalableBalance.setText(context.getResources().getString(R.string.salable_balance) + "  " + StringTool.getDisplayAmountByUId(sellDataBean.getBalanceAvailable(), uid) + "  " + enName);
             tvTransactionAmount.setText(sellDataBean.getTxAmountExceptFeeString());
             tvSellCoinType.setText(sellDataBean.getEnName());
-            tvSellCoinType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d1));
-            tvSellCoinType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(sellDataBean.getEnName())), null, null, null);
+            Drawable drawable = context.getResources().getDrawable(ResourceTool.getDrawableByEnName(sellDataBean.getEnName()));
+            int width = context.getResources().getDimensionPixelOffset(R.dimen.d16);
+            drawable.setBounds(0, 0, width, width);
+            tvSellCoinType.setCompoundDrawables(drawable, null, null, null);
 
         }
         aspFund.setOnItemSelectListener(onItemSelectListener, Constants.ActionFrom.FUND_PASSWORD);

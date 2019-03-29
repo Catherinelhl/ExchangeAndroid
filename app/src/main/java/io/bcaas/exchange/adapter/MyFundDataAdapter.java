@@ -1,6 +1,7 @@
 package io.bcaas.exchange.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -71,8 +72,11 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         }
         String uid = currencyListVO.getCurrencyUid();
         viewHolder.tvFundType.setText(currencyListVO.getEnName());
-        viewHolder.tvFundType.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d1));
-        viewHolder.tvFundType.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(ResourceTool.getDrawableByEnName(currencyListVO.getEnName())), null, null, null);
+        Drawable drawable = context.getResources().getDrawable(ResourceTool.getDrawableByEnName(currencyListVO.getEnName()));
+        // 设置币种图标
+        int width = context.getResources().getDimensionPixelOffset(R.dimen.d16);
+        drawable.setBounds(0, 0, width, width);
+        viewHolder.tvFundType.setCompoundDrawables(drawable, null, null, null);
 
         String balanceBlocked = memberKeyVO.getBalanceBlocked();
         viewHolder.tvFreeze.setText(StringTool.getDisplayAmountByUId(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked, uid));
