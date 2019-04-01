@@ -75,7 +75,7 @@ public class BuyFragment extends BaseFragment
     private int currentPosition = 0;
 
     //得到当前各页面的nextObjectId,默认是1
-    private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;//"1";
+    private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;//"0";
     private List<MemberOrderVO> memberOrderVOS;
     private List<MemberKeyVO> memberKeyVOListTitle;
     //得到当前「买进」页面当前展示的token，用于过滤器过滤
@@ -297,6 +297,8 @@ public class BuyFragment extends BaseFragment
         LogTool.d(TAG, "requestForSaleOrderList：" + paymentCurrencyUid);
         if (presenter != null) {
             List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
+            //重新初始化下一页
+            nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
             if (ListTool.noEmpty(memberKeyVOList)) {
                 presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
                         paymentCurrencyUid, nextObjectId);
@@ -329,20 +331,26 @@ public class BuyFragment extends BaseFragment
             Long totalObjectNumber = paginationVO.getTotalObjectNumber();
             List<Object> objects = paginationVO.getObjectList();
             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getOrderListSuccess:", objects);
+            LogTool.d(TAG, "isRefresh:" + isRefresh);
+            LogTool.d(TAG, "isEmpty:" + ListTool.isEmpty(objects));
             if (isRefresh) {
-                if (ListTool.isEmpty(objects)) {
-                    memberOrderVOS.clear();
-                } else {
+                memberOrderVOS.clear();
+                //如果当前是需要更新的
+                if (ListTool.noEmpty(objects)) {
                     memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
                     }.getType());
                 }
             } else {
+                //如果当前是不需要更新的
                 if (ListTool.noEmpty(objects)) {
                     List<MemberOrderVO> memberOrderVOSTemp = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
                     }.getType());
                     memberOrderVOS.addAll(memberOrderVOSTemp);
+                } else {
+                    memberOrderVOS.clear();
                 }
             }
+
 
             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                 ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, canLoadingMore);

@@ -527,6 +527,7 @@ public class EditTextWithAction extends LinearLayout
 
     }
 
+
     @Override
     public void getEmailVerifySuccess(String info) {
         LogTool.d(TAG, info);
@@ -639,6 +640,6 @@ public class EditTextWithAction extends LinearLayout
 
     @Override
     public void noData() {
-        LogTool.d(TAG, context.getResources().getString(R.string.no_data));
+        showToast(context.getResources().getString(R.string.no_data));
     }
 }
