@@ -248,7 +248,7 @@
     <string name="success_close_email">Member security email setting success.</string>
     <string name="success_close_phone">Member security phone setting success.</string>
     <string name="recharge_intro">七彩贝是BCAAS社区内部流通的虚拟道具，可用于话费充值、商品兑换、Token购买等增值服务。通过充值可获得七彩贝：1七彩贝=1元
-        充值后未用完的七彩贝可申请向平台回购。申请回购条件：充值完成后的第7个工作日开始，回购手续费为1个七彩贝。
+        充值后未用完的七彩贝可申请向平台回购。申请回购条件：充值完成后的第7个工作日开始，回购手续费为0个七彩贝。
     </string>
     <string name="recharge_amount">充值数值</string>
     <string name="receive_account">收款账户</string>
