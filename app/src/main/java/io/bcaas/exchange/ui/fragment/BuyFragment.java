@@ -106,7 +106,6 @@ public class BuyFragment extends BaseFragment
         //设置下拉进度条的背景颜色，默认白色
         srlData.setProgressBackgroundColorSchemeResource(R.color.transparent);
         srlData.setSize(SwipeRefreshLayout.DEFAULT);
-        refreshView();
         ivBgBanner.setVisibility(View.VISIBLE);
         //获取到当前屏幕的宽度，然后重新设置banner的宽高
         int width = BaseApplication.getScreenWidth();
@@ -121,6 +120,7 @@ public class BuyFragment extends BaseFragment
         tabLayout.requestFocus();
         //2.set height
         shsv.resetHeight(tabLayout, srlData);
+        refreshView();
 
     }
 
@@ -148,7 +148,6 @@ public class BuyFragment extends BaseFragment
                         if (activity != null) {
                             ((MainActivity) activity).showSlidePop(currentDisplayType);
                         }
-
                     }
 
                     @Override
@@ -232,6 +231,28 @@ public class BuyFragment extends BaseFragment
             return;
         }
         tabLayout.removeTabLayout();
+        //得到当前的所有钱包信息
+        memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
+        if (ListTool.noEmpty(memberKeyVOListTitle)) {
+            int size = memberKeyVOListTitle.size();
+            tabLayout.setTabSize(size);
+            //加载数据
+            for (int i = 0; i < size; i++) {
+                //添加标题
+                MemberKeyVO memberKeyVO = memberKeyVOListTitle.get(i);
+                if (memberKeyVO != null) {
+                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                    if (currencyListVO != null) {
+                        String name = currencyListVO.getEnName();
+                        tabLayout.addTab(name, i);
+                    }
+                }
+            }
+            tabLayout.measureLayoutParams(true);
+
+        }
+
+        tabLayout.removeTabLayout();
         viewPager.removeAllViews();
         views.clear();
         //得到当前的所有钱包信息
@@ -256,7 +277,6 @@ public class BuyFragment extends BaseFragment
                 buyView.setLoadingDataListener(loadingDataListener);
                 views.add(buyView);
             }
-
             tabViewAdapter = new TabViewAdapter(views);
             viewPager.setAdapter(tabViewAdapter);
             viewPager.setCurrentItem(0);
@@ -295,7 +315,10 @@ public class BuyFragment extends BaseFragment
             });
             tabLayout.resetSelectedTab(0);
             requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
+
         }
+
+
     }
 
     /**
@@ -341,8 +364,6 @@ public class BuyFragment extends BaseFragment
             Long totalObjectNumber = paginationVO.getTotalObjectNumber();
             List<Object> objects = paginationVO.getObjectList();
             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getOrderListSuccess:", objects);
-            LogTool.d(TAG, "isRefresh:" + isRefresh);
-            LogTool.d(TAG, "isEmpty:" + ListTool.isEmpty(objects));
             if (isRefresh) {
                 memberOrderVOS.clear();
                 //如果当前是需要更新的

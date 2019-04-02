@@ -159,8 +159,16 @@ public class BcaasTabLayout extends FrameLayout {
      * @param fixThree  是否鎖定三個
      */
     public void setupWithViewPager(boolean fixThree, @Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
-//        this.onTabSelectedListener = onTabSelectedListener;
         mTabLayout.addOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager, this, onTabSelectedListener));
+        measureLayoutParams(fixThree);
+    }
+
+    /**
+     * 重新测量布局参数
+     *
+     * @param fixThree
+     */
+    public void measureLayoutParams(boolean fixThree) {
         Class<?> tabLayout = mTabLayout.getClass();
 //        int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int widthTemp;
@@ -177,10 +185,6 @@ public class BcaasTabLayout extends FrameLayout {
 
         Field tabStrip = null;
         try {
-//            Field[] fields = tabLayout.getDeclaredFields();
-//            for (int i = 0; i < fields.length; i++) {
-//                System.out.println("fields:" + fields[i]);
-//            }
             //INVALID_WIDTH
             tabStrip = tabLayout.getDeclaredField(Constants.TabLayout.SLIDING_TAB_INDICATOR);
             tabStrip.setAccessible(true);
@@ -320,7 +324,7 @@ public class BcaasTabLayout extends FrameLayout {
      * @param
      * @return
      */
-    public static View getTabView(Context context, String text, int indicatorWidth, int indicatorHeight, int textSize) {
+    public  View getTabView(Context context, String text, int indicatorWidth, int indicatorHeight, int textSize) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_tab_layout, null);
         TextView tabText = (TextView) view.findViewById(R.id.tab_item_text);
         ImageView imageView = (ImageView) view.findViewById(R.id.iv_icon);
