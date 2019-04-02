@@ -18,6 +18,7 @@ package io.bcaas.exchange.ui.presenter;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.base.BasePresenterImp;
+import io.bcaas.exchange.bean.VerificationBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
@@ -336,13 +337,17 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
      * 充值
      *
      * @param type
-     * @param currencyUID
-     * @param amount
-     * @param mark
-     * @param imageCode
+     * @param currencyUID 只能充值CNYC，currencyUID 带入"3"
+     * @param amount      充值金额
+     * @param mark        付款备注号；格式目前暂定为6为随机数字
+     * @param imageCode   图形验证码
      */
     @Override
-    public void rechargeVirtualCoin(String type, String currencyUID, String amount, String mark, String imageCode) {
+    public void rechargeVirtualCoin(String type,
+                                    String currencyUID,
+                                    String amount,
+                                    String mark,
+                                    String imageCode) {
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -357,14 +362,19 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         CurrencyListVO currencyListVO = new CurrencyListVO();
         currencyListVO.setCurrencyUid(currencyUID);
         memberOrderVO.setCurrencyListVO(currencyListVO);
-        memberOrderVO.setAmount(amount);
-        memberOrderVO.setMark(mark);
+        memberOrderVO.setAmount(amount);// 充值金额
+        memberOrderVO.setMark(mark);//付款备注号
         requestJson.setMemberOrderVO(memberOrderVO);
 
 
         MemberPayInfoVO memberPayInfoVO = new MemberPayInfoVO();
-        memberPayInfoVO.setPayWayUid(Constants.PayWayUid.BANK);
+        memberPayInfoVO.setPayWayUid(Constants.PayWayUid.BANK);//支付方式代号
         requestJson.setMemberPayInfoVO(memberPayInfoVO);
+
+        VerificationBean verificationBean = new VerificationBean();
+        verificationBean.setVerifyCode(imageCode);//图形验证码
+        requestJson.setVerificationBean(verificationBean);
+
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "rechargeVirtualCoin:", requestJson);
 
         paymentManagerInteractor.rechargeVirtual(GsonTool.beanToRequestBody(requestJson))
