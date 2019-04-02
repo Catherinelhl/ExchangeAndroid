@@ -176,7 +176,7 @@ public class BcaasTabLayout extends FrameLayout {
             if (tabSize <= 3) {
                 widthTemp = screenWidth / tabSize;
             } else {
-                widthTemp = (int) (screenWidth / 3.5);
+                widthTemp = (int) (screenWidth / 3.3);
             }
         } else {
             widthTemp = screenWidth / tabSize;

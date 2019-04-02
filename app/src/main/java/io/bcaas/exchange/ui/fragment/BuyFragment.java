@@ -24,6 +24,7 @@ import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.device.DensityTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
@@ -230,7 +231,7 @@ public class BuyFragment extends BaseFragment
         if (tabLayout == null && viewPager == null) {
             return;
         }
-        int width = BaseApplication.getScreenWidth() - getResources().getDimensionPixelOffset(R.dimen.d48);
+        int width = BaseApplication.getScreenWidth() - DensityTool.dip2px(getContext(), 48);
         tabLayout.removeTabLayout();
         //得到当前的所有钱包信息
         memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
@@ -283,7 +284,7 @@ public class BuyFragment extends BaseFragment
             viewPager.setCurrentItem(0);
             //将当前选中的token type返回给MainActivity
             setCurrentDisplayType(memberKeyVOListTitle.get(0));
-            viewPager.setOffscreenPageLimit(size > 3 ? 4 : size);
+            viewPager.setOffscreenPageLimit(size);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
             tabLayout.setupWithViewPager(true,
                     width,
