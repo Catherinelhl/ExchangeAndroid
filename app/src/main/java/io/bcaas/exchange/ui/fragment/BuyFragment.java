@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -33,6 +32,7 @@ import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.StickHeadScrollView;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
@@ -52,9 +52,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class BuyFragment extends BaseFragment
         implements ForSaleOrderListContract.View, GetAllBalanceContract.View {
+
     private String TAG = BuyFragment.class.getSimpleName();
 
-
+    @BindView(R.id.shsv)
+    StickHeadScrollView shsv;
     @BindView(R.id.tab_layout)
     BcaasTabLayout tabLayout;
     @BindView(R.id.viewpager)
@@ -83,7 +85,7 @@ public class BuyFragment extends BaseFragment
 
     @Override
     public int getLayoutRes() {
-        return R.layout.include_fragment_content;
+        return R.layout.fragment_buy;
     }
 
     @Override
@@ -108,10 +110,18 @@ public class BuyFragment extends BaseFragment
         ivBgBanner.setVisibility(View.VISIBLE);
         //获取到当前屏幕的宽度，然后重新设置banner的宽高
         int width = BaseApplication.getScreenWidth();
-        int height = width / 375 * 130;
+        int height = width / 26 * 9;
         ViewGroup.LayoutParams layoutParams = ivBgBanner.getLayoutParams();
         layoutParams.height = height;
         ivBgBanner.setLayoutParams(layoutParams);
+
+        //避免自动滑动到底部
+        tabLayout.setFocusable(true);
+        tabLayout.setFocusableInTouchMode(true);
+        tabLayout.requestFocus();
+        //2.set height
+        shsv.resetHeight(tabLayout, srlData);
+
     }
 
     @Override

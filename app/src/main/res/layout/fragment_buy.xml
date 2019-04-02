@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@color/theme_grey"
+        android:layout_height="match_parent">
+    <io.bcaas.exchange.view.viewGroup.StickHeadScrollView
+            android:id="@+id/shsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView android:layout_width="match_parent"
+                           android:src="@mipmap/bg_home_banner"
+                           android:scaleType="centerCrop"
+                           android:id="@+id/iv_bg_banner"
+                           android:layout_height="wrap_content"/>
+                <io.bcaas.exchange.view.viewGroup.BcaasTabLayout
+                        android:id="@+id/tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        app:tabMode="scrollable"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/iv_bg_banner"
+                        android:background="@color/white"
+                        app:tabIndicatorColor="@color/button_color"
+                        app:tabSelectedTextColor="@color/button_color"
+                        app:tabIndicatorHeight="@dimen/d2"
+                        app:tabIndicatorWidth="@dimen/d16"
+                        android:layout_toLeftOf="@+id/v_line"
+                        app:tabTextColor="@color/black_333333"
+                        app:tab_Mode="mode_scrollable"
+                        android:layout_height="@dimen/d48"/>
+                <View android:layout_width="@dimen/d1"
+                      android:layout_toLeftOf="@+id/ib_right"
+                      android:layout_height="@dimen/d48"
+                      android:id="@+id/v_line"
+                      android:background="@color/black20_AEAEAE"/>
+                <ImageButton
+                        android:id="@+id/ib_right"
+                        android:layout_width="@dimen/d48"
+                        android:layout_height="@dimen/d48"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_bg_banner"
+                        android:background="@color/white"
+                        android:src="@mipmap/icon_filter"
+                        android:visibility="visible"/>
+            </RelativeLayout>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                    android:id="@+id/srl_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            >
+                <android.support.v4.view.ViewPager
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/theme_grey"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+    </io.bcaas.exchange.view.viewGroup.StickHeadScrollView>
+</RelativeLayout>

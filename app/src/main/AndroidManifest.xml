@@ -23,6 +23,7 @@
             tools:replace="android:appComponentFactory"
             android:appComponentFactory="whateverString"
             tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".ui.activity.BrandActivity"
                   android:screenOrientation="portrait">
             <intent-filter>

@@ -5,18 +5,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/theme_grey">
-    <ImageView android:layout_width="match_parent"
-               android:src="@mipmap/bg_home_banner"
-               android:scaleType="centerCrop"
-               android:id="@+id/iv_bg_banner"
-               android:visibility="gone"
-               android:layout_height="wrap_content"/>
     <io.bcaas.exchange.view.viewGroup.BcaasTabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             app:tabMode="scrollable"
-            android:layout_below="@+id/iv_bg_banner"
             android:background="@color/white"
             app:tabIndicatorColor="@color/button_color"
             app:tabSelectedTextColor="@color/button_color"
@@ -26,22 +19,6 @@
             app:tabTextColor="@color/black_333333"
             app:tab_Mode="mode_scrollable"
             android:layout_height="@dimen/d48"/>
-    <View android:layout_width="@dimen/d1"
-          android:layout_toLeftOf="@+id/ib_right"
-          android:layout_height="@dimen/d48"
-          android:visibility="gone"
-          android:id="@+id/v_line"
-          android:background="@color/black20_AEAEAE"/>
-    <ImageButton
-            android:id="@+id/ib_right"
-            android:layout_width="@dimen/d48"
-            android:layout_height="@dimen/d48"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:layout_below="@+id/iv_bg_banner"
-            android:background="@color/white"
-            android:src="@mipmap/icon_filter"
-            android:visibility="gone"/>
     <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/srl_data"
             android:layout_below="@+id/tab_layout"
