@@ -149,7 +149,7 @@ public class BcaasTabLayout extends FrameLayout {
      * @param viewPager
      */
     public void setupWithViewPager(@Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
-        this.setupWithViewPager(false, viewPager, onTabSelectedListener);
+        this.setupWithViewPager(false, BaseApplication.getScreenWidth(), viewPager, onTabSelectedListener);
     }
 
     /**
@@ -158,9 +158,9 @@ public class BcaasTabLayout extends FrameLayout {
      * @param viewPager
      * @param fixThree  是否鎖定三個
      */
-    public void setupWithViewPager(boolean fixThree, @Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
+    public void setupWithViewPager(boolean fixThree, int width, @Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
         mTabLayout.addOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager, this, onTabSelectedListener));
-        measureLayoutParams(fixThree);
+        measureLayoutParams(fixThree, width);
     }
 
     /**
@@ -168,19 +168,18 @@ public class BcaasTabLayout extends FrameLayout {
      *
      * @param fixThree
      */
-    public void measureLayoutParams(boolean fixThree) {
+    public void measureLayoutParams(boolean fixThree, int screenWidth) {
         Class<?> tabLayout = mTabLayout.getClass();
 //        int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int widthTemp;
         if (fixThree) {
-            int width = BaseApplication.getScreenWidth() - context.getResources().getDimensionPixelOffset(R.dimen.d48);
             if (tabSize <= 3) {
-                widthTemp = width / tabSize;
+                widthTemp = screenWidth / tabSize;
             } else {
-                widthTemp = (int) (width / 3.5);
+                widthTemp = (int) (screenWidth / 3.5);
             }
         } else {
-            widthTemp = BaseApplication.getScreenWidth() / tabSize;
+            widthTemp = screenWidth / tabSize;
         }
 
         Field tabStrip = null;
@@ -324,7 +323,7 @@ public class BcaasTabLayout extends FrameLayout {
      * @param
      * @return
      */
-    public  View getTabView(Context context, String text, int indicatorWidth, int indicatorHeight, int textSize) {
+    public View getTabView(Context context, String text, int indicatorWidth, int indicatorHeight, int textSize) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_tab_layout, null);
         TextView tabText = (TextView) view.findViewById(R.id.tab_item_text);
         ImageView imageView = (ImageView) view.findViewById(R.id.iv_icon);

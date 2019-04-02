@@ -230,6 +230,7 @@ public class BuyFragment extends BaseFragment
         if (tabLayout == null && viewPager == null) {
             return;
         }
+        int width = BaseApplication.getScreenWidth() - getResources().getDimensionPixelOffset(R.dimen.d48);
         tabLayout.removeTabLayout();
         //得到当前的所有钱包信息
         memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
@@ -248,7 +249,7 @@ public class BuyFragment extends BaseFragment
                     }
                 }
             }
-            tabLayout.measureLayoutParams(true);
+            tabLayout.measureLayoutParams(true, width);
 
         }
 
@@ -284,35 +285,37 @@ public class BuyFragment extends BaseFragment
             setCurrentDisplayType(memberKeyVOListTitle.get(0));
             viewPager.setOffscreenPageLimit(size > 3 ? 4 : size);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
-            tabLayout.setupWithViewPager(true, viewPager, new TabLayout.OnTabSelectedListener() {
-                @Override
-                public void onTabSelected(TabLayout.Tab tab) {
-                    // 得到当前的position
-                    currentPosition = tab.getPosition();
-                    //将当前选中的token type返回给MainActivity
-                    if (currentPosition < size) {
-                        setCurrentDisplayType(memberKeyVOListTitle.get(currentPosition));
-                    }
-                    // 清空当前的界面信息
-                    memberOrderVOS.clear();
-                    // 刷新界面信息
-                    if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                        ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, true);
-                    }
-                    //重新请求数据
-                    requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
-                }
+            tabLayout.setupWithViewPager(true,
+                    width,
+                    viewPager, new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            // 得到当前的position
+                            currentPosition = tab.getPosition();
+                            //将当前选中的token type返回给MainActivity
+                            if (currentPosition < size) {
+                                setCurrentDisplayType(memberKeyVOListTitle.get(currentPosition));
+                            }
+                            // 清空当前的界面信息
+                            memberOrderVOS.clear();
+                            // 刷新界面信息
+                            if (ListTool.noEmpty(views) && currentPosition < views.size()) {
+                                ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, true);
+                            }
+                            //重新请求数据
+                            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
+                        }
 
-                @Override
-                public void onTabUnselected(TabLayout.Tab tab) {
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
 
-                }
+                        }
 
-                @Override
-                public void onTabReselected(TabLayout.Tab tab) {
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
 
-                }
-            });
+                        }
+                    });
             tabLayout.resetSelectedTab(0);
             requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
 

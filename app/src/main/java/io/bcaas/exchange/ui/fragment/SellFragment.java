@@ -158,6 +158,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         LogTool.d(TAG, "initTopTabData:" + memberKeyVOList);
         if (ListTool.noEmpty(memberKeyVOList)) {
             int size = memberKeyVOList.size();
+            tabLayout.setTabSize(size);
             //加载数据
             for (int i = 0; i < size; i++) {
                 //添加标题
@@ -182,24 +183,26 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
-        tabLayout.setupWithViewPager(viewPager, new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                currentPosition = tab.getPosition();
-                refreshCurrentView();
-                LogTool.d(TAG, "onTabSelected:" + currentPosition);
-            }
+        tabLayout.setupWithViewPager(true,
+                BaseApplication.getScreenWidth(),
+                viewPager, new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        currentPosition = tab.getPosition();
+                        refreshCurrentView();
+                        LogTool.d(TAG, "onTabSelected:" + currentPosition);
+                    }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+                    }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
 
-            }
-        });
+                    }
+                });
         tabLayout.resetSelectedTab(0);
     }
 
