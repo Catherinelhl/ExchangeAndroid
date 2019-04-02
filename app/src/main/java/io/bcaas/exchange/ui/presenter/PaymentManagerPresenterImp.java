@@ -480,8 +480,6 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 }
                             }
                         }
-
-
                     }
 
                     @Override

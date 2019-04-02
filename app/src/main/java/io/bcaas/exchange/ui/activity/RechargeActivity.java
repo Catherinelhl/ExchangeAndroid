@@ -104,15 +104,15 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                     tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
                     return;
                 }
-                int memberKeyUid = memberKeyVO.getMemberKeyUid();
+                CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+                if (currencyListVO == null) {
+                    tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
+                    tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
+                    return;
+                }
+                String currencyUID = currencyListVO.getCurrencyUid();
                 //判断如果当前是七彩贝的话
-                if (memberKeyUid == Constants.MemberKeyUID.CNYC) {
-                    CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
-                    if (currencyListVO == null) {
-                        tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
-                        tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
-                        return;
-                    }
+                if (StringTool.equals(currencyUID, Constants.CurrencyUID.CNYC)) {
                     StringBuffer sbRechargeName = new StringBuffer(currencyListVO.getCnName());
                     sbRechargeName.append("(")
                             .append(currencyListVO.getEnName())

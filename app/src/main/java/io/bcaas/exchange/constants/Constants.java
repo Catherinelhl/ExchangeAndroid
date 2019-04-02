@@ -306,9 +306,9 @@ public class Constants {
     /**
      * 当前币种的UID
      */
-    public class MemberKeyUID {
+    public class CurrencyUID {
 
-        public static final int CNYC = 48;//七彩贝 CNYC
+        public static final String CNYC = "3";//七彩贝 CNYC
 
     }
 
