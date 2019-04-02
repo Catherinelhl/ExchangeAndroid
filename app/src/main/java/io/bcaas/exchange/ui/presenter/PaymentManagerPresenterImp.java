@@ -463,10 +463,20 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                 view.responseSuccess(responseJson.getMessage(), type);
                             } else {
                                 int code = responseJson.getCode();
+
+                                //  {"code":2066,"message":"Insufficient balances.","size":0,"success":false}
                                 // {"success":false,"code":2015,"message":"Current password is wrong."}
                                 //    {"success":false,"code":2000,"message":"VO is null or type error."}
                                 if (!view.httpExceptionDisposed(responseJson)) {
-                                    view.responseFailed(responseJson.getMessage(), type);
+                                    if (code == MessageConstants.CODE_2066) {
+                                        view.responseFailed(getString(R.string.no_enough_balance), type);
+                                    } else if (code == MessageConstants.CODE_2015) {
+                                        view.responseFailed(getString(R.string.current_password_is_wrong), type);
+                                    } else if (code == MessageConstants.CODE_2000) {
+                                        view.responseFailed(getString(R.string.data_format_exception), type);
+                                    } else {
+                                        view.responseFailed(responseJson.getMessage(), type);
+                                    }
                                 }
                             }
                         }
