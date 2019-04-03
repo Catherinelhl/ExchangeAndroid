@@ -142,9 +142,7 @@ public class RechargeDetailActivity extends BaseActivity
             @Override
             public void onComplete(String content) {
                 if (tvPayAmount != null) {
-                    StringBuffer sbRechargeAmount = new StringBuffer(DecimalTool.transferDisplay(2, content, Constants.Pattern.TWO_DISPLAY))
-                            .append(getString(R.string.yuan));
-                    tvPayAmount.setText(sbRechargeAmount);
+                    tvPayAmount.setText(DecimalTool.transferDisplay(2, content, Constants.Pattern.TWO_DISPLAY));
                 }
             }
 

@@ -129,8 +129,15 @@
                                     android:id="@+id/tv_pay_amount"
                                     android:layout_width="@dimen/d0"
                                     android:layout_weight="1"
+                                    android:textStyle="bold"
                                     style="@style/black_666_14_text_style"
-                                    tool:text="500.00元"
+                                    tool:text="500.00"
+                                    android:layout_marginRight="@dimen/d2"
+                                    android:gravity="right"/>
+                            <TextView
+                                    android:id="@+id/tv_pay_amount_unit"
+                                    style="@style/black_666_14_text_style"
+                                    android:text="@string/yuan"
                                     android:gravity="right"/>
                         </LinearLayout>
                         <View style="@style/small_line_style"/>

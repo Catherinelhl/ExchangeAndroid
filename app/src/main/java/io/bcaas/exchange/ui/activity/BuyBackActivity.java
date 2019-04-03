@@ -134,9 +134,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
                     String content = s.toString();
                     if (StringTool.notEmpty(content)) {
                         if (tvBuyBackAmount != null) {
-                            StringBuffer sbBuyBackAmount = new StringBuffer(DecimalTool.transferDisplay(2, content, Constants.Pattern.TWO_DISPLAY))
-                                    .append(getString(R.string.yuan));
-                            tvBuyBackAmount.setText(sbBuyBackAmount);
+                            tvBuyBackAmount.setText(DecimalTool.transferDisplay(2, content, Constants.Pattern.TWO_DISPLAY));
                         }
                     }
                 }
