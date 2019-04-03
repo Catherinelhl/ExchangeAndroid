@@ -183,8 +183,6 @@ public class MainActivity extends BaseActivity
         bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                //改变当前中间content信息；Fragment变换
-                onTabItemSelected(tab.getPosition());
                 //自定义:如果是自定义的tabItem，那么就需要调用这句来设置选中状态，虽然没有界面上的变化
                 tab.getCustomView().findViewById(R.id.ll_tab_item).setSelected(true);
                 TextView textView = tab.getCustomView().findViewById(R.id.tv_tab_title);
@@ -192,6 +190,8 @@ public class MainActivity extends BaseActivity
                 //method 2：如果是直接就用一个TextView控件来表示了，那么就可以直接用下面这一句来表示
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
 
+                //改变当前中间content信息；Fragment变换
+                onTabItemSelected(tab.getPosition());
             }
 
             @Override

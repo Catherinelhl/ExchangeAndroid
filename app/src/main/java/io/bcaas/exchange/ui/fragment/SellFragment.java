@@ -190,7 +190,6 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
             public void onTabSelected(TabLayout.Tab tab) {
                 currentPosition = tab.getPosition();
                 refreshCurrentView();
-                LogTool.d(TAG, "onTabSelected:" + currentPosition);
             }
 
             @Override

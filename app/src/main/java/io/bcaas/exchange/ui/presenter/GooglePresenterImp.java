@@ -33,7 +33,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
     private String TAG = GooglePresenterImp.class.getSimpleName();
     private GoogleContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
-    private Disposable disposableGetAuthenticatorUrl, disposableSecurityGoogleAuthenticator;
+    private Disposable disposableGetAuthenticatorUrl, disposableSecurityGoogleAuthenticator, disposableCrateImage;
 
     public GooglePresenterImp(GoogleContract.View view) {
         super();
@@ -116,7 +116,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
     }
 
     @Override
-    public void securityGoogleAuthenticator(String verifyCode,String secret) {
+    public void securityGoogleAuthenticator(String verifyCode, String secret) {
         //判断当前是否有网路
         if (!BaseApplication.isRealNet()) {
             view.noNetWork();
@@ -201,6 +201,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
             view.noNetWork();
             return;
         }
+        disposeDisposable(disposableCrateImage);
         //显示加载框
         view.showLoading();
         safetyCenterInteractor.getAuthenticatorUrlCreateImage(url)
@@ -211,7 +212,7 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                 .subscribe(new Observer<Bitmap>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableCrateImage = d;
                     }
 
                     @Override
@@ -224,12 +225,13 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                     public void onError(Throwable e) {
                         view.hideLoading();
                         view.getAuthenticatorImageFailure();
-
+                        disposeDisposable(disposableCrateImage);
                     }
 
                     @Override
                     public void onComplete() {
                         view.hideLoading();
+                        disposeDisposable(disposableCrateImage);
                     }
                 });
 

@@ -63,8 +63,6 @@ public class SetFundPasswordPresenterImp extends BasePresenterImp
             LogTool.e(TAG, e.getMessage());
         }
         requestJson.setMemberVO(memberVO);
-
-
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
@@ -75,7 +73,7 @@ public class SetFundPasswordPresenterImp extends BasePresenterImp
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableSecurityTxPassword = d;
                     }
 
                     @Override

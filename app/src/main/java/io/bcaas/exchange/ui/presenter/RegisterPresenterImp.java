@@ -32,7 +32,7 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
     private RegisterContract.View view;
     private LoginInteractor loginInteractor;
 
-    private Disposable disposableRegister, disposableVerifyAccount;
+    private Disposable disposableRegister;
 
     public RegisterPresenterImp(RegisterContract.View view) {
         super();

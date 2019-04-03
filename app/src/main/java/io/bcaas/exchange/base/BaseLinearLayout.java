@@ -65,7 +65,7 @@ public abstract class BaseLinearLayout extends LinearLayout implements BaseContr
         }
         hideLoading();
         loadingDialog = new LoadingDialog(context);
-        loadingDialog.setProgressBarColor(getResources().getColor(R.color.yellow_FFA73B));
+        loadingDialog.setProgressBarColor(getResources().getColor(R.color.button_color));
         loadingDialog.show();
     }
 

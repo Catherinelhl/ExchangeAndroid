@@ -62,7 +62,6 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
                         disposableEmailVerify = d;
                     }
 

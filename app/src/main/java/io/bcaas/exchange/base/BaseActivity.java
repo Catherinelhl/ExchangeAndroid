@@ -422,7 +422,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         }
         hideLoading();
         loadingDialog = new LoadingDialog(this);
-        loadingDialog.setProgressBarColor(getResources().getColor(R.color.yellow_FFA73B));
+        loadingDialog.setProgressBarColor(getResources().getColor(R.color.button_color));
         loadingDialog.show();
     }
 

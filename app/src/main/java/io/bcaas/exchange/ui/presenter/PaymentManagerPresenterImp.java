@@ -40,7 +40,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
     private String TAG = PaymentManagerPresenterImp.class.getSimpleName();
     private PayWayManagerContract.View view;
     private PaymentManagerInteractor paymentManagerInteractor;
-    private Disposable disposable;
+    private Disposable disposableGetPayWay, disposableAddPayWay, disposableModifyPayWay, disposableRemovePayWay, disposableGetBankInfo, disposableRecharge, disposableBuyBack, disposableVerification;
 
     public PaymentManagerPresenterImp(PayWayManagerContract.View view) {
         super();
@@ -64,6 +64,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         requestJson.setMemberVO(memberVO);
 
 
+        disposeDisposable(disposableAddPayWay);
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
@@ -77,7 +78,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableAddPayWay = d;
                     }
 
                     @Override
@@ -104,6 +105,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onError(Throwable e) {
+                        disposeDisposable(disposableAddPayWay);
                         view.hideLoading();
                         e.printStackTrace();
                         view.responseFailed(e.getMessage(), type);
@@ -111,11 +113,18 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableAddPayWay);
                         view.hideLoading();
                     }
                 });
     }
 
+    /**
+     * 修改支付当时，暂且不用
+     *
+     * @param type
+     * @param memberPayInfoVO
+     */
     @Override
     public void modifyPayWay(String type, MemberPayInfoVO memberPayInfoVO) {
         RequestJson requestJson = new RequestJson();
@@ -123,7 +132,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         memberVO.setMemberId(BaseApplication.getMemberID());
         requestJson.setMemberVO(memberVO);
 
-
+        disposeDisposable(disposableModifyPayWay);
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
@@ -137,7 +146,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableModifyPayWay = d;
                     }
 
                     @Override
@@ -155,12 +164,14 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     @Override
                     public void onError(Throwable e) {
+                        disposeDisposable(disposableModifyPayWay);
                         e.printStackTrace();
                         view.responseFailed(e.getMessage(), type);
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableModifyPayWay);
 
                     }
                 });
@@ -181,14 +192,14 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         requestJson.setMemberPayInfoVO(memberPayInfoVO);
 
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "removePayWay:", requestJson);
-
+        disposeDisposable(disposableRemovePayWay);
         paymentManagerInteractor.removePayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableRemovePayWay = d;
                     }
 
                     @Override
@@ -208,17 +219,20 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         view.responseFailed(e.getMessage(), type);
+                        disposeDisposable(disposableRemovePayWay);
+
                     }
 
                     @Override
                     public void onComplete() {
-
+                        disposeDisposable(disposableRemovePayWay);
                     }
                 });
     }
 
     @Override
     public void getBankInfo(String type) {
+        disposeDisposable(disposableGetBankInfo);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -229,14 +243,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getBankInfo:", requestJson);
-
         paymentManagerInteractor.getBankInfo(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableGetBankInfo = d;
                     }
 
                     @Override
@@ -257,10 +270,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         view.responseFailed(e.getMessage(), type);
+                        disposeDisposable(disposableGetBankInfo);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableGetBankInfo);
 
                     }
                 });
@@ -268,6 +284,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
     @Override
     public void getPayWay(String type) {
+        disposeDisposable(disposableGetPayWay);
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
@@ -280,14 +297,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         requestJson.setLoginInfoVO(loginInfoVO);
 
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "getPayWay:", requestJson);
-        disposeDisposable(disposable);
         paymentManagerInteractor.getPayWay(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposable = d;
+                        disposableGetPayWay = d;
                     }
 
                     @Override
@@ -321,13 +337,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                         view.hideLoading();
                         e.printStackTrace();
                         view.responseFailed(e.getMessage(), type);
-                        disposeDisposable(disposable);
+                        disposeDisposable(disposableGetPayWay);
 
                     }
 
                     @Override
                     public void onComplete() {
-                        disposeDisposable(disposable);
+                        disposeDisposable(disposableGetPayWay);
                         view.hideLoading();
                     }
                 });
@@ -348,6 +364,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                                     String amount,
                                     String mark,
                                     String imageCode) {
+        disposeDisposable(disposableRecharge);
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(BaseApplication.getMemberID());
@@ -376,14 +393,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         requestJson.setVerificationBean(verificationBean);
 
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "rechargeVirtualCoin:", requestJson);
-
         paymentManagerInteractor.rechargeVirtual(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableRecharge = d;
                     }
 
                     @Override
@@ -408,11 +424,14 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        view.responseFailed(e.getMessage().toString(), type);
+                        view.responseFailed(e.getMessage(), type);
+                        disposeDisposable(disposableRecharge);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableRecharge);
 
                     }
                 });
@@ -420,6 +439,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
     @Override
     public void convertCoin(String type, String currencyUID, String amount, String txPassword) {
+        disposeDisposable(disposableBuyBack);
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
@@ -444,14 +464,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         memberOrderVO.setAmount(amount);
         requestJson.setMemberOrderVO(memberOrderVO);
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "convertCoin:", requestJson);
-
         paymentManagerInteractor.convertCoin(GsonTool.beanToRequestBody(requestJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableBuyBack = d;
                     }
 
                     @Override
@@ -488,17 +507,19 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                         e.printStackTrace();
                         LogTool.e(TAG, e.getMessage());
                         view.responseFailed(e.getMessage(), type);
+                        disposeDisposable(disposableBuyBack);
                     }
 
                     @Override
                     public void onComplete() {
-
+                        disposeDisposable(disposableBuyBack);
                     }
                 });
     }
 
     @Override
     public void identityNameVerification(String identityName, String type) {
+        disposeDisposable(disposableVerification);
         view.showLoading();
         RequestJson requestJson = new RequestJson();
         MemberVO memberVO = new MemberVO();
@@ -509,7 +530,6 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
         LoginInfoVO loginInfoVO = new LoginInfoVO();
         loginInfoVO.setAccessToken(BaseApplication.getToken());
         requestJson.setLoginInfoVO(loginInfoVO);
-
         GsonTool.logInfo(TAG, MessageConstants.LogInfo.REQUEST_JSON, "identityNameVerification:", requestJson);
 
         paymentManagerInteractor.identityNameVerification(GsonTool.beanToRequestBody(requestJson))
@@ -518,7 +538,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        disposableVerification = d;
                     }
 
                     @Override
@@ -548,10 +568,13 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                         e.printStackTrace();
                         LogTool.e(TAG, e.getMessage());
                         view.responseFailed(e.getMessage(), type);
+                        disposeDisposable(disposableVerification);
+
                     }
 
                     @Override
                     public void onComplete() {
+                        disposeDisposable(disposableVerification);
 
                     }
                 });
