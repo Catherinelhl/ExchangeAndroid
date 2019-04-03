@@ -70,14 +70,11 @@ public class SidesSlipAdapter extends BaseAdapter {
             CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
             if (currencyListVO != null) {
                 button.setText(currencyListVO.getEnName());
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        currentMemberKeyVO = memberKeyVO;
-                        notifyDataSetChanged();
-                        if (onItemSelectListener != null) {
-                            onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP);
-                        }
+                button.setOnClickListener(v -> {
+                    currentMemberKeyVO = memberKeyVO;
+                    notifyDataSetChanged();
+                    if (onItemSelectListener != null) {
+                        onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.SIDE_SLIP);
                     }
                 });
                 return button;

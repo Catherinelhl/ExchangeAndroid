@@ -85,7 +85,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                         if (isSuccess) {
                             PaginationVO paginationVOResponse = responseJson.getPaginationVO();
                             if (paginationVOResponse != null) {
-                                view.getRecordSuccess(paginationVOResponse, isRefresh);
+                                view.getRecordSuccess(paginationVOResponse, isRefresh,type);
                             } else {
                                 view.getRecordFailure(getString(R.string.no_data_info), isRefresh);
                             }

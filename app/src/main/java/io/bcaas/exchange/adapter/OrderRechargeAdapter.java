@@ -54,11 +54,11 @@ public class OrderRechargeAdapter extends RecyclerView.Adapter<OrderRechargeAdap
         }
         String enName = currencyListVO.getEnName();
         String uid = currencyListVO.getCurrencyUid();
-        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.recharge) + "  " + enName);
+        viewHolder.tvRechargeType.setText(String.format(context.getString(R.string.double_s), context.getResources().getString(R.string.recharge), enName));
         viewHolder.tvRechargeTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvRechargeStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
-        viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);
-        viewHolder.tvPayAmount.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + context.getResources().getString(R.string.yuan));
+        viewHolder.tvNumber.setText(String.format(context.getString(R.string.double_s), StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid), enName));
+        viewHolder.tvPayAmount.setText(String.format(context.getString(R.string.double_s), StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid), context.getResources().getString(R.string.yuan)));
         //取当下的支付银行账户名 银行名 银行账户
         String bankAccount = memberOrderVO.getBankAccount();
         String bankPersonalName = memberOrderVO.getBankPersonalName();

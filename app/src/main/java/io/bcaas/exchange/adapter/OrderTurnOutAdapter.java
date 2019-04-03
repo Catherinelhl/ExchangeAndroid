@@ -53,11 +53,11 @@ public class OrderTurnOutAdapter extends RecyclerView.Adapter<OrderTurnOutAdapte
         }
         String enName = currencyListVO.getEnName();
         String uid = currencyListVO.getCurrencyUid();
-        viewHolder.tvWithdrawType.setText(context.getResources().getString(R.string.turn_out) + "  " + enName);
+        viewHolder.tvWithdrawType.setText(String.format(context.getString(R.string.double_s), context.getResources().getString(R.string.turn_out), enName));
         viewHolder.tvWithdrawTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvWithdrawStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
-        viewHolder.tv_number.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);
-        viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), uid) + "  " + enName);
+        viewHolder.tv_number.setText(String.format(context.getString(R.string.double_s), StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid), enName));
+        viewHolder.tvFee.setText(String.format(context.getString(R.string.double_s), StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), uid), enName));
         viewHolder.tvWithdrawAddress.setText(memberOrderVO.getAddress());
     }
 

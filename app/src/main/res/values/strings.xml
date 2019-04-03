@@ -308,4 +308,5 @@
     <string name="price">价格</string>
     <string name="default_cnyc_value">七彩贝(CNYC)</string>
     <string name="three_s">%s%s %s</string>
+    <string name="double_s">%s %s</string>
 </resources>

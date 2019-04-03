@@ -71,7 +71,7 @@ public class CountryCodeAdapter extends
             if (StringTool.isEmpty(name) || StringTool.isEmpty(code)) {
                 return;
             }
-            viewHolder.tvContent.setText(context.getResources().getString(R.string.plus_sign) + code);
+            viewHolder.tvContent.setText(String.format("%s%s", context.getResources().getString(R.string.plus_sign), code));
             viewHolder.tvName.setText(name);
             viewHolder.tvName.setOnClickListener(v -> onItemSelectListener.onItemSelect(countryCode, MessageConstants.EMPTY));
             viewHolder.llAddress.setOnClickListener(view -> onItemSelectListener.onItemSelect(countryCode, MessageConstants.EMPTY));

@@ -90,6 +90,7 @@ public class OrderView extends BaseLinearLayout {
     }
 
     public void setAdapter(List<MemberOrderVO> memberOrderVOS, int currentPosition) {
+        LogTool.d(TAG,memberOrderVOS);
         this.currentPosition = currentPosition;
         switch (currentPosition) {
             case 0://交易

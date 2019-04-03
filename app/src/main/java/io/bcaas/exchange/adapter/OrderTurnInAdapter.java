@@ -57,10 +57,10 @@ public class OrderTurnInAdapter extends RecyclerView.Adapter<OrderTurnInAdapter.
         }
         String enName = currencyListVO.getEnName();
         String uid = currencyListVO.getCurrencyUid();
-        viewHolder.tvRechargeType.setText(context.getResources().getString(R.string.turn_in) + "  " + enName);
+        viewHolder.tvRechargeType.setText(String.format(context.getString(R.string.double_s), context.getResources().getString(R.string.turn_in), enName));
         viewHolder.tvRechargeTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         viewHolder.tvRechargeStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
-        viewHolder.tvNumber.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid) + "  " + enName);
+        viewHolder.tvNumber.setText(String.format(context.getString(R.string.double_s), StringTool.getDisplayAmountByUId(memberOrderVO.getAmount(), uid), enName));
         viewHolder.tvRechargeAddress.setText(memberOrderVO.getAddress());
     }
 

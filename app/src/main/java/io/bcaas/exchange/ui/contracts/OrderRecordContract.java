@@ -15,7 +15,7 @@ public interface OrderRecordContract {
     interface View extends BaseContract.View {
         void getRecordFailure(String info, boolean isRefresh);
 
-        void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh);
+        void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh,int responseType);
 
         void cancelOrderFailure(String info);
 

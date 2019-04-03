@@ -307,7 +307,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     }
 
     @Override
-    public void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh) {
+    public void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh,int responseType) {
         GsonTool.logInfo(TAG, "PaginationVO:", paginationVO);
         if (isRefresh) {
             if (srlData != null) {
@@ -337,11 +337,9 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                 }
 
             }
-            int type = JsonTool.getInt(GsonTool.string(paginationVO.getObjectList()), "type", 0);
-            GsonTool.logInfo(TAG, "当前的Type为:", type);
             GsonTool.logInfo(TAG, "memberOrderVOList:", memberOrderVOList);
             int currentNextObjectId;
-            switch (type) {
+            switch (responseType) {
                 case Constants.OrderType.TURN_IN:
                     nextObjectIdRecharge = paginationVO.getNextObjectId();
                     currentNextObjectId = Integer.valueOf(nextObjectIdRecharge);
@@ -412,7 +410,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     }
                     break;
                 default:
-
                     break;
             }
         } else {

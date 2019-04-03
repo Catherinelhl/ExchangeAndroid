@@ -82,25 +82,16 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
         viewHolder.tvFreeze.setText(StringTool.getDisplayAmountByUId(StringTool.isEmpty(balanceBlocked) ? Constants.ValueMaps.DEFAULT_BALANCE : balanceBlocked, uid));
         viewHolder.tvAvailable.setText(StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid));
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        viewHolder.itemView.setOnClickListener(v -> {
+        });
+        viewHolder.btnRecharge.setOnClickListener(v -> {
+            if (onItemSelectListener != null) {
+                onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.TURN_IN);
             }
         });
-        viewHolder.btnRecharge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.TURN_IN);
-                }
-            }
-        });
-        viewHolder.btnWithdraw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.TURN_OUT);
-                }
+        viewHolder.btnWithdraw.setOnClickListener(v -> {
+            if (onItemSelectListener != null) {
+                onItemSelectListener.onItemSelect(memberKeyVO, Constants.From.TURN_OUT);
             }
         });
     }
