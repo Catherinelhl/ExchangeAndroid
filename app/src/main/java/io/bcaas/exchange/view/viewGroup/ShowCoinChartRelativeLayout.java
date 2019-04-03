@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
@@ -74,6 +75,8 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
     LineChart chart;
     @BindView(R.id.rl_loading_data)
     RelativeLayout rlLoadingData;
+    @BindView(R.id.rl_chart)
+    RelativeLayout rlChart;
     @BindView(R.id.tv_expend)
     TextView tvExpend;
     private Context context;
@@ -376,6 +379,12 @@ public class ShowCoinChartRelativeLayout extends RelativeLayout
     }
 
     private void initListener() {
+        rlChart.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
         Disposable subscribeTvExpend = RxView.clicks(tvExpend).throttleFirst(Constants.Time.sleep1000, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
