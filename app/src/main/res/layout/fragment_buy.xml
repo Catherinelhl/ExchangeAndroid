@@ -21,7 +21,7 @@
                            android:scaleType="centerCrop"
                            android:id="@+id/iv_bg_banner"
                            android:layout_height="wrap_content"/>
-                <io.bcaas.exchange.view.viewGroup.BcaasTabLayout
+                <io.bcaas.exchange.view.viewGroup.BaseTabLayout
                         android:id="@+id/tab_layout"
                         android:layout_width="match_parent"
                         android:layout_gravity="center"
@@ -33,8 +33,9 @@
                         app:tabSelectedTextColor="@color/button_color"
                         app:tabIndicatorHeight="@dimen/d2"
                         app:tabIndicatorWidth="@dimen/d16"
-                        android:layout_toLeftOf="@+id/v_line"
+                        android:layout_marginRight="@dimen/d49"
                         app:tabTextColor="@color/black_333333"
+                        app:fixThree="true"
                         app:tab_Mode="mode_scrollable"
                         android:layout_height="@dimen/d48"/>
                 <View android:layout_width="@dimen/d1"

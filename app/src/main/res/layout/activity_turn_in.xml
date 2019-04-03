@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
     <include layout="@layout/include_header"/>
-    <io.bcaas.exchange.view.viewGroup.BcaasTabLayout
+    <io.bcaas.exchange.view.viewGroup.BaseTabLayout
             app:tabTextAppearance="@style/CustomTabLayoutTextAppearance"
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"

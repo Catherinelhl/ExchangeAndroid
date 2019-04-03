@@ -32,7 +32,7 @@ import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
-import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.view.viewGroup.StickHeadScrollView;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -59,7 +59,7 @@ public class BuyFragment extends BaseFragment
     @BindView(R.id.shsv)
     StickHeadScrollView shsv;
     @BindView(R.id.tab_layout)
-    BcaasTabLayout tabLayout;
+    BaseTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
     @BindView(R.id.srl_data)
@@ -231,7 +231,7 @@ public class BuyFragment extends BaseFragment
         if (tabLayout == null && viewPager == null) {
             return;
         }
-        int width = BaseApplication.getScreenWidth() - DensityTool.dip2px(getContext(), 48);
+        int width = BaseApplication.getScreenWidth();
         tabLayout.removeTabLayout();
         //得到当前的所有钱包信息
         memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
@@ -286,8 +286,7 @@ public class BuyFragment extends BaseFragment
             setCurrentDisplayType(memberKeyVOListTitle.get(0));
             viewPager.setOffscreenPageLimit(size);
             viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
-            tabLayout.setupWithViewPager(true,
-                    width,
+            tabLayout.setupWithViewPager(width,
                     viewPager, new TabLayout.OnTabSelectedListener() {
                         @Override
                         public void onTabSelected(TabLayout.Tab tab) {

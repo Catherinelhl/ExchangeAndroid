@@ -23,7 +23,7 @@ import io.bcaas.exchange.ui.activity.SellDetailActivity;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.SellView;
-import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 
@@ -43,7 +43,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
     private String TAG = SellFragment.class.getSimpleName();
 
     @BindView(R.id.tab_layout)
-    BcaasTabLayout tabLayout;
+    BaseTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 
@@ -56,7 +56,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
 
     @Override
     public int getLayoutRes() {
-        return R.layout.include_fragment_content;
+        return R.layout.fragment_sell;
     }
 
     @Override
@@ -183,26 +183,26 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         viewPager.setAdapter(tabViewAdapter);
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
-        tabLayout.setupWithViewPager(true,
-                BaseApplication.getScreenWidth(),
+        tabLayout.setupWithViewPager(
+        BaseApplication.getScreenWidth(),
                 viewPager, new TabLayout.OnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-                        currentPosition = tab.getPosition();
-                        refreshCurrentView();
-                        LogTool.d(TAG, "onTabSelected:" + currentPosition);
-                    }
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                currentPosition = tab.getPosition();
+                refreshCurrentView();
+                LogTool.d(TAG, "onTabSelected:" + currentPosition);
+            }
 
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-                    }
+            }
 
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
-                    }
-                });
+            }
+        });
         tabLayout.resetSelectedTab(0);
     }
 

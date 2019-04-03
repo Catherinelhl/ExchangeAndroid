@@ -24,7 +24,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.view.TurnInView;
-import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
@@ -52,7 +52,7 @@ public class TurnInActivity extends BaseActivity implements AccountSecurityContr
     @BindView(R.id.rl_header)
     RelativeLayout rlHeader;
     @BindView(R.id.tab_layout)
-    BcaasTabLayout tabLayout;
+    BaseTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
 

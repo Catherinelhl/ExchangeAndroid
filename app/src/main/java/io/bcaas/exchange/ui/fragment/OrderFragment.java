@@ -14,7 +14,6 @@ import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.gson.GsonTool;
-import io.bcaas.exchange.gson.JsonTool;
 import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -23,7 +22,7 @@ import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
-import io.bcaas.exchange.view.viewGroup.BcaasTabLayout;
+import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.vo.MemberOrderVO;
 import io.bcaas.exchange.vo.PaginationVO;
 
@@ -42,7 +41,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     private String TAG = OrderFragment.class.getSimpleName();
 
     @BindView(R.id.tab_layout)
-    BcaasTabLayout tabLayout;
+    BaseTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
     @BindView(R.id.srl_data)
@@ -61,7 +60,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public int getLayoutRes() {
-        return R.layout.include_fragment_content;
+        return R.layout.fragment_order;
     }
 
     @Override

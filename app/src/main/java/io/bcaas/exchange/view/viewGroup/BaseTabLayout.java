@@ -32,8 +32,8 @@ import java.util.List;
  * @since 2019/1/7
  * 自定义视图：APP的底部导航栏
  */
-public class BcaasTabLayout extends FrameLayout {
-    private String TAG = BcaasTabLayout.class.getSimpleName();
+public class BaseTabLayout extends FrameLayout {
+    private String TAG = BaseTabLayout.class.getSimpleName();
     private TabLayout mTabLayout;
     private List<String> mTabList;
     private List<View> mCustomViewList;
@@ -43,44 +43,46 @@ public class BcaasTabLayout extends FrameLayout {
     private int mIndicatorHeight;
     private int mIndicatorWidth;
     private int mTabMode;
+    private boolean fixThree;//是否鎖定三個
     private int mTabTextSize;
     private Context context;
     private int tabSize = 3;
 
 
-    public BcaasTabLayout(@NonNull Context context) {
+    public BaseTabLayout(@NonNull Context context) {
         super(context);
         this.context = context;
         init(context, null);
     }
 
-    public BcaasTabLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public BaseTabLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         init(context, attrs);
     }
 
-    public BcaasTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BaseTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
         init(context, attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BcaasTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public BaseTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
     }
 
     private void readAttr(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BcaasTabLayout);
-        mSelectIndicatorColor = typedArray.getColor(R.styleable.BcaasTabLayout_tabIndicatorColor, context.getResources().getColor(R.color.button_color));
-        mUnSelectTextColor = typedArray.getColor(R.styleable.BcaasTabLayout_tabTextColor, context.getResources().getColor(R.color.black_333333));
-        mSelectTextColor = typedArray.getColor(R.styleable.BcaasTabLayout_tabSelectTextColor, context.getResources().getColor(R.color.button_color));
-        mIndicatorHeight = typedArray.getDimensionPixelSize(R.styleable.BcaasTabLayout_tabIndicatorHeight, 1);
-        mIndicatorWidth = typedArray.getDimensionPixelSize(R.styleable.BcaasTabLayout_tabIndicatorWidth, 0);
-        mTabTextSize = typedArray.getDimensionPixelSize(R.styleable.BcaasTabLayout_tabTextSize, 16);
-        mTabMode = typedArray.getInt(R.styleable.BcaasTabLayout_tab_Mode, 2);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseTabLayout);
+        mSelectIndicatorColor = typedArray.getColor(R.styleable.BaseTabLayout_tabIndicatorColor, context.getResources().getColor(R.color.button_color));
+        mUnSelectTextColor = typedArray.getColor(R.styleable.BaseTabLayout_tabTextColor, context.getResources().getColor(R.color.black_333333));
+        mSelectTextColor = typedArray.getColor(R.styleable.BaseTabLayout_tabSelectTextColor, context.getResources().getColor(R.color.button_color));
+        mIndicatorHeight = typedArray.getDimensionPixelSize(R.styleable.BaseTabLayout_tabIndicatorHeight, 1);
+        mIndicatorWidth = typedArray.getDimensionPixelSize(R.styleable.BaseTabLayout_tabIndicatorWidth, 0);
+        mTabTextSize = typedArray.getDimensionPixelSize(R.styleable.BaseTabLayout_tabTextSize, 16);
+        mTabMode = typedArray.getInt(R.styleable.BaseTabLayout_tab_Mode, 2);
+        fixThree = typedArray.getBoolean(R.styleable.BaseTabLayout_fixThree, false);
         typedArray.recycle();
     }
 
@@ -149,16 +151,15 @@ public class BcaasTabLayout extends FrameLayout {
      * @param viewPager
      */
     public void setupWithViewPager(@Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
-        this.setupWithViewPager(false, BaseApplication.getScreenWidth(), viewPager, onTabSelectedListener);
+        this.setupWithViewPager(BaseApplication.getScreenWidth(), viewPager, onTabSelectedListener);
     }
 
     /**
      * 与TabLayout 联动
      *
      * @param viewPager
-     * @param fixThree  是否鎖定三個
      */
-    public void setupWithViewPager(boolean fixThree, int width, @Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
+    public void setupWithViewPager(int width, @Nullable ViewPager viewPager, TabLayout.OnTabSelectedListener onTabSelectedListener) {
         mTabLayout.addOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager, this, onTabSelectedListener));
         measureLayoutParams(fixThree, width);
     }
@@ -170,13 +171,12 @@ public class BcaasTabLayout extends FrameLayout {
      */
     public void measureLayoutParams(boolean fixThree, int screenWidth) {
         Class<?> tabLayout = mTabLayout.getClass();
-//        int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int widthTemp;
         if (fixThree) {
             if (tabSize <= 3) {
                 widthTemp = screenWidth / tabSize;
             } else {
-                widthTemp = (int) (screenWidth / 3.3);
+                widthTemp = screenWidth / 4;
             }
         } else {
             widthTemp = screenWidth / tabSize;
@@ -195,7 +195,11 @@ public class BcaasTabLayout extends FrameLayout {
                     if (tabSize <= 3) {
                         params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT, 1);
                     } else {
-                        params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT);
+                        if (i == ll_tab.getChildCount() - 1) {
+                            params = new LinearLayout.LayoutParams(widthTemp + 29, LinearLayout.LayoutParams.MATCH_PARENT);
+                        } else {
+                            params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT);
+                        }
                     }
                 } else {
                     params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT, 1);
@@ -254,12 +258,12 @@ public class BcaasTabLayout extends FrameLayout {
     public static class ViewPagerOnTabSelectedListener implements TabLayout.OnTabSelectedListener {
 
         private final ViewPager mViewPager;
-        private final WeakReference<BcaasTabLayout> mTabLayoutRef;
+        private final WeakReference<BaseTabLayout> mTabLayoutRef;
         private final TabLayout.OnTabSelectedListener onTabSelectedListener;
 
-        public ViewPagerOnTabSelectedListener(ViewPager viewPager, BcaasTabLayout bcaasTabLayout, TabLayout.OnTabSelectedListener tabSelectedListener) {
+        public ViewPagerOnTabSelectedListener(ViewPager viewPager, BaseTabLayout bcaasTabLayout, TabLayout.OnTabSelectedListener tabSelectedListener) {
             mViewPager = viewPager;
-            mTabLayoutRef = new WeakReference<BcaasTabLayout>(bcaasTabLayout);
+            mTabLayoutRef = new WeakReference<BaseTabLayout>(bcaasTabLayout);
             this.onTabSelectedListener = tabSelectedListener;
         }
 
@@ -269,7 +273,7 @@ public class BcaasTabLayout extends FrameLayout {
                 onTabSelectedListener.onTabSelected(tab);
             }
             mViewPager.setCurrentItem(tab.getPosition());
-            BcaasTabLayout mTabLayout = mTabLayoutRef.get();
+            BaseTabLayout mTabLayout = mTabLayoutRef.get();
             if (mTabLayoutRef != null) {
                 List<View> customViewList = mTabLayout.getCustomViewList();
                 if (customViewList == null || customViewList.size() == 0) {
