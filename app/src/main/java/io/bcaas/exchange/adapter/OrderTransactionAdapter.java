@@ -86,8 +86,6 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         //如果当前是「售出」，那么currencyListVO才是自己,支出单位取自己；手续费是paymentCurrencyList
         String paymentEnName = isBuy ? paymentCurrencyList.getEnName() : currencyListVO.getEnName();
         String paymentUid = isBuy ? paymentCurrencyList.getCurrencyUid() : currencyListVO.getCurrencyUid();
-        //取得fee币种类型,如果当前自己是「售出」，那么手续费单位等于支出方
-        String feeEnName = isBuy ? enName : paymentEnName;
         String feeUid = isBuy ? uid : paymentUid;
         //取得当前订单类型单位
         String orderTokenType = isBuy ? enName : paymentEnName;
@@ -102,7 +100,7 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         // 订单收入
         viewHolder.tvInCome.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getIncome(), uid) + "  " + enName);
         //订单手续费
-        viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), feeUid) + "  " + feeEnName);
+        viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), feeUid) + "  " + paymentEnName);
         // 判断是否需要显示撤销的按钮；type ==1；status==2
         if (StringTool.getDisplayOrderStatus(memberOrderVO.getType(), memberOrderVO.getStatus())) {
             // 需要显示撤销订单按钮
