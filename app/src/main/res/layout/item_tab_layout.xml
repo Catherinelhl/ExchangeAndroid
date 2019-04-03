@@ -14,7 +14,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_16"
-                android:text="BTC"
+                android:text="CNYC"
                 android:textColor="@color/black_333333"
         />
         <View
@@ -32,8 +32,9 @@
             android:background="@color/transparent"
             android:src="@mipmap/icon_coin_btc"
             android:layout_toLeftOf="@+id/ll"
-            android:visibility="visible"
             android:alpha="0.5"
+            android:minWidth="@dimen/d20"
+            android:minHeight="@dimen/d20"
             android:layout_marginRight="@dimen/d5"
             android:layout_alignTop="@+id/ll"
             android:layout_height="@dimen/d20"/>

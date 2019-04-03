@@ -176,7 +176,7 @@ public class BaseTabLayout extends FrameLayout {
             if (tabSize <= 3) {
                 widthTemp = screenWidth / tabSize;
             } else {
-                widthTemp = screenWidth / 4;
+                widthTemp = (int) (screenWidth / 3.5);
             }
         } else {
             widthTemp = screenWidth / tabSize;
@@ -196,7 +196,7 @@ public class BaseTabLayout extends FrameLayout {
                         params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT, 1);
                     } else {
                         if (i == ll_tab.getChildCount() - 1) {
-                            params = new LinearLayout.LayoutParams(widthTemp + 29, LinearLayout.LayoutParams.MATCH_PARENT);
+                            params = new LinearLayout.LayoutParams(widthTemp + 25, LinearLayout.LayoutParams.MATCH_PARENT);
                         } else {
                             params = new LinearLayout.LayoutParams(widthTemp, LinearLayout.LayoutParams.MATCH_PARENT);
                         }

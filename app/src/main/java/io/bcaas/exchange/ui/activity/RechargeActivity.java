@@ -101,13 +101,13 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
             for (MemberKeyVO memberKeyVO : memberKeyVOList) {
                 if (memberKeyVO == null) {
                     tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
-                    tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
+                    tvRechargeBalance.setText(DecimalTool.transferDisplay(10, "0", Constants.Pattern.TEN_DISPLAY));
                     return;
                 }
                 CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
                 if (currencyListVO == null) {
                     tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
-                    tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
+                    tvRechargeBalance.setText(DecimalTool.transferDisplay(10, "0", Constants.Pattern.TEN_DISPLAY));
                     return;
                 }
                 String currencyUID = currencyListVO.getCurrencyUid();
@@ -118,13 +118,13 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                             .append(currencyListVO.getEnName())
                             .append(")");
                     tvRechargeName.setText(sbRechargeName);
-                    tvRechargeBalance.setText(DecimalTool.transferDisplay(memberKeyVO.getBalanceAvailable()));
+                    tvRechargeBalance.setText(DecimalTool.transferDisplay(10, memberKeyVO.getBalanceAvailable(), Constants.Pattern.TEN_DISPLAY));
 
                 }
             }
         } else {
             tvRechargeName.setText(context.getResources().getString(R.string.default_cnyc_value));
-            tvRechargeBalance.setText(DecimalTool.transferDisplay("0"));
+            tvRechargeBalance.setText(DecimalTool.transferDisplay(10, "0", Constants.Pattern.TEN_DISPLAY));
         }
     }
 

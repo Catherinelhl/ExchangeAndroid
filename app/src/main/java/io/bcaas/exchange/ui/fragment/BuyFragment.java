@@ -231,7 +231,7 @@ public class BuyFragment extends BaseFragment
         if (tabLayout == null && viewPager == null) {
             return;
         }
-        int width = BaseApplication.getScreenWidth();
+        int width = BaseApplication.getScreenWidth() - getContext().getResources().getDimensionPixelOffset(R.dimen.d48);
         tabLayout.removeTabLayout();
         //得到当前的所有钱包信息
         memberKeyVOListTitle = BaseApplication.getMemberKeyVOList();
