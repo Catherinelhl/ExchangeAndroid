@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -90,17 +91,29 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         //取得当前订单类型单位
         String orderTokenType = isBuy ? enName : paymentEnName;
         //订单产生类型
-        viewHolder.tvOrderType.setText(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()) + "  " + orderTokenType);
+        viewHolder.tvOrderType.setText(
+                new StringBuffer(StringTool.getDisplayOrderTypeText(memberOrderVO.getType()))
+                        .append(MessageConstants.BLANK_SPACE)
+                        .append(orderTokenType));
         //订单产生时间
         viewHolder.tvOrderTime.setText(DateFormatTool.timeZoneFormatUTCDate(memberOrderVO.getCreateTime()));
         //订单状态
         viewHolder.tvOrderStatus.setText(StringTool.getDisplayOrderStatusText(memberOrderVO.getType(), memberOrderVO.getStatus()));
         // 订单支出
-        viewHolder.tvOutCome.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getExpenditure(), paymentUid) + "  " + paymentEnName);
+        viewHolder.tvOutCome.setText(
+                new StringBuffer(StringTool.getDisplayAmountByUId(memberOrderVO.getExpenditure(), paymentUid))
+                        .append(MessageConstants.BLANK_SPACE)
+                        .append(paymentEnName));
         // 订单收入
-        viewHolder.tvInCome.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getIncome(), uid) + "  " + enName);
+        viewHolder.tvInCome.setText(
+                new StringBuffer(StringTool.getDisplayAmountByUId(memberOrderVO.getIncome(), uid))
+                        .append(MessageConstants.BLANK_SPACE)
+                        .append(enName));
         //订单手续费
-        viewHolder.tvFee.setText(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), feeUid) + "  " + paymentEnName);
+        viewHolder.tvFee.setText(
+                new StringBuffer(StringTool.getDisplayAmountByUId(memberOrderVO.getHandlingFee(), feeUid))
+                        .append(MessageConstants.BLANK_SPACE)
+                        .append(paymentEnName));
         // 判断是否需要显示撤销的按钮；type ==1；status==2
         if (StringTool.getDisplayOrderStatus(memberOrderVO.getType(), memberOrderVO.getStatus())) {
             // 需要显示撤销订单按钮
@@ -108,12 +121,9 @@ public class OrderTransactionAdapter extends RecyclerView.Adapter<OrderTransacti
         } else {
             viewHolder.btnCancel.setVisibility(View.GONE);
         }
-        viewHolder.btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemSelectListener != null) {
-                    onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_CANCEL_TRANSACTION);
-                }
+        viewHolder.btnCancel.setOnClickListener(v -> {
+            if (onItemSelectListener != null) {
+                onItemSelectListener.onItemSelect(memberOrderVO.getMemberOrderUid(), Constants.From.ORDER_CANCEL_TRANSACTION);
             }
         });
     }

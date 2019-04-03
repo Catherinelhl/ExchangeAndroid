@@ -351,8 +351,9 @@ public class SellView extends BaseLinearLayout
                     MessageConstants.NO_ENOUGH_BALANCE)
                     && !StringTool.equals(txAmount, MessageConstants.NO_ENOUGH_BALANCE);
             tvFinalTxAmount.setVisibility(isShow ? VISIBLE : GONE);
-            tvFinalTxAmount.setText(context.getResources().getString(R.string.sell_out_transaction_amount)
-                    + StringTool.getDisplayAmountByUId(txAmount, uid) + "  " + exchangeCurrencyListVO.getEnName());
+            tvFinalTxAmount.setText(String.format(getContext().getString(R.string.three_s),
+                    context.getResources().getString(R.string.sell_out_transaction_amount),
+                    StringTool.getDisplayAmountByUId(txAmount, uid), exchangeCurrencyListVO.getEnName()));
 
         }
     }

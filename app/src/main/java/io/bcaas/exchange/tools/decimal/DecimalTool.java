@@ -66,7 +66,9 @@ public class DecimalTool {
 
         BigDecimal bigDecimalNum = bigDecimalFirstValue.multiply(bigDecimalSecondValue);
         String minValue = StringTool.getMinValuesByUid(uid);
-        if (StringTool.equals(calculateFirstSubtractSecondValue(bigDecimalNum.toString(), minValue, false), MessageConstants.NO_ENOUGH_BALANCE)) {
+        if (StringTool.equals(
+                calculateFirstSubtractSecondValue(bigDecimalNum.toString(), minValue, false),
+                MessageConstants.NO_ENOUGH_BALANCE)) {
             return MessageConstants.NO_ENOUGH_BALANCE;
         }
 

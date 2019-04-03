@@ -220,6 +220,8 @@ public class StringTool {
                     return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT_DISPLAY);
                 case "1"://BTC
                     return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT_DISPLAY);
+                case "3"://CNYC
+                    return DecimalTool.transferDisplay(8, balanceAvailable, Constants.Pattern.EIGHT_DISPLAY);
                 case "2"://ETH
                     return DecimalTool.transferDisplay(10, balanceAvailable, Constants.Pattern.TEN_DISPLAY);
             }
@@ -243,6 +245,8 @@ public class StringTool {
                     return DecimalTool.transferStoreDatabase(8, balanceAvailable, Constants.Pattern.EIGHT);
                 case "2"://ETH
                     return DecimalTool.transferStoreDatabase(10, balanceAvailable, Constants.Pattern.TEN);
+                case "3"://CNYC
+                    return DecimalTool.transferStoreDatabase(8, balanceAvailable, Constants.Pattern.EIGHT);
             }
         }
         return balanceAvailable;
@@ -257,9 +261,11 @@ public class StringTool {
                     return Constants.DigitalPrecision.BTC;
                 case "2"://ETH
                     return Constants.DigitalPrecision.ETH;
+                case "3"://CNYC
+                    return Constants.DigitalPrecision.CNYC;
             }
         }
-        return null;
+        return Constants.DigitalPrecision.DEFAULT;
     }
 
     /**
@@ -275,6 +281,7 @@ public class StringTool {
         switch (currencyUid) {
             case "0"://BCC
             case "1"://BTC
+            case "3"://CNYC
                 return Constants.DigitalPrecision.LIMIT_EIGHT;
             case "2"://ETH
                 return Constants.DigitalPrecision.LIMIT_TEN;

@@ -12,6 +12,7 @@ public class MessageConstants {
     //字节码格式
     public static final String CHARSET_FORMAT = "UTF-8";
     public static final String EMPTY = "";
+    public static final String BLANK_SPACE = "  ";//空格
     public static final String DEFAULT_NEXT_OBJECT_ID = "0";//默认的nextObjectId
     public static final String NULL = "(null)";
     public static final String HTTP_CONTENT_ENCODING = "Content-Encoding";
