@@ -22,7 +22,7 @@ public interface OrderRecordContract {
         void cancelOrderSuccess(MemberOrderVO memberOrderVO);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.Presenter{
         void getRecord(int type, String nextObjectId);
 
         // 撤销订单

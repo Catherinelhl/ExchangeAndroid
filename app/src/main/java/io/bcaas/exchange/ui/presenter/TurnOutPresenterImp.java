@@ -146,4 +146,9 @@ public class TurnOutPresenterImp extends AccountSecurityPresenterImp
                     }
                 });
     }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableWithDraw);
+    }
 }

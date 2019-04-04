@@ -30,7 +30,9 @@ import io.bcaas.exchange.ui.interactor.PaymentManagerInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.Disposables;
 import io.reactivex.schedulers.Schedulers;
 
 import java.security.NoSuchAlgorithmException;
@@ -40,12 +42,16 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
     private String TAG = PaymentManagerPresenterImp.class.getSimpleName();
     private PayWayManagerContract.View view;
     private PaymentManagerInteractor paymentManagerInteractor;
-    private Disposable disposableGetPayWay, disposableAddPayWay, disposableModifyPayWay, disposableRemovePayWay, disposableGetBankInfo, disposableRecharge, disposableBuyBack, disposableVerification;
+    private Disposable disposableGetPayWay, disposableAddPayWay,
+            disposableModifyPayWay, disposableRemovePayWay, disposableGetBankInfo,
+            disposableRecharge, disposableBuyBack, disposableVerification;
+    private CompositeDisposable compositeDisposable;
 
     public PaymentManagerPresenterImp(PayWayManagerContract.View view) {
         super();
         this.view = view;
         this.paymentManagerInteractor = new PaymentManagerInteractor();
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
@@ -79,6 +85,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableAddPayWay = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -147,6 +154,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableModifyPayWay = d;
+                        compositeDisposable.add(d);
+
                     }
 
                     @Override
@@ -200,6 +209,7 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableRemovePayWay = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -250,6 +260,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableGetBankInfo = d;
+                        compositeDisposable.add(d);
+
                     }
 
                     @Override
@@ -304,6 +316,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableGetPayWay = d;
+                        compositeDisposable.add(d);
+
                     }
 
                     @Override
@@ -400,6 +414,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableRecharge = d;
+                        compositeDisposable.add(d);
+
                     }
 
                     @Override
@@ -471,6 +487,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableBuyBack = d;
+                        compositeDisposable.add(d);
+
                     }
 
                     @Override
@@ -539,6 +557,8 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableVerification = d;
+                        compositeDisposable.add(d);
+
                     }
 
                     @Override
@@ -578,5 +598,21 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
 
                     }
                 });
+    }
+
+    @Override
+    public void cancelSubscribe() {
+        // 清除所有还存在的dispose
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
+        disposeDisposable(disposableBuyBack);
+        disposeDisposable(disposableRecharge);
+        disposeDisposable(disposableGetBankInfo);
+        disposeDisposable(disposableRemovePayWay);
+        disposeDisposable(disposableModifyPayWay);
+        disposeDisposable(disposableAddPayWay);
+        disposeDisposable(disposableGetPayWay);
+        disposeDisposable(disposableVerification);
     }
 }

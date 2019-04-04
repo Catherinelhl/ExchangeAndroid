@@ -16,7 +16,7 @@ public interface ForSaleOrderListContract {
         void getOrderListFailure(String info,boolean isRefresh);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.Presenter{
         void getOrderList(String currencyUid, String currencyPaymentUid, String nextObjectId);
     }
 }

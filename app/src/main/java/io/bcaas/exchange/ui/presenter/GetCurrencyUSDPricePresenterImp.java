@@ -107,4 +107,8 @@ public class GetCurrencyUSDPricePresenterImp implements GetCurrencyUSDPriceContr
                 });
     }
 
+    @Override
+    public void cancelSubscribe() {
+
+    }
 }

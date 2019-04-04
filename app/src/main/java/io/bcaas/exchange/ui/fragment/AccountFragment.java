@@ -16,6 +16,7 @@ import io.bcaas.exchange.base.BaseFragment;
 import io.bcaas.exchange.bean.SettingsBean;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.listener.OnItemSelectListener;
+import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.ui.activity.*;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
@@ -43,6 +44,8 @@ public class AccountFragment extends BaseFragment implements AccountSecurityCont
     private SettingsAdapter settingTypesAdapter;
 
     private AccountSecurityContract.Presenter presenter;
+    // 标志位，标志已经初始化完成。
+    private boolean isPrepared;
 
     @Override
     public int getLayoutRes() {
@@ -51,6 +54,7 @@ public class AccountFragment extends BaseFragment implements AccountSecurityCont
 
     @Override
     public void initViews(View view) {
+        isPrepared = true;
         presenter = new AccountSecurityPresenterImp(this);
         tvAccountName.setText(BaseApplication.getMemberID());
         initAdapter();
@@ -140,6 +144,17 @@ public class AccountFragment extends BaseFragment implements AccountSecurityCont
         });
     }
 
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+    }
+
+    @Override
+    protected void cancelSubscribe() {
+
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

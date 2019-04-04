@@ -98,4 +98,8 @@ public class GetCoinMarketCapPresenterImp extends BasePresenterImp
                     }
                 });
     }
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetCoinMarketCap);
+    }
 }

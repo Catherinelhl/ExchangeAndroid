@@ -125,4 +125,8 @@ public class RegisterPresenterImp extends BasePresenterImp implements RegisterCo
                 });
     }
 
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableRegister);
+    }
 }

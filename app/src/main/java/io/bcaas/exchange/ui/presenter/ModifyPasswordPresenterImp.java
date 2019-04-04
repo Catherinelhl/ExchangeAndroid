@@ -126,4 +126,8 @@ public class ModifyPasswordPresenterImp extends BasePresenterImp
                     }
                 });
     }
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableResetPassword);
+    }
 }

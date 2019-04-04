@@ -234,6 +234,12 @@ public class GooglePresenterImp extends BasePresenterImp implements GoogleContra
                         disposeDisposable(disposableCrateImage);
                     }
                 });
+    }
 
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableCrateImage);
+        disposeDisposable(disposableGetAuthenticatorUrl);
+        disposeDisposable(disposableSecurityGoogleAuthenticator);
     }
 }

@@ -89,7 +89,7 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                             BaseApplication.setAccessToken(accessToken);
                             //存储当前的memberID
                             BaseApplication.setMemberID(memberId);
-                           PreferenceTool.getInstance().saveString(Constants.Preference.MEMBER_ID, memberId);
+                            PreferenceTool.getInstance().saveString(Constants.Preference.MEMBER_ID, memberId);
                             //将成功状态返回界面
                             view.loginSuccess(accessToken);
                         } else {
@@ -135,4 +135,8 @@ public class LoginPresenterImp extends BasePresenterImp implements LoginContract
                 });
     }
 
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableLogin);
+    }
 }

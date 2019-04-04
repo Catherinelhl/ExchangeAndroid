@@ -40,4 +40,5 @@ public abstract class BasePresenterImp implements BaseContract.Presenter {
             disposable.dispose();
         }
     }
+
 }

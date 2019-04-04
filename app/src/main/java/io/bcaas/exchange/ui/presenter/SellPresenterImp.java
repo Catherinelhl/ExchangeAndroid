@@ -146,4 +146,9 @@ public class SellPresenterImp extends AccountSecurityPresenterImp
                     }
                 });
     }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableSell);
+    }
 }

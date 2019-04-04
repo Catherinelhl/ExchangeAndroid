@@ -19,6 +19,7 @@ import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
@@ -37,11 +38,13 @@ public class VerifyCodePresenterImp extends BasePresenterImp
 
     private Disposable disposableImageVerifyCode, disposableEmailVerify, disposableVerifyAccount;
 
+    private CompositeDisposable compositeDisposable;
+
     public VerifyCodePresenterImp(VerifyCodeContract.View view) {
         super();
         this.view = view;
         safetyCenterInteractor = new SafetyCenterInteractor();
-
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
@@ -63,6 +66,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableEmailVerify = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -117,7 +121,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableImageVerifyCode = d;
-
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -171,6 +175,7 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableVerifyAccount = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -220,5 +225,15 @@ public class VerifyCodePresenterImp extends BasePresenterImp
                         disposeDisposable(disposableVerifyAccount);
                     }
                 });
+    }
+
+    @Override
+    public void cancelSubscribe() {
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
+        disposeDisposable(disposableEmailVerify);
+        disposeDisposable(disposableImageVerifyCode);
+        disposeDisposable(disposableVerifyAccount);
     }
 }

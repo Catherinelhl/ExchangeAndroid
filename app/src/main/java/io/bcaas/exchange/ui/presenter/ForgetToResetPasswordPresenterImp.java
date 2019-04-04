@@ -132,4 +132,9 @@ public class ForgetToResetPasswordPresenterImp extends BasePresenterImp
                     }
                 });
     }
+     @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableForgetPassword);
+
+    }
 }

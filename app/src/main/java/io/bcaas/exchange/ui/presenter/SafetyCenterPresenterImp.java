@@ -14,6 +14,7 @@ import io.bcaas.exchange.vo.RequestJson;
 import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -26,12 +27,16 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
     private String TAG = SafetyCenterPresenterImp.class.getSimpleName();
     private SafetyCenterContract.View view;
     private SafetyCenterInteractor safetyCenterInteractor;
-    private Disposable disposableLogout, disposableSecurityPhone, disposableSecurityEmail, disposableSecurityGoogle;
+    private Disposable disposableLogout, disposableSecurityPhone,
+            disposableSecurityEmail, disposableSecurityGoogle;
+
+    private CompositeDisposable compositeDisposable;
 
     public SafetyCenterPresenterImp(SafetyCenterContract.View view) {
         super(view);
         this.view = view;
         safetyCenterInteractor = new SafetyCenterInteractor();
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
@@ -59,6 +64,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableLogout = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -127,6 +133,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableSecurityPhone = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -184,6 +191,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableSecurityEmail = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -250,6 +258,7 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableSecurityGoogle = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -285,5 +294,16 @@ public class SafetyCenterPresenterImp extends AccountSecurityPresenterImp implem
 
                     }
                 });
+    }
+
+    @Override
+    public void cancelSubscribe() {
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
+        disposeDisposable(disposableSecurityGoogle);
+        disposeDisposable(disposableSecurityEmail);
+        disposeDisposable(disposableSecurityPhone);
+        disposeDisposable(disposableLogout);
     }
 }

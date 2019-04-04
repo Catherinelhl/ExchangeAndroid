@@ -84,10 +84,10 @@ public class GetCurrencyChargePresenterImp extends BasePresenterImp
                             view.getCurrencyChargeSuccess(currencyListVOResponse);
                         } else {
                             if (!view.httpExceptionDisposed(responseJson)) {
-                                int code=responseJson.getCode();
-                                 if(code == MessageConstants.CODE_2041){
+                                int code = responseJson.getCode();
+                                if (code == MessageConstants.CODE_2041) {
                                     view.getCurrencyChargeFailure(getString(R.string.data_format_exception));
-                                }else {
+                                } else {
                                     view.getCurrencyChargeFailure(responseJson.getMessage());
                                 }
                             }
@@ -111,5 +111,10 @@ public class GetCurrencyChargePresenterImp extends BasePresenterImp
 
                     }
                 });
+    }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetCurrencyCharge);
     }
 }

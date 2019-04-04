@@ -1,7 +1,6 @@
 package io.bcaas.exchange.base;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,6 +32,7 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     protected SoftKeyBroadManager softKeyBroadManager;
     /*监管当前fragment的状态：是否准备好；是否第一次可见；是否第一次不可见*/
     protected DataGenerationManager dataGenerationManager;
+    protected boolean isVisible;
 
     @Nullable
     @Override
@@ -56,6 +56,7 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
         initViews(view);
         initListener();
     }
+
     public abstract int getLayoutRes();//得到当前的layoutRes
 
     public abstract void initViews(View view);
@@ -64,8 +65,42 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
 
     public abstract void initListener();
 
-//    protected abstract void DestroyViewAndThing();
+    @Override
+    public void onResume() {
+        super.onResume();
+        setUserVisibleHint(true);
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        setUserVisibleHint(false);
+
+    }
+
+    /**
+     * 在这里实现Fragment数据的缓加载.
+     *
+     * @param isVisibleToUser
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            isVisible = true;
+            lazyLoad();
+        } else {
+            isVisible = false;
+            cancelSubscribe();
+        }
+    }
+
+    /*懒加载*/
+    protected abstract void lazyLoad();
+
+    /*取消订阅*/
+    protected abstract void cancelSubscribe();
 
     public void showToast(String info) {
         if (!checkActivityState()) {

@@ -124,4 +124,8 @@ public class ForSaleOrderListPresenterImp extends BasePresenterImp
                 });
     }
 
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetOrderList);
+    }
 }

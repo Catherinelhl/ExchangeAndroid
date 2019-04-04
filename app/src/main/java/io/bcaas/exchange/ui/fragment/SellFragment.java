@@ -19,9 +19,8 @@ import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
+import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.activity.SellDetailActivity;
-import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
-import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.SellView;
 import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.vo.CurrencyListVO;
@@ -37,7 +36,7 @@ import java.util.List;
  * Fragment：「售出」
  * Notice：拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
-public class SellFragment extends BaseFragment implements GetAllBalanceContract.View {
+public class SellFragment extends BaseFragment {
     @BindView(R.id.srl_data)
     SwipeRefreshLayout srlData;
     private String TAG = SellFragment.class.getSimpleName();
@@ -51,8 +50,9 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
     private List<View> views;
     // 当前tab的选中
     private int currentPosition = 0;
-    private GetAllBalanceContract.Presenter getAllBalancePresenter;
 
+    // 标志位，标志已经初始化完成。
+    private boolean isPrepared;
 
     @Override
     public int getLayoutRes() {
@@ -61,10 +61,9 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
 
     @Override
     public void initViews(View view) {
-        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
+        isPrepared = true;
         views = new ArrayList<>();
         srlData.setEnabled(false);
-        refreshView();
     }
 
     @Override
@@ -77,6 +76,18 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
     }
 
     @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        refreshView();
+    }
+
+    @Override
+    protected void cancelSubscribe() {
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
@@ -86,8 +97,8 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
                         boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                         if (!isBack) {
                             //重新请求getAllBalance 信息刷新当前的界面信息
-                            if (getAllBalancePresenter != null) {
-                                getAllBalancePresenter.getAllBalance();
+                            if (activity != null) {
+                                ((MainActivity) activity).getAllBalance();
                             }
                         }
                     }
@@ -155,7 +166,7 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         views.clear();
         //刷新界面
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-        LogTool.d(TAG, "initTopTabData:" + memberKeyVOList);
+        LogTool.d(TAG, "refreshView:" + memberKeyVOList);
         if (ListTool.noEmpty(memberKeyVOList)) {
             int size = memberKeyVOList.size();
             tabLayout.setTabSize(size);
@@ -184,41 +195,30 @@ public class SellFragment extends BaseFragment implements GetAllBalanceContract.
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout.getTabLayout()));
         tabLayout.setupWithViewPager(
-        BaseApplication.getScreenWidth(),
+                BaseApplication.getScreenWidth(),
                 viewPager, new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                currentPosition = tab.getPosition();
-                refreshCurrentView();
-            }
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        currentPosition = tab.getPosition();
+                        refreshCurrentView();
+                    }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+                    }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
 
-            }
-        });
-        tabLayout.resetSelectedTab(0);
-    }
-
-    @Override
-    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        refreshCurrentView();
-    }
-
-    @Override
-    public void getAllBalanceFailure(String info) {
-        LogTool.e(TAG, info);
+                    }
+                });
     }
 
     /**
      * 刷新当前显示的页面即可
      */
-    private void refreshCurrentView() {
+    public void refreshCurrentView() {
         if (ListTool.noEmpty(views) && currentPosition < views.size()) {
             //刷新界面
             List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();

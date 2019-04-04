@@ -37,7 +37,7 @@ public class AccountSecurityPresenterImp extends BasePresenterImp
     }
 
     @Override
-    public void  getAccountSecurity() {
+    public void getAccountSecurity() {
         //判断当前是否有网路
         if (!BaseApplication.isRealNet()) {
             view.noNetWork();
@@ -109,4 +109,8 @@ public class AccountSecurityPresenterImp extends BasePresenterImp
                 });
     }
 
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetAccountSecurity);
+    }
 }

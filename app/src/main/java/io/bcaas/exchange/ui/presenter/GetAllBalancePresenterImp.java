@@ -97,6 +97,9 @@ public class GetAllBalancePresenterImp extends BasePresenterImp
                     }
                 });
     }
-
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetAllBalance);
+    }
 
 }

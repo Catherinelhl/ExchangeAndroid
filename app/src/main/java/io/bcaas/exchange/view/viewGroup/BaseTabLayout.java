@@ -247,14 +247,6 @@ public class BaseTabLayout extends FrameLayout {
         }
     }
 
-    /**
-     * 重置当前选中的下标
-     */
-    public void resetSelectedTab(int position) {
-        if (mTabLayout != null) {
-        }
-    }
-
     public static class ViewPagerOnTabSelectedListener implements TabLayout.OnTabSelectedListener {
 
         private final ViewPager mViewPager;

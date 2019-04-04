@@ -26,5 +26,7 @@ public interface BaseContract {
     }
 
     interface Presenter {
+
+        void cancelSubscribe();//取消当前的网络请求
     }
 }

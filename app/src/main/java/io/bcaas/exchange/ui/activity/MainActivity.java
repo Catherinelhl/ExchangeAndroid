@@ -8,15 +8,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import butterknife.BindView;
-import com.jakewharton.rxbinding2.view.RxView;
 import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.LogoutEvent;
-import io.bcaas.exchange.gson.GsonTool;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
@@ -35,12 +37,9 @@ import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -157,29 +156,6 @@ public class MainActivity extends BaseActivity
     @Override
     public void initListener() {
         hideSoftKeyBoardByTouchView(llMain);
-        RxView.clicks(tvTitle).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
-                .subscribe(new Observer<Object>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Object o) {
-                        //获取当前的账户所有信息
-                        getAllBalance();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
         bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -189,7 +165,6 @@ public class MainActivity extends BaseActivity
                 textView.setTextColor(context.getResources().getColor(R.color.blue_5B88FF));
                 //method 2：如果是直接就用一个TextView控件来表示了，那么就可以直接用下面这一句来表示
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, dataGenerationManager.getDrawableTop(MainActivity.this, tab.getPosition(), true), null, null);
-
                 //改变当前中间content信息；Fragment变换
                 onTabItemSelected(tab.getPosition());
             }
@@ -216,12 +191,7 @@ public class MainActivity extends BaseActivity
             }
         });
 
-        sideSlipPop.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                setBackgroundAlpha(1f);
-            }
-        });
+        sideSlipPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
     }
 
 
@@ -242,22 +212,12 @@ public class MainActivity extends BaseActivity
             switch (position) {
                 case 0:
                     setTitle(getString(R.string.buy_title));
-                    if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).refreshView();
-                    }
                     break;
                 case 1:
                     setTitle(getString(R.string.sell_title));
-                    if (currentFragment instanceof SellFragment) {
-                        ((SellFragment) currentFragment).refreshView();
-                    }
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
-                    /*取得財務紀錄交易資訊*/
-                    if (currentFragment instanceof OrderFragment) {
-                        ((OrderFragment) currentFragment).resetView();
-                    }
                     break;
                 case 3:
                     setTitle(getString(R.string.amount_title));
@@ -266,25 +226,6 @@ public class MainActivity extends BaseActivity
         }
 
     }
-
-
-//    @Override
-//    public void getCurrencyUSDPriceSuccess(ExchangeBean exchangeBean) {
-//        if (exchangeBean != null) {
-//            //当前需要兑换
-//            String priceCurrency = exchangeBean.getPriceCurrency();
-//            //当前兑换的数额
-//            String priceUSD = exchangeBean.getPriceUSD();
-//            LogTool.d(TAG, "priceCurrency:" + priceCurrency);
-//            LogTool.d(TAG, "priceUSD:" + priceUSD);
-//
-//        }
-//    }
-//
-//    @Override
-//    public void getCurrencyUSDPriceFailure(String info) {
-//        showToast(info);
-//    }
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
@@ -318,13 +259,13 @@ public class MainActivity extends BaseActivity
                         return;
                     }
                     if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestForSaleOrderList(currencyListVO.getCurrencyUid());
+                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, currencyListVO.getCurrencyUid(), "onItemSelect:SIDE_SLIP");
                     }
                     break;
                 case Constants.From.SIDE_SLIP_RESET:
                     //侧滑栏重置当前数据
                     if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestForSaleOrderList(Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST);
+                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "onItemSelect:SIDE_SLIP_RESET");
                     }
                     break;
                 default:

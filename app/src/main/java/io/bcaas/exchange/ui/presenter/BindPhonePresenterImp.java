@@ -149,4 +149,9 @@ public class BindPhonePresenterImp extends PhoneVerifyPresenterImp implements Bi
 
         }
     }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableSecurityPhone);
+    }
 }

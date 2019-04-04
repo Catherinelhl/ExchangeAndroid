@@ -57,6 +57,8 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     //得到当前选中的列表信息
     private PaginationVO paginationVO;
     private int currentPosition;
+    // 标志位，标志已经初始化完成。
+    private boolean isPrepared;
 
     @Override
     public int getLayoutRes() {
@@ -65,6 +67,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void initViews(View view) {
+        isPrepared = true;
         views = new ArrayList<>();
         memberOrderVOList = new ArrayList<>();
         presenter = new OrderRecordPresenterImp(this);
@@ -75,13 +78,12 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
         );
         srlData.setSize(SwipeRefreshLayout.DEFAULT);
-        initTopTabData();
     }
 
     /**
      * 初始化顶部tab的数据以及相对应的界面信息
      */
-    private void initTopTabData() {
+    private void refreshView() {
         if (tabLayout == null && viewPager == null) {
             return;
         }
@@ -130,7 +132,6 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
             }
         });
-        tabLayout.resetSelectedTab(0);
     }
 
     /**
@@ -287,11 +288,17 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
         });
     }
 
-    /**
-     * 重置当前界面
-     */
-    public void resetView() {
-        initTopTabData();
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        refreshView();
+    }
+
+    @Override
+    protected void cancelSubscribe() {
+        presenter.cancelSubscribe();
     }
 
     @Override
@@ -306,7 +313,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
     }
 
     @Override
-    public void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh,int responseType) {
+    public void getRecordSuccess(PaginationVO paginationVO, boolean isRefresh, int responseType) {
         GsonTool.logInfo(TAG, "PaginationVO:", paginationVO);
         if (isRefresh) {
             if (srlData != null) {

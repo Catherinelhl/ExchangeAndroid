@@ -149,4 +149,8 @@ public class CloseVerifyPresenterImp
                     }
                 });
     }
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableCloseVerifyCode);
+    }
 }

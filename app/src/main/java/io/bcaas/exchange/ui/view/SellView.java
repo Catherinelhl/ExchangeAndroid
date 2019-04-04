@@ -225,7 +225,7 @@ public class SellView extends BaseLinearLayout
                         }
                         //3：比对当前输入的卖出量《可售余额
                         if (StringTool.equals(DecimalTool.calculateFirstSubtractSecondValue(salableBalance, sellAmount, true), MessageConstants.NO_ENOUGH_BALANCE)) {
-                            showToast(context.getResources().getString( R.string.no_enough_balance));
+                            showToast(context.getResources().getString(R.string.no_enough_balance));
                             return;
                         }
                         //4：判断当前的扣除手续费的交易额不能小于当前币种的最小单位，否则提示不能通过
@@ -365,7 +365,6 @@ public class SellView extends BaseLinearLayout
      */
     public void refreshData(MemberKeyVO memberKeyVO) {
         this.memberKeyVO = memberKeyVO;
-        LogTool.d(TAG, "refreshData:" + memberKeyVO);
         if (memberKeyVO != null) {
             currencyListVO = memberKeyVO.getCurrencyListVO();
             if (currencyListVO == null) {
@@ -373,9 +372,6 @@ public class SellView extends BaseLinearLayout
             }
             String enName = currencyListVO.getEnName();
             String uid = currencyListVO.getCurrencyUid();
-            //默认状态为打开
-            sccrlLayout.ExpendChart(true);
-            sccrlLayout.setCurveName(enName);
             if (tvSalableBalance != null) {
                 tvSalableBalance.setText(String.format(getContext().getString(R.string.format_sss), context.getResources().getString(R.string.salable_balance),
                         StringTool.getDisplayAmountByUId(memberKeyVO.getBalanceAvailable(), uid),
@@ -414,11 +410,15 @@ public class SellView extends BaseLinearLayout
                 }
             }
             salableBalance = DecimalTool.getStringReplaceComma(memberKeyVO.getBalanceAvailable());
+            //默认状态为打开
+            sccrlLayout.ExpendChart(true);
+            sccrlLayout.setCurveName(enName);
         }
 
         setEditHintTextSize(etSellVolume, R.string.zero);
 
         setEditHintTextSize(etRate, R.string.please_choose);
+
 
     }
 
@@ -434,7 +434,9 @@ public class SellView extends BaseLinearLayout
      * 取得当前的汇率
      */
     public void getCurrencyCharge() {
-        presenter.getCurrencyCharge(currencyListVO.getCurrencyUid());
+        if (currencyListVO != null) {
+            presenter.getCurrencyCharge(currencyListVO.getCurrencyUid());
+        }
     }
 
     /**

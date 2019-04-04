@@ -138,4 +138,9 @@ public class BuyPresenterImp extends AccountSecurityPresenterImp implements BuyC
                     }
                 });
     }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableBuy);
+    }
 }

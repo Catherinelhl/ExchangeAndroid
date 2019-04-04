@@ -105,4 +105,9 @@ public class PhoneVerifyPresenterImp extends BasePresenterImp implements PhoneVe
                     }
                 });
     }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetPhoneCode);
+    }
 }

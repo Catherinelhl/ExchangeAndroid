@@ -88,4 +88,8 @@ public class GetCoinNameListPresenterImp extends BasePresenterImp
                 });
 
     }
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableGetCoinNameList);
+    }
 }

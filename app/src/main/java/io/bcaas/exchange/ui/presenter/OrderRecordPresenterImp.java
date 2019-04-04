@@ -12,6 +12,7 @@ import io.bcaas.exchange.ui.interactor.TxInteractor;
 import io.bcaas.exchange.vo.*;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -26,10 +27,13 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
     private TxInteractor txInteractor;
     private Disposable disposableGetRecord, disposableCancelOrder;
 
+    private CompositeDisposable compositeDisposable;
+
     public OrderRecordPresenterImp(OrderRecordContract.View view) {
         super();
         this.view = view;
         txInteractor = new TxInteractor();
+        compositeDisposable = new CompositeDisposable();
     }
 
 
@@ -72,6 +76,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                     @Override
                     public void onSubscribe(Disposable d) {
                         disposableGetRecord = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -85,7 +90,7 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                         if (isSuccess) {
                             PaginationVO paginationVOResponse = responseJson.getPaginationVO();
                             if (paginationVOResponse != null) {
-                                view.getRecordSuccess(paginationVOResponse, isRefresh,type);
+                                view.getRecordSuccess(paginationVOResponse, isRefresh, type);
                             } else {
                                 view.getRecordFailure(getString(R.string.no_data_info), isRefresh);
                             }
@@ -154,7 +159,8 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                 .subscribe(new Observer<ResponseJson>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposableCancelOrder=d;
+                        disposableCancelOrder = d;
+                        compositeDisposable.add(d);
                     }
 
                     @Override
@@ -194,5 +200,14 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
 
                     }
                 });
+    }
+
+    @Override
+    public void cancelSubscribe() {
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
+        disposeDisposable(disposableCancelOrder);
+        disposeDisposable(disposableGetRecord);
     }
 }

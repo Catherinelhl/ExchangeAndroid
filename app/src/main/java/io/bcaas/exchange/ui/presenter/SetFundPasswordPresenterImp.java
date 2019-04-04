@@ -126,4 +126,9 @@ public class SetFundPasswordPresenterImp extends BasePresenterImp
                 });
 
     }
+
+    @Override
+    public void cancelSubscribe() {
+        disposeDisposable(disposableSecurityTxPassword);
+    }
 }

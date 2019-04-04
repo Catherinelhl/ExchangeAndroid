@@ -24,13 +24,10 @@ import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
-import io.bcaas.exchange.tools.device.DensityTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
-import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
-import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.view.viewGroup.StickHeadScrollView;
@@ -52,7 +49,7 @@ import java.util.concurrent.TimeUnit;
  * Fragment：「買進」
  */
 public class BuyFragment extends BaseFragment
-        implements ForSaleOrderListContract.View, GetAllBalanceContract.View {
+        implements ForSaleOrderListContract.View {
 
     private String TAG = BuyFragment.class.getSimpleName();
 
@@ -73,10 +70,11 @@ public class BuyFragment extends BaseFragment
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
     private ForSaleOrderListContract.Presenter presenter;
-    private GetAllBalanceContract.Presenter getAllBalancePresenter;
     //标记当前选中的位置，默认为0
     private int currentPosition = 0;
 
+    // 标志位，标志已经初始化完成。
+    private boolean isPrepared;
     //得到当前各页面的nextObjectId,默认是1
     private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;//"0";
     private List<MemberOrderVO> memberOrderVOS;
@@ -91,11 +89,11 @@ public class BuyFragment extends BaseFragment
 
     @Override
     public void initViews(View view) {
+        isPrepared = true;
         //显示右边过滤器
         ibRight.setVisibility(View.VISIBLE);
         vLine.setVisibility(View.VISIBLE);
         presenter = new ForSaleOrderListPresenterImp(this);
-        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
         views = new ArrayList<>();
         memberOrderVOS = new ArrayList<>();
         memberKeyVOListTitle = new ArrayList<>();
@@ -121,7 +119,6 @@ public class BuyFragment extends BaseFragment
         tabLayout.requestFocus();
         //2.set height
         shsv.resetHeight(tabLayout, srlData);
-        refreshView();
 
     }
 
@@ -134,7 +131,7 @@ public class BuyFragment extends BaseFragment
     public void initListener() {
         srlData.setOnRefreshListener(() -> {
             srlData.setRefreshing(false);
-            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
+            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "initListener");
         });
         RxView.clicks(ibRight).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
@@ -163,15 +160,30 @@ public class BuyFragment extends BaseFragment
                 });
     }
 
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        refreshView();
+    }
+
+    @Override
+    protected void cancelSubscribe() {
+        presenter.cancelSubscribe();
+    }
+
     /**
      * 请求订单列表
      */
-    private void requestOrderList(String nextObjectId) {
+    public void requestOrderList(String nextObjectId, String paymentCurrencyUid, String type) {
+        LogTool.d(TAG, "[ requestOrderList ]:" + type);
         // 1：刷新当前购买页面的待出售数据
         if (presenter != null && ListTool.noEmpty(memberKeyVOListTitle)) {
+            this.nextObjectId = nextObjectId;
             // 如果当前paymentCurrencyList为-1，那么就是请求全部的数据
             presenter.getOrderList(memberKeyVOListTitle.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
-                    Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, nextObjectId);
+                    paymentCurrencyUid, nextObjectId);
         }
     }
 
@@ -185,10 +197,10 @@ public class BuyFragment extends BaseFragment
                     if (data != null) {
                         boolean isBack = data.getBooleanExtra(Constants.KeyMaps.From, false);
                         if (!isBack) {
-                            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
+                            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "onActivityResult");
                             //2：刷新账户的GetAllBalance
-                            if (getAllBalancePresenter != null) {
-                                getAllBalancePresenter.getAllBalance();
+                            if (activity != null) {
+                                ((MainActivity) activity).getAllBalance();
                             }
                         }
                     }
@@ -302,8 +314,6 @@ public class BuyFragment extends BaseFragment
                             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                                 ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, true);
                             }
-                            //重新请求数据
-                            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
                         }
 
                         @Override
@@ -316,32 +326,9 @@ public class BuyFragment extends BaseFragment
 
                         }
                     });
-            tabLayout.resetSelectedTab(0);
-            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID);
-
-        }
-
-
-    }
-
-    /**
-     * 根据传入的支付方式过滤数据
-     *
-     * @param paymentCurrencyUid
-     */
-    public void requestForSaleOrderList(String paymentCurrencyUid) {
-        LogTool.d(TAG, "requestForSaleOrderList：" + paymentCurrencyUid);
-        if (presenter != null) {
-            List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
-            //重新初始化下一页
-            nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
-            if (ListTool.noEmpty(memberKeyVOList)) {
-                presenter.getOrderList(memberKeyVOList.get(currentPosition).getCurrencyListVO().getCurrencyUid(),
-                        paymentCurrencyUid, nextObjectId);
-            }
+            requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "refreshView default");
         }
     }
-
 
     @Override
     public void getOrderListSuccess(PaginationVO paginationVO, boolean isRefresh) {
@@ -404,22 +391,7 @@ public class BuyFragment extends BaseFragment
         }
     }
 
-    @Override
-    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        //更新当前存储的所有余额即可
-    }
-
-    @Override
-    public void getAllBalanceFailure(String info) {
-        LogTool.e(TAG, info);
-    }
-
-    private LoadingDataListener loadingDataListener = new LoadingDataListener() {
-        @Override
-        public void onLoadingData() {
-            requestOrderList(nextObjectId);
-        }
-    };
+    private LoadingDataListener loadingDataListener = () -> requestOrderList(nextObjectId, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "loadingDataListener");
 
     /**
      * 当前显示的Token type
