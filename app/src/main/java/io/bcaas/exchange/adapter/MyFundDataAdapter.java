@@ -71,7 +71,13 @@ public class MyFundDataAdapter extends RecyclerView.Adapter<MyFundDataAdapter.Vi
             return;
         }
         String uid = currencyListVO.getCurrencyUid();
-        viewHolder.tvFundType.setText(currencyListVO.getEnName());
+        //判断当前的UID是否是3，七彩贝
+        if (StringTool.equals(uid, Constants.CurrencyUID.CNYC)) {
+            //如果是七彩贝，需要将按钮置换成回购和充值
+            viewHolder.btnRecharge.setText(context.getResources().getString(R.string.recharge));
+            viewHolder.btnWithdraw.setText(context.getResources().getString(R.string.buy_back));
+        }
+            viewHolder.tvFundType.setText(currencyListVO.getEnName());
         Drawable drawable = context.getResources().getDrawable(ResourceTool.getDrawableByEnName(currencyListVO.getEnName()));
         // 设置币种图标
         int width = context.getResources().getDimensionPixelOffset(R.dimen.d16);

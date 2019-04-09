@@ -141,26 +141,39 @@ public class MyFundActivity extends BaseActivity
             if (memberKeyVO == null) {
                 return;
             }
-            CurrencyListVO currencyListVO=memberKeyVO.getCurrencyListVO();
-            if (currencyListVO==null){
-             return;
+            CurrencyListVO currencyListVO = memberKeyVO.getCurrencyListVO();
+            if (currencyListVO == null) {
+                return;
             }
-            String uid=currencyListVO.getCurrencyUid();
-            if (StringTool.isEmpty(uid)){
+            String uid = currencyListVO.getCurrencyUid();
+            if (StringTool.isEmpty(uid)) {
                 return;
             }
             Intent intent = new Intent();
             intent.putExtra(Constants.KeyMaps.From, uid);
             switch (from) {
                 case Constants.From.TURN_IN:
-                    intent.setClass(MyFundActivity.this, TurnInActivity.class);
-                    startActivityForResult(intent, Constants.RequestCode.TURN_IN);
-                    // 转入
+                    //判断当前是否七彩贝
+                    if (StringTool.equals(uid, Constants.CurrencyUID.CNYC)) {
+                        intent.setClass(MyFundActivity.this, RechargeDetailActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.RECHARGE_DETAIL);
+                    } else {
+                        // 转入
+                        intent.setClass(MyFundActivity.this, TurnInActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.TURN_IN);
+                    }
+
                     break;
                 case Constants.From.TURN_OUT:
-                    intent.setClass(MyFundActivity.this, TurnOutActivity.class);
-                    startActivityForResult(intent, Constants.RequestCode.TURN_OUT);
-                    //转出
+                    if (StringTool.equals(uid, Constants.CurrencyUID.CNYC)) {
+                        intent.setClass(MyFundActivity.this, BuyBackActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.BUY_BACK);
+                    } else {
+                        //转出
+                        intent.setClass(MyFundActivity.this, TurnOutActivity.class);
+                        startActivityForResult(intent, Constants.RequestCode.TURN_OUT);
+                    }
+
                     break;
             }
         }
@@ -193,6 +206,8 @@ public class MyFundActivity extends BaseActivity
             switch (requestCode) {
                 case Constants.RequestCode.TURN_IN:
                 case Constants.RequestCode.TURN_OUT:
+                case Constants.RequestCode.RECHARGE_DETAIL:
+                case Constants.RequestCode.BUY_BACK:
                     if (getAllBalancePresenter != null) {
                         getAllBalancePresenter.getAllBalance();
                     }

@@ -293,7 +293,7 @@ public class RechargeDetailActivity extends BaseActivity
             case Constants.Payment.RECHARGE_VIRTUAL_COIN:
                 //充值申请点击后的提示：您的充值申请已提交，请尽快使用已绑定的银行账号进行转账！
                 showToast(getString(R.string.recharge_success_tips));
-                finish();
+                setResult(false);
                 break;
             case Constants.Payment.GET_BANK_INFO:
                 CenterInfoVO centerInfoVO = (CenterInfoVO) message;

@@ -72,11 +72,12 @@ public class Constants {
         public static final int WIDTH_DRAW_DETAIL = 0x17;//跳转到「转出详情」的界面
         public static final int COUNTRY_CODE = 0x18;//跳转到「选择城市区号」的界面
         public static final int RECHARGE = 0x19;//跳转到我的充值页面的code码
-        public static final int BUY_BACK = 0x20;//跳转到回购页面的code码
-        public static final int PAYMENT_MANAGEMENT = 0x21;//跳转到我的支付管理页面的code码
-        public static final int IDENTITY_AUTHENTICATION = 0x22;//跳转到我的身份认证页面的code码
-        public static final int INPUT_PASSWORD_CODE = 0x23;//跳转到「输入密码」的界面
-        public static final int ADD_PAYMENT_CODE = 0x24;//跳转到「添加支付方式」的界面
+        public static final int RECHARGE_DETAIL = 0x20;//跳转到我的充值详情的code码
+        public static final int BUY_BACK = 0x21;//跳转到回购页面的code码
+        public static final int PAYMENT_MANAGEMENT = 0x22;//跳转到我的支付管理页面的code码
+        public static final int IDENTITY_AUTHENTICATION = 0x23;//跳转到我的身份认证页面的code码
+        public static final int INPUT_PASSWORD_CODE = 0x24;//跳转到「输入密码」的界面
+        public static final int ADD_PAYMENT_CODE = 0x25;//跳转到「添加支付方式」的界面
 
     }
 

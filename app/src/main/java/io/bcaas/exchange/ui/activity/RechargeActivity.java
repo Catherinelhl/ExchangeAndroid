@@ -212,7 +212,9 @@ public class RechargeActivity extends BaseActivity
                     public void onNext(Object o) {
                         if (isCanIntent()) {
                             //已经绑定
-                            intentToActivity(RechargeDetailActivity.class);
+                            Intent intent = new Intent();
+                            intent.setClass(RechargeActivity.this, RechargeDetailActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.RECHARGE_DETAIL);
                         }
                     }
 
