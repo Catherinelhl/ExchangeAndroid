@@ -104,7 +104,6 @@ public class OrderRecordPresenterImp extends BasePresenterImp implements OrderRe
                                     view.getRecordFailure(getString(R.string.data_format_exception), isRefresh);
                                 } else {
                                     view.getRecordFailure(getString(R.string.get_data_failure), isRefresh);
-
                                 }
                             }
                         }

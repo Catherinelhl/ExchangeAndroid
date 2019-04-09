@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.view.ViewGroup;
@@ -315,8 +314,12 @@ public class BuyFragment extends BaseFragment
                             }
                             // 刷新界面信息
                             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-
-                                ((BuyView) views.get(currentPosition)).refreshData(getCurrentMemberOrderInfo(currentPosition), true);
+                                List<MemberOrderVO> memberOrderVOS = memberOrderVOSMap.get(currentPosition);
+                                if (ListTool.isEmpty(memberOrderVOS)) {
+                                    //如果当前没有这个position的数据，那么需要重新请求数据
+                                    requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "setupWithViewPager");
+                                }
+                                ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, true);
                             }
                         }
 
@@ -345,8 +348,6 @@ public class BuyFragment extends BaseFragment
         List<MemberOrderVO> memberOrderVOS = new ArrayList<>();
         if (memberOrderVOSMap != null) {
             memberOrderVOS = memberOrderVOSMap.get(position);
-        } else {
-            memberOrderVOSMap = new HashMap<>();
         }
         return memberOrderVOS;
     }
@@ -379,19 +380,17 @@ public class BuyFragment extends BaseFragment
             List<Object> objects = paginationVO.getObjectList();
             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getOrderListSuccess:", objects);
             if (isRefresh) {
-                //如果当前是需要更新的
+                //如果当前是需要刷新的 ，那么直接得到最新的数据
                 if (ListTool.noEmpty(objects)) {
                     memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
                     }.getType());
                 }
             } else {
-                //如果当前是不需要更新的
+                //如果当前是不需要刷新的，那么就直接追加数据
                 if (ListTool.noEmpty(objects)) {
                     List<MemberOrderVO> memberOrderVOSTemp = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
                     }.getType());
                     memberOrderVOS.addAll(memberOrderVOSTemp);
-                } else {
-                    memberOrderVOS.clear();
                 }
             }
             //将当前的数据再填充进去
