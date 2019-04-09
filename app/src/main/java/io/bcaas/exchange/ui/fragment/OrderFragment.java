@@ -308,7 +308,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                 srlData.setRefreshing(false);
             }
         }
-        showToast(info);
+        showToast(info, true);
 
     }
 
@@ -432,7 +432,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void cancelOrderFailure(String info) {
-        showToast(info);
+        showToast(info,true);
     }
 
     @Override

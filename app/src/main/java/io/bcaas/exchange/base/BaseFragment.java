@@ -102,11 +102,16 @@ public abstract class BaseFragment extends Fragment implements BaseContract.View
     /*取消订阅*/
     protected abstract void cancelSubscribe();
 
-    public void showToast(String info) {
+    public void showToast(String info, boolean isShort) {
         if (!checkActivityState()) {
             return;
         }
         ((BaseActivity) activity).showToast(info);
+
+    }
+
+    public void showToast(String info) {
+        showToast(info, false);
     }
 
     @Override

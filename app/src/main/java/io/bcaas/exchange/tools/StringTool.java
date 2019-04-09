@@ -90,6 +90,8 @@ public class StringTool {
      * 1:提現 ---> (0:失敗, 1:已完成, 2:待驗證)<br>
      * 2:買 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
      * 3:賣 ---> (0:已撤銷, 1:已完成, 2:待出售)<br>
+     * 4.充值 ---> (0:失敗, 1:已完成, 2:待审核)
+     *5.回購 ---> (0:失敗, 1:已完成, 2:待审核)
      */
     public static String getDisplayOrderStatusText(int type, int status) {
         switch (type) {
@@ -128,6 +130,26 @@ public class StringTool {
                     return "已完成";
                 } else if (status == 2) {
                     return "待出售";
+                }
+
+                break;
+            case 4://充值
+                if (status == 0) {
+                    return "失败";
+                } else if (status == 1) {
+                    return "已完成";
+                } else if (status == 2) {
+                    return "待审核";
+                }
+
+                break;
+            case 5://回购
+                if (status == 0) {
+                    return "失败";
+                } else if (status == 1) {
+                    return "已完成";
+                } else if (status == 2) {
+                    return "待审核";
                 }
 
                 break;
