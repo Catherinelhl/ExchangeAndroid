@@ -204,8 +204,8 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
                 }
                 break;
             case Constants.Payment.CONVERT_COIN:
-                showToast("申请回购成功！");
-                finish();
+                showToast(getString(R.string.successful_application_for_buy_back));
+                setResult(false);
                 break;
         }
     }

@@ -19,7 +19,9 @@ import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
+import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
+import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.view.dialog.DoubleButtonDialog;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -46,11 +48,13 @@ import java.util.concurrent.TimeUnit;
 +--------------+---------------------------------
 */
 
-public class RechargeActivity extends BaseActivity implements AccountSecurityContract.View {
+public class RechargeActivity extends BaseActivity
+        implements AccountSecurityContract.View, GetAllBalanceContract.View {
 
+
+    private String TAG = RechargeActivity.class.getSimpleName();
     @BindView(R.id.tv_recharge_balance)
     TextView tvRechargeBalance;
-    private String TAG = RechargeActivity.class.getSimpleName();
     @BindView(R.id.ib_back)
     ImageButton ibBack;
     @BindView(R.id.tv_title)
@@ -67,6 +71,7 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
     TextView tvRechargeIntro;
 
     private AccountSecurityContract.Presenter presenter;
+    private GetAllBalanceContract.Presenter getAllBalancePresenter;
 
     @Override
     public int getContentView() {
@@ -83,6 +88,10 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.recharge));
+        showBalance();
+    }
+
+    private void showBalance() {
         List<MemberKeyVO> memberKeyVOList = BaseApplication.getMemberKeyVOList();
         if (ListTool.noEmpty(memberKeyVOList)) {
             /**
@@ -175,7 +184,9 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                     public void onNext(Object o) {
                         if (isCanIntent()) {
                             //已经绑定
-                            intentToActivity(BuyBackActivity.class);
+                            Intent intent = new Intent();
+                            intent.setClass(RechargeActivity.this, BuyBackActivity.class);
+                            startActivityForResult(intent, Constants.RequestCode.BUY_BACK);
                         }
 
                     }
@@ -232,6 +243,13 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
                 case Constants.RequestCode.IDENTITY_AUTHENTICATION:
                     //更新当前的信息
                     presenter.getAccountSecurity();
+                    break;
+                case Constants.RequestCode.BUY_BACK:
+                    //回购界面返回，重新刷新当前界面的余额
+                    if (getAllBalancePresenter == null) {
+                        getAllBalancePresenter = new GetAllBalancePresenterImp(this);
+                    }
+                    getAllBalancePresenter.getAllBalance();
                     break;
             }
         }
@@ -310,4 +328,13 @@ public class RechargeActivity extends BaseActivity implements AccountSecurityCon
         return true;
     }
 
+    @Override
+    public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
+        showBalance();
+    }
+
+    @Override
+    public void getAllBalanceFailure(String info) {
+        showToast(info);
+    }
 }

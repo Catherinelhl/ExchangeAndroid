@@ -309,4 +309,5 @@
     <string name="default_cnyc_value">七彩贝(CNYC)</string>
     <string name="three_s">%s%s %s</string>
     <string name="double_s">%s %s</string>
+    <string name="successful_application_for_buy_back">申请回购成功！</string>
 </resources>

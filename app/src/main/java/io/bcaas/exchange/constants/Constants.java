@@ -60,9 +60,6 @@ public class Constants {
         public static final int ALL_FUND_CODE = 0x5;//跳转到我的资产页面的code码
         public static final int TURN_OUT = 0x6;//跳转到我的转出页面的code码
         public static final int TURN_IN = 0x7;//跳转到我的转入页面的code码
-        public static final int RECHARGE = 0x19;//跳转到我的充值页面的code码
-        public static final int PAYMENT_MANAGEMENT = 0x20;//跳转到我的支付管理页面的code码
-        public static final int IDENTITY_AUTHENTICATION = 0x21;//跳转到我的身份认证页面的code码
         public static final int SAFETY = 0x8;//跳转到安全中心页面的code码
         public static final int MODIFY_LOGIN_PASSWORD = 0x9;//跳转到「修改登录密码」页面的code码
         public static final int MODIFY_FUND_PASSWORD = 0x10;//跳转到「修改登录密码」页面的code码
@@ -74,8 +71,12 @@ public class Constants {
         public static final int REQUEST_CODE_CAMERA_OK = 0x16;//跳转到「调用扫描」的界面
         public static final int WIDTH_DRAW_DETAIL = 0x17;//跳转到「转出详情」的界面
         public static final int COUNTRY_CODE = 0x18;//跳转到「选择城市区号」的界面
-        public static final int INPUT_PASSWORD_CODE = 0x22;//跳转到「输入密码」的界面
-        public static final int ADD_PAYMENT_CODE = 0x23;//跳转到「添加支付方式」的界面
+        public static final int RECHARGE = 0x19;//跳转到我的充值页面的code码
+        public static final int BUY_BACK = 0x20;//跳转到回购页面的code码
+        public static final int PAYMENT_MANAGEMENT = 0x21;//跳转到我的支付管理页面的code码
+        public static final int IDENTITY_AUTHENTICATION = 0x22;//跳转到我的身份认证页面的code码
+        public static final int INPUT_PASSWORD_CODE = 0x23;//跳转到「输入密码」的界面
+        public static final int ADD_PAYMENT_CODE = 0x24;//跳转到「添加支付方式」的界面
 
     }
 
