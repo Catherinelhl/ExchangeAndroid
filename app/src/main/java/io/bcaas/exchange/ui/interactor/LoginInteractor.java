@@ -5,7 +5,6 @@ import io.bcaas.exchange.http.retrofit.RetrofitFactory;
 import io.bcaas.exchange.vo.ResponseJson;
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 
 /**
  * @author catherine.brainwilliam
@@ -20,8 +19,7 @@ public class LoginInteractor {
      * @param body
      */
     public Observable<ResponseJson> register(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.register(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).register(body);
     }
 
     /**
@@ -30,8 +28,7 @@ public class LoginInteractor {
      * @param body
      */
     public Observable<ResponseJson> login(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.login(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).login(body);
     }
 
 }

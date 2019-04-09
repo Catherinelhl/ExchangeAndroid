@@ -19,8 +19,7 @@ public class MainInteractor {
      * @param body
      */
     public Observable<ResponseJson> getCurrencyUSDPrice(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getCurrencyUSDPrice(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getCurrencyUSDPrice(body);
     }
 
     /**
@@ -29,8 +28,8 @@ public class MainInteractor {
      * @param body
      */
     public Observable<ResponseJson> getAllBalance(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getAllBalance(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class)
+                .getAllBalance(body);
     }
 
     /**
@@ -39,8 +38,7 @@ public class MainInteractor {
      * @param body
      */
     public Observable<ResponseJson> getCoinNameList(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getCoinNameList(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getCoinNameList(body);
     }
 
     /**
@@ -49,10 +47,8 @@ public class MainInteractor {
      * @param body
      */
     public Observable<ResponseJson> getCoinMarketCap(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getCoinMarketCap(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getCoinMarketCap(body);
     }
-
 
 
 }

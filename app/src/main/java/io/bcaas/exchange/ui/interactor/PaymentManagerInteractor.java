@@ -29,8 +29,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> addPayWay(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.addPayWay(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).addPayWay(body);
     }
 
 
@@ -40,8 +39,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> modifyPayWay(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.modifyPayWay(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).modifyPayWay(body);
     }
 
     /**
@@ -50,8 +48,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> removePayWay(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.removePayWay(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).removePayWay(body);
     }
 
     /**
@@ -60,8 +57,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> getPayWay(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getPayWay(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getPayWay(body);
     }
 
     /**
@@ -70,8 +66,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> getBankInfo(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getBankInfo(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getBankInfo(body);
     }
 
     /**
@@ -80,8 +75,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> rechargeVirtual(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.rechargeVirtual(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).rechargeVirtual(body);
     }
 
     /**
@@ -90,8 +84,7 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> convertCoin(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.convertCoin(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).convertCoin(body);
     }
 
     /**
@@ -100,7 +93,6 @@ public class PaymentManagerInteractor {
      * @param body
      */
     public Observable<ResponseJson> identityNameVerification(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.identityNameVerification(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).identityNameVerification(body);
     }
 }

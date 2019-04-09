@@ -21,8 +21,7 @@ public class SafetyCenterInteractor {
      * @param body
      */
     public Observable<ResponseJson> logout(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.logout(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).logout(body);
     }
 
     /**
@@ -31,8 +30,7 @@ public class SafetyCenterInteractor {
      * @param body
      */
     public Observable<ResponseJson> forgetPassword(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.forgetPassword(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).forgetPassword(body);
     }
 
     /**
@@ -41,8 +39,7 @@ public class SafetyCenterInteractor {
      * @param body
      */
     public Observable<ResponseJson> resetPassword(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.resetPassword(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).resetPassword(body);
     }
 
     /**
@@ -51,16 +48,14 @@ public class SafetyCenterInteractor {
      * @param body
      */
     public Observable<ResponseJson> closeSecurityVerify(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.closeSecurityVerify(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).closeSecurityVerify(body);
     }
 
     /**
      * 邮箱验证
      */
     public Observable<ResponseJson> emailVerify(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.emailVerify(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).emailVerify(body);
     }
 
 

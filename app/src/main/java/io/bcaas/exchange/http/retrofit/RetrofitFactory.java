@@ -44,6 +44,7 @@ public class RetrofitFactory {
         initClient();
 //        ServerBean serverBean = ServerTool.getDefaultServerBean();
 //        String apiServer = "http://192.168.0.163:8080/ExchangeApplication/";
+        // TODO: 2019/4/9
         String apiServer = "https://sitexchangeapp.bcaas.io";
 //        if (serverBean != null) {
 //            apiServer = serverBean.getApiServer();

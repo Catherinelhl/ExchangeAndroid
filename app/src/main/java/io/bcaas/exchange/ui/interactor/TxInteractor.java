@@ -18,8 +18,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> getCurrencyCharge(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getCurrencyCharge(body);
+       return RetrofitFactory.getAPIInstance().create(HttpApi.class).getCurrencyCharge(body);
     }
 
     /**
@@ -28,8 +27,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> cancelOrder(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.cancelOrder(body);
+       return RetrofitFactory.getAPIInstance().create(HttpApi.class).cancelOrder(body);
     }
 
     /**
@@ -38,8 +36,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> getRecord(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getRecord(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getRecord(body);
     }
 
     /**
@@ -48,8 +45,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> sell(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.sell(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).sell(body);
     }
 
     /**
@@ -58,8 +54,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> getOrderList(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getOrderList(body);
+       return RetrofitFactory.getAPIInstance().create(HttpApi.class).getOrderList(body);
     }
 
     /**
@@ -68,8 +63,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> buy(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.buy(body);
+       return RetrofitFactory.getAPIInstance().create(HttpApi.class).buy(body);
     }
 
     /**
@@ -78,8 +72,7 @@ public class TxInteractor {
      * @param body
      */
     public Observable<ResponseJson> withDraw(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.withDraw(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).withDraw(body);
     }
 
 }

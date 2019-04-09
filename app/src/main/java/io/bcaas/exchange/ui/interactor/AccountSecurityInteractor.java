@@ -19,8 +19,7 @@ public class AccountSecurityInteractor {
      * @param body
      */
     public Observable<ResponseJson> getAccountSecurity(RequestBody body) {
-        HttpApi httpApi = RetrofitFactory.getAPIInstance().create(HttpApi.class);
-        return httpApi.getAccountSecurity(body);
+        return RetrofitFactory.getAPIInstance().create(HttpApi.class).getAccountSecurity(body);
     }
 
 }
