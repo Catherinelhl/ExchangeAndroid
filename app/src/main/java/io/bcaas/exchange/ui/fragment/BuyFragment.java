@@ -31,6 +31,7 @@ import io.bcaas.exchange.ui.presenter.ForSaleOrderListPresenterImp;
 import io.bcaas.exchange.ui.view.BuyView;
 import io.bcaas.exchange.view.viewGroup.BaseTabLayout;
 import io.bcaas.exchange.view.viewGroup.StickHeadScrollView;
+import io.bcaas.exchange.view.viewpager.BaseViewPager;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberOrderVO;
@@ -39,7 +40,9 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -58,7 +61,7 @@ public class BuyFragment extends BaseFragment
     @BindView(R.id.tab_layout)
     BaseTabLayout tabLayout;
     @BindView(R.id.viewpager)
-    ViewPager viewPager;
+    BaseViewPager viewPager;
     @BindView(R.id.srl_data)
     SwipeRefreshLayout srlData;
     @BindView(R.id.iv_bg_banner)
@@ -77,10 +80,11 @@ public class BuyFragment extends BaseFragment
     private boolean isPrepared;
     //得到当前各页面的nextObjectId,默认是1
     private String nextObjectId = MessageConstants.DEFAULT_NEXT_OBJECT_ID;//"0";
-    private List<MemberOrderVO> memberOrderVOS;
     private List<MemberKeyVO> memberKeyVOListTitle;
     //得到当前「买进」页面当前展示的token，用于过滤器过滤
     private MemberKeyVO currentDisplayType;
+    //定义一个存储不同数据的map
+    private Map<Integer, List<MemberOrderVO>> memberOrderVOSMap;
 
     @Override
     public int getLayoutRes() {
@@ -95,7 +99,7 @@ public class BuyFragment extends BaseFragment
         vLine.setVisibility(View.VISIBLE);
         presenter = new ForSaleOrderListPresenterImp(this);
         views = new ArrayList<>();
-        memberOrderVOS = new ArrayList<>();
+        memberOrderVOSMap = new HashMap<>();
         memberKeyVOListTitle = new ArrayList<>();
         // 设置加载按钮的形态
         srlData.setColorSchemeResources(
@@ -119,6 +123,7 @@ public class BuyFragment extends BaseFragment
         tabLayout.requestFocus();
         //2.set height
         shsv.resetHeight(tabLayout, srlData);
+        viewPager.setCanSlide(false);
 
     }
 
@@ -286,7 +291,7 @@ public class BuyFragment extends BaseFragment
                     }
                 }
                 BuyView buyView = new BuyView(activity);
-                buyView.refreshData(memberOrderVOS, true);
+                buyView.refreshData(getCurrentMemberOrderInfo(i), true);
                 buyView.setOnItemSelectListener(onItemSelectListener);
                 buyView.setLoadingDataListener(loadingDataListener);
                 views.add(buyView);
@@ -308,11 +313,10 @@ public class BuyFragment extends BaseFragment
                             if (currentPosition < size) {
                                 setCurrentDisplayType(memberKeyVOListTitle.get(currentPosition));
                             }
-                            // 清空当前的界面信息
-                            memberOrderVOS.clear();
                             // 刷新界面信息
                             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
-                                ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, true);
+
+                                ((BuyView) views.get(currentPosition)).refreshData(getCurrentMemberOrderInfo(currentPosition), true);
                             }
                         }
 
@@ -330,6 +334,23 @@ public class BuyFragment extends BaseFragment
         }
     }
 
+    /**
+     * 根据当前的下标取得相应的数据信息
+     *
+     * @param position
+     * @return
+     */
+    private List<MemberOrderVO> getCurrentMemberOrderInfo(int position) {
+        //根据position获取order信息
+        List<MemberOrderVO> memberOrderVOS = new ArrayList<>();
+        if (memberOrderVOSMap != null) {
+            memberOrderVOS = memberOrderVOSMap.get(position);
+        } else {
+            memberOrderVOSMap = new HashMap<>();
+        }
+        return memberOrderVOS;
+    }
+
     @Override
     public void getOrderListSuccess(PaginationVO paginationVO, boolean isRefresh) {
         if (isRefresh) {
@@ -338,7 +359,10 @@ public class BuyFragment extends BaseFragment
                 srlData.setRefreshing(false);
             }
         }
-
+        List<MemberOrderVO> memberOrderVOS = new ArrayList<>();
+        if (memberOrderVOSMap != null) {
+            memberOrderVOS = memberOrderVOSMap.get(currentPosition);
+        }
         if (paginationVO != null) {
             //得到当前接口的页面信息
             nextObjectId = paginationVO.getNextObjectId();
@@ -355,7 +379,6 @@ public class BuyFragment extends BaseFragment
             List<Object> objects = paginationVO.getObjectList();
             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getOrderListSuccess:", objects);
             if (isRefresh) {
-                memberOrderVOS.clear();
                 //如果当前是需要更新的
                 if (ListTool.noEmpty(objects)) {
                     memberOrderVOS = GsonTool.convert(GsonTool.string(paginationVO.getObjectList()), new TypeToken<List<MemberOrderVO>>() {
@@ -371,8 +394,10 @@ public class BuyFragment extends BaseFragment
                     memberOrderVOS.clear();
                 }
             }
-
-
+            //将当前的数据再填充进去
+            if (memberOrderVOSMap != null) {
+                memberOrderVOSMap.put(currentPosition, memberOrderVOS);
+            }
             if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                 ((BuyView) views.get(currentPosition)).refreshData(memberOrderVOS, canLoadingMore);
             }
