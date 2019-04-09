@@ -168,10 +168,16 @@ public class BaseApplication extends MultiDexApplication {
         if (ListTool.noEmpty(memberKeyVOList)) {
             memberKeyVOListExcepteCNYC.clear();
             for (MemberKeyVO memberKeyVO : memberKeyVOList) {
-                if (memberKeyVO.getMemberKeyUid() != 48) {
-                    //如果當前有七彩唄，那麼就排除
-                    memberKeyVOListExcepteCNYC.add(memberKeyVO);
-                }
+             CurrencyListVO currencyListVO=memberKeyVO.getCurrencyListVO();
+             if (currencyListVO!=null){
+                 String currencyUID = currencyListVO.getCurrencyUid();
+                 //判断如果当前是七彩贝的话
+                 if (!StringTool.equals(currencyUID, Constants.CurrencyUID.CNYC)) {
+                     //如果當前有七彩唄，那麼就排除
+                     memberKeyVOListExcepteCNYC.add(memberKeyVO);
+                 }
+             }
+
             }
         } else {
             memberKeyVOListExcepteCNYC.clear();
