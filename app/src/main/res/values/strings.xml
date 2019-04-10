@@ -311,4 +311,5 @@
     <string name="double_s">%s %s</string>
     <string name="successful_application_for_buy_back">申请回购成功！</string>
     <string name="recharge_amount_need_greater_than_zero">充值数额需要大于0</string>
+    <string name="buy_back_amount_need_greater_than_zero">回购数额需要大于0</string>
 </resources>

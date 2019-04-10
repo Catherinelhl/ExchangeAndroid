@@ -175,7 +175,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
                         //step 2:判断当前输入的金额是否是大于手续费，如果没有手续费，那么需要大于0
                         float volume = Float.valueOf(buyBackAmount);
                         if (volume <= 0) {
-                            showToast(getString(R.string.recharge_amount_need_greater_than_zero));
+                            showToast(getString(R.string.buy_back_amount_need_greater_than_zero));
                             return;
                         }
                         String fundPassword = etwaFundPassword.getContent();
