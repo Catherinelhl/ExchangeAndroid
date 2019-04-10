@@ -2,11 +2,9 @@ package io.bcaas.exchange.ui.activity;
 
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
@@ -16,6 +14,7 @@ import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.RadioButtonCheckListener;
+import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -86,6 +85,10 @@ public class RechargeDetailActivity extends BaseActivity
     Button btnSure;
     @BindView(R.id.custom_recharge_amount)
     CustomRechargeAmount customRechargeAmount;
+    @BindView(R.id.ll_recharge_detail)
+    LinearLayout llRechargeDetail;
+    @BindView(R.id.v_space)
+    View vSpace;
 
 
     private PayWayManagerContract.Presenter presenter;
@@ -110,6 +113,8 @@ public class RechargeDetailActivity extends BaseActivity
         ibBack.setVisibility(View.VISIBLE);
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.recharge));
+        softKeyBroadManager = new SoftKeyBroadManager(llRechargeDetail, btnSure);
+
     }
 
     @Override
@@ -122,6 +127,7 @@ public class RechargeDetailActivity extends BaseActivity
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llRechargeDetail);
         customRechargeAmount.setRadioButtonCheckListener(new RadioButtonCheckListener() {
             @Override
             public void onChange(boolean isCheck) {

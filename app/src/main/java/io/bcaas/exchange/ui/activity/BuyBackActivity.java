@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
@@ -13,6 +14,7 @@ import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
 import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.AmountEditTextFilter;
+import io.bcaas.exchange.manager.SoftKeyBroadManager;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.tools.decimal.DecimalTool;
@@ -69,6 +71,10 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
     EditTextWithAction etwaFundPassword;
     @BindView(R.id.btn_sure)
     Button btnSure;
+    @BindView(R.id.ll_buy_back)
+    LinearLayout llBuyBack;
+    @BindView(R.id.v_space)
+    View vSpace;
     private MemberPayInfoVO memberPayInfoVO;
 
 
@@ -90,6 +96,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
         tvTitle.setVisibility(View.VISIBLE);
         tvTitle.setText(getString(R.string.buy_back));
         etAmount.setFilters(new InputFilter[]{new AmountEditTextFilter().setDigits(Constants.DigitalPrecision.LIMIT_TWO)});
+        softKeyBroadManager = new SoftKeyBroadManager(llBuyBack, btnSure);
 
     }
 
@@ -101,6 +108,7 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
 
     @Override
     public void initListener() {
+        hideSoftKeyBoardByTouchView(llBuyBack);
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
