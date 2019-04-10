@@ -13,6 +13,7 @@ import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.base.BaseApplication;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.EditTextWatcherListener;
 import io.bcaas.exchange.listener.RadioButtonCheckListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -182,6 +183,7 @@ public class RechargeDetailActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
+                        hideSoftKeyboard();
                         //step 1:判断当前输入不能为空
                         String rechargeAmount = customRechargeAmount.getContent();
                         if (StringTool.isEmpty(rechargeAmount)) {
@@ -193,6 +195,12 @@ public class RechargeDetailActivity extends BaseActivity
                                 return;
                             }
                         }
+                        //step 2:判断当前输入的金额是否是大于0
+                        float volume = Float.valueOf(rechargeAmount);
+                        if (volume <= 0) {
+                            showToast(getString(R.string.recharge_amount_need_greater_than_zero));
+                            return;
+                        }
 
                         String imageCode = etwaImageCode.getContent();
                         if (StringTool.isEmpty(imageCode)) {
@@ -201,7 +209,7 @@ public class RechargeDetailActivity extends BaseActivity
                         }
                         String mark = tvPaymentNote.getText().toString();
 
-                        //Step 2:根据用户输入的内容请求数据
+                        //Step 3:根据用户输入的内容请求数据
                         presenter.rechargeVirtualCoin(Constants.Payment.RECHARGE_VIRTUAL_COIN, Constants.CURRENCY_TYPE_SCS, rechargeAmount, mark, imageCode);
 
                     }
@@ -227,30 +235,18 @@ public class RechargeDetailActivity extends BaseActivity
      * @param position
      */
     private void changeRadioButtonStatus(TextView textView, int position) {
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //清空所有的数据，然后重新赋值
-                customRechargeAmount.resetContent(true);
-                resetTextViewStatus(tvOne);
-                resetTextViewStatus(tvTwo);
-                resetTextViewStatus(tvThree);
-                boolean currentStatus;
-                if (rechargeNumber != null) {
-                    int index = rechargeNumber.getIndex();
-                    if (index == position) {
-                        currentStatus = rechargeNumber.getIsCheck(position);
+        textView.setOnClickListener(v -> {
+            //清空所有的数据，然后重新赋值
+            customRechargeAmount.resetContent(true);
+            resetTextViewStatus(tvOne);
+            resetTextViewStatus(tvTwo);
+            resetTextViewStatus(tvThree);
+            boolean currentStatus;
+            if (rechargeNumber != null) {
+                int index = rechargeNumber.getIndex();
+                if (index == position) {
+                    currentStatus = rechargeNumber.getIsCheck(position);
 
-                    } else {
-                        if (position == 1) {
-                            rechargeNumber = Constants.RechargeNumber.ONE_HUNDRED;
-                        } else if (position == 2) {
-                            rechargeNumber = Constants.RechargeNumber.FIVE_HUNDRED;
-                        } else if (position == 3) {
-                            rechargeNumber = Constants.RechargeNumber.ONE_THOUSAND;
-                        }
-                        currentStatus = false;
-                    }
                 } else {
                     if (position == 1) {
                         rechargeNumber = Constants.RechargeNumber.ONE_HUNDRED;
@@ -261,15 +257,24 @@ public class RechargeDetailActivity extends BaseActivity
                     }
                     currentStatus = false;
                 }
-                rechargeNumber.setIndex(position);
-                rechargeNumber.setCheck(!currentStatus);
-                textView.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d5));
-                textView.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(currentStatus ? R.mipmap.icon_choose : R.mipmap.icon_choose_f
-                ), null, null, null);
-                String recharge = rechargeNumber.getNumber();
-                if (tvPayAmount != null) {
-                    tvPayAmount.setText(recharge + getString(R.string.yuan));
+            } else {
+                if (position == 1) {
+                    rechargeNumber = Constants.RechargeNumber.ONE_HUNDRED;
+                } else if (position == 2) {
+                    rechargeNumber = Constants.RechargeNumber.FIVE_HUNDRED;
+                } else if (position == 3) {
+                    rechargeNumber = Constants.RechargeNumber.ONE_THOUSAND;
                 }
+                currentStatus = false;
+            }
+            rechargeNumber.setIndex(position);
+            rechargeNumber.setCheck(!currentStatus);
+            textView.setCompoundDrawablePadding(context.getResources().getDimensionPixelOffset(R.dimen.d5));
+            textView.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(currentStatus ? R.mipmap.icon_choose : R.mipmap.icon_choose_f
+            ), null, null, null);
+            String recharge = rechargeNumber.getNumber();
+            if (tvPayAmount != null) {
+                tvPayAmount.setText(recharge + getString(R.string.yuan));
             }
         });
 
@@ -314,6 +319,13 @@ public class RechargeDetailActivity extends BaseActivity
 
     @Override
     public void responseFailed(String message, String type) {
+        hideSoftKeyboard();
+        //验证码错误，主动刷新
+        // 重新刷新登录界面的验证码
+        if (etwaImageCode != null) {
+            etwaImageCode.setContent(MessageConstants.EMPTY);
+            etwaImageCode.requestImageVerifyCode();
+        }
         switch (type) {
             case Constants.Payment.ADD_PAY_WAY:
                 showToast(message);

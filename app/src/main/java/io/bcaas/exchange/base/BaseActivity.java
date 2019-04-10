@@ -196,12 +196,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         if (view == null) {
             return;
         }
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
-                return false;
-            }
+        view.setOnTouchListener((v, event) -> {
+            hideSoftKeyboard();
+            return false;
         });
 
 
@@ -213,15 +210,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     }
 
     public void showToast(String toastInfo, boolean isShort) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast toast = Toast.makeText(activity, "", isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG);
-                /*解决小米手机toast自带包名的问题*/
-                toast.setText(toastInfo);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
-            }
+        runOnUiThread(() -> {
+            Toast toast = Toast.makeText(activity, "", isShort ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG);
+            /*解决小米手机toast自带包名的问题*/
+            toast.setText(toastInfo);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         });
     }
 

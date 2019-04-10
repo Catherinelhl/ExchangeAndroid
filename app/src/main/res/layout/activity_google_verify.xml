@@ -13,7 +13,7 @@
             android:layout_marginRight="@dimen/d20"
             android:layout_marginLeft="@dimen/d20"
             android:layout_marginTop="@dimen/d24"
-            android:text="@string/google_verify_privatekey_intro"
+            android:text="@string/google_verify_private_key_intro"
             android:textSize="@dimen/text_size_14"
             android:textColor="@color/black_333333"
             android:layout_height="wrap_content"/>

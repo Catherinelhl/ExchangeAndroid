@@ -425,10 +425,19 @@ public class PaymentManagerPresenterImp extends BasePresenterImp implements PayW
                             if (responseJson.isSuccess()) {
                                 view.responseSuccess(responseJson.getMessage(), type);
                             } else {
-                                int code = responseJson.getCode();
                                 //    {"success":false,"code":2000,"message":"VO is null or type error."}
+                                //  {"success":false,"code":2010,"message":"Verify code fail."}
                                 if (!view.httpExceptionDisposed(responseJson)) {
-                                    view.responseFailed(responseJson.getMessage(), type);
+                                    int code = responseJson.getCode();
+                                    if (code == MessageConstants.CODE_2000) {
+                                        view.responseFailed(getString(R.string.data_format_exception), type);
+
+                                    } else if (code == MessageConstants.CODE_2010) {
+                                        view.responseFailed(getString(R.string.verify_code_fail), type);
+
+                                    } else {
+                                        view.responseFailed(responseJson.getMessage(), type);
+                                    }
                                 }
 
 

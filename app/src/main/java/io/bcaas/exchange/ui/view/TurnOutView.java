@@ -257,7 +257,7 @@ public class TurnOutView extends BaseLinearLayout implements GetCurrencyChargeCo
         if (currencyListVO != null) {
             transactionFee = DecimalTool.calculateFirstAddSecondValue(currencyListVO.getWithdrawCharge(), currencyListVO.getGasFeeCharge());
             if (tvFeeTips != null) {
-                tvFeeTips.setText(context.getResources().getString(R.string.withdraw_need_fee) + " " + StringTool.getDisplayAmountByUId(transactionFee, currencyListVO.getCurrencyUid()) + "  " + currencyListVO.getEnName());
+                tvFeeTips.setText(String.format(context.getResources().getString(R.string.three_s), context.getResources().getString(R.string.withdraw_need_fee), StringTool.getDisplayAmountByUId(transactionFee, currencyListVO.getCurrencyUid()), currencyListVO.getEnName()));
             }
         }
 

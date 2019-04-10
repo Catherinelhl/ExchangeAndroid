@@ -11,6 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
+import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.listener.AmountEditTextFilter;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.StringTool;
@@ -156,19 +157,25 @@ public class BuyBackActivity extends BaseActivity implements PayWayManagerContra
 
                     @Override
                     public void onNext(Object o) {
+                        hideSoftKeyboard();
                         //step 1:判断当前输入不能为空
                         String buyBackAmount = etAmount.getText().toString();
                         if (StringTool.isEmpty(buyBackAmount)) {
                             showToast(getString(R.string.please_input_buy_back_number));
                             return;
                         }
-
+                        //step 2:判断当前输入的金额是否是大于手续费，如果没有手续费，那么需要大于0
+                        float volume = Float.valueOf(buyBackAmount);
+                        if (volume <= 0) {
+                            showToast(getString(R.string.recharge_amount_need_greater_than_zero));
+                            return;
+                        }
                         String fundPassword = etwaFundPassword.getContent();
                         if (StringTool.isEmpty(fundPassword)) {
                             showToast(getString(R.string.please_input_fund_password));
                             return;
                         }
-                        //Step 2:根据用户输入的内容请求数据
+                        //Step 3:根据用户输入的内容请求数据
                         presenter.convertCoin(Constants.Payment.CONVERT_COIN, Constants.CURRENCY_TYPE_SCS, buyBackAmount, fundPassword);
 
                     }
