@@ -183,5 +183,6 @@ public class MessageConstants {
     }
 
     public static final String NEXT_PAGE_IS_EMPTY = "NextPageIsEmpty";
+    public static final String NEXT_PAGE_IS_EMPTY_SYMBOL = "-1";
 
 }

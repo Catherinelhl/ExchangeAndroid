@@ -23,6 +23,7 @@ import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.activity.BuyDetailActivity;
 import io.bcaas.exchange.ui.activity.MainActivity;
 import io.bcaas.exchange.ui.contracts.ForSaleOrderListContract;
@@ -365,18 +366,16 @@ public class BuyFragment extends BaseFragment
             memberOrderVOS = memberOrderVOSMap.get(currentPosition);
         }
         if (paginationVO != null) {
-            //得到当前接口的页面信息
-            nextObjectId = paginationVO.getNextObjectId();
-            Integer totalPageNumber = paginationVO.getTotalPageNumber();
-            int currentNextObjectId = Integer.valueOf(nextObjectId);
             boolean canLoadingMore = false;
+            //得到当前接口的页面信息
+            String objectID = paginationVO.getNextObjectId();
             //判断当前是否需要继续加载
-            if (currentNextObjectId < totalPageNumber) {
+            if (StringTool.equals(MessageConstants.NEXT_PAGE_IS_EMPTY, objectID)) {
+                nextObjectId = MessageConstants.NEXT_PAGE_IS_EMPTY_SYMBOL;
+            } else {
+                nextObjectId = objectID;
                 canLoadingMore = true;
-                currentNextObjectId++;
-                nextObjectId = String.valueOf(currentNextObjectId);
             }
-            Long totalObjectNumber = paginationVO.getTotalObjectNumber();
             List<Object> objects = paginationVO.getObjectList();
             GsonTool.logInfo(TAG, MessageConstants.LogInfo.RESPONSE_JSON, "getOrderListSuccess:", objects);
             if (isRefresh) {

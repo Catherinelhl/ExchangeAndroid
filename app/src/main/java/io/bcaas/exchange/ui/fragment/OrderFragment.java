@@ -18,6 +18,7 @@ import io.bcaas.exchange.listener.LoadingDataListener;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
 import io.bcaas.exchange.tools.LogTool;
+import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.OrderRecordContract;
 import io.bcaas.exchange.ui.presenter.OrderRecordPresenterImp;
 import io.bcaas.exchange.ui.view.OrderView;
@@ -51,9 +52,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     private TabViewAdapter tabViewAdapter;
     private List<View> views;
-    private String nextObjectIdRecharge = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
-    private String nextObjectIdWithDraw = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectIdTurnIn = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectIdTurnOut = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
     private String nextObjectIdTx = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectIdRecharge = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
+    private String nextObjectIdBuyBack = MessageConstants.DEFAULT_NEXT_OBJECT_ID;
     //得到当前选中的列表信息
     private PaginationVO paginationVO;
     private int currentPosition;
@@ -178,15 +181,15 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                             // MessageConstants.DEFAULT_NEXT_OBJECT_ID
                             break;
                         case 2://上拉加载
-                            currentNextObjectID = nextObjectIdRecharge;
+                            currentNextObjectID = nextObjectIdTurnIn;
                             break;
                         case 3://撤销当前订单
-                            int nextObjectIdInt = Integer.valueOf(nextObjectIdRecharge);
+                            int nextObjectIdInt = Integer.valueOf(nextObjectIdTurnIn);
                             if (nextObjectIdInt > 0) {
                                 nextObjectIdInt--;
                                 currentNextObjectID = String.valueOf(nextObjectIdInt);
                             } else {
-                                currentNextObjectID = nextObjectIdRecharge;
+                                currentNextObjectID = nextObjectIdTurnIn;
                             }
                             break;
                     }
@@ -201,15 +204,15 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                             // MessageConstants.DEFAULT_NEXT_OBJECT_ID
                             break;
                         case 2://上拉加载
-                            currentNextObjectID = nextObjectIdWithDraw;
+                            currentNextObjectID = nextObjectIdTurnOut;
                             break;
                         case 3://撤销当前订单
-                            int nextObjectIdInt = Integer.valueOf(nextObjectIdWithDraw);
+                            int nextObjectIdInt = Integer.valueOf(nextObjectIdTurnOut);
                             if (nextObjectIdInt > 0) {
                                 nextObjectIdInt--;
                                 currentNextObjectID = String.valueOf(nextObjectIdInt);
                             } else {
-                                currentNextObjectID = nextObjectIdWithDraw;
+                                currentNextObjectID = nextObjectIdTurnOut;
                             }
                             break;
                     }
@@ -344,15 +347,15 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
             }
             GsonTool.logInfo(TAG, "memberOrderVOList:", memberOrderVOList);
-            int currentNextObjectId;
+            String objectID = paginationVO.getNextObjectId();
             switch (responseType) {
                 case Constants.OrderType.TURN_IN:
-                    nextObjectIdRecharge = paginationVO.getNextObjectId();
-                    currentNextObjectId = Integer.valueOf(nextObjectIdRecharge);
-                    if (currentNextObjectId < totalPageNumber) {
+                    //判断当前是否需要继续加载
+                    if (StringTool.equals(MessageConstants.NEXT_PAGE_IS_EMPTY, objectID)) {
+                        nextObjectIdTurnIn = MessageConstants.NEXT_PAGE_IS_EMPTY_SYMBOL;
+                    } else {
+                        nextObjectIdTurnIn = objectID;
                         canLoadingMore = true;
-                        currentNextObjectId++;
-                        nextObjectIdRecharge = String.valueOf(currentNextObjectId);
                     }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(1)).setAdapter(memberOrderVOList, 1);
@@ -360,12 +363,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     }
                     break;
                 case Constants.OrderType.TURN_OUT:
-                    nextObjectIdWithDraw = paginationVO.getNextObjectId();
-                    currentNextObjectId = Integer.valueOf(nextObjectIdWithDraw);
-                    if (currentNextObjectId < totalPageNumber) {
+                    if (StringTool.equals(MessageConstants.NEXT_PAGE_IS_EMPTY, objectID)) {
+                        nextObjectIdTurnOut = MessageConstants.NEXT_PAGE_IS_EMPTY_SYMBOL;
+                    } else {
+                        nextObjectIdTurnOut = objectID;
                         canLoadingMore = true;
-                        currentNextObjectId++;
-                        nextObjectIdWithDraw = String.valueOf(currentNextObjectId);
                     }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(2)).setAdapter(memberOrderVOList, 2);
@@ -374,12 +376,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     }
                     break;
                 case Constants.OrderType.TX:
-                    nextObjectIdTx = paginationVO.getNextObjectId();
-                    currentNextObjectId = Integer.valueOf(nextObjectIdTx);
-                    if (currentNextObjectId < totalPageNumber) {
+                    if (StringTool.equals(MessageConstants.NEXT_PAGE_IS_EMPTY, objectID)) {
+                        nextObjectIdTx = MessageConstants.NEXT_PAGE_IS_EMPTY_SYMBOL;
+                    } else {
+                        nextObjectIdTx = objectID;
                         canLoadingMore = true;
-                        currentNextObjectId++;
-                        nextObjectIdTx = String.valueOf(currentNextObjectId);
                     }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(0)).setAdapter(memberOrderVOList, 0);
@@ -388,12 +389,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     }
                     break;
                 case Constants.OrderType.RECHARGE:
-                    nextObjectIdTx = paginationVO.getNextObjectId();
-                    currentNextObjectId = Integer.valueOf(nextObjectIdTx);
-                    if (currentNextObjectId < totalPageNumber) {
+                    if (StringTool.equals(MessageConstants.NEXT_PAGE_IS_EMPTY, objectID)) {
+                        nextObjectIdRecharge = MessageConstants.NEXT_PAGE_IS_EMPTY_SYMBOL;
+                    } else {
+                        nextObjectIdRecharge = objectID;
                         canLoadingMore = true;
-                        currentNextObjectId++;
-                        nextObjectIdTx = String.valueOf(currentNextObjectId);
                     }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(3)).setAdapter(memberOrderVOList, 3);
@@ -402,12 +402,11 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
                     }
                     break;
                 case Constants.OrderType.BUY_BACK:
-                    nextObjectIdTx = paginationVO.getNextObjectId();
-                    currentNextObjectId = Integer.valueOf(nextObjectIdTx);
-                    if (currentNextObjectId < totalPageNumber) {
+                    if (StringTool.equals(MessageConstants.NEXT_PAGE_IS_EMPTY, objectID)) {
+                        nextObjectIdBuyBack = MessageConstants.NEXT_PAGE_IS_EMPTY_SYMBOL;
+                    } else {
+                        nextObjectIdBuyBack = objectID;
                         canLoadingMore = true;
-                        currentNextObjectId++;
-                        nextObjectIdTx = String.valueOf(currentNextObjectId);
                     }
                     if (ListTool.noEmpty(views) && currentPosition < views.size()) {
                         ((OrderView) views.get(4)).setAdapter(memberOrderVOList, 4);
@@ -432,7 +431,7 @@ public class OrderFragment extends BaseFragment implements OrderRecordContract.V
 
     @Override
     public void cancelOrderFailure(String info) {
-        showToast(info,true);
+        showToast(info, true);
     }
 
     @Override
