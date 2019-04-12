@@ -79,6 +79,8 @@
 
     <string name="to_setting_grant_permission">Click "Confirm" to jump to system settings to open permissions</string>
     <string name="buy_in">买进</string>
+    <string name="main">首页</string>
+    <string name="transaction">交易</string>
     <string name="sell_out">卖出</string>
     <string name="order">订单</string>
     <string name="account">账户</string>

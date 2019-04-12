@@ -84,6 +84,8 @@
     <string name="all_in">全部发送</string>
 
     <string name="buy_in">买进</string>
+    <string name="main">首页</string>
+    <string name="transaction">交易</string>
     <string name="sell_out">卖出</string>
     <string name="order">订单</string>
     <string name="account">账户</string>

@@ -40,8 +40,8 @@ public class DataGenerationManager {
 
     private void initData() {
         //初始化底部栏文本数据
-        tabTitles.add(BaseApplication.context().getResources().getString(R.string.buy_in));
-        tabTitles.add(BaseApplication.context().getString(R.string.sell_out));
+        tabTitles.add(BaseApplication.context().getResources().getString(R.string.main));
+        tabTitles.add(BaseApplication.context().getString(R.string.transaction));
         tabTitles.add(BaseApplication.context().getString(R.string.order));
         tabTitles.add(BaseApplication.context().getString(R.string.account));
         tabBottomTitleCount = tabTitles.size();

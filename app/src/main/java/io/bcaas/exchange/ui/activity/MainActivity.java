@@ -26,10 +26,7 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.contracts.GetCoinNameListContract;
-import io.bcaas.exchange.ui.fragment.AccountFragment;
-import io.bcaas.exchange.ui.fragment.BuyFragment;
-import io.bcaas.exchange.ui.fragment.OrderFragment;
-import io.bcaas.exchange.ui.fragment.SellFragment;
+import io.bcaas.exchange.ui.fragment.*;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.presenter.GetCoinNameListPresenterImp;
@@ -93,11 +90,11 @@ public class MainActivity extends BaseActivity
         //设置侧滑栏的item点击时间监听回调
         sideSlipPop.setOnItemSelectListener(onItemSelectListener);
 
-        //初始化「买进」页面
-        BuyFragment fragment = new BuyFragment();
+        //初始化「首页」页面
+        MainFragment fragment = new MainFragment();
         fragments.add(fragment);
-        //初始化「售出」页面
-        SellFragment sellFragment = new SellFragment();
+        //初始化「交易」页面
+        TransactionFragment sellFragment = new TransactionFragment();
         fragments.add(sellFragment);
         //初始化「订单」页面
         OrderFragment orderFragment = new OrderFragment();
@@ -229,13 +226,13 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        if (currentFragment instanceof BuyFragment) {
-            //刷新标题
-            ((BuyFragment) currentFragment).refreshView();
-        } else if (currentFragment instanceof SellFragment) {
-            //刷新标题
-            ((SellFragment) currentFragment).refreshView();
-        }
+//        if (currentFragment instanceof BuyFragment) {
+//            //刷新标题
+//            ((BuyFragment) currentFragment).refreshView();
+//        } else if (currentFragment instanceof SellFragment) {
+//            //刷新标题
+//            ((SellFragment) currentFragment).refreshView();
+//        }
     }
 
     @Override
@@ -258,15 +255,15 @@ public class MainActivity extends BaseActivity
                     if (currencyListVO == null) {
                         return;
                     }
-                    if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, currencyListVO.getCurrencyUid(), "onItemSelect:SIDE_SLIP");
-                    }
+//                    if (currentFragment instanceof BuyFragment) {
+//                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, currencyListVO.getCurrencyUid(), "onItemSelect:SIDE_SLIP");
+//                    }
                     break;
                 case Constants.From.SIDE_SLIP_RESET:
                     //侧滑栏重置当前数据
-                    if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "onItemSelect:SIDE_SLIP_RESET");
-                    }
+//                    if (currentFragment instanceof BuyFragment) {
+//                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "onItemSelect:SIDE_SLIP_RESET");
+//                    }
                     break;
                 default:
                     break;

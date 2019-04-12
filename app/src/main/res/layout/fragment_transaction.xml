@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/theme_grey"
+              android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:background="@mipmap/bg_home_banner"
+                  android:layout_weight="1.5"
+                  android:layout_height="@dimen/d0">
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:gravity="center_vertical"
+                  android:layout_height="@dimen/d48">
+
+        <ImageView
+                android:id="@+id/iv_broadcast_banner"
+                android:layout_width="@dimen/d32"
+                android:layout_height="@dimen/d32"
+                android:layout_marginLeft="@dimen/d20"
+                android:src="@mipmap/icon_coin_eth"
+        />
+        <TextView android:layout_width="match_parent"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_marginRight="@dimen/d20"
+                  android:text="BCAAS 国际站5月1日上线ZBB"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:layout_marginTop="@dimen/d20"
+
+                  android:layout_height="@dimen/d0">
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:background="@drawable/bg_white"
+                  android:layout_marginTop="@dimen/d20"
+                  android:gravity="center_vertical"
+                  android:layout_height="@dimen/d0">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="CNYC"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="七彩贝， BCAAS全球社区虚拟道具"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:gravity="center_vertical"
+                  android:background="@drawable/bg_white"
+                  android:layout_marginTop="@dimen/d20"
+                  android:layout_height="@dimen/d0">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="邀请好友"/>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content"
+              android:text="涨幅榜"
+              android:textStyle="bold"
+              android:gravity="center_vertical"
+              android:textColor="@color/black_1d2124"
+              android:textSize="@dimen/text_size_24"
+              android:layout_height="@dimen/d48"
+    />
+
+
+</LinearLayout>

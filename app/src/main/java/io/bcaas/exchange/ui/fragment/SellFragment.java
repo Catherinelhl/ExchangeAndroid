@@ -36,6 +36,7 @@ import java.util.List;
  * Fragment：「售出」
  * Notice：拿到当前用户账户下面的各种币种的「可售余额」，根据点击TAB展现不同汇率数据，然后
  */
+@Deprecated
 public class SellFragment extends BaseFragment {
     @BindView(R.id.srl_data)
     SwipeRefreshLayout srlData;

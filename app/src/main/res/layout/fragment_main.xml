@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/theme_grey"
+              android:layout_height="match_parent">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_weight="1.5"
+                    android:layout_height="@dimen/d0">
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/vp_main_banner"
+                android:layout_width="match_parent"
+                android:flipInterval="30"
+                android:background="@color/blue_5B88FF"
+                android:persistentDrawingCache="animation"
+                android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+        <io.bcaas.exchange.view.viewpager.IconPageIndicator
+                android:id="@+id/icon_pager_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"/>
+        <io.bcaas.exchange.view.viewpager.CirclePageIndicator
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/vp_structure_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/d0.5"
+                android:paddingTop="@dimen/d0.5"
+                app:centered="true"
+                android:layout_alignParentBottom="true"
+                app:fillColor="@color/red"
+                app:pageColor="@color/white"
+                app:radius="@dimen/d3"
+                app:snap="false"/>
+    </RelativeLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:gravity="center_vertical"
+                  android:layout_height="@dimen/d48">
+
+        <ImageView
+                android:id="@+id/iv_broadcast_banner"
+                android:layout_width="@dimen/d32"
+                android:layout_height="@dimen/d32"
+                android:layout_marginLeft="@dimen/d20"
+                android:src="@mipmap/icon_coin_eth"
+        />
+        <TextView android:layout_width="match_parent"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_marginRight="@dimen/d20"
+                  android:text="BCAAS 国际站5月1日上线ZBB"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:background="@drawable/bg_white"
+                  android:layout_margin="@dimen/d20"
+                  android:layout_height="@dimen/d0">
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:background="@drawable/bg_white"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_marginRight="@dimen/d20"
+                  android:gravity="center"
+                  android:layout_height="@dimen/d0">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="CNYC"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="七彩贝， BCAAS全球社区虚拟道具"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:layout_marginLeft="@dimen/d20"
+                  android:layout_marginRight="@dimen/d20"
+                  android:layout_marginTop="@dimen/d20"
+                  android:gravity="center"
+                  android:background="@drawable/bg_white"
+                  android:layout_height="@dimen/d0">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="邀请好友"/>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content"
+              android:text="涨幅榜"
+              android:layout_marginLeft="@dimen/d20"
+              android:layout_marginRight="@dimen/d20"
+              android:textStyle="bold"
+              android:gravity="center_vertical"
+              android:textColor="@color/black_1d2124"
+              android:textSize="@dimen/text_size_24"
+              android:layout_height="@dimen/d48"
+    />
+
+
+</LinearLayout>
