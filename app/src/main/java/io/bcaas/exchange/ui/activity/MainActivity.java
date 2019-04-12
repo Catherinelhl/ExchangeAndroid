@@ -8,16 +8,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -26,7 +24,10 @@ import io.bcaas.exchange.tools.StringTool;
 import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.contracts.GetCoinNameListContract;
-import io.bcaas.exchange.ui.fragment.*;
+import io.bcaas.exchange.ui.fragment.AccountFragment;
+import io.bcaas.exchange.ui.fragment.MainFragment;
+import io.bcaas.exchange.ui.fragment.OrderFragment;
+import io.bcaas.exchange.ui.fragment.TransactionFragment;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.presenter.GetCoinNameListPresenterImp;
@@ -34,9 +35,12 @@ import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -56,6 +60,14 @@ public class MainActivity extends BaseActivity
     RelativeLayout rlHeader;
     @BindView(R.id.ll_main)
     LinearLayout llMain;
+    @BindView(R.id.tv_left)
+    TextView tvLeft;
+    @BindView(R.id.ib_right)
+    ImageButton ibRight;
+    @BindView(R.id.tv_right)
+    TextView tvRight;
+    @BindView(R.id.home_container)
+    FrameLayout homeContainer;
 
 
     //声明当前需要和底部栏搭配的所有fragment
@@ -189,6 +201,28 @@ public class MainActivity extends BaseActivity
         });
 
         sideSlipPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        showToast("dot~~~");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 
@@ -206,12 +240,28 @@ public class MainActivity extends BaseActivity
             if (getAllBalancePresenter != null) {
                 getAllBalancePresenter.getAllBalance();
             }
+            if (ibBack != null) {
+                ibBack.setVisibility(View.GONE);
+            }
+            if (tvLeft != null) {
+                tvLeft.setVisibility(View.VISIBLE);
+            }
             switch (position) {
                 case 0:
-                    setTitle(getString(R.string.buy_title));
+
+                    setTitle(getString(R.string.main));
                     break;
                 case 1:
-                    setTitle(getString(R.string.sell_title));
+                    // 显示右边过滤
+                    if (ibBack != null) {
+                        ibBack.setVisibility(View.VISIBLE);
+                        ibBack.setImageResource(R.mipmap.icon_filter);
+                    }
+                    if (tvLeft != null) {
+                        tvLeft.setText("ZBB/USDT");
+                        tvLeft.setVisibility(View.VISIBLE);
+                    }
+                    setTitle(getString(R.string.transaction));
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
@@ -349,5 +399,12 @@ public class MainActivity extends BaseActivity
             sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
             setBackgroundAlpha(0.7f);
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

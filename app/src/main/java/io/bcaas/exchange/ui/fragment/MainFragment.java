@@ -1,17 +1,16 @@
 package io.bcaas.exchange.ui.fragment;
 
-import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseFragment;
-import io.bcaas.exchange.view.viewpager.CirclePageIndicator;
 import io.bcaas.exchange.view.viewpager.IconPageIndicator;
 import io.bcaas.exchange.view.viewpager.IconPagerFragmentAdapter;
 
@@ -37,16 +36,19 @@ import java.util.List;
 public class MainFragment extends BaseFragment {
     @BindView(R.id.icon_pager_indicator)
     IconPageIndicator iconPagerIndicator;
-    @BindView(R.id.vp_structure_indicator)
-    CirclePageIndicator vpStructureIndicator;
     @BindView(R.id.iv_broadcast_banner)
     ImageView ivBroadcastBanner;
     @BindView(R.id.vp_main_banner)
     ViewPager vpMainBanner;
+    @BindView(R.id.vp_coin_info)
+    ViewPager vpCoinInfo;
+    @BindView(R.id.icon_coin_info_indicator)
+    IconPageIndicator iconCoinInfoIndicator;
 
-    private int currentPager;//记录当前的页数
     private IconPagerFragmentAdapter viewFragmentAdapter;//图片页码的viewpager适配
-    private List<View> viewList;//用来装拆分的article
+    private IconPagerFragmentAdapter viewFragmentAdapterCoinType;//图片页码的viewpager适配
+    private List<View> viewList;
+    private List<View> coinTypeViewList;
 
 
     @Override
@@ -56,11 +58,14 @@ public class MainFragment extends BaseFragment {
 
     @Override
     public void initViews(View view) {
-        currentPager = 0;
         viewList = new ArrayList<>();
+        coinTypeViewList=new ArrayList<>();
         initMainTopBanner();
+        initCoinTypeData();
         viewFragmentAdapter = new IconPagerFragmentAdapter(viewList);
+        viewFragmentAdapterCoinType = new IconPagerFragmentAdapter(coinTypeViewList);
         initViewPager();
+        initCoinTypeViewPager();
     }
 
     private void initMainTopBanner() {
@@ -72,12 +77,24 @@ public class MainFragment extends BaseFragment {
             viewList.add(view);
         }
     }
+    private void initCoinTypeData() {
+        for (int i = 0; i < 2; i++) {
+            View view = LayoutInflater.from(activity).inflate(R.layout.view_main_coin_info, null);
+            coinTypeViewList.add(view);
+        }
+    }
 
     private void initViewPager() {
         vpMainBanner.setOffscreenPageLimit(viewList.size());
         vpMainBanner.setAdapter(viewFragmentAdapter);
         vpMainBanner.setCurrentItem(0);
         iconPagerIndicator.setViewPager(vpMainBanner);
+    }
+    private void initCoinTypeViewPager() {
+        vpCoinInfo.setOffscreenPageLimit(coinTypeViewList.size());
+        vpCoinInfo.setAdapter(viewFragmentAdapterCoinType);
+        vpCoinInfo.setCurrentItem(0);
+        iconCoinInfoIndicator.setViewPager(vpCoinInfo);
     }
 
     @Override
@@ -95,7 +112,6 @@ public class MainFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                currentPager = position;
 
             }
 
@@ -116,5 +132,4 @@ public class MainFragment extends BaseFragment {
     protected void cancelSubscribe() {
 
     }
-
 }
