@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:background="@color/theme_grey"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:id="@+id/ll_one"
+            android:orientation="vertical"
+            android:layout_width="@dimen/d0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/d5"
+            android:layout_margin="@dimen/d5"
+            android:background="@color/grey10_999999"
+            android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_coin_type"
+                  android:text="BTC/USDT"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_number"
+                  android:text="5200.28"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_change"
+                  android:text="+7.65%"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_equal"
+                  android:text="～35077.85CNY"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/ll_two"
+            android:orientation="vertical"
+            android:layout_width="@dimen/d0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/d5"
+            android:layout_margin="@dimen/d5"
+            android:background="@color/grey10_999999"
+            android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_coin_type_2"
+                  android:text="BTC/USDT"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_number_2"
+                  android:text="5200.28"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_change_2"
+                  android:text="+7.65%"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_equal_2"
+                  android:text="～35077.85CNY"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/ll_three"
+            android:orientation="vertical"
+            android:layout_width="@dimen/d0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/d5"
+            android:layout_margin="@dimen/d5"
+            android:background="@color/grey10_999999"
+            android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_coin_type_3"
+                  android:text="BTC/USDT"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_number_3"
+                  android:text="5200.28"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_change_3"
+                  android:text="+7.65%"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_equal_3"
+                  android:text="～35077.85CNY"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

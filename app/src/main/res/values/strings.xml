@@ -79,6 +79,8 @@
 
     <string name="to_setting_grant_permission">Click "Confirm" to jump to system settings to open permissions</string>
     <string name="buy_in">买进</string>
+    <string name="main">首页</string>
+    <string name="transaction">交易</string>
     <string name="sell_out">卖出</string>
     <string name="order">订单</string>
     <string name="account">账户</string>
@@ -312,4 +314,7 @@
     <string name="successful_application_for_buy_back">申请回购成功！</string>
     <string name="recharge_amount_need_greater_than_zero">充值数额需要大于0</string>
     <string name="buy_back_amount_need_greater_than_zero">回购数额需要大于0</string>
+    <string name="transaction_sell">卖</string>
+    <string name="transaction_buy">买</string>
+    <string name="search">搜索</string>
 </resources>

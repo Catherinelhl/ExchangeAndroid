@@ -8,16 +8,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
 import butterknife.BindView;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseActivity;
 import io.bcaas.exchange.constants.Constants;
-import io.bcaas.exchange.constants.MessageConstants;
 import io.bcaas.exchange.event.LogoutEvent;
 import io.bcaas.exchange.listener.OnItemSelectListener;
 import io.bcaas.exchange.tools.ListTool;
@@ -27,19 +25,23 @@ import io.bcaas.exchange.ui.contracts.AccountSecurityContract;
 import io.bcaas.exchange.ui.contracts.GetAllBalanceContract;
 import io.bcaas.exchange.ui.contracts.GetCoinNameListContract;
 import io.bcaas.exchange.ui.fragment.AccountFragment;
-import io.bcaas.exchange.ui.fragment.BuyFragment;
+import io.bcaas.exchange.ui.fragment.MainFragment;
 import io.bcaas.exchange.ui.fragment.OrderFragment;
-import io.bcaas.exchange.ui.fragment.SellFragment;
+import io.bcaas.exchange.ui.fragment.TransactionFragment;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.presenter.GetCoinNameListPresenterImp;
+import io.bcaas.exchange.view.pop.ChooseCurrenciesPop;
 import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
 import io.bcaas.exchange.vo.MemberVO;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author catherine.brainwilliam
@@ -59,6 +61,14 @@ public class MainActivity extends BaseActivity
     RelativeLayout rlHeader;
     @BindView(R.id.ll_main)
     LinearLayout llMain;
+    @BindView(R.id.tv_left)
+    TextView tvLeft;
+    @BindView(R.id.ib_right)
+    ImageButton ibRight;
+    @BindView(R.id.tv_right)
+    TextView tvRight;
+    @BindView(R.id.home_container)
+    FrameLayout homeContainer;
 
 
     //声明当前需要和底部栏搭配的所有fragment
@@ -71,6 +81,7 @@ public class MainActivity extends BaseActivity
     private GetCoinNameListContract.Presenter getCoinNamePresenter;
     //声明侧滑栏
     private SideSlipPop sideSlipPop;
+    private ChooseCurrenciesPop chooseCurrenciesPop;
 
 
     @Override
@@ -90,14 +101,16 @@ public class MainActivity extends BaseActivity
         tvTitle.setVisibility(View.VISIBLE);
         //初始化侧滑栏
         sideSlipPop = new SideSlipPop(this);
+        chooseCurrenciesPop = new ChooseCurrenciesPop(this);
         //设置侧滑栏的item点击时间监听回调
         sideSlipPop.setOnItemSelectListener(onItemSelectListener);
+        chooseCurrenciesPop.setOnItemSelectListener(onItemSelectListener);
 
-        //初始化「买进」页面
-        BuyFragment fragment = new BuyFragment();
+        //初始化「首页」页面
+        MainFragment fragment = new MainFragment();
         fragments.add(fragment);
-        //初始化「售出」页面
-        SellFragment sellFragment = new SellFragment();
+        //初始化「交易」页面
+        TransactionFragment sellFragment = new TransactionFragment();
         fragments.add(sellFragment);
         //初始化「订单」页面
         OrderFragment orderFragment = new OrderFragment();
@@ -192,6 +205,32 @@ public class MainActivity extends BaseActivity
         });
 
         sideSlipPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
+        chooseCurrenciesPop.setOnDismissListener(() -> {
+            hideSoftKeyboard();
+            setBackgroundAlpha(1f);
+        });
+        RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        showChooseCurrenciesPop(new MemberKeyVO());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 
@@ -209,12 +248,27 @@ public class MainActivity extends BaseActivity
             if (getAllBalancePresenter != null) {
                 getAllBalancePresenter.getAllBalance();
             }
+            if (ibBack != null) {
+                ibBack.setVisibility(View.GONE);
+            }
+            if (tvLeft != null) {
+                tvLeft.setVisibility(View.GONE);
+            }
             switch (position) {
                 case 0:
-                    setTitle(getString(R.string.buy_title));
+                    setTitle(getString(R.string.main));
                     break;
                 case 1:
-                    setTitle(getString(R.string.sell_title));
+                    // 显示右边过滤
+                    if (ibBack != null) {
+                        ibBack.setVisibility(View.VISIBLE);
+                        ibBack.setImageResource(R.mipmap.icon_filter);
+                    }
+                    if (tvLeft != null) {
+                        tvLeft.setText("ZBB/USDT");
+                        tvLeft.setVisibility(View.VISIBLE);
+                    }
+                    setTitle(getString(R.string.transaction));
                     break;
                 case 2:
                     setTitle(getString(R.string.order_title));
@@ -229,13 +283,13 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void getAllBalanceSuccess(List<MemberKeyVO> memberKeyVOList) {
-        if (currentFragment instanceof BuyFragment) {
-            //刷新标题
-            ((BuyFragment) currentFragment).refreshView();
-        } else if (currentFragment instanceof SellFragment) {
-            //刷新标题
-            ((SellFragment) currentFragment).refreshView();
-        }
+//        if (currentFragment instanceof BuyFragment) {
+//            //刷新标题
+//            ((BuyFragment) currentFragment).refreshView();
+//        } else if (currentFragment instanceof SellFragment) {
+//            //刷新标题
+//            ((SellFragment) currentFragment).refreshView();
+//        }
     }
 
     @Override
@@ -246,6 +300,7 @@ public class MainActivity extends BaseActivity
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
+            hideSoftKeyboard();
             //如果当前是从侧滑栏返回
             switch (from) {
                 case Constants.From.SIDE_SLIP:
@@ -258,15 +313,15 @@ public class MainActivity extends BaseActivity
                     if (currencyListVO == null) {
                         return;
                     }
-                    if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, currencyListVO.getCurrencyUid(), "onItemSelect:SIDE_SLIP");
-                    }
+//                    if (currentFragment instanceof BuyFragment) {
+//                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, currencyListVO.getCurrencyUid(), "onItemSelect:SIDE_SLIP");
+//                    }
                     break;
                 case Constants.From.SIDE_SLIP_RESET:
                     //侧滑栏重置当前数据
-                    if (currentFragment instanceof BuyFragment) {
-                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "onItemSelect:SIDE_SLIP_RESET");
-                    }
+//                    if (currentFragment instanceof BuyFragment) {
+//                        ((BuyFragment) currentFragment).requestOrderList(MessageConstants.DEFAULT_NEXT_OBJECT_ID, Constants.ValueMaps.ALL_FOR_SALE_ORDER_LIST, "onItemSelect:SIDE_SLIP_RESET");
+//                    }
                     break;
                 default:
                     break;
@@ -350,6 +405,20 @@ public class MainActivity extends BaseActivity
             sideSlipPop.setData(memberKeyVO);
             //弹出侧滑栏
             sideSlipPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.RIGHT, 0, 0);
+            setBackgroundAlpha(0.7f);
+        }
+    }
+
+    /**
+     * 弹出侧滑栏
+     *
+     * @param memberKeyVO
+     */
+    private void showChooseCurrenciesPop(MemberKeyVO memberKeyVO) {
+        if (chooseCurrenciesPop != null) {
+            chooseCurrenciesPop.setData(memberKeyVO);
+            //弹出侧滑栏
+            chooseCurrenciesPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.LEFT, 0, 0);
             setBackgroundAlpha(0.7f);
         }
     }

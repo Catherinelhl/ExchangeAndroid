@@ -51,6 +51,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * Fragment：「買進」
  */
+
+@Deprecated
 public class BuyFragment extends BaseFragment
         implements ForSaleOrderListContract.View {
 

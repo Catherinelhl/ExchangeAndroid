@@ -221,6 +221,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     /*隱藏當前軟鍵盤*/
     public void hideSoftKeyboard() {
+        LogTool.d(TAG,"hideSoftKeyboard"+getCurrentFocus() != null);
         if (getCurrentFocus() != null) {
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);

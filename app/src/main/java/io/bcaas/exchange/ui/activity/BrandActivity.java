@@ -40,7 +40,8 @@ public class BrandActivity extends BaseActivity {
 //                intentToActivity(GetCoinMarketCapActivity.class, true);
 //                intentToActivity(MainActivity.class, true);
 //            } else {
-            intentToActivity(LoginActivity.class, true);
+//            intentToActivity(LoginActivity.class, true);
+            intentToActivity(MainActivity.class, true);
 //            }
         }
     };
