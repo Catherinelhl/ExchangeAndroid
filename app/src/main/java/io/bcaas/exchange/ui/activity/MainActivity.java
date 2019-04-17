@@ -8,9 +8,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.squareup.otto.Subscribe;
 import io.bcaas.exchange.R;
@@ -31,6 +31,7 @@ import io.bcaas.exchange.ui.fragment.TransactionFragment;
 import io.bcaas.exchange.ui.presenter.AccountSecurityPresenterImp;
 import io.bcaas.exchange.ui.presenter.GetAllBalancePresenterImp;
 import io.bcaas.exchange.ui.presenter.GetCoinNameListPresenterImp;
+import io.bcaas.exchange.view.pop.ChooseCurrenciesPop;
 import io.bcaas.exchange.view.pop.SideSlipPop;
 import io.bcaas.exchange.vo.CurrencyListVO;
 import io.bcaas.exchange.vo.MemberKeyVO;
@@ -80,6 +81,7 @@ public class MainActivity extends BaseActivity
     private GetCoinNameListContract.Presenter getCoinNamePresenter;
     //声明侧滑栏
     private SideSlipPop sideSlipPop;
+    private ChooseCurrenciesPop chooseCurrenciesPop;
 
 
     @Override
@@ -99,8 +101,10 @@ public class MainActivity extends BaseActivity
         tvTitle.setVisibility(View.VISIBLE);
         //初始化侧滑栏
         sideSlipPop = new SideSlipPop(this);
+        chooseCurrenciesPop = new ChooseCurrenciesPop(this);
         //设置侧滑栏的item点击时间监听回调
         sideSlipPop.setOnItemSelectListener(onItemSelectListener);
+        chooseCurrenciesPop.setOnItemSelectListener(onItemSelectListener);
 
         //初始化「首页」页面
         MainFragment fragment = new MainFragment();
@@ -201,6 +205,10 @@ public class MainActivity extends BaseActivity
         });
 
         sideSlipPop.setOnDismissListener(() -> setBackgroundAlpha(1f));
+        chooseCurrenciesPop.setOnDismissListener(() -> {
+            hideSoftKeyboard();
+            setBackgroundAlpha(1f);
+        });
         RxView.clicks(ibBack).throttleFirst(Constants.Time.sleep800, TimeUnit.MILLISECONDS)
                 .subscribe(new Observer<Object>() {
                     @Override
@@ -210,7 +218,7 @@ public class MainActivity extends BaseActivity
 
                     @Override
                     public void onNext(Object o) {
-                        showToast("dot~~~");
+                        showChooseCurrenciesPop(new MemberKeyVO());
                     }
 
                     @Override
@@ -244,11 +252,10 @@ public class MainActivity extends BaseActivity
                 ibBack.setVisibility(View.GONE);
             }
             if (tvLeft != null) {
-                tvLeft.setVisibility(View.VISIBLE);
+                tvLeft.setVisibility(View.GONE);
             }
             switch (position) {
                 case 0:
-
                     setTitle(getString(R.string.main));
                     break;
                 case 1:
@@ -293,6 +300,7 @@ public class MainActivity extends BaseActivity
     private OnItemSelectListener onItemSelectListener = new OnItemSelectListener() {
         @Override
         public <T> void onItemSelect(T type, String from) {
+            hideSoftKeyboard();
             //如果当前是从侧滑栏返回
             switch (from) {
                 case Constants.From.SIDE_SLIP:
@@ -401,10 +409,17 @@ public class MainActivity extends BaseActivity
         }
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    /**
+     * 弹出侧滑栏
+     *
+     * @param memberKeyVO
+     */
+    private void showChooseCurrenciesPop(MemberKeyVO memberKeyVO) {
+        if (chooseCurrenciesPop != null) {
+            chooseCurrenciesPop.setData(memberKeyVO);
+            //弹出侧滑栏
+            chooseCurrenciesPop.showAtLocation(MainActivity.this.findViewById(R.id.ll_main), Gravity.LEFT, 0, 0);
+            setBackgroundAlpha(0.7f);
+        }
     }
 }

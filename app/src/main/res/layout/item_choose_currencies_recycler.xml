@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--自选币种的item-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tool="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="wrap_content">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/d5"
+                    android:layout_marginBottom="@dimen/d5"
+                    android:layout_marginLeft="@dimen/d20"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="@dimen/d20"
+                    android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_currencies_one"
+                  style="@style/black_14_text_style"
+                  android:text="BTC"
+                  android:gravity="center_vertical"
+                  android:layout_gravity="center"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/tv_currencies_two"
+                  android:textSize="@dimen/text_size_14"
+                  android:text=" / USDT"
+                  android:layout_toRightOf="@+id/tv_currencies_one"
+                  android:textColor="@color/grey_666666"
+                  android:gravity="right"
+                  android:layout_gravity="center"
+                  android:layout_height="wrap_content"/>
+        <TextView
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/tv_currencies_volume"
+                android:textSize="@dimen/text_size_16"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_1d2124"
+                tool:text="5607.256577"/>
+    </RelativeLayout>
+
+    <View android:layout_width="match_parent"
+          android:background="@color/theme_grey"
+          android:layout_height="@dimen/d1"/>
+</LinearLayout>

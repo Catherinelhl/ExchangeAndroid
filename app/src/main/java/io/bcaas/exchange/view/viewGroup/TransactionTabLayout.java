@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import io.bcaas.exchange.R;
@@ -30,10 +29,10 @@ import java.util.List;
 /**
  * @author catherine.brainwilliam
  * @since 2019/1/7
- * 自定义视图：APP的底部导航栏
+ * 自定义交易界面TabLayout视图
  */
-public class BaseTabLayout extends FrameLayout {
-    private String TAG = BaseTabLayout.class.getSimpleName();
+public class TransactionTabLayout extends FrameLayout {
+    private String TAG = TransactionTabLayout.class.getSimpleName();
     private TabLayout mTabLayout;
     private List<String> mTabList;
     private List<View> mCustomViewList;
@@ -49,26 +48,26 @@ public class BaseTabLayout extends FrameLayout {
     private int tabSize = 3;
 
 
-    public BaseTabLayout(@NonNull Context context) {
+    public TransactionTabLayout(@NonNull Context context) {
         super(context);
         this.context = context;
         init(context, null);
     }
 
-    public BaseTabLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public TransactionTabLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         init(context, attrs);
     }
 
-    public BaseTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TransactionTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
         init(context, attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BaseTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TransactionTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs);
     }
@@ -107,16 +106,20 @@ public class BaseTabLayout extends FrameLayout {
                     }
                     TextView text = (TextView) view.findViewById(R.id.tab_item_text);
                     View indicator = view.findViewById(R.id.tab_item_indicator);
-                    ImageView imageView = view.findViewById(R.id.iv_icon);
                     if (i == tab.getPosition()) { // 选中状态
-                        text.setTextColor(mSelectTextColor);
-                        indicator.setBackgroundColor(mSelectIndicatorColor);
+                        if (i == 1) {
+                            int color=BaseApplication.context().getResources().getColor(R.color.button_color);
+                            indicator.setBackgroundColor(color);
+                            text.setTextColor(color);
+                        } else {
+                            int color=BaseApplication.context().getResources().getColor(R.color.green_18ac22);
+                            indicator.setBackgroundColor(color);
+                            text.setTextColor(color);
+                        }
                         indicator.setVisibility(View.VISIBLE);
-                        imageView.setAlpha(1f);
                     } else {// 未选中状态
                         text.setTextColor(mUnSelectTextColor);
                         indicator.setVisibility(View.INVISIBLE);
-                        imageView.setAlpha(0.5f);
 
                     }
                 }
@@ -250,12 +253,12 @@ public class BaseTabLayout extends FrameLayout {
     public static class ViewPagerOnTabSelectedListener implements TabLayout.OnTabSelectedListener {
 
         private final ViewPager mViewPager;
-        private final WeakReference<BaseTabLayout> mTabLayoutRef;
+        private final WeakReference<TransactionTabLayout> mTabLayoutRef;
         private final TabLayout.OnTabSelectedListener onTabSelectedListener;
 
-        public ViewPagerOnTabSelectedListener(ViewPager viewPager, BaseTabLayout bcaasTabLayout, TabLayout.OnTabSelectedListener tabSelectedListener) {
+        public ViewPagerOnTabSelectedListener(ViewPager viewPager, TransactionTabLayout bcaasTabLayout, TabLayout.OnTabSelectedListener tabSelectedListener) {
             mViewPager = viewPager;
-            mTabLayoutRef = new WeakReference<BaseTabLayout>(bcaasTabLayout);
+            mTabLayoutRef = new WeakReference<TransactionTabLayout>(bcaasTabLayout);
             this.onTabSelectedListener = tabSelectedListener;
         }
 
@@ -265,7 +268,7 @@ public class BaseTabLayout extends FrameLayout {
                 onTabSelectedListener.onTabSelected(tab);
             }
             mViewPager.setCurrentItem(tab.getPosition());
-            BaseTabLayout mTabLayout = mTabLayoutRef.get();
+            TransactionTabLayout mTabLayout = mTabLayoutRef.get();
             if (mTabLayoutRef != null) {
                 List<View> customViewList = mTabLayout.getCustomViewList();
                 if (customViewList == null || customViewList.size() == 0) {
@@ -278,16 +281,20 @@ public class BaseTabLayout extends FrameLayout {
                     }
                     TextView text = (TextView) view.findViewById(R.id.tab_item_text);
                     View indicator = view.findViewById(R.id.tab_item_indicator);
-                    ImageView imageView = view.findViewById(R.id.iv_icon);
                     if (i == tab.getPosition()) { // 选中状态
-                        text.setTextColor(mTabLayout.mSelectTextColor);
-                        indicator.setBackgroundColor(mTabLayout.mSelectIndicatorColor);
+                        if (i == 1) {
+                            int color=BaseApplication.context().getResources().getColor(R.color.button_color);
+                            indicator.setBackgroundColor(color);
+                            text.setTextColor(color);
+                        } else {
+                            int color=BaseApplication.context().getResources().getColor(R.color.green_18ac22);
+                            indicator.setBackgroundColor(color);
+                            text.setTextColor(color);
+                        }
                         indicator.setVisibility(View.VISIBLE);
-                        imageView.setAlpha(1f);
                     } else {// 未选中状态
                         text.setTextColor(mTabLayout.mUnSelectTextColor);
                         indicator.setVisibility(View.INVISIBLE);
-                        imageView.setAlpha(0.5f);
 
                     }
                 }
@@ -320,11 +327,10 @@ public class BaseTabLayout extends FrameLayout {
      * @return
      */
     public View getTabView(Context context, String text, int indicatorWidth, int indicatorHeight, int textSize) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_tab_layout, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_transaction_tab_layout, null);
         TextView tabText = (TextView) view.findViewById(R.id.tab_item_text);
-        ImageView imageView = (ImageView) view.findViewById(R.id.iv_icon);
+        View indicator = view.findViewById(R.id.tab_item_indicator);
         if (indicatorWidth > 0) {
-            View indicator = view.findViewById(R.id.tab_item_indicator);
             ViewGroup.LayoutParams layoutParams = indicator.getLayoutParams();
             layoutParams.width = indicatorWidth;
             layoutParams.height = indicatorHeight;
@@ -332,29 +338,6 @@ public class BaseTabLayout extends FrameLayout {
         }
         tabText.setTextSize(textSize);
         tabText.setText(text);
-        if (StringTool.notEmpty(text)) {
-            imageView.setVisibility(VISIBLE);
-            switch (text) {
-                case "BTC":
-                    imageView.setImageResource(R.mipmap.icon_coin_btc);
-                    break;
-                case "ETH":
-                    imageView.setImageResource(R.mipmap.icon_coin_eth);
-                    break;
-                case "ZBB":
-                    imageView.setImageResource(R.mipmap.icon_coin_zbb);
-                    break;
-                case "BCC":
-                    imageView.setImageResource(R.mipmap.icon_coin_bcc);
-                    break;
-                case "CNYC":
-                    imageView.setImageResource(R.mipmap.icon_coin_cnyc);
-                    break;
-                default:
-                    imageView.setVisibility(GONE);
-                    break;
-            }
-        }
         return view;
     }
 

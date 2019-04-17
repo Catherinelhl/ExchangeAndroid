@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import io.bcaas.exchange.R;
 import io.bcaas.exchange.base.BaseApplication;
+import io.bcaas.exchange.constants.MessageConstants;
+import io.bcaas.exchange.tools.ListTool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public class DataGenerationManager {
     private List<Integer> tabFocusDrawables = new ArrayList<>();
     //顶部订单标题集合
     private List<String> tabOrderTopTitles = new ArrayList<>();
+    //顶部买/卖
+    private List<String> transactionTitle = new ArrayList<>();
     //底部tab的数量
     private int tabBottomTitleCount;
     //顶部tab 订单页面的标题数量
@@ -40,19 +44,22 @@ public class DataGenerationManager {
 
     private void initData() {
         //初始化底部栏文本数据
-        tabTitles.add(BaseApplication.context().getResources().getString(R.string.main));
+        tabTitles.add(BaseApplication.context().getString(R.string.main));
         tabTitles.add(BaseApplication.context().getString(R.string.transaction));
         tabTitles.add(BaseApplication.context().getString(R.string.order));
         tabTitles.add(BaseApplication.context().getString(R.string.account));
         tabBottomTitleCount = tabTitles.size();
 
         //初始化Order界面top标题集合
-        tabOrderTopTitles.add("交易");
-        tabOrderTopTitles.add("转入");
-        tabOrderTopTitles.add("转出");
-        tabOrderTopTitles.add("充值");
-        tabOrderTopTitles.add("回购");
+        tabOrderTopTitles.add(BaseApplication.context().getString(R.string.transaction));
+        tabOrderTopTitles.add(BaseApplication.context().getString(R.string.turn_in));
+        tabOrderTopTitles.add(BaseApplication.context().getString(R.string.turn_out));
+        tabOrderTopTitles.add(BaseApplication.context().getString(R.string.recharge));
+        tabOrderTopTitles.add(BaseApplication.context().getString(R.string.buy_back));
         tabOrderTopTitleCount = tabOrderTopTitles.size();
+
+        transactionTitle.add(BaseApplication.context().getString(R.string.transaction_buy));
+        transactionTitle.add(BaseApplication.context().getString(R.string.transaction_sell));
 
         //初始化底部栏图标数据
         tabDrawables.add(R.mipmap.icon_buy_in);
@@ -63,6 +70,24 @@ public class DataGenerationManager {
         tabFocusDrawables.add(R.mipmap.icon_sell_out_f);
         tabFocusDrawables.add(R.mipmap.icon_order_f);
         tabFocusDrawables.add(R.mipmap.icon_account_f);
+    }
+
+    public String getTransactionTitle(int position) {
+        if (ListTool.isEmpty(transactionTitle)) {
+            return MessageConstants.EMPTY;
+        }
+        int size = transactionTitle.size();
+        if (position >= size) {
+            return transactionTitle.get(size - 1);
+        }
+        return transactionTitle.get(position);
+    }
+
+    public int getTransactionTitleSize() {
+        if (ListTool.isEmpty(transactionTitle)) {
+            return 0;
+        }
+        return transactionTitle.size();
     }
 
     /**
